@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \begin{document}
-\title{gdbank annotation guidelines v. 0.2}
+\title{gdbank annotation guidelines v. 0.3}
 \author{Colin Batchelor}
 \maketitle
 
@@ -13,9 +13,9 @@ These guidelines assume at least a basic working knowledge of written Scottish G
 \noindent {\bf 2.} You may also refer to the English gloss if such a thing has been provided, for example in {\it An Litir Bheag}.
 
 \noindent {\bf 3.} Gaelic is VSO. As a result it is very likely that the first word you come across will be either a verb or a preverbal particle.
-The general pattern for these is $\oslash$ (declarative), \textit{cha/chan} (negative), \textit{a/am/an} (interrogative), \textit{nach} (negative interrogative).
+The general pattern for preverbal particles is $\oslash$ (declarative), \textit{cha/chan} (negative), \textit{a/am/an} (interrogative), \textit{nach} (negative interrogative).
 
-\noindent {\bf 4.} If you can't work out what a particular dependency is, but you know it is there, you may use dep for completely general dependencies or mod if you know it's a modifier.
+
 
 
 
@@ -26,9 +26,15 @@ However, it is useful to know about the dative and the genitive because there ar
 For regular nouns they are marked by slenderization of the final consonant, if it can be slenderized, and lenition.
 There are also irregular nouns, such as \textit{sgian} (knife), for which the genitive/dative form is \textit{sgeine}, and \textit{ball} (ball, representative) for which the genitive/dative form is \textit{bhuill}.
 
+\subsection{Format}
+
+\noindent {\bf 5.} gdbank follows the CoNLL-X format.
+You \textbf{must} fill in the following columns: (1) token number, (2) surface, (6) FEATS, (7) head and (8) dependency type.
+You \textbf{may} specify the others; if not put an underscore in them.
+
 \section{Tokenization}
 
-\noindent {\bf 6.} Number each of the tokens in the sentence with an integer starting at 0.
+\noindent {\bf 6.} Number each of the tokens in the sentence with an integer starting at 1.
 
 \noindent {\bf 7.} In general, break on whitespace.
 
@@ -46,7 +52,9 @@ There are also irregular nouns, such as \textit{sgian} (knife), for which the ge
 
 \section{Dependency annotations}
 
-\noindent {\bf 5.} The example dependencies in these guidelines have no numbers on them. In the actual annotation process you need to number the tokens. The dependencies can be written either with nouns and numbers, separated by an underscore, or numbers on their own.
+\noindent {\bf 4.} If you can't work out what a particular dependency is, but you know it is there, you may use dep for completely general dependencies or mod if you know it's a modifier.
+
+\subsection{Adjectives}
 
 \noindent {\bf 64.} Adjectives used attributively are \texttt{amod}; predicatively are \texttt{acomp}.
 
@@ -162,14 +170,17 @@ Initially we won't distinguish between \texttt{N} and \texttt{NP}.
 
 \noindent {\bf 22.} Preverbal particles, for example \textit{dh'}, that indicate the type of the sentence take the type \texttt{S[*]/S[dep]}, where * is the relevant one of the foregoing. Tag the main verb with S[dep] and the relevant arguments.
 
-\noindent {\bf 23.} The past-tense marker takes type S[dep]/S[dep] if following a preverbal particle: \textit{Cha do rinn .}
-If starting a sentence the past-tense marker takes type S[dcl]/S[dcl]: \textit{Dh' fhaicinn .}
+\noindent {\bf 23.} The past-tense marker takes type \texttt{S[dep]/S[dep]} if following a preverbal particle: \textit{Cha do rinn .}
+If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: \textit{Dh' fhaicinn .}
 
 \noindent{\bf 40.} Intransitive clauses take the type \texttt{S[*]/N}; transitive \texttt{S[*]/N/N}.
 
 \noindent{\bf 45.} Infinitive clauses (\textit{a} followed by a lenited verbal noun) are \texttt{S[inf]}.
 
-\noindent{\bf 47.} \textit{Rach} introducing a passive is \texttt{S[*]/N/S[inf]}.
+\noindent{\bf 47.} \textit{Rach} introducing a passive is \texttt{S[*]/S[inf]/N}.
+\noindent {\bf 58.} \textit{Bi} and variants are \texttt{S[*]/PP[*]/N}, \texttt{S[*]/S[adj]/N}, and \textit{S[*]/PP[ri]/PP[aig]}.
+
+\noindent{\bf 74.} For \textit{Is} constructions about psychological states, \textit{is} is \texttt{S[*]/PP[*]/N} or \texttt{S[*]/PP/S[adj]} and the psych noun or adjective will be \texttt{N/S[n]} or \texttt{S[adj]/S[n]} or \texttt{N/S[inf]} or \texttt{S[adj]/S[inf]} accordingly.
 
 \subsection{Prepositions}
 
@@ -181,6 +192,8 @@ Hence \textit{air} (meaning ``on him'') and \textit{oirre} are both \texttt{PP[a
 \noindent {\bf 26.} \textit{a'}, \textit{ag}, \textit{air} and \textit{gu} when governing a verbal noun are \texttt{PP[*]/S[n]}.
 
 \noindent {\bf 27.} Prepositions fused with articles are \texttt{PP[*]/N} as in rule {\bf 25}.
+
+\noindent {\bf 66.} Remember that \textit{an} can be a preposition, as in for example \textit{an d\`ochas}.
 
 \subsection{\textit{A} and \textit{gu}}
 
