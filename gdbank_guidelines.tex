@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \begin{document}
-\title{gdbank annotation guidelines v. 0.3}
+\title{gdbank annotation guidelines v. 0.4}
 \author{Colin Batchelor}
 \maketitle
 
@@ -108,7 +108,7 @@ Very often a verb will have a prepositional complement.
 
 \noindent{\bf 70.} In the case where \textit{gu} has fused with a form of \textit{is}, for example \textit{gur}, then simply use \texttt{ccomp} as before.
 
-\noindent {\bf 55.} In the phrase \textit{'S e tidsear a th' annam}, \textit{th'} is the \texttt{xcomp} of \textit{tidsear}, \textit{a} is the \texttt{rel} of \textit{th'} and \textit{annam} is an \texttt{adpmod} of \textit{th'}.
+\noindent {\bf 55.} In the phrase \textit{'S e tidsear a th' annam}, \textit{th'} is the \texttt{rcmod} of \textit{tidsear}, \textit{a} is the \texttt{rel} of \textit{th'} and \textit{annam} is an \texttt{adpmod} of \textit{th'}.
 
 \noindent {\bf 59.} For phrases like \textit{carson a tha}, \textit{carson} and \textit{a} are both \texttt{mark} of \textit{tha}.
 
@@ -116,7 +116,9 @@ Very often a verb will have a prepositional complement.
 
 \subsection{Punctuation}
 
-\noindent{\bf 67.} Mark punctuation with \texttt{p} and the head as the verb head of the preceding phrase. In short sentences this is likely to be the root.
+\noindent{\bf 67.} Normally, mark punctuation with \texttt{p} and the head as the verb head of the preceding phrase. In short sentences this is likely to be the root.
+
+\noindent{\bf 78.} However, in lists, or in run-on sentences, treat commas and colons as coordination (see rule \textbf{71}).
 
 \subsection{Coordination}
 
@@ -131,6 +133,8 @@ Reminder: these go in column 6.
 \noindent{\bf 68.} If you get absolutely stuck, put X as the category.
 
 \noindent{\bf 69.} Mark conjunctions as \texttt{conj}.
+
+\noindent {\bf 77.} If a word has been missed out, possibly for scansion or just in error, then don't modify the types of words that would otherwise depend on it.
 
 \subsection{Adjectives}
 
@@ -168,7 +172,7 @@ Initially we won't distinguish between \texttt{N} and \texttt{NP}.
 
 \noindent{\bf 50.} We also have \texttt{S[em]} for embedded declaratives. \textit{Ciamar a tha thu?}
 
-\noindent {\bf 22.} Preverbal particles, for example \textit{dh'}, that indicate the type of the sentence take the type \texttt{S[*]/S[dep]}, where * is the relevant one of the foregoing. Tag the main verb with S[dep] and the relevant arguments.
+\noindent {\bf 22.} Preverbal particles, for example \textit{dh'}, that indicate the type of the sentence take the type \texttt{S[*]/S[dep]}, where * is the relevant one of the foregoing. Tag the main verb with \texttt{S[dep]} and the relevant arguments.
 
 \noindent {\bf 23.} The past-tense marker takes type \texttt{S[dep]/S[dep]} if following a preverbal particle: \textit{Cha do rinn .}
 If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: \textit{Dh' fhaicinn .}
@@ -178,9 +182,11 @@ If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: 
 \noindent{\bf 45.} Infinitive clauses (\textit{a} followed by a lenited verbal noun) are \texttt{S[inf]}.
 
 \noindent{\bf 47.} \textit{Rach} introducing a passive is \texttt{S[*]/S[inf]/N}.
-\noindent {\bf 58.} \textit{Bi} and variants are \texttt{S[*]/PP[*]/N}, \texttt{S[*]/S[adj]/N}, and \textit{S[*]/PP[ri]/PP[aig]}.
+\noindent {\bf 58.} \textit{Bi} and variants are \texttt{S[*]/PP[*]/N}, \texttt{S[*]/S[adj]/N}, and \texttt{S[*]/PP[ri]/PP[aig]}.
 
 \noindent{\bf 74.} For \textit{Is} constructions about psychological states, \textit{is} is \texttt{S[*]/PP[*]/N} or \texttt{S[*]/PP/S[adj]} and the psych noun or adjective will be \texttt{N/S[n]} or \texttt{S[adj]/S[n]} or \texttt{N/S[inf]} or \texttt{S[adj]/S[inf]} accordingly.
+
+\noindent {\bf 75.} For \textit{is} constructions equating two things, use \texttt{S[*]/N/N}. 
 
 \subsection{Prepositions}
 
@@ -202,6 +208,8 @@ Hence \textit{air} (meaning ``on him'') and \textit{oirre} are both \texttt{PP[a
 \noindent{\bf 48.} \textit{gu} and variants are usually \texttt{(N\textbackslash N)/S[dep]}, because they depend on psych nouns like \textit{fios} and \textit{eagal}.
 
 \noindent{\bf 51.} \textit{a} in, for example, \textit{Ciamar a tha thu?} is \texttt{S[em]/S[dcl]}.
+
+\noindent{\bf 76.} \textit{a}, the relative particle, is \texttt{(N\textbackslash N)/S[dcl]}.
 
 \subsection{Punctuation}
 

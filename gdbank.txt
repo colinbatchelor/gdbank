@@ -24,7 +24,7 @@
 8	Patrick	_	_	_	N/N	9	nmod	_	_
 9	Sellar	_	_	_	N	6	appos	_	_
 10	,	,	_	_	,	4	p	_	_
-11	teaghlaichean	teaghlach	_	_	N	dobj	4	_	_
+11	teaghlaichean	teaghlach	_	_	N	4	dobj	_	_
 12	às	às	_	_	PP[as]/N	4	adpmod	_	_	
 13	an	an	_	_	N/N	14	det	_	_
 14	dachaighean	dachaigh	_	_	N	12	adpobj	_	_
@@ -56,7 +56,7 @@
 8	na	an	_	_	(N\N)/(N\N)	9	det	_	_
 9	sìthichean	sìthich	_	_	N\N	7	nmod	_	_
 10	a'	ag	_	_	PP[ag]/S[n]	11	prt	_	_
-11	dannsadh	dannsadh	_	_	S[n]	6	advcl	_	_
+11	dannsadh	dannsadh	_	_	S[n]	6	xcomp	_	_
 12	ri	ri	_	_	PP[ri]/N	11	adpmod	_	_
 13	taobh	taobh	_	_	N	12	adpobj	_	_
 14	na	an	_	_	(N\N)/(N\N)	15	det	_	_
@@ -73,12 +73,12 @@
 6	e	e	_	_	N	5	nsubj	_	_
 7	an	an	_	_	N/N	8	det	_	_
 8	duine	duine	_	_	N	5	nsubj	_	_
-9	a	a	_	_	(N\N)/S[dcl]	rel	10	_	_
-10	bha	bi	_	_	S[dcl]/PP[ri]/N	rcmod	8	_	_
-11	còmhla	_	_	_	N	adpmod	10	_	_
-12	ris	ri	_	_	PP[ri]/N	adpmod	11	_	_
-13	an	an	_	_	N/N	det	14	_	_
-14	each	each	_	_	N	adpobj	12	_	_
+9	a	a	_	_	(N\N)/S[dcl]	10	rel	_	_
+10	bha	bi	_	_	S[dcl]/PP[ri]/N	8	rcmod	_	_
+11	còmhla	_	_	_	N	10	adpmod	_	_
+12	ris	ri	_	_	PP[ri]/N	11	adpmod	_	_
+13	an	an	_	_	N/N	14	det	_	_
+14	each	each	_	_	N	12	adpobj	_	_
 15	a	a	_	_	(N\N)/S[dcl]	15	rel	_	_
 16	bha	bi	_	_	S[dcl]/PP[ag]/N	14	rcmod	_	_
 17	a'	ag	_	_	PP[ag]/S[n]	18	prt	_	_
@@ -137,8 +137,8 @@
 5	gum	_	_	_	(N\N)/S[dep]	6	mark	_	_
 6	biodh	bi	_	_	S[dep]/PP[ag]/N	3	ccomp	_	_
 7	daoine	duine	_	_	N	6	nsubj	_	_
-8	a'	_	_	_	PP[ag]/S[n]	prt	9	_	_
-9	magadh	_	_	_	S[n]/PP[air]	xcomp	6	_	_
+8	a'	_	_	_	PP[ag]/S[n]	9	prt	_	_
+9	magadh	_	_	_	S[n]/PP[air]	6	xcomp	_	_
 10	orm	_	_	_	PP[air]	9	adpmod	_	_
 11	.	_	_	_	.	1	p	_	_
 
@@ -151,8 +151,8 @@
 5	fios	_	_	_	N	4	nsubj	_	_
 6	aig	_	_	_	PP[aig]/N	4	adpmod	_	_
 7	a'	_	_	_	N/N	8	det	_	_
-8	phìob-chiùil	_	_	_	N	6	pobj	_	_
-9	?	_	_	_	?	p	_	_
+8	phìob-chiùil	_	_	_	N	6	adpobj	_	_
+9	?	_	_	_	?	1	p	_	_
 
 # gd9
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag460.pdf
@@ -215,11 +215,11 @@
 15	òg	òg	_	_	S[adj]	14	acomp	_	_
 16	air	air	_	_	PP[air]/N	13	adpmod	_	_
 17	a'	an	_	_	N/N	18	det	_	_
-18	Chomraich	Comraich	_	_	N	adpobj	16	_	_
+18	Chomraich	Comraich	_	_	N	16	adpobj	_	_
 19	air	air	_	_	PP[air]/N	13	adpmod	_	_
 20	làithean-saora	latha-saor	_	_	N	19	adpobj	_	_
 21	.	.	_	_	.	1	p	_	_
-  
+
 # gd13
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag458.pdf
 1	Bha	bi	_	_	S[dcl]/PP[mu]/N	0	ROOT	_	_
@@ -287,7 +287,7 @@
 8	bha	bi	_	_	S[dcl]/PP[ag]/N	0	ROOT	_	_
 9	mi	mi	_	_	N	8	nsubj	_	_
 10	a'	ag	_	_	PP[ag]/S[n]	11	prt	_	_
-11	faireachdainn	faireachdainn	_	_	S[n]	xcomp	_	_
+11	faireachdainn	faireachdainn	_	_	S[n]	8	xcomp	_	_
 12	na	na	_	_	S[adj]/S[dcl]	13	mark	_	_
 13	bu	is	_	_	S[dcl]/S[adj]/N	11	xcomp	_	_
 14	dlùithe	_	_	_	S[adj]	13	acomp	_	_
@@ -317,7 +317,7 @@
 15	a	_	_	_	PP[do]/N	13	adpmod	_	_
 16	dhachaigh	_	_	_	N	15	adpobj	_	_
 17	.	_	_	_	.	1	p	_	_  
-    
+
 # gd18
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag457.pdf
 1	Bha	_	_	_	S[dcl]/PP[aig]/N	0	ROOT	_	_
@@ -361,7 +361,7 @@
 12	de	de	_	_	PP[de]/N	11	adpmod	_	_
 13	mhurt	murt	_	_	N	12	adpobj	_	_
 14	.	.	_	_	.	1	p	_	_
- 
+
 # gd21
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag456.pdf
 1	Bha	bi	_	_	S[dcl]/S[adj]/N	0	ROOT	_	_
@@ -369,7 +369,7 @@
 3	cianail	cianail	_	_	S[adj]/S[adj]	4	amod	_	_
 4	measail	measail	_	_	S[adj]/PP[air]	1	acomp	_	_
 5	air	air	_	_	PP[air]/N	4	adpmod	_	_
-6	poidseadh	poidseadh	_	_	N	5	pobj	_	_
+6	poidseadh	poidseadh	_	_	N	5	adpobj	_	_
 7	.	_	_	_	.	1	p	_	_
 
 # gd22
@@ -396,7 +396,7 @@
 20	gach	gach	_	_	N/N	21	det	_	_
 21	oidhche	oidhche	_	_	N	16	advmod	_	_
 22	.	.	_	_	.	1	p	_	_
- 
+
 # gd23
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag451.pdf
 1	Ach	ach	_	_	conj	1	cc	_	_
@@ -425,7 +425,7 @@
 11	thoirt	_	_	_	S[n]/PP[do]/N	8	rcmod	_	_
 12	don	do	_	_	PP[do]/N	11	adpmod	_	_
 13	fhollais	follais	_	_	N	12	adpobj	_	_
-13	.	.	_	_	.	_	_
+13	.	.	_	_	.	1	p	_	_
 
 # gd25
 # Robertson and Taylor
@@ -447,7 +447,7 @@
 1	'S	is	_	_	S[dcl]	0	ROOT	_	_
 2	iomadh	iomadh	_	_	N/N	3	amod	_	_
 3	ìomaigh	ìomaigh	_	_	N	1	nsubj	_	_
-4	a	_	_	_	5	prt	_	_
+4	a	_	_	_	(N\N)/S[dcl]	5	prt	_	_
 5	thig	_	_	_	S[dcl]/N	3	xcomp	_	_
 6	do	do	_	_	PP[do]/N	5	adpmod	_	_
 7	mo	mo	_	_	N/N	7	amod	_	_
@@ -471,7 +471,7 @@
 6	mheasan	_	_	_	N\N	5	nmod	_	_
 7	is	_	_	_	conj	5	cc	_	_
 8	iogairt	_	_	_	N	5	conj	_	_
-9	fhaighinn	_	_	_	S[n]/N	xcomp	_	_
+9	fhaighinn	_	_	_	S[n]/N	2	xcomp	_	_
 10	.	_	_	_	.	2	p	_	_
 
 # gd29
@@ -500,3 +500,102 @@
 3	dhomh	_	_	_	PP[do]	1	adpmod	_	_
 4	falbh	_	_	_	S[n]	2	xcomp	_	_
 5	.	_	_	_	.	1	p	_	_
+
+# gd32
+# Clann-Nighean an Sgadain (The New Penguin Book of Scottish verse, p. 478) le Ruaraidh MacThòmais
+1	B'	is	_	_	S[dcl]/N/N	0	ROOT	_	_
+2	e	e	_	_	N	1	nsubj	_	_
+3	bun-os-cionn	_	_	_	N	1	dobj	_	_
+4	na	an	_	_	N/N	5	det	_	_
+5	h-eachdraidh	eachdraidh	_	_	N	3	nmod	_	_
+6	a	a	_	_	(N\N)/S[dcl]	8	mark	_	_		
+7	dh'	do	_	_	S[dcl]/S[dcl]	8	prt	_	_
+8	fhag	_	_	_	S[dcl]/PP[ann]/N	5	xcomp	_	_
+9	iad	iad	_	_	N	8	dobj	_	_
+10	'nan	ann	_	_	PP[ann]/N	8	adpmod	_	_
+11	tràillean	_	_	_	N	10	adpobj	_	_
+12	aig	aig	_	_	PP[aig]/N	11	adpmod	_	_
+13	ciùrairean	_	_	_	N	12	adpobj	_	_
+14	cutach	_	_	_	N\N	13	amod	_	_
+15	,	,	_	_	,	8	p	_	_
+16	thall	thall	_	_	S[dcl]\S[dcl]	8	advmod	_	_
+17	's	agus	_	_	conj	16	cc	_	_
+18	a-bhos	a-bhos	_	_	S[dcl]\S[dcl]	16	conj	_	_
+19	air	air	_	_	PP[air]/N	8	adpmod	_	_
+20	Galldachd	_	_	_	N	19	adpobj	_	_
+21	's	agus	_	_	conj	20	cc	_	_
+22	an	an	_	_	N/N	23	det	_	_
+23	Sasainn	Sasainn	_	_	N	20	conj	_	_
+24	.	.	_	_	.	1	p	_	_
+
+# gd33
+# Na h-Eilthireach (The New Penguin Book of Scottish verse, p. 492) le Iain Mac a' Ghobhainn
+1	Tha	bi	_	_	S[dcl]/PP[ma]/N	0	ROOT	_	_
+2	iad	iad	_	_	N	1	nsubj	_	_
+3	mar	_	_	_	PP[ma]/N	2	adpmod	_	_
+4	neapaigearan	_	_	_	N	3	adpobj	_	_
+5	'nar	ann	_	_	PP[ann]/N	4	adpmod	_	_
+6	cuimhne	_	_	_	N	5	adpobj	_	_
+7	's	agus	_	_	conj	4	cc	_	_
+8	an	an	_	_	N/N	9	det	_	_
+9	sàl	_	_	_	N	4	conj	_	_
+10	mar	_	_	_	PP[ma]/N	9	adpmod	_	_
+11	dheòirean	_	_	_	N	10	adpobj	_	_
+12	's	agus	_	_	conj	2	cc	_	_
+13	anns	ann	_	_	PP[ann]/N	17	adpmod	_	_
+14	na	an	_	_	N/N	15	det	_	_
+15	crainn	_	_	_	N	13	adpobj	_	_
+16	aca	aig	_	_	PP[aig]	15	adpmod	_	_
+17	seòladairean	_	_	_	N	2	conj	_	_
+18	a'	ag	_	_	PP[ag]/S[n]	19	prt	_	_
+19	seinn	seinn	_	_	S[n]	1	xcomp	_	_
+20	mar	_	_	_	PP[ma]/N	19	adpmod	_	_
+21	eòin	eun	_	_	N	20	adpobj	_	_
+22	air	air	_	_	PP[air]/N	21	adpmod	_	_
+23	gheugan	geug	_	_	N	22	adpobj	_	_
+24	.	.	_	_	.	1	p	_	_
+
+# gd34
+# Muir-Tràigh (The New Penguin Book of Scottish verse, p. 444) le Somhairle MacGill-Eain
+1	Chan	cha	_	_	S[dcl]/S[dep]	2	prt	_	_
+2	eil	bi	_	_	S[dep]/S[n]/N	0	ROOT	_	_
+3	mi	mi	_	_	N	2	nsubj	_	_
+4	strì	_	_	_	S[n]/PP[ri]	2	xcomp	_	_
+5	ris	_	_	_	PP[ri]/N	4	adpmod	_	_
+6	a'	_	_	_	N/N	7	det	_	_
+7	chraoibh	_	_	_	N	5	adpobj	_	_
+8	nach	_	_	_	(N\N)/S[dep]	9	mark	_	_
+9	lùb	_	_	_	S[dep]/PP[ri]	7	rcmod	_	_
+10	rium	ri	_	_	PP[ri]	9	adpmod	_	_
+11	's	agus	_	_	conj	9	cc	_	_
+12	cha	cha	_	_	S[dcl]/S[dep]	13	prt	_	_
+13	chinn	ceann	_	_	S[dep]/N	2	conj	_	_
+14	na	na	_	_	N/N	15	det	_	_
+15	h-ùbhlan	_	_	_	N	13	nsubj	_	_
+16	air	_	_	_	PP[air]/N	15	adpmod	_	_
+17	géig'	_	_	_	N	16	adpobj	_	_
+18	seach	_	_	_	PP[seach]/N	17	adpmod	_	_
+19	geug	_	_	_	N	18	adpobj	_	_
+20	:	:	_	_	:	2	cc	_	_
+21	cha	_	_	_	S[dcl]/S[dep]	22	prt	_	_
+22	shoraidh	_	_	_	S[dep]/PP[le]/N	2	conj	_	_
+23	slàn	_	_	_	N	22	dobj	_	_
+24	leat	le	_	_	PP[le]	22	adpmod	_	_
+25	,	,	_	_	,	2	cc	_	_
+26	cha	_	_	_	S[dcl]/S[dcl]	28	prt	_	_
+27	d'	do	_	_	S[dcl]/S[dep]	28	prt	_	_
+28	rinn	_	_	_	S[dep]/S[n]/N	2	conj	_	_
+29	thu	_	_	_	N	28	nsubj	_	_
+30	m'	_	_	_	N	31	dobj	_	_
+31	fhàgail	_	_	_	S[n]\N	28	xcomp	_	_
+32	:	:	_	_	:	2	cc	_	_
+33	's	is	_	_	S[dcl]/N/N	2	conj	_	_
+34	e	e	_	_	N	33	nsubj	_	_
+35	tràigh	_	_	_	N	33	dobj	_	_
+36	a'	_	_	_	(N\N)/(N\N)	37	det	_	_
+37	bhàis	_	_	_	(N\N)	35	nmod	_	_
+38	gun	_	_	_	PP[gu]/N	37	adpmod	_	_
+39	mhuir-làn	_	_	_	N	38	adpobj	_	_
+40	'nà	_	_	_	PP[ann]/N	39	adpmod	_	_
+41	déidh	_	_	_	N	40	adpobj	_	_
+42	.	_	_	_	.	2	p	_	_
