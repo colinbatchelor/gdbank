@@ -1,0 +1,90 @@
+
+feature {
+ form<E>: dcl dep small;
+ tense<E>: pres past cond;
+ case: nom gen;
+}
+
+rule { no sub; no comp;}
+
+word mi:N;
+word iad:N;
+
+word fhein:ADJ;
+
+word airneis:N; # furniture, ball airneis is a piece of furniture
+word "bàillidh":N;
+word bheachd:N;
+word Cataibh:N;
+word cruadal:N;
+word cuid:N;
+word dachaighean:N;
+word fuadaichean:N;
+word Gaidhil:N;
+word Patrick:N;
+word "sàilleibh":N; # part of air s`ailleibh: on account of
+word Sellar:N;
+word t-sitig:N; # midden, outdoors
+word teaghlaichean:N;
+
+word "dh'":DO;
+word am:DET;
+word an:DET;
+word na:DET;
+word nam:DET:gen;
+word an-iochdmhor:ADJ;
+word air:P;
+word ann:P;
+word "às":P;
+word dhen:P;
+word feumaidh:M;
+
+word a-mach:ADV;
+
+def verb(future, vn, props) {
+ word future:props {
+  *: pres dcl;
+  *: past dep;
+  vn: small;
+ }
+}
+
+def irregverb(past, future, vn, indcond, depcond, props) {
+ word future:props {
+  *: pres dcl;
+  past: past dep;
+  indcond . eadh: cond dcl;
+  depcond . eadh: cond dep;
+  vn: small;
+ }
+}
+
+irregverb(faca, "chì", faic, chith, faic, VIntrans); # to see
+irregverb(chaidh, theid, dol, rach,rach, VIntrans); # to go
+# this will not in fact do for chaidh meaning S[dcl]/S[inf]/N
+verb(falbh,falbh, VIntrans);
+verb(fhuiling,fulang, VTrans);  # to suffer
+verb(ruaig, ruagail, VTrans); # to chase
+verb(ruaig, ruagadh, VTrans); # to chase
+verb(sad, sadail, VTrans); # to throw
+
+family ADJ { entry: n\n;} # mostly s[adj] for which we will need a rule
+family ADV { entry: s\s;}
+family INF { entry: s[inf]/s[small];}
+family DO { entry: s [dcl] / s[dep];}
+family GU { entry: (n\n)/S[dep];}
+family DET { entry: n/n;}
+family N { entry: n; }
+family VIntrans { entry: s<1>/n<2>;}
+family VTrans { entry: s<1>/n<2>/n<3>;}
+family M { entry: s<1> [E dcl]/(s<3> [Y small]/n<4>)/n<2>;}
+family P { entry: pp/n;}
+
+testbed {
+ bha feadhainn dhen bheachd gum faiceadh eich:1;
+ "dh' fhuiling na Gaidhil cruadal an-iochdmhor": 1;
+ feumaidh mi falbh: 1;
+ feumaidh mi fhuiling: 0;
+ falbh mi feumaidh: 0;
+ falbh falbh falbh: 0;
+}

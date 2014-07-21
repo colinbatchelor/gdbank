@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \begin{document}
-\title{gdbank annotation guidelines v. 0.4}
+\title{gdbank annotation guidelines v. 0.5}
 \author{Colin Batchelor}
 \maketitle
 
@@ -125,6 +125,50 @@ Very often a verb will have a prepositional complement.
 \noindent{\bf 71.} Coordination is slightly unintuitive in Stanford-based dependency schemes. The first conjunct, \textbf{not} the conjunction, is the head. Hence in \textit{ceol is gaol}, the dependency relations are \texttt{(cc ceol is)} and \texttt{(conj ceol gaol)}.
 
 \noindent{\bf 72.} In the case of one-sided coordination, say sentences beginning with \textit{Agus} or \textit{Ach}, take the verb to be the head and make the conjunction a \texttt{cc} of the verb. (example: gd23)
+
+\subsection{Universal Dependency Scheme dependencies by type}
+
+\noindent {\bf 79.} For each of these dependencies I shall list ``signatures'' in terms of the universal POS tagset due to Petrov et al., which are NOUN, VERB, ADJ, ADV, PRON, DET, ADP, NUM, CONJ, PRT, \texttt{.} and \texttt{X}.
+
+\noindent {\bf adpmod} The general relation between prepositions and either the nouns or verbs they modify. Possible signatures: (NOUN|VERB, ADP)
+
+\noindent {\bf adpobj} The relation between the object of a preposition and the preposition. (ADP, NOUN)
+
+\noindent {\bf det} The relation between a determiner and the noun it determines. (NOUN, DET)
+
+\noindent {\bf nsubj} The relation between the subject of a verb and the verb. (VERB, NOUN|PRON)
+
+\noindent {\bf dobj} The relation between the object of a verb and the verb. (VERB, NOUN|PRON)
+
+\noindent {\bf p} The relation between a punctuation mark and the verb. (VERB, .)
+
+\noindent {\bf ROOT} The dummy relation that identifies the head of the sentence as a whole.
+
+\noindent {\bf mark} A relation between a verb particle and the verb. (VERB, PRT)
+
+\noindent {\bf prt} A relation between a verb particle and the verb. (VERB, PRT)
+
+\noindent {\bf rel} Relation between the relative particle \texttt{a} and the verb. (VERB, PRT)
+
+\noindent {\bf ccomp} A relation between an internally-controlled clause, usually a clause that could stand on its own as a sentence, and a verb or noun. (NOUN, VERB; VERB)
+
+\noindent {\bf xcomp} A relation between an externally-controlled clause, often a ``verbal noun'' and a verb or noun. (NOUN, VERB; VERB)
+
+\noindent {\bf rcmod} A relation between a relative clause and, usually in Gaelic, a noun. (NOUN, VERB)
+
+\noindent {\bf nmod} The relation between a nominal modifier (usually a noun in the genitive) and another noun. (NOUN, NOUN)
+
+\noindent {\bf appos} The relation between a nominal modifier in apposition (usually a noun in the nominative) and another noun. (NOUN; NOUN)
+
+\noindent {\bf amod} The relation between an attributive adjective and the noun it modifies. (NOUN, ADJ)
+
+\noindent {\bf acomp} The relation between a predicative adjective and the verb. (VERB, ADJ)
+
+\noindent {\bf cc} The relation between a conjunction, or comma in a list, and the first conjunct. Many possibilities. (NOUN|VERB|ADJ|ADV, CONJ|.)
+
+\noindent {\bf conj} The relation between the first and subsequent conjunct. Many possibilities. (NOUN|VERB|ADJ|ADV, NOUN|VERB|ADJ|ADV)
+
+\noindent {\bf advmod} The relation between an adverb and the verb it modifies. (VERB, ADV)
 
 \section{Categories}
 
