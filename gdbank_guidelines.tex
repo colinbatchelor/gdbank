@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \begin{document}
-\title{gdbank annotation guidelines v. 0.5}
+\title{gdbank annotation guidelines v. 0.6}
 \author{Colin Batchelor}
 \maketitle
 
@@ -15,16 +15,13 @@ These guidelines assume at least a basic working knowledge of written Scottish G
 \noindent {\bf 3.} Gaelic is VSO. As a result it is very likely that the first word you come across will be either a verb or a preverbal particle.
 The general pattern for preverbal particles is $\oslash$ (declarative), \textit{cha/chan} (negative), \textit{a/am/an} (interrogative), \textit{nach} (negative interrogative).
 
+\noindent {\bf 4.} If you can't work out what a particular dependency is, but you know it is there, you may use dep for completely general dependencies or mod if you know it's a modifier.
 
+\noindent {\bf 77.} For the categorial annotation, if a word has been missed out, possibly for scansion or just in error, then don't modify the types of words that would otherwise depend on it.
 
+\noindent{\bf 68.} If you get absolutely stuck as to the categorial annotation, put X as the category.
 
-
-\subsection{Case}
-
-There is no provision for marking case explicitly in either of these schemes.
-However, it is useful to know about the dative and the genitive because there are dependency relations particularly for them.
-For regular nouns they are marked by slenderization of the final consonant, if it can be slenderized, and lenition.
-There are also irregular nouns, such as \textit{sgian} (knife), for which the genitive/dative form is \textit{sgeine}, and \textit{ball} (ball, representative) for which the genitive/dative form is \textit{bhuill}.
+\noindent {\bf 82.} In the categorial annotation, annotate the tokens as if it were a POS annotation. Note down any type-changing rules that are needed but missing.
 
 \subsection{Format}
 
@@ -50,47 +47,134 @@ You \textbf{may} specify the others; if not put an underscore in them.
 
 \noindent {\bf 13.} Also keep the apostrophe in \textit{`S} and \textit{a'} (this is important!).
 
-\section{Dependency annotations}
+\section{Word for word}
 
-\noindent {\bf 4.} If you can't work out what a particular dependency is, but you know it is there, you may use dep for completely general dependencies or mod if you know it's a modifier.
+\subsection{\textit{A}}
+\subsubsection{Dependency}
+
+\noindent {\bf 55.} In the phrase \textit{'S e tidsear a th' annam}, \textit{th'} is the \texttt{rcmod} of \textit{tidsear}, \textit{a} is the \texttt{rel} of \textit{th'} and \textit{annam} is an \texttt{adpmod} of \textit{th'}.
+
+\noindent {\bf 59.} For phrases like \textit{carson a tha}, \textit{carson} and \textit{a} are both \texttt{mark} of \textit{tha}.
+
+\subsubsection{Categorial}
+
+\noindent{\bf 46.} \textit{a} before a lenited verbal noun is \texttt{S[n]\textbackslash N/S[n]/N/N}.
+
+\noindent{\bf 51.} \textit{a} in, for example, \textit{Ciamar a tha thu?} is \texttt{S[em]/S[dcl]}.
+
+\noindent{\bf 76.} \textit{a}, the relative particle, is \texttt{(N\textbackslash N)/S[dcl]}.
 
 \subsection{Adjectives}
 
+\subsubsection{Dependency}
+
 \noindent {\bf 64.} Adjectives used attributively are \texttt{amod}; predicatively are \texttt{acomp}.
 
-\noindent {\bf 65.} Superlatives work as follows: mark \textit{nas} as \texttt{xcomp} of what it qualifies. The adjective following it is \texttt{acomp}, as it is a predicate. In the past tense, \textit{bu} is the \texttt{xcomp}, \textit{na} is related to \textit{bu} with \texttt{mark} and the adjective remains an \texttt{acomp}.
+\noindent {\bf 65.} Comparatives and superlatives work as follows: mark \textit{nas} as \texttt{xcomp} of what it qualifies. The adjective following it is \texttt{acomp}, as it is a predicate. In the past tense, \textit{bu} is the \texttt{xcomp}, \textit{na} is related to \textit{bu} with \texttt{mark} and the adjective remains an \texttt{acomp}.
 
-\subsection{Verbs and complements}
+\subsubsection{Categorial}
 
-\noindent {\bf 14.} Mark what looks to you like the subject of a verb, even if it is the copula, with \texttt{nsubj}.
+\noindent{\bf 28.} Most attributive adjectives are annotated as \texttt{S[adj]/N} but then type-changed on parsing to \texttt{N\textbackslash N}. \textit{\`Oran m\`or}.
 
-Exceptions: there are special cases.
-Very often a verb will have a prepositional complement.
+\noindent{\bf 29.} Prenominal attributive adjectives are \texttt{N/N}. Examples (possibly not exhaustive) \textit{ath, corra, deagh, dearbh, droch, fior, s\'ar} and \textit{seann}.
 
-\noindent {\bf 15.} Mark the prepositional complement \texttt{adpmod} if it introduces an ordinary noun: \textit{Tha Mairead anns a' chidsin .}
+\noindent{\bf 30.} Predicative adjectives are \texttt{S[adj]/N}.
 
-\noindent {\bf 16.} Mark prepositional complements \textit{a'}, \textit{ag}, \textit{ri}, \textit{gu} and \textit{air} as \texttt{prt} with the verbal noun as head if they introduce a verbal noun. The verbal noun is \texttt{xcomp} with \textit{bi} as head. \textit{Tha mi a' seinn .}
+\noindent{\bf 63.} A predicative phrase such as \textit{na bu dl\`uithe} will be \texttt{N\textbackslash N} or \texttt{S[adj]/N} as a whole. \textit{bu} inside will be \texttt{S[dcl]/S[adj]/N}. This means that \textit{na} is \texttt{(N\textbackslash N)/S[dcl]} or \texttt{S[adj]/S[dcl]} according to whether it is being used predicatively.
 
-\noindent {\bf 17.} Preverbal particles are marked with \texttt{prt} with the verb as the head: \textit{Chan eil .} \texttt{(prt eil Chan)} 
+\textit{TODO: add derivation}
 
-\subsection{Nouns and determiners}
+\subsection{\textit{Ciamar}}
 
+\subsubsection{Dependency}
+\noindent{\bf 52.} Wh-questions are classified according to how they modify the sentence. hence \textit{Ciamar} is an \texttt{advmod}.
+
+\subsubsection{Categorial}
+\noindent{\bf 51.} Wh-question words are mostly \texttt{S[wq]/S[em]}.
+
+\subsection{Coordination}
+\subsubsection{Dependency}
+
+\noindent{\bf 71.} Coordination is slightly unintuitive in Stanford-based dependency schemes. The first conjunct, \textbf{not} the conjunction, is the head. Hence in \textit{ceol is gaol}, the dependency relations are \texttt{(cc ceol is)} and \texttt{(conj ceol gaol)}.
+
+\noindent{\bf 72.} In the case of one-sided coordination, say sentences beginning with \textit{Agus} or \textit{Ach}, take the verb to be the head and make the conjunction a \texttt{cc} of the verb. (example: gd23)
+
+\subsubsection{Categorial}
+
+\noindent{\bf 69.} Mark conjunctions as \texttt{conj}.
+
+
+
+
+
+\subsection{Determiners}
+\subsubsection{Dependency}
 \noindent {\bf 18.} In the case of the \texttt{det} relation the head of the NP is the head and the article is the tail. The forms of the article in Gaelic are: \textit{an}, \textit{am}, \textit{a'}, \textit{am}, \textit{na}, \textit{nam} and \textit{nan}.
-\textit{gach} is also a determiner.
 
+\subsubsection{Categorial}
+
+\noindent{\bf 32.} Articles (see rule {\bf 18}), possessive pronouns (\textit{mo}, \textit{do}, \textit{a} and so forth) and \textit{gach} are \texttt{N/N}.
+
+\noindent{\bf 38(under review).} Determiners of attributive nouns are \texttt{(N\textbackslash N)/(N\textbackslash N)}.
+
+
+\subsection{\textit{Fh\`ein}}
+
+\subsubsection{Dependency}
+\noindent {\bf 43.} Treat \textit{fh\`ein} as an \texttt{amod} of the pronoun it follows.
+
+\subsubsection{Categorial}
+\noindent{\bf 44.} \textit{Fh\`ein} is \texttt{N\textbackslash N} unless it follows a fused preposition in which case it's \texttt{PP[*]\textbackslash PP[*]}.
+
+
+\subsection{\textit{Gach}}
+
+\textit{gach} is also a determiner. See rules under Determiners.
+
+\subsection{\textit{Gu, gur, gum}}
+\subsubsection{Dependency}
+\noindent{\bf 49.} \textit{Gu}, \textit{nach} and variants introduce a dependent verb. The relation between \textit{gu} and the verb is \texttt{mark} with the verb as the head, and the verb is a \texttt{ccomp} of, in general, a noun: \textit{fios... gu}, \textit{t-eagal... gum}.
+
+\noindent{\bf 70.} In the case where \textit{gu} has fused with a form of \textit{is}, for example \textit{gur}, then simply use \texttt{ccomp} as before.
+\subsubsection{Categorial}
+\noindent{\bf 48.} \textit{gu} and variants are usually \texttt{(N\textbackslash N)/S[dep]}, because they depend on psych nouns like \textit{fios} and \textit{eagal}.
+
+\subsection{\textit{Nach}}
+
+\noindent {\bf 62.} In the case of, say, \textit{M\`airi nach maireann} (Mary who is no longer with us), \textit{maireann} is an \texttt{xcomp} of \textit{M\`airi} and \textit{nach} is the \texttt{prt} of \textit{maireann}.
+
+
+\subsection{Nouns}
+
+\subsubsection{Dependency}
 \noindent {\bf 36.} If a noun is modifying another noun it will typically be in the genitive, hence \texttt{(nmod Banca h-Alba)} from \textit{Banca na h-Alba}.
 
 \noindent {\bf 41.} In the case of apposition, an NP to the right of another NP that describes it, for example in sentence gd1, ``\textit{am b\`aillidh, Patrick Sellar,}'', mark this with the \texttt{appos} relation. \texttt{(appos b\`aillidh Sellar)}. 
 
 \noindent {\bf 42.} In the case of names, the surname is the head and the first name and, if a separate word, \textit{Mac} are both \texttt{nmod}s. \textit{an} as a separate token in a name, as in \textit{Mac an t-Saoir}, is a determiner as usual.
 
-\noindent {\bf 43.} Treat \textit{fh\`ein} as an \texttt{amod} of the pronoun it follows.
-
-\noindent{\bf 52.} Wh-questions are classified according to how they modify the sentence. hence \textit{Ciamar} is an \texttt{advmod}.
-
 \noindent {\bf 73.} Heads of NPs can be \texttt{advmod} of a verb, for example \textit{oidhche} in \textit{gach oidhche}.
 
-\subsection{Prepositions}
+\noindent{\bf 80.}
+There is no provision for marking case explicitly in either of these schemes.
+However, it is useful to know about the dative and the genitive because there are dependency relations particularly for them.
+For regular nouns they are marked by slenderization of the final consonant, if it can be slenderized, and lenition.
+There are also irregular nouns, such as \textit{sgian} (knife), for which the genitive/dative form is \textit{sgeine}, and \textit{ball} (ball, representative) for which the genitive/dative form is \textit{bhuill}.
+
+\subsubsection{Categorial}
+
+Initially we won't distinguish between \texttt{N} and \texttt{NP}.
+
+\noindent{\bf 31.} Heads of NPs are \texttt{N}.
+
+\noindent{\bf 33(under review).} Nouns used attributively, in the genitive, are \texttt{N\textbackslash N} because they follow the head.
+
+\noindent{\bf 34,35.} Verbal nouns in a small clause, transitive or intransitive are \texttt{S[n]/N/N}.
+
+
+\subsection{Prepositions and aspect markers}
+
+\subsubsection{Dependency}
 
 {\bf 19.} If the preposition takes an NP, then mark the head of that NP with \texttt{adpobj}. \texttt{(adpobj chidsin anns)} from ``\textit{anns a' chidsin}''
 
@@ -100,45 +184,110 @@ Very often a verb will have a prepositional complement.
 
 \noindent {\bf 61.} PPs are \textit{adpmod} of the verbs \textit{bi} and \textit{is} and equally of nouns when they are being used to express a location.
 
-\subsection{\textit{A} and \textit{gu}}
+\subsubsection{Categorial}
+\noindent {\bf 24.} Prepositions fused with pronouns take type \texttt{PP[*]} where * is the unfused form of the preposition.
+Hence \textit{air} (meaning ``on him'') and \textit{oirre} are both \texttt{PP[air]}.
 
-(\textit{A} is not to be confused with \textit{a'}, two meanings of which we have already dealt with under prepositions and under articles.)
+\noindent {\bf 25.} Unfused prepositions governing a non-verbal noun are \texttt{PP[*]/N}.
 
-\noindent{\bf 49.} \textit{Gu}, \textit{nach} and variants introduce a dependent verb. The relation between \textit{gu} and the verb is \texttt{mark} with the verb as the head, and the verb is a \texttt{ccomp} of, in general, a noun: \textit{fios... gu}, \textit{t-eagal... gum}.
+\noindent {\bf 26.} \textit{a'}, \textit{ag}, \textit{ann}, \textit{air} and \textit{gu} when governing a verbal noun are \texttt{S[asp]/S[n]}.
 
-\noindent{\bf 70.} In the case where \textit{gu} has fused with a form of \textit{is}, for example \textit{gur}, then simply use \texttt{ccomp} as before.
+\noindent {\bf 27.} Prepositions fused with articles are \texttt{PP[*]/N} as in rule {\bf 25}.
 
-\noindent {\bf 55.} In the phrase \textit{'S e tidsear a th' annam}, \textit{th'} is the \texttt{rcmod} of \textit{tidsear}, \textit{a} is the \texttt{rel} of \textit{th'} and \textit{annam} is an \texttt{adpmod} of \textit{th'}.
+\noindent {\bf 66.} Remember that \textit{an} can be a preposition, as in for example \textit{an d\`ochas}.
 
-\noindent {\bf 59.} For phrases like \textit{carson a tha}, \textit{carson} and \textit{a} are both \texttt{mark} of \textit{tha}.
 
-\noindent {\bf 62.} In the case of, say, \textit{M\`airi nach maireann} (Mary who is no longer with us), \textit{maireann} is an \texttt{xcomp} of \textit{M\`airi} and \textit{nach} is the \texttt{prt} of \textit{maireann}.
 
 \subsection{Punctuation}
-
+\subsubsection{Dependency}
 \noindent{\bf 67.} Normally, mark punctuation with \texttt{p} and the head as the verb head of the preceding phrase. In short sentences this is likely to be the root.
 
 \noindent{\bf 78.} However, in lists, or in run-on sentences, treat commas and colons as coordination (see rule \textbf{71}).
 
-\subsection{Coordination}
+\subsubsection{Categorial}
 
-\noindent{\bf 71.} Coordination is slightly unintuitive in Stanford-based dependency schemes. The first conjunct, \textbf{not} the conjunction, is the head. Hence in \textit{ceol is gaol}, the dependency relations are \texttt{(cc ceol is)} and \texttt{(conj ceol gaol)}.
+\noindent{\bf 39.} Type full stops as \texttt{.}, commas as \texttt{,} and so forth.
 
-\noindent{\bf 72.} In the case of one-sided coordination, say sentences beginning with \textit{Agus} or \textit{Ach}, take the verb to be the head and make the conjunction a \texttt{cc} of the verb. (example: gd23)
+\noindent {\bf 81.} Again, treat commas and colons as coordination in lists and run-on sentences.
 
-\subsection{Universal Dependency Scheme dependencies by type}
+
+\subsection{Verbs and complements}
+\subsubsection{Dependency}
+\noindent {\bf 14.} Mark what looks to you like the subject of a verb, even if it is the copula, with \texttt{nsubj}.
+
+Exceptions: there are special cases.
+Very often a verb will have a prepositional complement.
+
+\noindent {\bf 15.} Mark the prepositional complement \texttt{adpmod} if it introduces an ordinary noun: \textit{Tha Mairead anns a' chidsin .}
+
+\noindent {\bf 16.} Mark prepositional complements \textit{a'}, \textit{ag}, \textit{ann} and \textit{ri}, \textit{gu} and \textit{air} as \texttt{prt} with the verbal noun as head if they introduce a verbal noun. The verbal noun is \texttt{xcomp} with \textit{bi} as head. \textit{Tha mi a' seinn .}
+
+\noindent {\bf 17.} Preverbal particles are marked with \texttt{prt} with the verb as the head: \textit{Chan eil .} \texttt{(prt eil Chan)} 
+
+\subsubsection{Categorial}
+\noindent {\bf 21.} There are five sorts of sentence-level clauses, \texttt{S[dcl]} (declarative), S[q] (interrogative), \texttt{S[neg]} (negative), S[q] (negative interrogative) and \texttt{S[wq]} for wh-questions.
+
+\noindent{\bf 50.} One level down, we have \texttt{S[em]} for embedded declaratives. \textit{Ciamar a tha thu?}
+
+\noindent {\bf 22.} Preverbal particles, for example \textit{dh'}, that indicate the type of the sentence take the type \texttt{S[*]/S[dep]}, where * is the relevant one of the foregoing. Tag the main verb with \texttt{S[dep]} and the relevant arguments.
+
+\noindent {\bf 23.} The past-tense marker takes type \texttt{S[dep]/S[dep]} if following a preverbal particle: \textit{Cha do rinn .}
+If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: \textit{Dh' fhaicinn .}
+
+\noindent{\bf 40.} Intransitive clauses take the type \texttt{S[*]/N}; transitive \texttt{S[*]/N/N}.
+
+\noindent{\bf 45.} Infinitive clauses (\textit{a} followed by a lenited verbal noun and preceded by an object) as a whole are \texttt{S[n]/N}.
+
+\noindent{\bf 47(under review).} \textit{Rach} introducing a passive is \texttt{S[*]/S[inf]/N}.
+
+\noindent {\bf 58.} \textit{Bi} and variants are \begin{itemize}
+\item \texttt{S[*]/PP[*]/N}: spatial use of prepositions 
+\item \texttt{S[*]/S[adj]/N/N}: \textit{Tha mi sgith}.
+\item \texttt{S[*]/S[asp]/N/N}: \textit{Tha mi a' seinn}.
+\item \texttt{S[*]/PP[ri]/PP[aig]}: obligation.
+\end{itemize}
+
+\noindent{\bf 74(under review).} For \textit{Is} constructions about psychological states, \textit{is} is \texttt{S[*]/PP[*]/N} or \texttt{S[*]/PP/(S[adj]/N)} and the psych noun or adjective will be \texttt{N/S[n]} or \texttt{S[adj]/S[n]} or \texttt{N/S[inf]} or \texttt{S[adj]/S[inf]} accordingly.
+
+\noindent {\bf 75.} For \textit{is} constructions equating two things, use \texttt{S[*]/N/N}. 
+
+\section{Type-changing rules}
+
+\textit{in preparation}
+
+\begin{itemize}
+\item \texttt{S[adj]/N} $\rightarrow$ \texttt{N\textbackslash N}
+\item \texttt{PP} $\rightarrow$ \texttt{N\textbackslash N}
+\item \texttt{PP} $\rightarrow$ \texttt{S\textbackslash S}
+\item \texttt{PP} $\rightarrow$ \texttt{S/S} (preposed PPs)
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Universal Dependency Scheme dependencies by type}
 
 \noindent {\bf 79.} For each of these dependencies I shall list ``signatures'' in terms of the universal POS tagset due to Petrov et al., which are NOUN, VERB, ADJ, ADV, PRON, DET, ADP, NUM, CONJ, PRT, \texttt{.} and \texttt{X}.
 
-\noindent {\bf adpmod} The general relation between prepositions and either the nouns or verbs they modify. Possible signatures: (NOUN|VERB, ADP)
+\noindent {\bf adpmod} The general relation between prepositions and either the nouns or verbs they modify. Possible signatures: (NOUN or VERB, ADP)
 
 \noindent {\bf adpobj} The relation between the object of a preposition and the preposition. (ADP, NOUN)
 
 \noindent {\bf det} The relation between a determiner and the noun it determines. (NOUN, DET)
 
-\noindent {\bf nsubj} The relation between the subject of a verb and the verb. (VERB, NOUN|PRON)
+\noindent {\bf nsubj} The relation between the subject of a verb and the verb. (VERB; NOUN, PRON)
 
-\noindent {\bf dobj} The relation between the object of a verb and the verb. (VERB, NOUN|PRON)
+\noindent {\bf dobj} The relation between the object of a verb and the verb. (VERB; NOUN, PRON)
 
 \noindent {\bf p} The relation between a punctuation mark and the verb. (VERB, .)
 
@@ -164,99 +313,32 @@ Very often a verb will have a prepositional complement.
 
 \noindent {\bf acomp} The relation between a predicative adjective and the verb. (VERB, ADJ)
 
-\noindent {\bf cc} The relation between a conjunction, or comma in a list, and the first conjunct. Many possibilities. (NOUN|VERB|ADJ|ADV, CONJ|.)
+\noindent {\bf cc} The relation between a conjunction, or comma in a list, and the first conjunct. Many possibilities. (NOUN, VERB, ADJ, ADV; CONJ, .)
 
-\noindent {\bf conj} The relation between the first and subsequent conjunct. Many possibilities. (NOUN|VERB|ADJ|ADV, NOUN|VERB|ADJ|ADV)
+\noindent {\bf conj} The relation between the first and subsequent conjunct. Many possibilities. (NOUN, VERB, ADJ, ADV;  NOUN, VERB, ADJ, ADV)
 
 \noindent {\bf advmod} The relation between an adverb and the verb it modifies. (VERB, ADV)
 
-\section{Categories}
 
-Reminder: these go in column 6.
 
-\noindent{\bf 68.} If you get absolutely stuck, put X as the category.
 
-\noindent{\bf 69.} Mark conjunctions as \texttt{conj}.
 
-\noindent {\bf 77.} If a word has been missed out, possibly for scansion or just in error, then don't modify the types of words that would otherwise depend on it.
 
-\subsection{Adjectives}
 
-\noindent{\bf 28.} Most attributive adjectives are \texttt{N\textbackslash N}. \textit{\`Oran m\`or}.
 
-\noindent{\bf 29.} Prenominal attributive adjectives are \texttt{N/N}. \textit{ath, corra, deagh, dearbh, droch, fior, s\'ar} and \textit{seann}.
 
-\noindent{\bf 30.} Predicative adjectives are \texttt{S[adj]}.
 
-\noindent{\bf 63.} A predicative phrase such as \textit{na bu dl\`uithe} will be \texttt{N\textbackslash N} or \texttt{S[adj]} as a whole. \textit{bu} inside will be \texttt{S[dcl]/S[adj]/N}. This means that \textit{na} is \texttt{(N\textbackslash N)/S[dcl]} or \texttt{S[adj]/S[dcl]} according to whether it is being used predicatively.
 
-\subsection{Nouns and determiners}
 
-Initially we won't distinguish between \texttt{N} and \texttt{NP}.
 
-\noindent{\bf 31.} Heads of NPs are \texttt{N}.
 
-\noindent{\bf 32.} Articles (see rule {\bf 18}), possessive pronouns (\textit{mo}, \textit{do}, \textit{a} and so forth) and \textit{gach} are \texttt{N/N}.
 
-\noindent{\bf 33.} Nouns used attributively are \texttt{N\textbackslash N} because they follow the head.
 
-\noindent{\bf 38.} Determiners of attributive nouns are \texttt{(N\textbackslash N)/(N\textbackslash N)}
 
-\noindent{\bf 34.} Verbal nouns in an intransitive small clause are \texttt{S[n]}.
 
-\noindent{\bf 35.} Verbal nouns in a transitive small clause with a pronominal object are \texttt{S[n]\textbackslash N}.
 
-\noindent{\bf 44.} \textit{Fh\`ein} is \texttt{N\textbackslash N} unless it follows a fused preposition in which case it's \texttt{PP[*]\textbackslash PP[*]}.
 
-\noindent{\bf 51.} Wh-question words are mostly \texttt{S[wq]/S[em]}.
 
-\subsection{Verbs}
 
-\noindent {\bf 21.} There are five sorts of sentence-level clauses, S[dcl] (declarative), S[q] (interrogative), S[neg] (negative), S[q] (negative interrogative) and \texttt{S[wq]} for wh-questions.
-
-\noindent{\bf 50.} We also have \texttt{S[em]} for embedded declaratives. \textit{Ciamar a tha thu?}
-
-\noindent {\bf 22.} Preverbal particles, for example \textit{dh'}, that indicate the type of the sentence take the type \texttt{S[*]/S[dep]}, where * is the relevant one of the foregoing. Tag the main verb with \texttt{S[dep]} and the relevant arguments.
-
-\noindent {\bf 23.} The past-tense marker takes type \texttt{S[dep]/S[dep]} if following a preverbal particle: \textit{Cha do rinn .}
-If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: \textit{Dh' fhaicinn .}
-
-\noindent{\bf 40.} Intransitive clauses take the type \texttt{S[*]/N}; transitive \texttt{S[*]/N/N}.
-
-\noindent{\bf 45.} Infinitive clauses (\textit{a} followed by a lenited verbal noun) are \texttt{S[inf]}.
-
-\noindent{\bf 47.} \textit{Rach} introducing a passive is \texttt{S[*]/S[inf]/N}.
-\noindent {\bf 58.} \textit{Bi} and variants are \texttt{S[*]/PP[*]/N}, \texttt{S[*]/S[adj]/N}, and \texttt{S[*]/PP[ri]/PP[aig]}.
-
-\noindent{\bf 74.} For \textit{Is} constructions about psychological states, \textit{is} is \texttt{S[*]/PP[*]/N} or \texttt{S[*]/PP/S[adj]} and the psych noun or adjective will be \texttt{N/S[n]} or \texttt{S[adj]/S[n]} or \texttt{N/S[inf]} or \texttt{S[adj]/S[inf]} accordingly.
-
-\noindent {\bf 75.} For \textit{is} constructions equating two things, use \texttt{S[*]/N/N}. 
-
-\subsection{Prepositions}
-
-\noindent {\bf 24.} Prepositions fused with pronouns take type \texttt{PP[*]} where * is the unfused form of the preposition.
-Hence \textit{air} (meaning ``on him'') and \textit{oirre} are both \texttt{PP[air]}.
-
-\noindent {\bf 25.} Unfused prepositions governing a non-verbal noun are \texttt{PP[*]/N}.
-
-\noindent {\bf 26.} \textit{a'}, \textit{ag}, \textit{air} and \textit{gu} when governing a verbal noun are \texttt{PP[*]/S[n]}.
-
-\noindent {\bf 27.} Prepositions fused with articles are \texttt{PP[*]/N} as in rule {\bf 25}.
-
-\noindent {\bf 66.} Remember that \textit{an} can be a preposition, as in for example \textit{an d\`ochas}.
-
-\subsection{\textit{A} and \textit{gu}}
-
-\noindent{\bf 46.} \textit{a} before a lenited verbal noun is \texttt{S[inf]/S[n]}.
-
-\noindent{\bf 48.} \textit{gu} and variants are usually \texttt{(N\textbackslash N)/S[dep]}, because they depend on psych nouns like \textit{fios} and \textit{eagal}.
-
-\noindent{\bf 51.} \textit{a} in, for example, \textit{Ciamar a tha thu?} is \texttt{S[em]/S[dcl]}.
-
-\noindent{\bf 76.} \textit{a}, the relative particle, is \texttt{(N\textbackslash N)/S[dcl]}.
-
-\subsection{Punctuation}
-
-\noindent{\bf 39.} Type full stops as \texttt{.}, commas as \texttt{,} and so forth.
 
 \end{document}
