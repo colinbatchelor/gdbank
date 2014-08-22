@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \begin{document}
-\title{gdbank annotation guidelines v. 0.6}
+\title{gdbank annotation guidelines v. 0.7}
 \author{Colin Batchelor}
 \maketitle
 
@@ -72,6 +72,8 @@ You \textbf{may} specify the others; if not put an underscore in them.
 
 \noindent {\bf 65.} Comparatives and superlatives work as follows: mark \textit{nas} as \texttt{xcomp} of what it qualifies. The adjective following it is \texttt{acomp}, as it is a predicate. In the past tense, \textit{bu} is the \texttt{xcomp}, \textit{na} is related to \textit{bu} with \texttt{mark} and the adjective remains an \texttt{acomp}.
 
+\noindent {\bf 85.} Adjectives that subcategorize with a PP simply have the PP head as \texttt{adpmod}.
+
 \subsubsection{Categorial}
 
 \noindent{\bf 28.} Most attributive adjectives are annotated as \texttt{S[adj]/N} but then type-changed on parsing to \texttt{N\textbackslash N}. \textit{\`Oran m\`or}.
@@ -83,6 +85,8 @@ You \textbf{may} specify the others; if not put an underscore in them.
 \noindent{\bf 63.} A predicative phrase such as \textit{na bu dl\`uithe} will be \texttt{N\textbackslash N} or \texttt{S[adj]/N} as a whole. \textit{bu} inside will be \texttt{S[dcl]/S[adj]/N}. This means that \textit{na} is \texttt{(N\textbackslash N)/S[dcl]} or \texttt{S[adj]/S[dcl]} according to whether it is being used predicatively.
 
 \textit{TODO: add derivation}
+
+\noindent{\bf 84.} Adjectives that subcategorize with a PP, for example \textit{measail}, take type \texttt{S[adj]/N/PP[*]}. \textit{(Consider whether these type-change to \texttt{N\textbackslash N/PP[*]})}.
 
 \subsection{\textit{Ciamar}}
 
@@ -196,6 +200,7 @@ Hence \textit{air} (meaning ``on him'') and \textit{oirre} are both \texttt{PP[a
 
 \noindent {\bf 66.} Remember that \textit{an} can be a preposition, as in for example \textit{an d\`ochas}.
 
+\noindent {\bf 83.} \textit{Ri} in expressions of obligation and \textit{airson} in order to do something are \texttt{PP[*]/S[n]/N}. Examples: gd28 and gd35.
 
 
 \subsection{Punctuation}
@@ -238,13 +243,13 @@ If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: 
 
 \noindent{\bf 45.} Infinitive clauses (\textit{a} followed by a lenited verbal noun and preceded by an object) as a whole are \texttt{S[n]/N}.
 
-\noindent{\bf 47(under review).} \textit{Rach} introducing a passive is \texttt{S[*]/S[inf]/N}.
+\noindent{\bf 47(under review).} \textit{Rach} introducing a passive is \texttt{S[*]/S[n]/N/N}. \textit{add working to Theory Manual}. Bizarre example in gd38, \textit{cf.} (98) in Lamb. See (96) and (97) in Lamb for more normal examples.
 
 \noindent {\bf 58.} \textit{Bi} and variants are \begin{itemize}
 \item \texttt{S[*]/PP[*]/N}: spatial use of prepositions 
 \item \texttt{S[*]/S[adj]/N/N}: \textit{Tha mi sgith}.
 \item \texttt{S[*]/S[asp]/N/N}: \textit{Tha mi a' seinn}.
-\item \texttt{S[*]/PP[ri]/PP[aig]}: obligation.
+\item \texttt{S[*]/PP[ri]/PP[aig]}: obligation. See also rule 83 under prepositions.
 \end{itemize}
 
 \noindent{\bf 74(under review).} For \textit{Is} constructions about psychological states, \textit{is} is \texttt{S[*]/PP[*]/N} or \texttt{S[*]/PP/(S[adj]/N)} and the psych noun or adjective will be \texttt{N/S[n]} or \texttt{S[adj]/S[n]} or \texttt{N/S[inf]} or \texttt{S[adj]/S[inf]} accordingly.
@@ -253,13 +258,15 @@ If starting a sentence the past-tense marker takes type \texttt{S[dcl]/S[dcl]}: 
 
 \section{Type-changing rules}
 
-\textit{in preparation}
+
 
 \begin{itemize}
 \item \texttt{S[adj]/N} $\rightarrow$ \texttt{N\textbackslash N}
 \item \texttt{PP} $\rightarrow$ \texttt{N\textbackslash N}
 \item \texttt{PP} $\rightarrow$ \texttt{S\textbackslash S}
 \item \texttt{PP} $\rightarrow$ \texttt{S/S} (preposed PPs)
+\item \texttt{S[asp]/N} $\rightarrow$ \texttt{N\textbackslash N}. Example (gd33): \textit{``se\`oladairean a' seinn''}.
+\item \texttt{S[n]/N} $\rightarrow$ \texttt{S[asp]/N}. Example (gd34): \textit{``Chan eil mi str\`i''}.
 \end{itemize}
 
 
