@@ -5,12 +5,12 @@
 2	fhuiling	fuiling	VERB	VERB	S[dep]/N/N	0	ROOT	_	_
 3	na	an	DET	DET	N/N	4	det	_	_
 4	Gaidhil	Gaidheal	NOUN	NOUN	N	2	nsubj	_	_
-5	cruadal	cruadal	ADJ	ADJ	N	2	dobj	_	_	
+5	cruadal	cruadal	NOUN	NOUN	N	2	dobj	_	_	
 6	an-iochdmhor	an-iochdmhor	ADJ	ADJ	S[adj]/N	5	nmod	_	_
 7	air	air	ADP	ADP	PP[air]/N	2	adpmod	_	_
 8	sàilleibh	sàilleabh	NOUN	NOUN	N	7	adpobj	_	_
 9	nam	an	DET	DET	(N\N)/(N\N)	10	det	_	_
-10	fuadaichean	fuadaich	NOUN	NOUN	N\N	8	nmod	_	_
+10	fuadaichean	fuadach	NOUN	NOUN	N\N	8	nmod	_	_
 11	.	.	.	.	.	2	p	_	_
 
 # gd1
@@ -151,7 +151,7 @@
 11	.	.	.	.	.	1	p	_	_
 
 # gd8
-# updated to v0.8
+# updated to v0.8. But having read TL's notes I agree with her that this should be an adjunct rather than a conjunct.
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag461.pdf
 1	Ach	ach	CONJ	CONJ	conj	0	ROOT	_	_
 2	ciamar	ciamar	ADV	ADV	S[wq]/S[em]	4	nsubj	_	_
@@ -266,7 +266,7 @@
 8	fhuair	fuair	VERB	VERB	S[dcl]/N	1	ccomp	_	_
 9	mi	mi	PRON	PRON	N	8	nsubj	_	_
 10	a-mach	a-mach	ADV	ADV	S[dcl]/N\S[dcl]/N	8	advmod	_	_
-11	gun	gu	PRT	PRT	S[gu]/S[dep]	12	mark	_	_
+11	gun	gu	PRT	PRT	S[gu]/S[dep]	12	mark	_	_		
 12	robh	bi	VERB	VERB	S[dep]/PP[air]/N	8	ccomp	_	_
 13	Gàidhlig	Gàidhlig	NOUN	NOUN	N	12	nsubj	_	_
 14	air	air	ADP	ADP	PP[air]/N	12	adpmod	_	_
@@ -351,7 +351,7 @@
 10	.	.	.	.	.	1	p	_	_
 
 # gd19
-# "an" here is a PRON!
+# "an" here is a PRONoun!
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag457.pdf
 1	Bha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	0	ROOT	_	_
 2	muinntir	muinntir	NOUN	NOUN	N	1	nsubj	_	_
@@ -377,14 +377,14 @@
 7	biodh	bi	VERB	VERB	S[dep]/S[asp]/N/N	5	ccomp	_	_
 8	MacCaluim	MacCaluim	NOUN	NOUN	N	7	nsubj	_	_
 9	air	air	PRT	PRT	S[asp]/N/S[n]/N	10	prt	_	_
-10	fhaighinn	faighinn	VERB	VERB	S[n]/N/S[adj]/N	7	xcomp	_	_
+10	fhaighinn	faigh	VERB	VERB	S[n]/N/S[adj]/N	7	xcomp	_	_
 11	ciontach	ciontach	ADJ	ADJ	S[adj]/N	10	acomp	_	_
 12	de	de	ADP	ADP	PP[de]/N	11	adpmod	_	_
 13	mhurt	murt	NOUN	NOUN	N	12	adpobj	_	_
 14	.	.	.	.	.	1	p	_	_
 
 # gd21
-# updated to v0.8
+# updated to v0.8. Seem to be treating the vn as an actual noun here.
 # http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag456.pdf
 1	Bha	bi	VERB	VERB	S[dcl]/S[adj]/N/N	0	ROOT	_	_
 2	e	e	PRON	PRON	N	1	nsubj	_	_
@@ -412,7 +412,7 @@
 13	bha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	11	rcmod	_	_
 14	e	e	PRON	PRON	N	13	nsubj	_	_
 15	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	16	prt	_	_
-16	fàgail	fàgail	VERB	VERB	S[n]/N	13	xcomp	_	_
+16	fàgail	fàg	VERB	VERB	S[n]/N	13	xcomp	_	_
 17	anns	ann	ADP	ADP	PP[ann]/N	13	adpmod	_	_
 18	a'	an	DET	DET	N/N	18	det	_	_
 19	choille	coille	NOUN	NOUN	N	17	adpobj	_	_
@@ -674,7 +674,7 @@
 # gd38
 # updated to v0.8
 # http://www.scotsman.com/gaelic/aontachadh-air-faire-mu-dhion-na-mara-1-3496934
-1	Chuireadh	cur	VERB	VERB	S/PP[air]/N	0	ROOT	_	_
+1	Chuireadh	cuir	VERB	VERB	S/PP[air]/N	0	ROOT	_	_
 2	fàilte	fàilte	NOUN	NOUN	N	1	dobj	_	_
 3	air	air	ADP	ADP	PP[air]/N	1	adpmod	_	_
 4	an	an	DET	DET	N/N	5	det	_	_
@@ -727,7 +727,7 @@
 # gd39
 # updated to v0.8
 # http://www.scotsman.com/gaelic/aontachadh-air-faire-mu-dhion-na-mara-1-3496934
-1	Ach	ach	CONJ	CONJ	conj	2	cc	_	_
+1	Ach	ach	CONJ	CONJ	S[dcl]/S[dcl]	2	advmod	_	_
 2	tha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	0	ROOT	_	_
 3	iasgairean	iasgair	NOUN	NOUN	N	2	nsubj	_	_
 4	agus	agus	CONJ	CONJ	conj	3	cc	_	_	
@@ -774,3 +774,783 @@
 3	a	a	PRON	PRON	N/N	4	nmod	_	_
 4	cheile	cheile	NOUN	NOUN	N	1	dobj	_	_
 5	.	.	.	.	.	1	p	_	_
+
+# gd41
+#
+# MDaSE, p. 106
+1	Chunnaic	faic	VERB	VERB	S[dcl]/S[gu]/N	0	ROOT	_	_
+2	e	e	PRON	PRON	N	1	nsubj	_	_
+3	'n	an	DET	DET	N/N	3	det	_	_
+4	uair	uair	NOUN	NOUN	S[dcl]/S[dcl]\S[dcl]/S[dcl]	1	advmod	_	_
+5	sin	sin	ADJ	ADJ	N\N	4	amod	_	_
+6	gun	gu	PRT	PRT	S[gu]/S[dcl]	7	prt	_	_
+7	robh	bi	VERB	VERB	S[dcl]/S[n]/N/N	1	ccomp	_	_
+8	na	an	DET	DET	N/N	8	det	_	_
+9	poileis	poileis	NOUN	NOUN	N	7	nsubj	_	_
+10	air	air	ADP	ADP	S[asp]/N/S[n]/N	15	prt	_	_
+11	Crouch	Crouch	NOUN	NOUN	N/N	12	nmod	_	_
+12	End	End	NOUN	NOUN	N/N	13	nmod	_	_
+13	Hill	Hill	NOUN	NOUN	N	15	dobj	_	_
+14	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	15	prt	_	_
+15	dhùnadh	dùn	VERB	VERB	S[n]/N/N	7	xcomp	_	_
+16	.	.	.	.	.	1	p	_	_
+
+# gd42
+#
+# MDaSe, p. 106
+1	Chaidh	rach	VERB	VERB	S[dcl]/PP[gu]/N	0	ROOT	_	_
+2	e	e	PRON	PRON	N	1	nsubj	_	_
+3	air	air	ADP	ADP	PP[air]/N	1	adpmod	_	_
+4	ais	ais	NOUN	NOUN	N	3	adpobj	_	_
+5	gu	gu	ADP	ADP	PP[gu]/N	1	adpmod	_	_
+6	Jerry	Jerry	NOUN	NOUN	N	5	adpobj	_	_
+7	.	.	.	.	.	1	p	_	_
+
+# gd43
+#
+# MDaSe, p. 106
+1	Gu	gu	ADP	ADP	PP[gu]/N	3	adpmod	_	_
+2	chùlaibh	cùlaibh	NOUN	NOUN	N	1	adpobj	_	_
+3	bha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	0	ROOT	_	_
+4	ghrian	grian	NOUN	NOUN	N	3	nsubj	_	_
+5	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	6	prt	_	_
+6	dol	rach	VERB	VERB	S[n]/N	3	xcomp	_	_
+7	fodha	fo	ADP	ADP	PP[fo]	6	adpmod	_	_
+8	.	.	.	.	.	3	p	_	_
+
+# gd44
+# tricky. Begins with a two-word interjection. Treat as advmod (=adjunct) of root.
+# MDaSE, p. 114
+1	A	an	DET	DET	N/N	2	det	_	_
+2	chiall	ciall	NOUN	NOUN	N	6	advmod	_	_
+3	,	,	.	.	,	6	p	_	_
+4	ge-tà	ge-tà	ADV	ADV	S[dcl]/S[dcl]	6	advmod	_	_
+5	nam	nam	PRT	PRT	S[dcl]/S[dcl]	6	prt	_	_
+6	beothaicheadh	beothaich	VERB	VERB	S[dcl]/N	0	ROOT	_	_
+7	rudeigin	rudeigin	NOUN	NOUN	N	6	dobj	_	_
+8	.	.	.	.	.	6	p	_	_
+
+# gd45
+# problem with the last clause here, which is basically adverbial. I think. Further have made 7 an argument of 5.
+# MDaSE, p. 120
+1	Bha	bi	VERB	VERB	S[dcl]/PP[ann]/N	0	ROOT	_	_
+2	m'	mo	PRON	PRON	N/N	2	nmod	_	_
+3	athair	athair	NOUN	NOUN	N	1	nsubj	_	_
+4	na	ann	PRT	PRT	S[asp]/N/S[n]/N	5	prt	_	_
+5	sheasamh	seasamh	VERB	VERB	S[n]/N/S[asp]/N	1	xcomp	_	_
+6	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	7	prt	_	_
+7	seanchas	seanchas	VERB	VERB	S[n]/N	1	xcomp	_	_
+8	ri	ri	ADP	ADP	PP[ri]/N	7	adpmod	_	_
+9	Angus	Angus	NOUN	NOUN	N/N	10	nmod	_	_
+10	Macleod	Macleod	NOUN	NOUN	N	8	adpobj	_	_
+11	,	,	.	.	,	1	p	_	_
+12	fear	fear	NOUN	NOUN	N	10	appos	_	_
+13	an	an	DET	DET	(N\N)/(N\N)	14	det	_	_
+14	Agriculture	Agriculture	NOUN	NOUN	N\N	12	nmod	_	_
+15	,	,	.	.	,	1	p	_	_
+16	aig	aig	ADP	ADP	PP[aig]/N	10	adpmod	_	_
+17	ceann	ceann	NOUN	NOUN	N	16	adpobj	_	_
+18	an	an	DET	DET	(N\N)/(N\N)	19	det	_	_
+19	taighe	taigh	NOUN	NOUN	N\N	17	nmod	_	_
+20	,	,	.	.	,	16	p	_	_
+21	an	an	DET	DET	N/N	22	det	_	_
+22	là	là	NOUN	NOUN	N	23	nsubj	_	_
+23	bha	bi	VERB	VERB	S[dcl]/N/N	1	advmod	_	_
+24	'n	an	DET	DET	N/N	25	det	_	_
+25	seo	seo	PRON	PRON	N	23	advmod	_	_
+26	.	.	.	.	.	1	p	_	_
+
+# gd46
+#
+# MDaSE, p. 122
+1	Chùm	cùm	VERB	VERB	S[dcl]/N/PP[as]/N	0	ROOT	_	_
+2	m'	mo	PRON	PRON	N/N	3	det	_	_
+3	athair	athair	NOUN	NOUN	N	1	nsubj	_	_
+4	às	às	ADP	ADP	PP[as]/N	1	adpmod	_	_
+5	an	an	DET	DET	N/N	6	det	_	_
+6	sgoil	sgoil	NOUN	NOUN	N	4	adpobj	_	_
+7	mi	mi	PRON	PRON	N	1	dobj	_	_
+8	.	.	.	.	.	1	p	_	_
+
+# gd47
+#
+# MDaSE, p. 122
+1	Madainn	madainn	NOUN	NOUN	N	5	nsubj	_	_
+2	shàmhach	sàmhach	ADJ	ADJ	N\N	1	amod	_	_
+3	chiùin	ciùin	ADJ	ADJ	N\N	1	amod	_	_
+4	a	a	PRT	PRT	S[dcl]\N/S[dcl]/N	5	prt	_	_
+5	bh'	bi	VERB	VERB	S[dcl]/PP[ann]/N	0	ROOT	_	_
+6	ann	ann	ADP	ADP	PP[ann]	5	adpmod	_	_
+7	agus	agus	CONJ	CONJ	conj	1	cc	_	_
+8	ceò	ceò	NOUN	NOUN	N	1	conj	_	_
+9	ghorm	gorm	ADJ	ADJ	N\N	8	amod	_	_
+10	nan	an	DET	DET	N\N/N\N	11	det	_	_
+11	taighean	taigh	NOUN	NOUN	N\N	8	nmod	_	_
+12	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	12	prt	_	_
+13	dol	dol	VERB	VERB	S[n]/N	5	xcomp	_	_
+14	suas	suas	ADV	ADV	S[n]/N\S[n]/N	13	advmod	_	_
+15	dìreach	dìreach	ADV	ADV	PP[do]/PP[do]	16	advmod	_	_
+16	dhan	do	ADP	ADP	PP[do]/N	13	adpmod	_	_
+17	iarmailt	iarmailt	NOUN	NOUN	N	14	adpobj	_	_
+18	.	.	.	.	.	5	p	_	_
+
+# gd48
+#
+# Robertson and Taylor
+1	A	a	PRT	PRT	S[q]/S[dep]	2	prt	_	_
+2	bheil	bi	VERB	VERB	S[dep]/S[asp]/N/N	0	ROOT	_	_
+3	Alasdair	Alasdair	NOUN	NOUN	N	2	nsubj	_	_
+4	na	ann	ADP	ADP	S[asp]/N/S[n]/N	5	prt	_	_
+5	chadal	cadal	VERB	VERB	S[n]/N	2	xcomp	_	_
+6	?	?	.	.	?	2	p	_	_
+
+# gd49
+#
+# MDaSE d. 199
+1	Bhiodh	bi	VERB	VERB	S[dcl]/S[asp]/N/N	0	ROOT	_	_
+2	e	e	PRON	PRON	N	1	nsubj	_	_
+3	tuiteam	tuit	VERB	VERB	S[n]/N	1	xcomp	_	_
+4	na	ann	PRT	PRT	S[asp]/N/S[n]/N	5	prt	_	_
+5	chadal	cadal	VERB	VERB	S[n]/N	3	xcomp	_	_
+6	's	agus	CONJ	CONJ	conj	1	cc	_	_
+7	e	e	PRON	PRON	N	1	conj	_	_
+8	na	ann	PRT	PRT	S[asp]/N/S[n]/N	9	prt	_	_
+9	sheasamh	seas	VERB	VERB	S[n]/N	1	xcomp	_	_
+10	,	,	.	.	,	1	p	_	_
+11	mar	mar	ADP	ADP	PP[mar]/N	1	adpmod	_	_
+12	sean	sean	ADJ	ADJ	N/N	13	amod	_	_
+13	chnàmharlach	cnàmhlarlach	NOUN	NOUN	N	11	adpobj	_	_
+14	de	de	ADP	ADP	PP[de]/N	13	adpmod	_	_
+15	each	each	NOUN	NOUN	N	14	adpobj	_	_
+16	.	.	.	.	.	1	p	_	_
+
+# gd50
+#
+# MDaSE p. 105
+1	Bha	bi	VERB	VERB	S[dcl]/S[adj]/N/N	0	ROOT	_	_
+2	na	an	DET	DET	N/N	3	det	_	_
+3	bagaichean	baga	NOUN	NOUN	N	1	nsubj	_	_
+4	plaisteag	plaisteag	ADJ	ADJ	N\N	3	amod	_	_
+5	gu	gu	PRT	PRT	S\S/S[adj]/N	1	advmod	_	_
+6	math	math	ADJ	ADJ	S[adj]/N	6	acomp	_	_
+7	trom	trom	ADJ	ADJ	S[adj]/N	1	amod	_	_
+8	.	.	.	.	.	1	p	_	_
+
+# gd51
+#
+# MDaSE p. 103
+1	Bha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	0	ROOT	_	_
+2	iad	iad	PRON	PRON	N	1	nsubj	_	_
+3	air	air	ADP	ADP	S[asp]/N/S[n]/N	1	adpmod	_	_
+4	na	an	DET	DET	N/N	5	det	_	_
+5	bùird	bòrd	NOUN	NOUN	N	3	adpobj	_	_
+6	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	7	prt	_	_
+7	phasgadh	pasgadh	VERB	VERB	S[n]/N	1	xcomp	_	_
+8	's	is	CONJ	CONJ	conj	3	cc	_	_
+9	air	air	PRT	PRT	S[asp]/N/S[n]/N	3	conj	_	_
+10	falbh	falbh	VERB	VERB	S[n]/N	1	xcomp	_	_
+11	dhachaigh	dachaigh	ADV	ADV	S\S	10	advmod	_	_
+12	.	.	.	.	.	1	p	_	_
+
+# gd52
+#
+# Robertson and Taylor, p. 149
+1	Chì	faic	VERB	VERB	S[dcl]/S[em]/N	0	ROOT	_	_
+2	sinn	sinn	PRON	PRON	N	1	nsubj	_	_
+3	a	a	PRT	PRT	S[em]/S[dcl]	4	prt	_	_
+4	bheil	bi	VERB	VERB	S[dcl]/PP[ann]/N	1	ccomp	_	_
+5	gin	gin	NOUN	NOUN	N	4	nsubj	_	_
+6	ann	ann	ADP	ADP	PP[ann]	4	adpmod	_	_
+7	.	.	.	.	.	1	p	_	_
+
+# gd53
+#
+# Robertson and Taylor, p. 149
+1	Chan	chan	PRT	PRT	S[neg]/S[dep]	1	prt	_	_
+2	eil	bi	VERB	VERB	S[dep]/S[q]/N	0	ROOT	_	_
+3	fhios	fios	NOUN	NOUN	N	1	nsubj	_	_
+4	agam	aig	ADP	ADP	PP[aig]	3	adpmod	_	_
+5	an	an	PRT	PRT	S[em]/S[dcl]	6	prt	_	_
+6	cheannaich	ceannaich	VERB	VERB	S[dcl]/N/N	1	xcomp	_	_
+7	e	e	PRON	PRON	N	6	nsubj	_	_
+8	sin	sin	PRON	PRON	N	6	dobj	_	_
+9	.	.	.	.	.	1	p	_	_
+
+# gd54
+#
+# Robertson and Taylor, p. 149
+1	Chan	chan	PRT	PRT	S[neg]/S[dep]	2	prt	_	_
+2	eil	bi	VERB	VERB	S[dep]/S[adj]/N/N	0	ROOT	_	_
+3	mi	mi	PRON	PRON	N	2	nsubj	_	_
+4	cinnteach	cinnteach	ADJ	ADJ	S[adj]/N/S[q]	2	acomp	_	_
+5	an	an	PRT	PRT	S[q]/S[dcl]	8	prt	_	_
+6	do	do	PRT	PRT	S[dcl]/S[dcl]	8	prt	_	_
+7	dh'	do	PRT	PRT	S[dcl]/S[dcl]	8	prt	_	_
+8	fhòn	fòn	VERB	VERB	S[dcl]/N	4	ccomp	_	_
+9	iad	iad	PRON	PRON	N	8	nsubj	_	_
+10	.	.	.	.	.	2	p	_	_
+
+# gd55
+#
+# Robertson and Taylor, p. 184
+1	Mus	mus	CONJ	CONJ	S[dcl]/S[dcl]/S[dcl]	2	mark	_	_
+2	cuir	cuir	VERB	VERB	S[dcl]/PP[air]/N	8	ccomp	_	_
+3	mi	mi	PRON	PRON	N	2	nsubj	_	_
+4	air	air	ADP	ADP	PP[air]/N	2	adpmod	_	_
+5	an	an	DET	DET	N/N	6	det	_	_
+6	telebhisean	telebhisean	NOUN	NOUN	N	4	adpobj	_	_
+7	,	,	.	.	,	2	p	_	_
+8	nì	dèan	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+9	mi	mi	PRON	PRON	N	8	nsubj	_	_
+10	cupa	cupa	NOUN	NOUN	N	8	dobj	_	_
+11	cofaidh	cofaidh	NOUN	NOUN	N\N	10	nmod	_	_
+12	.	.	.	.	.	2	p	_	_
+
+# gd56
+#
+# Robertson and Taylor, p. 184
+1	Cha	cha	PRT	PRT	S[dcl]/S[dcl]	4	prt	_	_
+2	do	do	PRT	PRT	S[dcl]/S[dcl]	4	prt	_	_
+3	dh'	do	PRT	PRT	S[dcl]/S[dcl]	4	prt	_	_
+4	ith	ith	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+5	mi	mi	PRON	PRON	N	4	nsubj	_	_
+6	càil	càil	NOUN	NOUN	N	4	dobj	_	_
+7	mus	mus	CONJ	CONJ	S[dcl]\S[dcl]/S[dcl]	7	mark	_	_
+8	do	do	PRT	PRT	S[dcl]/S[dcl]	10	prt	_	_
+9	dh'	do	PRT	PRT	S[dcl]/S[dcl]	10	prt	_	_
+10	fhàg	fàg	PRT	PRT	S[dcl]/N/N	4	ccomp	_	_
+11	mi	mi	PRON	PRON	N	10	nsubj	_	_
+12	an	an	DET	DET	N/N	13	det	_	_
+13	taigh	taigh	NOUN	NOUN	N	10	dobj	_	_
+14	.	.	.	.	.	4	p	_	_
+
+# gd57
+#
+# Robertson and Taylor, p. 207
+1	Thèid	rach	VERB	VERB	S[dcl]/S[asp]/N/PP[aig]	0	ROOT	_	_
+2	aig	aig	ADP	ADP	PP[aig]/N	1	adpmod	_	_
+3	Maoilios	Maoilios	NOUN	NOUN	N	2	adpobj	_	_
+4	air	air	PRT	PRT	S[asp]/N/S[n]/N	7	prt	_	_
+5	sin	sin	NOUN	NOUN	N	7	dobj	_	_
+6	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	7	prt	_	_
+7	thogail	tog	VERB	VERB	S[n]/N/N	1	xcomp	_	_
+8	.	.	.	.	.	1	p	_	_
+
+# gd58
+#
+# Robertson and Taylor, p. 223
+1	An	an	DET	DET	N/N	2	det	_	_
+2	dèidh	dèidh	NOUN	NOUN	N	8	advmod	_	_
+3	dhuinn	do	ADP	ADP	PP[do]	2	adpmod	_	_
+4	an	an	DET	DET	N/N	5	det	_	_
+5	càr	càr	NOUN	NOUN	N	7	dobj	_	_
+6	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	7	prt	_	_
+7	cheannach	ceannaich	VERB	VERB	S[n]/N/N	2	xcomp	_	_
+8	bhris	bris	VERB	VERB	S[dcl]/N	0	ROOT	_	_
+9	e	e	PRON	PRON	N	8	nsubj	_	_
+10	sìos	sìos	ADV	ADV	S[dcl]\S[dcl]	8	advmod	_	_
+11	.	.	.	.	.	8	p	_	_
+
+# gd59
+#
+# Robertson and Taylor, p. 223
+1	An	an	DET	DET	N/N	2	det	_	_
+2	dèidh	dèidh	NOUN	NOUN	N	8	advmod	_	_
+3	dhuibh	do	ADP	ADP	PP[do]	2	adpmod	_	_
+4	an	an	DET	DET	N/N	5	det	_	_
+5	sgoil	sgoil	NOUN	NOUN	N	6	dobj	_	_
+6	fhàgail	fàg	VERB	VERB	S[n]/N\N	2	xcomp	_	_
+7	dè	dè	NOUN	NOUN	S[wq]/S[dcl]	8	dobj	_	_
+8	rinn	dèan	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+9	sibh	sibh	PRON	PRON	N	8	nsubj	_	_
+10	?	?	.	.	?	8	p	_	_
+
+# gd60
+#
+# Robertson and Taylor, p. 223
+1	An	an	DET	DET	N/N	2	det	_	_
+2	dèidh	dèidh	NOUN	NOUN	N	9	advmod	_	_
+3	do	do	ADP	ADP	PP[do]/N	2	adpmod	_	_
+4	Bharabal	Barabal	NOUN	NOUN	N	3	adpobj	_	_
+5	am	an	DET	DET	N/N	6	det	_	_
+6	biadh	biadh	NOUN	NOUN	N	7	dobj	_	_
+7	ithe	ith	VERB	VERB	S[dcl]/N/N	2	xcomp	_	_
+8	dh'	do	PRT	PRT	S[dcl]/S[dcl]	9	prt	_	_
+9	fhàs	fàs	VERB	VERB	S[dcl]/S[adj]/N/N	0	ROOT	_	_
+10	i	i	PRON	PRON	N	9	nsubj	_	_
+11	tinn	tinn	ADJ	ADJ	S[adj]/N	9	acomp	_	_
+12	.	.	.	.	.	9	p	_	_
+
+# gd61
+#
+# Robertson and Taylor, p. 289
+1	Agus	agus	CONJ	CONJ	S[wq]/S[wq]	4	advmod	_	_
+2	càit'	càite	NOUN	NOUN	S[wq]/S[em]	4	advmod	_	_
+3	a	a	PRT	PRT	S[em]/S[dep]	4	prt	_	_
+4	bheil	bi	VERB	VERB	S[dep]/PP[ann]/N	0	ROOT	_	_
+5	an	an	DET	DET	N/N	6	det	_	_
+6	taigh	taigh	NOUN	NOUN	N	4	nsubj	_	_
+7	anns	ann	ADP	ADP	PP[ann]/S[q]	4	adpmod	_	_
+8	a	a	PRT	PRT	S[q]/S[dep]	9	prt	_	_
+9	bheil	bi	VERB	VERB	S[dep]/S[asp]/N/N	7	adpobj	_	_
+10	sibh	sibh	PRON	PRON	N	9	nsubj	_	_
+11	a	a	PRT	PRT	S[asp]/N/S[n]/N	12	prt	_	_
+12	fuireach	fuirich	VERB	VERB	S[n]/N	9	xcomp	_	_
+13	?	?	.	.	?	2	p	_	_
+
+# gd62
+#
+# Robertson and Taylor, p. 289
+1	Agus	agus	CONJ	CONJ	S[wq]/S[wq]	5	advmod	_	_
+2	cò	cò	NOUN	NOUN	S[wq]/S[em]/PP[le]/PP[le]	3	adpobj	_	_
+3	leis	le	ADP	ADP	PP[le]	5	adpmod	_	_
+4	a	a	PRT	PRT	S[em]/S[dcl]	5	prt	_	_
+5	tha	bi	VERB	VERB	S[dcl]/PP[le]/N	0	ROOT	_	_
+6	an	an	DET	DET	N/N	7	det	_	_
+7	taigh	taigh	NOUN	NOUN	N	5	nsubj	_	_
+8	?	?	.	.	.	5	p	_	_
+
+# gd63
+#
+# Lamb, ex. (139)
+1	B'	is	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+2	aithne	aithne	NOUN	NOUN	N	1	nsubj	_	_
+3	dha	do	ADP	ADP	PP[do]	2	adpmod	_	_
+4	d'	do	PRON	PRON	N/N	5	amod	_	_
+5	athair	athair	NOUN	NOUN	N	1	dobj	_	_
+6	Seonaidh	Seonaidh	NOUN	NOUN	N\N	5	nmod	_	_
+7	Bàn	Bàn	ADJ	ADJ	N\N	6	amod	_	_
+8	.	.	.	.	.	1	p	_	_
+
+# gd64
+#
+# Lamb, ex. (140)
+1	Is	is	VERB	VERB	S[dcl]/N/S[adj]/N	0	ROOT	_	_
+2	beag	beag	ADJ	ADJ	S[adj]/N	1	acomp	_	_
+3	orm	air	ADP	ADP	PP[air]/N	2	adpmod	_	_
+4	marag	marag	NOUN	NOUN	N	1	dobj	_	_
+5	.	.	.	.	.	1	p	_	_
+
+# gd65
+#
+# Lamb, ex. (142)
+1	Is	is	VERB	VERB	S[dcl]/S[a]/N/S[adj]/N	0	ROOT	_	_
+2	beag	beag	ADJ	ADJ	S[adj]/N	1	acomp	_	_
+3	orm	air	ADP	ADP	PP[air]	2	adpmod	_	_
+4	a	a	PRT	PRT	S[a]/N/S[n]/N	5	prt	_	_
+5	bhith	bi	VERB	VERB	S[n]/PP[ann]/N	1	xcomp	_	_
+6	'na	ann	ADP	ADP	PP[ann]/N	5	adpmod	_	_
+7	cabhaig	cabhaig	NOUN	NOUN	N	6	adpobj	_	_
+8	.	.	.	.	.	1	p	_	_
+
+# gd66
+#
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag487.pdf
+1	An	an	DET	DET	N/N	2	det	_	_
+2	fheadhainn	feadhainn	NOUN	NOUN	N	4	nsubj	_	_
+3	a	a	PRT	PRT	S[dcl]\N/S[dcl]/N	4	prt	_	_
+4	bh'	bi	VERB	VERB	S[dcl]/PP[air]/N	2	ccomp	_	_
+5	air	air	ADP	ADP	PP[air]/N	4	adpmod	_	_
+6	an	an	DET	DET	N/N	7	det	_	_
+7	taobh	taobh	NOUN	NOUN	N	5	adpobj	_	_
+8	a-staigh	a-staigh	ADV	ADV	N\N	7	amod	_	_
+9	,	,	.	.	,	5	p	_	_
+10	bha	bi	VERB	VERB	S[dcl]/N	0	ROOT	_	_
+11	iad	iad	PRON	PRON	N	10	nsubj	_	_
+12	a-staigh	a-staigh	ADV	ADV	S\S	10	advmod	_	_
+13	.	.	.	.	.	10	p	_	_
+
+
+# gd67
+#
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag487.pdf
+1	Ach	ach	CONJ	CONJ	S/S	16	advmod	_	_
+2	an	an	DET	DET	N/N	3	det	_	_
+3	fheadhainn	feadhainn	NOUN	NOUN	N	5	nsubj	_	_
+4	a	a	PRT	PRT	N\N/S[dcl]	5	rel	_	_
+5	bh'	bi	VERB	VERB	S[dcl]/PP[air]/N	3	rcmod	_	_
+6	air	air	ADP	ADP	PP[air]/N	5	adpmod	_	_
+7	Nèamh	nèamh	NOUN	NOUN	N	6	adpobj	_	_
+8	fhàgail	fàg	VERB	VERB	S[asp]/N	5	xcomp	_	_
+9	agus	agus	CONJ	CONJ	conj	5	cc	_	_
+10	nach	nach	PRT	PRT	S[negq]/S[dcl]	12	prt	_	_
+11	do	do	PRT	PRT	S[dcl]/S[dcl]	12	prt	_	_
+12	ràinig	ruig	VERB	VERB	S[dcl]/N/N	5	conj	_	_	
+13	Ifrinn	ifrinn	NOUN	NOUN	N	12	dobj	_	_
+14	,	,	.	.	,	5	p	_	_
+15	dh'	do	PRT	PRT	S[dcl]/S[dcl]	16	prt	_	_
+16	itealaich	itealaich	VERB	VERB	S[dcl]/S[gu]/N	0	ROOT	_	_
+17	iad	iad	PRON	PRON	N	16	nsubj	_	_
+18	a-steach	a-steach	ADV	ADV	S\S	18	advmod	_	_
+19	gu	gu	ADP	ADP	PP[gu]/N	16	adpmod	_	_
+20	tuill	toll	NOUN	NOUN	N	19	adpobj	_	_
+21	anns	ann	ADP	ADP	PP[ann]/N	20	adpmod	_	_
+22	an	an	DET	DET	N/N	23	det	_	_
+23	talamh	talamh	NOUN	NOUN	N	21	adpobj	_	_
+24	.	.	.	.	.	16	p	_	_
+
+# gd68
+# (impersonal). Also "le bhith".
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag486.pdf
+1	Agus	agus	CONJ	CONJ	S/S	2	advmod	_	_
+2	nithear	dèan	VERB	VERB	S[dcl]/N	0	ROOT	_	_
+3	tì	tì	NOUN	NOUN	N	2	dobj	_	_
+4	bhlasta	blasta	ADJ	ADJ	S[adj]/N	3	amod	_	_
+5	le	le	ADP	ADP	PP[le]/S[n]	6	prt	_	_
+6	bhith	bi	VERB	VERB	S[n]/N/S[asp]/N	2	xcomp	_	_
+7	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	8	prt	_	_
+8	goil	goil	VERB	VERB	S[n]/N/N	6	xcomp	_	_
+9	nan	an	DET	DET	N/N	10	det	_	_
+10	duilleag	duilleag	NOUN	NOUN	N	8	dobj	_	_
+11	ann	ann	ADP	ADP	PP[ann]/N	8	adpmod	_	_
+12	an	an	DET	DET	N/N	13	det	_	_
+13	uisge	uisge	NOUN	NOUN	N	11	adpobj	_	_
+14	.	.	.	.	.	2	p	_	_
+
+# gd69
+# 
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag485.pdf
+1	Cha	cha	PRT	PRT	S[neg]/S[dcl]	2	prt	_	_
+2	tuirt	abair	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+3	Lachlann	lachlann	NOUN	NOUN	N	2	nsubj	_	_
+4	guth	guth	NOUN	NOUN	N	2	dobj	_	_
+5	ri	ri	ADP	ADP	PP[ri]/N	4	adpmod	_	_
+6	duine	duine	NOUN	NOUN	N	5	adpobj	_	_
+7	mun	mu	ADP	ADP	PP[mu]/N	4	adpmod	_	_
+8	turas	turas	NOUN	NOUN	N	7	adpobj	_	_
+9	aige	aig	ADP	ADP	PP[aig]	8	adpmod	_	_
+10	do	do	ADP	ADP	PP[do]/N	8	adpmod	_	_
+11	Chlach	clach	NOUN	NOUN	N	10	adpobj	_	_
+12	a'	an	DET	DET	(N\N)/(N\N)	13	det	_	_
+13	Choire	coire	NOUN	NOUN	N\N	11	nmod	_	_
+14	.	.	.	.	.	2	p	_	_
+
+# gd70
+# gus, weird use of "agus"
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag485.pdf
+1	Uill	uill	X	X	S/S	4	advmod	_	_
+2	,	,	.	.	,	1	p	_	_
+3	cha	cha	PRT	PRT	S[neg]/S[dcl]	4	prt	_	_
+4	tubhairt	abair	VERB	VERB	S[dcl]/S[gu]	0	ROOT	_	_
+5	gus	gu	CONJ	CONJ	S[gu]/S[q]	7	mark	_	_
+6	an	an	PRT	PRT	S[q]/S[dcl]	7	prt	_	_
+7	robh	bi	VERB	VERB	S[dcl]/PP[ann]/N	4	ccomp	_	_
+8	e	e	PRON	PRON	N	7	nsubj	_	_
+9	na	ann	ADP	ADP	PP[ann]/N	7	adpmod	_	_
+10	sheann	seann	ADJ	ADJ	N/N	11	amod	_	_
+11	duine	duine	NOUN	NOUN	N	11	adpobj	_	_
+12	,	,	.	.	,	4	p	_	_
+13	agus	agus	CONJ	CONJ	conj	11	cc	_	_
+14	na	an	DET	DET	N/N	15	det	_	_
+15	h-oghaichean	oghaich	NOUN	NOUN	N	11	conj	_	_
+16	timcheall	timcheall	ADP	ADP	PP[timcheall]/PP[air]	15	adpmod	_	_
+17	air	air	ADP	ADP	PP[air]	15	adpmod	_	_
+18	ri	ri	ADP	ADP	PP[ri]/N	15	adpmod	_	_
+19	taobh	taobh	NOUN	NOUN	N	18	adpobj	_	_
+20	an	an	DET	DET	(N\N)/(N\N)	21	det	_	_
+21	teine	teine	NOUN	NOUN	N\N	19	nmod	_	_
+22	.	.	.	.	.	4	p	_	_
+
+# gd71
+# quantity, "nam"
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag484.pdf
+1	Nam	nam	CONJ	CONJ	S\S/S	2	mark	_	_
+2	biodh	bi	VERB	VERB	S[dcl]/N/N	15	ccomp	_	_
+3	i	i	PRON	PRON	N	2	nsubj	_	_
+4	ceud	ceud	NUM	NUM	N/N	5	amod	_	_
+5	slat	slat	NOUN	NOUN	N	2	advmod	_	_
+6	gu	gu	ADP	ADP	PP[gu]/N	5	adpmod	_	_
+7	tuath	tuath	NOUN	NOUN	N	6	adpobj	_	_
+8	air	air	ADP	ADP	PP[air]	5	adpmod	_	_
+9	far	far	PRT	PRT	N\N/S[em]	11	mark	_	_
+10	a	a	PRT	PRT	S[em]/S[dep]	11	rel	_	_
+11	bheil	bi	VERB	VERB	S[dep]/N/N	5	rcmod	_	_
+12	i	i	PRON	PRON	N	11	nsubj	_	_
+13	,	,	.	.	,	2	p	_	_
+14	cha	cha	PRT	PRT	S[neg]/S[dep]	14	prt	_	_
+15	bhiodh	bi	VERB	VERB	S[dep]/PP[air]/N	0	ROOT	_	_
+16	sgeul	sgeul	NOUN	NOUN	N	15	nsubj	_	_
+17	oirre	oirre	ADP	ADP	PP[air]	15	adpmod	_	_
+18	.	.	.	.	.	15	p	_	_
+
+# gd72
+#
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag482.pdf
+1	Dh'	do	PRT	PRT	S[dcl]/S[dcl]	2	prt	_	_
+2	aontaich	aontaich	VERB	VERB	S[dcl]/S[a]/N/N	0	ROOT	_	_
+3	Fionnlagh	Fionnlagh	NOUN	NOUN	N	2	nsubj	_	_
+4	a	a	PRT	PRT	S[a]/N/S[n]/N	4	prt	_	_
+5	bhith	bi	VERB	VERB	S[n]/PP[ann]/N	2	xcomp	_	_
+6	anns	ann	ADP	ADP	PP[ann]/N	5	adpmod	_	_
+7	a'	an	DET	DET	N/N	8	det	_	_
+8	phrògram	prògram	NOUN	NOUN	N	6	adpobj	_	_
+9	.	.	.	.	.	2	p	_	_
+
+# gd73
+#
+# http://downloads.bbc.co.uk/alba/foghlam/learngaelic/anlitirbheag/pdf/401_500/litirbheag482.pdf
+1	Abair	abair	NOUN	NOUN	N	5	nsubj	_	_
+2	an	an	DET	DET	(N\N)/(N\N)	3	det	_	_
+3	spòrs	spòrs	NOUN	NOUN	N\N	1	nmod	_	_
+4	a	a	PRT	PRT	N\N/S[dcl]	5	rel	_	_
+5	bha	bi	VERB	VERB	S[dcl]/PP[aig]/N	0	ROOT	_	_
+6	againn	aig	ADP	ADP	PP[aig]	5	adpmod	_	_
+7	.	.	.	.	.	5	p	_	_
+
+# gd74
+#
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Tha	bi	VERB	VERB	S[dcl]/PP[air]/N	0	ROOT	_	_
+2	dragh	dragh	NOUN	NOUN	N	1	nsubj	_	_
+3	orra	air	ADP	ADP	PP[air]	1	adpmod	_	_
+4	cuideachd cuideachd	ADV	ADV	S\S	1	advmod	_	_
+5	mun	mu	ADP	ADP	PP[mu]/N	2	adpmod	_	_
+6	bhuaidh	buaidh	NOUN	NOUN	N	5	adpobj	_	_
+7	air	air	ADP	ADP	PP[air]/N	6	adpmod	_	_
+8	na	an	DET	DET	N/N	9	det	_	_
+9	rathaidean	rathad	NOUN	NOUN	N	7	adpobj	_	_
+10	mun	mu	ADP	ADP	PP[mu]/N	9	adpmod	_	_
+11	cuairt	cuairt	NOUN	NOUN	N	10	adpobj	_	_
+12	air	air	ADP	ADP	PP[air]/N	9	adpmod	_	_
+13	an	an	DET	DET	N/N	14	det	_	_
+14	àite	àite	NOUN	NOUN	N	12	adpobj	_	_
+15	agus	agus	CONJ	CONJ	conj	12	cc	_	_
+16	air	air	ADP	ADP	PP[air]/N	12	conj	_	_
+17	àrainneachd	àrainneachd	NOUN	NOUN	N	16	adpobj	_	_
+18	na	an	DET	DET	N\N/N\N	19	det	_	_
+19	sgìre	sgìre	NOUN	NOUN	N\N	17	nmod	_	_
+20	.	.	.	.	.	1	p	_	_
+
+# gd75
+# rach
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Thèid	rach	VERB	VERB	S[dcl]/N	0	ROOT	_	_
+2	iarraidh	iarraidh	NOUN	NOUN	N	1	nsubj	_	_
+3	air	air	ADP	ADP	PP[air]/N	1	adpmod	_	_
+4	comhairlichean	comhairle	NOUN	NOUN	N	3	adpobj	_	_
+5	Gàidhealach	Gàidhealach	ADJ	ADJ	N\N	4	amod	_	_
+6	Dimàirt	Dimàirt	ADV	ADV	S\S	1	advmod	_	_
+7	cead	cead	NOUN	NOUN	N/S[a]	1	dobj	_	_
+8	a	a	PRT	PRT	S[a]/N/S[n]/N	9	prt	_	_
+9	thoirt	thoir	VERB	VERB	S[n]/N	7	xcomp	_	_
+10	do	do	ADP	ADP	PP[do]/N	9	adpmod	_	_
+11	phròiseact	pròiseact	NOUN	NOUN	N	10	adpobj	_	_
+12	chonnspaideach	connspaideach	ADJ	ADJ	N\N	11	amod	_	_
+13	a	a	PRT	PRT	N\N/S[dcl]	13	rel	_	_
+14	bheireadh	thoir	VERB	VERB	S[dcl]/PP[air]/N	11	rcmod	_	_
+15	leudachadh	leudachadh	NOUN	NOUN	N	14	nsubj	_	_
+16	agus	agus	CONJ	CONJ	conj	15	cc	_	_
+17	leasachadh	leasachadh	NOUN	NOUN	N	15	conj	_	_
+18	air	air	ADP	ADP	PP[air]/N	15	adpmod	_	_
+19	tuathanas-èisir	tuathanas-èisir	NOUN	NOUN	N	18	adpobj	_	_
+20	ann	ann	ADP	ADP	PP[ann]/N	19	adpmod	_	_
+21	an	an	DET	DET	N/N	22	det	_	_
+22	Loch	loch	NOUN	NOUN	N	20	adpobj	_	_
+23	Abair	Abair	NOUN	NOUN	N\N	22	nmod	_	_
+24	.	.	.	.	.	1	p	_	_
+
+# gd76
+# rach: "the matter will go in front of"
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Thèid	rach	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+2	an	an	DET	DET	N/N	3	det	_	_
+3	gnothach	gnothach	NOUN	NOUN	N	1	nsubj	_	_
+4	air	air	ADP	ADP	PP[air]/N	2	adpmod	_	_
+5	beulaibh	beulaibh	NOUN	NOUN	N	4	adpobj	_	_
+6	chomhairlichean	comhairle	NOUN	NOUN	N\N	5	nmod	_	_
+7	Dimàirt	Dimàirt	ADV	ADV	S\S	1	advmod	_	_
+8	is	agus	CONJ	CONJ	conj	1	cc	_	_
+9	tha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	1	conj	_	_
+10	oifigearan	oifigear	NOUN	NOUN	N	9	nsubj	_	_
+11	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	12	prt	_	_
+12	moladh	mol	VERB	VERB	S[n]/N	9	xcomp	_	_
+13	cead	cead	NOUN	NOUN	N/S[a]/N	12	dobj	_	_
+14	a	a	PRT	PRT	S[a]/N/S[n]/N	15	prt	_	_
+15	thoirt	toirt	VERB	VERB	S[n]/N	13	xcomp	_	_
+16	dhan	do	ADP	ADP	PP[do]/N	13	adpmod	_	_
+17	sgeama	sgeama	NOUN	NOUN	N	16	adpobj	_	_
+18	le	le	ADP	ADP	PP[le]/N	13	adpmod	_	_
+19	cùmhnantan	cùmhnant	NOUN	NOUN	N	18	adpobj	_	_
+20	na	an	DET	DET	N\N/N\N	21	det	_	_
+21	chois	cas	NOUN	NOUN	N\N	19	nmod	_	_
+22	.	.	.	.	.	1	p	_	_
+
+# gd77
+# check POS of "cuid"
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Ged	ged	CONJ	CONJ	S/S/S[em]	3	mark	_	_
+2	a	a	PRT	PRT	S[em]/S[dep]	3	prt	_	_
+3	thog	tog	VERB	VERB	S[dep]/N	23	ccomp	_	_
+4	cuid	cuid	DET	DET	N/N	5	det	_	_
+5	dragh	dragh	NOUN	NOUN	N	3	nsubj	_	_
+6	gu	gu	CONJ	CONJ	N\N/S[dep]/PP[faisg]/N	7	mark	_	_
+7	bheil	bi	VERB	VERB	S[dep]/PP[faisg]/N	5	xcomp	_	_
+8	an	an	DET	DET	N/N	9	det	_	_
+9	leasachadh	leasachadh	NOUN	NOUN	N	7	nsubj	_	_
+10	faisg	faisg	ADP	ADP	PP[faisg]/PP[air]	9	adpmod	_	_
+11	air	air	ADP	ADP	PP[air]/N	10	adpobj	_	_
+12	làraich	làrach	NOUN	NOUN	N	11	adpobj	_	_
+13	eachdraidheil	eachdraidheil	ADJ	ADJ	N\N	12	amod	_	_
+14	Caisteal	caisteal	NOUN	NOUN	N\N	12	nmod	_	_
+15	Tioram	tioram	ADJ	ADJ	N\N\N\N	14	amod	_	_
+16	agus	agus	CONJ	CONJ	conj	14	cc	_	_
+17	Gàrradh	gàrradh	NOUN	NOUN	N	14	conj	_	_
+18	Eilean	eilean	NOUN	NOUN	N\N	17	nmod	_	_
+19	Shona	Sona	NOUN	NOUN	N\N\N\N	18	nmod	_	_
+20	,	,	.	.	,	23	p	_	_
+21	cha	cha	PRT	PRT	S[neg]/S[dep]	23	prt	_	_
+22	do	do	PRT	PRT	S[dep]/S[dep]	23	prt	_	_
+23	chuir	cuir	VERB	VERB	S[dep]/PP[an]/N	0	ROOT	_	_
+24	Alba	alba	NOUN	NOUN	N	23	nsubj	_	_
+25	Aosmhor	aosmhor	ADJ	ADJ	N\N	24	amod	_	_
+26	an	an	ADP	ADP	PP[an]/N	23	adpmod	_	_
+27	aghaidh	aghaidh	NOUN	NOUN	N	26	adpobj	_	_
+28	nam	an	DET	DET	N/N	29	det	_	_
+29	planaichean	plana	NOUN	NOUN	N	27	nmod	_	_
+30	.	.	.	.	.	23	p	_	_
+
+# gd78
+# "ro". Also vexingly cum a-mach is a fixed mwe case.
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Tha	bi	VERB	VERB	S[dcl]/PP[an]/N	0	ROOT	_	_
+2	Comhairle	comhairle	NOUN	NOUN	N	1	nsubj	_	_
+3	Coimhearsnachd	coimhearsnachd	NOUN	NOUN	N\N	2	nmod	_	_
+4	Àth	Àth	NOUN	NOUN	N\N	3	nmod	_	_
+5	Tharracail	Tarracail	NOUN	NOUN	N\N\N\N	4	nmod	_	_
+6	am	an	ADP	ADP	PP[an]/N	1	adpmod	_	_
+7	measg	measg	NOUN	NOUN	N	6	adpobj	_	_
+8	a	a	PRT	PRT	N\N/S[dcl]/S[asp]/N/N	9	rel	_	_
+9	tha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	7	rcmod	_	_
+10	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	11	prt	_	_
+11	cur	cuir	VERB	VERB	S[n]/PP[an]/N	9	xcomp	_	_
+12	an	an	ADP	ADP	PP[an]/N	11	adpmod	_	_
+13	aghaidh	aghaidh	NOUN	NOUN	N	12	adpobj	_	_
+14	nam	an	DET	DET	N\N/N\N	15	det	_	_
+15	planaichean	plana	NOUN	NOUN	N\N	13	nmod	_	_
+16	is	agus	CONJ	CONJ	conj	2	cc	_	_
+17	iad	iad	PRON	PRON	N	2	conj	_	_
+18	a'	ag	PRT	PRT	S[asp]/N/S[n]/N	19	prt	_	_	
+19	cumail	cum	VERB	VERB	S[n]/S[gu]/N	1	xcomp	_	_
+20	a-mach	a-mach	ADV	ADV	S\S	18	advmod	_	_
+21	gu	gu	CONJ	CONJ	S[gu]/S[dep]	22	mark	_	_
+22	bheil	bi	VERB	VERB	S[dep]/S[adj]/N/N	19	ccomp	_	_
+23	meud	meud	NOUN	NOUN	N	22	nsubj	_	_
+24	an	an	DET	DET	N\N/N/N	25	det	_	_
+25	leasachaidh	leasachadh	NOUN	NOUN	N\N	23	nmod	_	_	
+26	ro	ro	ADV	ADV	S[adj]/N/PP[do]/S[adj]/N	23	amod	_	_
+27	mhòr	mòr	ADJ	ADJ	S[adj]/N	27	amod	_	_
+28	dhan	do	ADP	ADP	PP[do]/N	26	adpmod	_	_
+29	sgìre	sgìre	NOUN	NOUN	N	28	adpobj	_	_
+30	.	.	.	.	.	1	p	_	_
+
+# gd79
+# "mar thà" is I think "mar-tha": already. Looks like an annoying mwe case.
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	'S	is	VERB	VERB	S[dcl]/N/N	0	ROOT	_	_
+2	e	e	PRON	PRON	N	1	nsubj	_	_
+3	leasachadh	leasachadh	NOUN	NOUN	N	1	dobj	_	_
+4	a	a	PRT	PRT	N\N/S[dcl]	5	rel	_	_
+5	bhidh	bi	VERB	VERB	S[dcl]/PP[air]/PP[ann]	3	rcmod	_	_
+6	ann	ann	ADP	ADP	PP[ann]	5	adpmod	_	_
+7	air	air	ADP	ADP	PP[air]/N	5	adpmod	_	_
+8	tuathanas-èisir	tuathanas-èisir	NOUN	NOUN	N	7	adpobj	_	_
+9	a	a	PRT	PRT	N\N/S[dcl]	10	rel	_	_
+10	th'	bi	VERB	VERB	S[dcl]/PP[ann]/N	8	rcmod	_	_
+11	ann	ann	ADP	ADP	PP[ann]/N	10	adpmod	_	_
+12	an	an	DET	DET	N/N	13	det	_	_
+13	Loch	loch	NOUN	NOUN	N	11	adpobj	_	_
+14	Mhùideart	Mùideart	NOUN	NOUN	N\N	13	nmod	_	_
+15	mar	mar	ADV	ADV	S\S	10	advmod	_	_
+16	thà	tha	ADV	ADV	S\S\S\S	15	advmod	_	_
+17	.	.	.	.	.	1	p	_	_
+
+# gd80
+# check carefully how "iarraidh" behaves with "air"
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	San	ann	ADP	ADP	PP[ann]/N	11	adpmod	_	_
+2	ath-chuinge	ath-chuinge	NOUN	NOUN	N	1	adpobj	_	_
+3	aice	aig	ADP	ADP	PP[aig]	2	adpmod	_	_
+4	do	do	ADP	ADP	PP[do]/N	2	adpmod	_	_
+5	chomataidh	comataidh	NOUN	NOUN	N	4	adpobj	_	_
+6	nan	an	DET	DET	N\N/N/N	7	det	_	_
+7	ath-chuingean	ath-chuinge	NOUN	NOUN	N\N	5	nmod	_	_
+8	aig	aig	ADP	ADP	PP[aig]/N	5	adpmod	_	_
+9	Holyrood	Holyrood	NOUN	NOUN	N	8	adpobj	_	_
+10	,	,	.	.	,	11	p	_	_
+11	tha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	0	ROOT	_	_
+12	i	i	PRON	PRON	N	11	nsubj	_	_
+13	ag	ag	PRT	PRT	S[asp]/N/S[n]/N	14	prt	_	_
+14	ràdh	abair	VERB	VERB	S[n]/S[gu]/N	11	xcomp	_	_
+15	gum	gu	CONJ	CONJ	S[gu]/S[dcl]	16	mark	_	_
+16	bu	is	VERB	VERB	S[dcl]/S[n]/PP[do]/N	14	ccomp	_	_
+17	chòir	còir	NOUN	NOUN	N	16	nsubj	_	_
+18	do	do	ADP	ADP	PP[do]/N	17	adpmod	_	_
+19	Riaghaltas	riaghaltas	NOUN	NOUN	N	18	adpobj	_	_
+20	na	an	DET	DET	N\N/N\N	21	det	_	_
+21	h-Alba	Alba	NOUN	NOUN	N\N	19	nmod	_	_
+22	iarraidh	iarr	VERB	VERB	S[n]/S[a]/PP[air]	16	xcomp	_	_
+23	air	air	ADP	ADP	PP[air]/N	22	adpmod	_	_
+24	Alba	alba	NOUN	NOUN	N	23	adpobj	_	_
+25	Aosmhor	aosmhor	ADJ	ADJ	N\N	24	amod	_	_
+26	rannsachadh	rannsachadh	NOUN	NOUN	N	28	dobj	_	_
+27	a	a	PRT	PRT	S[a]/N\N/S[n]/N/N	28	prt	_	_
+28	dhèanamh	dèan	VERB	VERB	S[n]/PP[air]/N	22	xcomp	_	_
+29	air	air	ADP	ADP	PP[air]	28	adpmod	_	_
+30	mar	mar	CONJ	CONJ	S\S/S[em]	32	mark	_	_
+31	a	a	PRT	PRT	S[em]/S[dep]	32	prt	_	_
+32	ghabhadh	gabh	VERB	VERB	S[dep]/S[a]/N	16	xcomp	_	_
+33	an	an	DET	DET	N/N	34	det	_	_
+34	cridhe	cridhe	NOUN	NOUN	N	36	dobj	_	_
+35	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	36	prt	_	_
+36	dhìon	dìon	VERB	VERB	S[n]/N/N	32	xcomp	_	_
+37	agus	agus	CONJ	CONJ	conj	36	cc	_	_
+38	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	39	prt	_	_
+39	ghlèidheadh	glèidh	VERB	VERB	S[n]/N/N	36	conj	_	_	
+40	.	.	.	.	.	11	p	_	_
+
+# gd81
+# treat "rannsachadh" as a bona fide verb as it is the dobj of thòisicheadh? Find more examples of tòisich tbh
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Tha	bi	VERB	VERB	S[dcl]/S[asp]/N/N	1	ROOT	_	_
+2	na	an	DET	DET	N/N	3	det	_	_
+3	poilis	poileas	NOUN	NOUN	N	1	nsubj	_	_
+4	air	air	PRT	PRT	S[asp]/N/S[n]/N	7	prt	_	_
+5	rannsachadh	rannsachadh	NOUN	NOUN	N	7	dobj	_	_
+6	a	a	PRT	PRT	S[n]/N\N/S[n]/N/N	7	prt	_	_
+7	thòisicheadh	tòiseach	VERB	VERB	S[n]/N/N	1	xcomp	_	_
+8	às	às	ADP	ADP	PP[as]/N	7	adpmod	_	_
+9	dèidh	dèidh	NOUN	NOUN	N	8	adpobj	_	_
+10	meirle	meirle	NOUN	NOUN	N\N	9	nmod	_	_
+11	aig	aig	ADP	ADP	PP[aig]/N	10	adpmod	_	_
+12	bùth-gheall	bùth-gheall	NOUN	NOUN	N	11	adpobj	_	_
+13	ann	ann	ADP	ADP	PP[ann]/N	12	adpmod	_	_
+14	an	an	DET	DET	N/N	15	det	_	_
+15	Inbhir	Inbhir	NOUN	NOUN	N	13	adpobj	_	_
+16	Nis	Nis	NOUN	NOUN	N\N	15	nmod	_	_
+17	oidhche	oidhche	NOUN	NOUN	S\S	10	advmod	_	_
+18	Luain	Luan	NOUN	NOUN	N\N	17	nmod	_	_
+19	.	.	.	.	.	1	p	_	_
+
+# gd82
+# contains "sam bith": treat as PP or AdvP?
+# http://www.bbc.co.uk/naidheachdan, 2014-09-30
+1	Thuirt	abair	VERB	VERB	S[dcl]/S[gu]/N	0	ROOT	_	_
+2	na	an	DET	DET	N/N	3	det	_	_
+3	poilis	poileas	NOUN	NOUN	N	1	nsubj	_	_
+4	gu	gu	CONJ	CONJ	S[gu]/S[dep]	5	mark	_	_
+5	bheil	bi	VERB	VERB	S[dcl]/PP[airson]/N	1	ccomp	_	_
+6	iad	iad	PRON	PRON	N	5	nsubj	_	_
+7	airson	airson	ADP	ADP	PP[airson]/S[n]/N	5	adpmod	_	_
+8	bruidhinn	bruidhinn	VERB	VERB	S[n]/PP[ri]/N	7	xcomp	_	_
+9	ri	ri	ADP	ADP	PP[ri]/N	8	adpmod	_	_
+10	duine	duine	NOUN	NOUN	N	9	adpobj	_	_
+11	sam	ann	ADP	ADP	PP[ann]/N	10	adpmod	_	_
+12	bith	bith	NOUN	NOUN	N	11	adpobj	_	_
+13	a	a	PRT	PRT	N\N/S[dcl]	13	rel	_	_
+14	bha	bi	VERB	VERB	S[dcl]/N/N	10	rcmod	_	_
+15	san	ann	ADP	ADP	PP[ann]/N	14	adpmod	_	_
+16	sgìre	sgìre	NOUN	NOUN	N	15	adpobj	_	_
+17	aig	aig	ADP	ADP	PP[aig]/N	14	adpmod	_	_
+18	an	an	DET	DET	N/N	19	det	_	_
+19	àm	àm	NOUN	NOUN	N	17	adpobj	_	_
+20	.	.	.	.	.	1	p	_	_
