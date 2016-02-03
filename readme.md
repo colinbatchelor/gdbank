@@ -1,35 +1,45 @@
-== gdbank.txt ==
+gdbank
+==
+
+Some tools and resources for natural language processing of Scottish Gaelic.
+
+gdbank.txt
+--
 
 The corpus annotated in CoNLL-X format with the categorial annotations in column 6.
 
 Each sentence has three lines beginning with hashes preceding it. These are an ID for the sentence, some versioning information, and the source.
 
-== gdbank_guidelines.tex ==
+gdbank_guidelines.tex
+--
 
 The guidelines used for the construction of the corpus in LaTeX format. Currently no special packages are used for it.
 
-== readme.txt ==
+readme.md
+--
 
 This file.
 
-== Is all of this written up somewhere? ==
+Is all of this written up somewhere?
+--
 
 The blog is at http://www.tantallon.org.uk/cggblog/ 
 
 The citation is:
-@InProceedings{batchelor:2014:CLTW14,
-  author    = {Batchelor, Colin},
-  title     = {gdbank: The beginnings of a corpus of dependency structures and type-logical grammar in Scottish Gaelic},
-  booktitle = {Proceedings of the First Celtic Language Technology Workshop},
-  month     = {August},
-  year      = {2014},
-  address   = {Dublin, Ireland},
-  publisher = {Association for Computational Linguistics and Dublin City University},
-  pages     = {60--65},
-  url       = {http://www.aclweb.org/anthology/W14-4609}
+  @InProceedings{batchelor:2014:CLTW14,
+    author    = {Batchelor, Colin},
+    title     = {gdbank: The beginnings of a corpus of dependency structures and type-logical grammar in Scottish Gaelic},
+    booktitle = {Proceedings of the First Celtic Language Technology Workshop},
+    month     = {August},
+    year      = {2014},
+    address   = {Dublin, Ireland},
+    publisher = {Association for Computational Linguistics and Dublin City University},
+    pages     = {60--65},
+    url       = {http://www.aclweb.org/anthology/W14-4609}
 }
 
-== Revision log ==
+Revision log
+--
 
 0.8: Annotation rules added to deal with "a cheile".
 
