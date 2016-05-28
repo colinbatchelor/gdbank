@@ -121,3 +121,75 @@ class Lemmatizer:
         elif pos.endswith("d"): # dependent form
             return self.delenite(s)
         return s
+
+class Subcat:
+    def __init__(self):
+        self.lemmatizer = Lemmatizer()
+        # migrate this to a separate resources file, obviously
+        self.mappings = { 
+        'default': ['TRANS', 'INTRANS'],
+        'abair': ['VPROP'],
+        'ainmich': ['VPROP'],
+        'aithris': ['VPROP'],
+        'arsa': ['QUOTE'],
+        'atharraich':['INTRANS'],
+        'bi':['BIPROG','BIPP'],
+        'bruidhinn':['TRANS', 'VRI'],
+        # bhuail e na cheann pòg a thoirt dhi
+        'buail':['TRANS', 'BUAIL'],
+        'caidil':['INTRANS'],
+        'cluinn':['TRANS', 'VBHO', 'VPROPQ'],
+        'coimhead':['TRANS', 'VAIR', 'VRI'],
+        'coinnich':['INTRANS', 'VRI'],
+        'cuir':['TRANS', 'VAIR', 'VRI'],
+        'cùm':['TRANS', 'VAIR', 'VRI', 
+               # for cùm a-mach gu
+               'VPROPQ'],
+        'dèan':['TRANS', 'VAIR'],
+        'èist':['VRI'],
+        'fàg':['TRANS'],
+        'faic':['TRANS'],
+        'faigh':['TRANS', 
+                 # this is for faigh a-mach gu...
+                 'VPROPQ', 'VAIR'], # "manage to"
+        'falbh':['INTRANS'],
+        'fan':['INTRANS', 'VAIR', 'VRI'],
+        'faod':['FAODFEUM'],
+        'fàs':['INTRANS', 'VADJ'],
+        'feith':['INTRANS', 'VAIR', 'VRI'],
+        'feuch':['VRI', 'VPROP', 'VPROPQ'],
+        'feum':['FAODFEUM'],
+        'fuirich':['INTRANS', 'VAIR', 'VRI'],
+        'gabh':['INTRANS', 'TRANS', 'VAIR', 'VRI'],
+        'gearain':['VPROP', 'VPROPQ'],
+        'gluais':['TRANS'],
+        'iarr':['TRANS', 'VAIR'],
+        'inns':['TRANS', 'VPROP','VPROPQ'],
+        'is':['TRANS'], # this looks wrong but the arguments of the copula are two NPs
+        'leig':['VDE', 'VDO', 'VLE', 'VAIR', 'VAN', 'VAS'],
+        'mol':['TRANS', 'VPROP'],
+        'obraich':['INTRANS'],
+        'òrdaich':['TRANS'],
+        'rach':['INTRANS','RACH'],
+        'ruig':['INTRANS', 'TRANS', 'VAIR'],
+        'ruith':['INTRANS'],
+        'seall':['TRANS', 'VAIR'],
+        'smaoinich':['INTRANS', 'VPROP', 'VMU'],
+        'spreadh':['INTRANS'],
+        # mar a thachair (!)
+        'tachair':['IMPERS', 'INTRANS', 'VAIR', 'VRI'],
+        'tagh':['TRANS'],
+        'thig':['INTRANS', 'VAIR', 'VDO', 'VRI'],
+        'thoir':['TRANS'],
+        'tionndaidh':['INTRANS','TRANS','VGU'],
+        'tòisich':['BIPROG', 'TRANS']
+        }
+
+    def subcat(self, surface, pos):
+        return self.subcat(self.lemmatizer(surface, pos))
+
+    def subcat(self, lemma):
+        if lemma in self.mappings.keys():
+            return self.mappings[lemma]
+        else:
+            return self.mappings["default"]
