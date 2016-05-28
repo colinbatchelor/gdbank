@@ -1,5 +1,4 @@
-gdbank
-==
+# gdbank
 
 Some tools and resources for natural language processing of Scottish Gaelic.
 
@@ -7,8 +6,11 @@ innealan
 --
 Tools require Python 2.
 
-`mendxml.py` fixes the output of OpenCCG's ccg2xml.
-`prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
+* `acainn.py` is the main code in this. It currently contains:
+** a lemmatizer for verbs
+* `test_acainn.py` contains unit tests.
+* `mendxml.py` fixes the output of OpenCCG's ccg2xml.
+* `prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
 
 You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011
 
@@ -20,15 +22,13 @@ conll
 --
 Contains an earlier, smaller, hand-built corpus in CoNLL-X format.
 
-gdbank.txt
----
+### gdbank.txt
 
 The corpus annotated in CoNLL-X format with the categorial annotations in column 6.
 
 Each sentence has three lines beginning with hashes preceding it. These are an ID for the sentence, some versioning information, and the source.
 
-gdbank_guidelines.tex
----
+### gdbank_guidelines.tex
 
 The guidelines used for the construction of the corpus in LaTeX format. Currently no special packages are used for it.
 
