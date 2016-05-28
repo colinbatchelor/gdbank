@@ -6,8 +6,7 @@ innealan
 --
 Tools require Python 2.
 
-* `acainn.py` is the main code in this. It currently contains:
-** a lemmatizer for verbs
+* `acainn.py` is the main code in this. It currently contains a lemmatizer and a subcategorization tool for verbs
 * `test_acainn.py` contains unit tests.
 * `mendxml.py` fixes the output of OpenCCG's ccg2xml.
 * `prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
