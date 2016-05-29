@@ -1,13 +1,12 @@
-# gdbank
-
 Some tools and resources for natural language processing of Scottish Gaelic.
 
 innealan
 --
 Tools require Python 2.
 
-* `acainn.py` is the main code in this. It currently contains a lemmatizer and a subcategorization tool for verbs
+* `acainn.py` is the main code in this. It currently contains a lemmatizer, a retagger that assigns tags that more closely match CCG categories, a subcategorization tool for verbs, and code to map the new tags onto CCG categories.
 * `test_acainn.py` contains unit tests.
+* `BrownToDotccg.py` takes a Brown-format corpus assuming ARCOSG tags and outputs a .ccg file
 * `mendxml.py` fixes the output of OpenCCG's ccg2xml.
 * `prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
 
@@ -48,8 +47,9 @@ Citation for the other material to follow.
 
 Revision log
 --
+2016-05-29: End-to-end system added.  Needs more documentation and tests.
 
 2016-05-28: Started to add files for the second CLTW paper, mainly scripts to process ARCOSG.
 
 Colin Batchelor
-2016-05-28
+2016-05-29

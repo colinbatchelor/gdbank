@@ -15,60 +15,20 @@ class Lemmatizer:
                             ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
                             ('thoir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
                             ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
-
-        self.vns = [ ('ath-giullaich', 'ath-giollachd'),
-                ('feuch', 'feuchainn'),
-                ('fuadaich', 'fuadach'),
-                ('èigh', 'èigheachd'),
-                ('èist', 'èisteachd'),
-                ('èist', 'èisdeachd'),
-                ('èist', 'éisteachd'),
-                ('èist', 'éisdeachd'),
-                ('àitich', 'àiteach'),
-                ('gabh', 'gabhail'),
-                ('gluais', 'gluasad'),
-                ('ceannaich', 'ceannach'),
-                ('iasgaich', 'iasgach'),
-                ('coisinn', 'cosnadh'),
-                ('coisich', 'coiseachd'),
-                ('faotainn', 'faigh'),
-                ('feith', 'feitheamh'),
-                ('caidil', 'cadal'),
-                ('cùm', 'cumail'),
-                ('cuir', 'cur'),
-                ('dùin', 'dùnadh'),
-                ('fàg', 'fàgail'),
-                ('faighinn', 'faighneachd'),
-                ('fairich', 'faireachdainn'),
-                ('fuirich', 'fuireach'),
-                ('iarr', 'iarraidh'),
-                ('inns', 'innse'),
-                ('iomair', 'iomradh'),
-                ('ceangail', 'ceangal'),
-                ('tachair', 'tachairt'),
-                ('tadhail', 'tadhal'),
-                ('tagh', 'taghadh'),
-                ('leig', 'leigeil'),
-                ('cluinn', 'cluinnteil'),
-                ('lean', 'leanail'),
-                ('loisg', 'losgadh'),
-                ('obraich', 'obair'),
-                ('pòs', 'pòsadh'),
-                ('caith', 'caitheamh'),
-                ('seas', 'seasamh'),
-                ('toirmisg', 'toirmeasg'),
-                ('ruig', 'ruigheachd'), ('tionndaidh', 'tionndadh'),
-                ('smaoinich', 'smaointinn'),
-                ('sruigheil', 'sruighleadh'), ('tataidh', 'tatadh'),
-                ('till', 'tilleadh'), ('thoir', 'toir'),
-                ('tog', 'togail'), ('tuit', 'tuiteam')]
+        self.vns = []
+        with open('resources/vns.txt') as f:
+            for line in f:
+                tokens = line.split('\t')
+                for vn in tokens[1:]:
+                    pair = (tokens[0], vn)
+                    self.vns.append(pair)
 
     def delenite(self, s):
         return s[0] + s[2:] if s[1] == 'h' else s
 
     def lemmatize_vn(self, s):
         for vn in self.vns:
-            if s == vn[1]:
+            if s in vn[1]:
                 return vn[0]
         if s.endswith("sinn"):
             return s.replace("sinn", "")
