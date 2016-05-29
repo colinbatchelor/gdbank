@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import re
 
 class Lemmatizer:
     def __init__(self):
@@ -117,7 +118,7 @@ class Lemmatizer:
         elif pos.startswith("V-s"): # past tense
             return self.delenite(s)
         elif pos.startswith("V-h") or pos.startswith("Vm-3"): # conditional or third person imperative
-            return self.delenite(s).replace("eadh", "") if s.endswith("eadh") else delenite(s).replace("adh", "")
+            return self.delenite(s).replace("eadh", "") if s.endswith("eadh") else self.delenite(s).replace("adh", "")
         elif pos.endswith("d"): # dependent form
             return self.delenite(s)
         return s
@@ -131,20 +132,19 @@ class Retagger:
                 if not line.startswith("#"):
                     tokens = line.split('\t')
                     self.retaggings[tokens[0]] = tokens[1].strip()
-        self.specials = {'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'], "d'":['ADVPRE'], 'Dh’':['ADVPRE'], "Dh'":['ADVPRE'], 'dragh':['Nprop'], 'dùil':['Nprop'],
+        self.specials = {'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'], 'Dh’':['ADVPRE'], "Dh'":['ADVPRE'], 'dragh':['NPROP'], 'dùil':['NPROP'],
             'Ach':['CONJ','SCONJ', 'ADVPRE'],
             'ach':['CONJ','SCONJ', 'ADVPRE'],
             'Agus':['CONJ', 'SCONJ', 'ADVPRE'],
             'agus':['CONJ', 'SCONJ', 'ADVPRE'], 
-            "'s":['CONJ', 'SCONJ', 'ADVPRE', 'COMPARATIVE'],
             ',':['APPOS', 'NMOD', 'PUNC'],
             '-':['APPOS', 'NMOD', 'PUNC'],
-            'dèidh':['N', 'DEIDH'],
+            'dèidh':['N', 'NDEIDH'],
             'air':['ASPAIR', 'ASP', 'P', 'PP'],
             'ag':['ASP'],
-            'Rùnaire':['NAME'],
-            'Riaghladair':['NAME'],
-            'dè':['INTDE'], 'Dè':['INTDE'], 'i':['PRONOUN']
+            'rùnaire':['NAME'],
+            'riaghladair':['NAME'],
+            'dè':['INTERRDE'], 'i':['PRONOUN']
                          }
 
     def retag_article(self, surface, pos):
@@ -153,14 +153,16 @@ class Retagger:
     def retag_verb(self, surface, pos):
         return self.sub.subcat_tuple(surface, pos)
 
-    def retag(self, surface, pos):
+    def retag(self, surface, rawpos):
+        # assume it was meant all along
+        pos = rawpos.replace('*','')
         if surface.lower() in self.specials:
-            return self.specials[surface]
+            return self.specials[surface.lower()]
         # separate mechanism for verbs
         if pos.startswith('Nv') or pos.startswith('V') or pos.startswith('W'):
             return self.retag_verb(surface, pos)
         # and articles
-        if pos.startswith('T'):
+        if pos.upper().startswith('T'):
             return self.retag_article(surface, pos)
         if pos in self.retaggings:
             return [self.retaggings[pos]]
@@ -173,7 +175,7 @@ class Subcat:
         # migrate this to a separate resources file, obviously
         self.mappings = { 
         'default': ['TRANS', 'INTRANS'],
-        'abair': ['VPROP'],
+        'abair': ['TRANS', 'VPROP'],
         'ainmich': ['VPROP'],
         'aithris': ['VPROP'],
         'arsa': ['QUOTE'],
@@ -238,3 +240,33 @@ class Subcat:
             return self.mappings[lemma]
         else:
             return self.mappings["default"]
+
+class Typer:
+    def __init__(self):
+        self.types = {}
+        with open('resources/types.txt') as f:
+            for line in f:
+                if not line.startswith("#"):
+                    tokens = line.split('\t')
+                    self.types[tokens[0]] = tokens[1].strip()
+
+    def type_verb(self, surface, pos, tag):
+        clausetype = "dcl" if pos.endswith("p") or pos.endswith("s") or pos.endswith("f") else "dep" if pos.endswith("d") else "rel" if pos.endswith("r") else "small" if pos == "Nv" else "imp"
+        tense = "pres" if "p" in pos else "past" if "s" in pos else "fut" if "f" in pos else "hab" if "h" in pos else None
+        phon = "vowel" if re.match("^[aeiouàèìòù]", surface) or surface.startswith("f") else "cons"
+        features = (clausetype if tense is None else clausetype + " " + tense) + " " + phon
+        newtag = tag + features.upper().replace(' ','')
+#        print surface + " " + pos + " " + tag + " " + self.types[tag] + " " + features
+        type = self.types[tag] % features
+        if pos.startswith("Vm") or '0' in pos:
+            newtag = newtag + "IMPERS"
+        else:
+            type = type + "/n"
+        return (newtag, type)
+
+    def type(self, surface, pos, tag):
+        if pos.startswith("V") or pos.startswith("W") or pos == "Nv":
+            return self.type_verb(surface, pos, tag)
+        else:
+            return (tag, self.types[tag])
+                    

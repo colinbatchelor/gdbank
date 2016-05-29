@@ -1,0 +1,13 @@
+rule {
+  no xcomp +;
+  typechange: pp => n<2>\n<2> ;
+  typechange: pp => s<2>\s<2> ;
+  typechange: s<2>\s<2> => s<2>/s<2> ;
+  typechange: n[place] => n<2>\n<2>; 
+  typechange: s[small vowel]/n => s[inf];
+  typechange: s[small vowel]/n => s[inf]\n;
+  typechange: pp/n => pp<2>/(s[int]/pp<2>);
+  typeraise +: n => s;
+  typeraise -: pp => s;
+  typeraise -: s[adj]/n => s;
+}

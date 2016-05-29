@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 import unittest
-from acainn import Lemmatizer, Retagger, Subcat
+from acainn import Lemmatizer, Retagger, Subcat, Typer
+
+class TestTyper(unittest.TestCase):
+    def setUp(self):
+        self.t = Typer()
+
+    def tearDown(self):
+        self.t = None
+
+    def test(self):
+        self.assertEqual(self.t.type("tha", "V-p", "BIPP")[1], "s[dcl pres cons]/pp/n")
+        self.assertEqual(self.t.type("bha", "V-s", "BIPP")[1], "s[dcl past cons]/pp/n")
 
 class TestRetagger(unittest.TestCase):
     def setUp(self):
@@ -18,7 +29,7 @@ class TestRetagger(unittest.TestCase):
         air = self.r.retag("air", "Sp")
         self.assertTrue("PP" in air)
         self.assertTrue("P" in air)
-        self.assertEqual(self.r.retag("droch", "Ar"), ["ADJPRE"])
+        self.assertEqual(self.r.retag("droch", "Ar"), ["DET"]) # not really
         comma = self.r.retag(",", "Fi")
         self.assertTrue("PUNC" in comma)
         fullstop = self.r.retag(".", "Fe")
@@ -49,7 +60,7 @@ class TestSubcat(unittest.TestCase):
     def test_lemmata(self):
         self.assertEqual(self.s.subcat("bi"), ['BIPROG', 'BIPP'])
         self.assertEqual(self.s.subcat("is"), ['TRANS'])
-        self.assertEqual(self.s.subcat("abair"), ['VPROP'])
+        self.assertEqual(self.s.subcat("abair"), ['TRANS', 'VPROP'])
         self.assertEqual(self.s.subcat("arsa"), ['QUOTE'])
         cluinn = self.s.subcat("cluinn")
         self.assertTrue('TRANS' in cluinn)
