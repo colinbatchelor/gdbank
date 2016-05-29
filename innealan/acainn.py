@@ -122,6 +122,51 @@ class Lemmatizer:
             return self.delenite(s)
         return s
 
+class Retagger:
+    def __init__(self):
+        self.sub = Subcat()
+        self.retaggings = {}
+        with open('resources/retaggings.txt') as f:
+            for line in f:
+                if not line.startswith("#"):
+                    tokens = line.split('\t')
+                    self.retaggings[tokens[0]] = tokens[1].strip()
+        self.specials = {'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'], "d'":['ADVPRE'], 'Dh’':['ADVPRE'], "Dh'":['ADVPRE'], 'dragh':['Nprop'], 'dùil':['Nprop'],
+            'Ach':['CONJ','SCONJ', 'ADVPRE'],
+            'ach':['CONJ','SCONJ', 'ADVPRE'],
+            'Agus':['CONJ', 'SCONJ', 'ADVPRE'],
+            'agus':['CONJ', 'SCONJ', 'ADVPRE'], 
+            "'s":['CONJ', 'SCONJ', 'ADVPRE', 'COMPARATIVE'],
+            ',':['APPOS', 'NMOD', 'PUNC'],
+            '-':['APPOS', 'NMOD', 'PUNC'],
+            'dèidh':['N', 'DEIDH'],
+            'air':['ASPAIR', 'ASP', 'P', 'PP'],
+            'ag':['ASP'],
+            'Rùnaire':['NAME'],
+            'Riaghladair':['NAME'],
+            'dè':['INTDE'], 'Dè':['INTDE'], 'i':['PRONOUN']
+                         }
+
+    def retag_article(self, surface, pos):
+        return ['DET'] if not pos.endswith('g') else ['DETNMOD']
+
+    def retag_verb(self, surface, pos):
+        return self.sub.subcat_tuple(surface, pos)
+
+    def retag(self, surface, pos):
+        if surface.lower() in self.specials:
+            return self.specials[surface]
+        # separate mechanism for verbs
+        if pos.startswith('Nv') or pos.startswith('V') or pos.startswith('W'):
+            return self.retag_verb(surface, pos)
+        # and articles
+        if pos.startswith('T'):
+            return self.retag_article(surface, pos)
+        if pos in self.retaggings:
+            return [self.retaggings[pos]]
+        # for cases where we are not using all of the features
+        return [self.retaggings[pos[0:2]]]
+
 class Subcat:
     def __init__(self):
         self.lemmatizer = Lemmatizer()
@@ -185,8 +230,8 @@ class Subcat:
         'tòisich':['BIPROG', 'TRANS']
         }
 
-    def subcat(self, surface, pos):
-        return self.subcat(self.lemmatizer(surface, pos))
+    def subcat_tuple(self, surface, pos):
+        return self.subcat(self.lemmatizer.lemmatize(surface, pos))
 
     def subcat(self, lemma):
         if lemma in self.mappings.keys():

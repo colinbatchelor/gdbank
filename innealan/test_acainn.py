@@ -1,6 +1,43 @@
 # -*- coding: utf-8 -*-
 import unittest
-from acainn import Lemmatizer, Subcat
+from acainn import Lemmatizer, Retagger, Subcat
+
+class TestRetagger(unittest.TestCase):
+    def setUp(self):
+        self.r = Retagger()
+
+    def tearDown(self):
+        self.r = None
+
+    def test(self):
+        ag = self.r.retag("ag", "Sa")
+        self.assertTrue("ASP" in ag)
+        self.assertEqual(self.r.retag("a'", "Sa"), ["ASP"])
+        agus = self.r.retag("agus", "Cc")
+        self.assertTrue("CONJ" in agus)
+        air = self.r.retag("air", "Sp")
+        self.assertTrue("PP" in air)
+        self.assertTrue("P" in air)
+        self.assertEqual(self.r.retag("droch", "Ar"), ["ADJPRE"])
+        comma = self.r.retag(",", "Fi")
+        self.assertTrue("PUNC" in comma)
+        fullstop = self.r.retag(".", "Fe")
+        self.assertTrue("PUNC" in fullstop)
+        self.assertEqual(self.r.retag("le", "Sp"), ["P"])
+        self.assertEqual(self.r.retag("gun", "Qa"), ["GU"])
+        self.assertEqual(self.r.retag("dìreach", "Rg"), ["ADV"])
+        self.assertEqual(self.r.retag("Comhairle", "Ncsdf"), ["N"])
+        self.assertEqual(self.r.retag("galain", "Ncsfn"), ["N"])
+        self.assertEqual(self.r.retag("an", "Tdsf"), ["DET"])
+        self.assertEqual(self.r.retag("na", "Tdsfg"), ["DETNMOD"])
+        self.assertEqual(self.r.retag("[1]", "Xsc"), ["ADVPRE"])
+        radh = self.r.retag("ràdh", "Nv")
+        self.assertTrue("VPROP" in radh)
+        rinn = self.r.retag("rinn", "V-s")
+        self.assertTrue("TRANS" in rinn)
+        tha = self.r.retag("tha", "V-p")
+        self.assertTrue("BIPP" in tha)
+        self.assertTrue("BIPROG" in tha)
 
 class TestSubcat(unittest.TestCase):
     def setUp(self):
