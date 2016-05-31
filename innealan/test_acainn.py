@@ -2,6 +2,32 @@
 import unittest
 from acainn import Lemmatizer, Retagger, Subcat, Typer
 
+# checks that all the labels actually match
+class TestIntegration(unittest.TestCase):
+    def setUp(self):
+        self.r = Retagger()
+        self.s = Subcat()
+        self.t = Typer()
+
+    def tearDown(self):
+        self.r = None
+        self.s = None
+        self.t = None
+
+    def test_retagger(self):
+        specialtags = set()
+        tags = [value for key,value in self.r.retaggings.iteritems()]
+        for key in self.r.specials.iterkeys():
+            for item in self.r.specials[key]:
+                specialtags.add(item)
+        for tag in tags:
+            self.assertTrue(tag in self.t.types.keys())
+
+    def test_subcat(self):
+        for key in self.s.mappings.iterkeys():
+            for item in self.s.mappings[key]:
+                self.assertTrue(item in self.t.types.keys(), item)
+
 class TestTyper(unittest.TestCase):
     def setUp(self):
         self.t = Typer()

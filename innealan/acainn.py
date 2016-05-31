@@ -139,7 +139,7 @@ class Subcat:
             for line in f:
                 if not line.startswith('#'):
                     if re.match('^[0-9]', line):
-                        tokens = line.split('\t')
+                        tokens = line.split()
                         subcats = [t.strip() for t in tokens[1:]]
                     else:
                         self.mappings[line.strip()] = subcats
