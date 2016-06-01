@@ -32,6 +32,8 @@ class Lemmatizer:
                 return vn[0]
         if s.endswith("sinn"):
             return s.replace("sinn", "")
+        if s.endswith("tinn"):
+            return s.replace("tinn", "")
         elif s.endswith("eachadh"):
             return s.replace("eachadh", "ich")
         elif s.endswith("achadh"):
@@ -44,6 +46,8 @@ class Lemmatizer:
             return s.replace("adh", "")
         elif s.endswith("tainn"):
             return s.replace("tainn", "")
+        elif s.endswith("airt"):
+            return s.replace("airt", "air")
         else:
             return s
 

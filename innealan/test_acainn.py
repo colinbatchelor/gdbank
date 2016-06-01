@@ -256,6 +256,9 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("thachair", "V-s"), "tachair")
         self.assertEqual(self.l.lemmatize("thòisich", "V-s"), "tòisich")
 
+    def nv(self, vn, root):
+        self.assertEqual(self.l.lemmatize_vn(vn), root)
+
     def test_nvs(self):
         self.assertEqual(self.l.lemmatize_vn('àicheadh'), "àicheidh")
         self.assertEqual(self.l.lemmatize_vn('amas'), 'amais')
@@ -272,9 +275,16 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("bruidhinn", "Nv"), "bruidhinn")
         self.assertEqual(self.l.lemmatize_vn('bruthadh'), 'brùth')
         self.assertEqual(self.l.lemmatize_vn('buntainn'), 'buin')
+        self.nv("cinntinn", "cinn")
+        self.nv("cagar", "cagair")
+        self.nv("cagarsaich", "cagair")
+        self.nv("cagartaich", "cagair")
+        self.nv("casgairt", "casgair")
+        self.nv("casgradh", "casgair")
         self.assertEqual(self.l.lemmatize("coimhead", "Nv"), "coimhead")
         self.assertEqual(self.l.lemmatize("cur", "Nv"), "cuir")
         self.assertEqual(self.l.lemmatize("chur", "Nv"), "cuir")
+        self.nv("cluiche", "cluich")
         self.assertEqual(self.l.lemmatize("creidsinn", "Nv"), "creid")
         self.assertEqual(self.l.lemmatize("cumail", "Nv"), "cùm")
         self.assertEqual(self.l.lemmatize("falbh", "Nv"), "falbh")
