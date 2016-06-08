@@ -16,10 +16,9 @@ with open(sys.argv[1]) as f:
                     l = len(t)
                     if l == 0:
                         print "zero-length?: " + line
-                    if l > 20:
+                    if l > int(sys.argv[2]):
                         print l
-                        print t
-                        print ""
+                        print tree[position]
                     if l in nochildren:
                         nochildren[l] = nochildren[l] + 1
                     else:
@@ -27,15 +26,14 @@ with open(sys.argv[1]) as f:
             sum = sum + len(tree.treepositions())
             success = len(tree)
             secondsum = secondsum + success
-            results.append((success, " ".join(tree.leaves()[:8])))
         except:
             print "problem with line beginning %s" % (line[:32])
             e = sys.exc_info()[0]
             print e
 
 # longest overall sentences
-for result in sorted(results)[-4:]:
-    print result
+#for result in sorted(results)[-4:]:
+#    print result
 print sum
 print secondsum
 
