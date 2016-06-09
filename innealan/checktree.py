@@ -31,6 +31,12 @@ with open(sys.argv[1]) as f:
             e = sys.exc_info()[0]
             print e
 
+thirdsum = 0
+for nochild in nochildren:
+    if  nochild > 2:
+        thirdsum = thirdsum + nochildren[nochild]
+
+print "%s greater than binary nodes" % thirdsum
 # longest overall sentences
 #for result in sorted(results)[-4:]:
 #    print result
