@@ -26,9 +26,8 @@ with open(sys.argv[1]) as f:
             sum = sum + len(tree.treepositions())
             success = len(tree)
             secondsum = secondsum + success
-        except:
+        except IndexError as e:
             print "problem with line beginning %s" % (line[:32])
-            e = sys.exc_info()[0]
             print e
 
 thirdsum = 0
@@ -38,8 +37,8 @@ for nochild in nochildren:
 
 print "%s greater than binary nodes" % thirdsum
 # longest overall sentences
-#for result in sorted(results)[-4:]:
-#    print result
+for result in sorted(results)[-4:]:
+    print result
 print sum
 print secondsum
 
