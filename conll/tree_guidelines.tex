@@ -1,0 +1,223 @@
+\documentclass[a4paper]{article}
+\begin{document}
+\title{Scottish Gaelic constituency treebanking guidelines v. 0.1}
+\author{Colin Batchelor}
+\maketitle
+
+\tableofcontents
+\section{Introduction}
+
+The guidelines here assume the ARCOSG tagging scheme.
+
+There is one minor change to the tokenization: for simplicity we collapse any preposition containing a hyphen, for example \textit{a-measg} and \textit{a-r\`eir}, into a single token.
+In the text that follows we give an explanation of each kind of constituent and an example taken from elsewhere in ARCOSG, specifying the file and the line in which the example text occurs.
+The aim is to produce completely binary trees.
+
+\section{Constituents}
+
+\subsection{ADJ}
+
+These are cases where a predicative adjective is modified by, say \textit{cho} or \textit{nas}, or with a PP headed by \textit{ri}.
+In the \textit{cho... ri...} case, \textit{cho} goes on the inside.
+Example:
+
+\texttt{
+(ADJ (ADJ (Rg cho) (Ap m\`or)) (PP (Sp ri) (Ncsmd each)))
+} (p01:120)
+
+\subsection{ADV}
+
+These are modifiers, typically beginning with the adverbializer \textit{gu} (\texttt{Ua}).
+Example:
+
+\texttt{
+(ADJ (ADV (Ua gu) (Rg math)) (Ap comhfhurtail))
+} (s08:69)
+
+If the adverb is modifying a clause rather than an adjective, then if it is an adverb of place it can modify a small clause SSMALL but if it is an adverb of time then it should modify the closest accessible tensed clause, for example SBAR or SDCL.
+
+\subsection{CONJ}
+
+These are headed by a coordinator, tagged \texttt{Cc}, or by a comma, \texttt{Fi} in the context of a list.
+Example:
+
+\texttt{
+(CONJ (Cc agus) (SDCL (S0 (V-s fhuair) (Nt Yugoslavia)) (Pp3sf i))
+} (s10:53)
+
+Also use CONJ for constructions like \textit{air sg\`ath 's gu bheil...}
+
+\subsection{COSUB, COSUB0}
+
+These are for cosubordination, where the coordinators \textit{agus}, \textit{is} or \textit{'s} stand in place of the verb \textit{bi} and describe the preceding clause.
+Example:
+
+\texttt{
+(COSUB (COSUB0 (Cc 's) (Pp3sm e)) (SASP (Sa g') (Nv iasgach)))
+} (n05:39)
+
+\subsection{NP}
+
+Work out from the noun \texttt{N*} in the following order: euphonious prefixes, preceding adjectives and numbers, determiners, modifying NPs and PPs.
+Example: 
+
+\texttt{
+(NP (Tdsm an) (NP (Mc aon) (NP (Uo t-) (Ncsmd sagart))))
+} (pw01:18)
+
+\subsection{PP}
+
+These are headed by a preposition, tagged \texttt{Sp}, or the fossilized noun \textit{airson} (\texttt{Nf}).
+For compound prepositions, for example, \textit{as d\`eidh}, we preserve the tokenization and treat \textit{d\`eidh} as an ordinary noun.
+Examples:
+\begin{itemize}
+\item \texttt{
+(PP (Sp tro') (NP (NP (Tdpm na) (Ncpmd soluis)) (Aq-pmd dhearg)))
+} (ns10:2)
+\item \texttt{
+(PP (Sp air) (NP (Nf ais) (PP (Sp gu) (Nn Nicholl))))
+} (s10:150)
+\end{itemize}
+
+\subsection{sent}
+
+Treat the sentence within as SDCL (or SINT, SNEG, SNEGINT) and the final punctuation as a modifier.
+Example:
+
+\texttt{
+(sent (SDCL (SDCL (V-f Th\`eid) (SINF (Ncsfn binn) (SINF (Ug a) (SSMALL (Nv thoirt) (Pr3sm air))))) (Rt a-rithist)) (Fe .))
+} (ns07:31)
+
+\subsection{S0, S0DEP}
+
+These are constituents which contain a verb and its subject.
+They can contain other constituents as long as that constituent is a modifier.
+Example:
+
+\texttt{
+(S0 (V-p Tha) (Pp3sm e))
+} (pw11:48)
+
+However, if there is a passive sentence using the infinitive construction with \textit{rach} (or \textit{chaidh}, \textit{deach}, \textit{etc.}), then treat the object as part of the infinitive clause SINF.
+Example:
+
+\texttt{
+(SDCL (V-s Chaidh) (SINF (NP (Tdsm am) (Ncsmn pr\`ogram)) (SINF (Ug a) (SSMALL (Nv dh\`eanamh) (PP (Sp le) (Nn Hummingbird))))))
+} (pw07:61)
+
+\subsection{SASP}
+
+These are clauses that begin with an aspect marker, tagged \texttt{Sa} in the ARCOSG scheme, and typically contain a small clause SSMALL.
+Example:
+
+\texttt{
+(SASP (Sa air) (SSMALL (Dp1s mo) (Nv mhealladh)))
+} (pw10:22)
+
+\subsection{SANN, SANNBAR}
+
+These are to mark fronted constituents.
+The rest of the sentence will be a SREL but the structure of the first part is, for example:
+
+\texttt{
+(SANN (SANNBAR (Wp-i 'S) (Pr3sm ann)) (PP (Sp le) (Ncsmd cianalas)))
+} (pw06:65)
+
+\subsection{SBAR and SREL}
+
+These are to be used in relative clauses, introduced by the relative particle \textit{a} (\texttt{Q-r}).
+
+Example:
+
+\texttt{
+(SREL (Q-r a) (SBAR (V-p tha) (SASP (Sa air) (SSMALL (Dp3sm a) (Nv neartachadh)))))
+} (pw01:39)
+
+\subsection{SDCL, SINT, SNEG, SNEGINT}
+
+These are clauses that are usually complete sentences in themselves but do not contain the final full stop or quotation mark.
+The POS-tag of the verb will usually be \texttt{V-s} or \texttt{V-p} where it is a declarative sentence.
+Typically they will contain an S0 clause followed by an NP, a PP, an SGUN or an SINF, depending on the subcategorization of the verb.
+
+\texttt{
+(SDCL (PP (Sp \'As) (NP (Nf aonais) (NP (Tdpmg nan) (Ncpmg G\`aidheal)))) (SDCL (S0 tha/V-p i/Pp3sf) (SASP (Sa ag) (SSMALL (Nv r\`adh)
+(SGUN (Qn nach) (SDEP (S0DEP (V-h--d biodh) (Ncsfn sg\`ir-easbaig)) (Pr3sm ann)))))))
+} (pw01:99)
+
+\subsection{SDEP}
+
+Typically they will contain an S0DEP clause followed by an NP, a PP, an SGUN or an SINF, depending on the subcategorization of the verb.
+
+\texttt{
+(SSUB (Cs mura) (SDEP (S0DEP (V-h--d cosnadh) (Pp3p iad)) (Pp3sm e)))
+} (pw04:70)
+
+\subsection{SGUN}
+
+These are clauses that are headed by the particle \textit{gu}, tagged \texttt{Qa}.
+These almost always contain a dependent clause SDEP.
+
+\texttt{
+(SGUN (Qa gu) (SDEP (S0DEP (V-p--d bheil) (Pd sin)) (Ap ceart)))
+} (s10:27)
+
+\subsection{SINF}
+
+These are clauses that either begin with an agreement particle, tagged \texttt{Ug}, or with an NP which is the object of the clause.
+
+\texttt{
+(SINF (Ug a) (SSMALL (Nv dhol) (SINF (Ug a) (SSMALL (Nv bruidhinn) (PP (Sp ri) (Ncsmd cuideigin))))))
+} (p01:154)
+
+\subsection{SSMALL}
+
+These are clauses headed by a verbal noun, \texttt{Nv}.
+They contain objects, other arguments and modifiers of the verbal noun.
+The object, be it a determiner tagged \texttt{Dp3sm} or similar, or an NP in the genitive, sits inside SSMALL.
+
+\texttt{
+(SASP (Sa ') (SSMALL (Nv cumail) (Rg a-mach)))
+} (s08:117)
+
+\subsection{SSUB}
+
+These are clauses introduced by subordinators \texttt{Cs}.
+Example:
+
+\texttt{
+(SSUB (Cs mura) (SDEP (V-f0-d lorgar) (NP (Ncpmn camaidhean) (Aq-pmn eile))))
+} (fp04:43)
+
+\subsection{utt}
+
+This is to be used to mark an utterance in conversation.
+It can contain anything.
+It begins with an indication of the speaker, tagged \texttt{Xsc}, if it is at the start of a turn.
+Examples:
+\begin{itemize}
+\item \texttt{(utt (Xsc [1]) (sent (SDCL (Uq d\`e)) (Fg ?)))} (c09:122)
+\item \texttt{(utt (Xsc [4]) (SDCL (V-f feumaidh) (SGUN (Wpdia gur) (Pr3sm ann))))} (c09:121)
+\end{itemize}
+
+\subsection{V, VDEP}
+
+These are special cases to handle where a verb is preceded by a particle such as \textit{dh'} (\texttt{Uo}).
+
+\texttt{
+(S0 (V (Uo dh') (V-s fheuch)) (Pp3p iad))
+} (s09:117)
+
+\section{Special cases}
+\subsection{Punctuation-absorbing rules}
+
+In newswire, there are a lot of stray dashes and commas.
+The rule here is that you use your judgement to work out which preceding clause should absorb them and treat them as a modifier.
+
+\subsection{Numbers}
+
+Treat numbers as NPs and try to keep them together.
+
+
+
+
+\end{document}
