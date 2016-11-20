@@ -6,8 +6,10 @@ sum = 0
 secondsum = 0
 results = []
 nochildren = {}
+i = 0
 with open(sys.argv[1]) as f:
     for line in f:
+        i = i + 1
         try:
             tree = ParentedTree.fromstring(line.decode('utf8'))
             for position in tree.treepositions():
@@ -17,7 +19,7 @@ with open(sys.argv[1]) as f:
                     if l == 0:
                         print "zero-length?: " + line
                     if l > int(sys.argv[2]):
-                        print l
+                        print str(i) + ": " + str(l)
                         print tree[position]
                     if l in nochildren:
                         nochildren[l] = nochildren[l] + 1
