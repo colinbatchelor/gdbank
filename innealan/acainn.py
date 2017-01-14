@@ -15,6 +15,14 @@ class Lemmatizer:
                             ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
                             ('thoir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
                             ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
+        self.prepositions = { 'air':["or[mt]|oir(re|bh|nn)|orra"],
+                              'airson':["'?son"],
+                              'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]"],
+                              'à':["às"],
+                              'bho':["(bh)?o"],
+                              'gu':["gu_ruige"],
+                              'do':["dh(a|i|omh|ut|(au)ibh|uinn|an)"]
+                              }
         self.vns = []
         with open('resources/vns.txt') as f:
             for line in f:
@@ -25,6 +33,12 @@ class Lemmatizer:
 
     def delenite(self, s):
         return s[0] + s[2:] if s[1] == 'h' else s
+
+    def lemmatize_preposition(self, s):
+        for key in self.prepositions:
+            for pattern in self.prepositions[key]:
+                if re.match("^("+pattern+")$", s): return key
+        return s
 
     def lemmatize_vn(self, s):
         for vn in self.vns:

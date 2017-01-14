@@ -6,7 +6,37 @@ from nltk.tree import ParentedTree
 from nltk import induce_pcfg
 from nltk.grammar import Nonterminal
 from nltk.parse import pchart
+from acainn import Lemmatizer
 import re
+
+def seorsa_S(craobh):
+    for nod in craobh:
+        if type(nod[0]) is ParentedTree:
+            leubail = nod.label()
+            if leubail == "S":
+                nod.set_label('S[type=SUB]')
+            else:
+                if leubail.startswith("S"):
+                    nod.set_label(leubail[0] + '[type='+ leubail[1:] + ']')
+            seorsa_S(nod)
+        else: # 's e sreath a th' ann
+            pass
+
+def seorsa_P(craobh):
+    l = Lemmatizer()
+    for nod in craobh:
+        if type(nod[0]) is ParentedTree:
+            leanbh = ""
+            leubail = nod.label()
+            if leubail== "PP":
+                leanbh = nod[0]
+                if not leanbh.label().startswith('PP'):
+                    nod.set_label('PP[type='+l.lemmatize_preposition(str(leanbh).split(' ')[1][:-1])+']')
+                else:
+                    nod.set_label(leanbh.label())
+            seorsa_P(nod)
+        else:
+            pass
 
 def tuiseal_NP(craobh):
     for nod in craobh:
@@ -52,5 +82,7 @@ for craobh in craobhan:
 # assign cases to NP
 for craobh in craobhan:
     tuiseal_NP(craobh)
+    seorsa_S(craobh)
+    seorsa_P(craobh)
     print re.sub(r'\s+',' ',str(craobh))
 

@@ -256,6 +256,12 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("thachair", "V-s"), "tachair")
         self.assertEqual(self.l.lemmatize("thòisich", "V-s"), "tòisich")
 
+    def preposition(self, preposition, root):
+        self.assertEqual(self.l.lemmatize_preposition(preposition), root)
+
+    def test_prepositions(self):
+        self.preposition('airson','airson')
+
     def nv(self, vn, root):
         self.assertEqual(self.l.lemmatize_vn(vn), root)
 
