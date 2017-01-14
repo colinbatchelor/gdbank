@@ -15,13 +15,21 @@ class Lemmatizer:
                             ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
                             ('thoir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
                             ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
-        self.prepositions = { 'air':["or[mt]|oir(re|bh|nn)|orra"],
-                              'airson':["'?son"],
-                              'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]"],
-                              'à':["às"],
-                              'bho':["(bh)?o"],
+        self.prepositions = { 'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
+            'air':["or[mt]|oir(re|bh|nn)|orra"],
+            'airson':["'?son"],
+                              'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]", 'innte'],
+                              'à':["às", "as.*", "ais.*"],
+                              'bho':["(bh)?o", "(bh)?ua(m|t)"],
+                              'eadar':["ea.*"],
+                              'fo':["fo.*"],
                               'gu':["gu_ruige"],
-                              'do':["dh(a|i|omh|ut|(au)ibh|uinn|an)"]
+                              'de':["dh[ei].*"],
+                              'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)"],
+                              'le':["le.*"],
+                              'ri':["ri(um|ut|s)", "ru.*"],
+                              'ro':["ro.*"],
+                              'thar':["tha.*"]
                               }
         self.vns = []
         with open('resources/vns.txt') as f:
@@ -35,6 +43,7 @@ class Lemmatizer:
         return s[0] + s[2:] if s[1] == 'h' else s
 
     def lemmatize_preposition(self, s):
+        s = s.replace(' ','_')
         for key in self.prepositions:
             for pattern in self.prepositions[key]:
                 if re.match("^("+pattern+")$", s): return key
