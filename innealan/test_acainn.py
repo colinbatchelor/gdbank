@@ -292,8 +292,8 @@ class TestLemmatizer(unittest.TestCase):
         self.preposition('leotha','le')
         self.preposition('eatorra','eadar')
         self.preposition('innte','an')
-        self.preposition('asam','à')
-        self.preposition('aiste','à')
+        self.preposition('asam','as')
+        self.preposition('aiste','as')
 
     def nv(self, vn, root):
         self.assertEqual(self.l.lemmatize_vn(vn), root)

@@ -9,6 +9,8 @@ from nltk.parse import pchart
 from acainn import Lemmatizer
 import re
 
+file_out = sys.argv[2]
+
 def seorsa_S(craobh):
     for nod in craobh:
         if type(nod[0]) is ParentedTree:
@@ -46,7 +48,7 @@ def tuiseal_NP(craobh):
                 if nod[0].label().startswith('S'):
                     print 'error:' + " ".join([l.encode('utf-8') for l in nod.leaves()]) 
                 # dearbhaich nòd le tuiseal
-                if nod[0].label() == 'Ar' or nod[0].label() == 'Uo' or nod[0].label() == 'Dq' or nod[0].label().startswith('Dp') or nod[0].label() =='Mc':
+                if nod[0].label() == 'Ar' or nod[0].label() == 'Uo' or nod[0].label() == 'Dq' or nod[0].label().startswith('Dp') or nod[0].label() =='Mc' or nod[0].label().startswith('Td'):
                     leanbh = nod[1].label()
                 else:
                     leanbh = nod[0].label()
@@ -80,9 +82,10 @@ for craobh in craobhan:
     c = c + 1
 
 # assign cases to NP
-for craobh in craobhan:
-    tuiseal_NP(craobh)
-    seorsa_S(craobh)
-    seorsa_P(craobh)
-    print re.sub(r'\s+',' ',str(craobh))
+with open(file_out,'w') as g:
+    for craobh in craobhan:
+        tuiseal_NP(craobh)
+        seorsa_S(craobh)
+        seorsa_P(craobh)
+        g.write(re.sub(r'\s+',' ',str(craobh)))
 

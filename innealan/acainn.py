@@ -19,7 +19,7 @@ class Lemmatizer:
             'air':["or[mt]|oir(re|bh|nn)|orra"],
             'airson':["'?son"],
                               'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]", 'innte'],
-                              'à':["às", "as.*", "ais.*"],
+                              'as':["às", "as.*", "ais.*"],
                               'bho':["(bh)?o", "(bh)?ua(m|t)"],
                               'eadar':["ea.*"],
                               'fo':["fo.*"],
