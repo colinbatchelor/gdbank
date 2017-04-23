@@ -1,5 +1,6 @@
 from __future__ import print_function
 import sys
+from acainn import Features
 
 def eprint(*args, **kwargs):
     print(*args, file = sys.stderr, **kwargs)
@@ -12,6 +13,7 @@ def arcosg_to_upostag(tag):
     return upostag_mapping_simple[tag[0]] if tag[0] in upostag_mapping_simple else upostag_mapping_harder[tag[0] + tag[1]]
 
 id = 1
+features = Features()
 with open(sys.argv[1]) as f:
     for line in f:
         tokens = line.strip().split()
@@ -19,6 +21,7 @@ with open(sys.argv[1]) as f:
         for t in tokens:
             if '/' in t:
                 form,tag = t.split('/')[0:2] # in case of multiple tags
+                tag = tag.strip('*')
                 if tag == 'Xsc':
                     id = 1
                     print ()
@@ -26,7 +29,11 @@ with open(sys.argv[1]) as f:
                     upostag = arcosg_to_upostag(tag)
                 except:
                     eprint(tag)
-                print('%s\t%s\t_\t%s\t%s\t_\t_\t_\t_\t_' % (id, carry + form, upostag, tag))
+                feats = '_'
+                if tag.startswith('Aq'): feats = features.feats_adj(form, tag)
+                if tag.startswith('Nc') or tag.startswith('Nn-'): feats = features.feats_noun(form, tag)
+                if tag.startswith('Td'): feats = features.feats_det(form, tag)
+                print('%s\t%s\t_\t%s\t%s\t%s\t_\t_\t_\t_' % (id, carry + form, upostag, tag, feats))
                 carry = ''
                 if form == '.':
                     id = 1

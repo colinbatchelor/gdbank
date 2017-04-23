@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from acainn import Lemmatizer, Retagger, Subcat, Typer
+from acainn import Features, Lemmatizer, Retagger, Subcat, Typer
 
 # checks that all the labels actually match
 class TestIntegration(unittest.TestCase):
@@ -27,6 +27,28 @@ class TestIntegration(unittest.TestCase):
         for key in self.s.mappings.iterkeys():
             for item in self.s.mappings[key]:
                 self.assertTrue(item in self.t.types.keys(), item)
+
+class TestFeatures(unittest.TestCase):
+    def setUp(self):
+        self.f = Features()
+
+    def tearDown(self):
+        self.f = None
+
+    def test_feats_adj(self):
+        self.assertEqual('_', self.f.feats_adj('uabhasach', 'Ap'))
+        self.assertEqual('_', self.f.feats_adj('fhearr', 'Apc'))
+
+    def test_feats_det(self):
+        self.assertEqual('Gender=Masc|Number=Sing', self.f.feats_det('an','Tdsm'))
+        self.assertEqual('Gender=Fem|Number=Sing', self.f.feats_det('na','Tdsf'))
+        self.assertEqual('Gender=Masc|Number=Plur', self.f.feats_det('na', 'Tdpm'))
+        self.assertEqual('Case=Gen|Gender=Fem|Number=Plur', self.f.feats_det('nam', 'Tdpfg'))
+
+    def test_feats_noun(self):
+        self.assertEqual('Case=Nom|Gender=Masc|Number=Sing', self.f.feats_noun('fear', 'Ncsmn'))
+        self.assertEqual('Case=Dat|Gender=Fem|Number=Plur', self.f.feats_noun('mionaidean', 'Ncpfd'))
+        self.assertEqual('Case=Gen|Gender=Fem|Number=Plur', self.f.feats_noun('caorach', 'Ncpfg'))
 
 class TestTyper(unittest.TestCase):
     def setUp(self):

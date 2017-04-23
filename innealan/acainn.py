@@ -180,6 +180,36 @@ class Subcat:
         else:
             return self.mappings["default"]
 
+class Features:
+    def __init__(self):
+        self.cases = { 'n':'Nom', 'd':'Dat', 'g':'Gen', 'v':'Voc' }
+        self.genders = { 'm':'Masc', 'f':'Fem' }
+        self.numbers = { 's':'Sing', 'p':'Plur' }
+
+    def feats_adj(self, surface, pos):
+        if not pos.startswith('Aq-'): return '_'
+        number = self.numbers[pos[3]]
+        if len(pos) == 4: return "Number=%s" % number
+        case = self.cases[pos[5]]
+        gender = self.genders[pos[4]]
+        return "Case=%s|Gender=%s|Number=%s" % (case, gender, number)
+        
+    def feats_det(self, surface, pos):
+        number = self.numbers[pos[2]]
+        if len(pos) == 3: return "Number=%s" % number
+        if len(pos) == 4: return "Gender=%s|Number=%s" % (self.genders[pos[3]], number)
+        case = self.cases[pos[4]]
+        if pos[3] == "-": return "Case=%s|Number=%s" % (case,number)
+        return "Case=%s|Gender=%s|Number=%s" % (case, self.genders[pos[3]], number)
+
+    def feats_noun(self, surface, pos):
+        case = self.cases[pos[4]]
+        if pos[3] == "-": return "Case=%s" % case
+        gender = self.genders[pos[3]]
+        if pos.startswith('Nn'): return "Case=%s|Gender=%s" % (case, gender)
+        number = self.numbers[pos[2]]
+        return "Case=%s|Gender=%s|Number=%s" % (case, gender, number)
+
 class Typer:
     def __init__(self):
         self.types = {}
