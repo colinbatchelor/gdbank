@@ -184,14 +184,15 @@ class Features:
     def __init__(self):
         self.cases = { 'n':'Nom', 'd':'Dat', 'g':'Gen', 'v':'Voc' }
         self.genders = { 'm':'Masc', 'f':'Fem' }
-        self.numbers = { 's':'Sing', 'p':'Plur' }
+        self.numbers = { 's':'Sing', 'p':'Plur', 'd':'Dual' }
 
     def feats_adj(self, surface, pos):
         if not pos.startswith('Aq-'): return '_'
         number = self.numbers[pos[3]]
         if len(pos) == 4: return "Number=%s" % number
-        case = self.cases[pos[5]]
         gender = self.genders[pos[4]]
+        if len(pos) == 5: return "Gender=%s|Number=%s" % (gender, number)
+        case = self.cases[pos[5]]
         return "Case=%s|Gender=%s|Number=%s" % (case, gender, number)
         
     def feats_det(self, surface, pos):
