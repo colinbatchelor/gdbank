@@ -9,8 +9,11 @@ aboutFN = os.path.join(datadir, "AboutFile.txt")
 helpFN = os.path.join(datadir, "HelpFile.txt")
 abbrevFN = os.path.join(datadir, "Abbrv.csv")  # list of Gaelic and English abbreviations
 
-
 class Tokeniser():
+    def normalise_quotes(self, token):
+        y = re.sub("[‘’´`]", "'", str(token))  # normalising apostrophes
+        w = re.sub("[“”]", '"', str(y))
+        return w
 
     def tokenise(self, text):
         self.text = text
@@ -19,18 +22,6 @@ class Tokeniser():
 
         self.PnameValues = []
 
-        self.tokensetF = []
-
-        self.tokensetF1 = []
-
-        self.tokensetF2 = []
-
-        self.tokensetF3 = []
-
-        self.tokensetF4 = []
-
-        self.tokensetF5 = []
-
         self.Junk = []
 
         self.abbr = re.findall(r"\w+\S+", str(codecs.open(abbrevFN, 'r')))
@@ -38,17 +29,39 @@ class Tokeniser():
         self.exceptions = ["'ac", "[?]", '`ac', "'gam", "`gam", "'gad", "`gad", "'ga", "`ga", "'gar", "`gar", "'gur",
                            "`gur", "'gan", "`gan", "'m", "`m", "'n", "`n", "'nam", "`nam", "'nad", "`nad", "'na", "`na",
                            "'nar", "`nar", "‘nar", "'nur", "`nur", "'nan", "`nan", "'san", "'San", "‘San", "`san",
-                           "‘sa", "`sa", "‘S", "'S", "`S", "‘ac", "‘ga", "`ga", "‘gan", "`gan"]
+                           "‘sa", "`sa", "‘S", "'S", "`S", "‘ac", "‘ga", "`ga", "‘gan", "`gan", "h-uile"]
 
-        # self.alltokens = re.findall(r"\w+['-]+\w+|['''""]+\w+|\S+['',.!?':]+\S+|\w+['',.!?"":]|[''""]\w+|\w+[.!?,']+\S|\W+\S+\w+[']|[^\W\s]+", self.text)
+        big_re = re.compile(r"""\w+[“'-’]+\w+|
+\w+[-.!?,'"":’`/“”]+\s+|
+[-'’`“]+\w+|
+[(]\W+|
+[(]+[0-9]+[)]|
+[(]+\S+[)]|
+\S+[)]|
+\w+[)]+[,.]+\s+|
+\w\+[-]+\w+[)]+[.]+\s|
+\S+[)]+[;.]+\s+|
+\s+[',.!?:’`/=]+\s+|
+(?<!=[‘',.!?:’/`])+\w+|
+\S[^]+\S+|
+\w+[',.!?:""’/`‘]+|
+(?<=['"":’`‘])+\S+|
+[£$]+[0-9]+|
+\w+[""''’”/]+|
+[aA-zZ]*[.:,’`”)]+[,;.]+\s+|
+[aA-zZ]*[.:,’`”!?]+|
+[aA-zZ]*[?]+[”]+\s|
+[‘]+\w+[’]+[,]|
+[‘]+\w+[’]+\s+|
+\w+[@]+\w+[.]+\w+|
+\w+[?]+[:]+[//]+[^\s<>']+|
+\W\w+\s|
+[^\W\s]+""", re.VERBOSE | re.UNICODE)
 
-        self.alltokens = re.findall(
-            r"\w+[“'-’]+\w+|\w+[-.!?,'"":’`/“”]+\s+|[-'’`“]+\w+|[(]\W+|[(]+[0-9]+[)]|[(]+\S+[)]|\S+[)]|\w+[)]+[,.]+\s+|\w\+[-]+\w+[)]+[.]+\s|\S+[)]+[;.]+\s+|\s+[',.!?:’`/=]+\s+|(?<!=[‘',.!?:’/`])+\w+|\S[^]+\S+|\w+[',.!?:""’/`‘]+|(?<=['"":’`‘])+\S+|[£$]+[0-9]+|\w+[""''’”/]+|[aA-zZ]*[.:,’`”)]+[,;.]+\s+|[aA-zZ]*[.:,’`”!?]+|[aA-zZ]*[?]+[”]+\s|[‘]+\w+[’]+[,]|[‘]+\w+[’]+\s+|\w+[@]+\w+[.]+\w+|\w+[?]+[:]+[//]+[^\s<>']+|\W\w+\s|[^\W\s]+",
-            self.text)
+        self.alltokens = re.findall(big_re, self.text)
+        self.tokensetF = [n.strip() for n in self.alltokens]
 
-        for n in self.alltokens:
-            self.tokensetF.append(n.strip())
-
+        self.tokensetF1 = []
         for nx in self.tokensetF:
             if nx == self.abbr:
                 self.tokensetF1.append(nx)
@@ -432,37 +445,22 @@ class Tokeniser():
 
                 if hyphenT:
                     self.tokensetF1.append(''.join(hyphenT))
-
                     self.tokensetF1.append(''.join(hyphenT1))
-
                     nx = ''
 
                 if hyphenN:
                     self.tokensetF1.append(''.join(hyphenN))  ## then append the stripped token into the list container
-
                     self.tokensetF1.append(''.join(hyphenN1))  ## then append the stripped token into the list container
-
-                    nx = ''
-
-                if hyphenH and nx not in ["h-uile", "h-ana-miannaibh"]:
-                    self.tokensetF1.append(''.join(hyphenH))  ## then append the stripped token into the list container
-
-                    self.tokensetF1.append(''.join(hyphenH1))  ## then append the stripped token into the list container
-
                     nx = ''
 
                 if hyphenSe:
                     self.tokensetF1.append(''.join(hyphenSa[:1]))
-
                     self.tokensetF1.append(''.join(XhyphenSe[:1]))
-
                     nx = ''
 
                 if hyphenSan:
                     self.tokensetF1.append(''.join(XhyphenSan[:1]))
-
                     self.tokensetF1.append(''.join(XhyphenSan[:1]))
-
                     nx = ''
 
 
@@ -470,6 +468,7 @@ class Tokeniser():
                 else:
                     self.tokensetF1.append(nx)
 
+        self.tokensetF2 = []
         for i, DA in enumerate(self.tokensetF1):
             """Here follows a long list of token elements. A future improvement would be to pull all of these
             elements into a csv file loaded into the tagger"""
@@ -2866,6 +2865,7 @@ class Tokeniser():
             else:
                 self.tokensetF2.append(DA)
 
+        self.tokensetF3 = []
         for i, nn in enumerate(self.tokensetF2):
             secondQuots = re.findall(r"(\w+[' " "])", str(nn))  ## apostrophe
 
@@ -2903,15 +2903,11 @@ class Tokeniser():
             else:
                 self.tokensetF3.append(nn.strip())
 
+        self.tokensetF4 = []
         for q in self.tokensetF3:
             if q not in self.Junk and ''.join(q) != '':
                 self.tokensetF4.append(q)
 
-        for x in self.tokensetF4:
-            y = re.sub("[‘’´`]", "'", str(x))  # normalising apostrophes
-
-            w = re.sub("[“”]", '"', str(y))
-
-            self.tokensetF5.append(w)
+        self.tokensetF5 = [self.normalise_quotes(x) for x in self.tokensetF4]
 
         return self.tokensetF5

@@ -501,21 +501,13 @@ class GaelicSentenceSplitter(GaelicPartOfSpeechTagger):
 
     def splitsentence(self, text):
         self.text = text
-
         self.sentences = re.split(r'\\.', self.text)
-
         return self.sentences
-
-
-
-
 
 class Tagger(GaelicTokeniser, GaelicPartOfSpeechTagger):
     def __init__(self):
         GaelicTokeniser.__init__(self)
-
         GaelicPartOfSpeechTagger.__init__(self, 'inputfile', 'outputfile')
-
 
 if __name__ == "__main__":
     x = mopenfiles('/Users/WLamb/Dropbox/Temp/ScG_system/poilis.txt')
