@@ -10,9 +10,23 @@ class Test(unittest.TestCase):
     def tearDown(self):
         self.t = None
 
+    def test_placenames(self):
+        self.assertEqual(self.t.tokenise('Roinn Eòrpa'), ['Roinn Eòrpa'])
+        self.assertEqual(self.t.tokenise('Port Rìgh'), ['Port Rìgh'])
+        self.assertEqual(self.t.tokenise('Phort Rìgh'), ['Phort Rìgh'])
+
+    def test_normalise_quotes(self):
+        self.assertEqual(self.t.normalise_quotes("'"), r"'")
+        self.assertEqual(self.t.normalise_quotes('’'), r"'")
+        
     def test_hyphens(self):
         self.assertEqual(self.t.tokenise('h-uile'), ['h-uile'])
-        # the code tries to keep h-ana-miannaibh together but breaks it elsewhere
+        self.assertEqual(self.t.tokenise('h-ana-miannaibh'), ['h-', 'ana-miannaibh'])
+
+    def test_dh(self):
+        self.assertEqual(self.t.tokenise("dh’fhàs"), ["dh'", "fhàs"])
+        self.assertEqual(self.t.tokenise("dh'fhàs"), ["dh'", "fhàs"])
+        self.assertEqual(self.t.tokenise('dh’obair-riaghaltais'), [ "dh'", "obair-riaghaltais" ])
 
     def test_singletons(self):
         # these all have leading apostrophes and should remain as a single unit

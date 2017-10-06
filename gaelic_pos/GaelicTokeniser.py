@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import re
 import codecs
 import os
@@ -10,28 +8,17 @@ helpFN = os.path.join(datadir, "HelpFile.txt")
 abbrevFN = os.path.join(datadir, "Abbrv.csv")  # list of Gaelic and English abbreviations
 
 class Tokeniser():
-    def normalise_quotes(self, token):
-        y = re.sub("[‘’´`]", "'", str(token))  # normalising apostrophes
-        w = re.sub("[“”]", '"', str(y))
-        return w
-
-    def tokenise(self, text):
-        self.text = text
-
-        self.Pnamedict = {}
-
-        self.PnameValues = []
-
-        self.Junk = []
-
-        self.abbr = re.findall(r"\w+\S+", str(codecs.open(abbrevFN, 'r')))
-
+    def __init__(self):
+        lines = []
+        with open(abbrevFN) as f:
+            for line in f:
+                lines.append(str(line))
+        self.abbr = re.findall(r"\w+\S+", " ".join(lines))
         self.exceptions = ["'ac", "[?]", '`ac', "'gam", "`gam", "'gad", "`gad", "'ga", "`ga", "'gar", "`gar", "'gur",
                            "`gur", "'gan", "`gan", "'m", "`m", "'n", "`n", "'nam", "`nam", "'nad", "`nad", "'na", "`na",
                            "'nar", "`nar", "‘nar", "'nur", "`nur", "'nan", "`nan", "'san", "'San", "‘San", "`san",
                            "‘sa", "`sa", "‘S", "'S", "`S", "‘ac", "‘ga", "`ga", "‘gan", "`gan", "h-uile"]
-
-        big_re = re.compile(r"""\w+[“'-’]+\w+|
+        self.big_re = re.compile(r"""\w+[“'-’]+\w+|
 \w+[-.!?,'"":’`/“”]+\s+|
 [-'’`“]+\w+|
 [(]\W+|
@@ -56,10 +43,26 @@ class Tokeniser():
 \w+[@]+\w+[.]+\w+|
 \w+[?]+[:]+[//]+[^\s<>']+|
 \W\w+\s|
-[^\W\s]+""", re.VERBOSE | re.UNICODE)
+[^\W\s]+""", re.VERBOSE)
 
-        self.alltokens = re.findall(big_re, self.text)
-        self.tokensetF = [n.strip() for n in self.alltokens]
+
+        
+    def normalise_quotes(self, token):
+        y = re.sub("[‘’´`]", "'", str(token))  # normalising apostrophes
+        w = re.sub("[“”]", '"', str(y))
+        return w
+
+    def tokenise(self, text):
+        self.text = text
+        self.Pnamedict = {}
+        self.PnameValues = []
+        self.Junk = []
+
+
+
+
+        self.alltokens = re.findall(self.big_re, self.text)
+        self.tokensetF = [self.normalise_quotes(n.strip()) for n in self.alltokens]
 
         self.tokensetF1 = []
         for nx in self.tokensetF:
@@ -1368,7 +1371,7 @@ class Tokeniser():
 
                 DA = ''
 
-            if DA == 'Phort' and "Rìgh" in self.tokensetF1[i:i + 2]:
+            if (DA == 'Phort' or DA == 'Port') and "Rìgh" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
 
                 self.tokensetF1.remove("Rìgh")
@@ -1918,38 +1921,26 @@ class Tokeniser():
 
             if DA == "ann" and "an" in self.tokensetF1[i:i + 2] and "seo" in self.tokensetF1[i:i + 3]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 3]))
-
                 self.tokensetF1.remove("an")
-
                 self.tokensetF1.remove("ann")
-
                 DA = ''
 
             if DA == "ann" and "an" in self.tokensetF1[i:i + 2] and "siud" in self.tokensetF1[i:i + 3]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 3]))
-
                 self.tokensetF1.remove("an")
-
                 self.tokensetF1.remove("siud")
-
                 DA = ''
 
             if DA == "ann" and "an" in self.tokensetF1[i:i + 2] and "sin" in self.tokensetF1[i:i + 3]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 3]))
-
                 self.tokensetF1.remove("an")
-
                 self.tokensetF1.remove("sin")
-
                 DA = ''
 
             if DA == "a'" and "bhòn-raoir" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("a'")
-
                 self.tokensetF1.remove("bhòn-raoir")
-
                 DA = ''
 
             if DA == "a'" and "s" in self.tokensetF1[i:i + 2]:
@@ -2045,18 +2036,13 @@ class Tokeniser():
 
             if DA == "am" and "bliadhna" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove('am')
-
                 self.tokensetF1.remove("bliadhna")
-
                 DA = ""
 
             if DA == "a" and "muigh" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove('a')
-
                 self.tokensetF1.remove("muigh")
 
                 DA = ""
@@ -2908,6 +2894,4 @@ class Tokeniser():
             if q not in self.Junk and ''.join(q) != '':
                 self.tokensetF4.append(q)
 
-        self.tokensetF5 = [self.normalise_quotes(x) for x in self.tokensetF4]
-
-        return self.tokensetF5
+        return self.tokensetF4
