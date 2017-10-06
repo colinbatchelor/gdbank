@@ -181,27 +181,19 @@ class Tokeniser():
 
                 if qColon:
                     x = re.findall(r"\S", str(nx))
-
                     self.tokensetF1.append(''.join(x[:len(x) - 1]))
-
                     xx = x[len(x) - 1:]
-
                     self.tokensetF1.append(''.join(xx))
-
                     nx = ''
 
                 if beforeDoubleQ:
                     self.tokensetF1.append(''.join(beforeDoubleQ))
-
                     self.tokensetF1.append(''.join(afterDoubleQ[1:]))
-
                     nx = ''
 
                 if beforeOpenBra:
                     self.tokensetF1.append(''.join(afterOpenBra[:1]))
-
                     self.tokensetF1.append(''.join(afterOpenBra[1:2]))
-
                     self.tokensetF1.append(''.join(afterOpenBra[2:]))
 
                     nx = ''
@@ -357,32 +349,23 @@ class Tokeniser():
 
                     if ''.join(x[1:2]) == "’":
                         self.tokensetF1.append(''.join(afterAccent[:2]))
-
                         self.tokensetF1.append(''.join(afterAccent[2:]))
-
                         nx = ''
 
                     if ''.join(x[2:3]) == "’":
                         self.tokensetF1.append(''.join(afterAccent[:3]))
-
                         self.tokensetF1.append(''.join(afterAccent[3:]))
-
                         nx = ''
 
                 if beforeEqual:
                     self.tokensetF1.append(''.join(beforeEqual))
-
                     self.tokensetF1.append(''.join(afterEqual[1:2]))
-
                     nx = ''
 
                 if beforestroke:
                     self.tokensetF1.append(''.join(afterstroke[:1]))
-
                     self.tokensetF1.append(''.join(beforestroke))
-
                     self.tokensetF1.append(''.join(afterstroke[1:]))
-
                     nx = ''
 
                 if currency:
@@ -1043,42 +1026,27 @@ class Tokeniser():
 
             if DA == '[' and "Placename]." in self.tokensetF1[i:i + 2]:
                 #  print (' '.join(self.tokensetF1[i:i+2]))
-
                 self.tokensetF2.append("[Placename]")
-
                 self.tokensetF2.append(".")
-
                 self.tokensetF1.remove("Placename].")
-
                 DA = ''
 
             if DA == '[' and "Placename]" in self.tokensetF1[i:i + 2]:
                 #  print (' '.join(self.tokensetF1[i:i+2]))
-
                 self.tokensetF2.append("[Placename]")
-
                 self.tokensetF1.remove("Placename].")
-
                 DA = ''
 
-            if DA == "A" and "n" in self.tokensetF1[
-                                    i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is a blank token created in between
-
+            if DA == "A" and "n" in self.tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is a blank token created in between
                 # print (''.join(self.tokensetF1[i:i+3]))
-
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 3]))
-
                 self.tokensetF1.remove("n")
-
                 DA = ''
 
             if DA == "do’" and "n" in self.tokensetF1[i:i + 2]:
                 # print (''.join(self.tokensetF1[i:i+3]))
-
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("n")
-
                 DA = ''
 
             if DA == "oirr" and "’" in self.tokensetF1[i:i + 2]:
@@ -1352,30 +1320,22 @@ class Tokeniser():
 
             if DA == "Srath" and "Chluaidh" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Chluaidh")
-
                 DA = ''
 
             if DA == "ma" and "tha" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("tha")
-
                 DA = ''
 
             if DA == 'Roinn' and "Eòrpa" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Eòrpa")
-
                 DA = ''
 
             if (DA == 'Phort' or DA == 'Port') and "Rìgh" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Rìgh")
-
                 DA = ''
             #
             # if DA == 'dhen' and "an" in self.tokensetF1[i:i + 2]:
@@ -1413,49 +1373,36 @@ class Tokeniser():
                 # self.tokensetF1.remove("bhon")
 
                 self.tokensetF1.remove("-Ghàidhealtachd")
-
                 DA = ''
 
             if DA == 'bhon' and "an" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("an")
-
                 DA = ''
 
             if DA == "o’" and "n" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("n")
-
                 DA = ''
 
             if DA == 'bhon' and "a'" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("a'")
-
                 DA = ''
 
             if DA == 'Loch' and "Aillse" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Aillse")
-
                 DA = ''
 
             if DA == 'a' and "b'" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("b'")
-
                 DA = ''
 
             if DA == 'a' and "b’" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("b’")
-
                 DA = ''
 
             if DA == "a'" and "shineach" in self.tokensetF1[i:i + 2]:
@@ -1492,17 +1439,11 @@ class Tokeniser():
 
                 DA = ''
 
-            if DA == "Caledonian" and "Mac" in self.tokensetF1[i:i + 2] and "a' " in self.tokensetF1[
-                                                                                     i:i + 3] and "Bhruthainn" in self.tokensetF1[
-                                                                                                                  i:i + 4]:
+            if DA == "Caledonian" and "Mac" in self.tokensetF1[i:i + 2] and "a' " in self.tokensetF1[i:i + 3] and "Bhruthainn" in self.tokensetF1[i:i + 4]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 4]))
-
                 self.tokensetF1.remove("Mac")
-
                 self.tokensetF1.remove("a'")
-
                 self.tokensetF1.remove("Bhruthainn")
-
                 DA = ''
 
             if DA == 'dhan' and "an" in self.tokensetF1[i:i + 2] and "sin" in self.tokensetF1[i:i + 3]:
@@ -1525,51 +1466,37 @@ class Tokeniser():
 
             if DA == 's' and "a" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("a")
-
                 DA = ''
 
             if DA == 'prionns' and "’" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("’")
-
                 DA = ''
 
             if DA == 'leams' and "'" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("'")
-
                 DA = ''
 
             if DA == 'leams' and "’" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("’")
-
                 DA = ''
 
             if DA == 'fon' and "an" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("an")
-
                 DA = ''
 
             if DA == 'fon' and "an" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("an")
-
                 DA = ''
 
             if DA == 'ionnsaicht' and "’" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(''.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("’")
-
                 DA = ''
 
             if DA == 'ionnsaicht' and "'" in self.tokensetF1[i:i + 2]:
@@ -1771,102 +1698,73 @@ class Tokeniser():
 
             if DA == "a" and "mach" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("mach")
-
                 DA = ''
 
             if DA == "sam" and "bith" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("bith")
-
                 DA = ''
 
             if DA == "Roinn" and "Eorpa" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Eorpa")
-
                 DA = ''
 
             if DA == "air" and "choireigin" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("choireigin")
-
                 DA = ''
 
             if DA == "a" and "sin" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("sin")
-
                 DA = ''
 
             if DA == "an" and "sin" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("sin")
-
                 DA = ''
 
             if DA == "Eilean" and "Sgitheanach" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Sgitheanach")
-
                 DA = ''
 
             if DA == "Fairy" and "Bridge" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Bridge")
-
                 DA = ''
 
             if DA == "Eilean" and "Tiridhe" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Tiridhe")
-
                 DA = ''
 
             if DA == "a" and "chèile" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("chèile")
-
                 DA = ''
 
             if DA == "Dùn" and "Bheagain" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Bheagain")
-
                 DA = ''
 
             if DA == "Gleann" and "Ois" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("Ois")
-
                 DA = ''
 
             if DA == "ana" and "nàdarra" in self.tokensetF1[i:i + 2]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 2]))
-
                 self.tokensetF1.remove("nàdarra")
-
                 DA = ''
 
             if DA == "An" and "Aodann" in self.tokensetF1[i:i + 2] and "Bàn" in self.tokensetF1[i:i + 3]:
                 self.tokensetF2.append(' '.join(self.tokensetF1[i:i + 3]))
-
                 self.tokensetF1.remove("Aodann")
-
                 self.tokensetF1.remove("Bàn")
-
                 DA = ''
 
             if DA == "[" and "?" in self.tokensetF1[i:i + 2] and "]" in self.tokensetF1[i:i + 3]:
