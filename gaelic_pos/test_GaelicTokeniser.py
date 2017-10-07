@@ -1,6 +1,6 @@
 import unittest
 
-from GaelicTokeniser import Tokeniser
+from simpletokeniser import Tokeniser
 
 class Test(unittest.TestCase):
     def setUp(self):
@@ -23,20 +23,17 @@ class Test(unittest.TestCase):
         self.assertEqual(self.t.tokenise('Gu dé'), ["Gu dé"])
         self.assertEqual(self.t.tokenise('mu thràth'), ["mu thràth"])
         self.assertEqual(self.t.tokenise('ma tha'), ["ma tha"])
-        # self.assertEqual(self.t.tokenise("a b'"), ["a b'"])
+        self.assertEqual(self.t.tokenise("a b'"), ["a b'"])
 
-    def moregrams(self):
-        # this one doesn't seem to work either
+    def test_moregrams(self):
         self.assertEqual(self.t.tokenise("Caledonian Mac a' Bhruthainn"), ["Caledonian Mac a' Bhruthainn"])
         
-    def punctuation(self):
-        # this one doesn't seem to work either
+    def test_punctuation(self):
         tokens = self.t.tokenise('''"Tha plana eile a' dol airson coimhead ris a' Ghearraidh Chruaidh air fad", thuirt Mgr MacÌomhair.''')
-        print(tokens)
         self.assertEqual('"', tokens[0])
-        self.assertEqual('"', tokens[13])
-        self.assertEqual(',', tokens[14])
-        self.assertEqual('.', tokens[18])
+        self.assertEqual('"', tokens[14])
+        self.assertEqual(',', tokens[15])
+        self.assertEqual('.', tokens[19])
         
     def test_hyphens(self):
         self.assertEqual(self.t.tokenise('h-uile'), ['h-uile'])
@@ -52,14 +49,14 @@ class Test(unittest.TestCase):
     def test_dh(self):
         self.assertEqual(self.t.tokenise("dh’fhàs"), ["dh'", "fhàs"])
         self.assertEqual(self.t.tokenise("dh'fhàs"), ["dh'", "fhàs"])
-        #mentioned in code but doesn't seem to work like that
+        #mentioned in original code but doesn't seem to work like that
         #self.assertEqual(self.t.tokenise('dh’obair-riaghaltais'), [ "dh'", "obair-riaghaltais" ])
 
     def singletons_leading_smart_quote(self):
         # don't seem to work at present
         exceptions = [ "‘nar", "‘San", "‘sa", "‘S", "‘ac", "‘ga", "‘gan" ]
 
-    def trailing_apostrophes(self):
+    def test_trailing_apostrophes(self):
         # don't seem to work at present
         self.assertEqual(self.t.tokenise("innt'"), ["innt'"])
         self.assertEqual(self.t.tokenise("creids'"), ["creids'"])
