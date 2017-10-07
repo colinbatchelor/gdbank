@@ -24,7 +24,7 @@ class Test(unittest.TestCase):
         self.assertEqual(self.t.tokenise('mu thràth'), ["mu thràth"])
         self.assertEqual(self.t.tokenise('ma tha'), ["ma tha"])
         self.assertEqual(self.t.tokenise("a b'"), ["a b'"])
-
+        
     def test_moregrams(self):
         self.assertEqual(self.t.tokenise("Caledonian Mac a' Bhruthainn"), ["Caledonian Mac a' Bhruthainn"])
         
@@ -36,7 +36,8 @@ class Test(unittest.TestCase):
         self.assertEqual('.', tokens[19])
         
     def test_hyphens(self):
-        self.assertEqual(self.t.tokenise('h-uile'), ['h-uile'])
+        self.assertEqual(self.t.tokenise('h-uile'), ['h-', 'uile'])
+        self.assertEqual(self.t.tokenise('a h-uile'), ['a h-uile'])
         self.assertEqual(self.t.tokenise('h-ana-miannaibh'), ['h-', 'ana-miannaibh'])
         self.assertEqual(self.t.tokenise('t-astar'), ['t-', 'astar'])
         self.assertEqual(self.t.tokenise('a-steach'), ['a-steach'])
