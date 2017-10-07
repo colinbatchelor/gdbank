@@ -2,10 +2,11 @@ import re
 
 class Tokeniser():
     def __init__(self):
-        self.bigrams = ["(a) (b')", "(a) (h-uile)",
-            "([Gg]u) (d\xe9)", "([Rr]oinn) (E\xf2rpa)", "(Ph?ort) (R\xecgh)", "(Loch) (Aillse)", "(mu) (thr\xe0th)",
-            "(ma) (tha)", "(sam) (bith)", "(mu) (dheireadh)"]
-        self.trigrams = ["(Beinn) (na) (Faoghla)"]
+        self.bigrams = []
+        with open('./Data/bigrams.txt') as f:
+            for line in f:
+                self.bigrams.append(line.strip())
+        self.trigrams = ["(Beinn) (na) (Faoghla)", "dhan an sin", "Pholl a Ghr\xf9thain"]
         self.fourgrams = ["(Caledonian) (Mac) (a') (Bhruthainn)"]
 
     def normalise_quotes(self, s):
@@ -26,7 +27,7 @@ class Tokeniser():
     def tokenise(self, text):
         token = ''
         tokens = []
-        text = text.replace("h-uile", "h#uile")
+        text = text.replace("a h-uile", "a#h#uile")
         for t in self.normalise_quotes(self.find_ngrams(text)):
             if re.match("[hnt]-", token) or token == "dh'":
                 tokens.append(token)
@@ -34,12 +35,12 @@ class Tokeniser():
             elif t == ' ':
                 if len(token) > 0: tokens.append(token)
                 token = ''
-            elif t in '''()[],."''':
+            elif t in '''()[],.?!"''':
                 if len(token) > 0: tokens.append(token)
                 tokens.append(t)
                 token = ''
             else:
                 token = token + t
         if len(token) > 0: tokens.append(token)
-        return [u.replace('_', ' ').replace("h#uile", "h-uile") for u in tokens]
+        return [u.replace('_', ' ').replace("a#h#uile", "a h-uile") for u in tokens]
 
