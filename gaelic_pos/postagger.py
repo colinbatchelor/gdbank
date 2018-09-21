@@ -100,17 +100,17 @@ class PosTagger():
             if tag == 'Dp3sf' and ''.join(algT[y + 1][:2]) in ['ph', 'bh', 'ch', 'th', 'dh', 'mh', 'sh', 'fh']:
                 algV[y] = 'Dp3sm'
 
-            if tag == 'Dp3sm' and ''.join(algT[y + 1][:2]) in ['pa', 'pe', 'pi', 'po', 'pu', 'pl', 'pm',
-                                                                          'pn', 'ba', 'be', 'bi', 'bo', 'bu', 'bl',
-                                                                          'bm', 'bn', 'ca', 'ce', 'ci', 'co', 'cu',
-                                                                          'cl', 'cm', 'cn', 'ga', 'ge', 'gi', 'go',
-                                                                          'gu', 'gl', 'gm', 'gn', 'ta', 'te', 'ti',
-                                                                          'to', 'tu', 'tl', 'tm', 'tn', 'da', 'de',
-                                                                          'di', 'do', 'du', 'dl', 'dm', 'dn', 'ma',
-                                                                          'me', 'mi', 'mo', 'mu', 'ml', 'mm', 'mn',
-                                                                          'sa', 'se', 'si', 'so', 'su', 'sl', 'sm',
-                                                                          'sn', 'fa', 'fe', 'fi', 'fo', 'fu', 'fl',
-                                                                          'fm', 'fn']:
+            unlenited = ['pa','pe','pi','po','pu','pl','pm','pn',
+                         'ba','be','bi','bo','bu','bl','bm','bn',
+                         'ca','ce','ci','co','cu','cl','cm','cn',
+                         'ga','ge','gi','go','gu','gl','gm','gn',
+                         'ta','te','ti','to','tu','tl','tm','tn',
+                         'da','de','di','do','du','dl','dm','dn',
+                         'ma','me','mi','mo','mu','ml','mm','mn',
+                         'sa','se','si','so','su','sl','sm','sn',
+                         'fa','fe','fi','fo','fu','fl','fm','fn']
+                
+            if tag == 'Dp3sm' and ''.join(algT[y + 1][:2]) in unlenited:
                 algV[y] = 'Dp3sf'
 
             if tag == 'Dp3sm' and ''.join(algT[y + 1][:1]) == 'h-':
@@ -119,41 +119,20 @@ class PosTagger():
             if tag == 'Spp3sf' and ''.join(algT[y + 1][:2]) in ['ph', 'bh', 'ch', 'th', 'dh', 'mh', 'sh', 'fh']:
                 algV[y] = 'Spp3sm'
 
-            if tag == 'Spp3sm' and ''.join(algT[y + 1][:2]) in ['pa', 'pe', 'pi', 'po', 'pu', 'pl', 'pm',
-                                                                           'pn', 'ba', 'be', 'bi', 'bo', 'bu', 'bl',
-                                                                           'bm', 'bn', 'ca', 'ce', 'ci', 'co', 'cu',
-                                                                           'cl', 'cm', 'cn', 'ga', 'ge', 'gi', 'go',
-                                                                           'gu', 'gl', 'gm', 'gn', 'ta', 'te', 'ti',
-                                                                           'to', 'tu', 'tl', 'tm', 'tn', 'da', 'de',
-                                                                           'di', 'do', 'du', 'dl', 'dm', 'dn', 'ma',
-                                                                           'me', 'mi', 'mo', 'mu', 'ml', 'mm', 'mn',
-                                                                           'sa', 'se', 'si', 'so', 'su', 'sl', 'sm',
-                                                                           'sn', 'fa', 'fe', 'fi', 'fo', 'fu', 'fl',
-                                                                           'fm', 'fn']:
+            if tag == 'Spp3sm' and ''.join(algT[y + 1][:2]) in unlenited:
                 algV[y] = 'Spp3sf'
 
             if tag == 'Spp3sm' and ''.join(algT[y + 1][:1]) == 'h-':
                 algV[y] = 'Spp3sf'
+            digits = ['0','1','2','3','4','5','6','7','8','9']
 
-            if tag != 'Mn' and ''.join(algT[y][:1]) in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] and ''.join(algT[y][len(algT[y]) - 1:]) in ['0',
-                                                                                                                    '1',
-                                                                                                                    '2',
-                                                                                                                    '3',
-                                                                                                                    '4',
-                                                                                                                    '5',
-                                                                                                                    '6',
-                                                                                                                    '7',
-                                                                                                                    '8',
-                                                                                                                    '9']:
+            if tag != 'Mn' and ''.join(algT[y][:1]) in digits and ''.join(algT[y][len(algT[y]) - 1:]) in digits:
                 algV[y] = 'Mn'
 
-            if tag != 'Mn' and ''.join(algT[y][:1]) in ['0', '1', '2', '3', '4', '5', '6', '7', '8',
-                                                                   '9'] and ''.join(algT[y][len(algT[y]) - 2:]) in ['an']:
+            if tag != 'Mn' and ''.join(algT[y][:1]) in digits and ''.join(algT[y][len(algT[y]) - 2:]) in ['an']:
                 algV[y] = 'Mn'
 
-            if tag != 'Mo' and ''.join(algT[y][:1]) in ['0', '1', '2', '3', '4', '5', '6', '7', '8',
-                                                                   '9'] and ''.join(algT[y][len(algT[y]) - 2:]) in [
-                    'mh']:
+            if tag != 'Mo' and ''.join(algT[y][:1]) in digits and ''.join(algT[y][len(algT[y]) - 2:]) in ['mh']:
                 algV[y] = 'Mo'
 
             if tag != 'Fb' and ''.join(algT[y]) == '—':
