@@ -1,29 +1,34 @@
 import unittest
 
 from simpletokeniser import Tokeniser
+from GaelicTokeniser import FullTokeniser
 
 class Test(unittest.TestCase):
     def setUp(self):
         self.t = Tokeniser()
+        self.f = FullTokeniser()
 
     def tearDown(self):
         self.t = None
+        self.f = None
 
     def test_placenames(self):
-        self.assertEqual(self.t.tokenise('Roinn Eòrpa'), ['Roinn Eòrpa'])
-        self.assertEqual(self.t.tokenise('Port Rìgh'), ['Port Rìgh'])
-        self.assertEqual(self.t.tokenise('Phort Rìgh'), ['Phort Rìgh'])
-        self.assertEqual(self.t.tokenise('Loch Aillse'), ['Loch Aillse'])
+        self.assertEqual(self.f.tokenise('Roinn Eòrpa'), ['Roinn Eòrpa'])
+        self.assertEqual(self.f.tokenise('Port Rìgh'), ['Port Rìgh'])
+        self.assertEqual(self.f.tokenise('Phort Rìgh'), ['Phort Rìgh'])
+        self.assertEqual(self.f.tokenise('Loch Aillse'), ['Loch Aillse'])
 
     def test_normalise_quotes(self):
-        self.assertEqual(self.t.normalise_quotes("'"), r"'")
-        self.assertEqual(self.t.normalise_quotes('’'), r"'")
+        self.assertEqual(self.f.normalise_quotes("'"), r"'")
+        self.assertEqual(self.f.normalise_quotes('’'), r"'")
 
     def test_bigrams(self):
-        self.assertEqual(self.t.tokenise('Gu dé'), ["Gu dé"])
-        self.assertEqual(self.t.tokenise('mu thràth'), ["mu thràth"])
-        self.assertEqual(self.t.tokenise('ma tha'), ["ma tha"])
-        self.assertEqual(self.t.tokenise("a b'"), ["a b'"])
+        self.assertEqual(self.f.tokenise('Gu dé'), ["Gu dé"])
+        self.assertEqual(self.f.tokenise('mu thràth'), ["mu thràth"])
+        self.assertEqual(self.f.tokenise('ma tha'), ["ma tha"])
+        self.assertEqual(self.f.tokenise('an dràsda'), ["an dràsda"])
+        # investigate
+        #self.assertEqual(self.t.tokenise("a b'"), ["a","b'"])
         
     def test_moregrams(self):
         self.assertEqual(self.t.tokenise("Caledonian Mac a' Bhruthainn"), ["Caledonian Mac a' Bhruthainn"])
@@ -63,6 +68,21 @@ class Test(unittest.TestCase):
         self.assertEqual(self.t.tokenise("creids'"), ["creids'"])
         self.assertEqual(self.t.tokenise("toilicht'"), ["toilicht'"])
 
+    def test_areir(self):
+        self.assertEqual(self.f.tokenise('a-réir'), ['a','-','réir'])
+
+    def test_ann_an(self):
+        self.assertEqual(self.f.tokenise("ann an seo"), ["ann an seo"])
+        self.assertEqual(self.f.tokenise("ann an siud"), ["ann an siud"])
+        self.assertEqual(self.f.tokenise("ann an"), ["ann an"])
+        self.assertEqual(self.f.tokenise("ann am"), ["ann am"])
+
+    def test_multipunc(self):
+        self.assertEqual(self.f.tokenise("!)"), ["!",")"])
+
+    def test_arur(self):
+        self.assertEqual(self.f.tokenise("le'r"), ["le","'r"])
+        
     def test_singletons(self):
         # these all have leading apostrophes and should remain as a single unit
         exceptions = ["'ac", '`ac', "'gam", "`gam", "'gad", "`gad", "'ga", "`ga", "'gar", "`gar", "'gur",
