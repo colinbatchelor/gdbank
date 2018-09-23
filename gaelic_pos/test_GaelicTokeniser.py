@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         self.assertEqual(self.f.tokenise("Bha cuimhn' aige air Uilleam o'n a bha e 'n Glaschu: duine mór socair, sàmhach."), ["Bha", "cuimhn'", "aige", "air", "Uilleam", "o'n", "a", "bha", "e", "'n", "Glaschu", ":", "duine", "mór", "socair", ",", "sàmhach", "."])
 
     def test_placenames(self):
-        names = ['Roinn Eòrpa', 'Port Rìgh', 'Phort Rìgh', 'Loch Aillse', 'Rubha Gharbh', 'Tràigh Ghil', 'Chaolas Mhór']
+        names = ['Roinn Eòrpa', 'Port Rìgh', 'Phort Rìgh', 'Loch Aillse', 'Rubha Gharbh', 'Tràigh Ghil', 'Chaolas Mhór', 'Eilean Sgitheanach', 'Fairy Bridge', 'Dùn Bheagain', 'Eilean Tiridhe', 'Gleann Ois']
         for name in names:
             self.assertEqual(self.f.tokenise(name), [name])
 
@@ -31,11 +31,13 @@ class Test(unittest.TestCase):
         self.assertEqual(self.f.tokenise('an dràsda'), ["an dràsda"])
         self.assertEqual(self.f.tokenise('bhon an'), ["bhon an"])
         self.assertEqual(self.f.tokenise("bhon a' cholbh"), ["bhon a'", "cholbh"])
-        # investigate
-        #self.assertEqual(self.t.tokenise("a b'"), ["a","b'"])
+        self.assertEqual(self.f.tokenise("Nuair a b' e"), ["Nuair", "a b'", "e"])
         
     def test_moregrams(self):
-        self.assertEqual(self.t.tokenise("Caledonian Mac a' Bhruthainn"), ["Caledonian Mac a' Bhruthainn"])
+        self.assertEqual(self.f.tokenise("ma dh' fhaoidhte"), ["ma dh'fhaoidhte"])
+        self.assertEqual(self.f.tokenise("ma dh' fhaoite"), ["ma dh'fhaoite"])
+        self.assertEqual(self.f.tokenise("math dh' fhaoidte"), ["math dh'fhaoidte"])
+        self.assertEqual(self.f.tokenise("Caledonian Mac a' Bhruthainn"), ["Caledonian Mac a' Bhruthainn"])
         
     def test_punctuation(self):
         tokens = self.t.tokenise('''"Tha plana eile a' dol airson coimhead ris a' Ghearraidh Chruaidh air fad", thuirt Mgr MacÌomhair.''')
@@ -84,7 +86,9 @@ class Test(unittest.TestCase):
     def test_multipunc(self):
         self.assertEqual(self.f.tokenise("!)"), ["!",")"])
 
-    def test_arur(self):
+    def test_internal_apostrophes(self):
+        self.assertEqual(self.f.tokenise("a's"), ["a's"])
+        self.assertEqual(self.f.tokenise("a’s"), ["a’s"])
         self.assertEqual(self.f.tokenise("le'r"), ["le","'r"])
         
     def test_singletons(self):

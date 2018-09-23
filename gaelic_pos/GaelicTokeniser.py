@@ -55,7 +55,7 @@ class FullTokeniser():
         Junk = []
 
         self.alltokens = self._firstpass(self.text)
-        tokensetF = [self.normalise_quotes(n.strip()) for n in self.alltokens]
+        tokensetF = [n.strip() for n in self.alltokens]
         tokensetF1 = []
         for nx in tokensetF:
             if nx == self.abbr:
@@ -439,291 +439,292 @@ class FullTokeniser():
                     tokensetF1.append(nx)
 
         tokensetF2 = []
-        for i,DA in enumerate(tokensetF1):
+        for i,w0 in enumerate(tokensetF1):
             w1 = tokensetF1[i+1] if i < len(tokensetF1) - 1 else "<END>"
+            w2 = tokensetF1[i+2] if i < len(tokensetF1) - 2 else "<END>"
             """Here follows a long list of token elements. A future improvement would be to pull all of these
             elements into a csv file loaded into the tagger"""
-            if DA == '1':
+            if w0 == '1':
                 tokensetF2.append('[1]')
-            elif DA == '2':
+            elif w0 == '2':
                 tokensetF2.append('[2]')
-            elif DA == '3':
+            elif w0 == '3':
                 tokensetF2.append('[3]')
 
-            elif DA == '4':
+            elif w0 == '4':
                 tokensetF2.append('[4]')
 
-            elif DA == '5':
+            elif w0 == '5':
                 tokensetF2.append('[5]')
-            elif DA == '6':
+            elif w0 == '6':
                 tokensetF2.append('[6]')
-            elif DA == '7':
+            elif w0 == '7':
                 tokensetF2.append('[7]')
-            elif DA == '8':
+            elif w0 == '8':
                 tokensetF2.append('[8]')
 
-            elif DA == '9':
+            elif w0 == '9':
                 tokensetF2.append('[9]')
 
-            elif DA == ']':
+            elif w0 == ']':
                 tokensetF2.append('')
 
-            elif DA == 'Placename':
+            elif w0 == 'Placename':
                 tokensetF2.append('[Placename]')
 
-            elif DA == 'a-réir':
+            elif w0 == 'a-réir':
                 tokensetF2.extend(['a','-','réir'])
 
-            elif DA == "mi '":
+            elif w0 == "mi '":
                 tokensetF2.extend(['mi',"'"])
 
-            elif DA == "!)":
+            elif w0 == "!)":
                 tokensetF2.extend(['!',")"])
-            elif DA == "le'r":
+            elif w0 == "le'r":
                 tokensetF2.extend(['le', "'r"])
-            elif DA == "mi.”":
+            elif w0 == "mi.”":
                 tokensetF2.extend(["mi",".","”"])
-            elif DA == "mi,”":
+            elif w0 == "mi,”":
                 tokensetF2.extend(["mi",",","”"])
-            elif DA == "].":
+            elif w0 == "].":
                 tokensetF2.extend([']',"."])
-            elif DA == "?)":
+            elif w0 == "?)":
                 tokensetF2.append('?')
                 tokensetF2.extend(")")
-            elif DA == ".)":
+            elif w0 == ".)":
                 tokensetF2.append('.')
                 tokensetF2.extend(")")
-            elif DA == "”)":
+            elif w0 == "”)":
                 tokensetF2.append('”')
 
                 tokensetF2.extend(")")
 
-            elif DA == '); ':
+            elif w0 == '); ':
                 tokensetF2.append(')')
 
                 tokensetF2.extend(";")
 
-            elif DA == ") ":
+            elif w0 == ") ":
                 tokensetF2.append(')')
 
-            elif DA == "?”":
+            elif w0 == "?”":
                 tokensetF2.append('?')
 
                 tokensetF2.extend("”")
 
-            elif DA == "i.”":
+            elif w0 == "i.”":
                 tokensetF2.append('i')
 
                 tokensetF2.extend(".")
 
                 tokensetF2.extend("”")
 
-            elif DA == ".’”":
+            elif w0 == ".’”":
                 tokensetF2.append('.')
 
                 tokensetF2.extend("”")
 
-            elif DA == ",”":
+            elif w0 == ",”":
                 tokensetF2.append(',')
 
                 tokensetF2.extend("”")
 
-            elif DA == "tu,”":
+            elif w0 == "tu,”":
                 tokensetF2.append('tu')
 
                 tokensetF2.extend(",")
 
                 tokensetF2.extend("”")
 
-            elif DA == "”.":
+            elif w0 == "”.":
                 tokensetF2.append('”')
 
                 tokensetF2.extend(".")
 
-            elif DA == "às.”":
+            elif w0 == "às.”":
                 tokensetF2.append('às')
 
                 tokensetF2.extend(".")
 
                 tokensetF2.extend("”")
 
-            elif DA == "sa,”":
+            elif w0 == "sa,”":
                 tokensetF2.append('sa')
 
                 tokensetF2.extend(",")
 
                 tokensetF2.extend("”")
 
-            elif DA == "’, ":
+            elif w0 == "’, ":
                 tokensetF2.append('’')
 
                 tokensetF2.extend(",")
 
-            elif DA == ").":
+            elif w0 == ").":
                 tokensetF2.append(')')
 
                 tokensetF2.extend(".")
 
-            elif DA == "),":
+            elif w0 == "),":
                 tokensetF2.append(')')
 
                 tokensetF2.extend(",")
 
-            elif DA == "), ":
+            elif w0 == "), ":
                 tokensetF2.append(')')
 
                 tokensetF2.extend(",")
 
-            elif DA == ".”":
+            elif w0 == ".”":
                 tokensetF2.append('.')
 
                 tokensetF2.extend("”")
 
-            elif DA == "’.”":
+            elif w0 == "’.”":
                 tokensetF2.append('’')
 
                 tokensetF2.extend(".")
 
                 tokensetF2.extend("”")
 
-            elif DA == ",”":
+            elif w0 == ",”":
                 tokensetF2.append(',')
 
                 tokensetF2.extend("”")
 
-            elif DA == "’,":
+            elif w0 == "’,":
                 tokensetF2.append('’')
 
                 tokensetF2.extend(",")
 
-            elif DA == "’.":
+            elif w0 == "’.":
                 tokensetF2.append("'")
 
                 tokensetF2.extend(".")
 
-            elif DA == "’ ":
+            elif w0 == "’ ":
                 tokensetF2.append('’')
 
-            elif DA == ");":
+            elif w0 == ");":
                 tokensetF2.append(')')
 
                 tokensetF2.extend(";")
 
-            elif DA == "s’.”":
+            elif w0 == "s’.”":
                 tokensetF2.append('s’')
 
                 tokensetF2.extend(".")
 
                 tokensetF2.extend("”")
 
-            elif DA == "tus":
+            elif w0 == "tus":
                 tokensetF2.append("tus'")
 
-            elif DA == "aic":
+            elif w0 == "aic":
                 tokensetF2.append("aic'")
 
-            elif DA == 'mi-fhìn':
+            elif w0 == 'mi-fhìn':
                 tokensetF2.append('mi')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhìn')
 
-            elif DA == 'dh’èireas':
+            elif w0 == 'dh’èireas':
                 tokensetF2.append('dh’')
 
                 tokensetF2.append('èireas')
 
-            elif DA == 'mi-fhèin':
+            elif w0 == 'mi-fhèin':
                 tokensetF2.append('mi')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhèin')
 
-            elif DA == 'thu-fhèin':
+            elif w0 == 'thu-fhèin':
                 tokensetF2.append('thu')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhèin')
 
-            elif DA == 'e-fhèin':
+            elif w0 == 'e-fhèin':
                 tokensetF2.append('e')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhèin')
 
-            elif DA == 'i-fhèin':
+            elif w0 == 'i-fhèin':
                 tokensetF2.append('i')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhèin')
 
-            elif DA == 'sinn-fhìn':
+            elif w0 == 'sinn-fhìn':
                 tokensetF2.append('sinn')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhìn')
 
-            elif DA == 'sibh-fhèin':
+            elif w0 == 'sibh-fhèin':
                 tokensetF2.append('sibh')
 
                 tokensetF2.append('-')
 
                 tokensetF2.append('fhèin')
 
-            elif DA == 'iad-fhèin':
+            elif w0 == 'iad-fhèin':
                 tokensetF2.extend(['iad','-','fhèin'])
-            elif DA == 'h-ana-miannaibh':
+            elif w0 == 'h-ana-miannaibh':
                 tokensetF2.extend(['h-','ana-miannaibh'])
-            elif DA == "a b'":
+            elif w0 == "a b'":
                 tokensetF2.extend(['a',"b'"])
-            elif DA == 'dh’obair-riaghaltais':
+            elif w0 == 'dh’obair-riaghaltais':
                 tokensetF2.append('dh’')
 
                 tokensetF2.append('obair-riaghaltais')
 
-            elif DA == "dh’fheumas":
+            elif w0 == "dh’fheumas":
                 tokensetF2.append("dh'")
 
                 tokensetF2.append('fheumas')
 
-            elif DA == "dh'fheumas":
+            elif w0 == "dh'fheumas":
                 tokensetF2.append("dh'")
 
                 tokensetF2.append('fheumas')
 
-            elif DA == "dh'fhaodas":
+            elif w0 == "dh'fhaodas":
                 tokensetF2.append("dh'")
 
                 tokensetF2.append('fhaodas')
 
-            elif DA == "dh’fhaodas":
+            elif w0 == "dh’fhaodas":
                 tokensetF2.append("dh'")
 
                 tokensetF2.append('fhaodas')
 
-            elif DA == "dh’fhàs":
+            elif w0 == "dh’fhàs":
                 tokensetF2.append("dh’")
 
                 tokensetF2.append('fhàs')
 
-            elif DA == "dh'fhàs":
+            elif w0 == "dh'fhàs":
                 tokensetF2.append("dh'")
 
                 tokensetF2.append('fhàs')
 
-            elif DA == 'Ban-righ' and "'nn" in tokensetF1[i:i + 2]:
+            elif w0 == 'Ban-righ' and "'nn" in tokensetF1[i:i + 2]:
   
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("'nn")
 
-            elif DA == 'Dh' and "’fhaodainn" in tokensetF1[i:i + 2]:
+            elif w0 == 'Dh' and "’fhaodainn" in tokensetF1[i:i + 2]:
   
                 tokensetF2.append('Dh’')
 
@@ -731,177 +732,177 @@ class FullTokeniser():
 
                 tokensetF1.remove("’fhaodainn")
 
-            elif DA == 'Ban-righ' and "'nn" in tokensetF1[i:i + 2]:
+            elif w0 == 'Ban-righ' and "'nn" in tokensetF1[i:i + 2]:
     
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("'nn")
 
-            elif DA == 'bhrist' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'bhrist' and "’" in tokensetF1[i:i + 2]:
    
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == 'ars' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'ars' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == 'ars' and "'" in tokensetF1[i:i + 2]:
+            elif w0 == 'ars' and "'" in tokensetF1[i:i + 2]:
     
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("'")
 
-            elif DA == 'mis' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'mis' and "’" in tokensetF1[i:i + 2]:
     
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == 'mis' and "'" in tokensetF1[i:i + 2]:
+            elif w0 == 'mis' and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("'")
 
-            elif DA == 'thus' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'thus' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == 'thus' and "'" in tokensetF1[i:i + 2]:
+            elif w0 == 'thus' and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("'")
 
-            elif DA == 'oirr' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'oirr' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
 
-            elif DA == 'ars' and "'" in tokensetF1[i:i + 2]:
+            elif w0 == 'ars' and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("'")
 
-            elif DA == 'oidhch' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'oidhch' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == '[' and "Placename]." in tokensetF1[i:i + 2]:
+            elif w0 == '[' and "Placename]." in tokensetF1[i:i + 2]:
                 #  print (' '.join(tokensetF1[i:i+2]))
                 tokensetF2.append("[Placename]")
                 tokensetF2.append(".")
                 tokensetF1.remove("Placename].")
               
-            elif DA == '[' and "Placename]" in tokensetF1[i:i + 2]:
+            elif w0 == '[' and "Placename]" in tokensetF1[i:i + 2]:
                 #  print (' '.join(tokensetF1[i:i+2]))
                 tokensetF2.append("[Placename]")
                 tokensetF1.remove("Placename].")
               
-            elif DA == "A" and "n" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is a blank token created in between
+            elif w0 == "A" and "n" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is a blank token created in between
                 # print (''.join(tokensetF1[i:i+3]))
                 tokensetF2.append(''.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("n")
               
-            elif DA == "do’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "do’" and "n" in tokensetF1[i:i + 2]:
                 # print (''.join(tokensetF1[i:i+3]))
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("n")
               
-            elif DA in ["aig","chalp","chual","creids","oirr"] and "’" in tokensetF1[i:i + 2]:
+            elif w0 in ["aig","chalp","chual","creids","oirr"] and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA in ["chual","creids"] and "'" in tokensetF1[i:i + 2]:
+            elif w0 in ["chual","creids"] and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("'")
 
-            elif DA == "tein" and "’" in tokensetF1[i:i + 2]:
+            elif w0 == "tein" and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA in ["chreach-s","cuimhn","dhòmhs","innt","prionns","toilicht"] and "’" in tokensetF1[i:i + 2]:
+            elif w0 in ["chreach-s","cuimhn","dhòmhs","innt","prionns","toilicht"] and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA in ["chreach-s","cuimhn","dhòmhs","innt","prionns","toilicht"] and "'" in tokensetF1[i:i + 2]:
+            elif w0 in ["chreach-s","cuimhn","dhòmhs","innt","prionns","toilicht"] and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("'")
 
-            elif DA == "Do’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "Do’" and "n" in tokensetF1[i:i + 2]:
 
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
 
-            elif DA == "De’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "De’" and "n" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("n")
-            elif DA == "comhairl" and "’" in tokensetF1[i:i + 2]:
+            elif w0 == "comhairl" and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == "òrain-“pop" and "”" in tokensetF1[i:i + 2]:
+            elif w0 == "òrain-“pop" and "”" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("”")
 
-            elif DA == "f’" and "a" in tokensetF1[i:i + 2]:
+            elif w0 == "f’" and "a" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("a")
 
-            elif DA == "F’" and "a" in tokensetF1[i:i + 2]:
+            elif w0 == "F’" and "a" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("a")
 
-            elif DA == "de’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "de’" and "n" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
 
-            elif DA == "Gu" and "dé" in tokensetF1[i:i + 2]:
+            elif w0 == "Gu" and "dé" in tokensetF1[i:i + 2]:
                 tokensetF2.append("Gu dé")
                 tokensetF1.remove("dé")
-            elif DA == "mu" and "thràth" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "mu" and "thràth" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("thràth")
 
-            elif DA == "Mu’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "Mu’" and "n" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
 
-            elif DA == "mu’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "mu’" and "n" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
 
-            elif DA == "An" or DA =="an" and "dràsda" in tokensetF1[i:i + 2]:
-                tokensetF2.append(DA + " dràsda")
+            elif w0 == "An" or w0 =="an" and "dràsda" in tokensetF1[i:i + 2]:
+                tokensetF2.append(w0 + " dràsda")
                 tokensetF1.remove("dràsda")
               
-            elif DA == "Srath" and "Chluaidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "Srath" and "Chluaidh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("Chluaidh")
               
-            elif DA == "ma" and "tha" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ma" and "tha" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("tha")
               
-            elif DA == 'Roinn' and "Eòrpa" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'Roinn' and "Eòrpa" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("Eòrpa")
               
-            elif (DA == 'Phort' or DA == 'Port') and "Rìgh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif (w0 == 'Phort' or w0 == 'Port') and "Rìgh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("Rìgh")
               
-            elif DA == 'làn' and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
+            elif w0 == 'làn' and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
 
                 tokensetF2.append(''.join(tokensetF1[i:i + 3]))
 
@@ -909,7 +910,7 @@ class FullTokeniser():
 
                 tokensetF1.remove("-Ghàidhealtachd")
 
-            elif DA == 'leth' and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
+            elif w0 == 'leth' and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
 
                 tokensetF2.append(''.join(tokensetF1[i:i + 3]))
 
@@ -917,280 +918,254 @@ class FullTokeniser():
 
                 tokensetF1.remove("-Ghàidhealtachd")
 
-            elif DA == 'bhon' and w1 in ["an","a'"]:
-                tokensetF2.append(' '.join([DA, w1]))
+            elif w0 == 'bhon' and w1 in ["an","a'"]:
+                tokensetF2.append(' '.join([w0, w1]))
                 tokensetF1.remove(w1)
 
-            elif DA == "o’" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
+            elif w0 == "o’" and w1 == "n":
+                tokensetF2.append("%s%s" % (w0, w1))
                 tokensetF1.remove("n")
-
-            elif DA in ['Caolas', 'Chaolas', 'Loch', 'Rubha', 'Tràigh'] and re.match('[A-Z][a-z]+', w1):
-                tokensetF2.append(' '.join([DA, w1]))
+            # toponyms
+            elif w0 in ['Caolas', 'Chaolas', 'Dùn', 'Eilean', 'Gleann', 'Loch', 'Rubha', 'Tràigh'] and re.match('[A-Z][a-z]+', w1):
+                tokensetF2.append(' '.join([w0, w1]))
                 tokensetF1.remove(w1)
 
-            elif DA == 'a' and "b'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("b'")
-
-            elif DA == 'a' and "b’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("b’")
+            elif w0 == 'a' and w1 in ["b'", "b’"]:
+                tokensetF2.append("%s %s" % (w0, w1))
+                tokensetF1.remove(w1)
               
-            elif DA == "a'" and "shineach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a'" and "shineach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("shineach")
 
-            elif DA == "a’" and "s" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a’" and "s" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s%s" % (w0, w1))
                 tokensetF1.remove("s")
           
-            elif DA == "a" and "shineach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "shineach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("shineach")
           
-            elif DA == "Caledonian" and "Mac" in tokensetF1[i:i + 2] and "a’ " in tokensetF1[i:i + 3] and "Bhruthainn" in tokensetF1[i:i + 4]:
+            elif w0 == "Caledonian" and "Mac" in tokensetF1[i:i + 2] and "a’" in tokensetF1[i:i + 3] and "Bhruthainn" in tokensetF1[i:i + 4]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 4]))
           
-            elif DA == "Caledonian" and "Mac" in tokensetF1[i:i + 2] and "a' " in tokensetF1[i:i + 3] and "Bhruthainn" in tokensetF1[i:i + 4]:
+            elif w0 == "Caledonian" and "Mac" in tokensetF1[i:i + 2] and "a'" in tokensetF1[i:i + 3] and "Bhruthainn" in tokensetF1[i:i + 4]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 4]))
                 tokensetF1.remove("Mac")
                 tokensetF1.remove("a'")
                 tokensetF1.remove("Bhruthainn")
           
-            elif DA == 'dhan' and "an" in tokensetF1[i:i + 2] and "sin" in tokensetF1[i:i + 3]:
+            elif w0 == 'dhan' and "an" in tokensetF1[i:i + 2] and "sin" in tokensetF1[i:i + 3]:
                 tokensetF2.append('dhan')
                 tokensetF2.append('an sin')
                 tokensetF1.remove("an")
                 tokensetF1.remove("sin")
 
-            elif DA == 's' and "a" in tokensetF1[i:i + 2]:
+            elif w0 == 's' and "a" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("a")
 
-            elif DA == 'prionns' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'prionns' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
 
-            elif DA == 'leams' and "'" in tokensetF1[i:i + 2]:
+            elif w0 == 'leams' and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("'")
 
-            elif DA == 'leams' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'leams' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
 
-            elif DA == 'fon' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'fon' and "an" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("an")
 
-            elif DA == 'fon' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'fon' and "an" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("an")
 
-            elif DA == 'ionnsaicht' and "’" in tokensetF1[i:i + 2]:
+            elif w0 == 'ionnsaicht' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
       
-            elif DA == 'ionnsaicht' and "'" in tokensetF1[i:i + 2]:
+            elif w0 == 'ionnsaicht' and "'" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("'")
 
-            elif DA == 'Dùn' and "Èideann" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'Dùn' and "Èideann" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("Èideann")
 
-            elif DA == 'an' and "toiseach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'an' and "toiseach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("toiseach")
 
-            elif DA == "‘n" and "toiseach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "‘n" and "toiseach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("toiseach")
 
-            elif DA == "'n" and "toiseach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "'n" and "toiseach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("toiseach")
 
-            elif DA == "a" and "tuath" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "tuath" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("tuath")
 
-            elif DA == "air" and "choireigin-ach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "air" and "choireigin-ach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("choireigin-ach")
 
-            elif DA == "an" and "raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "raoir" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("raoir")
 
-            elif DA == "a" and "chaoidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "chaoidh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("chaoidh")
 
-            elif DA == 'mun' and "a'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'mun' and "a'" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("a'")
 
-            elif DA == 'mun' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'mun' and "an" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
-            elif DA == 'on' and "a'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'on' and "a'" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("a'")
 
-            elif DA == 'on' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'on' and "an" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
-            elif DA == 'oidhch' and "’." in tokensetF1[i:i + 2]:
+            elif w0 == 'oidhch' and "’." in tokensetF1[i:i + 2]:
                 tokensetF2.append("oidhch’")
 
                 tokensetF2.append(".")
 
                 tokensetF1.remove("’.")
 
-            elif DA == 'Coille' and "Chaoil" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'Coille' and "Chaoil" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("Chaoil")
 
-            elif DA == 'Gleann' and "Dail" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'Gleann' and "Dail" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("Dail")
 
-            elif DA == 'Ruaidh' and "Mhònaidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'Ruaidh' and "Mhònaidh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("Mhònaidh")
 
-            elif DA == 'tron' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == 'tron' and "an" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
-            elif DA == "de'" and "n" in tokensetF1[i:i + 2]:
+            elif w0 == "de'" and "n" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
 
-            elif DA == "mu'" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "mu'" and "n" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("n")
 
-            elif DA == "do'" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "do'" and "n" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("n")
 
-            elif DA == "doesn'" and "t" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "doesn'" and "t" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("t")
 
-            elif DA == "a" and "staigh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "staigh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("staigh")
 
-            elif DA == "a" and "steach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "steach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("steach")
 
-            elif DA == "a" and "mach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "mach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("mach")
           
-            elif DA == "sam" and "bith" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "sam" and "bith" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("bith")
-            elif DA == "Roinn" and "Eorpa" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("Eorpa")
               
-            elif DA == "air" and "choireigin" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "air" and "choireigin" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("choireigin")
               
-            elif DA == "a" and "sin" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "sin" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("sin")
               
-            elif DA == "an" and "sin" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "sin" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("sin")
               
-            elif DA == "Eilean" and "Sgitheanach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("Sgitheanach")
-              
-            elif DA == "Fairy" and "Bridge" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif re.match('^[A-Z][a-z]+',w0) and w1 == "Bridge":
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("Bridge")
               
-            elif DA == "Eilean" and "Tiridhe" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("Tiridhe")
-              
-            elif DA == "a" and "chèile" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "chèile" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("chèile")
               
-            elif DA == "Dùn" and "Bheagain" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("Bheagain")
-              
-            elif DA == "Gleann" and "Ois" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("Ois")
-                
-
-            elif DA == "ana" and "nàdarra" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ana" and "nàdarra" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("nàdarra")
-                
 
-            elif DA == "An" and "Aodann" in tokensetF1[i:i + 2] and "Bàn" in tokensetF1[i:i + 3]:
+            elif w0 == "An" and "Aodann" in tokensetF1[i:i + 2] and "Bàn" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("Aodann")
                 tokensetF1.remove("Bàn")
-                
 
-            elif DA == "[" and "?" in tokensetF1[i:i + 2] and "]" in tokensetF1[i:i + 3]:
+            elif w0 == "[" and "?" in tokensetF1[i:i + 2] and "]" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("?")
 
                 tokensetF1.remove("]")
 
-            elif DA == "a" and "bhòn-dè" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "bhòn-dè" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhòn-dè")
 
-            elif DA == "a'" and "bhòn-dè" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a'" and "bhòn-dè" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhòn-dè")
 
-            elif DA == "Pholl" and "a'" in tokensetF1[i:i + 2] and "Ghrùthain" in tokensetF1[i:i + 3]:
+            elif w0 == "Pholl" and "a'" in tokensetF1[i:i + 2] and "Ghrùthain" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("Ghrùthain")
@@ -1199,7 +1174,7 @@ class FullTokeniser():
 
                 
 
-            elif DA == "ann" and "a" in tokensetF1[i:i + 2] and "shiud" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shiud" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("a")
@@ -1208,7 +1183,7 @@ class FullTokeniser():
 
                 
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "shiud" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "shiud" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("an")
@@ -1217,36 +1192,36 @@ class FullTokeniser():
 
                 
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("an")
                 tokensetF1.remove("ann")
                 
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "siud" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "siud" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("an")
                 tokensetF1.remove("siud")
                 
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "sin" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "sin" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("an")
                 tokensetF1.remove("sin")
                 
 
-            elif DA == "a'" and "bhòn-raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a'" and "bhòn-raoir" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("a'")
                 tokensetF1.remove("bhòn-raoir")
 
-            elif DA == "a'" and "s" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a'" and "s" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("s")
 
-            elif DA == "a" and "bhòn-raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "bhòn-raoir" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("a")
 
@@ -1254,7 +1229,7 @@ class FullTokeniser():
 
                 
 
-            elif DA == "a" and "bhòn" in tokensetF1[i:i + 2] and "raoir" in tokensetF1[i:i + 3]:
+            elif w0 == "a" and "bhòn" in tokensetF1[i:i + 2] and "raoir" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("a")
@@ -1265,85 +1240,78 @@ class FullTokeniser():
 
                 
 
-            elif DA == "a'" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a'" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("a'")
 
                 tokensetF1.remove("bhòn-uiridh")
 
-                DA = ""
+                w0 = ""
 
-            elif DA == "a" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and w1 == "bhòn-uiridh":
+                tokensetF2.append("%s %s" % (w0, w1))
 
-                tokensetF1.remove("a")
+                tokensetF1.remove(w0)
 
-                tokensetF1.remove("bhòn-uiridh")
+                tokensetF1.remove(w1)
 
-                
+            elif w0 == "a" and "bhòn" in tokensetF1[i:i + 2] and "uiridh" in tokensetF1[i:i + 3]:
+                tokensetF2.append("%s %s %s" % (w0, w1, w2))
+                tokensetF1.remove(w0)
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
-            elif DA == "a" and "bhòn" in tokensetF1[i:i + 2] and "uiridh" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("a")
-
-                tokensetF1.remove("bhòn")
-
-                tokensetF1.remove("uiridh")
-
-                
-
-            elif DA == "a'" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a'" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhòn-uiridh")
 
                 
 
-            elif DA == "a" and "bhos" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "bhos" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhos")
 
                 
 
-            elif DA == "a" and "bhàn" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "bhàn" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhàn")
 
                 
 
-            elif DA == "a" and "mach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "mach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("mach")
 
                 
 
-            elif DA == "a" and "màireach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "màireach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("màireach")
 
                 
 
-            elif DA == "am" and "bliadhna" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "am" and "bliadhna" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove('am')
                 tokensetF1.remove("bliadhna")
                 
 
-            elif DA == "a" and "muigh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "muigh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove('a')
                 tokensetF1.remove("muigh")
 
                 
 
-            elif DA == "a" and "nall" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "nall" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("a")
 
@@ -1351,8 +1319,8 @@ class FullTokeniser():
 
                 
 
-            elif DA == "an" and "ath-bhliadhna" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ath-bhliadhna" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
@@ -1360,7 +1328,7 @@ class FullTokeniser():
 
                 
 
-            elif DA == "an" and "ath" in tokensetF1[i:i + 2] and "bhliadhna" in tokensetF1[i:i + 3]:
+            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "bhliadhna" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("ath")
@@ -1369,367 +1337,320 @@ class FullTokeniser():
 
                 
 
-            elif DA == "an" and "ath-oidhche" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ath-oidhche" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("ath-oidhche")
 
-            elif DA == "an" and "ath" in tokensetF1[i:i + 2] and "oidhche" in tokensetF1[i:i + 3]:
+            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "oidhche" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("ath")
 
                 tokensetF1.remove("oidhche")
 
-            elif DA == "an" and "ath" in tokensetF1[i:i + 2] and "oidhch'" in tokensetF1[i:i + 3]:
+            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "oidhch'" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("ath")
 
                 tokensetF1.remove("oidhch'")
 
-            elif DA == "an" and "ath-oidhche" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ath-oidhche" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("ath-oidhche")
 
-            elif DA == "an" and "ath-sheachdainn" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ath-sheachdainn" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("ath-sheachdainn")
 
-            elif DA == "an" and "ath" in tokensetF1[i:i + 2] and "sheachdainn" in tokensetF1[i:i + 3]:
+            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "sheachdainn" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("an")
 
                 tokensetF1.remove("sheachdainn")
 
-            elif DA == "an" and "ath-sheachdain" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ath-sheachdain" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("ath-sheachdain")
 
-            elif DA == "an" and "ath" in tokensetF1[i:i + 2] and "sheachdain" in tokensetF1[i:i + 3]:
+            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "sheachdain" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("an")
 
-            elif DA == "an" and "còmhnaidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "còmhnaidh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
-            elif DA == "an" and "de" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "de" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("de")
 
-            elif DA == "an" and "diugh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "diugh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("diugh")
 
-            elif DA == "an" and "dràsta" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "dràsta" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("dràsta")
 
-            elif DA == "an" and "earar" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "earar" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("earar")
 
-            elif DA == "an" and "earair" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "earair" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("earair")
 
-            elif DA == "a" and "nis" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "nis" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("nis")
 
-            elif DA == "a" and "nisd" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "nisd" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("nisd")
 
-            elif DA == "a" and "nuas" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "nuas" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("nuas")
 
-            elif DA == "a" and "uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "uiridh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("uiridh")
 
-            elif DA == "a" and "null" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "null" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("null")
 
-            elif DA == "a" and "raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "raoir" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("raoir")
 
-            elif DA == "a" and "rithist" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "rithist" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("rithist")
 
-            elif DA == "a" and "staidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "staidh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("staidh")
 
-            elif DA == "a" and "steach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "steach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("steach")
 
-            elif DA == "b" and "e" in tokensetF1[i:i + 2]:
+            elif w0 == "b" and "e" in tokensetF1[i:i + 2]:
                 tokensetF2.append("b'")
 
                 tokensetF2.append("e")
 
                 tokensetF1.remove("b")
 
-            elif DA == "mi'":
+            elif w0 == "mi'":
                 tokensetF2.append("mi")
 
                 tokensetF2.append("'")
 
                 tokensetF1.remove("mi'")
 
-            elif DA == "na" and "s" in tokensetF1[i:i + 2]:
+            elif w0 == "na" and "s" in tokensetF1[i:i + 2]:
                 tokensetF2.append("na's")
 
                 tokensetF1.remove('s')
 
-            elif DA == "na" and "bu" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "na" and "bu" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('bu')
 
-            elif DA == "a" and "bu'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "bu'" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bu'")
 
-            elif DA == "Inbhir" and "Nis" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "Inbhir" and "Nis" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("Nis")
 
-            elif DA == "ann" and "am" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ann" and "am" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("am")
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
-            elif DA == "an" and "siud" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "siud" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("siud")
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "siud" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "siud" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("an")
 
                 tokensetF1.remove("siud")
 
-            elif DA == "an" and "am" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "am" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("am")
 
-            elif DA == "pòs" and "’" in tokensetF1[i:i + 2]:
+            elif w0 == "pòs" and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove('’')
 
-            elif DA == "gàir" and "’" in tokensetF1[i:i + 2]:
+            elif w0 == "gàir" and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove('’')
 
-            elif DA == "an" and "ceart-uair" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ceart-uair" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('ceart-uair')
 
-            elif DA == "an" and "uairsin" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "uairsin" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('uairsin')
 
-            elif DA in ["a","an"] and "sineach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 in ["a","an"] and "sineach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('sineach')
 
-            elif DA == "an" and "dràsda" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and w1 == "dràsda":
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('dràsda')
 
-            elif DA == "ma" and "tha" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ma" and w1 == "tha":
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('tha')
 
-            elif DA == "an" and "ceartuair" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "ceartuair" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('ceartuair')
 
-            elif DA == "fhad" and "’" in tokensetF1[i:i + 2]:
+            elif w0 == "fhad" and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
-            elif DA == "ge" and "brì" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ge" and "brì" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('brì')
 
-            elif DA == "ge" and "brith" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ge" and "brith" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove('brith')
 
-            elif DA == "ge" and "be" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ge" and "be" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("be")
 
-            elif DA == "ge" and "'s" in tokensetF1[i:i + 2] and "bith" in tokensetF1[i:i + 3]:
+            elif w0 == "ge" and "'s" in tokensetF1[i:i + 2] and "bith" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("'s")
 
                 tokensetF1.remove("bith")
 
-            elif DA == "gar" and "bith" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "gar" and "bith" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bith")
 
-            elif DA == "air" and "falbh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "air" and "falbh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("falbh")
 
-            elif DA == "an" and "làrna-mhàireach" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "làrna-mhàireach" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("làrna-mhàireach")
 
-            elif DA == "ma" and "dh'" in tokensetF1[i:i + 2] and "fhaoidhte" in tokensetF1[i:i + 3]:
-                x = tokensetF1[i:i + 3]
+            elif w0 in ["ma", "math"] and w1 == "dh'" and w2 in ["fhaoite", "fhaoidte", "fhaoidhte"]:
+                tokensetF2.append("%s %s%s" % (w0, w1, w2))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
-                xx = ' '.join(x[:2])
-
-                y = ''.join(x[2:])
-
-                tokensetF2.append(xx + y)
-
-                tokensetF1.remove("dh'")
-
-                tokensetF1.remove("fhaoidhte")
-
-            elif DA == "ma" and "dh'" in tokensetF1[i:i + 2] and "fhaoite" in tokensetF1[i:i + 3]:
-                x = tokensetF1[i:i + 3]
-
-                xx = ' '.join(x[:2])
-
-                y = ''.join(x[2:])
-
-                tokensetF2.append(xx + y)
-
-                tokensetF1.remove("dh'")
-
-                tokensetF1.remove("fhaoite")
-
-            elif DA == "math" and "dh'" in tokensetF1[i:i + 2] and "fhaoite" in tokensetF1[i:i + 3]:
-                x = tokensetF1[i:i + 3]
-
-                xx = ' '.join(x[:2])
-
-                y = ''.join(x[2:])
-
-                tokensetF2.append(xx + y)
-
-                tokensetF1.remove("dh'")
-
-                tokensetF1.remove("fhaoite")
-
-            elif DA == "math" and "dh'" in tokensetF1[i:i + 2] and "fhaoidte" in tokensetF1[i:i + 3]:
-                x = tokensetF1[i:i + 3]
-
-                xx = ' '.join(x[:2])
-
-                y = ''.join(x[2:])
-
-                tokensetF2.append(xx + y)
-
-                tokensetF1.remove("dh'")
-
-                tokensetF1.remove("fhaoidte")
-
-            elif DA == "gu" and "dè" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "gu" and "dè" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("gu")
 
-            elif DA == "a" and "chèil" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "chèil" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("chèil")
 
-            elif DA == "mu" and "dheireadh" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "mu" and "dheireadh" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("dheireadh")
 
-            elif DA == "a" and "h-uile" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "h-uile" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("h-uile")
 
-            elif DA == "a" and "seo" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "seo" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("seo")
 
-            elif DA == "an" and "seo" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "an" and "seo" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("seo")
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("an")
 
                 tokensetF1.remove("seo")
 
-            elif DA == "a" and "niste" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "niste" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("niste")
 
-            elif DA == "a" and "niste" in tokensetF1[i:i + 2]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "a" and "niste" in tokensetF1[i:i + 2]:
+                tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("niste")
 
-            elif DA == "ge" and "b'" in tokensetF1[i:i + 2] and "e" in tokensetF1[i:i + 3] and "air" in tokensetF1[i:i + 4] and "bith" in tokensetF1[i:i + 5]:
+            elif w0 == "ge" and "b'" in tokensetF1[i:i + 2] and "e" in tokensetF1[i:i + 3] and "air" in tokensetF1[i:i + 4] and "bith" in tokensetF1[i:i + 5]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 5]))
 
                 tokensetF1.remove("b'")
@@ -1740,7 +1661,7 @@ class FullTokeniser():
 
                 tokensetF1.remove("bith")
 
-            elif DA == "tuilleadh" and "'s" in tokensetF1[i:i + 2] and "a" in tokensetF1[i:i + 3] and "chòir" in tokensetF1[i:i + 4]:
+            elif w0 == "tuilleadh" and "'s" in tokensetF1[i:i + 2] and "a" in tokensetF1[i:i + 3] and "chòir" in tokensetF1[i:i + 4]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 4]))
 
                 tokensetF1.remove("'s")
@@ -1749,7 +1670,7 @@ class FullTokeniser():
 
                 tokensetF1.remove("chòir")
 
-            elif DA == "tuilleadh" and "'s" in tokensetF1[i:i + 2] and "a" in tokensetF1[
+            elif w0 == "tuilleadh" and "'s" in tokensetF1[i:i + 2] and "a" in tokensetF1[
                                                                                  i:i + 3] and "chòir" in tokensetF1[
                                                                                                          i:i + 4]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 4]))
@@ -1760,93 +1681,93 @@ class FullTokeniser():
 
                 tokensetF1.remove("chòir")
 
-            elif DA == "tuilleadh" and "sa" in tokensetF1[i:i + 2] and "chòir" in tokensetF1[i:i + 3]:
+            elif w0 == "tuilleadh" and "sa" in tokensetF1[i:i + 2] and "chòir" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("sa")
 
                 tokensetF1.remove("chòir")
 
-            elif DA == "ann" and "a'" in tokensetF1[i:i + 2] and "shiudach" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "a'" in tokensetF1[i:i + 2] and "shiudach" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("shiudach")
 
                 tokensetF1.remove("a'")
 
-            elif DA == "ann" and "a" in tokensetF1[i:i + 2] and "shiudach" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shiudach" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("shiudach")
 
                 tokensetF1.remove("a")
 
-            elif DA == "a's" and "a" in tokensetF1[i:i + 2] and "sineach" in tokensetF1[i:i + 3]:
+            elif w0 == "a's" and "a" in tokensetF1[i:i + 2] and "sineach" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("a")
 
                 tokensetF1.remove("sineach")
 
-            elif DA == "ann" and "a" in tokensetF1[i:i + 2] and "shineach" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shineach" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("a")
 
                 tokensetF1.remove("ann")
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "shin" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "shin" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("an")
 
                 tokensetF1.remove("shin")
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
                 tokensetF1.remove("an")
 
                 tokensetF1.remove("seo")
 
-            elif DA == "ann" and "an" in tokensetF1[i:i + 2]:
+            elif w0 == "ann" and "an" in tokensetF1[i:i + 2]:
                     tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                     tokensetF1.remove("an")
-            elif DA == "ann" and "seo" in tokensetF1[i:i + 2]:
-                    tokensetF2.append(' '.join(tokensetF1[i:i + 2]))
+            elif w0 == "ann" and "seo" in tokensetF1[i:i + 2]:
+                    tokensetF2.append("%s %s" % (w0, w1))
 
                     tokensetF1.remove("seo")
 
-            elif DA == "bheath" and "’." in tokensetF1[i:i + 2]:
+            elif w0 == "bheath" and "’." in tokensetF1[i:i + 2]:
                 tokensetF2.extend(["bheath’","."])
 
                 tokensetF1.remove("’.")
 
-            elif DA == "uisg" and "’." in tokensetF1[i:i + 2]:
+            elif w0 == "uisg" and "’." in tokensetF1[i:i + 2]:
                 tokensetF2.extend(["uisg’","."])
                 tokensetF1.remove("’.")
 
-            elif DA in ["ath-oidhch","bheath","bonnant","brist","chual","dòch","do-sheachant","bioraicht","lost-s","teoth","thoilicht","thus","uisg"] and "’" in tokensetF1[i:i + 2]:
+            elif w0 in ["ath-oidhch","bheath","bonnant","brist","chual","dòch","do-sheachant","bioraicht","lost-s","teoth","thoilicht","thus","uisg"] and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
 
-            elif DA == "ann" and "a" in tokensetF1[i:i + 2] and "shin" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shin" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("a")
                 tokensetF1.remove("shin")
                 
-            elif DA == "ann" and "a" in tokensetF1[i:i + 2] and "sheo" in tokensetF1[i:i + 3]:
+            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "sheo" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
                 tokensetF1.remove("a")
                 tokensetF1.remove("sheo")
-            elif DA == "(’" and "S" in tokensetF1[i:i + 2]:
+            elif w0 == "(’" and "S" in tokensetF1[i:i + 2]:
                 tokensetF2.extend(["(","’S"])
                 tokensetF1.remove("S")
-            elif DA == "(’" and "s" in tokensetF1[i:i + 2]:
+            elif w0 == "(’" and "s" in tokensetF1[i:i + 2]:
                 tokensetF2.extend(["(","’s"])
                 tokensetF1.remove("s")
             else:
-                tokensetF2.append(DA)
+                tokensetF2.append(w0)
 
         tokensetF3 = []
         for i, nn in enumerate(tokensetF2):
