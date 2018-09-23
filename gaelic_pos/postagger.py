@@ -5,8 +5,9 @@ import re
 
 class PosTagger():
     def __init__(self):
-        self.datadir = os.path.join(os.getcwd(), "Data")
-        self.modeldir = os.path.join(os.getcwd(), "Model")
+        wd = os.path.dirname(__file__)
+        self.datadir = os.path.join(wd, "Data")
+        self.modeldir = os.path.join(wd, "Model")
         self.defaultFN = os.path.join(self.modeldir, "DefaultModel_310516.pkl")  # trained on 117,381 manually-tagged tokens
         self.simplifiedFN = os.path.join(self.modeldir, "SimplifiedModel_010616.pkl")  # trained on 117,381 manually-tagged tokens
         self.englishLexicon = []
