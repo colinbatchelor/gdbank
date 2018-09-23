@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         self.assertEqual(self.f.tokenise("Bha cuimhn' aige air Uilleam o'n a bha e 'n Glaschu: duine mór socair, sàmhach."), ["Bha", "cuimhn'", "aige", "air", "Uilleam", "o'n", "a", "bha", "e", "'n", "Glaschu", ":", "duine", "mór", "socair", ",", "sàmhach", "."])
 
     def test_placenames(self):
-        names = ['Roinn Eòrpa', 'Port Rìgh', 'Phort Rìgh', 'Loch Aillse', 'Rubha Gharbh', 'Tràigh Ghil', 'Chaolas Mhór', 'Eilean Sgitheanach', 'Fairy Bridge', 'Dùn Bheagain', 'Dùn Èideann', 'Eilean Tiridhe', 'Gleann Ois', 'Inbhir Nis', 'Srath Chluaidh']
+        names = ['Coille Chaoil', 'Gleann Dail', 'Ruaidh Mhònaidh', 'Roinn Eòrpa', 'Port Rìgh', 'Phort Rìgh', 'Loch Aillse', 'Rubha Gharbh', 'Tràigh Ghil', 'Chaolas Mhór', 'Eilean Sgitheanach', 'Fairy Bridge', 'Dùn Bheagain', 'Dùn Èideann', 'Eilean Tiridhe', 'Gleann Ois', 'Inbhir Nis', 'Srath Chluaidh']
         for name in names:
             self.assertEqual(self.f.tokenise(name), [name])
 
@@ -46,11 +46,15 @@ class Test(unittest.TestCase):
         #self.assertEqual(self.f.tokenise("Caledonian Mac a’ Bhruthainn a bhith ga ruith"), ["Caledonian Mac a’ Bhruthainn", "a", "bhith", "ga", "ruith"])
         
     def test_punctuation(self):
-        tokens = self.t.tokenise('''"Tha plana eile a' dol airson coimhead ris a' Ghearraidh Chruaidh air fad", thuirt Mgr MacÌomhair.''')
+        mrmcivor = '''"Tha plana eile a' dol airson coimhead ris a' Ghearraidh Chruaidh air fad", thuirt Mgr MacÌomhair.'''
+        tokens = self.f.tokenise(mrmcivor)
         self.assertEqual('"', tokens[0])
         self.assertEqual('"', tokens[14])
         self.assertEqual(',', tokens[15])
         self.assertEqual('.', tokens[19])
+        self.assertEqual(self.f.tokenise("(oir chan eil carbad aige)"), ["(", "oir", "chan", "eil", "carbad", "aige", ")"])
+        self.assertEqual(self.f.tokenise('''"Cha robh gnothach aige thighinn an seo idir," ars esan le feirg.'''), ['"', "Cha", "robh", "gnothach", "aige", "thighinn", "an seo", "idir", ",", '"', "ars", "esan", "le", "feirg", "."])
+        self.assertEqual(self.f.tokenise('''(Chan e 'n fhìrinn, a th' aig an seo oir tha grunn ghillean air a' bhaile nach eil pòsd.)'''), ["(", "Chan", "e", "'n", "fhìrinn", ",", "a", "th'", "aig", "an seo", "oir", "tha", "grunn", "ghillean", "air", "a'", "bhaile", "nach", "eil", "pòsd", ".",")"])
         
     def test_hyphens(self):
         self.assertEqual(self.f.tokenise("dhaibh-san"), ["dhaibh-san"])
@@ -68,6 +72,12 @@ class Test(unittest.TestCase):
         self.assertEqual(self.f.tokenise('l\xe0n-\xf9ine'), ['l\xe0n-\xf9ine'])
         self.assertEqual(self.f.tokenise('ar n-eileanan ri teachd'), ['ar', 'n-', 'eileanan', 'ri', 'teachd'])
 
+    def test_money(self):
+        # guidelines are silent on the decimal point. Corpus says five tokens.
+        # tokeniser originally peeled off the last character as a separate token
+        # regardless.
+        self.assertEqual(self.f.tokenise("£4.2m"), ["£", "4.2m"])
+
     def test_fhein(self):
         # making sure fhèin hyphenated to a pronoun is three tokens
         self.assertEqual(self.f.tokenise("e-fhèin"), ["e","-","fhèin"])
@@ -82,6 +92,21 @@ class Test(unittest.TestCase):
     def singletons_leading_smart_quote(self):
         # don't seem to work at present
         exceptions = [ "‘nar", "‘San", "‘sa", "‘S", "‘ac", "‘ga", "‘gan" ]
+
+    def test_multiple_punctuation(self):
+        # chiefly here because of checks at bigram stage in original
+        # also remember to pass tokens
+        self.assertEqual(self.f._punctuation(["tus'"]), ["tus'"])
+        self.assertEqual(self.f._punctuation([".)"]), [".",")"])
+        self.assertEqual(self.f._punctuation(["),"]), [")",","])
+        self.assertEqual(self.f._punctuation([")."]), [")","."])
+        self.assertEqual(self.f._punctuation([");"]), [")",";"])
+         #self.assertEqual(self.f._punctuation(["’.”"]), ["’",".","”"])
+        self.assertEqual(self.f._punctuation(['mo','chat!)']), ["mo", "chat", "!", ")"]) 
+        self.assertEqual(self.f._punctuation(["a","chanas","mi.”"]), ["a", "chanas", "mi",".","”"])
+        self.assertEqual(self.f._punctuation(["a","chanas", "mi,”"]), ["a", "chanas", "mi",",","”"])
+        self.assertEqual(self.f._punctuation(["às.”"]), ["às",".","”"])
+        self.assertEqual(self.f._punctuation(["sa,”"]), ["sa",",","”"])
 
     def test_trailing_apostrophes(self):
         # don't seem to work at present in original

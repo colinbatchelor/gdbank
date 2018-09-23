@@ -6,8 +6,7 @@ class FullTokeniser():
     def __init__(self):
         lines = []
         # list of Gaelic and English abbreviations
-        datadir = os.path.join(os.getcwd(), "Data")
-        with open(os.path.join(datadir,"Abbrv.csv")) as f:
+        with open(os.path.join(os.path.dirname(__file__), "Data", "Abbrv.csv")) as f:
             for line in f:
                 lines.append(str(line))
         self.abbr = re.findall(r"\w+\S+", " ".join(lines))
@@ -15,366 +14,47 @@ class FullTokeniser():
                            "`gur", "'gan", "`gan", "'m", "`m", "'n", "`n", "'nam", "`nam", "'nad", "`nad", "'na", "`na",
                            "'nar", "`nar", "‘nar", "'nur", "`nur", "'nan", "`nan", "'san", "'San", "‘San", "`san",
                            "‘sa", "`sa", "‘S", "'S", "`S", "‘ac", "‘ga", "`ga", "‘gan", "`gan", "h-uile"]
-        self.big_re = re.compile(r"""\w+[“'-’]+\w+|
-\w+[-.!?,'"":’`/“”]+\s+|
-[-'’`“]+\w+|
-[(]\W+|
-[(]+[0-9]+[)]|
-[(]+\S+[)]|
-\S+[)]|
-\w+[)]+[,.]+\s+|
-\w\+[-]+\w+[)]+[.]+\s|
-\S+[)]+[;.]+\s+|
-\s+[',.!?:’`/=]+\s+|
-(?<!=[‘',.!?:’/`])+\w+|
-\S[^]+\S+|
-\w+[',.!?:""’/`‘]+|
-(?<=['"":’`‘])+\S+|
-[£$]+[0-9]+|
-\w+[""''’”/]+|
-[aA-zZ]*[.:,’`”)]+[,;.]+\s+|
-[aA-zZ]*[.:,’`”!?]+|
-[aA-zZ]*[?]+[”]+\s|
-[‘]+\w+[’]+[,]|
-[‘]+\w+[’]+\s+|
-\w+[@]+\w+[.]+\w+|
-\w+[?]+[:]+[//]+[^\s<>']+|
-\W\w+\s|
-[^\W\s]+""", re.VERBOSE)
         
     def normalise_quotes(self, token):
         y = re.sub("[‘’´`]", "'", str(token))  # normalising apostrophes
         w = re.sub("[“”]", '"', str(y))
         return w
 
-    def _firstpass(self, text):
-        return re.findall(self.big_re, text)
+    def _punctuation(self, tokens):
+        '''Also does abbreviations.'''
+        result = []
+        
+        for nx in tokens:
+            if nx == self.abbr or nx in self.exceptions:
+                result.append(nx)
+            elif re.findall(r"(\A[$£])", str(nx)):
+                result.extend([nx[:1], nx[1:]])
+
+            elif re.match(r'\W+\w+', nx):
+
+                result.extend([c for c in re.search(r'^\W+',nx).group(0)])
+                result.append(re.search(r'\w+$', nx).group(0))
+            elif re.match(r'\W+\w+\W+', nx):
+                result.extend([c for c in re.search(r'^\W+',nx).group(0)])
+                result.append(re.search(r'\w+', nx).group(0))
+                result.extend([c for c in re.search(r'["),.;:?!’”]+$', nx).group(0)])
+                
+            elif re.match(r'''\w*["),.;:?!”]+''', nx):
+
+                text = ''.join(re.search(r'\w*', nx).group(0))
+                if text != '': result.append(text)
+                result.extend([c for c in re.search(r'["),.;:?!’”]+$', nx).group(0)])
+
+            elif nx.startswith("h-") or nx.startswith("n-") or nx.startswith("t-"):
+                result.extend([nx[:2], nx[2:]])
+
+            else:
+                result.append(nx)
+        return result
     
     def tokenise(self, text):
         Junk = []
-
-        tokensetF = [n.strip() for n in self._firstpass(text)]
-        tokensetF1 = []
-        for nx in tokensetF:
-            if nx == self.abbr or nx in self.exceptions:
-                tokensetF1.append(nx)
-            else:
-                xx = ''
-
-                doublQpnt = re.findall(r'(\A[" / \ ( [ ])\w+',
-                                       str(nx))  ## determines whether there is an initial quote in a string
-
-                doublQSub = re.findall(r'(?<!=["])\S', str(
-                    nx))  ## find strings that start with quotes and end with non-white space
-
-                currency = re.findall(r"(\A[$£]+)",
-                                      str(nx))  ## determines whether there is an initial currency sign in a string
-
-                currencySub = re.findall(r"(?<!=[$£])\S", str(nx))  ##
-
-                comparativeParticles = re.findall(r"(\w+['])", str(nx))  ## appostrophe
-
-                comparativeParticles1 = re.findall(r"(?<!=[']\w)\w+", str(nx))
-
-                beforestroke = re.findall(r"(\b/\b)", str(nx))  ## takes all  -strock words
-
-                afterstroke = re.findall('(?<!=/)\w+', str(nx))  ## takes all   word -strock words
-
-                beforeEqual = re.findall(r"(\A[=]+)", str(nx))  ## takes all  -strock words
-
-                afterEqual = re.findall("(?<!=\A[='])\S", str(nx))  ## takes all   word -strock words
-
-                beforeAccent = re.findall(r"(\b’\b)", str(nx))  ## takes all  -accen words
-
-                afterAccent = re.findall('(?<!= ’ )\S', str(nx))  ## takes all -accented words
-
-                beginAccent = re.findall(r"(\A[‘]+)", str(nx))  ## takes all -accented words
-
-                beginAccentT = re.findall('(?<!= ‘ )\S', str(nx))  ## takes all -accented words
-
-                beforeComma = re.findall(r"(\B[,]\B)", str(nx))  ## takes all - words with comma at end
-
-                afterComma = re.findall('(?<!= [,] )\S', str(nx))  ## takes all - comma
-
-                beforeQmark = re.findall(r"(\B[?]+\B)", str(nx))  ## takes all - words with question marks at end
-
-                afterQmark = re.findall('(?<!= [?] )\S', str(nx))  ## takes all - comma
-
-                beforePeriod1 = re.findall(r"(\b[.])", str(nx))  ## takes all - words with periods at end
-
-                afterPeriod1 = re.findall('(?<!= [.] )\S', str(nx))  ## takes all - period
-
-                beforeComma1 = re.findall(r"(\b[,])", str(nx))  ## takes all - words with comma at end
-
-                afterComma1 = re.findall('(?<!= [,] )\S', str(nx))  ## takes all  - comma
-
-                beginAccent2 = re.findall(r"(\b[’]+)", str(nx))  ## takes all - accented words
-
-                beginAccentT2 = re.findall('(?<!= ’ )\S', str(nx))  ## takes all - accented words
-
-                beforeOpenBra = re.findall(r"(\A[(]+[(‘])", str(nx))  ## takes all - words with comma at end
-
-                afterOpenBra = re.findall("(?<!= [(])\S", str(nx))  ## takes all - comma
-
-                beforeDoubleQ = re.findall(r"(\A[“])", str(nx))  ## takes all - words with double quote at end
-
-                afterDoubleQ = re.findall("(?<!= [“])\S", str(nx))  ## takes all - comma
-
-                qColon = re.findall(r"(?<=(\b[:]))",
-                                    str(nx))  ## determines whether there is a puntuation mark at end of string
-
-                if qColon:
-                    x = re.findall(r"\S", str(nx))
-                    tokensetF1.append(''.join(x[:len(x) - 1]))
-                    xx = x[len(x) - 1:]
-                    tokensetF1.append(''.join(xx))
-                    nx = ''
-
-                if beforeDoubleQ:
-                    tokensetF1.append(''.join(beforeDoubleQ))
-                    tokensetF1.append(''.join(afterDoubleQ[1:]))
-                    nx = ''
-
-                if beforeOpenBra:
-                    tokensetF1.append(''.join(afterOpenBra[:1]))
-                    tokensetF1.append(''.join(afterOpenBra[1:2]))
-                    tokensetF1.append(''.join(afterOpenBra[2:]))
-
-                    nx = ''
-
-                if beginAccent2:
-                    if ''.join(beginAccentT2[:2]) == 'a’':
-                        tokensetF1.append(''.join(beginAccentT2[:2]))
-
-                        tokensetF1.append(''.join(beginAccentT2[2:]))
-
-                        nx = ""
-
-                if beforeComma1:
-                    if ''.join(beforeComma1) == ''.join(afterComma1[len(afterComma1) - 1:]):
-                        tokensetF1.append(''.join(afterComma1[:len(afterComma1) - 1]))
-
-                        tokensetF1.append(''.join(beforeComma1))
-
-                        nx = ''
-
-                if beforePeriod1:
-                    if ''.join(beforePeriod1) == ''.join(afterPeriod1[len(afterPeriod1) - 1:]):
-                        tokensetF1.append(''.join(afterPeriod1[:len(afterPeriod1) - 1]))
-
-                        tokensetF1.append(''.join(beforePeriod1))
-
-                        nx = ''
-
-                if beforeQmark and nx not in ["[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]"]:
-                    if ''.join(beforeQmark) == ''.join(afterQmark[:1]):
-                        ''
-
-                    else:
-                        x = afterQmark[len(afterQmark) - 1:]
-
-                        tokensetF1.append(''.join(afterQmark[:len(afterQmark) - 1]))
-
-                        tokensetF1.append(''.join(beforeQmark))
-
-                        nx = ''
-
-                if beforeComma:
-                    x = afterComma[
-                        len(afterComma) - 2:]  ## filtering for (eg: ],) type of tokens normally used in accademic text
-
-                    y = afterComma[:1]  ## filtering for (eg: [ ,) type of tokens normally used in accademic text
-
-                    if ''.join(x[:len(x) - 1]) in [']', ')'] and ''.join(y) in ['[', '(']:
-                        tokensetF1.append(''.join(y))
-
-                        tokensetF1.append(''.join(afterComma[1:len(afterComma) - 2]))
-
-                        tokensetF1.append(''.join(x[:len(x) - 1]))
-
-                        tokensetF1.append(''.join(beforeComma))
-
-                        nx = ''
-
-                    if ''.join(x[:len(x) - 1]) in [']', ')'] and ''.join(y) not in ['[', '(']:
-                        tokensetF1.append(''.join(afterComma[:len(afterComma) - 2]))
-
-                        tokensetF1.append(''.join(x[:len(x) - 1]))
-
-                        tokensetF1.append(''.join(beforeComma))
-
-                        nx = ''
-
-                    if ''.join(x[:len(x) - 1]) not in [']', ')'] and ''.join(y) not in ['[', '(']:
-                        xx = x[:len(x) - 1]
-
-                        if xx:
-                            if ''.join(afterComma[:1]) == '‘':
-                                xxx = afterComma[len(afterComma) - 2:]
-
-                                xxxx = afterComma[:]
-
-                                tokensetF1.append(''.join(afterComma[:1]))
-
-                                tokensetF1.append(''.join(afterComma[1: len(afterComma) - 2]))
-
-                                tokensetF1.append(''.join(xxx[:1]))
-
-                                tokensetF1.append(''.join(afterComma[len(afterComma) - 1:]))
-
-                                nx = ''
-
-                            else:
-                                if len(afterComma) == 3:
-                                    tokensetF1.append(''.join(afterComma[1:2]))
-
-                                    tokensetF1.append(''.join(afterComma[len(afterComma) - 1:]))
-
-                                    nx = ''
-
-                                else:
-                                    if len(afterComma) == 2:
-                                        tokensetF1.append(''.join(afterComma[:1]))
-
-                                        tokensetF1.append(''.join(afterComma[len(afterComma) - 1:]))
-
-                                        nx = ''
-
-                if beginAccent and ''.join(beginAccentT[len(beginAccentT) - 1:]) == '’' and not xx:
-                    x = beginAccentT[1:]
-
-                    tokensetF1.append(''.join(beginAccent))
-
-                    tokensetF1.append(''.join(x[:len(x) - 1]))
-
-                    tokensetF1.append(''.join(beginAccentT[len(beginAccentT) - 1:]))
-
-                    Junk.append(''.join(beginAccentT[1:]))
-
-                    nx = ''
-
-                if beginAccent and ''.join(beginAccentT[len(beginAccentT) - 1:]) == ',' and not xx:
-                    tokensetF1.append(''.join(beginAccent))
-
-                    tokensetF1.append(''.join(beginAccentT[1:len(beginAccentT) - 1]))
-
-                    tokensetF1.append(''.join(beginAccentT[len(beginAccentT) - 1:]))
-
-                    Junk.append(''.join(beginAccent + beginAccentT[1:len(beginAccentT) - 1]))
-
-                    nx = ''
-
-                if beginAccent and ''.join(beginAccentT[len(beginAccentT) - 1:]) == '?' and not xx:
-                    x = beginAccentT[len(beginAccentT) - 2:]
-
-                    if ''.join(x[:len(x) - 1]) == '’':
-                        tokensetF1.append(''.join(beginAccent))
-
-                        tokensetF1.append(''.join(beginAccentT[1:len(beginAccentT) - 2]))
-
-                        tokensetF1.append(''.join(x[:len(x) - 1]))
-
-                        tokensetF1.append(''.join(beginAccentT[len(beginAccentT) - 1:]))
-
-                        Junk.append(''.join(beginAccent) + beginAccentT[1:len(beginAccentT) - 1])
-
-                        Junk.append(
-                            ''.join(beginAccentT[1:len(beginAccentT) - 1] + beginAccentT[len(beginAccentT) - 1:]))
-
-                        nx = ""
-
-                if beginAccent and not beforeComma1 and not xx:
-                    nx = ''
-
-                if beforeAccent and ''.join(afterAccent[len(afterAccent) - 1:]) not in ['s']:
-                    x = afterAccent[:3]
-
-                    if ''.join(x[1:2]) == "’":
-                        tokensetF1.append(''.join(afterAccent[:2]))
-                        tokensetF1.append(''.join(afterAccent[2:]))
-                        nx = ''
-
-                    if ''.join(x[2:3]) == "’":
-                        tokensetF1.append(''.join(afterAccent[:3]))
-                        tokensetF1.append(''.join(afterAccent[3:]))
-                        nx = ''
-
-                if beforeEqual:
-                    tokensetF1.append(''.join(beforeEqual))
-                    tokensetF1.append(''.join(afterEqual[1:2]))
-                    nx = ''
-
-                if beforestroke:
-                    tokensetF1.append(''.join(afterstroke[:1]))
-                    tokensetF1.append(''.join(beforestroke))
-                    tokensetF1.append(''.join(afterstroke[1:]))
-                    nx = ''
-
-                if currency:
-                    x = len(currencySub)
-
-                    tokensetF1.append(''.join(currency[:1]))
-
-                    tokensetF1.append(''.join(currencySub[1: x - 1]))
-
-                    tokensetF1.append(''.join(currencySub[x - 1:]))
-
-                    nx = ''
-
-                if doublQpnt and nx not in ["[?]", "[Name]", "[Placename]", "[1]", "[2]", "[3]", "[4]", "[5]", "[6]",
-                                            "[7]", "[8]", "[9]"]:
-                    x = doublQSub[1:len(doublQSub) - 1]
-
-                    y = ''.join(doublQSub[len(doublQSub) - 1:])
-
-                    m = ''.join(doublQpnt)
-
-                    if y != '"' or y != '' and y == ')' and m != '(':
-                        xy = (x + doublQSub[len(doublQSub) - 1:])
-
-                        if ''.join(xy[len(xy) - 1:]) not in [')', ':', '?', ']']:
-                            tokensetF1.append(''.join(m))
-
-                            tokensetF1.append(''.join(xy))
-
-                            nx = ' '
-                        else:
-                            tokensetF1.append(m)
-
-                            tokensetF1.append(''.join(xy[:len(xy) - 1]))
-
-                            tokensetF1.append(y)
-
-                            nx = ''
-
-                    if y == '"':
-                        tokensetF1.append(''.join(doublQpnt))
-
-                        tokensetF1.append(''.join(doublQSub[1:len(doublQSub) - 1]))
-
-                        tokensetF1.append(''.join(y))
-
-                        nx = ' '
-
-                if comparativeParticles and len(comparativeParticles1) > 0:
-                    if len(''.join(comparativeParticles1[1:])) > 1:
-                        tokensetF1.append(''.join(comparativeParticles[:1]))
-
-                        tokensetF1.append(''.join(comparativeParticles1[1:]))
-
-                        nx = ""
-
-                    if len(''.join(comparativeParticles1[1:])) == 1:
-                        tokensetF1.append(''.join(comparativeParticles[:1] + comparativeParticles1[1:]))
-
-                        nx = ''
-
-                if nx.startswith("h-") or nx.startswith("n-") or nx.startswith("t-"):
-                    tokensetF1.extend([nx[:2], nx[2:]])
-
-                else:
-                    tokensetF1.append(nx)
-
+        tokensetF1 = self._punctuation(text.split())
         tokensetF2 = []
         for i,w0 in enumerate(tokensetF1):
             w1 = tokensetF1[i+1] if i < len(tokensetF1) - 1 else "<END>"
@@ -413,47 +93,19 @@ class FullTokeniser():
             elif w0 == 'a-réir':
                 tokensetF2.extend(['a','-','réir'])
 
-            elif w0 == "mi '":
-                tokensetF2.extend(['mi',"'"])
-
-            elif w0 == "!)":
-                tokensetF2.extend(['!',")"])
             elif w0 == "le'r":
                 tokensetF2.extend(['le', "'r"])
-            elif w0 == "mi.”":
-                tokensetF2.extend(["mi",".","”"])
-            elif w0 == "mi,”":
-                tokensetF2.extend(["mi",",","”"])
             elif w0 == "].":
                 tokensetF2.extend([']',"."])
             elif w0 == "?)":
                 tokensetF2.append('?')
                 tokensetF2.extend(")")
-            elif w0 == ".)":
-                tokensetF2.append('.')
-                tokensetF2.extend(")")
             elif w0 == "”)":
                 tokensetF2.append('”')
 
                 tokensetF2.extend(")")
-
-            elif w0 == '); ':
-                tokensetF2.append(')')
-
-                tokensetF2.extend(";")
-
-            elif w0 == ") ":
-                tokensetF2.append(')')
-
             elif w0 == "?”":
                 tokensetF2.append('?')
-
-                tokensetF2.extend("”")
-
-            elif w0 == "i.”":
-                tokensetF2.append('i')
-
-                tokensetF2.extend(".")
 
                 tokensetF2.extend("”")
 
@@ -467,66 +119,13 @@ class FullTokeniser():
 
                 tokensetF2.extend("”")
 
-            elif w0 == "tu,”":
-                tokensetF2.append('tu')
-
-                tokensetF2.extend(",")
-
-                tokensetF2.extend("”")
-
             elif w0 == "”.":
                 tokensetF2.append('”')
 
                 tokensetF2.extend(".")
 
-            elif w0 == "às.”":
-                tokensetF2.append('às')
-
-                tokensetF2.extend(".")
-
-                tokensetF2.extend("”")
-
-            elif w0 == "sa,”":
-                tokensetF2.append('sa')
-
-                tokensetF2.extend(",")
-
-                tokensetF2.extend("”")
-
-            elif w0 == "’, ":
-                tokensetF2.append('’')
-
-                tokensetF2.extend(",")
-
-            elif w0 == ").":
-                tokensetF2.append(')')
-
-                tokensetF2.extend(".")
-
-            elif w0 == "),":
-                tokensetF2.append(')')
-
-                tokensetF2.extend(",")
-
-            elif w0 == "), ":
-                tokensetF2.append(')')
-
-                tokensetF2.extend(",")
-
             elif w0 == ".”":
                 tokensetF2.append('.')
-
-                tokensetF2.extend("”")
-
-            elif w0 == "’.”":
-                tokensetF2.append('’')
-
-                tokensetF2.extend(".")
-
-                tokensetF2.extend("”")
-
-            elif w0 == ",”":
-                tokensetF2.append(',')
 
                 tokensetF2.extend("”")
 
@@ -540,32 +139,12 @@ class FullTokeniser():
 
                 tokensetF2.extend(".")
 
-            elif w0 == "’ ":
-                tokensetF2.append('’')
-
-            elif w0 == ");":
-                tokensetF2.append(')')
-
-                tokensetF2.extend(";")
-
             elif w0 == "s’.”":
                 tokensetF2.append('s’')
 
                 tokensetF2.extend(".")
 
                 tokensetF2.extend("”")
-
-            elif w0 == "tus":
-                tokensetF2.append("tus'")
-
-            elif w0 == "aic":
-                tokensetF2.append("aic'")
-
-
-            elif w0 == 'dh’èireas':
-                tokensetF2.append('dh’')
-
-                tokensetF2.append('èireas')
                 
             elif re.match('(mi|e|i|thu|sibh|iad)-fhèin$', w0):
                 tokensetF2.extend([w0[:-6], '-', w0[-5:]])
@@ -611,13 +190,12 @@ class FullTokeniser():
                 tokensetF1.remove("’")
 
             elif w0 == '[' and "Placename]." in tokensetF1[i:i + 2]:
-                #  print (' '.join(tokensetF1[i:i+2]))
                 tokensetF2.append("[Placename]")
                 tokensetF2.append(".")
                 tokensetF1.remove("Placename].")
               
             elif w0 == '[' and "Placename]" in tokensetF1[i:i + 2]:
-                #  print (' '.join(tokensetF1[i:i+2]))
+
                 tokensetF2.append("[Placename]")
                 tokensetF1.remove("Placename].")
               
@@ -635,11 +213,9 @@ class FullTokeniser():
                 tokensetF2.append("%s%s" % (w0, w1))
                 tokensetF1.remove(w1)
 
-            elif w0 in ["Do’","De’","de’"] and "n" in tokensetF1[i:i + 2]:
-
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("n")
+            elif w0 in ["Do’","De’","de’","Mu’","mu’"] and w1 == "n":
+                tokensetF2.append("%s%s" % (w0,w1))
+                tokensetF1.remove(w1)
 
             elif w0 == "òrain-“pop" and "”" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
@@ -659,11 +235,6 @@ class FullTokeniser():
             elif w0 == "mu" and "thràth" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("thràth")
-
-            elif w0 in ["Mu’","mu’"] and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("n")
 
             elif w0 in ["An","an"] and w1 in ["dràsda", "dràsta"]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -686,7 +257,7 @@ class FullTokeniser():
                 tokensetF2.append("%s%s" % (w0, w1))
                 tokensetF1.remove("n")
             # toponyms
-            elif w0 in ['Caolas', 'Chaolas', 'Dùn', 'Eilean', 'Gleann', 'Inbhir', 'Loch', 'Phort', 'Port', 'Roinn', 'Rubha', 'Srath', 'Tràigh'] and re.match('[A-ZÈ][a-zìò]+', w1):
+            elif w0 in ['Caolas', 'Chaolas', 'Coille', 'Dùn', 'Eilean', 'Gleann', 'Inbhir', 'Loch', 'Phort', 'Port', 'Roinn', 'Ruaidh', 'Rubha', 'Srath', 'Tràigh'] and re.match('[A-ZÈ][a-zìò]+', w1):
                 tokensetF2.append(' '.join([w0, w1]))
                 tokensetF1.remove(w1)
 
@@ -743,20 +314,9 @@ class FullTokeniser():
 
                 tokensetF1.remove("'")
 
-            elif w0 == 'an' and "toiseach" in tokensetF1[i:i + 2]:
+            elif w0 in ['an', "‘n", "'n"] and w1 == "toiseach":
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("toiseach")
-
-            elif w0 == "‘n" and "toiseach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("toiseach")
-
-            elif w0 == "'n" and "toiseach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("toiseach")
+                tokensetF1.remove(w1)
 
             elif w0 == "a" and w1 in ["deas", "tuath"]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -788,21 +348,6 @@ class FullTokeniser():
                 tokensetF2.append(".")
 
                 tokensetF1.remove("’.")
-
-            elif w0 == 'Coille' and "Chaoil" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("Chaoil")
-
-            elif w0 == 'Gleann' and "Dail" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("Dail")
-
-            elif w0 == 'Ruaidh' and "Mhònaidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("Mhònaidh")
 
             elif w0 in ["de'", "mu'", "do'"] and w1 == "n":
                 tokensetF2.append("%s%s" % (w0, w1))
@@ -950,43 +495,30 @@ class FullTokeniser():
                 tokensetF1.remove("b")
 
             elif w0 == "mi'":
-                tokensetF2.append("mi")
+                tokensetF2.extend(["mi", "'"])
 
-                tokensetF2.append("'")
-
-                tokensetF1.remove("mi'")
-
-            elif w0 == "na" and "s" in tokensetF1[i:i + 2]:
+            elif w0 == "na" and w1 == "s":
                 tokensetF2.append("na's")
 
                 tokensetF1.remove('s')
 
-            elif w0 == "na" and "bu" in tokensetF1[i:i + 2]:
+            elif w0 in ["a", "na"] and w1 == "bu":
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('bu')
-
-            elif w0 == "a" and "bu'" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("bu'")
+                tokensetF1.remove(w1)
 
             elif w0 == "ann" and w1 in ["am","an"]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove(w1)
        
-            elif w0 == "an" and "siud" in tokensetF1[i:i + 2]:
+            elif w0 == "an" and w1 == "siud":
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("siud")
+                tokensetF1.remove(w1)
 
             elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "siud" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("an")
-
-                tokensetF1.remove("siud")
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
             elif w0 == "an" and "am" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -1003,36 +535,26 @@ class FullTokeniser():
 
                 tokensetF1.remove('’')
 
-            elif w0 == "an" and "ceart-uair" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('ceart-uair')
-
-            elif w0 == "an" and "uairsin" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('uairsin')
-
-            elif w0 in ["a","an"] and "sineach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('sineach')
-
-            elif w0 == "ma" and w1 == "tha":
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('tha')
-
-            elif w0 == "an" and "ceartuair" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('ceartuair')
-
             elif w0 == "fhad" and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("’")
 
+            elif w0 == "an" and w1 in ["ceartuair", "ceart-uair", "uairsin"]:
+                tokensetF2.append("%s %s" % (w0, w1))
+
+                tokensetF1.remove(w1)
+
+            elif w0 in ["a","an"] and w1 == "sineach":
+                tokensetF2.append("%s %s" % (w0, w1))
+
+                tokensetF1.remove(w1)
+
+            elif w0 == "ma" and w1 == "tha":
+                tokensetF2.append("%s %s" % (w0, w1))
+
+                tokensetF1.remove(w1)
+ 
             elif w0 == "ge" and w1 in ["be", "brì", "brith"]:
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove(w1)
