@@ -46,17 +46,17 @@ class PosTagger():
                 cc = re.findall(r"\S", str(nc))
                 cca = cc[:len(cc) - 1]
                 cca.extend('n')
-                algV[y] = ''.join(cca)
+                algV[x] = ''.join(cca)
 
             if (Nouncasesg and not tp):
                 ng = ''.join(Nouncasesg)
                 cc = re.findall(r"\S", str(ng))
                 cca = cc[:len(cc) - 1]
                 cca.extend('d')
-                algV[y] = ''.join(cca)
+                algV[x] = ''.join(cca)
 
             if ''.join(b) == 'Sp' and 'Ug' in algV[:3]:
-                algV[y] = 'Sa'
+                algV[x] = 'Sa'
 
         for y, token in enumerate(algT):
             tag = algV[y]

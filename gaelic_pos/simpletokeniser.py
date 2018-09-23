@@ -1,6 +1,6 @@
 import re
 
-class Tokeniser():
+class SimpleTokeniser():
     def __init__(self):
         self.bigrams = []
         with open('./Data/bigrams.txt') as f:

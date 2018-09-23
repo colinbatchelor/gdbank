@@ -2,7 +2,7 @@ import re
 import codecs
 import os
 
-class FullTokeniser():
+class Tokeniser():
     def __init__(self):
         lines = []
         # list of Gaelic and English abbreviations

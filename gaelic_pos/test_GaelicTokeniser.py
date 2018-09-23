@@ -1,7 +1,7 @@
 import unittest
 
-from simpletokeniser import Tokeniser
-from GaelicTokeniser import FullTokeniser
+from simpletokeniser import SimpleTokeniser
+from GaelicTokeniser import Tokeniser
 
 class Test(unittest.TestCase):
     def setUp(self):
