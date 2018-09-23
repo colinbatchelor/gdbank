@@ -51,62 +51,21 @@ class FullTokeniser():
         return re.findall(self.big_re, text)
     
     def tokenise(self, text):
-        self.text = text
         Junk = []
 
-        self.alltokens = self._firstpass(self.text)
-        tokensetF = [n.strip() for n in self.alltokens]
+        tokensetF = [n.strip() for n in self._firstpass(text)]
         tokensetF1 = []
         for nx in tokensetF:
-            if nx == self.abbr:
+            if nx == self.abbr or nx in self.exceptions:
                 tokensetF1.append(nx)
-
-            if nx in self.exceptions:
-                tokensetF1.append(nx)
-
             else:
                 xx = ''
-                hyphenT = re.findall(r"(\bt-)", str(nx))  ## takes all t-hyphenated tokens
-
-                hyphenT1 = re.findall('(?<=t-)\w+', str(nx))
-
-                hyphenN = re.findall(r"(\bn-)", str(nx))  ## takes all n-hyphenated tokens
-
-                hyphenN1 = re.findall('(?<=n-)\w+', str(nx))
-
-                hyphenH = re.findall(r"(\bh-)", str(nx))  ## takes all h-hyphenated tokens
-
-                hyphenH1 = re.findall('(?<=h-)\w+', str(nx))
-
-                hyphenSa = re.findall(r"(\b-sa\b)", str(nx))  ## takes all -sa hyphenated tokens
-
-                XhyphenSa = re.findall('(?<!=-sa)\w+', str(nx))  ## takes all tokens before hyphenated -sa
-
-                hyphenSe = re.findall(r"(\b-se\b)", str(nx))  ## takes all -se hyphenated tokens
-
-                XhyphenSe = re.findall('(?<!=-se)\w+', str(nx))  ## takes token before hyhpenated -se
-
-                hyphenSan = re.findall(r"(\b-san\b)", str(nx))  ## takes all -san hyphenated tokens
-
-                XhyphenSan = re.findall(r'(?<!=-san)\w+', str(nx))  ## takes token before hyhpenated -san
 
                 doublQpnt = re.findall(r'(\A[" / \ ( [ ])\w+',
                                        str(nx))  ## determines whether there is an initial quote in a string
 
                 doublQSub = re.findall(r'(?<!=["])\S', str(
                     nx))  ## find strings that start with quotes and end with non-white space
-
-                qMark = re.findall(r"(?<=(\b[?.!,:' " "]))",
-                                   str(nx))  ## determine whether there is a puntuation mark at end of string
-
-                BeforeqMark = re.findall(r"(?<!=[?.!,:'])\w+", str(
-                    nx))  ## find strings that ends with puntuation mark and non-white space
-
-                singleQpnt = re.findall(r"(\A[']+)",
-                                        str(nx))  ## determines whether there is an initial single quote in a string
-
-                singleQSub = re.findall(r"(?<!=['])\S", str(
-                    nx))  ## find strings that start with single quotes and end with non-white space
 
                 currency = re.findall(r"(\A[$£]+)",
                                       str(nx))  ## determines whether there is an initial currency sign in a string
@@ -116,9 +75,6 @@ class FullTokeniser():
                 comparativeParticles = re.findall(r"(\w+['])", str(nx))  ## appostrophe
 
                 comparativeParticles1 = re.findall(r"(?<!=[']\w)\w+", str(nx))
-
-                doubleAfter = re.findall(r'(\w+["]+)',
-                                         str(nx))  ## determines whether there is an initial quote in a string
 
                 beforestroke = re.findall(r"(\b/\b)", str(nx))  ## takes all  -strock words
 
@@ -135,10 +91,6 @@ class FullTokeniser():
                 beginAccent = re.findall(r"(\A[‘]+)", str(nx))  ## takes all -accented words
 
                 beginAccentT = re.findall('(?<!= ‘ )\S', str(nx))  ## takes all -accented words
-
-                beforePeriod = re.findall(r"(\B[.]\B)", str(nx))  ## takes all - words with periods at end
-
-                afterPeriod = re.findall('(?<!= [.] )\S', str(nx))  ## takes all - period
 
                 beforeComma = re.findall(r"(\B[,]\B)", str(nx))  ## takes all - words with comma at end
 
@@ -417,24 +369,9 @@ class FullTokeniser():
 
                         nx = ''
 
-                if hyphenT:
-                    tokensetF1.append(''.join(hyphenT))
-                    tokensetF1.append(''.join(hyphenT1))
-                    nx = ''
+                if nx.startswith("h-") or nx.startswith("n-") or nx.startswith("t-"):
+                    tokensetF1.extend([nx[:2], nx[2:]])
 
-                if hyphenN:
-                    tokensetF1.append(''.join(hyphenN))  ## then append the stripped token into the list container
-                    tokensetF1.append(''.join(hyphenN1))  ## then append the stripped token into the list container
-                    nx = ''
-
-                if hyphenSe:
-                    tokensetF1.append(''.join(hyphenSa[:1]))
-                    tokensetF1.append(''.join(XhyphenSe[:1]))
-                    nx = ''
-
-                if hyphenSan:
-                    tokensetF1.append(''.join(XhyphenSan[:1]))
-                    tokensetF1.append(''.join(XhyphenSan[:1]))
                 else:
                     tokensetF1.append(nx)
 
@@ -442,6 +379,7 @@ class FullTokeniser():
         for i,w0 in enumerate(tokensetF1):
             w1 = tokensetF1[i+1] if i < len(tokensetF1) - 1 else "<END>"
             w2 = tokensetF1[i+2] if i < len(tokensetF1) - 2 else "<END>"
+            w3 = tokensetF1[i+3] if i < len(tokensetF1) - 3 else "<END>"
             """Here follows a long list of token elements. A future improvement would be to pull all of these
             elements into a csv file loaded into the tagger"""
             if w0 == '1':
@@ -623,62 +561,18 @@ class FullTokeniser():
             elif w0 == "aic":
                 tokensetF2.append("aic'")
 
-            elif w0 == 'mi-fhìn':
-                tokensetF2.append('mi')
-
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhìn')
 
             elif w0 == 'dh’èireas':
                 tokensetF2.append('dh’')
 
                 tokensetF2.append('èireas')
+                
+            elif re.match('(mi|e|i|thu|sibh|iad)-fhèin$', w0):
+                tokensetF2.extend([w0[:-6], '-', w0[-5:]])
 
-            elif w0 == 'mi-fhèin':
-                tokensetF2.append('mi')
+            elif re.match('(sinn|mi)-fhìn$',w0):
+                tokensetF2.extend([w0[:-5],'-',w0[-4:]])
 
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhèin')
-
-            elif w0 == 'thu-fhèin':
-                tokensetF2.append('thu')
-
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhèin')
-
-            elif w0 == 'e-fhèin':
-                tokensetF2.append('e')
-
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhèin')
-
-            elif w0 == 'i-fhèin':
-                tokensetF2.append('i')
-
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhèin')
-
-            elif w0 == 'sinn-fhìn':
-                tokensetF2.append('sinn')
-
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhìn')
-
-            elif w0 == 'sibh-fhèin':
-                tokensetF2.append('sibh')
-
-                tokensetF2.append('-')
-
-                tokensetF2.append('fhèin')
-
-            elif w0 == 'iad-fhèin':
-                tokensetF2.extend(['iad','-','fhèin'])
             elif w0 == 'h-ana-miannaibh':
                 tokensetF2.extend(['h-','ana-miannaibh'])
             elif w0 == "a b'":
@@ -688,35 +582,8 @@ class FullTokeniser():
 
                 tokensetF2.append('obair-riaghaltais')
 
-            elif w0 == "dh’fheumas":
-                tokensetF2.append("dh'")
-
-                tokensetF2.append('fheumas')
-
-            elif w0 == "dh'fheumas":
-                tokensetF2.append("dh'")
-
-                tokensetF2.append('fheumas')
-
-            elif w0 == "dh'fhaodas":
-                tokensetF2.append("dh'")
-
-                tokensetF2.append('fhaodas')
-
-            elif w0 == "dh’fhaodas":
-                tokensetF2.append("dh'")
-
-                tokensetF2.append('fhaodas')
-
-            elif w0 == "dh’fhàs":
-                tokensetF2.append("dh’")
-
-                tokensetF2.append('fhàs')
-
-            elif w0 == "dh'fhàs":
-                tokensetF2.append("dh'")
-
-                tokensetF2.append('fhàs')
+            elif w0 in ["dh’fheumas","dh'fheumas","dh'fhaodas", "dh’fhaodas", "dh’fhàs", "dh'fhàs"]:
+                tokensetF2.extend([w0[0:3], w0[3:]])
 
             elif w0 == 'Ban-righ' and "'nn" in tokensetF1[i:i + 2]:
   
@@ -738,55 +605,9 @@ class FullTokeniser():
 
                 tokensetF1.remove("'nn")
 
-            elif w0 == 'bhrist' and "’" in tokensetF1[i:i + 2]:
-   
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
-                tokensetF1.remove("’")
-
-            elif w0 == 'ars' and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("’")
-
-            elif w0 == 'ars' and "'" in tokensetF1[i:i + 2]:
-    
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("'")
-
-            elif w0 == 'mis' and "’" in tokensetF1[i:i + 2]:
-    
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("’")
-
-            elif w0 == 'mis' and "'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("'")
-
-            elif w0 == 'thus' and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("’")
-
-            elif w0 == 'thus' and "'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("'")
-
-            elif w0 == 'oirr' and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("’")
-
-            elif w0 == 'ars' and "'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("'")
-
-            elif w0 == 'oidhch' and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
+            elif w0 in ['ars','bhrist','mis','oidhch','oirr','thus'] and w1 in ["’", "'"]:
+                tokensetF2.append("%s%s" % (w0,w1))
                 tokensetF1.remove("’")
 
             elif w0 == '[' and "Placename]." in tokensetF1[i:i + 2]:
@@ -810,43 +631,15 @@ class FullTokeniser():
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("n")
               
-            elif w0 in ["aig","chalp","chual","creids","oirr"] and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
+            elif w0 in ["aig","chalp","chual","comhairl","creids","oirr","chreach-s","cuimhn","dhòmhs","innt","prionns","tein","toilicht"] and w1 in ["'", "’"]:
+                tokensetF2.append("%s%s" % (w0, w1))
+                tokensetF1.remove(w1)
 
-                tokensetF1.remove("’")
-
-            elif w0 in ["chual","creids"] and "'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("'")
-
-            elif w0 == "tein" and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("’")
-
-            elif w0 in ["chreach-s","cuimhn","dhòmhs","innt","prionns","toilicht"] and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("’")
-
-            elif w0 in ["chreach-s","cuimhn","dhòmhs","innt","prionns","toilicht"] and "'" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("'")
-
-            elif w0 == "Do’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 in ["Do’","De’","de’"] and "n" in tokensetF1[i:i + 2]:
 
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
-
-            elif w0 == "De’" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-                tokensetF1.remove("n")
-            elif w0 == "comhairl" and "’" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("’")
 
             elif w0 == "òrain-“pop" and "”" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
@@ -860,11 +653,6 @@ class FullTokeniser():
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("a")
 
-            elif w0 == "de’" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("n")
-
             elif w0 == "Gu" and "dé" in tokensetF1[i:i + 2]:
                 tokensetF2.append("Gu dé")
                 tokensetF1.remove("dé")
@@ -872,50 +660,22 @@ class FullTokeniser():
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("thràth")
 
-            elif w0 == "Mu’" and "n" in tokensetF1[i:i + 2]:
+            elif w0 in ["Mu’","mu’"] and "n" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("n")
 
-            elif w0 == "mu’" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("n")
-
-            elif w0 == "An" or w0 =="an" and "dràsda" in tokensetF1[i:i + 2]:
-                tokensetF2.append(w0 + " dràsda")
-                tokensetF1.remove("dràsda")
-              
-            elif w0 == "Srath" and "Chluaidh" in tokensetF1[i:i + 2]:
+            elif w0 in ["An","an"] and w1 in ["dràsda", "dràsta"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("Chluaidh")
+                tokensetF1.remove(w1)
               
             elif w0 == "ma" and "tha" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("tha")
               
-            elif w0 == 'Roinn' and "Eòrpa" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("Eòrpa")
-              
-            elif (w0 == 'Phort' or w0 == 'Port') and "Rìgh" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("Rìgh")
-              
-            elif w0 == 'làn' and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
+            elif w0 in ['làn','leth'] and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
 
                 tokensetF2.append(''.join(tokensetF1[i:i + 3]))
-
-                # tokensetF1.remove("bhon")
-
-                tokensetF1.remove("-Ghàidhealtachd")
-
-            elif w0 == 'leth' and "-Ghàidhealtachd" in tokensetF1[i:i + 3]:  # it is important to consider the next 3 tokens instead of 2 because there is some blank token created in between
-
-                tokensetF2.append(''.join(tokensetF1[i:i + 3]))
-
-                # tokensetF1.remove("bhon")
-
                 tokensetF1.remove("-Ghàidhealtachd")
 
             elif w0 == 'bhon' and w1 in ["an","a'"]:
@@ -926,7 +686,7 @@ class FullTokeniser():
                 tokensetF2.append("%s%s" % (w0, w1))
                 tokensetF1.remove("n")
             # toponyms
-            elif w0 in ['Caolas', 'Chaolas', 'Dùn', 'Eilean', 'Gleann', 'Loch', 'Rubha', 'Tràigh'] and re.match('[A-Z][a-z]+', w1):
+            elif w0 in ['Caolas', 'Chaolas', 'Dùn', 'Eilean', 'Gleann', 'Inbhir', 'Loch', 'Phort', 'Port', 'Roinn', 'Rubha', 'Srath', 'Tràigh'] and re.match('[A-ZÈ][a-zìò]+', w1):
                 tokensetF2.append(' '.join([w0, w1]))
                 tokensetF1.remove(w1)
 
@@ -934,27 +694,20 @@ class FullTokeniser():
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove(w1)
               
-            elif w0 == "a'" and "shineach" in tokensetF1[i:i + 2]:
+            elif w0 in ["a'", "a"] and w1 == "shineach":
                 tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("shineach")
+                tokensetF1.remove(w1)
 
-            elif w0 == "a’" and "s" in tokensetF1[i:i + 2]:
+            elif w0 == "a’" and w1 == "s":
                 tokensetF2.append("%s%s" % (w0, w1))
                 tokensetF1.remove("s")
           
-            elif w0 == "a" and "shineach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("shineach")
-          
-            elif w0 == "Caledonian" and "Mac" in tokensetF1[i:i + 2] and "a’" in tokensetF1[i:i + 3] and "Bhruthainn" in tokensetF1[i:i + 4]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 4]))
-          
-            elif w0 == "Caledonian" and "Mac" in tokensetF1[i:i + 2] and "a'" in tokensetF1[i:i + 3] and "Bhruthainn" in tokensetF1[i:i + 4]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 4]))
-                tokensetF1.remove("Mac")
-                tokensetF1.remove("a'")
-                tokensetF1.remove("Bhruthainn")
-          
+            elif w0 == "Caledonian" and w1 == "Mac" and w2 in ["a’", "a'"] and w3 == "Bhruthainn":
+                tokensetF2.append("%s %s %s %s" % (w0,w1,w2,w3))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
+                tokensetF1.remove(w3)
+                    
             elif w0 == 'dhan' and "an" in tokensetF1[i:i + 2] and "sin" in tokensetF1[i:i + 3]:
                 tokensetF2.append('dhan')
                 tokensetF2.append('an sin')
@@ -981,10 +734,6 @@ class FullTokeniser():
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("an")
 
-            elif w0 == 'fon' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("an")
-
             elif w0 == 'ionnsaicht' and "’" in tokensetF1[i:i + 2]:
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
@@ -993,11 +742,6 @@ class FullTokeniser():
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
 
                 tokensetF1.remove("'")
-
-            elif w0 == 'Dùn' and "Èideann" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("Èideann")
 
             elif w0 == 'an' and "toiseach" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -1014,10 +758,9 @@ class FullTokeniser():
 
                 tokensetF1.remove("toiseach")
 
-            elif w0 == "a" and "tuath" in tokensetF1[i:i + 2]:
+            elif w0 == "a" and w1 in ["deas", "tuath"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("tuath")
+                tokensetF1.remove(w1)
 
             elif w0 == "air" and "choireigin-ach" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -1034,25 +777,10 @@ class FullTokeniser():
 
                 tokensetF1.remove("chaoidh")
 
-            elif w0 == 'mun' and "a'" in tokensetF1[i:i + 2]:
+            elif w0 in ['mun', "on", "tron"] and w1 in ["a'", "an"]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
-                tokensetF1.remove("a'")
-
-            elif w0 == 'mun' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("an")
-
-            elif w0 == 'on' and "a'" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("a'")
-
-            elif w0 == 'on' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("an")
+                tokensetF1.remove(w1)
 
             elif w0 == 'oidhch' and "’." in tokensetF1[i:i + 2]:
                 tokensetF2.append("oidhch’")
@@ -1076,44 +804,19 @@ class FullTokeniser():
 
                 tokensetF1.remove("Mhònaidh")
 
-            elif w0 == 'tron' and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
+            elif w0 in ["de'", "mu'", "do'"] and w1 == "n":
+                tokensetF2.append("%s%s" % (w0, w1))
 
-                tokensetF1.remove("an")
-
-            elif w0 == "de'" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append(''.join(tokensetF1[i:i + 2]))
-
-                tokensetF1.remove("n")
-
-            elif w0 == "mu'" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("n")
-
-            elif w0 == "do'" and "n" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("n")
+                tokensetF1.remove(w1)
 
             elif w0 == "doesn'" and "t" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("t")
 
-            elif w0 == "a" and "staigh" in tokensetF1[i:i + 2]:
+            elif w0 == "a" and w1 in ["mach", "muigh", "steach", "staigh"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("staigh")
-
-            elif w0 == "a" and "steach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("steach")
-
-            elif w0 == "a" and "mach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("mach")
+                tokensetF1.remove(w1)
           
             elif w0 == "sam" and "bith" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -1143,10 +846,10 @@ class FullTokeniser():
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove("nàdarra")
 
-            elif w0 == "An" and "Aodann" in tokensetF1[i:i + 2] and "Bàn" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                tokensetF1.remove("Aodann")
-                tokensetF1.remove("Bàn")
+            elif w0 == "An" and w1 == "Aodann" and w2 == "Bàn":
+                tokensetF2.append("%s %s %s" % (w0,w1,w2))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
             elif w0 == "[" and "?" in tokensetF1[i:i + 2] and "]" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
@@ -1155,78 +858,24 @@ class FullTokeniser():
 
                 tokensetF1.remove("]")
 
-            elif w0 == "a" and "bhòn-dè" in tokensetF1[i:i + 2]:
+            elif w0 in ["a","a'"] and w1 in ["bhòn-dè","bhòn-raoir", "bhòn-uiridh"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("bhòn-dè")
-
-            elif w0 == "a'" and "bhòn-dè" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("bhòn-dè")
+                tokensetF1.remove(w1)
 
             elif w0 == "Pholl" and "a'" in tokensetF1[i:i + 2] and "Ghrùthain" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
                 tokensetF1.remove("Ghrùthain")
-
                 tokensetF1.remove("a'")
 
-                
-
-            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shiud" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("a")
-
-                tokensetF1.remove("shiud")
-
-                
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "shiud" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("an")
-
-                tokensetF1.remove("shiud")
-
-                
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                tokensetF1.remove("an")
-                tokensetF1.remove("ann")
-                
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "siud" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                tokensetF1.remove("an")
-                tokensetF1.remove("siud")
-                
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "sin" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                tokensetF1.remove("an")
-                tokensetF1.remove("sin")
-                
-
-            elif w0 == "a'" and "bhòn-raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove("a'")
-                tokensetF1.remove("bhòn-raoir")
+            elif w0 == "ann" and w1 in ["a","an"] and w2 in ["seo","shiud","sin","siud"]:
+                tokensetF2.append("%s %s %s" % (w0,w1,w2))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
             elif w0 == "a'" and "s" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("s")
-
-            elif w0 == "a" and "bhòn-raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("a")
-
-                tokensetF1.remove("bhòn-raoir")
-
                 
 
             elif w0 == "a" and "bhòn" in tokensetF1[i:i + 2] and "raoir" in tokensetF1[i:i + 3]:
@@ -1238,23 +887,6 @@ class FullTokeniser():
 
                 tokensetF1.remove("raoir")
 
-                
-
-            elif w0 == "a'" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("a'")
-
-                tokensetF1.remove("bhòn-uiridh")
-
-                w0 = ""
-
-            elif w0 == "a" and w1 == "bhòn-uiridh":
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove(w0)
-
-                tokensetF1.remove(w1)
 
             elif w0 == "a" and "bhòn" in tokensetF1[i:i + 2] and "uiridh" in tokensetF1[i:i + 3]:
                 tokensetF2.append("%s %s %s" % (w0, w1, w2))
@@ -1262,202 +894,54 @@ class FullTokeniser():
                 tokensetF1.remove(w1)
                 tokensetF1.remove(w2)
 
-            elif w0 == "a'" and "bhòn-uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("bhòn-uiridh")
-
-                
-
             elif w0 == "a" and "bhos" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhos")
-
-                
 
             elif w0 == "a" and "bhàn" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("bhàn")
 
-                
-
             elif w0 == "a" and "mach" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("mach")
-
-                
 
             elif w0 == "a" and "màireach" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("màireach")
 
-                
-
             elif w0 == "am" and "bliadhna" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
                 tokensetF1.remove('am')
                 tokensetF1.remove("bliadhna")
-                
 
-            elif w0 == "a" and "muigh" in tokensetF1[i:i + 2]:
+            elif w0 == "an" and w1 in ["ath-bhliadhna", "ath-oidhche", "ath-sheachdainn","de", "diugh", "earar", "earair"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-                tokensetF1.remove('a')
-                tokensetF1.remove("muigh")
+                tokensetF1.remove(w1)
 
-                
-
-            elif w0 == "a" and "nall" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("a")
-
-                tokensetF1.remove("nall")
-
-                
-
-            elif w0 == "an" and "ath-bhliadhna" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("an")
-
-                tokensetF1.remove("ath-bhliadhna")
-
-                
-
-            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "bhliadhna" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("ath")
-
-                tokensetF1.remove("bhliadhna")
-
-                
-
-            elif w0 == "an" and "ath-oidhche" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("ath-oidhche")
-
-            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "oidhche" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("ath")
-
-                tokensetF1.remove("oidhche")
-
-            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "oidhch'" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("ath")
-
-                tokensetF1.remove("oidhch'")
-
-            elif w0 == "an" and "ath-oidhche" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("ath-oidhche")
-
-            elif w0 == "an" and "ath-sheachdainn" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("ath-sheachdainn")
-
-            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "sheachdainn" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("an")
-
-                tokensetF1.remove("sheachdainn")
-
-            elif w0 == "an" and "ath-sheachdain" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("ath-sheachdain")
-
-            elif w0 == "an" and "ath" in tokensetF1[i:i + 2] and "sheachdain" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("an")
+            elif w0 == "an" and w1 == "ath" and w2 in ["bhliadhna", "oidhche", "oidhch'","sheachdain","sheachdainn"]:
+                tokensetF2.append("%s %s %s" % (w0,w1,w2))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
             elif w0 == "an" and "còmhnaidh" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("an")
 
-            elif w0 == "an" and "de" in tokensetF1[i:i + 2]:
+            elif w0 == "a" and w1 in ["nis", "nisd", "raoir", "rithist", "uiridh"]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
-                tokensetF1.remove("de")
+                tokensetF1.remove(w1)
 
-            elif w0 == "an" and "diugh" in tokensetF1[i:i + 2]:
+            elif w0 == "a" and w1 in ["nall", "nuas", "null", "staidh","steach"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("diugh")
-
-            elif w0 == "an" and "dràsta" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("dràsta")
-
-            elif w0 == "an" and "earar" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("earar")
-
-            elif w0 == "an" and "earair" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("earair")
-
-            elif w0 == "a" and "nis" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("nis")
-
-            elif w0 == "a" and "nisd" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("nisd")
-
-            elif w0 == "a" and "nuas" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("nuas")
-
-            elif w0 == "a" and "uiridh" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("uiridh")
-
-            elif w0 == "a" and "null" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("null")
-
-            elif w0 == "a" and "raoir" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("raoir")
-
-            elif w0 == "a" and "rithist" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("rithist")
-
-            elif w0 == "a" and "staidh" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("staidh")
-
-            elif w0 == "a" and "steach" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("steach")
-
+                tokensetF1.remove(w1)
+    
             elif w0 == "b" and "e" in tokensetF1[i:i + 2]:
                 tokensetF2.append("b'")
 
@@ -1487,20 +971,11 @@ class FullTokeniser():
 
                 tokensetF1.remove("bu'")
 
-            elif w0 == "Inbhir" and "Nis" in tokensetF1[i:i + 2]:
+            elif w0 == "ann" and w1 in ["am","an"]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
-                tokensetF1.remove("Nis")
-
-            elif w0 == "ann" and "am" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("am")
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("an")
-
+                tokensetF1.remove(w1)
+       
             elif w0 == "an" and "siud" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
 
@@ -1543,11 +1018,6 @@ class FullTokeniser():
 
                 tokensetF1.remove('sineach')
 
-            elif w0 == "an" and w1 == "dràsda":
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('dràsda')
-
             elif w0 == "ma" and w1 == "tha":
                 tokensetF2.append("%s %s" % (w0, w1))
 
@@ -1563,20 +1033,9 @@ class FullTokeniser():
 
                 tokensetF1.remove("’")
 
-            elif w0 == "ge" and "brì" in tokensetF1[i:i + 2]:
+            elif w0 == "ge" and w1 in ["be", "brì", "brith"]:
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('brì')
-
-            elif w0 == "ge" and "brith" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove('brith')
-
-            elif w0 == "ge" and "be" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("be")
+                tokensetF1.remove(w1)
 
             elif w0 == "ge" and "'s" in tokensetF1[i:i + 2] and "bith" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
@@ -1619,11 +1078,14 @@ class FullTokeniser():
                 tokensetF2.append("%s %s" % (w0, w1))
 
                 tokensetF1.remove("dheireadh")
-
-            elif w0 == "a" and "h-uile" in tokensetF1[i:i + 2]:
+                
+            elif w0 == "h-" and w1 == "uile":
                 tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("h-uile")
+                tokensetF1.remove(w1)
+                
+            elif w0 == "a" and w1 == "h-uile":
+                tokensetF2.append("%s %s" % (w0, w1))
+                tokensetF1.remove(w1)
 
             elif w0 == "a" and "seo" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -1639,11 +1101,6 @@ class FullTokeniser():
                 tokensetF1.remove("an")
 
                 tokensetF1.remove("seo")
-
-            elif w0 == "a" and "niste" in tokensetF1[i:i + 2]:
-                tokensetF2.append("%s %s" % (w0, w1))
-
-                tokensetF1.remove("niste")
 
             elif w0 == "a" and "niste" in tokensetF1[i:i + 2]:
                 tokensetF2.append("%s %s" % (w0, w1))
@@ -1688,20 +1145,6 @@ class FullTokeniser():
 
                 tokensetF1.remove("chòir")
 
-            elif w0 == "ann" and "a'" in tokensetF1[i:i + 2] and "shiudach" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("shiudach")
-
-                tokensetF1.remove("a'")
-
-            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shiudach" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("shiudach")
-
-                tokensetF1.remove("a")
-
             elif w0 == "a's" and "a" in tokensetF1[i:i + 2] and "sineach" in tokensetF1[i:i + 3]:
                 tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
 
@@ -1709,30 +1152,11 @@ class FullTokeniser():
 
                 tokensetF1.remove("sineach")
 
-            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shineach" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
+            elif w0 == "ann" and w1 == "an"  and w2 in ["seo", "shin"]:
+                tokensetF2.append("%s %s %s" % (w0,w1,w2))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
 
-                tokensetF1.remove("a")
-
-                tokensetF1.remove("ann")
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "shin" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("an")
-
-                tokensetF1.remove("shin")
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2] and "seo" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-
-                tokensetF1.remove("an")
-
-                tokensetF1.remove("seo")
-
-            elif w0 == "ann" and "an" in tokensetF1[i:i + 2]:
-                    tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                    tokensetF1.remove("an")
             elif w0 == "ann" and "seo" in tokensetF1[i:i + 2]:
                     tokensetF2.append("%s %s" % (w0, w1))
 
@@ -1751,21 +1175,15 @@ class FullTokeniser():
                 tokensetF2.append(''.join(tokensetF1[i:i + 2]))
                 tokensetF1.remove("’")
 
-            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "shin" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                tokensetF1.remove("a")
-                tokensetF1.remove("shin")
-                
-            elif w0 == "ann" and "a" in tokensetF1[i:i + 2] and "sheo" in tokensetF1[i:i + 3]:
-                tokensetF2.append(' '.join(tokensetF1[i:i + 3]))
-                tokensetF1.remove("a")
-                tokensetF1.remove("sheo")
-            elif w0 == "(’" and "S" in tokensetF1[i:i + 2]:
-                tokensetF2.extend(["(","’S"])
-                tokensetF1.remove("S")
-            elif w0 == "(’" and "s" in tokensetF1[i:i + 2]:
-                tokensetF2.extend(["(","’s"])
-                tokensetF1.remove("s")
+            elif w0 == "ann" and w1 in ["a", "a'"] and w2 in ["sheo", "shin", "shineach", "shiudach"]:
+                tokensetF2.append("%s %s %s" % (w0, w1, w2))
+                tokensetF1.remove(w1)
+                tokensetF1.remove(w2)
+
+            elif w0 == "(’" and w1 in ["s","S"]:
+                tokensetF2.extend(["(","’" + w1])
+                tokensetF1.remove(w1)
+
             else:
                 tokensetF2.append(w0)
 
