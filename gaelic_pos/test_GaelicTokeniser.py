@@ -12,11 +12,13 @@ class Test(unittest.TestCase):
         self.t = None
         self.f = None
 
+    def test_longer(self):
+        self.assertEqual(self.f.tokenise("Bha cuimhn' aige air Uilleam o'n a bha e 'n Glaschu: duine mór socair, sàmhach."), ["Bha", "cuimhn'", "aige", "air", "Uilleam", "o'n", "a", "bha", "e", "'n", "Glaschu", ":", "duine", "mór", "socair", ",", "sàmhach", "."])
+
     def test_placenames(self):
-        self.assertEqual(self.f.tokenise('Roinn Eòrpa'), ['Roinn Eòrpa'])
-        self.assertEqual(self.f.tokenise('Port Rìgh'), ['Port Rìgh'])
-        self.assertEqual(self.f.tokenise('Phort Rìgh'), ['Phort Rìgh'])
-        self.assertEqual(self.f.tokenise('Loch Aillse'), ['Loch Aillse'])
+        names = ['Roinn Eòrpa', 'Port Rìgh', 'Phort Rìgh', 'Loch Aillse', 'Rubha Gharbh', 'Tràigh Ghil', 'Chaolas Mhór']
+        for name in names:
+            self.assertEqual(self.f.tokenise(name), [name])
 
     def test_normalise_quotes(self):
         self.assertEqual(self.f.normalise_quotes("'"), r"'")
@@ -27,6 +29,8 @@ class Test(unittest.TestCase):
         self.assertEqual(self.f.tokenise('mu thràth'), ["mu thràth"])
         self.assertEqual(self.f.tokenise('ma tha'), ["ma tha"])
         self.assertEqual(self.f.tokenise('an dràsda'), ["an dràsda"])
+        self.assertEqual(self.f.tokenise('bhon an'), ["bhon an"])
+        self.assertEqual(self.f.tokenise("bhon a' cholbh"), ["bhon a'", "cholbh"])
         # investigate
         #self.assertEqual(self.t.tokenise("a b'"), ["a","b'"])
         
