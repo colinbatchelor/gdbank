@@ -36,13 +36,16 @@ class Checker():
                 if t_1 == "làn":
                     code = "GINIDEACH"
                     message = "làn takes the genitive: Cox §174"
+                elif t_1 == "chum" and p_1 == "Sp"
+                    code = "GINIDEACH"
+                    message = "(a) chum takes the genitive: Cox §344"                    
             if pos.startswith("Ncp") and t_1 == "iomadh":
                 code = "SINGILTE"
                 message = "iomadh is followed by a singular noun: Cox §173"
             if ((pos == "Ar" and token in self.lenite_Ar) or (token == "de" and p1.startswith("N"))) and not self._lenited(t1):
                 code = "LENITE"
                 message = token + " lenites the following"
-            if 'ó' in token:
+            if 'ó' in token or 'é' in token or 'á' in token:
                 code = "GOC"
                 message = "graves only"
             if token in self.apos:
