@@ -12,6 +12,29 @@ class Test(unittest.TestCase):
     def check(self, goodtokens, badtokens, code):
         self.assertFalse(code in [t[2] for t in self.c._check(goodtokens)])
         self.assertTrue(code in [t[2] for t in self.c._check(badtokens)])
+
+    # this is for cases where we have a list of single tokens
+    def check_every(self, goodtokens, badtokens, code):
+        goodresult = [t[2] for t in self.c._check(goodtokens)]
+        for i,result_code in enumerate(goodresult):
+            self.assertNotEqual(result_code, code, msg = goodtokens[i])
+        badresult = [t[2] for t in self.c._check(badtokens)]
+        for i,result_code in enumerate(badresult):
+            self.assertEqual(result_code, code, msg = badtokens[i])
+
+    def test_lenition(self):
+        goodtokens = [("Thug","V-s"), ("stad","V-s"), ("Bhiodh","V-h"), ("ruigeadh","V-h")]
+        badtokens = [("Tug","V-s"), ("faodadh", "V-h"), ("dèanadh","V-h")]
+        self.check_every(goodtokens, badtokens, "LENITE")
+        
+    def test_genitivenames(self):
+        good_f = [("Brìde","Nn-fg")]
+        bad_f = [("Bhrìde","Nn-fg")]
+        self.check(good_f, bad_f, "NOLENITE")
+        self.assertFalse("LENITE" in [t[2] for t in self.c._check ([("Aonghais","Nn-mg")])])
+        good_m = [("Dhòmhnaill","Nn-mg")]
+        bad_m = [("Dòmhnaill","Nn-mg")]
+        self.check(good_m, bad_m, "LENITE")
         
     def test_singilte(self):
         good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]

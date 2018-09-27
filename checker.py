@@ -25,6 +25,19 @@ class Checker():
             t2,p2 = tagged_tokens[i+2] if i < n_tokens - 2 else ("<END>","")
             code = ''
             message = ''
+            if re.match("V-h[123][sp]", pos) or re.match("V-[hs]$", pos):
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "Independent forms in the past and mixed tenses lenite: Cox §44iiia,§44iiib/§246ii"
+            # thinking about how to implement Cox §44iiic/§45iaα.
+            if pos == "Nn-mg":
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "Masculine names in the genitive lenite: Cox §45iaβ"
+            if pos == "Nn-fg":
+                if self._lenited(token):
+                    code = "NOLENITE"
+                    message = "Feminine names in the genitive do not usually lenite: Cox §45iaβ"
             if pos.startswith("Nc") and not re.match("Ncs.g", pos):
                 if t_1 == "barrachd":
                     code = "GINIDEACH/SINGILTE"
@@ -36,7 +49,7 @@ class Checker():
                 if t_1 == "làn":
                     code = "GINIDEACH"
                     message = "làn takes the genitive: Cox §174"
-                elif t_1 == "chum" and p_1 == "Sp"
+                elif t_1 == "chum" and p_1 == "Sp":
                     code = "GINIDEACH"
                     message = "(a) chum takes the genitive: Cox §344"                    
             if pos.startswith("Ncp") and t_1 == "iomadh":
@@ -64,7 +77,7 @@ class Checker():
         return result
 
     def _lenited(self, s):
-        unlenitable = re.match(r"[LlNnRr]|[Ss]gpt", s)
+        unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
         return unlenitable or s[1] == 'h'
         
     def check(self, text):
