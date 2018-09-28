@@ -26,6 +26,28 @@ class Test(unittest.TestCase):
         goodtokens = [("Thug","V-s"), ("stad","V-s"), ("Bhiodh","V-h"), ("ruigeadh","V-h")]
         badtokens = [("Tug","V-s"), ("faodadh", "V-h"), ("dèanadh","V-h")]
         self.check_every(goodtokens, badtokens, "LENITE")
+        goodtokens = [("ma","Cs"), ("thomhaiseas","V-f--r")]
+        badtokens = [("ma","Cs"), ("tomhaiseas","V-f--r")]
+        self.check(goodtokens, badtokens, "LENITE")
+        goodtokens = [("a", "Q-r"), ("chòrdas","V-f--r")]
+        badtokens = [("a", "Q-r"), ("còrdas","V-f--r")]
+        self.check(goodtokens, badtokens, "LENITE")
+        goodtokens = [("do", "Q--s"), ("chòrd","V-s")]
+        badtokens = [("do", "Q--s"), ("còrd","V-s")]
+        self.check(goodtokens, badtokens, "LENITE")
+
+    def test_speciallenition(self):
+        goodtokens = [("cha", "Qn"), ("ghabh", "V-f--d")]
+        badtokens = [("cha", "Qn"), ("gabh", "V-f--d")]
+        self.check(goodtokens, badtokens, "LENITE")
+
+    def test_flenition(self):
+        goodtokens = [("An","Qq"), ("fhàs","V-f--d")]
+        badtokens = [("Am","Qq"), ("fàs","V-f--d")]
+        self.check(goodtokens, badtokens, "LENITE")
+        # the test for this is not f-lenition but d-lenition. More complicated.
+        #goodtokens = [("Chan","Qn"), ("fhuirich","V-s--d")]
+        #badtokens = [("Cha","Qn"), ("do","Q--s"), ("dh'", "Uo"), ("fhuirich", "V-s--d")]
 
     def test_nolenition(self):
         goodtokens = [("tug","V-s--d"), ("stad","V-s--d"), ("biodh","V-h--d"), ("ruigeadh","V-h--d")]

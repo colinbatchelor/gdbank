@@ -25,6 +25,14 @@ class Checker():
             t2,p2 = tagged_tokens[i+2] if i < n_tokens - 2 else ("<END>","")
             code = ''
             message = ''
+            if p_1 in ["Dp1s", "Dp2s", "Dp3sm"]:
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "Nouns lenite after mo, do, a (masculine). Cox §45iaε"
+            elif p_1 in ["Dp3sf", "Dp1p", "Dp2p", "Dp3p"]:
+                if not self._unlenited(token):
+                    code = "NOLENITE"
+                    message = "Nouns do not lenite after a (feminine), ar, ur, an. Cox §45iaε"
             if re.match("V-h[123][sp]", pos) or re.match("V-[hs]$", pos):
                 if not self._lenited(token):
                     code = "LENITE"
@@ -42,6 +50,50 @@ class Checker():
                 if self._lenited(token):
                     code = "NOLENITE"
                     message = "Feminine names in the genitive do not usually lenite: Cox §45iaβ"
+            # Cox §45iaδ is complicated to do on the basis of tagging.
+            # consider doing based on the surface form
+            if p_1 in ["Dp1s", "Dp2s", "Dp3sm"]:
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "Nouns lenite after mo, do, a (masculine). Cox §45iaε"
+            elif p_1 in ["Dp3sf", "Dp1p", "Dp2p", "Dp3p"]:
+                if not self._unlenited(token):
+                    code = "NOLENITE"
+                    message = "Nouns do not lenite after a (feminine), ar, ur, an. Cox §45iaε"
+            if t_1 == "aon":
+                if not self._nondental_lenited(token):
+                    code = "LENITE"
+                    message = "Nouns lenite after aon. Cox §45iaζ"
+            if t_1 == "dà" or t_1 =="dhà":
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "nouns lenite after dà/dhà. Cox §45iaζ"
+            # Cox distinguishes air, air^s, and air^n. How to deal with this?        
+            if p_1 == "Sp" and t_1 in ["bho","o","de","do","eadar","fo","gun","mu","ro","thar","tre","tro"]:
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "nouns lenite after prepositions bho, o, de, do, eadar, fo, gun, mu, ro, thar tre and tro. Cox §45iaι"
+            if (t_1, p_1) == ("ma","Cs") or (t_1,p_1) == ("Ma","Cs"):
+                if not self._lenited(token) and pos.startswith("V"):
+                    code = "LENITE"
+                    message = "verbs lenite after ma. Cox §45ieα"
+            if (t_1,p_1) == ("a","Q-r"):
+                if not self._lenited(token) and pos.startswith("V"):
+                    code = "LENITE"
+                    message = "relative-form verbs lenite after a. Cox §45ieα"
+            if (t_1,p_1) == ("do","Q--s"):
+                if not self._lenited(token) and pos.startswith("V"):
+                    code = "LENITE"
+                    message = "past-tense verbs lenite after do. Cox §45ieβ"
+            if (t_1,p_1) == ("cha","Qn") or (t_1,p_1) == ("Cha","Qn"):
+                if not self._chalenited(token) and pos.startswith("V"):
+                    code = "LENITE"
+                    message = "verbs immediately after cha lenite. Cox §45ieγ"
+
+            if p_1 == "Qq" and token.startswith("f"):
+                if not self._lenited(token):
+                    code = "LENITE"
+                    message = "verbs beginning with f after a question particle lenite. Cox §45iia"
             if pos.startswith("Nc") and not re.match("Ncs.g", pos):
                 if t_1 == "barrachd":
                     code = "GINIDEACH/SINGILTE"
@@ -84,6 +136,10 @@ class Checker():
         unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
         return unlenitable or s[1] == 'h'
 
+    def _chalenited(self, s):
+        unlenitable = re.match(r"[AEIOUaeiouLlNnRrDTSdts]", s)
+        return unlenitable or s[1] == 'h'
+    
     def _unlenited(self, s):
         return s[1] != 'h'
         
@@ -91,3 +147,4 @@ class Checker():
         tokens = self.t.tokenise(text)
         tagged_tokens = self.p.tagfile_default(tokens)
         return _check(tagged_tokens)
+
