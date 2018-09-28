@@ -26,6 +26,11 @@ class Test(unittest.TestCase):
         goodtokens = [("Thug","V-s"), ("stad","V-s"), ("Bhiodh","V-h"), ("ruigeadh","V-h")]
         badtokens = [("Tug","V-s"), ("faodadh", "V-h"), ("dèanadh","V-h")]
         self.check_every(goodtokens, badtokens, "LENITE")
+
+    def test_nolenition(self):
+        goodtokens = [("tug","V-s--d"), ("stad","V-s--d"), ("biodh","V-h--d"), ("ruigeadh","V-h--d")]
+        badtokens = [("thug","V-s--d"), ("fhaodadh", "V-h--d"), ("dhèanadh","V-h--d")]
+        self.check_every(goodtokens, badtokens, "NOLENITE")
         
     def test_genitivenames(self):
         good_f = [("Brìde","Nn-fg")]

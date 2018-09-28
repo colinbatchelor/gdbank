@@ -29,6 +29,10 @@ class Checker():
                 if not self._lenited(token):
                     code = "LENITE"
                     message = "Independent forms in the past and mixed tenses lenite: Cox §44iiia,§44iiib/§246ii"
+            elif re.match("V-[hs]--d",pos):
+                if not self._unlenited(token):
+                    code = "NOLENITE"
+                    message = "Dependent forms in the past and mixed tenses do not lenite."
             # thinking about how to implement Cox §44iiic/§45iaα.
             if pos == "Nn-mg":
                 if not self._lenited(token):
@@ -79,6 +83,9 @@ class Checker():
     def _lenited(self, s):
         unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
         return unlenitable or s[1] == 'h'
+
+    def _unlenited(self, s):
+        return s[1] != 'h'
         
     def check(self, text):
         tokens = self.t.tokenise(text)
