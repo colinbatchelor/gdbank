@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import unittest
 from acainn import Features, Lemmatizer, Retagger, Subcat, Typer
 
@@ -16,15 +15,12 @@ class TestIntegration(unittest.TestCase):
 
     def test_retagger(self):
         specialtags = set()
-        tags = [value for key,value in self.r.retaggings.iteritems()]
-        for key in self.r.specials.iterkeys():
-            for item in self.r.specials[key]:
-                specialtags.add(item)
-        for tag in tags:
+        for key in self.r.retaggings:
+            tag = self.r.retaggings[key]
             self.assertTrue(tag in self.t.types.keys())
 
     def test_subcat(self):
-        for key in self.s.mappings.iterkeys():
+        for key in self.s.mappings:
             for item in self.s.mappings[key]:
                 self.assertTrue(item in self.t.types.keys(), item)
 

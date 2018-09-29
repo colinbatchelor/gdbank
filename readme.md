@@ -6,7 +6,7 @@ In Python 3. In-progress grammar checker based largely on Richard Cox's _Gearr-G
 
 innealan
 --
-Tools require Python 2.
+Tools covered by unit tests require Python 3.
 
 * `acainn.py` is the main code in this. It currently contains a lemmatizer, a retagger that assigns tags that more closely match CCG categories, a subcategorization tool for verbs, and code to map the new tags onto CCG categories.
 * `test_acainn.py` contains unit tests.
