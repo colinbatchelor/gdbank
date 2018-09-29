@@ -1,5 +1,9 @@
 Some tools and resources for natural language processing of Scottish Gaelic.
 
+`checker.py`
+--
+In Python 3. In-progress grammar checker based largely on Richard Cox's _Gearr-Ghràmar na Gàidhlig_ (2018). Does not run from the command line yet but `test_checker.py` shows how the methods work.
+
 innealan
 --
 Tools require Python 2.
@@ -51,4 +55,4 @@ The citation for the material in innealan and gramaran is:
   `@InProceedings{batchelor:2016:CLTW, author = {Batchelor, Colin}, title = {Automatic derivation of categorial grammar from a part-of-speech-tagged corpus in Scottish Gaelic}, booktitle = {Actes de la conf\'erence conjointe JEP-TALN-RECITAL 2016, volume 6 : CLTW}, month = {July}, year = {2016}, address = {Paris, France}, pages = 1, url = {https://jep-taln2016.limsi.fr/actes/Actes%20JTR-2016/V06-CLTW.pdf} }`
 
 Colin Batchelor
-2017-10-01
+2018-09-29
