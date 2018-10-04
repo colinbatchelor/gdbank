@@ -25,7 +25,7 @@ class Lemmatizer:
                               'fo':["fo.*"],
                               'gu':["gu_ruige"],
                               'de':["dh[ei].*"],
-                              'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)"],
+                              'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)$"],
                               'le':["le.*"],
                               'ri':["ri(um|ut|s)", "ru.*"],
                               'ro':["ro.*"],
