@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+import os
+import pandas as pd
 import re
 
 class Lemmatizer:
@@ -32,13 +33,17 @@ class Lemmatizer:
                               'thar':["tha.*"]
                               }
         self.vns = []
-        with open('resources/vns.txt') as f:
+        with open(os.path.join(os.path.dirname(__file__), 'resources', 'vns.txt')) as f:
             for line in f:
                 tokens = line.split('\t')
                 for vn in tokens[1:]:
                     pair = (tokens[0], vn)
                     self.vns.append(pair)
 
+    def lenited_pd(self, s):
+        unlenitable = s.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
+        return unlenitable | (s[1] == 'h')
+        
     def delenite(self, s):
         return s[0] + s[2:] if s[1] == 'h' else s
 
