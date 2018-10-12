@@ -4,34 +4,36 @@ import re
 
 class Lemmatizer:
     def __init__(self):
-        self.irregulars = [ ('bi', ['tha', 'bha', 'robh', 'eil', 'bheil', 'bith', 'bhith', "bh'", "bhà", "thà", "th'", 'bhios', 'bidh', 'biodh', 'bhiodh', "'eil", "bhithinn", "bhitheadh", "bitheamaid", "thathas", "thathar", "robhar"]),
-                            ('arsa', ["ars'", "ar", "ars", "as"]),
-                            ('abair', ['ràdh', 'thuirt', 'their', 'theirear']),
-                            ('beir', ['breith', 'bhreith', 'rug', 'beiridh']),
-                            ('cluinn', ['cluinntinn', 'chluinntinn', 'cuala', "cual'", 'chuala', 'cluinnidh']),
-                            ('rach', ['chaidh', 'dol', 'dhol', 'thèid', 'tèid', "deach"]),
-                            ('dèan', ['rinn', 'dèanamh', 'dhèanamh', 'nì']),
-                            ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì', 'chithear', 'chitheadh', 'fhaca', 'faca']),
-                            ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh', 'gheibhear']),
-                            ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
-                            ('thoir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
-                            ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
-        self.prepositions = { 'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
+        self.irregulars = [
+            ('bi', ['tha', 'bha', 'robh', 'eil', 'bheil', 'bith', 'bhith', "bh'", "bhà", "thà", "th'", 'bhios', 'bidh', 'biodh', 'bhiodh', "'eil", "bhithinn", "bhitheadh", "bitheamaid", "thathas", "thathar", "robhar"]),
+            ('arsa', ["ars'", "ar", "ars", "as"]),
+            ('abair', ['ràdh', 'thuirt', 'their', 'theirear']),
+            ('beir', ['breith', 'bhreith', 'rug', 'beiridh']),
+            ('cluinn', ['cluinntinn', 'chluinntinn', 'cuala', "cual'", 'chuala', 'cluinnidh']),
+            ('rach', ['chaidh', 'dol', 'dhol', 'thèid', 'tèid', "deach"]),
+            ('dèan', ['rinn', 'dèanamh', 'dhèanamh', 'nì']),
+            ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì', 'chithear', 'chitheadh', 'fhaca', 'faca']),
+            ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh', 'gheibhear']),
+            ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
+            ('thoir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
+            ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
+        self.prepositions = {
+            'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
             'air':["or[mt]|oir(re|bh|nn)|orra"],
             'airson':["'?son"],
-                              'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]", 'innte'],
-                              'as':["às", "as.*", "ais.*"],
-                              'bho':["(bh)?o", "(bh)?ua(m|t)"],
-                              'eadar':["ea.*"],
-                              'fo':["fo.*"],
-                              'gu':["gu_ruige"],
-                              'de':["dh[ei].*"],
-                              'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)$"],
-                              'le':["le.*"],
-                              'ri':["ri(um|ut|s)", "ru.*"],
-                              'ro':["ro.*"],
-                              'thar':["tha.*"]
-                              }
+            'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]", 'innte'],
+            'as':["às", "as.*", "ais.*"],
+            'bho':["(bh)?o", "(bh)?ua(m|t)"],
+            'eadar':["ea.*"],
+            'fo':["fo.*"],
+            'gu':["gu_ruige"],
+            'de':["dh[ei].*"],
+            'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)$"],
+            'le':["le.*"],
+            'ri':["ri(um|ut|s)", "ru.*"],
+            'ro':["ro.*"],
+            'thar':["tha.*"]
+        }
         self.vns = []
         with open(os.path.join(os.path.dirname(__file__), 'resources', 'vns.txt')) as f:
             for line in f:
@@ -40,10 +42,22 @@ class Lemmatizer:
                     pair = (tokens[0], vn)
                     self.vns.append(pair)
 
+    def lenited(self, s):
+        unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
+        return bool(unlenitable) | (s[1] == 'h')
+                    
     def lenited_pd(self, s):
         unlenitable = s.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
         return unlenitable | (s[1] == 'h')
-        
+
+    def chalenited_pd(self, s):
+        unlenitable = s.match(r"[AEIOUaeiouLlNnRrDTSdts]")
+        return unlenitable | (s[1] == 'h')
+    
+    def ndlenited_pd(self, s):
+        unlenitable = s.match(r"[AEIOUaeiouDdTtNnRrSs]")
+        return unlenitable | (s[1] == 'h')
+    
     def delenite(self, s):
         return s[0] + s[2:] if s[1] == 'h' else s
 
@@ -124,7 +138,8 @@ class Retagger:
                 if not line.startswith("#"):
                     tokens = line.split('\t')
                     self.retaggings[tokens[0]] = tokens[1].strip()
-        self.specials = {'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'], 'Dh’':['ADVPRE'], "Dh'":['ADVPRE'], 'dragh':['NPROP'], 'dùil':['NPROP'],
+        self.specials = {
+            'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'], 'Dh’':['ADVPRE'], "Dh'":['ADVPRE'], 'dragh':['NPROP'], 'dùil':['NPROP'],
             'Ach':['CONJ','SCONJ', 'ADVPRE'],
             'ach':['CONJ','SCONJ', 'ADVPRE'],
             'Agus':['CONJ', 'SCONJ', 'ADVPRE'],
@@ -137,7 +152,7 @@ class Retagger:
             'rùnaire':['NAME'],
             'riaghladair':['NAME'],
             'dè':['INTERRDE'], 'i':['PRONOUN']
-                         }
+        }
 
     def retag_article(self, surface, pos):
         return ['DET'] if not pos.endswith('g') else ['DETNMOD']
