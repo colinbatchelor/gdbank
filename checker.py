@@ -7,39 +7,30 @@ import pandas as pd
 import re
 
 class Checker():
+    # for simple matches
+    def _list_to_df(self, list, code):
+        return pd.DataFrame({
+            "token": list,
+            "code": np.resize([code], len(list))
+            })
     def __init__(self):
-       #             if token in self.apos:
-       #         code = "GOC-APOS"
-       #         message = "apostrophe and space out"
-       #     elif token in self.noapos:
-       #         code = "GOC-NOAPOS"
-       #         message = "no apostrophe and close up"
-       #     if token in self.hyphens:
-       #         code = "GOC-HYPHEN"
-       #         message = "hyphen needed"
-       #     if token in self.micheart:
-       #         code = "MICHEART"
-       #         message = self.micheart[token]
-
         self.t = GaelicTokeniser.Tokeniser()
         self.p = postagger.PosTagger()
         self.f = Frame()
         
         self.hyphen_series = ["a màireach", "a nis", "a nochd", "a raoir", "a rithist", "am bliadhna", "an ceartuair", "an dè", "an diugh", "an dràsta",   "an earar", "an-uiridh", "a bhàn", "a bhos", "an àird", "a nall", "a nìos", "a nuas", "a null", "a chaoidh", "a cheana", "am feast", "a mhàin", "a riamh", "a mach", "a muigh", "a staigh", "a steach"]
-        self.hyphens = pd.DataFrame({
-            "token": self.hyphen_series,
-            "code": np.resize(["GOC-HYPHEN"], len(self.hyphen_series))
-            })
-        self.apos = ["Sann", "Se", "sann", "se"]
-        self.noapos = ["de'n", "do'n", "fo'n", "mu'n", "ro'n", "tro'n"]
+        self.hyphens = self._list_to_df(self.hyphen_series, "GOC-HYPHEN")
+        self.apos = self._list_to_df(["Sann", "Se", "sann", "se"], "GOC-APOS")
+        self.noapos = self._list_to_df(["de'n", "do'n", "fo'n", "mu'n", "ro'n", "tro'n"], "GOC-NOAPOS")
         self.micheart = pd.DataFrame({
             "token": ['radh','cearr'],
             "code": ["spelling","spelling"],
             'message': ['should be ràdh','should be ceàrr' ]})
         self.lenite_Ar_series = ["deagh","droch"]
         self.lenite_Ar = pd.DataFrame({
-            "token": self.lenite_Ar_series,
-            "code": np.resize(["LENITE"], len(self.lenite_Ar_series))
+            "_t_1": self.lenite_Ar_series,
+            "code": np.resize(["LENITE"], len(self.lenite_Ar_series)),
+            "_lenited": np.resize([False], len(self.lenite_Ar_series))
             })
         self.messages = {
             "45iaepsilon": "Nouns lenite after mo, do, a (masculine). Cox §45iaε",
@@ -99,7 +90,10 @@ class Checker():
             "_chalenited": [False],
             "code":["45iegamma"]})
         self.fh = pd.DataFrame({
-            "_p_1": ["Qq"], "_c0": ["f"], "code": ["45iia"]})
+            "_p_1": ["Qq"],
+            "_c0": ["f"],
+            "_lenited": [False],
+            "code": ["45iia"]})
         self.t_1_case = pd.DataFrame({
             "_t_1": ["barrachd","tuilleadh"],
             "_genitivesing": [False,False],
@@ -112,37 +106,34 @@ class Checker():
             "_t_1":["làn"], "_genitive": False, "code":"174"})
         self.genitest = pd.DataFrame({
             "_t_1":["chum"], "_p_1":"Sp", "_genitive":False, "code":"344"})
-        self.lenitest_1 = pd.DataFrame({
-            "_t_1": self.lenite_Ar,
-            "_p_1": np.resize(["Ar"], len(self.lenite_Ar)),
-            "code":"LENITE"})
-    
+        
     def _check(self, tagged_tokens):
         df = self.f.feats(self.f.make(tagged_tokens))
         return self._checkdf(df)
 
     def _checkdf(self, df):
         result = (df.
-                  merge(self.lenitesp_1, on=("_p_1","_lenited"), how="left", suffixes = ("-a","-b")).
-                  merge(self.nolenitesp_1, on =("_p_1","_lenited"), how="left").
-                  merge(self.lenitepos, on=("pos","_lenited"), how="left", suffixes = ("-c","-d")).
-                  merge(self.lenite_t_1, on=("_t_1","_lenited"), how="left").
-                  merge(self.nd_lenite_t_1, on=("_t_1","_nondentallenited"),how="left", suffixes = ("-e","-f")).
-                  merge(self.lenite_p_1_t_1, on=("_p_1","_t_1","_lenited"), how="left").
-                  merge(self.lenite_p_1_t_1a, on=("_p_1","_t_1","_lenited"), how="left", suffixes = ("-g","-h")).
-                  merge(self.chalenite_p_1_t_1, on=("_p_1","_t_1","_chalenited"), how="left").
-                  merge(self.fh, on=("_p_1","_c0"), how="left", suffixes = ("-i", "-j")).
-                  merge(self.t_1_case, on=("_t_1","_genitivesing"), how="left").
-                  merge(self.t_1_number, on=("_t_1","_pl"), how="left", suffixes = ("-k", "-l")).
-                  merge(self.lantest, on=("_t_1","_genitive"), how="left").
-                  merge(self.genitest, on=("_t_1","_p_1","_genitive"), how="left", suffixes = ("-m", "-n")).
-                  merge(self.lenitest_1, on=("_t_1","_p_1"), how="left").
-                  merge(self.micheart, on="token", how="left", suffixes = ("-o", "-p")).
-                  merge(self.hyphens, on="token", how="left").
-                  merge(self.lenite_Ar, on="token", how="left", suffixes = ("-q","-r"))
-                  )
+            merge(self.lenitesp_1, on=("_p_1","_lenited"), how="left", suffixes = ("-a","-b")).
+            merge(self.nolenitesp_1, on =("_p_1","_lenited"), how="left").
+            merge(self.lenitepos, on=("pos","_lenited"), how="left", suffixes = ("-c","-d")).
+            merge(self.lenite_t_1, on=("_t_1","_lenited"), how="left").
+            merge(self.nd_lenite_t_1, on=("_t_1","_nondentallenited"),how="left", suffixes = ("-e","-f")).
+            merge(self.lenite_p_1_t_1, on=("_p_1","_t_1","_lenited"), how="left").
+            merge(self.lenite_p_1_t_1a, on=("_p_1","_t_1","_lenited"), how="left", suffixes = ("-g","-h")).
+            merge(self.chalenite_p_1_t_1, on=("_p_1","_t_1","_chalenited"), how="left").
+            merge(self.fh, on=("_p_1","_c0", "_lenited"), how="left", suffixes = ("-i", "-j")).
+            merge(self.t_1_case, on=("_t_1","_genitivesing"), how="left").
+            merge(self.t_1_number, on=("_t_1","_pl"), how="left", suffixes = ("-k", "-l")).
+            merge(self.lantest, on=("_t_1","_genitive"), how="left").
+            merge(self.genitest, on=("_t_1","_p_1","_genitive"), how="left", suffixes = ("-m", "-n")).
+            merge(self.micheart, on="token", how="left").
+            merge(self.hyphens, on="token", how="left", suffixes = ("-o", "-p")).
+            merge(self.apos, on="token", how="left").
+                  merge(self.lenite_Ar, on=("_t_1","_lenited"), how="left", suffixes = ("-q","-r"))
+        )
         result = result.fillna('')
         result['code'] = result.filter(regex="code-").agg(lambda x:",".join(x),axis="columns")
+        print(result)
         return result.drop(columns = result.filter(regex="[_-]"))
 
     def _acutes(self, s):

@@ -74,7 +74,7 @@ class Test(unittest.TestCase):
         self.assertFalse("LENITE" in [t[2] for t in self.c._check ([("Aonghais","Nn-mg")])])
         good_m = [("Dhòmhnaill","Nn-mg")]
         bad_m = [("Dòmhnaill","Nn-mg")]
-        self.check(good_m, bad_m, "45ibeta")
+        self.check(good_m, bad_m, "45iabeta")
         
     def test_singilte(self):
         good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
@@ -90,6 +90,7 @@ class Test(unittest.TestCase):
         self.check(good_tokens, bad_tokens, "176")
         
     def test_Ar(self):
+        print("Ar")
         badtokens = [("deagh", "Ar"), ("foghlam", "Ncsmn")]
         goodtokens = [("deagh", "Ar"), ("fhoghlam", "Ncsmn")]
         self.check(goodtokens, badtokens, "LENITE")
