@@ -1,6 +1,7 @@
 import unittest
 from innealan.acainn import Lemmatizer
 from checker import Checker
+import numpy as np
 
 class Test(unittest.TestCase):
     def setUp(self):
@@ -15,11 +16,10 @@ class Test(unittest.TestCase):
         goodresult = self.c._check(goodtokens)
         goodlist = [list(filter(None, t.split(','))) for t in goodresult.code.tolist()]
         flat_good = [item for sublist in goodlist for item in sublist]
-        print(flat_good)
+
         badresult = self.c._check(badtokens)
         badlist = [list(filter(None, t.split(','))) for t in badresult.code.tolist()]
         flat_bad = [item for sublist in badlist for item in sublist]
-        print(flat_bad)
 
         self.assertFalse(code in flat_good)
         self.assertTrue(code in flat_bad)
@@ -90,7 +90,6 @@ class Test(unittest.TestCase):
         self.check(good_tokens, bad_tokens, "176")
         
     def test_Ar(self):
-        print("Ar")
         badtokens = [("deagh", "Ar"), ("foghlam", "Ncsmn")]
         goodtokens = [("deagh", "Ar"), ("fhoghlam", "Ncsmn")]
         self.check(goodtokens, badtokens, "LENITE")
@@ -131,8 +130,35 @@ sinn,Pp1p
         pairs = text.splitlines()
         tokens = [(pair.split(',')[0],pair.split(',')[1]) for pair in pairs]
         checked = [list(filter(None, t.split(','))) for t in self.c._check(tokens).code.tolist()]
-        print(checked)
         self.assertEqual(checked[5], ['GOC-HYPHEN'])
+
+    def testBasic(self):
+        good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
+        result = self.c._make_df(good_iomadh)
+        self.assertEqual(3, len(result))
+
+    def testMo(self):
+        good = [("dhùin","V-s"),("mi","Pp1s"),("mo","Dp1s"),("shùilean","Ncpfn"),("san","Spa-s"),("deireadh","Ncsmd")]
+        result = self.c._check(good)
+        bad = [("dhùin","V-s"),("mi","Pp1s"),("mo","Dp1s"),("sùilean","Ncpfn"),("san","Spa-s"),("deireadh","Ncsmd")]
+        r2 = self.c._check(bad)
+        
+    def testFeats(self):
+        good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
+        result = self.c._feats(self.c._make_df(good_iomadh))
+        self.assertEqual(np.dtype(bool), np.dtype(result._lenited))
+        br = [("barrachd", "Ncsmn"), ("fiosrachaidh", "Ncsmg")]
+        r2 = self.c._feats(self.c._make_df(br))
+        self.assertEqual(np.dtype(bool), np.dtype(r2._genitive))
+        self.assertListEqual([False, True], r2._genitive.tolist())
+        self.assertListEqual([False, True], r2._genitivesing.tolist())
+        self.assertListEqual([True, True], r2._sing.tolist())
+
+    def testCheckerDfs(self):
+        self.assertEqual(np.dtype(object), np.dtype(self.c.lenitesp_1._p_1))
+        good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
+        result = self.c._feats(self.c._make_df(good_iomadh))
+        merged = result.merge(self.c.lenitesp_1, on = ("_p_1","_lenited"), how="left")
         
 if __name__ == '__main__':
     unittest.main()

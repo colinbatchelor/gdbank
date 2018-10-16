@@ -1,7 +1,6 @@
 from gaelic_pos import GaelicTokeniser
 from gaelic_pos import postagger
-from innealan.acainn import Features
-from dataframes import Frame
+from innealan.acainn import Features, Lemmatizer
 import numpy as np
 import pandas as pd
 import re
@@ -13,10 +12,45 @@ class Checker():
             "token": list,
             "code": np.resize([code], len(list))
             })
+    
+    def _make_df(self, tagged_tokens):
+        text = pd.DataFrame({
+            'token': [t[0] for t in tagged_tokens],
+            'pos': [t[1] for t in tagged_tokens]}).append(pd.DataFrame({
+                'token':['<END>','<END>'],
+                'pos':['','']}),ignore_index =True)
+        text_1 = pd.DataFrame({
+            'token':['<START>'],
+            'pos':['']}).append(text, ignore_index = True).rename(columns={
+                'token':'_t_1',
+                'pos':'_p_1'})
+        text_2 = pd.DataFrame({
+            '_t_1':['<START>'],
+            '_p_1':['']}).append(text_1, ignore_index = True).rename(columns={
+                '_t_1':'_t_2',
+                '_p_1':'_p_2'})
+        text1 = text.drop(0).reset_index(drop=True).rename(columns={
+            'token':'_t1', 'pos':'_p1'})
+        text2 = text1.drop(0).reset_index(drop=True).rename(columns={
+            '_t1':'_t2', '_p1':'_p2'})
+        return text_2.join(text_1).join(text).join(text1).join(text2).dropna()
+
+    def _feats(self, df):
+        return df.assign(
+            _lenited = lambda x: self.l.lenited_pd(x.token.str),
+            _chalenited = lambda x: self.l.chalenited_pd(x.token.str),
+            _nondentallenited = lambda x: self.l.ndlenited_pd(x.token.str),
+            _genitive = lambda x: x.pos.str.match('N.*g'),
+            _sing = lambda x: x.pos.str.match('N.s'),
+            _genitivesing = lambda x: x.pos.str.match('N.s.g'),
+            _pl = lambda x: x.pos.str.match('N.p'),
+            _c0 = lambda x: x.token.str[0],
+            code = lambda x: '')
+    
     def __init__(self):
+        self.l = Lemmatizer()
         self.t = GaelicTokeniser.Tokeniser()
         self.p = postagger.PosTagger()
-        self.f = Frame()
         
         self.hyphen_series = ["a màireach", "a nis", "a nochd", "a raoir", "a rithist", "am bliadhna", "an ceartuair", "an dè", "an diugh", "an dràsta",   "an earar", "an-uiridh", "a bhàn", "a bhos", "an àird", "a nall", "a nìos", "a nuas", "a null", "a chaoidh", "a cheana", "am feast", "a mhàin", "a riamh", "a mach", "a muigh", "a staigh", "a steach"]
         self.hyphens = self._list_to_df(self.hyphen_series, "GOC-HYPHEN")
@@ -108,7 +142,7 @@ class Checker():
             "_t_1":["chum"], "_p_1":"Sp", "_genitive":False, "code":"344"})
         
     def _check(self, tagged_tokens):
-        df = self.f.feats(self.f.make(tagged_tokens))
+        df = self._feats(self._make_df(tagged_tokens))
         return self._checkdf(df)
 
     def _checkdf(self, df):
@@ -133,7 +167,6 @@ class Checker():
         )
         result = result.fillna('')
         result['code'] = result.filter(regex="code-").agg(lambda x:",".join(x),axis="columns")
-        print(result)
         return result.drop(columns = result.filter(regex="[_-]"))
 
     def _acutes(self, s):
