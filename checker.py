@@ -14,6 +14,7 @@ class Checker():
             })
     
     def _make_df(self, tagged_tokens):
+        # rewrite this in terms of series and only make the dataframe at the end
         text = pd.DataFrame({
             'token': [t[0] for t in tagged_tokens],
             'pos': [t[1] for t in tagged_tokens]}).append(pd.DataFrame({

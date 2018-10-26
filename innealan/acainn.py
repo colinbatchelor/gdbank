@@ -27,7 +27,7 @@ class Lemmatizer:
             'eadar':["ea.*"],
             'fo':["fo.*"],
             'gu':["gu_ruige"],
-            'de':["dh[ei].*"],
+            'de':["dh[ei].+"],
             'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)$"],
             'le':["le.*"],
             'ri':["ri(um|ut|s)", "ru.*"],
@@ -42,6 +42,9 @@ class Lemmatizer:
                     pair = (tokens[0], vn)
                     self.vns.append(pair)
 
+    def can_follow_de(self, s):
+        return s in ["cho","am","an","a'", "na","mar","bha", "tha"]
+        
     def lenited(self, s):
         unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
         return bool(unlenitable) | (s[1] == 'h')
@@ -91,7 +94,7 @@ class Lemmatizer:
         elif s.endswith("airt"):
             return s.replace("airt", "air")
         else:
-            return s
+            return self.delenite(s)
 
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
