@@ -38,9 +38,7 @@ class Lemmatizer:
         with open(os.path.join(os.path.dirname(__file__), 'resources', 'vns.txt')) as f:
             for line in f:
                 tokens = line.split('\t')
-                for vn in tokens[1:]:
-                    pair = (tokens[0], vn)
-                    self.vns.append(pair)
+                self.vns.append((tokens[0], tokens[1].strip()))
 
     def can_follow_de(self, s):
         return s in ["cho","am","an","a'", "na","mar","bha", "tha"]
@@ -73,7 +71,7 @@ class Lemmatizer:
 
     def lemmatize_vn(self, s):
         for vn in self.vns:
-            if s in vn[1]:
+            if s == vn[1]:
                 return vn[0]
         if s.endswith("sinn"):
             return s.replace("sinn", "")
