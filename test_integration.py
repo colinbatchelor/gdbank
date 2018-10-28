@@ -21,11 +21,9 @@ class Test(unittest.TestCase):
         result = self.p.tagfile_default(tokens)
         expected = [('Bha', 'V-s'), ("cuimhn'", 'Ncsfn'), ('aige', 'Pr3sm'), ('air', 'Sp'), ('Uilleam', 'Nn-md'), ("o'n", 'Q--s'), ('a', 'Q-r'), ('bha', 'V-s'), ('e', 'Pp3sm'), ("'n", 'Sp'), ('Glaschu', 'Nt'), (':', 'Fi'), ('duine', 'Ncsmn'), ('mór', 'Rg'), ('socair', 'Ncsfn'), (',', 'Fi'), ('sàmhach', 'Ap'), ('.', 'Fe')]
         self.assertEqual(result,expected)
-        checked = self.c._check(result)
-        for check in checked:
-            print(check)
-        codes = [t[2] for t in checked]
-        self.assertTrue('GOC' in codes)
+        checked = ["".join(set(t.split(','))) for t in self.c._check(result).code.tolist()]
+
+        self.assertTrue('GOC-ACUTE' in checked)
 
 if __name__ == '__main__':
     unittest.main()
