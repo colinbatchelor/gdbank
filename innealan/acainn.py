@@ -71,28 +71,21 @@ class Lemmatizer:
 
     def lemmatize_vn(self, s):
         for vn in self.vns:
-            if s == vn[1]:
+            if self.delenite(s) == vn[1]:
                 return vn[0]
-        if s.endswith("sinn"):
-            return s.replace("sinn", "")
-        if s.endswith("tinn"):
-            return s.replace("tinn", "")
-        elif s.endswith("eachadh"):
-            return s.replace("eachadh", "ich")
-        elif s.endswith("achadh"):
-            return s.replace("achadh", "aich")
-        elif s.endswith("gladh"):
-            return s.replace("gladh", "gail")
-        elif s.endswith("eadh"):
-            return s.replace("eadh", "")
-        elif s.endswith("adh"):
-            return s.replace("adh", "")
-        elif s.endswith("tainn"):
-            return s.replace("tainn", "")
-        elif s.endswith("airt"):
-            return s.replace("airt", "air")
-        else:
-            return self.delenite(s)
+        replacements = [
+            ('sinn', ''), ('tail', ''), ('ail', ''), ('eil', ''), ('eal', ''),
+            ('aich', ''), ('ich', ''), ('tainn', ''), ('tinn', ''), 
+            ('eamh', ''), ('amh', ''),
+            ('eamhainn', ''), ('mhainn', ''), ('inn', ''),
+            ('eachadh', 'ich'), ('achadh', 'aich'), ('airt', 'air'),
+            ('gladh', 'gail'), ('eadh', ''), ('adh', ''), ('e', ''),
+            ('eachd', 'ich'), ('achd', 'aich')
+        ]
+        for replacement in replacements:
+            if s.endswith(replacement[0]):
+                return self.delenite(s.replace(replacement[0], replacement[1]))
+        return self.delenite(s)
 
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
