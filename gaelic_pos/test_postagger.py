@@ -10,7 +10,13 @@ class Test(unittest.TestCase):
         self.tagger = None
 
     def test_default(self):
-        self.assertEqual(self.tagger.tagfile_default(["Is","mise","Cailean"]), [("Is","Wp-i"),("mise","Pp1s--e"),("Cailean","Nn-mn")])
+        self.assertEqual(self.tagger.tagfile_default(
+            ["Is","mise","Cailean"]),
+            [("Is","Wp-i"),("mise","Pp1s--e"),("Cailean","Nn-mn")])
+        self.assertEqual(self.tagger.tagfile_default(
+            ["Is","cinnteach","gun","tig","e","fhathast","."]),
+            [("Is","Wp-i"),("cinnteach","Ap"),("gun","Qa"),("tig","V-f--d"),
+             ("e","Pp3sm"),("fhathast","Rt"),(".","Fe")])
         
     def test_retag(self):
         self.assertEqual(self.tagger._retag(["tha", "mi", "a'", "dol", "dhachaigh"], ["V-p", "Pp1s", "Sp", "Nv", "Rs"]), [("tha","V-p"),("mi","Pp1s"),("a'","Sp"),("dol","Nv"),("dhachaigh","Rs")])

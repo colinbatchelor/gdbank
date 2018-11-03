@@ -95,7 +95,7 @@ class PosTagger():
             if token == 'am' and ''.join(algV[y]) != "Tdsm":
                 algV[y] = 'Tdsm'
 
-            if token in ["gum", "gun", "gu"] and ''.join(algV[x + 1]) in [Verbcases, Wcases]:
+            if token in ["gum", "gun", "gu"] and ''.join(algV[y + 1]) in [Verbcases, Wcases]:
                 algV[y] = 'Qa'
 
             if tag == 'Dp3sf' and ''.join(algT[y + 1][:2]) in ['ph', 'bh', 'ch', 'th', 'dh', 'mh', 'sh', 'fh']:
