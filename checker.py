@@ -14,27 +14,20 @@ class Checker():
             })
     
     def _make_df(self, tagged_tokens):
-        # rewrite this in terms of series and only make the dataframe at the end
-        text = pd.DataFrame({
-            'token': [t[0] for t in tagged_tokens],
-            'pos': [t[1] for t in tagged_tokens]}).append(pd.DataFrame({
-                'token':['<END>','<END>'],
-                'pos':['','']}),ignore_index =True)
-        text_1 = pd.DataFrame({
-            'token':['<START>'],
-            'pos':['']}).append(text, ignore_index = True).rename(columns={
-                'token':'_t_1',
-                'pos':'_p_1'})
-        text_2 = pd.DataFrame({
-            '_t_1':['<START>'],
-            '_p_1':['']}).append(text_1, ignore_index = True).rename(columns={
-                '_t_1':'_t_2',
-                '_p_1':'_p_2'})
-        text1 = text.drop(0).reset_index(drop=True).rename(columns={
-            'token':'_t1', 'pos':'_p1'})
-        text2 = text1.drop(0).reset_index(drop=True).rename(columns={
-            '_t1':'_t2', '_p1':'_p2'})
-        return text_2.join(text_1).join(text).join(text1).join(text2).dropna()
+        tokens = [t[0] for t in tagged_tokens]
+        postags = [t[1] for t in tagged_tokens]
+        t_1 = ['<START>'] + tokens[:-1]
+        p_1 = ['<START>'] + postags[:-1]
+        t_2 = ['<START>'] + t_1[:-1]
+        p_2 = ['<START>'] + p_1[:-1]
+        t1 = tokens[1:] + ['<END>']
+        t2 = t1[1:] + ['<END>']
+        p1 = postags[1:] + ['<END>']
+        p2 = p1[1:] + ['<END>']
+        return pd.DataFrame(
+            { 'token': tokens, 'pos': postags, '_t_1': t_1, '_p_1': p_1,
+              '_t_2': t_2, '_p_2': p_2, '_t1': t1, '_p1': p1, '_t2': t2, '_p2': p2 }
+        )
 
     def _feats(self, df):
         return df.assign(
