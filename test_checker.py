@@ -23,7 +23,6 @@ class Test(unittest.TestCase):
 
         self.assertFalse(code in flat_good)
         self.assertTrue(code in flat_bad)
-                
 
     # this is for cases where we have a list of single tokens
     def check_every(self, goodtokens, badtokens, code):
@@ -36,9 +35,6 @@ class Test(unittest.TestCase):
 
     def test_lenition(self):
         self.assertTrue(self.l.lenited("stad"))
-        goodtokens = [("Thug","V-s"), ("stad","V-s"), ("Bhiodh","V-h"), ("ruigeadh","V-h")]
-        badtokens = [("Tug","V-s"), ("faodadh", "V-h"), ("dèanadh","V-h")]
-        self.check_every(goodtokens, badtokens, "44iiia")
         goodtokens = [("ma","Cs"), ("thomhaiseas","V-f--r")]
         badtokens = [("ma","Cs"), ("tomhaiseas","V-f--r")]
         self.check(goodtokens, badtokens, "45iealpha")
@@ -48,6 +44,16 @@ class Test(unittest.TestCase):
         goodtokens = [("do", "Q--s"), ("chòrd","V-s")]
         badtokens = [("do", "Q--s"), ("còrd","V-s")]
         self.check(goodtokens, badtokens, "45iebeta")
+        goodtokens = [("an", "Tdsf"), ("dithis", "Ncsfn"), ("bheag", "Aq-sfn")]
+        badtokens = [("an", "Tdsf"), ("dithis", "Ncsfn"), ("beag", "Aq-smn")]
+        self.check(goodtokens, badtokens, "144ii")
+        goodtokens = [("dithis", "Ncsfn"), ("bhalach", "Ncsmg")]
+        badtokens = [("dithis", "Ncsfn"), ("balach", "Ncsmn")]
+        self.check(goodtokens, badtokens, "144iii")
+        
+        goodtokens = [("Thug","V-s"), ("stad","V-s"), ("Bhiodh","V-h"), ("ruigeadh","V-h")]
+        badtokens = [("Tug","V-s"), ("faodadh", "V-h"), ("dèanadh","V-h")]
+        self.check_every(goodtokens, badtokens, "44iiia")
 
     def test_speciallenition(self):
         goodtokens = [("cha", "Qn"), ("ghabh", "V-f--d")]
@@ -132,18 +138,18 @@ sinn,Pp1p
         checked = [list(filter(None, t.split(','))) for t in self.c._check(tokens).code.tolist()]
         self.assertEqual(checked[5], ['GOC-HYPHEN'])
 
-    def testBasic(self):
+    def test_basic(self):
         good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
         result = self.c._make_df(good_iomadh)
         self.assertEqual(3, len(result))
 
-    def testMo(self):
+    def test_mo(self):
         good = [("dhùin","V-s"),("mi","Pp1s"),("mo","Dp1s"),("shùilean","Ncpfn"),("san","Spa-s"),("deireadh","Ncsmd")]
         result = self.c._check(good)
         bad = [("dhùin","V-s"),("mi","Pp1s"),("mo","Dp1s"),("sùilean","Ncpfn"),("san","Spa-s"),("deireadh","Ncsmd")]
         r2 = self.c._check(bad)
         
-    def testFeats(self):
+    def test_feats(self):
         good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
         result = self.c._feats(self.c._make_df(good_iomadh))
         self.assertEqual(np.dtype(bool), np.dtype(result._lenited))
@@ -154,7 +160,7 @@ sinn,Pp1p
         self.assertListEqual([False, True], r2._genitivesing.tolist())
         self.assertListEqual([True, True], r2._sing.tolist())
 
-    def testCheckerDfs(self):
+    def test_checkerDfs(self):
         self.assertEqual(np.dtype(object), np.dtype(self.c.lenitesp_1._p_1))
         good_iomadh = [("'S", "Wp-i"), ("iomadh","Ar"), ("rud","Ncsmn")]
         result = self.c._feats(self.c._make_df(good_iomadh))

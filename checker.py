@@ -39,6 +39,7 @@ class Checker():
             _genitivesing = lambda x: x.pos.str.match('N.s.g'),
             _pl = lambda x: x.pos.str.match('N.p'),
             _c0 = lambda x: x.token.str[0],
+            _coarsepos = lambda x: x.pos.str[0],
             _acute = lambda x: self._acutes(x.token.str),
             code = lambda x: '')
     
@@ -47,20 +48,37 @@ class Checker():
         self.t = GaelicTokeniser.Tokeniser()
         self.p = postagger.PosTagger()
         
-        self.hyphen_series = ["a màireach", "a nis", "a nochd", "a raoir", "a rithist", "am bliadhna", "an ceartuair", "an dè", "an diugh", "an dràsta",   "an earar", "an-uiridh", "a bhàn", "a bhos", "an àird", "a nall", "a nìos", "a nuas", "a null", "a chaoidh", "a cheana", "am feast", "a mhàin", "a riamh", "a mach", "a muigh", "a staigh", "a steach"]
+        hyphen_series = ["a màireach", "a nis", "a nochd", "a raoir", "a rithist", "am bliadhna", "an ceartuair", "an dè", "an diugh", "an dràsta", "an earar", "an-uiridh", "a bhàn", "a bhos", "an àird", "a nall", "a nìos", "a nuas", "a null", "a chaoidh", "a cheana", "am feast", "a mhàin", "a riamh", "a mach", "a muigh", "a staigh", "a steach"]
+        personalnumber_series = ["dithis", "tri", "ceathrar", "cignear",
+                                      "sianar", "seachdnar", "ochdnar", "naoinear",
+                                      "deichnear"]
+        self.personalnumber_adjs = pd.DataFrame({
+            "_t_1": personalnumber_series,
+            "_coarsepos": np.resize(["A"], len(personalnumber_series)),
+            "_lenited": [False, False, True, True, True, True, True, True, True],
+            "code": np.resize(["144ii"], len(personalnumber_series))
+        })
+        self.personalnumber_nouns = pd.DataFrame({
+            "_t_1": personalnumber_series,
+            "_coarsepos": np.resize(["N"], len(personalnumber_series)),
+            "_lenited": np.resize([False], len(personalnumber_series)),
+            "code": np.resize(["144iii"], len(personalnumber_series))
+        })
         self.acutes = pd.DataFrame({"_acute": [True], "code":["GOC-ACUTE"]})
-        self.hyphens = self._list_to_df(self.hyphen_series, "GOC-HYPHEN")
+
+        
+        self.hyphens = self._list_to_df(hyphen_series, "GOC-HYPHEN")
         self.apos = self._list_to_df(["Sann", "Se", "sann", "se"], "GOC-APOS")
         self.noapos = self._list_to_df(["de'n", "do'n", "fo'n", "mu'n", "ro'n", "tro'n"], "GOC-NOAPOS")
         self.micheart = pd.DataFrame({
             "token": ['radh','cearr'],
             "code": ["spelling","spelling"],
             'message': ['should be ràdh','should be ceàrr' ]})
-        self.lenite_Ar_series = ["deagh","droch"]
+        lenite_Ar_series = ["deagh","droch"]
         self.lenite_Ar = pd.DataFrame({
-            "_t_1": self.lenite_Ar_series,
-            "code": np.resize(["LENITE"], len(self.lenite_Ar_series)),
-            "_lenited": np.resize([False], len(self.lenite_Ar_series))
+            "_t_1": lenite_Ar_series,
+            "code": np.resize(["LENITE"], len(lenite_Ar_series)),
+            "_lenited": np.resize([False], len(lenite_Ar_series))
             })
         self.messages = {
             "45iaepsilon": "Nouns lenite after mo, do, a (masculine). Cox §45iaε",
@@ -161,7 +179,9 @@ class Checker():
             merge(self.apos, on="token", how="left").
             merge(self.lenite_Ar, on=("_t_1","_lenited"), how="left", suffixes = ("-q","-r")).
             merge(self.acutes, on=("_acute"), how="left").
-            merge(self.acutes, on=("_acute"), how="left", suffixes = ("-s","-t"))
+            merge(self.personalnumber_adjs, on=("_t_1", "_coarsepos", "_lenited"), how="left", suffixes = ("-s","-t")).
+            merge(self.personalnumber_nouns, on=("_t_1", "_coarsepos", "_lenited"), how="left").
+            merge(self.personalnumber_nouns, on=("_t_1", "_coarsepos", "_lenited"), how="left", suffixes = ("-u","-v"))
         )
         result = result.fillna('')
         result['code'] = result.filter(regex="code-").agg(lambda x:",".join(x),axis="columns")
