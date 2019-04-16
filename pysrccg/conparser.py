@@ -1,3 +1,4 @@
+from collections import Counter
 import csv
 import os
 import sys
@@ -91,6 +92,20 @@ def retag(rawpos, surface):
     print((rawpos,surface))
     raise
 
+def bigrams(doc, counts):
+  for sentence in doc:
+    for i,token in enumerate(sentence[:-1]):
+      key = (token[1], sentence[i+1][1])
+      counts[key] = counts[key] + 1
+  return counts
+
+def trigrams(doc, counts):
+  for sentence in doc:
+    for i,token in enumerate(sentence[:-2]):
+      key = (token[1], sentence[i+1][1], sentence[i+2][1])
+      counts[key] = counts[key] + 1
+  return counts
+
 def coarse(doc):
   new_doc = []
   for sentence in doc:
@@ -107,15 +122,33 @@ with open('productions.csv') as f:
   for line in reader:
     productions.append((line[0], [line[1],line[2]]))
 
-def parse_sentences(arcosg_path, filename):
+def parse_sentences(arcosg_path, filename, counts, counts3):
   doc = arcosgToDoc(os.path.join(arcosg_path, filename))
+  result2 = bigrams(doc, counts)
+  result3 = trigrams(doc, counts3)
+  sentence_count = 0
+  production_count = 0
   for sentence in coarse(doc):
     print(sentence)
     print(" ".join([s[0] for s in sentence]))
-    print(parse(sentence, productions))
+    stack,stack_length = parse(sentence, productions)
+    print((stack,stack_length))
+    sentence_count += 1
+    production_count += stack_length
     print()
+  return result2,result3,sentence_count,production_count
 
 files = os.listdir(arcosg_path)
+counts = Counter()
+counts3 = Counter()
+sentence_total = 0
+production_total = 0
 for file in files:
   if file.endswith('txt'):
-    parse_sentences(arcosg_path, file)
+    result = parse_sentences(arcosg_path, file, counts, counts3)
+    counts, counts3, sentence_count, production_count = result
+    sentence_total += sentence_count
+    production_total += production_count
+print(counts.most_common(16))
+print(counts3.most_common(16))
+print("%s/%s" % (production_total, sentence_total))
