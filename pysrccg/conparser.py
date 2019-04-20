@@ -1,4 +1,5 @@
 from collections import Counter
+from random import shuffle
 import csv
 import os
 import sys
@@ -40,11 +41,9 @@ def arcosgToDoc(filename):
 def reduce(stack, tokens, productions):
   # we only do binary productions
   types = [s[1] for s in stack[-2:]]
-  print("in reduce: %s - %s " % ([s[0] for s in stack[-2:]], types))
   for production in productions:
     if production[1] == types:
       stack[-2:] = [(stack[-2:], production[0])]
-      print("in reduce: %s" % stack[-2:])
       return True, stack, tokens
   return False, stack, tokens
 
@@ -55,6 +54,7 @@ def shift(stack, tokens):
   
 def parse(tokens, productions):
   stack = []
+  print(tokens)
   while len(tokens) > 0:
     stack, tokens = shift(stack, tokens)
     reduction, stack, tokens = reduce(stack, tokens, productions)
@@ -120,7 +120,7 @@ with open('productions.csv') as f:
   reader = csv.reader(f)
   next(reader)
   for line in reader:
-    productions.append((line[0], [line[1],line[2]]))
+    productions.append((line[0], [line[1],line[2]],line[3]))
 
 def parse_sentences(arcosg_path, filename, counts, counts3):
   doc = arcosgToDoc(os.path.join(arcosg_path, filename))
@@ -129,8 +129,6 @@ def parse_sentences(arcosg_path, filename, counts, counts3):
   sentence_count = 0
   production_count = 0
   for sentence in coarse(doc):
-    print(sentence)
-    print(" ".join([s[0] for s in sentence]))
     stack,stack_length = parse(sentence, productions)
     print((stack,stack_length))
     sentence_count += 1
@@ -143,6 +141,7 @@ counts = Counter()
 counts3 = Counter()
 sentence_total = 0
 production_total = 0
+shuffle(files)
 for file in files:
   if file.endswith('txt'):
     result = parse_sentences(arcosg_path, file, counts, counts3)
@@ -151,4 +150,4 @@ for file in files:
     production_total += production_count
 print(counts.most_common(16))
 print(counts3.most_common(16))
-print("%s/%s" % (production_total, sentence_total))
+print("%s/%s (%s)" % (production_total, sentence_total, production_total/sentence_total))
