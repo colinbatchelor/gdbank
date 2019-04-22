@@ -368,10 +368,10 @@
 1	Thug	_	VERB	V-s	0	root	_	_	_
 2	cuideigin	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	1	nsubj	_	_
 3	gàire	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	1	obj	_	_
-4	orm	_	PRON	Pr1s	_	_	_	_	_
+4	orm	_	PRON	Pr1s	1	obl	_	_	_
 5	nuair	_	SCONJ	Cs	7	mark	_	_	_
 6	a	_	PART	Q-r	7	mark:prt	_	_	_
-7	thuirt	_	VERB	V-s	_	_	_	_	_
+7	thuirt	_	VERB	V-s	1	ccomp	_	_	_
 8	iad	_	PRON	Pp3p	7	nsubj	_	_	_
 9	gun	_	PART	Qa	10	mark	_	_	_
 10	deigheadh	_	VERB	V-h--d	7	ccomp	_	_	_
@@ -398,13 +398,13 @@
 # sent_id = pw02_10
 1	Thachair	_	VERB	V-s	0	root	_	_	_
 2	mi	_	PRON	Pp1s	1	nsubj	_	_	_
-3	fhèin	_	PRON	Px	_	_	_	_	_
+3	fhèin	_	PRON	Px	2	compound	_	_	_
 4	air	_	ADP	Sp	5	case	_	_	_
 5	té	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	1	obl	_	_
 6	chòir	_	ADJ	Aq-sfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	5	amod	_	_
-7	aig	_	ADP	Sp	_	_	_	_	_
-8	a	_	PART	Qq	_	_	_	_	_
-9	bheil	_	VERB	V-p--d	_	_	_	_	_
+7	aig	_	ADP	Sp	9	obl	_	_	_
+8	a	_	PART	Qq	9	mark:pt	_	_	_
+9	bheil	_	VERB	V-p--d	5	acl:relcl	_	_	_
 10	an	_	DET	Tdsf	{'Gender': 'Fem', 'Number': 'Sing'}	_	_	_	_
 11	deagh	_	ADJ	Ar	12	amod	_	_	_
 12	dhreuchd	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
@@ -550,12 +550,12 @@
 25	dh’	_	PART	Uo	_	_	_	_	_
 26	ionnsaich	_	VERB	V-s	16	conj	_	_	_
 27	i	_	PRON	Pp3sf	26	nsubj	_	_	_
-28	séist	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
+28	séist	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	26	obj	_	_
 29	no	_	CCONJ	Cc	28	cc	_	_	_
 30	dhà	_	PRON	Pn	28	cconj	_	_	_
-31	dhaibh	_	PRON	Pr3p	_	_	_	_	_
+31	dhaibh	_	PRON	Pr3p	26	obl	_	_	_
 32	air	_	ADP	Sp	_	_	_	_	_
-33	son	_	ADP	Nf	_	_	_	_	_
+33	son	_	ADP	Nf	32	fixed	_	_	_
 34	gun	_	PART	Qa	_	_	_	_	_
 35	togadh	_	VERB	V-h--d	_	_	_	_	_
 36	iad	_	PRON	Pp3p	_	_	_	_	_
@@ -571,23 +571,23 @@
 # sent_id = pw02_15
 1	Bidh	_	VERB	V-f	0	root	_	_	_
 2	mi	_	PRON	Pp1s	1	nsubj	_	_	_
-3	fhèin	_	PRON	Px	_	_	_	_	_
+3	fhèin	_	PRON	Px	2	compound	_	_	_
 4	a’	_	PART	Sa	5	case	_	_	_
 5	beachdachadh	_	VERB	Nv	1	xcomp	_	_	_
-6	nach	_	PART	Qn	_	_	_	_	_
-7	eil	_	VERB	V-p--d	_	_	_	_	_
-8	e	_	PRON	Pp3sm	_	_	_	_	_
+6	nach	_	PART	Qn	6	mark	_	_	_
+7	eil	_	VERB	V-p--d	5	ccomp	_	_	_
+8	e	_	PRON	Pp3sm	7	nsubj	_	_	_
 9	an_còmhnaidh	_	ADV	Rt	10	advmod	_	_	_
-10	cuideachail	_	ADJ	Ap	_	_	_	_	_
+10	cuideachail	_	ADJ	Ap	7	xcomp:pred	_	_	_
 11	a	_	PART	Ug	_	_	_	_	_
 12	bhith	_	VERB	Nv	_	_	_	_	_
 13	ro	_	ADV	Rg	14	advmod	_	_	_
 14	mhothachail	_	ADJ	Ap	_	_	_	_	_
 15	buileach	_	ADV	Rg	14	advmod	_	_	_
-16	mu	_	ADP	Sp	_	_	_	_	_
+16	mu	_	ADP	Sp	17	case	_	_	_
 17	chor	_	NOUN	Ncsmn	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
-18	na	_	DET	Tdsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
-19	Gàidhlige	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
+18	na	_	DET	Tdsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	19	det	_	_
+19	Gàidhlige	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	17	nmod	_	_
 20	.	_	PUNCT	Fe	1	punct	_	_	_
 
 # sent_id = pw02_16a
@@ -600,15 +600,15 @@
 7	a	_	PART	Q-r	_	_	_	_	_
 8	chuala	_	VERB	V-s	_	_	_	_	_
 9	sib’	_	PRON	Pp2p	_	_	_	_	_
-10	fhèin	_	PRON	Px	_	_	_	_	_
-11	a'	_	PART	Sa	_	_	_	_	_
+10	fhèin	_	PRON	Px	9	compound	_	_	_
+11	a'	_	PART	Sa	12	case	_	_	_
 12	bruidhinn	_	VERB	Nv	_	_	_	_	_
 13	an	_	ADP	Sp	15	case	_	_	_
 14	deagh	_	ADJ	Ar	15	amod	_	_	_
-15	Ghàidhlig	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
+15	Ghàidhlig	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	12	obl	_	_
 16	bho	_	ADP	Sp	_	_	_	_	_
-17	chionn	_	ADP	Nf	_	_	_	_	_
-18	ghoirid	_	ADJ	Aq-smd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
+17	chionn	_	ADP	Nf	16	fixed	_	_	_
+18	ghoirid	_	ADJ	Aq-smd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	16	fixed	_	_
 19	’s	_	CCONJ	Cc	_	_	_	_	_
 20	nach	_	PART	Qn	_	_	_	_	_
 21	do	_	PART	Q--s	_	_	_	_	_
@@ -625,7 +625,7 @@
 4	nach	_	PART	Qn	_	_	_	_	_
 5	cuala	_	VERB	V-s--d	_	_	_	_	_
 6	aon	_	PRON	Pn	_	_	_	_	_
-7	fhèin	_	PRON	Px	_	_	_	_	_
+7	fhèin	_	PRON	Px	6	compound	_	_	_
 8	.	_	PUNCT	Fe	1	punct	_	_	_
 
 # sent_id = pw02_17a
@@ -782,19 +782,19 @@
 51	?	_	PUNCT	Fg	_	_	_	_	_
 
 # sent_id = pw02_19b
-1	Am	_	PART	Qq	_	_	_	_	_
+1	Am	_	PART	Qq	3	mark:prt	_	_	_
 2	bu	_	AUX	Ws	3	cop	_	_	_
 3	toil	_	NOUN	Uf	0	root	_	_	_
-4	leat	_	PRON	Pr2s	_	_	_	_	_
-5	fhèin	_	PRON	Px	_	_	_	_	_
+4	leat	_	PRON	Pr2s	3	obl	_	_	_
+5	fhèin	_	PRON	Px	4	compound	_	_	_
 6	a	_	PART	Ug	_	_	_	_	_
 7	bhith	_	VERB	Nv	_	_	_	_	_
-8	’na	_	ADP	Sp	_	_	_	_	_
+8	’na	_	ADP	Sp	10	case	_	_	_
 9	do	_	DET	Dp2s	10	nmod:poss	_	_	_
 10	chorra-ghritheach	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
-11	air	_	ADP	Sp	_	_	_	_	_
-12	sliabh	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
-13	beinne	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
+11	air	_	ADP	Sp	12	case	_	_	_
+12	sliabh	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	7	obl	_	_
+13	beinne	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	12	nmod	_	_
 14	?	_	PUNCT	Fg	3	punct	_	_	_
 
 # file = f05.txt
@@ -803,13 +803,13 @@
 2	iad	_	PRON	Pp3p	1	nsubj	_	_	_
 3	a'	_	PART	Sa	4	case	_	_	_
 4	toirt	_	VERB	Nv	1	xcomp	_	_	_
-5	an	_	DET	Tdsmg	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
-6	teachd-an-tìr	_	NOUN	Ncsmg	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
+5	an	_	DET	Tdsmg	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Gen'}	6	det	_	_
+6	teachd-an-tìr	_	NOUN	Ncsmg	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Gen'}	4	obj	_	_
 7	far	_	ADP	Sp	8	case	_	_	_
 8	muir	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
 9	is	_	CCONJ	Cc	8	cc	_	_	_
 10	fearann	_	NOUN	Ncsmg	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Gen'}	8	conj	_	_
-11	,	_	PUNCT	Fi	_	_	_	_	_
+11	,	_	PUNCT	Fi	1	punct	_	_	_
 12	is	_	CCONJ	Cc	8	cc	_	_	_
 13	an	_	ADP	Sp	14	case	_	_	_
 14	cois	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	conj	_	_	_
