@@ -13,9 +13,14 @@ upostag_mapping_harder = { 'Cc':'CCONJ', 'Cs':'SCONJ', 'Nc':'NOUN', 'Nf':'ADP', 
 def arcosg_to_upostag(tag):
     return upostag_mapping_simple[tag[0]] if tag[0] in upostag_mapping_simple else upostag_mapping_harder[tag[0] + tag[1]]
 
-def process_file(f):
+def process_file(f, filename):
     replacements = {"Aq-sfq":"Aq-sfd","Ncfsg":"Ncsfg","sa":"Sa","tdsm":"Tdsm"}
+    print('# file = %s' % filename)
+    file_id = filename.replace(".txt","")
     id = 1
+    start_line = True
+    sent_id = 0
+    print('# sent_id = %s_%s' % (file_id, sent_id))
     for line in f:
         line = line.replace("na b'/ Uc", "na b'/Uc").replace("//Fb", "(slash)/Fb")
         tokens = line.strip().split()
@@ -29,7 +34,10 @@ def process_file(f):
                     tag = replacements[tag]
                 if tag == 'Xsc':
                     id = 1
-                    print ()
+                    if not(start_line):
+                        print()
+                        sent_id +=1
+                        print('# sent_id = %s_%s' % (file_id, sent_id))
                 try:
                     upostag = arcosg_to_upostag(tag)
                 except:
@@ -45,15 +53,20 @@ def process_file(f):
                 carry = ''
                 if form == '.':
                     id = 1
+                    sent_id +=1
                     print()
+                    print('# sent_id = %s_%s' % (file_id, sent_id))
                 else:
                     id = id + 1
             else:
-                carry = carry + t + '_' 
+                carry = carry + t + '_'
+        start_line = False
+    print()
 
 features = Features()
 files = os.listdir(sys.argv[1])
 for filename in files:
-    with open(os.path.join(sys.argv[1], filename)) as f:
-        process_file(f)
+    if not filename.startswith('s'):
+        with open(os.path.join(sys.argv[1], filename)) as f:
+            process_file(f, filename)
 
