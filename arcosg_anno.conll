@@ -23,12 +23,12 @@
 
 # sent_id = pw02_1
 1	B’	_	AUX	Ws	3	cop	_	_	_
-2	e	_	PRON	Pp3sm	_	_	_	_	_
+2	e	_	PRON	Pp3sm	1	fixed	_	_	_
 3	seo	_	PRON	Pd	0	root	_	_	_
 4	an	_	DET	Tdsf	{'Gender': 'Fem', 'Number': 'Sing'}	7	det	_	_
 5	t-	_	PART	Uo	6	_	_	_	_
-6	siathamh	_	NUM	Mo	_	_	_	_	_
-7	bliadhna	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
+6	siathamh	_	NUM	Mo	7	nummod	_	_	_
+7	bliadhna	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	3	nsubj	_	_
 8	dhen	_	ADP	Spa-s	9	case	_	_	_
 9	taisbeanadh	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
 10	seo	_	DET	Dd	9	det	_	_	_
@@ -272,20 +272,20 @@
 45	a’	_	PART	Sa	46	case	_	_	_
 46	fàs	_	VERB	Nv	43	xcomp	_	_	_
 47	nas	_	PART	Uc	48	mark:prt	_	_	_
-48	fhearr	_	ADJ	Apc	_	_	_	_	_
+48	fhearr	_	ADJ	Apc	46	xcomp:pred	_	_	_
 49	.	_	PUNCT	Fe	_	_	_	_	_
 
 # sent_id = pw02_6a
-1	Ciamar	_	PRON	Uq	_	_	_	_	_
+1	Ciamar	_	PRON	Uq	3	ccomp	_	_	_
 2	,	_	PUNCT	Fi	3	punct	_	_	_
 3	faighnichidh	_	VERB	V-f	0	root	_	_	_
 4	sibh	_	PRON	Pp2p	3	nsubj	_	_	_
 5	?	_	PUNCT	Fg	3	punct	_	_	_
 
 # sent_id = pw02_6b
-1	Anns	_	ADP	Sp	_	_	_	_	_
-2	a’	_	DET	Tdsm	{'Gender': 'Masc', 'Number': 'Sing'}	_	_	_	_
-3	chiad	_	NUM	Mo	_	_	_	_	_
+1	Anns	_	ADP	Sp	4	case	_	_	_
+2	a’	_	DET	Tdsm	{'Gender': 'Masc', 'Number': 'Sing'}	4	det	_	_
+3	chiad	_	NUM	Mo	4	nummod	_	_	_
 4	àite	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
 5	bha	_	VERB	V-s	0	root	_	_	_
 6	barrachd	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
@@ -926,7 +926,7 @@
 31	seann	_	ADJ	Ar	32	amod	_	_	_
 32	bhrògan	_	NOUN	Ncpfn	{'Gender': 'Fem', 'Number': 'Plur', 'Case': 'Nom'}	_	_	_	_
 33	sam_bith	_	ADJ	Aq	{}	_	_	_	_
-34	a	_	PART	Q-r	_	_	_	_	_
+34	a	_	PART	Q-r	35	mark:prt	_	_	_
 35	tha	_	VERB	V-p	_	_	_	_	_
 36	'n_seo	_	ADV	Rs	35	advmod	_	_	_
 37	.	_	PUNCT	Fe	1	punct	_	_	_
@@ -965,9 +965,9 @@
 16	co-fhaireachadh	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
 17	airson	_	ADP	Nf	18	case	_	_	_
 18	cràdh	_	NOUN	Ncsmn	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
-19	a	_	DET	Dp3sm	_	_	_	_	_
+19	a	_	DET	Dp3sm	20	det	_	_	_
 20	chasan	_	NOUN	Ncpfg	{'Gender': 'Fem', 'Number': 'Plur', 'Case': 'Gen'}	_	_	_	_
-21	crasgach	_	ADJ	Aq-pfg	{'Gender': 'Fem', 'Number': 'Plur', 'Case': 'Gen'}	_	_	_	_
+21	crasgach	_	ADJ	Aq-pfg	{'Gender': 'Fem', 'Number': 'Plur', 'Case': 'Gen'}	20	amod	_	_
 22	.	_	PUNCT	Fe	_	_	_	_	_
 
 # ANNOTATE TO HERE
