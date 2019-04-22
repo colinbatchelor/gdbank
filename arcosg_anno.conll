@@ -787,8 +787,8 @@
 3	toil	_	NOUN	Uf	0	root	_	_	_
 4	leat	_	PRON	Pr2s	3	obl	_	_	_
 5	fhèin	_	PRON	Px	4	compound	_	_	_
-6	a	_	PART	Ug	_	_	_	_	_
-7	bhith	_	VERB	Nv	_	_	_	_	_
+6	a	_	PART	Ug	7	mark:prt	_	_	_
+7	bhith	_	VERB	Nv	3	xcomp	_	_	_
 8	’na	_	ADP	Sp	10	case	_	_	_
 9	do	_	DET	Dp2s	10	nmod:poss	_	_	_
 10	chorra-ghritheach	_	NOUN	Ncsmd	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
@@ -819,24 +819,24 @@
 18	h-	_	PART	Uo	_	_	_	_	_
 19	aodainn	_	NOUN	Ncpmn	{'Gender': 'Masc', 'Number': 'Plur', 'Case': 'Nom'}	_	_	_	_
 20	aca	_	PRON	Pr3p	_	_	_	_	_
-21	air	_	PART	Sa	_	_	_	_	_
+21	air	_	PART	Sa	23	case	_	_	_
 22	am	_	DET	Dp3p	_	_	_	_	_
 23	preasadh	_	VERB	Nv	_	_	_	_	_
 24	is	_	CCONJ	Cc	23	cc	_	_	_
-25	air	_	PART	Sa	_	_	_	_	_
+25	air	_	PART	Sa	27	case	_	_	_
 26	an	_	DET	Dp3p	_	_	_	_	_
 27	rocadh	_	VERB	Nv	23	conj	_	_	_
 28	le	_	ADP	Sp	29	case	_	_	_
-29	gréin	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
+29	gréin	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	23	obl	_	_
 30	is	_	CCONJ	Cc	29	cc	_	_	_
 31	gaothan	_	NOUN	Ncpmd	{'Gender': 'Masc', 'Number': 'Plur', 'Case': 'Dat'}	29	conj	_	_
-32	mara	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	_	_	_	_
-33	,	_	PUNCT	Fi	_	_	_	_	_
+32	mara	_	NOUN	Ncsfg	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Gen'}	31	nmod	_	_
+33	,	_	PUNCT	Fi	16	punct	_	_	_
 34	an	_	DET	Dp3p	35	nmod:poss	_	_	_
 35	sùilean	_	NOUN	Ncpfn	{'Gender': 'Fem', 'Number': 'Plur', 'Case': 'Nom'}	_	_	_	_
-36	air	_	PART	Sa	_	_	_	_	_
+36	air	_	PART	Sa	38	case	_	_	_
 37	an	_	DET	Dp3p	_	_	_	_	_
-38	caogadh	_	VERB	Nv	_	_	_	_	_
+38	caogadh	_	VERB	Nv	35	obl	_	_	_
 39	an	_	ADP	Sp	_	_	_	_	_
 40	aghaidh	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
 41	dealradh	_	NOUN	Ncsmn	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
@@ -848,17 +848,17 @@
 2	annasach	_	ADJ	Ap	0	root	_	_	_
 3	mar	_	ADP	Sp	_	_	_	_	_
 4	sin	_	PRON	Pd	_	_	_	_	_
-5	,	_	PUNCT	Fi	_	_	_	_	_
-6	do	_	ADP	Sp	_	_	_	_	_
-7	'n	_	DET	Tdsf	{'Gender': 'Fem', 'Number': 'Sing'}	_	_	_	_
+5	,	_	PUNCT	Fi	2	punct	_	_	_
+6	do	_	ADP	Sp	8	case	_	_	_
+7	'n	_	DET	Tdsf	{'Gender': 'Fem', 'Number': 'Sing'}	8	det	_	_
 8	leithid	_	NOUN	Ncsfd	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Dat'}	_	_	_	_
 9	,	_	PUNCT	Fi	_	_	_	_	_
-10	an	_	DET	Tdsf	{'Gender': 'Fem', 'Number': 'Sing'}	_	_	_	_
+10	an	_	DET	Tdsf	{'Gender': 'Fem', 'Number': 'Sing'}	11	det	_	_
 11	obair	_	NOUN	Ncsfn	{'Gender': 'Fem', 'Number': 'Sing', 'Case': 'Nom'}	_	_	_	_
-12	ris	_	ADP	Sp	_	_	_	_	_
-13	an	_	PART	Qq	_	_	_	_	_
-14	robh	_	VERB	V-s--d	_	_	_	_	_
-15	iad	_	PRON	Pp3p	_	_	_	_	_
+12	ris	_	ADP	Sp	14	obl	_	_	_
+13	an	_	PART	Qq	14	mark:prt	_	_	_
+14	robh	_	VERB	V-s--d	11	acl:relcl	_	_	_
+15	iad	_	PRON	Pp3p	14	nsubj	_	_	_
 16	an_ceartuair	_	ADV	Rt	14	advmod	_	_	_
 17	.	_	PUNCT	Fe	2	punct	_	_	_
 
@@ -866,12 +866,12 @@
 1	Bha	_	VERB	V-s	0	root	_	_	_
 2	'n	_	DET	Tdsm	{'Gender': 'Masc', 'Number': 'Sing'}	3	det	_	_
 3	dealbh	_	NOUN	Ncsmn	{'Gender': 'Masc', 'Number': 'Sing', 'Case': 'Nom'}	1	nsubj	_	_
-4	air	_	ADP	Sp	_	_	_	_	_
+4	air	_	ADP	Sp	6	obl	_	_	_
 5	an	_	PART	Qq	_	_	_	_	_
-6	robh	_	VERB	V-s--d	_	_	_	_	_
-7	iad	_	PRON	Pp3p	_	_	_	_	_
-8	a'	_	PART	Sa	_	_	_	_	_
-9	dian-amharc	_	VERB	Nv	_	_	_	_	_
+6	robh	_	VERB	V-s--d	3	acl:rcl	_	_	_
+7	iad	_	PRON	Pp3p	6	nsubj	_	_	_
+8	a'	_	PART	Sa	9	case	_	_	_
+9	dian-amharc	_	VERB	Nv	6	xcomp	_	_	_
 10	cho	_	ADV	Rg	11	advmod	_	_	_
 11	inntinneach	_	ADJ	Ap	_	_	_	_	_
 12	dhaibh	_	PRON	Pr3p	_	_	_	_	_
