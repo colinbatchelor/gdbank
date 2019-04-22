@@ -1,4 +1,5 @@
 from __future__ import print_function
+import os
 import sys
 from acainn import Features
 
@@ -12,26 +13,33 @@ upostag_mapping_harder = { 'Cc':'CCONJ', 'Cs':'SCONJ', 'Nc':'NOUN', 'Nf':'ADP', 
 def arcosg_to_upostag(tag):
     return upostag_mapping_simple[tag[0]] if tag[0] in upostag_mapping_simple else upostag_mapping_harder[tag[0] + tag[1]]
 
-id = 1
-features = Features()
-with open(sys.argv[1]) as f:
+def process_file(f):
+    replacements = {"Aq-sfq":"Aq-sfd","Ncfsg":"Ncsfg","sa":"Sa","tdsm":"Tdsm"}
+    id = 1
     for line in f:
+        line = line.replace("na b'/ Uc", "na b'/Uc").replace("//Fb", "(slash)/Fb")
         tokens = line.strip().split()
         carry = ''
         for t in tokens:
             if '/' in t:
                 form,tag = t.split('/')[0:2] # in case of multiple tags
+                
                 tag = tag.strip('*')
+                if tag in replacements:
+                    tag = replacements[tag]
                 if tag == 'Xsc':
                     id = 1
                     print ()
                 try:
                     upostag = arcosg_to_upostag(tag)
                 except:
-                    eprint(tag)
+                    eprint(t)
                 feats = '_'
-                if tag.startswith('Aq'): feats = features.feats_adj(form, tag)
-                if tag.startswith('Nc') or tag.startswith('Nn-'): feats = features.feats_noun(form, tag)
+                try:
+                    if tag.startswith('Aq'): feats = features.feats_adj(form, tag)
+                    if tag.startswith('Nc') or tag.startswith('Nn-'): feats = features.feats_noun(form, tag)
+                except:
+                    eprint(t)
                 if tag.startswith('Td'): feats = features.feats_det(form, tag)
                 print('%s\t%s\t_\t%s\t%s\t%s\t_\t_\t_\t_' % (id, carry + form, upostag, tag, feats))
                 carry = ''
@@ -42,3 +50,10 @@ with open(sys.argv[1]) as f:
                     id = id + 1
             else:
                 carry = carry + t + '_' 
+
+features = Features()
+files = os.listdir(sys.argv[1])
+for filename in files:
+    with open(os.path.join(sys.argv[1], filename)) as f:
+        process_file(f)
+
