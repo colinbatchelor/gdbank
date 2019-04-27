@@ -137,9 +137,9 @@
 32	an	_	ADP	Sp	_	33	case	_	_
 33	taca	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	31	obl	_	_
 34	ri	_	ADP	Sp	_	35	case	_	_
-35	cuid	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-36	de	_	ADP	Sp	_	38	case	38	_
-37	na	_	DET	Tdpf	Gender=Fem|Number=Plur	_	_	_	_
+35	cuid	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	33	obl	_	_
+36	de	_	ADP	Sp	_	38	case	_	_
+37	na	_	DET	Tdpf	Gender=Fem|Number=Plur	38	art	_	_
 38	dùthchannan	_	NOUN	Ncpfd	Gender=Fem|Number=Plur|Case=Dat	35	obl	_	_
 39	eile	_	ADJ	Aq-pfd	Gender=Fem|Number=Plur|Case=Dat	38	amod	_	_
 40	.	_	PUNCT	Fe	_	15	punct	_	_
@@ -193,7 +193,7 @@
 18	as	_	AUX	Wpr	_	19	cop	_	_	_
 19	urrainn	_	NOUN	Uf	_	16	advcl	_	_	_
 20	dha’r	_	ADP	Spp1p	_	19	obl	_	_	_
-21	cultar	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+21	cultar	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	19	obl	_	_
 22	–	_	PUNCT	Fb	_	19	punct	_	_
 23	fhad_'s	_	SCONJ	Cs	_	25	mark	_	_	_
 24	nach	_	PART	Qn	_	25	mark:prt	_	_	_
@@ -213,7 +213,7 @@
 38	eil	_	VERB	V-p--d	_	35	ccomp	_	_	_
 39	sinn	_	PRON	Pp1p	_	38	nsubj	_	_	_
 40	mar	_	ADP	Sp	_	41	case	_	_
-41	Albannaich	_	NOUN	Ncpmd	Gender=Masc|Number=Plur|Case=Dat	_	_	_	_
+41	Albannaich	_	NOUN	Ncpmd	Gender=Masc|Number=Plur|Case=Dat	38	obl	_	_
 42	,	_	PUNCT	Fi	_	38	punct	_	_
 43	’s	_	CCONJ	Cc	_	41	cc	_	_
 44	gu	_	PART	Ua	_	48	mark:prt	_	_
@@ -228,55 +228,56 @@
 53	.	_	PUNCT	Fe	_	2	punct	_	_	_
 
 # sent_id = pw02_5
+# decision: fhein is advmod if it's after a VN
 1	Se	_	AUX	Wp-i-3	_	3	cop	_	_	_
 2	a	_	DET	Dp3sm	_	3	nmod:poss	_	_	_
 3	bheachd-san	_	NOUN	Ncsmne	Gender=Masc|Number=Sing|Case=Nom	0	root	_	_
-4	nach	_	PART	Qn	_	_	_	_	_
-5	eil	_	VERB	V-p--d	_	_	_	_	_
+4	nach	_	PART	Qn	_	5	mark:prt	_	_
+5	eil	_	VERB	V-p--d	_	3	csubj:cop	_	_
 6	sinn	_	PRON	Pp1p	_	5	nsubj	_	_	_
 7	math	_	ADJ	Ap	_	5	xcomp:pred	_	_	_
 8	air	_	ADP	Sp	_	10	case	_	_
-9	ar	_	DET	Dp1p	_	_	_	_	_
-10	toirt	_	VERB	Nv	_	_	_	_	_
-11	fhèin	_	PRON	Px	_	_	_	_	_
+9	ar	_	DET	Dp1p	_	10	obj	_	_
+10	toirt	_	VERB	Nv	_	5	xcomp	_	_
+11	fhèin	_	PRON	Px	_	10	advmod	_	_
 12	gu	_	ADP	Sp	_	13	case	_	_	_
-13	aire	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+13	aire	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	10	obl	_
 14	a’	_	DET	Tdsmg	Gender=Masc|Number=Sing|Case=Gen	det	15	_	_
-15	mhór-shluaigh	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	_	_	_	_
+15	mhór-shluaigh	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	13	nmod	_	_
 16	le	_	ADP	Sp	_	18	case	_	_	_
-17	ar	_	DET	Dp1p	_	18	nmod:poss	_	_	_
-18	cuid	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-19	dualchais	_	NOUN	Ncsmg	{'Gender': 'Masc',Number=Sing|Case=Gen	_	_	_	_
+17	ar	_	DET	Dp1p	_	18	nmod:poss	_	18	det
+18	cuid	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	10	obl	_
+19	dualchais	_	NOUN	Ncsmg	{'Gender': 'Masc',Number=Sing|Case=Gen	_	18	nmod	_
 20	taca	_	ADP	Nf	_	25	case	_	_
 21	ri	_	ADP	Sp	_	20	fixed	_	_
-22	,	_	PUNCT	Fi	_	_	_	_	_
-23	can	_	VERB	Vm-2s	_	_	_	_	_
-24	,	_	PUNCT	Fi	_	_	_	_	_
-25	muinntir	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-26	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
-27	h-	_	PART	Uo	_	_	_	_	_
-28	Éireann	_	PROPN	Nt	_	_	_	_	_
-29	,	_	PUNCT	Fi	_	_	_	_	_
+22	,	_	PUNCT	Fi	_	20	punct	_	_
+23	can	_	VERB	Vm-2s	_	25	discourse	_	_
+24	,	_	PUNCT	Fi	_	23	punct	_	_
+25	muinntir	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	20	obl	_
+26	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	_	28	det	_
+27	h-	_	PART	Uo	_	28	goeswith	_	_
+28	Éireann	_	PROPN	Nt	_	25	nmod	_	_
+29	,	_	PUNCT	Fi	_	25	punct	_	_
 30	ach	_	CCONJ	Cc	_	5	cc	_	_	_
 31	tha	_	VERB	V-p	_	5	conj	_	_	_
-32	e	_	PRON	Pp3sm	_	_	_	_	_
+32	e	_	PRON	Pp3sm	_	31	nsubj	_	_
 33	den	_	ADP	Sp	_	35	case	_	_	_
-34	a’	_	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
-35	bheachd	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
-36	,	_	PUNCT	Fi	_	_	_	_	_
+34	a’	_	DET	Tdsm	Gender=Masc|Number=Sing	_	35	det	_
+35	bheachd	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	31	obl	_
+36	,	_	PUNCT	Fi	_	31	punct	_	_
 37	agus	_	CCONJ	Cc	_	31	cc	_	_	_
 38	dh’	_	PART	Uo	_	38	mark:prt	_	_	_
 39	aontaichinn	_	VERB	V-h1s	_	31	conj	_	_	_
-40	leis	_	PRON	Pr3sm	_	_	_	_	_
-41	,	_	PUNCT	Fi	_	_	_	_	_
-42	gu	_	PART	Qa	_	_	_	_	_
-43	bheil	_	VERB	V-p--d	_	_	_	_	_
+40	leis	_	PRON	Pr3sm	_	39	obl	_	_
+41	,	_	PUNCT	Fi	_	39	punct	_	_
+42	gu	_	PART	Qa	_	43	mark	_	_
+43	bheil	_	VERB	V-p--d	_	39	ccomp	_	_
 44	cùisean	_	NOUN	Ncpfn	Gender=Fem|Number=Plur|Case=Nom	43	nsubj	_	_
 45	a’	_	PART	Sa	_	46	case	_	_	_
 46	fàs	_	VERB	Nv	_	43	xcomp	_	_	_
 47	nas	_	PART	Uc	_	48	mark:prt	_	_	_
 48	fhearr	_	ADJ	Apc	_	46	xcomp:pred	_	_	_
-49	.	_	PUNCT	Fe	_	_	_	_	_
+49	.	_	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = pw02_6a
 1	Ciamar	_	PRON	Uq	_	3	ccomp	_	_	_
@@ -310,9 +311,9 @@
 22	Gaidheal	_	NOUN	Ncpmg	Gender=Masc|Number=Plur|Case=Gen	20	nmod	_	_
 23	sa	_	ADP	Spa-s	_	25	case	_	_	_
 24	phrìomh	_	ADJ	Ar	_	25	amod	_	_
-25	làrach	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+25	làrach	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	19	obl	_
 26	san	_	ADP	Spa-s	_	27	case	_	_	_
-27	Talla	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+27	Talla	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	25	obl	_	_
 28	,	_	PUNCT	Fi	_	19	punct	_	_	_
 29	agus	_	CCONJ	Cc	_	5	cc	_	_	_
 30	chaidh	_	VERB	V-s	Tense=Past	5	conj	_	_	_
@@ -326,43 +327,43 @@
 # sent_id = pw02_7
 1	Bha	_	VERB	V-s	_	0	root	_	_
 2	e	_	PRON	Pp3sm	_	1	nsubj	_	_
-3	inntinneach	_	ADJ	Ap	_	_	_	_	_
-4	daoine	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	_	_	_	_
-5	iomraiteach	_	ADJ	Aq-pmn	Gender=Masc|Number=Plur|Case=Nom	_	_	_	_
-6	saoghal	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
-7	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
-8	Gàidhlig	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
-9	,	_	PUNCT	Fi	_	_	_	_	_
-10	oileanaich	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	_	_	_	_
-11	,	_	PUNCT	Fi	_	_	_	_	_
+3	inntinneach	_	ADJ	Ap	_	1	xcomp:pred	_	_
+4	daoine	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	_	21	nsubj	_
+5	iomraiteach	_	ADJ	Aq-pmn	Gender=Masc|Number=Plur|Case=Nom	_	4	amod	_
+6	saoghal	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	5	obl	_
+7	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	_	7	det	_
+8	Gàidhlig	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	_	6	nmod	_
+9	,	_	PUNCT	Fi	_	10	punct	_	_
+10	oileanaich	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	4	conj	_	_
+11	,	_	PUNCT	Fi	_	14	punct	_	_
 12	agus	_	CCONJ	Cc	_	10	cc	_	_	_
 13	dìreach	_	ADV	Rg	_	14	advmod	_	_	_
-14	Gaidheil	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	10	conj	_	_
-15	a	_	PART	Q-r	_	_	_	_	_
-16	tha	_	VERB	V-p	_	_	_	_	_
+14	Gaidheil	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	4	conj	_	_
+15	a	_	PART	Q-r	_	16	mark:prt	_	_
+16	tha	_	VERB	V-p	_	14	acl:relcl	_	_
 17	nan	_	ADP	Spp3p	_	18	case	_	_
-18	Gaidheil	_	NOUN	Ncpmd	Gender=Masc|Number=Plur|Case=Dat	_	_	_	_
-19	,	_	PUNCT	Fi	_	_	_	_	_
+18	Gaidheil	_	NOUN	Ncpmd	Gender=Masc|Number=Plur|Case=Dat	16	obl	_	_
+19	,	_	PUNCT	Fi	_	21	punct	_	_
 20	a’	_	PART	Sa	_	21	case	_	_	_
-21	tighinn	_	VERB	Nv	_	_	_	_	_
+21	tighinn	_	VERB	Nv	_	3	xcomp	_	_
 22	còmhladh	_	ADV	Rg	_	21	advmod	_	_	_
-23	,	_	PUNCT	Fi	_	_	_	_	_
-24	cuid	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
+23	,	_	PUNCT	Fi	_	21	punct	_	_
+24	cuid	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	4	nmod	_
 25	a’	_	PART	Sa	_	26	case	_	_	_
-26	moladh	_	VERB	Nv	_	_	_	_	_
+26	moladh	_	VERB	Nv	_	24	xcomp	_	_
 27	’s	_	CCONJ	Cc	_	24	cc	_	_	_
 28	cuid	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	24	conj	_	_
-29	a’	_	PART	Sa	_	_	_	_	_
-30	dì-moladh	_	VERB	Nv	_	_	_	_	_
-31	,	_	PUNCT	Fi	_	_	_	_	_
-32	ach	_	CCONJ	Cc	_	_	_	_	_
-33	còmhladh	_	ADV	Rg	_	21	advmod	_	_	_
-34	,	_	PUNCT	Fi	_	_	_	_	_
+29	a’	_	PART	Sa	_	30	case	_	_
+30	dì-moladh	_	VERB	Nv	_	28	xcomp	_	_
+31	,	_	PUNCT	Fi	_	33	punct	_	_
+32	ach	_	CCONJ	Cc	_	33	mark	_	_
+33	còmhladh	_	ADV	Rg	_	21	conj	_	_	_
+34	,	_	PUNCT	Fi	_	39	punct	_	_
 35	air	_	ADP	Sp	_	36	37	_	_	_
 36	son	_	ADP	Nf	_	35	fixed	_	_	_
-37	taic	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
-38	a	_	PART	Ug	_	_	_	_	_
-39	thoirt	_	VERB	Nv	_	_	_	_	_
+37	taic	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	39	obj	_
+38	a	_	PART	Ug	_	39	mark:prt	_	_
+39	thoirt	_	VERB	Nv	_	33	ccomp	_	_
 40	dhan	_	ADP	Spa-s	_	41	case	_	_	_
 41	Ghàidhlig	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	39	obl	_	_
 42	.	_	PUNCT	Fe	_	1	punct	_	_	_
@@ -380,16 +381,16 @@
 10	deigheadh	_	VERB	V-h--d	_	7	ccomp	_	_	_
 11	a’	_	DET	Tdsf	Gender=Fem|Number=Sing	12	det	_	_
 12	Ghàidhlig	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	10	nsubj	_	_
-13	cha	_	AUX	Wp-in	_	_	_	_	_
-14	mhór	_	ADJ	Ap	_	_	_	_	_
+13	cha	_	AUX	Wp-in	_	18	advmod	_	_
+14	mhór	_	ADJ	Ap	_	13	fixed	_	_
 15	á	_	ADP	Sp	_	16	case	_	_
-16	bith	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+16	bith	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	13	obl	_
 17	nan	_	PART	Q-s	_	18	mark	_	_	_
-18	tuiteadh	_	VERB	V-h--d	_	_	_	_	_
-19	inneal-spreadhaidh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+18	tuiteadh	_	VERB	V-h--d	_	10	ccomp	_	_
+19	inneal-spreadhaidh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	18	nsubj	_	_
 20	air	_	ADP	Sp	_	22	case	_	_	_
 21	an	_	DET	Tdsm	Gender=Masc|Number=Sing	22	det	_	_
-22	togalach	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+22	togalach	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	18	obl	_	_
 23	.	_	PUNCT	Fe	_	1	punct	_	_	_
 
 # sent_id = pw02_9
@@ -408,17 +409,17 @@
 7	aig	_	ADP	Sp	_	9	obl	_	_
 8	a	_	PART	Qq	_	9	mark:pt	_	_
 9	bheil	_	VERB	V-p--d	_	5	acl:relcl	_	_	_
-10	an	_	DET	Tdsf	Gender=Fem|Number=Sing	_	_	_	_
+10	an	_	DET	Tdsf	Gender=Fem|Number=Sing	12	det	_	_
 11	deagh	_	ADJ	Ar	_	   12	amod	_	_	_
-12	dhreuchd	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+12	dhreuchd	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	9	nsubj	_	_
 13	’na	_	ADP	Spp3sf	_	15	case	_	_
 14	h-	_	PART	Uo	_	15	goeswith	_	_
-15	oifigeir	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+15	oifigeir	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	12	nmod	_	_
 16	foghlaim	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	15	nmod	_	_
 17	làn-ùine	_	ADJ	Aq-smg	Gender=Masc|Number=Sing|Case=Gen	15	amod	_	_
 18	do	_	ADP	Sp	_	19	case	_	_
-19	Thalla	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
-20	Chonsairt	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	_	_	_	_
+19	Thalla	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	15	obl	_	_
+20	Chonsairt	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	19	nmod	_	_
 21	Rìoghail	_	ADJ	Aq-smg	Gender=Masc|Number=Sing|Case=Gen	19	amod	_	_
 22	Ghlaschu	_	PROPN	Nt	_	19	amod	_	_
 23	.	_	PUNCT	Fe	_	1	punct	_	_
@@ -427,30 +428,30 @@
 1	Si	_	AUX	Wp-i-3	_	2	cop	_	_	_
 2	Nancy	_	PROPN	Nn-fn	_	Gender=Fem|Case=Nom	0	root	_	_
 3	NicNeacail	_	PROPN	Nn	_	2	flat	_	_	_
-4	,	_	PUNCT	Fi	_	_	_	_	_
-5	seinneadair	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+4	,	_	PUNCT	Fi	_	5	punct	_	_
+5	seinneadair	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	2	appos	_	_
 6	agus	_	CCONJ	Cc	_	5	cc	_	_	_
 7	tidsear	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	5	conj	_	_
 8	,	_	PUNCT	Fi	_	5	punct	_	_
 9	aig	_	ADP	Sp	_	11	obl	_	_
 10	a	_	PART	Qq	_	11	mark:prt	_	_
 11	bheil	_	VERB	V-p--d	_	2	acl:relcl	_	_
-12	dleastanas	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+12	dleastanas	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	11	nsubj	_	_
 13	sònraichte	_	ADJ	Aq-smn	Gender=Masc|Number=Sing|Case=Nom	12	amod	_	_
-14	cultar	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+14	cultar	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	20	obj	_	_
 15	beairteach	_	ADJ	Aq-smn	Gender=Masc|Number=Sing|Case=Nom	14	amod	_	_
-16	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
+16	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	18	det	_	_
 17	h-	_	PART	Uo	_	18	goeswith	_	_
-18	Albann	_	PROPN	Nt	_	_	_	_	_
-19	a	_	PART	Ug	_	_	_	_	_
-20	thoirt	_	VERB	Nv	_	_	_	_	_
+18	Albann	_	PROPN	Nt	_	14	nmod	_	_
+19	a	_	PART	Ug	_	20	mark:prt	_	_
+20	thoirt	_	VERB	Nv	_	12	xcomp	_	_
 21	a-mach	_	ADV	Rs	_	20	advmod	_	_	_
 22	dhan	_	ADP	Sp	_	24	case	_	_
 23	a’	_	DET	Tdsf	Gender=Fem|Number=Sing	24	det	_	_
-24	choimhearsnachd	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-25	,	_	PUNCT	Fi	_	_	_	_	_
+24	choimhearsnachd	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	20	obl	_	_
+25	,	_	PUNCT	Fi	_	27	obl	_	_
 26	do	_	ADP	Sp	_	27	case	_	_	_
-27	shean	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+27	shean	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	20	obl	_	_
 28	agus	_	CCONJ	Cc	_	27	cc	_	_	_
 29	òg	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	27	conj	_	_
 30	.	_	PUNCT	Fe	_	2	punct	_	_	_
@@ -458,7 +459,7 @@
 # sent_id = pw02_12
 1	Mar	_	ADP	Sp	_	2	case	_	_	_
 2	eisimpleir	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	7	obl	_	_
-3	,	_	PUNCT	Fi	_	_	_	_	_
+3	,	_	PUNCT	Fi	_	7	root	_	_
 4	bho	_	ADP	Sp	_	7	advmod	_	_
 5	chionn	_	ADP	Nf	_	4	fixed	_	_	_
 6	ghoirid	_	ADJ	Aq-smd	Gender=Masc|Number=Sing|Case=Dat	4	fixed	_	_
@@ -468,15 +469,15 @@
 10	gu_ruige	_	ADP	Sp	_	11	case	_	_	_
 11	Castlemilk	_	PROPN	Nt	_	7	obl	_	_	_
 12	an	_	ADP	Sp	_	13	case	_	_
-13	Glaschu	_	PROPN	Nt	_	_	_	_	_
+13	Glaschu	_	PROPN	Nt	_	11	obl	_	_
 14	leis	_	ADP	Sp	_	18	case	_	_
 15	an	_	DET	Tdsf	Gender=Fem|Number=Sing	18	det	_	_
 16	t-	_	PART	Uo	_	17	goeswith    _		_
 17	sàr	_	ADJ	Ar	_	18	amod	_	_
-18	bhan-sheinneadair	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-19	Ghàidhlig	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
-20	Iseabail	_	PROPN	Nn-fn	Gender=Fem|Case=Nom	_	_	_	_
-21	NicAsgaill	_	PROPN	Nn	_	_	_	_	_
+18	bhan-sheinneadair	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	7	obl	_	_
+19	Ghàidhlig	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	18	nmod	_	_
+20	Iseabail	_	PROPN	Nn-fn	Gender=Fem|Case=Nom	18	appos	_	_
+21	NicAsgaill	_	PROPN	Nn	_	20	flat	_	_
 22	.	_	PUNCT	Fe	_	7	punct	_	_	_
 
 # sent_id = pw02_13
@@ -484,43 +485,43 @@
 2	àite	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	1	nsubj	_	_
 3	sònraichte	_	ADJ	Aq-smn	Gender=Masc|Number=Sing|Case=Nom	2	amod	_	_
 4	a	_	PART	Ug	_	5	mark:prt	_	_	_
-5	thaghadh	_	VERB	Nv	_	1	ccomp	_	_	_
+5	thaghadh	_	VERB	Nv	_	1	xcomp	_	_	_
 6	,	_	PUNCT	Fi	_	1	punct	_	_	_
 7	am	_	DET	Tds	{'Number': 'Sing'}	8	det	_	_
-8	Birgidale	_	PROPN	Nt	_	_	_	_	_
-9	Complex	_	X	Xfe	_	_	_	_	_
-10	,	_	PUNCT	Fi	_	_	_	_	_
+8	Birgidale	_	PROPN	Nt	_	2	appos	_	_
+9	Complex	_	X	Xfe	_	8	flat	_	_
+10	,	_	PUNCT	Fi	_	13	punct	_	_
 11	far	_	SCONJ	Cs	_	13	mark	_	_	_
 12	am	_	PART	Qq	_	13	mark:prt	_	_	_
-13	bi	_	VERB	V-f--d	_	_	_	_	_
-14	buidheann	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+13	bi	_	VERB	V-f--d	_	2	ccomp	_	_
+14	buidheann	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	13	nsubj	_	_
 15	de	_	ADP	Sp	_	17	case	_	_
 16	sheann	_	ADJ	Ar	_	17	amod	_	_
-17	daoine	_	NOUN	Ncpmd	Gender=Masc|Number=Plur|Case=Dat	14	nmod	_	_
+17	daoine	_	NOUN	Ncpmd	Gender=Masc|Number=Plur|Case=Dat	14	obl	_	_
 18	a’	_	PART	Sa	_	19	case	_	_	_
 19	cruinneachadh	_	VERB	Nv	_	13	xcomp	_	_
 20	aig	_	ADP	Sp	_	21	case	_	_
-21	àm	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+21	àm	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	19	obl	_	_
 22	dìnneireach	_	ADJ	Aq-smd	Gender=Masc|Number=Sing|Case=Dat	21	amod	_	_
-23	,	_	PUNCT	Fi	_	_	_	_	_
-24	agus	_	CCONJ	Cc	_	_	_	_	_
+23	,	_	PUNCT	Fi	_	13	punct	_	_
+24	agus	_	CCONJ	Cc	_	25	cc	_	_
 25	a	_	ADP	Sp	_	19	advmod	_	_
 26	dh’	_	PART	Uo	_	25	fixed	_	_	_
 27	aona-ghnothaich	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	25	fixed	_	_
-28	,	_	PUNCT	Fi	_	_	_	_	_
+28	,	_	PUNCT	Fi	_	25	punct	_	_
 29	air	_	ADP	Sp	_	32	case	_	_
 30	son	_	ADP	Nf	_	29	fixed	_	_
-31	gum	_	PART	Qa	_	_	_	_	_
-32	biodh	_	VERB	V-h--d	_	_	_	_	_
+31	gum	_	PART	Qa	_	32	mark	_	_
+32	biodh	_	VERB	V-h--d	_	19	ccomp	_	_
 33	diofar	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	34	nmod	_	_
-34	aoisean	_	NOUN	Ncpfg	Gender=Fem|Number=Plur|Case=Gen	_	_	_	_
+34	aoisean	_	NOUN	Ncpfg	Gender=Fem|Number=Plur|Case=Gen	32	nsubj	_	_
 35	an	_	ADP	Sp	_	36	case	_	_	_
-36	làthair	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-37	,	_	PUNCT	Fi	_	_	_	_	_
-38	chaidh	_	VERB	V-s	_	_	_	_	_
-39	cuireadh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+36	làthair	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	32	obl	_	_
+37	,	_	PUNCT	Fi	_	32	punct	_	_
+38	chaidh	_	VERB	V-s	_	1	parataxis	_	_
+39	cuireadh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	38	xcomp	_	_
 40	gu	_	ADP	Sp	_	41	case	_	_	_
-41	bun-sgoil	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+41	bun-sgoil	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	39	obl	_	_
 42	ionadail	_	ADJ	Aq-sfd	Gender=Fem|Number=Sing|Case=Dat	41	amod	_	_
 43	cuideachd	_	ADV	Rg	_	38	advmod	_	_	_
 44	.	_	PUNCT	Fe	_	1	punct	_	_	_
@@ -532,16 +533,16 @@
 4	sa	_	ADP	Spa-s	_	5	case	_	_
 5	Bheurla	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	1	obl	_	_
 6	,	_	PUNCT	Fi	_	1	punct	_	_
-7	a’	_	PART	Sa	_	_	_	_	_
+7	a’	_	PART	Sa	_	8	case	_	_
 8	cur	_	VERB	Nv	_	1	xcomp	_	_
 9	an	_	ADP	Sp	_	10	case	_	_
-10	céill	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-11	brìgh	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
-12	nan	_	DET	Tdpmg	Gender=Masc|Number=Plur|Case=Gen	_	_	_	_
-13	òran	_	NOUN	Ncpmg	Gender=Masc|Number=Plur|Case=Gen	_	_	_	_
+10	céill	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	8	obl	_	_
+11	brìgh	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	10	nmod	_	_
+12	nan	_	DET	Tdpmg	Gender=Masc|Number=Plur|Case=Gen	13	det	_	_
+13	òran	_	NOUN	Ncpmg	Gender=Masc|Number=Plur|Case=Gen	11	nmod	_	_
 14	,	_	PUNCT	Fi	_	8	punct	_	_
-15	a	_	PART	Q-r	_	_	_	_	_
-16	sheinn	_	VERB	V-s	_	_	_	_	_
+15	a	_	PART	Q-r	_	16	mark:prt	_	_
+16	sheinn	_	VERB	V-s	_	13	adv:relcl	_	_
 17	i	_	PRON	Pp3sf	_	16	nsubj	_	_	_
 18	gu	_	PART	Ua	_	19	mark:prt	_	_
 19	ceòlmhor	_	ADV	Rg	_	16	advmod	_	_	_
@@ -559,17 +560,17 @@
 31	dhaibh	_	PRON	Pr3p	_	26	obl	_	_	_
 32	air	_	ADP	Sp	_	35	case	_	_
 33	son	_	ADP	Nf	_	32	fixed	_	_	_
-34	gun	_	PART	Qa	_	_	_	_	_
-35	togadh	_	VERB	V-h--d	_	_	_	_	_
-36	iad	_	PRON	Pp3p	_	_	_	_	_
-37	na	_	DET	Tdpm	Gender=Masc|Number=Plur	_	_	_	_
-38	fuinn	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	_	_	_	_
+34	gun	_	PART	Qa	_	35	mark	_	_
+35	togadh	_	VERB	V-h--d	_	26	ccomp	_	_
+36	iad	_	PRON	Pp3p	_	35	nsubj	_	_
+37	na	_	DET	Tdpm	Gender=Masc|Number=Plur	38	det	_	_
+38	fuinn	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	35	obj	_	_
 39	anns	_	ADP	Sp	_	43	case	_	_
 40	an	_	DET	Tdsf	Gender=Fem|Number=Sing	43	case	_	_
 41	t-	_	PART	Uo	_	42	goeswith	_	_
 42	seann	_	ADJ	Ar	_	43	amod	_	_
-43	dòigh	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-44	.	_	PUNCT	Fe	_	_	_	_	_
+43	dòigh	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	35	obl	_	_
+44	.	_	PUNCT	Fe	_	35	punct	_	_
 
 # sent_id = pw02_15
 1	Bidh	_	VERB	V-f	Tense=Fut	0	root	_	_	_
@@ -588,47 +589,47 @@
 14	mhothachail	_	ADJ	Ap	_	12	xcomp:pred	_	_
 15	buileach	_	ADV	Rg	_	14	advmod	_	_
 16	mu	_	ADP	Sp	_	17	case	_	_
-17	chor	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+17	chor	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	14	obl	_	_
 18	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	19	det	_	_
 19	Gàidhlige	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	17	nmod	_	_
 20	.	_	PUNCT	Fe	_	1	punct	_	_	_
 
 # sent_id = pw02_16a
 1	Mar	_	ADP	Sp	_	2	case	_	_	_
-2	eisimpleir	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
-3	,	_	PUNCT	Fi	_	_	_	_	_
-4	cia_mheud	_	PRON	Uq	_	_	_	_	_
-5	duine	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
-6	cloinne	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
-7	a	_	PART	Q-r	_	_	_	_	_
-8	chuala	_	VERB	V-s	_	_	_	_	_
-9	sib’	_	PRON	Pp2p	_	_	_	_	_
+2	eisimpleir	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	22	obl	_	_
+3	,	_	PUNCT	Fi	_	2	punct	_	_
+4	cia_mheud	_	PRON	Uq	_	5	nummod	_	_
+5	duine	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	22	parataxis	_	_
+6	cloinne	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	_	5	nmod	_
+7	a	_	PART	Q-r	_	8	mark:prt	_	_
+8	chuala	_	VERB	V-s	_	5	acl:relcl	_	_
+9	sib’	_	PRON	Pp2p	_	8	obj	_	_
 10	fhèin	_	PRON	Px	_	9	compound	_	_	_
 11	a'	_	PART	Sa	_	12	case	_	_	_
-12	bruidhinn	_	VERB	Nv	_	_	_	_	_
+12	bruidhinn	_	VERB	Nv	8	xcomp	_	_	_
 13	an	_	ADP	Sp	_	15	case	_	_	_
 14	deagh	_	ADJ	Ar	_	15	amod	_	_
 15	Ghàidhlig	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	12	obl	_	_
 16	bho	_	ADP	Sp	_	12	advmod	_	_
 17	chionn	_	ADP	Nf	_	16	fixed	_	_	_
 18	ghoirid	_	ADJ	Aq-smd	Gender=Masc|Number=Sing|Case=Dat	16	fixed	_	_
-19	’s	_	CCONJ	Cc	_	_	_	_	_
-20	nach	_	PART	Qn	_	_	_	_	_
-21	do	_	PART	Q--s	_	_	_	_	_
-22	ghabh	_	VERB	V-s	_	_	_	_	_
-23	sibh	_	PRON	Pp2p	_	_	_	_	_
-24	iongnadh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
-25	dheth	_	PRON	Pr3sm	_	_	_	_	_
-26	?	_	PUNCT	Fg	_	_	_	_	_
+19	’s	_	CCONJ	Cc	_	22	cc	_	_
+20	nach	_	PART	Qn	_	22	mark	_	_
+21	do	_	PART	Q--s	_	22	mark:prt	_	_
+22	ghabh	_	VERB	V-s	_	0	root	_	_
+23	sibh	_	PRON	Pp2p	_	22	nsubj	_	_
+24	iongnadh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	22	obj	_	_
+25	dheth	_	PRON	Pr3sm	_	22	obl	_	_
+26	?	_	PUNCT	Fg	_	22	punct	_	_
 
 # sent_id = pw02_16b
 1	Cuiridh	_	VERB	V-f	Tense=Fut	0	root	_	_	_
 2	mi	_	PRON	Pp1s	_	1	nsubj	_	_	_
 3	geall	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	2	obj	_	_
-4	nach	_	PART	Qn	_	_	_	_	_
-5	cuala	_	VERB	V-s--d	_	_	_	_	_
-6	aon	_	PRON	Pn	_	_	_	_	_
-7	fhèin	_	PRON	Px	_	6	compound	_	_	_
+4	nach	_	PART	Qn	_	5	mark	_	_
+5	cuala	_	VERB	V-s--d	_	3	ccomp	_	_
+6	aon	_	PRON	Pn	_	5	obj	_	_
+7	fhèin	_	PRON	Px	_	6	compound	_	_
 8	.	_	PUNCT	Fe	_	1	punct	_	_	_
 
 # sent_id = pw02_17a
@@ -641,50 +642,50 @@
 7	Gaidhealtachd	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	1	obl	_	_
 8	far	_	SCONJ	Cs	_	10	mark	_	_	_
 9	am	_	PART	Qq	_	10	mark:prt	_	_	_
-10	biodh	_	VERB	V-h--d	_	_	_	_	_
+10	biodh	_	VERB	V-h--d	_	7	ccomp	_	_
 11	daoine	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	10	nsubj	_	_
 12	a’	_	PART	Sa	_	13	case	_	_	_
 13	sùileachadh	_	VERB	Nv	_	10	xcomp	_	_	_
-14	gur	_	AUX	Wpdia	_	_	_	_	_
-15	e	_	PRON	Pp3sm	_	_	_	_	_
-16	Gàidhlig	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
-17	a	_	PART	Q-r	_	_	_	_	_
-18	bhiodh	_	VERB	V-h	_	_	_	_	_
+14	gur	_	AUX	Wpdia	_	16	cop	_	_
+15	e	_	PRON	Pp3sm	_	14	fixed	_	_
+16	Gàidhlig	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	13	ccomp	_
+17	a	_	PART	Q-r	_	18	mark:prt	_	_
+18	bhiodh	_	VERB	V-h	_	16	csubj:cop	_	_
 19	aig	_	ADP	Sp	_	22	case	_	_	_
 20	ar	_	DET	Dp1p	_	22	nmod:poss	_	_	_
-21	n-	_	PART	Uo	_	_	_	_	_
-22	òigridh	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+21	n-	_	PART	Uo	_	22	goeswith	_	_
+22	òigridh	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	18	obl	_	_
 23	’s	_	CCONJ	Cc	_	15	cc	_	_	_
-24	cha	_	PART	Qn	_	_	_	_	_
+24	cha	_	PART	Qn	_	25	mark:prt	_	_
 25	ghabhadh	_	VERB	V-h--d	_	15	conj	_	_	_
-26	duine	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+26	duine	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	25	nsubj	_	_
 27	sam_bith	_	ADJ	Aq	{}	26	amod	_	_
-28	iongnadh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+28	iongnadh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	25	obj	_	_
 29	dhan	_	ADP	Sp	_	30	case	_	_	_
-30	a-sin	_	PRON	Pd	_	_	_	_	_
-31	–	_	PUNCT	Fb	_	_	_	_	_
+30	a-sin	_	PRON	Pd	_	28	obl	_	_
+31	–	_	PUNCT	Fb	_	25	punct	_	_
 32	ach	_	CCONJ	Cc	_	1	cc	_	_	_
-33	dé	_	PRON	Uq	_	_	_	_	_
-34	a	_	PART	Q-r	_	_	_	_	_
+33	dé	_	PRON	Uq	_	35	nsubj	_	_
+34	a	_	PART	Q-r	_	35	mark:prt	_	_
 35	th’	_	VERB	V-p	_	1	conj	_	_	_
-36	air	_	PART	Sa	_	_	_	_	_
-37	tachairt	_	VERB	Nv	_	_	_	_	_
+36	air	_	PART	Sa	_	37	case	_	_
+37	tachairt	_	VERB	Nv	_	35	xcomp	_	_
 38	an-diugh	_	ADV	Rt	_	37	advmod	_	_	_
 39	?	_	PUNCT	Fg	_	1	punct	_	_	_
 
 # sent_id = pw02_17b
-1	Feuch	_	VERB	Vm-2s	_	0	root	_	_	_
-2	nach	_	PART	Qn	_	_	_	_	_
-3	tog	_	VERB	V-f--d	_	_	_	_	_
-4	sibh	_	PRON	Pp2p	_	_	_	_	_
-5	cearr	_	ADV	Rg	_	3	advmod	_	_	_
-6	mi	_	PRON	Pp1s	_	_	_	_	_
-7	–	_	PUNCT	Fb	_	1	punct	_	_	_
-8	chan	_	PART	Qn	_	_	_	_	_
-9	eil	_	VERB	V-p--d	_	_	_	_	_
-10	mi	_	PRON	Pp1s	_	_	_	_	_
-11	ag	_	PART	Sa	_	_	_	_	_
-12	ràitinn	_	VERB	Nv	_	_	_	_	_
+1	Feuch	_	VERB	Vm-2s	_	0	root	_	_
+2	nach	_	PART	Qn	_	3	mark	_	_
+3	tog	_	VERB	V-f--d	_	1	ccomp	_	_
+4	sibh	_	PRON	Pp2p	_	3	nsubj	_	_
+5	cearr	_	ADV	Rg	_	3	advmod	_	_
+6	mi	_	PRON	Pp1s	_	3	obj	_	_
+7	–	_	PUNCT	Fb	_	1	punct	_	_
+8	chan	_	PART	Qn	_	9	mark	_	_
+9	eil	_	VERB	V-p--d	_	1	parataxis	_	_
+10	mi	_	PRON	Pp1s	_	9	nsubj	_	_
+11	ag	_	PART	Sa	_	12	case	_	_
+12	ràitinn	_	VERB	Nv	_	9	xcomp:pred	_	_
 13	nach	_	PART	Qn	_	15	mark	_	_	_
 14	bu	_	AUX	Ws	Tense=Past	15	cop	_	_	_
 15	chòir	_	NOUN	Uf	_	12	ccomp	_	_	_
@@ -695,17 +696,17 @@
 20	idir	_	ADV	Rg	_	18	advmod	_	_	_
 21	air	_	ADP	Sp	_	25	case	_	_
 22	son	_	ADP	Nf	_	21	fixed	_	_
-23	feum	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
-24	a	_	PART	Ug	_	_	_	_	_
-25	dhèanamh	_	VERB	Nv	_	_	_	_	_
-26	agus	_	CCONJ	Cc	_	_	_	_	_
-27	ùidh	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
-28	a	_	PART	Ug	_	_	_	_	_
-29	thoirt	_	VERB	Nv	_	_	_	_	_
+23	feum	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	25	obj	_	_
+24	a	_	PART	Ug	_	25	mark:prt	_	_
+25	dhèanamh	_	VERB	Nv	_	19	xcomp	_	_
+26	agus	_	CCONJ	Cc	_	29	cc	_	_
+27	ùidh	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	29	obj	_	_
+28	a	_	PART	Ug	_	29	mark:prt	_	_
+29	thoirt	_	VERB	Nv	_	25	conj	_	_
 30	do	_	ADP	Sp	_	31	case	_	_	_
-31	leanabh	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+31	leanabh	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	29	obl	_	_
 32	aig	_	ADP	Sp	_	34	case	_	_
-33	a	_	PART	Qq	_	_	_	_	_
+33	a	_	PART	Qq	_	34	mark:prt	_	_
 34	bheil	_	VERB	V-p--d	_	31	acl:relcl	_	_
 35	Gàidhlig	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	34	nsubj	_	_
 36	.	_	PUNCT	Fe	_	1	punct	_	_	_
@@ -715,42 +716,42 @@
 2	bu	_	AUX	Ws	Tense=Past	3	cop	_	_	_
 3	chòir	_	NOUN	Uf	_	0	root	_	_	_
 4	dhuinn	_	PRON	Pr1p	_	3	obl	_	_	_
-5	a	_	PART	Ug	_	_	_	_	_
-6	bhith	_	VERB	Nv	_	_	_	_	_
+g5	a	_	PART	Ug	_	6	mark:prt	_	_
+6	bhith	_	VERB	Nv	_	3	xcomp	_	_
 7	air	_	ADP	Sp	_	9	case	_	_
-8	ar	_	DET	Dp1p	_	_	_	_	_
-9	faiceall	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
-10	nach	_	PART	Qn	_	_	_	_	_
-11	mùch	_	VERB	V-f--d	_	_	_	_	_
-12	sinn	_	PRON	Pp1p	_	_	_	_	_
-13	na	_	PART	Q-r	_	_	_	_	_
-14	tha	_	VERB	V-p	_	_	_	_	_
-15	air	_	PART	Sa	_	_	_	_	_
-16	fhàgail	_	VERB	Nv	_	_	_	_	_
+8	ar	_	DET	Dp1p	_	9	obj	_	_
+9	faiceall	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	6	xcomp	_	_
+10	nach	_	PART	Qn	_	11	mark:prt	_	_
+11	mùch	_	VERB	V-f--d	_	9	ccomp	_	_
+12	sinn	_	PRON	Pp1p	_	11	nsubj	_	_
+13	na	_	PART	Q-r	_	14	mark	_	_
+14	tha	_	VERB	V-p	_	11	ccomp	_	_
+15	air	_	PART	Sa	_	16	case	_	_
+16	fhàgail	_	VERB	Nv	_	14	xcomp	_	_
 17	nàdarrach	_	ADJ	Ap	_	16	xcomp:pred	_	_
-18	againn	_	PRON	Pr1p	_	_	_	_	_
+18	againn	_	PRON	Pr1p	_	16	obl	_	_
 19	.	_	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = pw02_19a
 1	Se	_	AUX	Wp-i-3	_	3	cop	_	_
 2	aon	_	NUM	Mc	_	3	nummod	_	_	_
 3	rud	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	0	root	_	_
-4	a	_	PART	Q-r	_	_	_	_	_
-5	th’	_	VERB	V-p	_	_	_	_	_
-6	ann	_	PRON	Pr3sm	_	_	_	_	_
-7	ùidh	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
-8	a	_	PART	Ug	_	_	_	_	_
-9	bhrosnachadh	_	VERB	Nv	_	_	_	_	_
-10	,	_	PUNCT	Fi	_	_	_	_	_
-11	ach	_	CCONJ	Cc	_	5	cc	_	_	_
+4	a	_	PART	Q-r	_	5	mark:prt	_	_
+5	th’	_	VERB	V-p	_	3	csubj:cop	_	_
+6	ann	_	PRON	Pr3sm	_	5	obl	_	_
+7	ùidh	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	9	obj	_	_	
+8	a	_	PART	Ug	_	9	mark:prt	_	_
+9	bhrosnachadh	_	VERB	Nv	_	3	xcomp	_	_
+10	,	_	PUNCT	Fi	_	3	punct	_	_
+11	ach	_	CCONJ	Cc	_	13	cc	_	_	_
 12	ma	_	SCONJ	Cs	_	13	mark	_	_	_
 13	théid	_	VERB	V-f	Tense=Fut	5	conj	_	_	_
 14	ar	_	DET	Dp1p	_	15	det	_	_	_
-15	faclan	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	_	_	_	_
+15	faclan	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	13	nsubj	_	_
 16	a-steach	_	ADV	Rs	_	13	advmod	_	_	_
-17	a	_	ADP	Sp	case	19	_	_	_
-18	dh’	_	PART	Uo	_	_	_	_	_
-19	inntinn	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
+17	a	_	ADP	Sp	_	19	case	_	_
+18	dh’	_	PART	Uo	_	19	goeswith	_	_
+19	inntinn	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	13	obl	_	_
 20	na	_	DET	Tdsfg	Gender=Fem|Number=Sing|Case=Gen	21	det	_	_
 21	cloinne	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	19	nmod	_	_
 22	a	_	PART	Q-r	_	23	mark:prt	_	_	_
@@ -760,11 +761,11 @@
 26	suas	_	ADV	Rs	_	25	advmod	_	_	_
 27	aig	_	ADP	Sp	_	30	case	_	_	_
 28	a’	_	DET	Tdsm	Gender=Masc|Number=Sing	30	det	_	_
-29	cheart	_	ADJ	Ar	_	30	amod	_	_	_
-30	àm	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+29	cheart	_	ADJ	Ar	_	30	amod	_	_
+30	àm	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	25	obl	_	_
 31	,	_	PUNCT	Fi	_	13	punct	_	_	_
-32	saoil	_	VERB	Vm-2s	_	13	ccomp	_	_	_
-33	an	_	PART	Qq	_	34	mark:prt	_	_	_
+32	saoil	_	VERB	Vm-2s	_	13	ccomp	_	_
+33	an	_	PART	Qq	_	34	mark:prt	_	_
 34	toir	_	VERB	V-f--d	_	32	ccomp	_	_	_
 35	iadsan	_	PRON	Pp3p--e	_	34	nsubj	_	_	_
 36	an	_	DET	Tdsf	Gender=Fem|Number=Sing	37	det	_	_
@@ -809,25 +810,25 @@
 5	an	_	DET	Tdsmg	Gender=Masc|Number=Sing|Case=Gen	6	det	_	_
 6	teachd-an-tìr	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	4	obj	_	_
 7	far	_	ADP	Sp	_	8	case	_	_	_
-8	muir	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	_	_	_	_
+8	muir	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	6	obl	_	_
 9	is	_	CCONJ	Cc	_	8	cc	_	_	_
 10	fearann	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	8	conj	_	_
 11	,	_	PUNCT	Fi	_	1	punct	_	_	_
 12	is	_	CCONJ	Cc	_	8	cc	_	_	_
 13	an	_	ADP	Sp	_	14	case	_	_	_
-14	cois	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	conj	_	_	_
-15	sin	_	PRON	Pd	_	_	_	_	_
-16	bha	_	VERB	V-s	_	_	_	_	_
-17	na	_	DET	Tdpm	Gender=Masc|Number=Plur	_	_	_	_
-18	h-	_	PART	Uo	_	_	_	_	_
-19	aodainn	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	_	_	_	_
-20	aca	_	PRON	Pr3p	_	_	_	_	_
+14	cois	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	13	fixed	_	_
+15	sin	_	PRON	Pd	_	16	obl	_	_
+16	bha	_	VERB	V-s	_	8	conj	_	_
+17	na	_	DET	Tdpm	Gender=Masc|Number=Plur	19	det	_	_
+18	h-	_	PART	Uo	_	19	goeswith	_	_
+19	aodainn	_	NOUN	Ncpmn	Gender=Masc|Number=Plur|Case=Nom	16	nsubj	_	_
+20	aca	_	PRON	Pr3p	_	19	obl	_	_
 21	air	_	PART	Sa	_	23	case	_	_	_
-22	am	_	DET	Dp3p	_	_	_	_	_
-23	preasadh	_	VERB	Nv	_	_	_	_	_
+22	am	_	DET	Dp3p	_	23	obj	_	_
+23	preasadh	_	VERB	Nv	_	16	xcomp	_	_
 24	is	_	CCONJ	Cc	_	23	cc	_	_	_
 25	air	_	PART	Sa	_	27	case	_	_	_
-26	an	_	DET	Dp3p	_	_	_	_	_
+26	an	_	DET	Dp3p	_	27	obj	_	_
 27	rocadh	_	VERB	Nv	_	23	conj	_	_	_
 28	le	_	ADP	Sp	_	29	case	_	_	_
 29	gréin	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	23	obl	_	_
@@ -836,9 +837,9 @@
 32	mara	_	NOUN	Ncsfg	Gender=Fem|Number=Sing|Case=Gen	31	nmod	_	_
 33	,	_	PUNCT	Fi	_	16	punct	_	_	_
 34	an	_	DET	Dp3p	_	35	nmod:poss	_	_	_
-35	sùilean	_	NOUN	Ncpfn	Gender=Fem|Number=Plur|Case=Nom	_	_	_	_
+35	sùilean	_	NOUN	Ncpfn	Gender=Fem|Number=Plur|Case=Nom	16	parataxis	_	_
 36	air	_	PART	Sa	_	38	case	_	_	_
-37	an	_	DET	Dp3p	_	_	_	_	_
+37	an	_	DET	Dp3p	_	38	obj	_	_
 38	caogadh	_	VERB	Nv	_	35	obl	_	_	_
 39	an	_	ADP	Sp	_	40	case	_	_
 40	aghaidh	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	39	fixed	_	_
@@ -847,17 +848,17 @@
 43	.	_	PUNCT	Fe	_	1	punct	_	_	_
 
 # sent_id = f05_1
-1	B'	_	AUX	Ws	Tense=Past	2	_	cop	_	_	_
-2	annasach	_	ADJ	Ap	_	0	root	_	_	_
+1	B'	_	AUX	Ws	Tense=Past	2	cop	_	_
+2	annasach	_	ADJ	Ap	_	0	root	_	_
 3	mar	_	ADP	Sp	_	4	case	_	_
 4	sin	_	PRON	Pd	_	2	obl	_	_
-5	,	_	PUNCT	Fi	_	2	punct	_	_	_
-6	do	_	ADP	Sp	_	8	case	_	_	_
+5	,	_	PUNCT	Fi	_	2	punct	_	_
+6	do	_	ADP	Sp	_	8	case	_	_
 7	'n	_	DET	Tdsf	Gender=Fem|Number=Sing	8	det	_	_
-8	leithid	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	_	_	_	_
-9	,	_	PUNCT	Fi	_	_	_	_	_
+8	leithid	_	NOUN	Ncsfd	Gender=Fem|Number=Sing|Case=Dat	2	obl	_
+9	,	_	PUNCT	Fi	_	8	punct	_	_
 10	an	_	DET	Tdsf	Gender=Fem|Number=Sing	11	det	_	_
-11	obair	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
+11	obair	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	2	nsubj	_	_
 12	ris	_	ADP	Sp	_	14	obl	_	_	_
 13	an	_	PART	Qq	_	14	mark:prt	_	_	_
 14	robh	_	VERB	V-s--d	_	11	acl:relcl	_	_	_
@@ -870,7 +871,7 @@
 2	'n	_	DET	Tdsm	Gender=Masc|Number=Sing	3	det	_	_
 3	dealbh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	1	nsubj	_	_
 4	air	_	ADP	Sp	_	6	obl	_	_	_
-5	an	_	PART	Qq	_	_	_	_	_
+5	an	_	PART	Qq	_	6	mark:prt	_	_
 6	robh	_	VERB	V-s--d	_	3	acl:rcl	_	_	_
 7	iad	_	PRON	Pp3p	_	6	nsubj	_	_	_
 8	a'	_	PART	Sa	_	9	case	_	_	_
@@ -878,20 +879,20 @@
 10	cho	_	ADV	Rg	_	11	advmod	_	_	_
 11	inntinneach	_	ADJ	Ap	_	9	amod	_	_
 12	dhaibh	_	PRON	Pr3p	_	11	obl	_	_	_
-13	is	_	CCONJ	Cc	_	_	_	_	_
-14	gu	_	PART	Qa	_	_	_	_	_
-15	robh	_	VERB	V-s--d	_	_	_	_	_
-16	fiamh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+13	is	_	CCONJ	Cc	_	1	cc	_	_
+14	gu	_	PART	Qa	_	15	mark	_	_
+15	robh	_	VERB	V-s--d	_	1	conj	_	_
+16	fiamh	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	15	nsubj	_	_
 17	beòthail	_	ADJ	Aq-smn	Gender=Masc|Number=Sing|Case=Nom	16	amod	_	_
 18	a’	_	DET	Tdsmg	Gender=Masc|Number=Sing|Case=Gen	det	19	_	_
 19	ghàire	_	NOUN	Ncsmg	Gender=Masc|Number=Sing|Case=Gen	16	nmod	_	_
 20	air	_	PART	Sa	_	22	case	_	_	_
-21	a	_	DET	Dp3sm	_	_	_	_	_
-22	shnaidheadh	_	VERB	Nv	_	_	_	_	_
+21	a	_	DET	Dp3sm	_	22	obj	_	_
+22	shnaidheadh	_	VERB	Nv	_	15	xcomp	_	_
 23	air	_	ADP	Sp	_	26	case	_	_	_
 24	an	_	DET	Dp3p	_	26	nmod:poss	_	_	_
 25	dà	_	NUM	Mc	_	26	nummod	_	_	_
-26	aodann	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	_	_	_	_
+26	aodann	_	NOUN	Ncsmd	Gender=Masc|Number=Sing|Case=Dat	22	obl	_	_
 27	rocach	_	ADJ	Aq-smd	Gender=Masc|Number=Sing|Case=Dat	26	amod	_	_
 28	.	_	PUNCT	Fe	_	1	punct	_	_	_
 
@@ -914,26 +915,27 @@
 16	,	_	PUNCT	Fi	_	15	punct	_	_	_
 17	gun	_	ADP	Sp	_	21	mark	_	_	_
 18	a	_	DET	Dp3sm	_	19	det	_	_	_
-19	shùil	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	_	_	_	_
+19	shùil	_	NOUN	Ncsfn	Gender=Fem|Number=Sing|Case=Nom	8	obl	_	_
 20	a	_	PART	Ug	_	21	mark:prt	_	_	_
 21	thogail	_	VERB	Nv	_	15	xcomp	_	_	_
 22	,	_	PUNCT	Fi	_	21	punct	_	_	_
 23	“	_	PUNCT	Fq	_	24	punct	_	_	_
 24	Eil	_	VERB	V-p--d	_	14	parataxis	_	_	_
-25	fhios	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
+25	fhios	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	24	nsubj	_	_
 26	agad	_	PRON	Pr2s	_	24	xcomp:pred	_	_	_
 27	,	_	PUNCT	Fi	_	24	punct	_	_	_
-28	chan	_	AUX	Wp-in	-	cop	_	_	_
-29	e	_	PRON	Pp3sm	-	_	_	_	_
-30	idir	_	ADV	Rg	_	29	advmod	_	_	_
+28	chan	_	AUX	Wp-in	-	32	cop	_	_
+29	e	_	PRON	Pp3sm	-	25	ccomp	_	_
+30	idir	_	ADV	Rg	_	32	advmod	_	_	_
 31	seann	_	ADJ	Ar	_	32	amod	_	_	_
-32	bhrògan	_	NOUN	Ncpfn	Gender=Fem|Number=Plur|Case=Nom	_	_	_	_
-33	sam_bith	_	ADJ	Aq	{}	_	_	_	_
+32	bhrògan	_	NOUN	Ncpfn	Gender=Fem|Number=Plur|Case=Nom	25	ccomp	_	_
+33	sam_bith	_	ADJ	Aq	{}	32	amod	_	_
 34	a	_	PART	Q-r	_	35	mark:prt	_	_	_
-35	tha	_	VERB	V-p	_	_	_	_	_
+35	tha	_	VERB	V-p	_	32	csubj:cop	_	_
 36	'n_seo	_	ADV	Rs	_	35	advmod	_	_	_
 37	.	_	PUNCT	Fe	_	1	punct	_	_	_
 
+# ANNOTATE TO HERE
 # sent_id = f05_4
 1	Is	_	AUX	Wp-i	_	_	_	_	_
 2	e	_	PRON	Pp3sm	_	1	fixed	_	_	_
@@ -973,7 +975,6 @@
 21	crasgach	_	ADJ	Aq-pfg	Gender=Fem|Number=Plur|Case=Gen	20	amod	_	_
 22	.	_	PUNCT	Fe	_	_	_	_	_
 
-# ANNOTATE TO HERE
 # sent_id = f05_6
 1	Is	_	CCONJ	Cc	_	_	_	_	_
 2	am	_	PART	Qq	_	_	_	_	_
@@ -1051,7 +1052,6 @@
 
 # sent_id = f05_7
 1	Eil	_	VERB	V-p--d	_	_	_	_	_
-
 2	fhios	_	NOUN	Ncsmn	Gender=Masc|Number=Sing|Case=Nom	_	_	_	_
 3	agad	_	PRON	Pr2s	_	_	_	_	_
 4	,	_	PUNCT	Fi	_	_	_	_	_
