@@ -27,13 +27,17 @@ class Lemmatizer:
             'eadar':["ea.*"],
             'fo':["fo.*"],
             'gu':["gu_ruige"],
-            'de':["dh[ei].+"],
-            'do':["dh(a|i|omh|ut|[au]ibh|uinn|an)$"],
+            'de':["dh[ei].*"],
+            'do':["dh(a|i|omh|ut|[au]ibh|uinn|an).*"],
             'le':["le.*"],
             'ri':["ri(um|ut|s)", "ru.*"],
             'ro':["ro.*"],
             'thar':["tha.*"]
         }
+        self.pronouns = {
+            "mi": ["mise"], "thu": ["tu", "tusa", "thusa"], "e": ["esan"], "i": ["ise"],
+            "sinn": ["sinne"], "sibh": ["sibhse"], "iad": ["iadsan"]
+            }
         self.vns = []
         with open(os.path.join(os.path.dirname(__file__), 'resources', 'vns.txt')) as f:
             for line in f:
@@ -69,6 +73,12 @@ class Lemmatizer:
                 if re.match("^("+pattern+")$", s): return key
         return s
 
+    def lemmatize_pronoun(self, s):
+        for key in self.pronouns:
+            if s in self.pronouns[key]:
+                return key
+        return s
+    
     def lemmatize_vn(self, s):
         for vn in self.vns:
             if self.delenite(s) == vn[1]:
@@ -87,17 +97,53 @@ class Lemmatizer:
                 return self.delenite(s.replace(replacement[0], replacement[1]))
         return self.delenite(s)
 
+    def lemmatize_n(self, s, pos):
+        specials = {"bàtaichean": "bàta"}
+        if pos.startswith("N") and pos.endswith("g"):
+            s = self.delenite(s)
+        if pos == "Nv":
+            return self.lemmatize_vn(self.delenite(s))
+        if pos.startswith("Ncp"):
+            if s in specials:
+                return specials[s]
+            if s.endswith('achaidhean'):
+                return s.replace('achaidhean', 'achadh')
+            if s.endswith("ichean"):
+                return s.replace("ichean", "iche")
+            if s.endswith("ean"):
+                return s.replace('ean', '')
+            elif s.endswith("nnan"):
+                return s.replace('nnan', '')
+            elif s.endswith("an") and s != "ealan":
+                return s.replace('an', '')
+        return self.delenite(s)
+        
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
-        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").lower()
+        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").replace("’", "'")
+        if pos != "Nt" and not pos.startswith("Nn"):
+            s = s.lower()
         # do in this order because of "as"
         if pos.startswith("W"):
             return "is"
-        for irregular in self.irregulars:
-            if s in irregular[1]:
-                return irregular[0]
-        if pos == "Nv":
-            return self.lemmatize_vn(self.delenite(s))
+        if pos.startswith("Td"):
+            return "an"
+        if pos == ("Nt"):
+            return "Alba" if s == "Albann" else self.delenite(s)
+        if s.startswith("luchd"):
+            return s.replace("luchd", "neach")
+        if pos.startswith("Sp") or pos.startswith("Pr"):
+            return self.lemmatize_preposition(s)
+        if pos.startswith("Pp"):
+            return self.lemmatize_pronoun(s)
+        if pos.startswith("Sa") and s.endswith("'"):
+            return "ag"
+        if pos.startswith("V"):
+            for irregular in self.irregulars:
+                if s in irregular[1]:
+                    return irregular[0]
+        if pos.startswith("N"):
+            return self.lemmatize_n(s, pos)
         if pos.startswith("Vm-1p"):
             return s.replace("eamaid", "") if s.endswith("eamaid") else s.replace("amaid", "")
         if pos == "Vm-2s" or pos == "Vm": # singular imperative; easiest to deal with
@@ -109,8 +155,10 @@ class Lemmatizer:
         if pos.endswith("r"): # relative form
             if s.endswith("eas"):
                 return s.replace("eas","")
-            else:
+            elif s.endswith("as"):
                 return s.replace("as","")
+            elif pos == "Ar":
+                return self.delenite(s)
         elif pos.startswith("V-s0"):
             return self.delenite(s.replace("eadh", "")) if s.endswith("eadh") else self.delenite(s.replace("adh", ""))
         elif pos.startswith("V-p0") or pos.startswith("V-f0"):
@@ -120,6 +168,8 @@ class Lemmatizer:
         elif pos.startswith("V-h") or pos.startswith("Vm-3"): # conditional or third person imperative
             return self.delenite(s).replace("eadh", "") if s.endswith("eadh") else self.delenite(s).replace("adh", "")
         elif pos.endswith("d"): # dependent form
+            return self.delenite(s)
+        if pos.startswith("A"):
             return self.delenite(s)
         return s
 
