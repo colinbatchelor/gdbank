@@ -7,10 +7,15 @@ numbers = {"s":"Sing", "p":"Plur"}
 
 def get_verb_feats(xpos):
     result = {}
+    if len(xpos) == 2: # this may well be a mistagging
+        result["Mood"] = ["Imp"]
+        return result
     if xpos[2] in tenses:
         result["Tense"] = [tenses[xpos[2]]]
     if xpos[2] == "h":
         result["Mood"] = ["Cnd"]
+    if xpos[1] == "m":
+        result["Mood"] = ["Imp"]
     return result
 
 def get_pron_feats(xpos):
@@ -28,7 +33,7 @@ trees = []
 with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
-            if token.upos == "VERB":
+            if token.xpos.startswith("V"):
                 token.feats = get_verb_feats(token.xpos)
             elif token.xpos.startswith("Pp"):
                 token.feats = get_pron_feats(token.xpos)
