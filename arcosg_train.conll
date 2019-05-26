@@ -1020,14 +1020,14 @@
 37	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f05_11
-# text = An_dràsda cha tuirt e ach, “ Chan eil mi ag ràdh nach eil an fhìrinn agad.
+# text = An_dràsda cha tuirt e ach, “Chan eil mi ag ràdh nach eil an fhìrinn agad."
 1	An_dràsda	an_dràsda	ADV	Rt	_	3	advmod	_	_
 2	cha	cha	PART	Qn	_	3	mark	_	_
 3	tuirt	tuirt	VERB	V-s--d	Tense=Pres	0	root	_	_
 4	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
 5	ach	ach	ADP	Sp	_	9	case	_	SpaceAfter=No
 6	,	,	PUNCT	Fi	_	9	punct	_	_
-7	“	“	PUNCT	Fq	_	9	punct	_	_
+7	“	“	PUNCT	Fq	_	9	punct	_	SpaceAfter=No
 8	Chan	chan	PART	Qn	_	9	mark	_	_
 9	eil	bi	VERB	V-p--d	Tense=Past	1	parataxis	_	_
 10	mi	mi	PRON	Pp1s	Number=Sing|Person=1	9	nsubj	_	_
@@ -1038,7 +1038,8 @@
 15	an	an	DET	Tdsf	Gender=Fem|Number=Sing	16	det	_	_
 16	fhìrinn	fìrinn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	14	nsubj	_	_
 17	agad	agad	ADP	Pr2s	Number=Sing|Person=2	14	xcomp:pred	_	SpaceAfter=No
-18	.	.	PUNCT	Fe	_	3	punct	_	_
+18	.	.	PUNCT	Fe	_	3	punct	_	SpaceAfter=No
+19	"	"	PUNCT	Fz	_	3	punct	_	_
 
 # sent_id = f05_14
 # text = Bho chionn aon cheithir bliadhna cheannaich Labhruinn seann tigh-croiteir le bàthaich is sabhal mór.
@@ -1397,7 +1398,7 @@
 18	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = pw09_34
-# text = Cuidichidh sin le gnìomhachasan, agus gum fuirich feadhainn a dh’ fhaodadh falbh.
+# text = Cuidichidh sin le gnìomhachasan, agus gum fuirich feadhainn a dh’ fhaodadh falbh."
 1	Cuidichidh	cuidich	VERB	V-f	Tense=Fut	0	root	_	_
 2	sin	sin	PRON	Pd	_	1	nsubj	_	_
 3	le	le	ADP	Sp	_	4	case	_	_
@@ -1411,7 +1412,8 @@
 11	dh’	dh'	PART	Uo	_	8	acl:relcl	_	_
 12	fhaodadh	faod	VERB	V-h	Mood=Cnd	11	fixed	_	_
 13	falbh	falbh	NOUN	Nv	VerbForm=Inf	11	xcomp	_	SpaceAfter=No
-14	.	.	PUNCT	Fe	_	1	punct	_	_
+14	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+15	"	_	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = fp06_6
 # text = An_uair a thug Aonghus Stiùbhart á Peighinn_a’_Chorrain fianais mu choinneimh a’ Mhorair Napier thuirt e nach robh am Peighinn_a’_Chorrain ri linn a sheanar ach cóignear chroitearan ach a_nise gun robh còrr is fichead croitear ann.
@@ -1453,7 +1455,7 @@
 36	.	.	PUNCT	Fe	_	14	punct	_	_
 
 # sent_id = pw01_21
-# text = Le pàrlamaid agus millennium ùr air fàire, se mearachd mhòr a bhiodh an_sin dhan Eaglais, 'nam bheachd-sa.
+# text = Le pàrlamaid agus millennium ùr air fàire, se mearachd mhòr a bhiodh an_sin dhan Eaglais, 'nam bheachd-sa."
 1	Le	le	ADP	Sp	_	2	case	_	_
 2	pàrlamaid	pàrlamaid	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	10	obl	_	_
 3	agus	agus	CCONJ	Cc	_	4	cc	_	_
@@ -1473,7 +1475,8 @@
 17	,	,	PUNCT	Fi	_	13	punct	_	_
 18	'nam	'nam	ADP	Spp1s	_	19	case	_	_
 19	bheachd-sa	beachd-sa	NOUN	Ncsmde	Case=Dat|Gender=Masc|Number=Sing	10	obl	_	SpaceAfter=No
-20	.	.	PUNCT	Fe	_	10	punct	_	_
+20	.	.	PUNCT	Fe	_	10	punct	_	SpaceAfter=No
+21	"	"	PUNCT	Fz	_	10	punct	_	_
 
 # sent_id = ns06_4
 # text = Bha gille sia bliadhna dh’ aois san taigh aig an àm, ach cha deach a leòn.
@@ -3164,7 +3167,7 @@
 24	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = pw01_30
-# text = Ma tha tagraiche freagarrach ann aig a bheil a' Ghàidhlig, bhiodh e gu math suarach dhan an Eaglais gabhail seachad air.
+# text = Ma tha tagraiche freagarrach ann aig a bheil a' Ghàidhlig, bhiodh e gu math suarach dhan an Eaglais gabhail seachad air."
 1	Ma	ma	SCONJ	Cs	_	2	mark	_	_
 2	tha	bi	VERB	V-p	Tense=Past	12	ccomp	_	_
 3	tagraiche	tagraiche	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
@@ -3187,7 +3190,8 @@
 20	gabhail	gabh	NOUN	Nv	VerbForm=Inf	16	xcomp	_	_
 21	seachad	seachad	ADV	Rg	_	20	advmod	_	_
 22	air	air	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	20	obl	_	SpaceAfter=No
-23	.	.	PUNCT	Fe	_	12	punct	_	_
+23	.	.	PUNCT	Fe	_	12	punct	_	SpaceAfter=No
+24	"	"	PUNCT	Fz	_	12	punct	_	_
 
 # sent_id = f07_41
 # text = Co-dhiubh bidh mi 'nam shuidhe ris an loch 's cha bhi mi glacadh càil 's glé thric bidh mi dol dhachaidh le baga falamh.
@@ -3500,11 +3504,12 @@
 4	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f02_58
-# text = Deireadh an sgeòil.
+# text = Deireadh an sgeòil."
 1	Deireadh	deireadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 2	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	3	det	_	_
 3	sgeòil	sgeòil	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	1	nmod	_	SpaceAfter=No
-4	.	.	PUNCT	Fe	_	1	punct	_	_
+4	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+5	"	"	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = f08_60
 # text = Seadh, Seadh.
@@ -4062,8 +4067,8 @@
 12	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f01_32
-# text = " Chan eil ann ach beagan is mìle tarsainn a' mhonaidh.
-1	"	"	PUNCT	Fq	_	3	punct	_	_
+# text = "Chan eil ann ach beagan is mìle tarsainn a' mhonaidh."
+1	"	"	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	Chan	chan	PART	Qn	_	3	mark	_	_
 3	eil	bi	VERB	V-p--d	Tense=Past	0	root	_	_
 4	ann	ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	3	obl	_	_
@@ -4074,7 +4079,8 @@
 9	tarsainn	tarsainn	ADP	Sp	_	11	case	_	_
 10	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	11	det	_	_
 11	mhonaidh	monaidh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	8	obl	_	SpaceAfter=No
-12	.	.	PUNCT	Fe	_	3	punct	_	_
+12	.	.	PUNCT	Fe	_	3	punct	_	SpaceAfter=No
+13	"	"	PUNCT	Fz	_	3	punct	_	_
 
 # sent_id = f01_67
 # text = Bheachdaich e gu mionaideach air na clachan tro chòrr is aonghlainne.
@@ -4152,7 +4158,7 @@
 12	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = f06_31
-# text = Dh’ fhaodadh gur h-e seòrsa de Thòiridh a th' ann.
+# text = Dh’ fhaodadh gur h-e seòrsa de Thòiridh a th' ann.'
 1	Dh’	dh'	PART	Uo	_	0	root	_	_
 2	fhaodadh	faod	VERB	V-h	Mood=Cnd	1	fixed	_	_
 3	gur	is	AUX	Wpdia	_	6	cop	_	_
@@ -4164,7 +4170,8 @@
 9	a	a	PART	Q-r	_	10	mark	_	_
 10	th'	bi	VERB	V-p	Tense=Past	6	csubj:cop	_	_
 11	ann	ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	10	obl	_	SpaceAfter=No
-12	.	.	PUNCT	Fe	_	1	punct	_	_
+12	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+13	'	'	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = n04_3
 # text = Bha mhàthair glé dheònach ged a bha i duilich dealachadh ris.
@@ -4288,7 +4295,7 @@
 12	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f02_11
-# text = Dh’ fhalbh na peantairean, chan eil uair a thìde bhuaithe.
+# text = Dh’ fhalbh na peantairean, chan eil uair a thìde bhuaithe."
 1	Dh’	dh'	PART	Uo	_	0	root	_	_
 2	fhalbh	falbh	VERB	V-s	Tense=Pres	1	fixed	_	_
 3	na	an	DET	Tdpm	Gender=Masc|Number=Plur	4	det	_	_
@@ -4300,7 +4307,8 @@
 9	a	a	ADP	Sp	_	10	case	_	_
 10	thìde	tìde	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	8	obl	_	_
 11	bhuaithe	bhuaithe	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	obl	_	SpaceAfter=No
-12	.	.	PUNCT	Fe	_	1	punct	_	_
+12	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+13	"	"	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = f02_69
 # text = Sgrìobhaidh tusa an sgriobt, ach dh’ atharraich iad an inntinn.
@@ -4427,8 +4435,8 @@
 13	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f01_103
-# text = " Cha creid mi nach fhaca mi na dh' fhòghnas de Lunnainn.
-1	"	"	PUNCT	Fq	_	3	punct	_	_
+# text = "Cha creid mi nach fhaca mi na dh' fhòghnas de Lunnainn."
+1	"	"	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	Cha	cha	PART	Qn	_	3	mark	_	_
 3	creid	creid	VERB	V-f--d	Tense=Fut	0	root	_	_
 4	mi	mi	PRON	Pp1s	Number=Sing|Person=1	3	nsubj	_	_
@@ -4440,7 +4448,8 @@
 10	fhòghnas	fhòghn	VERB	V-f--r	Tense=Fut	9	fixed	_	_
 11	de	de	ADP	Sp	_	12	case	_	_
 12	Lunnainn	Lunnainn	PROPN	Nt	_	9	obl	_	SpaceAfter=No
-13	.	.	PUNCT	Fe	_	3	punct	_	_
+13	.	.	PUNCT	Fe	_	3	punct	_	SpaceAfter=No
+14	"	"	PUNCT	Fz	_	3	punct	_	_
 
 # sent_id = ns08_20
 # text = Thuirt fear-labhairt an Ughdarrais gu robh na còmhraidhean mun chumhnant a' leantainn.
@@ -4491,8 +4500,8 @@
 13	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = n04_28
-# text = “ Bha còir agad a bhith toilichte còmhla riums' airson greis fhathast.
-1	“	“	PUNCT	Fq	_	2	punct	_	_
+# text = “Bha còir agad a bhith toilichte còmhla riums' airson greis fhathast."
+1	“	“	PUNCT	Fq	_	2	punct	_	SpaceAfter=No
 2	Bha	bi	VERB	V-s	Tense=Pres	0	root	_	_
 3	còir	còir	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	2	nsubj	_	_
 4	agad	agad	ADP	Pr2s	Number=Sing|Person=2	2	obl	_	_
@@ -4504,7 +4513,8 @@
 10	airson	airson	ADP	Nf	_	11	case	_	_
 11	greis	greis	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	6	obl	_	_
 12	fhathast	fhathast	ADV	Rt	_	6	advmod	_	SpaceAfter=No
-13	.	.	PUNCT	Fe	_	2	punct	_	_
+13	.	.	PUNCT	Fe	_	2	punct	_	SpaceAfter=No
+14	"	"	PUNCT	Fz	_	2	punct	_	_
 
 # sent_id = ns04_60
 # text = Chaidh sia obraichean a chall aig Muillinn Chlò Shiaboist air an deireadh-sheachdain.
@@ -5179,15 +5189,15 @@
 21	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f02_19
-# text = “ Trobhad, " thuirt e, “ cha bhi agad ach a’ chùis a chumail a' dol gu dà-reug.
-1	“	“	PUNCT	Fq	_	2	punct	_	_
+# text = “Trobhad," thuirt e, “cha bhi agad ach a’ chùis a chumail a' dol gu dà-reug."
+1	“	“	PUNCT	Fq	_	2	punct	_	SpaceAfter=No
 2	Trobhad	trobhad	VERB	Vm-2s	_	0	root	_	SpaceAfter=No
-3	,	,	PUNCT	Fi	_	2	punct	_	_
+3	,	,	PUNCT	Fi	_	2	punct	_	SpaceAfter=No
 4	"	"	PUNCT	Fz	_	2	punct	_	_
 5	thuirt	abair	VERB	V-s	Tense=Pres	2	parataxis	_	_
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	SpaceAfter=No
 7	,	,	PUNCT	Fi	_	5	punct	_	_
-8	“	“	PUNCT	Fq	_	10	punct	_	_
+8	“	“	PUNCT	Fq	_	10	punct	_	SpaceAfter=No
 9	cha	cha	PART	Qn	_	10	mark	_	_
 10	bhi	bi	VERB	V-f--d	Tense=Fut	2	parataxis	_	_
 11	agad	agad	ADP	Pr2s	Number=Sing|Person=2	10	obl	_	_
@@ -5200,7 +5210,8 @@
 18	dol	rach	NOUN	Nv	VerbForm=Inf	16	xcomp	_	_
 19	gu	gu	ADP	Sp	_	20	case	_	_
 20	dà-reug	dà-reug	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	18	obl	_	SpaceAfter=No
-21	.	.	PUNCT	Fe	_	2	punct	_	_
+21	.	.	PUNCT	Fe	_	2	punct	_	SpaceAfter=No
+22	"	"	PUNCT	Fz	_	2	punct	_	_
 
 # sent_id = f02_21
 # text = Dh’ èirich e, agus nuair a thionndaidh e a bhruidhinn ris an fhear bheag, bha snodha-gàire air aodann.
@@ -5616,7 +5627,7 @@
 17	?	?	PUNCT	Fg	_	10	punct	_	_
 
 # sent_id = f02_16
-# text = Ma tha thu fhèin ann mu leth-uair an dèidh ochd, faodaidh tu tòiseachadh... chan eil fhios a'm... timcheall air a naoi.
+# text = Ma tha thu fhèin ann mu leth-uair an dèidh ochd, faodaidh tu tòiseachadh... chan eil fhios a'm... timcheall air a naoi."
 1	Ma	ma	SCONJ	Cs	_	2	mark	_	_
 2	tha	bi	VERB	V-p	Tense=Past	12	ccomp	_	_
 3	thu	thu	PRON	Pp2s	Number=Sing|Person=2	2	nsubj	_	_
@@ -5641,7 +5652,8 @@
 22	air	air	ADP	Sp	_	24	case	_	_
 23	a	a	PART	Uo	_	24	mark	_	_
 24	naoi	naoi	NUM	Mc	_	21	obl	_	SpaceAfter=No
-25	.	.	PUNCT	Fe	_	12	punct	_	_
+25	.	.	PUNCT	Fe	_	12	punct	_	SpaceAfter=No
+26	"	"	PUNCT	Fz	_	12	punct	_	_
 
 # sent_id = n04_2
 # text = Thuirt e ri mhàthair gu robh e ' dol a dh’ fhalbh feuch a faigheadh e cosnadh 'na bhuachaille air fearann.
@@ -6056,8 +6068,8 @@
 23	.	.	PUNCT	Fe	_	10	punct	_	_
 
 # sent_id = n01_8
-# text = " O tha cuideachd chan eil agamsa air a' chloinn, " ars' ise, " ach mar gum beirinn fhìn iad.
-1	"	"	PUNCT	Fq	_	3	punct	_	_
+# text = "O tha cuideachd chan eil agamsa air a' chloinn," ars' ise, "ach mar gum beirinn fhìn iad."
+1	"	"	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	O	o	INTJ	I	_	3	discourse	_	_
 3	tha	bi	VERB	V-p	Tense=Past	0	root	_	_
 4	cuideachd	cuideachd	ADV	Rg	_	3	advmod	_	_
@@ -6067,19 +6079,20 @@
 8	air	air	ADP	Sp	_	10	case	_	_
 9	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	10	det	_	_
 10	chloinn	cloinn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	6	obl	_	SpaceAfter=No
-11	,	,	PUNCT	Fi	_	6	punct	_	_
+11	,	,	PUNCT	Fi	_	6	punct	_	SpaceAfter=No
 12	"	"	PUNCT	Fz	_	6	punct	_	_
 13	ars'	arsa	VERB	V-s	Tense=Pres	3	parataxis	_	_
 14	ise	i	PRON	Pp3sf-e	Gender=Fem|Number=Sing|Person=3|PronType=Emp	13	nsubj	_	SpaceAfter=No
 15	,	,	PUNCT	Fi	_	13	punct	_	_
-16	"	"	PUNCT	Fq	_	20	punct	_	_
+16	"	"	PUNCT	Fq	_	20	punct	_	SpaceAfter=No
 17	ach	ach	CCONJ	Cc	_	20	cc	_	_
 18	mar	mar	SCONJ	Cs	_	20	mark	_	_
 19	gum	gum	PART	Qa	_	20	mark	_	_
 20	beirinn	beirinn	VERB	V-h1sd	Mood=Cnd	6	conj	_	_
 21	fhìn	fhìn	PRON	Px	_	20	compound	_	_
 22	iad	iad	PRON	Pp3p	Number=Plur|Person=3	20	obj	_	SpaceAfter=No
-23	.	.	PUNCT	Fe	_	3	punct	_	_
+23	.	.	PUNCT	Fe	_	3	punct	_	SpaceAfter=No
+24	"	"	PUNCT	Fz	_	3	punct	_	_
 
 # sent_id = f08_43b
 # text = Sheall e ris an òrd-mhòr anns an fheur.
@@ -6841,16 +6854,16 @@
 18	.	.	PUNCT	Fe	_	5	punct	_	_
 
 # sent_id = f02_73
-# text = “ A Mhurchaidh, " thuirt e, “ bha fhios a'm air sin bho chionn fhada.
-1	“	“	PUNCT	Fq	_	3	punct	_	_
+# text = “A Mhurchaidh," thuirt e, “bha fhios a'm air sin bho chionn fhada."
+1	“	“	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	A	a	PART	Uv	_	3	case	_	_
 3	Mhurchaidh	Murchaidh	PROPN	Nn-mv	Case=Voc|Gender=Masc	10	vocative	_	SpaceAfter=No
-4	,	,	PUNCT	Fi	_	3	punct	_	_
+4	,	,	PUNCT	Fi	_	3	punct	_	SpaceAfter=No
 5	"	"	PUNCT	Fz	_	3	punct	_	_
 6	thuirt	abair	VERB	V-s	Tense=Pres	0	root	_	_
 7	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	SpaceAfter=No
 8	,	,	PUNCT	Fi	_	6	punct	_	_
-9	“	“	PUNCT	Fq	_	10	punct	_	_
+9	“	“	PUNCT	Fq	_	10	punct	_	SpaceAfter=No
 10	bha	bi	VERB	V-s	Tense=Pres	6	parataxis	_	_
 11	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	10	nsubj	_	_
 12	a'm	a'm	ADP	Pr1s	Number=Sing|Person=1	11	obl	_	_
@@ -6859,7 +6872,8 @@
 15	bho	bho	ADP	Sp	_	17	case	_	_
 16	chionn	cionn	ADP	Nf	_	15	fixed	_	_
 17	fhada	fada	ADJ	Aq-smg	Case=Gen|Gender=Masc|Number=Sing	10	obl	_	SpaceAfter=No
-18	.	.	PUNCT	Fe	_	6	punct	_	_
+18	.	.	PUNCT	Fe	_	6	punct	_	SpaceAfter=No
+19	"	"	PUNCT	Fz	_	6	punct	_	_
 
 # sent_id = fp02_21
 # text = Tha an searg sa ri fhaicinn ann_an iomadach dòigh.
@@ -7044,7 +7058,7 @@
 11	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f04_6
-# text = Cum rud seachd bliadhna, 's gheibh thu feum dha.
+# text = Cum rud seachd bliadhna, 's gheibh thu feum dha."
 1	Cum	cum	VERB	Vm-2s	_	0	root	_	_
 2	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
 3	seachd	seachd	NUM	Mc	_	4	nummod	_	_
@@ -7055,7 +7069,8 @@
 8	thu	thu	PRON	Pp2s	Number=Sing|Person=2	7	nsubj	_	_
 9	feum	feum	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	7	obj	_	_
 10	dha	do	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	obl	_	SpaceAfter=No
-11	.	.	PUNCT	Fe	_	1	punct	_	_
+11	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+12	"	"	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = pw05_21
 # text = Tha i ’na pàirt chudromach de mheasgachadh na h-Alba.
@@ -7207,7 +7222,7 @@
 12	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f02_28
-# text = 'S e a-nochd a dhèanadh dragh dhòmhsa nam bithinn nad àite.
+# text = 'S e a-nochd a dhèanadh dragh dhòmhsa nam bithinn nad àite."
 1	'S	is	AUX	Wp-i	_	3	cop	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	fixed	_	_
 3	a-nochd	a-nochd	ADP	Nf	_	0	root	_	_
@@ -7219,7 +7234,8 @@
 9	bithinn	bithinn	VERB	V-h1sd	Mood=Cnd	5	ccomp	_	_
 10	nad	nad	ADP	Spp2s	_	11	case	_	_
 11	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	9	obl	_	SpaceAfter=No
-12	.	.	PUNCT	Fe	_	9	punct	_	_
+12	.	.	PUNCT	Fe	_	9	punct	_	SpaceAfter=No
+13	"	"	PUNCT	Fz	_	9	punct	_	_
 
 # sent_id = pw06_17
 # text = agus rinn na Nisich a’ chùis, dà thadhal gu neoni.
@@ -8014,15 +8030,16 @@
 8	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = f07_30
-# text = “ Cha do leig mi càil orm.
-1	“	“	PUNCT	Fq	_	4	punct	_	_
+# text = “Cha do leig mi càil orm."
+1	“	“	PUNCT	Fq	_	4	punct	_	SpaceAfter=No
 2	Cha	cha	PART	Qn	_	4	mark	_	_
 3	do	do	PART	Q--s	_	4	mark	_	_
 4	leig	leig	VERB	V-s	Tense=Pres	0	root	_	_
 5	mi	mi	PRON	Pp1s	Number=Sing|Person=1	4	nsubj	_	_
 6	càil	càil	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	4	obj	_	_
 7	orm	air	ADP	Pr1s	Number=Sing|Person=1	4	obl	_	SpaceAfter=No
-8	.	.	PUNCT	Fe	_	4	punct	_	_
+8	.	.	PUNCT	Fe	_	4	punct	_	SpaceAfter=No
+9	"	"	PUNCT	Fz	_	4	punct	_	_
 
 # sent_id = f07_44
 # text = Fear mór reamhar le geansaidh canabhais air.
@@ -8608,8 +8625,8 @@
 5	.	.	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = pw09_23
-# text = 3 m bhon Aonadh Eòrpach.
-1	3	3	NUM	Mn	_	2	nummod	_	_
+# text = 3m bhon Aonadh Eòrpach.
+1	3	3	NUM	Mn	_	2	nummod	_	SpaceAfter=No
 2	m	m	NOUN	Y	_	0	root	_	_
 3	bhon	bhon	ADP	Spa-s	_	4	case	_	_
 4	Aonadh	aonadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	2	obl	_	_
@@ -8617,13 +8634,14 @@
 6	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = n05_46
-# text = Tha e ' dèanamh crìoch.
+# text = Tha e ' dèanamh crìoch."
 1	Tha	bi	VERB	V-p	Tense=Past	0	root	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
 3	'	ag	PART	Sa	_	4	case	_	_
 4	dèanamh	dèan	NOUN	Nv	VerbForm=Inf	1	xcomp	_	_
 5	crìoch	crìoch	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	4	nmod	_	SpaceAfter=No
-6	.	.	PUNCT	Fe	_	1	punct	_	_
+6	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+7	"	"	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = f01_46
 # text = Còmhla_ris air pilleig bha ban-chompanach Inis.
@@ -8636,8 +8654,8 @@
 7	.	.	PUNCT	Fe	_	4	punct	_	_
 
 # sent_id = n02_19
-# text = “ Ach chan ann.
-1	“	“	PUNCT	Fq	_	4	punct	_	_
+# text = “Ach chan ann.
+1	“	“	PUNCT	Fq	_	4	punct	_	SpaceAfter=No
 2	Ach	ach	CCONJ	Cc	_	4	cc	_	_
 3	chan	is	AUX	Wp-in	_	4	cop	_	_
 4	ann	ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	SpaceAfter=No
@@ -9435,7 +9453,7 @@
 15	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = pw04_13
-# text = Ach, mar chanadh mo sheanair, “ Dh’ fhalbh sin agus thàinig seo.
+# text = Ach, mar chanadh mo sheanair, “Dh’ fhalbh sin agus thàinig seo."
 1	Ach	ach	CCONJ	Cc	_	4	cc	_	SpaceAfter=No
 2	,	,	PUNCT	Fi	_	4	punct	_	_
 3	mar	mar	SCONJ	Cs	_	4	mark	_	_
@@ -9443,14 +9461,15 @@
 5	mo	mo	DET	Dp1s	_	4	nsubj	_	_
 6	sheanair	seanair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	obj	_	SpaceAfter=No
 7	,	,	PUNCT	Fi	_	9	punct	_	_
-8	“	“	PUNCT	Fq	_	9	punct	_	_
+8	“	“	PUNCT	Fq	_	9	punct	_	SpaceAfter=No
 9	Dh’	dh'	PART	Uo	_	4	ccomp	_	_
 10	fhalbh	falbh	VERB	V-s	Tense=Pres	9	fixed	_	_
 11	sin	sin	PRON	Pd	_	9	nsubj	_	_
 12	agus	agus	CCONJ	Cc	_	9	cc	_	_
 13	thàinig	thig	VERB	V-s	Tense=Pres	9	conj	_	_
 14	seo	seo	PRON	Pd	_	13	nsubj	_	SpaceAfter=No
-15	.	.	PUNCT	Fe	_	4	punct	_	_
+15	.	.	PUNCT	Fe	_	4	punct	_	SpaceAfter=No
+16	"	"	PUNCT	Fz	_	4	punct	_	_
 
 # sent_id = ns02_10
 # text = Tha am bàt-aiseig an “ Claymore " a-nise a' seòladh a Bhaile_Chaisteil ann_an Contai_Aontruim.
@@ -10046,16 +10065,16 @@
 22	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = pw09_21
-# text = Chosg e £ 6.
+# text = Chosg e £6.
 1	Chosg	cosg	VERB	V-s	Tense=Pres	0	root	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
-3	£	£	X	Xy	_	1	obj	_	_
+3	£	£	X	Xy	_	1	obj	_	SpaceAfter=No
 4	6	6	NUM	Mn	_	3	fixed	_	SpaceAfter=No
 5	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f03_16
-# text = “ Ma bhitheas, 'se chiad uair dhuit e, " ars ise.
-1	“	“	PUNCT	Fq	_	3	punct	_	_
+# text = “Ma bhitheas, 'se chiad uair dhuit e," ars ise.
+1	“	“	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	Ma	ma	SCONJ	Cs	_	3	mark	_	_
 3	bhitheas	bhith	VERB	V-f--r	Tense=Fut	0	root	_	SpaceAfter=No
 4	,	,	PUNCT	Fi	_	3	punct	_	_
@@ -10064,7 +10083,7 @@
 7	uair	uair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	3	parataxis	_	_
 8	dhuit	dhuit	ADP	Pr2s	Number=Sing|Person=2	7	obl	_	_
 9	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	SpaceAfter=No
-10	,	,	PUNCT	Fi	_	7	punct	_	_
+10	,	,	PUNCT	Fi	_	7	punct	_	SpaceAfter=No
 11	"	"	PUNCT	Fz	_	7	punct	_	_
 12	ars	arsa	VERB	V-s	Tense=Pres	3	parataxis	_	_
 13	ise	i	PRON	Pp3sf-e	Gender=Fem|Number=Sing|Person=3|PronType=Emp	12	nsubj	_	SpaceAfter=No
@@ -10123,8 +10142,8 @@
 14	.	.	PUNCT	Fe	_	5	punct	_	_
 
 # sent_id = f02_30
-# text = “ Chan eil de thàlann agad a leigeadh leat a bhith nam àite.
-1	“	“	PUNCT	Fq	_	3	punct	_	_
+# text = “Chan eil de thàlann agad a leigeadh leat a bhith nam àite."
+1	“	“	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	Chan	chan	PART	Qn	_	3	mark	_	_
 3	eil	bi	VERB	V-p--d	Tense=Past	0	root	_	_
 4	de	de	ADP	Sp	_	5	case	_	_
@@ -10137,7 +10156,8 @@
 11	bhith	bi	NOUN	Nv	VerbForm=Inf	8	xcomp	_	_
 12	nam	nam	ADP	Spp1s	_	13	case	_	_
 13	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	11	obl	_	SpaceAfter=No
-14	.	.	PUNCT	Fe	_	3	punct	_	_
+14	.	.	PUNCT	Fe	_	3	punct	_	SpaceAfter=No
+15	"	"	PUNCT	Fz	_	3	punct	_	_
 
 # sent_id = f02_66
 # text = Bheir iad dhut beagan airgid 's iarraidh iad ort sgriobt a sgrìobhadh dhaibh.
@@ -10481,7 +10501,7 @@
 29	.	.	PUNCT	Fe	_	6	punct	_	_
 
 # sent_id = f01_86
-# text = Thug Màiri sùil air Iain is thuirt i, " Fuirich thusa far a bheil thu, is thèid mise leam fhìn a thoirt sùil eile air bùthainean.
+# text = Thug Màiri sùil air Iain is thuirt i, "Fuirich thusa far a bheil thu, is thèid mise leam fhìn a thoirt sùil eile air bùthainean."
 1	Thug	thoir	VERB	V-s	Tense=Pres	0	root	_	_
 2	Màiri	Màiri	PROPN	Nn-fn	Case=Nom|Gender=Fem	1	nsubj	_	_
 3	sùil	sùil	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	obj	_	_
@@ -10491,7 +10511,7 @@
 7	thuirt	abair	VERB	V-s	Tense=Pres	1	conj	_	_
 8	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	7	nsubj	_	SpaceAfter=No
 9	,	,	PUNCT	Fi	_	7	punct	_	_
-10	"	"	PUNCT	Fq	_	11	punct	_	_
+10	"	"	PUNCT	Fq	_	11	punct	_	SpaceAfter=No
 11	Fuirich	fuirich	VERB	Vm-2s	_	7	parataxis	_	_
 12	thusa	thu	PRON	Pp2s--e	Number=Sing|Person=2|PronType=Emp	11	nsubj	_	_
 13	far	far	SCONJ	Cs	_	15	mark	_	_
@@ -10510,7 +10530,8 @@
 26	eile	eile	ADJ	Aq-sfg	Case=Gen|Gender=Fem|Number=Sing	25	amod	_	_
 27	air	air	ADP	Sp	_	28	case	_	_
 28	bùthainean	bùthain	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	24	obl	_	SpaceAfter=No
-29	.	.	PUNCT	Fe	_	1	punct	_	_
+29	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
+30	"	"	PUNCT	Fz	_	1	punct	_	_
 
 # comment = node 13 is time
 # sent_id = pw07_20
@@ -11222,7 +11243,7 @@
 35	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = pw09_26
-# text = Nuair dh’ fhosgail Cabhsair Bhatarsaigh ann_an 1988, thuirt Joe MacDhùghaill, neach-cathrach Comhairle na Coimhearsnachd, “ Mura b’ e gun do dh’ fhosgail e, ’s dòcha nach biodh duine san eilean an-diugh.
+# text = Nuair dh’ fhosgail Cabhsair Bhatarsaigh ann_an 1988, thuirt Joe MacDhùghaill, neach-cathrach Comhairle na Coimhearsnachd, “Mura b’ e gun do dh’ fhosgail e, ’s dòcha nach biodh duine san eilean an-diugh."
 1	Nuair	nuair	SCONJ	Cs	_	2	mark	_	_
 2	dh’	dh'	PART	Uo	_	0	root	_	_
 3	fhosgail	fosgail	VERB	V-s	Tense=Pres	2	fixed	_	_
@@ -11240,7 +11261,7 @@
 15	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	16	det	_	_
 16	Coimhearsnachd	coimhearsnachd	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	SpaceAfter=No
 17	,	,	PUNCT	Fi	_	24	punct	_	_
-18	“	“	PUNCT	Fq	_	24	punct	_	_
+18	“	“	PUNCT	Fq	_	24	punct	_	SpaceAfter=No
 19	Mura	mura	SCONJ	Cs	_	24	mark	_	_
 20	b’	is	AUX	Ws	_	24	cop	_	_
 21	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	20	fixed	_	_
@@ -11258,7 +11279,8 @@
 33	san	an	ADP	Spa-s	_	34	case	_	_
 34	eilean	eilean	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	31	obl	_	_
 35	an-diugh	an-diugh	ADV	Rt	_	31	advmod	_	SpaceAfter=No
-36	.	.	PUNCT	Fe	_	31	punct	_	_
+36	.	.	PUNCT	Fe	_	31	punct	_	SpaceAfter=No
+37	"	"	PUNCT	Fz	_	31	punct	_	_
 
 # sent_id = pw05_17
 # text = Thàinig Mac an Deòir gu Àrnol air Taobh Siar Leòdhais as t-samhradh.
@@ -11719,7 +11741,7 @@
 4	.	.	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = pw05_40
-# text = A-nis tha cothrom ann a bhith gan deasbad.
+# text = A-nis tha cothrom ann a bhith gan deasbad.”
 1	A-nis	a-nis	ADV	Rt	_	2	advmod	_	_
 2	tha	bi	VERB	V-p	Tense=Past	0	root	_	_
 3	cothrom	cothrom	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
@@ -11728,7 +11750,8 @@
 6	bhith	bi	NOUN	Nv	VerbForm=Inf	2	xcomp	_	_
 7	gan	gan	PART	Sap3p	_	8	case	_	_
 8	deasbad	deasbad	NOUN	Nv	VerbForm=Inf	6	xcomp	_	SpaceAfter=No
-9	.	.	PUNCT	Fe	_	2	punct	_	_
+9	.	.	PUNCT	Fe	_	2	punct	_	SpaceAfter=No
+10	”	”	PUNCT	Fz	_	2	punct	_	_
 
 # sent_id = f07_11
 # text = Ach cha robh e 'g iarraidh pàipear-naidheachd idir.
@@ -11743,14 +11766,14 @@
 9	.	.	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = n01_17
-# text = 'S cha chuir mise crìoch idir ort ".
+# text = 'S cha chuir mise crìoch idir ort".
 1	'S	's	CCONJ	Cc	_	3	cc	_	_
 2	cha	cha	PART	Qn	_	3	mark	_	_
 3	chuir	cuir	VERB	V-f--d	Tense=Fut	0	root	_	_
 4	mise	mi	PRON	Pp1s--e	Number=Sing|Person=1|PronType=Emp	3	nsubj	_	_
 5	crìoch	crìoch	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	3	obj	_	_
 6	idir	idir	ADV	Rg	_	5	advmod	_	_
-7	ort	air	ADP	Pr2s	Number=Sing|Person=2	3	obl	_	_
+7	ort	air	ADP	Pr2s	Number=Sing|Person=2	3	obl	_	SpaceAfter=No
 8	"	"	PUNCT	Fz	_	3	punct	_	SpaceAfter=No
 9	.	.	PUNCT	Fe	_	3	punct	_	_
 
