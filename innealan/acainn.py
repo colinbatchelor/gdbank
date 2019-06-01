@@ -98,16 +98,60 @@ class Lemmatizer:
         return self.delenite(s)
 
     def lemmatize_n(self, s, pos):
-        specials = {"bàtaichean": "bàta"}
+        demonyms = {
+            "Albannaich":"Albannach", "Basgaich":"Basgach",
+            "Beàrnaraich":"Beàrnarach", "Beàrnaraich":"Beàrnaraich",
+            "Breatannaich":"Breatannach",
+            "Caimbeulaich":"Caimbeulach",
+            "Deamaich":"Deamach",
+            "Èireannaich":"Èireannach",
+            "Gàidheil": "Gàidheal",
+            "Gaidheil": "Gaidheal", "Nàiseantaich":"Nàiseantach",
+            "Sasannaich": "Sasannach", "Tearaich":"Tearach",
+            "Uibhistich":"Uibhisteach"}
+        specials = {
+            "aodainn":"aodann", "ainmeannan":"ainm"
+            "bailtean":"baile", "bàtaichean": "bàta", "beanntan":"beinn",
+            "bilean":"bile",
+            "bliadhnaichean":"bliadhna",
+            "buidheannan":"buidheann", "buill":"ball",
+            "busaichean":"bus",
+            "còirichean":"còir",
+            "daoine":"duine", "drugaichean":"druga",
+            "ealain":"ealan", "eich":"each", "eileanan":"eilean",
+            "facail":"facal",
+            "faclan":"facal",
+            "fiaclan":"fiacal",
+            "fir":"fear", "fuinn":"fonn",
+            "gillean":"gille",
+            "làithean":"làtha", "linntean":"linn",
+            "notaichean":"not",
+            "obraichean":"obair",
+            "òran":"òran",
+            "paraistean":"paraiste",
+            "planaichean":"plana",
+            "puirt":"port",
+            "rannan":"rann",
+            "seòmraichean":"seòmra",
+            "seòrsachan":"seòrsa", "seòrsaichean":"seòrsa",
+            "sgìrean":"sgìre", "sgoiltean":"sgoil",
+            "sparran":"spàrr",
+            "teaghlaichean":"teaghlach"
+        }
         if pos.startswith("N") and pos.endswith("g"):
             s = self.delenite(s)
         if pos == "Nv":
             return self.lemmatize_vn(self.delenite(s))
         if pos.startswith("Ncp"):
+            if s in demonyms:
+                return demonyms[s]
+            s = self.delenite(s.lower())
             if s in specials:
                 return specials[s]
-            if s.endswith('achaidhean'):
-                return s.replace('achaidhean', 'achadh')
+            if s.endswith('aich'):
+                return s.replace('aich','ach')
+            if s.endswith('aidhean'):
+                return s.replace('aidhean', 'adh')
             if s.endswith("ichean"):
                 return s.replace("ichean", "iche")
             if s.endswith("ean"):
@@ -116,7 +160,7 @@ class Lemmatizer:
                 return s.replace('nnan', '')
             elif s.endswith("an") and s != "ealan":
                 return s.replace('an', '')
-        return self.delenite(s)
+        return s
         
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
