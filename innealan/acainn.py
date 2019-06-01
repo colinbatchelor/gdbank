@@ -64,6 +64,7 @@ class Lemmatizer:
         return unlenitable | (s[1] == 'h')
     
     def delenite(self, s):
+        if len(s) < 2: return s
         return s[0] + s[2:] if s[1] == 'h' else s
 
     def lemmatize_preposition(self, s):
@@ -110,7 +111,7 @@ class Lemmatizer:
             "Sasannaich": "Sasannach", "Tearaich":"Tearach",
             "Uibhistich":"Uibhisteach"}
         specials = {
-            "aodainn":"aodann", "ainmeannan":"ainm"
+            "aodainn":"aodann", "ainmeannan":"ainm",
             "bailtean":"baile", "bàtaichean": "bàta", "beanntan":"beinn",
             "bilean":"bile",
             "bliadhnaichean":"bliadhna",
