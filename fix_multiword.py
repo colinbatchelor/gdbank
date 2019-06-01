@@ -11,6 +11,7 @@ with open(sys.argv[2],'w') as fixed:
     for sentence in corpus:
         if sentence.meta_present('comment'):
             fixed.write('# comment = %s\n' % sentence.meta_value('comment'))
+        print(sentence.id)
         fixed.write('# sent_id = %s\n' % sentence.id)
         fixed.write('# text = %s\n' % sentence.text.replace('_', ' '))
         offset = 0
@@ -33,7 +34,6 @@ with open(sys.argv[2],'w') as fixed:
                     next_token = sentence[int(token.id)]
                     new_form = "%s%s" % (token.form, next_token.form)
                     new_tokens[new_token_id] = (new_form, next_token.lemma, next_token.upos, next_token.xpos, dict_to_string(next_token.feats), token.head, token.deprel, '_', dict_to_string(next_token.misc))
-                    print(new_tokens[new_token_id])
                     mapping[int(token.id) + 1] = new_token_id
                     offset = offset - 1
                     skip = True
