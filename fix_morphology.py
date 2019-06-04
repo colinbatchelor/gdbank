@@ -1,7 +1,7 @@
 import sys
 import pyconll
 
-tenses = {"s":"Pres", "p":"Past", "f":"Fut"}
+tenses = {"p":"Pres", "s":"Past", "f":"Fut"}
 genders = {"m":"Masc", "f":"Fem"}
 numbers = {"s":"Sing", "p":"Plur"}
 
@@ -28,17 +28,28 @@ def get_pron_feats(xpos):
         result["PronType"] = ['Emp']
     return result
 
+def get_adj_feats(xpos):
+    result = {}
+    if xpos == "Apc":
+        result["Degree"] = ["Cmp,Sup"]
+    return result
+
 corpus = pyconll.load_from_file(sys.argv[1])
 trees = []
 with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
-            if token.xpos.startswith("V"):
-                token.feats = get_verb_feats(token.xpos)
-            elif token.xpos.startswith("Pp"):
-                token.feats = get_pron_feats(token.xpos)
-            elif token.xpos.startswith("Pr"):
-                token.upos = "ADP"
-                token.feats = get_pron_feats(token.xpos)
+            if "-" not in token.id:
+                if token.xpos.startswith("V"):
+                    token.feats = get_verb_feats(token.xpos)
+                elif token.xpos.startswith("Pp") or token.xpos.startswith("Dp"):
+                    token.feats = get_pron_feats(token.xpos)
+                elif token.xpos.startswith("Pr"):
+                    token.upos = "ADP"
+                    token.feats = get_pron_feats(token.xpos)
+                elif token.xpos == "Px":
+                    token.feats = {"Reflex":["Yes"]}
+                elif token.xpos == "Apc":
+                    token.feats = get_adj_feats(token.xpos)
         clean.write(sentence.conll())
         clean.write('\n\n')
