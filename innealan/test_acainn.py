@@ -254,12 +254,18 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("tèid", "V-f--d"), "rach")
         self.assertEqual(self.l.lemmatize("thàinig", "V-s"), "thig")
         self.assertEqual(self.l.lemmatize("tighinn", "Nv"), "thig")
-        self.assertEqual(self.l.lemmatize("thug", "V-s"), "thoir")
-        self.assertEqual(self.l.lemmatize("tug", "V-s--d"), "thoir")
-        self.assertEqual(self.l.lemmatize("bheir", "V-f"), "thoir")
-        self.assertEqual(self.l.lemmatize("thoirt", "Nv"), "thoir")
-        self.assertEqual(self.l.lemmatize("toirt", "Nv"), "thoir")
+        self.assertEqual(self.l.lemmatize("thug", "V-s"), "toir")
+        self.assertEqual(self.l.lemmatize("tug", "V-s--d"), "toir")
+        self.assertEqual(self.l.lemmatize("bheir", "V-f"), "toir")
+        self.assertEqual(self.l.lemmatize("thoirt", "Nv"), "toir")
+        self.assertEqual(self.l.lemmatize("toirt", "Nv"), "toir")
 
+    def test_prefixes(self):
+        self.assertEqual(self.l.lemmatize("h-Alba", "Nt"), "Alba")
+        self.assertEqual(self.l.lemmatize("dh’aon", "Mc"), "aon")
+        self.assertEqual(self.l.lemmatize("n-eachdraidh", "Ncsfd"), "eachdraidh")
+        self.assertEqual(self.l.lemmatize("t-seòrsa", "Ncsmd"), "seòrsa")
+        
     def test_regulars(self):
         self.assertEqual(self.l.lemmatize("bhuail", "V-s"), "buail")
         self.assertEqual(self.l.lemmatize("choinnich", "V-s"), "coinnich")
@@ -312,7 +318,7 @@ class TestLemmatizer(unittest.TestCase):
         self.preposition('innte','an')
         self.preposition('asam','as')
         self.preposition('aiste','as')
-
+        
     def nv(self, vn, root):
         self.assertEqual(self.l.lemmatize_vn(vn), root)
 

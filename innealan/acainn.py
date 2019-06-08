@@ -15,7 +15,7 @@ class Lemmatizer:
             ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì', 'chithear', 'chitheadh', 'fhaca', 'faca']),
             ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh', 'gheibhear']),
             ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
-            ('thoir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
+            ('toir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
             ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
         self.prepositions = {
             'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
@@ -27,8 +27,8 @@ class Lemmatizer:
             'eadar':["ea.*"],
             'fo':["fo.*"],
             'gu':["gu_ruige"],
-            'de':["dh[ei].*"],
-            'do':["dh(a|i|omh|ut|[au]ibh|uinn|an).*"],
+            'de':["dh(en|iom|[ei]th|inn|iu?bh)"],
+            'do':["dh(omh|i|uinn|a|[au]ib[h'])"],
             'le':["le.*"],
             'ri':["ri(um|ut|s)", "ru.*"],
             'ro':["ro.*"],
@@ -42,7 +42,7 @@ class Lemmatizer:
         with open(os.path.join(os.path.dirname(__file__), 'resources', 'vns.txt')) as f:
             for line in f:
                 tokens = line.split('\t')
-                self.vns.append((tokens[0], tokens[1].strip()))
+                self.vns.append((tokens[0], [t.strip() for t in tokens[1:]]))
 
     def can_follow_de(self, s):
         return s in ["cho","am","an","a'", "na","mar","bha", "tha"]
@@ -69,6 +69,7 @@ class Lemmatizer:
 
     def lemmatize_preposition(self, s):
         s = s.replace(' ','_')
+        s = re.sub('san$','',s)
         for key in self.prepositions:
             for pattern in self.prepositions[key]:
                 if re.match("^("+pattern+")$", s): return key
@@ -82,7 +83,7 @@ class Lemmatizer:
     
     def lemmatize_vn(self, s):
         for vn in self.vns:
-            if self.delenite(s) == vn[1]:
+            if self.delenite(s) in vn[1]:
                 return vn[0]
         replacements = [
             ('sinn', ''), ('tail', ''), ('ail', ''), ('eil', ''), ('eal', ''),
@@ -139,6 +140,7 @@ class Lemmatizer:
             "sparran":"spàrr",
             "teaghlaichean":"teaghlach"
         }
+        obliques = { "obrach":"obair"}
         if pos.startswith("N") and pos.endswith("g"):
             s = self.delenite(s)
         if pos == "Nv":
@@ -161,11 +163,14 @@ class Lemmatizer:
                 return s.replace('nnan', '')
             elif s.endswith("an") and s != "ealan":
                 return s.replace('an', '')
+        if s in obliques:
+            return obliques[s]
         return s
         
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
         s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").replace("’", "'")
+        s = re.sub("^(h-|t-|n-|dh')", "", s)
         if pos != "Nt" and not pos.startswith("Nn"):
             s = s.lower()
         # do in this order because of "as"
