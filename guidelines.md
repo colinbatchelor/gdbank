@@ -24,6 +24,12 @@ The original version of the Brown to CoNLL converter replaced internal spaces wi
 For UD, however, we need to split these up. For the moment we duplicate the UPOS and the XPOS.
 PROPNs have a `flat` relation, others have a `fixed` relation but this needs to be improved.
 
+Some difficult cases follow:
+### _na b'_/_na bu_
+Ideally this should be exactly parallel with _nas_.
+### _sam bith_
+Currently both are marked as `ADJ` but there is clearly internal structure.
+
 # Grammar
 ## The verbal noun
 Annotate as a `NOUN` and an `xcomp` of the `VERB`.
@@ -49,3 +55,15 @@ For example n04_002: _... gu robh e 'dol a dh’fhalbh feuch a faigheadh..._, _f
 _'S_, _b'_, _bu_, _'se_, _'sann_ and so on are `cop` and the root is whatever has been fronted by it.
 We treat _'S e_ as a fixed expression where _e_ has a `fixed` relation with the `AUX`.
 Again we follow Irish and whatever comes after the root is a subject, be it a nominal subject, `nsubj`, or a clausal subject, `csubj:cop`.
+
+## _urrainn_
+In most dialects the person (or thing) that can follows the preposition _do_ so is of course `obl`. In some, however, you can say, for example, _'s urrainn mi_, so in this case _mi_ is `obl` of _urrainn_.
+
+## Special deprels
+### `case:voc`
+This is borrowed from Irish and is for the vocative particle _a_.
+### `obl:smod`
+This is experimental and is for expressing things like lengths which are direct arguments of _bi_.
+However, as in ns05_003, if the time expression qualifies a noun, use `nmod` as usual.
+### `obl:tmod`
+This is borrowed from Irish and is used for nouns or NPs being used as temporal expressions.
