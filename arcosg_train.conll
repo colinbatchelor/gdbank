@@ -495,13 +495,20 @@
 13	fuar	fuar	ADV	Rg	_	7	advmod	_	SpaceAfter=No
 14	.	.	PUNCT	Fe	_	7	punct	_	_
 
+# sent_id = f01_042
+# text = Mar sin leibh."
+1	Mar	mar	ADP	Sp	_	2	case	_	_
+2	sin	sin	PRON	Pd	_	0	root	_	_
+3	leibh	le	ADP	Pr2p	Number=Plur|Person=2	2	obl	_	SpaceAfter=No
+4	.	.	PUNCT	Fe	_	2	punct	_	SpaceAfter=No
+5	"	"	PUNCT	Fz	_	2	punct	_	SpaceAfter=No
+
 # sent_id = f01_043
-# text = "Is dh'fhalbh e.
-1	"	"	PUNCT	Fz	_	3	punct	_	SpaceAfter=No
-2	Is	is	CCONJ	Cc	_	3	cc	_	_
-3	dh'fhalbh	falbh	VERB	V-s	Tense=Past	0	root	_	_
-4	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	SpaceAfter=No
-5	.	.	PUNCT	Fe	_	3	punct	_	_
+# text = Is dh'fhalbh e.
+1	Is	is	CCONJ	Cc	_	2	cc	_	_
+2	dh'fhalbh	falbh	VERB	V-s	Tense=Past	0	root	_	_
+3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	SpaceAfter=No
+4	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = f01_046
 # text = Còmhla ris air pilleig bha ban-chompanach Inis.
@@ -574,6 +581,16 @@
 6	a	a	PART	Ug	_	7	mark	_	_
 7	reic	reic	NOUN	Nv	VerbForm=Inf	2	xcomp	_	SpaceAfter=No
 8	.	.	PUNCT	Fe	_	2	punct	_	_
+
+# sent_id = f01_065a
+# text = Ach dè a b' fhiach e?
+1	Ach	ach	CCONJ	Cc	_	5	cc	_	_
+2	dè	dè	PRON	Uq	_	5	obj	_	_
+3	a	a	PART	Q-r	_	5	mark	_	_
+4	b'	is	AUX	Ws	_	5	cop	_	_
+5	fhiach	fhiach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
+6	e	e	PRON	Pp3sm	_	5	nsubj	_	SpaceAfter=No
+7	?	?	PUNCT	Fg	_	5	punct	_	_
 
 # sent_id = f01_066
 # text = Chuir am fear sin inntinn ris a' cheist.
@@ -1499,6 +1516,12 @@
 20	contract	contract	X	Xfe	_	15	obl	_	SpaceAfter=No
 21	.	.	PUNCT	Fe	_	15	punct	_	_
 
+# sent_id = f02_052a
+# text = Okay?"
+1	Okay	okay	X	Xfe	_	0	root	_	SpaceAfter=No
+2	?	?	PUNCT	Fg	_	1	punct	_	SpaceAfter=No
+3	"	"	PUNCT	Fz	_	1	punct	_	_
+
 # sent_id = f02_054a
 # text = “Rudeigin mu dheidhinn sgrìob a Venezuela, an e?"
 1	“	“	PUNCT	Fq	_	2	punct	_	SpaceAfter=No
@@ -2030,6 +2053,13 @@
 22	thu	thu	PRON	Pp2s	Number=Sing|Person=2	21	nsubj	_	SpaceAfter=No
 23	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# sent_id = f03_026a
+# text = Cuimhnich a-neist!"
+1	Cuimhnich	cuimhnich	VERB	Vm-2s	Mood=Imp	0	root	_	_
+2	a-neist	a-neist	ADV	Rg	_	1	advmod	_	SpaceAfter=No
+3	!	!	PUNCT	Fu	_	1	punct	_	SpaceAfter=No
+4	"	"	PUNCT	Fz	_	1	punct	_	_
+
 # sent_id = f03_030
 # text = Cha robh esan ach mu dhà bhliadhna nuair a chailleadh athair.
 1	Cha	cha	PART	Qn	_	2	mark	_	_
@@ -2289,13 +2319,23 @@
 9	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f04_024
-# text = " Chrath Eachann a cheann.
-1	"	"	PUNCT	Fz	_	2	punct	_	_
+# text = "Chrath Eachann a cheann.
+1	"	"	PUNCT	Fz	_	2	punct	_	SpaceAfter=No
 2	Chrath	crath	VERB	V-s	Tense=Past	0	root	_	_
 3	Eachann	Eachann	PROPN	Nn-mn	Case=Nom|Gender=Masc	2	nsubj	_	_
 4	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	5	nmod:poss	_	_
 5	cheann	cheann	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	obj	_	SpaceAfter=No
 6	.	.	PUNCT	Fe	_	2	punct	_	_
+
+# sent_id = f04_030a
+# text = Bheil thu ga mo leantainn?"
+1	Bheil	bi	VERB	V-p--d	Tense=Past	0	root	_	_
+2	thu	thu	PRON	Pp2s	Number=Sing|Person=2	1	nsubj	_	_
+3	ga	ga	PART	Sa	_	5	case	_	_
+4	mo	mo	DET	Dp1s	_	5	obj	_	_
+5	leantainn	lean	VERB	Nv	_	1	xcomp	_	SpaceAfter=No
+6	?	?	PUNCT	Fg	_	1	punct	_	SpaceAfter=No
+7	"	"	PUNCT	Fz	_	1	punct	_	_
 
 # sent_id = f04_031
 # text = Thug e smuais bheag às.
@@ -2317,6 +2357,16 @@
 7	,	,	PUNCT	Fi	_	6	punct	_	_
 8	buileach	buileach	ADV	Rg	_	6	advmod	_	SpaceAfter=No
 9	.	.	PUNCT	Fe	_	2	punct	_	_
+
+# sent_id = f04_033d
+# text = Thàinig gàire beag air aodann Eachainn.
+1	Thàinig	thig	VERB	V-s	Tense=Pres	0	root	_	_
+2	gàire	gàire	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
+3	beag	beag	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	2	amod	_	_
+4	air	air	ADP	Sp	_	5	case	_	_
+5	aodann	aodann	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	_
+6	Eachainn	Eachainn	PROPN	Nn-mg	Case=Gen|Gender=Masc	5	nmod	_	SpaceAfter=No
+7	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f04_034
 # text = “Tha, ach chan eil mi 'n dùil gu bheil beairt-fhuaigheil na samhla cho coimhlionta ris a’ bheairt-fhighe idir.
@@ -2777,14 +2827,14 @@
 19	.	.	PUNCT	Fe	_	16	punct	_	_
 
 # sent_id = f06_010a
-# text = Sgùrr nan Gillean agus Sgùrr a' Ghreadaidh !
+# text = Sgùrr nan Gillean agus Sgùrr a' Ghreadaidh!
 1	Sgùrr	Sgùrr	PROPN	Nt	_	0	root	_	_
 2	nan	nan	PROPN	Nt	_	1	flat	_	_
 3	Gillean	Gillean	PROPN	Nt	_	1	flat	_	_
 4	agus	agus	CCONJ	Cc	_	5	cc	_	_
 5	Sgùrr	Sgùrr	PROPN	Nt	_	1	conj	_	_
 6	a'	a'	PROPN	Nt	_	5	flat	_	_
-7	Ghreadaidh	Greadaidh	PROPN	Nt	_	5	flat	_	_
+7	Ghreadaidh	Greadaidh	PROPN	Nt	_	5	flat	_	SpaceAfter=No
 8	!	!	PUNCT	Fu	_	1	punct	_	_
 
 # sent_id = f06_010b
@@ -2797,6 +2847,15 @@
 6	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	7	det	_	_
 7	h-òige	òige	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	4	obl	_	SpaceAfter=No
 8	.	.	PUNCT	Fe	_	1	punct	_	_
+
+# sent_id = f06_011
+# text = Bha e ochd bliadhna deug.
+1	Bha	bi	VERB	V-s	Tense=Pres	0	root	_	_
+2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3	ochd	ochd	NUM	Mc	_	4	nummod	_	_
+4	bliadhna	bliadhna	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	obl:tmod	_	_
+5	deug	deug	NUM	Mc	_	4	nummod	_	SpaceAfter=No
+6	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f06_012
 # text = Bha Glàmaig m'a choinneamh - mór maol an ciaradh na h-oidhche.
@@ -15114,6 +15173,12 @@
 17	seallaidhean	sealladh	NOUN	Ncpmg	Case=Gen|Gender=Masc|Number=Plur	13	obl	_	SpaceAfter=No
 18	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# sent_id = pw07_010a
+# text = Abair miastadh!
+1	Abair	abair	VERB	Vm-2s	Mood=Imp	0	root	_	_
+2	miastadh	miastadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	obj	_	SpaceAfter=No
+3	!	!	PUNCT	Fu	_	1	punct	_	_
+
 # sent_id = pw07_013
 # text = Bhiodh leth-uair fada gu leòr air son prògram den t-seòrsa seo.
 1	Bhiodh	bi	VERB	V-h	Mood=Cnd	0	root	_	_
@@ -16405,6 +16470,13 @@
 7	an	an	DET	Tdsm	Gender=Masc|Number=Sing	8	det	_	_
 8	àrd-ùrlar	àrd-ùrlar	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	SpaceAfter=No
 9	.	.	PUNCT	Fe	_	1	punct	_	_
+
+# sent_id = pw10_024a
+# text = Agus abair searmon!
+1	Agus	agus	CCONJ	Cc	_	2	cc	_	_
+2	abair	abair	VERB	Vm-2s	Mood=Imp	0	root	_	_
+3	searmon	searmon	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	obj	_	SpaceAfter=No
+4	!	!	PUNCT	Fu	_	2	punct	_	_
 
 # sent_id = pw10_026
 # text = Rinn e gu leòr a chàineadh air na Tòraidhean.

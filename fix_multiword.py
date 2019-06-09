@@ -11,7 +11,6 @@ with open(sys.argv[2],'w') as fixed:
     for sentence in corpus:
         if sentence.meta_present('comment'):
             fixed.write('# comment = %s\n' % sentence.meta_value('comment'))
-        print(sentence.id)
         fixed.write('# sent_id = %s\n' % sentence.id)
         fixed.write('# text = %s\n' % sentence.text.replace('_', ' '))
         offset = 0
@@ -30,7 +29,7 @@ with open(sys.argv[2],'w') as fixed:
                     new_deprel = 'flat' if token.upos == "PROPN" else 'fixed'
                     for i,new_form in enumerate(new_forms):
                         new_tokens[new_token_id + i] = (new_form, '_', token.upos, token.xpos, dict_to_string(token.feats), token.head if i == 0 else token.id, token.deprel if i == 0 else new_deprel, '_', dict_to_string(token.misc) if i == len(new_forms) - 1 else '_')
-                elif token.xpos == "Uo" and "SpaceAfter" in token.misc:
+                elif token.xpos == "Uo" and "SpaceAfter" in token.misc or token.lemma == "dh'":
                     next_token = sentence[int(token.id)]
                     new_form = "%s%s" % (token.form, next_token.form)
                     new_tokens[new_token_id] = (new_form, next_token.lemma, next_token.upos, next_token.xpos, dict_to_string(next_token.feats), token.head, token.deprel, '_', dict_to_string(next_token.misc))
