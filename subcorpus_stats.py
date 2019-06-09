@@ -2,10 +2,14 @@ import numpy as np
 import os
 import sys
 import pyconll
+from collections import Counter
 
 corpus = pyconll.load_from_file(sys.argv[1])
 dict = {"fp":[], "f":[], "ns":[], "n":[], "pw":[]}
+files = Counter()
 for sentence in corpus:
+    file = sentence.id.split('_')[0]
+    files[file] +=1
     if sentence.id.startswith('fp'):
         dict["fp"].append(sentence)
     elif sentence.id.startswith('f'):
@@ -18,8 +22,10 @@ for sentence in corpus:
         dict["pw"].append(sentence)
 
 for subcorpus in dict:
-    print(subcorpus)
-    print(len(dict[subcorpus]))
-    print(max([len(s) for s in dict[subcorpus]]))
-    print(sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]))
-    print(min([len(s) for s in dict[subcorpus]]))
+    print("%s: %s trees, longest: %s, mean: %s, shortest: %s" %
+          (subcorpus, len(dict[subcorpus]), max([len(s) for s in dict[subcorpus]]),
+           sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]),
+           min([len(s) for s in dict[subcorpus]])))
+
+for file in files.most_common():
+    print(file)
