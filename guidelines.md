@@ -64,5 +64,6 @@ In most dialects the person (or thing) that can follows the preposition _do_ so 
 This is borrowed from Irish and is for the vocative particle _a_.
 ### `obl:smod`
 This is experimental and is for expressing things like lengths which are direct arguments of _bi_.
+However, as in ns05_003, if the time expression qualifies a noun, use `nmod` as usual.
 ### `obl:tmod`
 This is borrowed from Irish and is used for nouns or NPs being used as temporal expressions.
