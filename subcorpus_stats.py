@@ -5,11 +5,12 @@ import pyconll
 from collections import Counter
 
 corpus = pyconll.load_from_file(sys.argv[1])
-dict = {"fp":[], "f":[], "ns":[], "n":[], "pw":[]}
+dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[]}
 files = Counter()
 for sentence in corpus:
     file = sentence.id.split('_')[0]
     files[file] +=1
+    dict["all"].append(sentence)
     if sentence.id.startswith('fp'):
         dict["fp"].append(sentence)
     elif sentence.id.startswith('f'):
