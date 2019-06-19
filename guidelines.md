@@ -56,6 +56,10 @@ _'S_, _b'_, _bu_, _'se_, _'sann_ and so on are `cop` and the root is whatever ha
 We treat _'S e_ as a fixed expression where _e_ has a `fixed` relation with the `AUX`.
 Again we follow Irish and whatever comes after the root is a subject, be it a nominal subject, `nsubj`, or a clausal subject, `csubj:cop`.
 
+## _nach maireann_
+
+This is `acl:relcl` of the deceased because _nach_ is the negative relativiser.
+
 ## _urrainn_
 In most dialects the person (or thing) that can follows the preposition _do_ so is of course `obl`. In some, however, you can say, for example, _'s urrainn mi_, so in this case _mi_ is `obl` of _urrainn_.
 
