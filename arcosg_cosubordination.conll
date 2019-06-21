@@ -204,7 +204,7 @@
 19	.	.	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = f08_020
-# text = Chuir e uilinn air gach glùin, is sheall e, 's e ' sgrùdadh an àite anns na dh’fhàg a bhrògan làrach de fheur briste.
+# text = Chuir e uilinn air gach glùin, is sheall e, 's e 'sgrùdadh an àite anns na dh’fhàg a bhrògan làrach de fheur briste.
 1	Chuir	cuir	VERB	V-s	Tense=Pres	0	root	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
 3	uilinn	uilinn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	obj	_	_
@@ -458,10 +458,93 @@
 67	.	.	PUNCT	Fe	_	1	punct	_	SpaceAfter=No
 68	"	"	PUNCT	Fz	_	1	punct	_	_
 
+# comment = node 26 onwards is sufficiently like cosub I want to deal with it here
+# sent_id = n05_003a
+# text = Bha 'm bodach a bha seo 'na dhuin' òg 'nuair a thàinig e air tìr an àiteigin 'sna h-Eileanan an Iar ann a sheo - feadhainn a' smaoineachadh on is ann dìreach an iar oirnn a tha sgeir mhór tha seo gu faodadh gur ann an Uibhist fhéin a thàinig e, Uibhist a bha 'sna linntean a bh' ann a shin na b' fhaide cus, cus a mach dhan iar na tha i 'sa' latha 'n diugh...
+1	Bha	bi	VERB	V-s	Tense=Pres	0	root	_	_
+2	'm	an	DET	Tdsm	Gender=Masc|Number=Sing	3	det	_	_
+3	bodach	bodach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
+4	a	a	PART	Q-r	_	5	mark	_	_
+5	bha	bi	VERB	V-s	Tense=Pres	3	acl:relcl	_	_
+6	seo	seo	PRON	Pd	_	5	nsubj	_	_
+7	'na	an	ADP	Spp3sm	_	8	case	_	_
+8	dhuin'	dhuin'	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	_
+9	òg	òg	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	8	amod	_	_
+10	'nuair	'nuair	SCONJ	Cs	_	12	mark	_	_
+11	a	a	PART	Q-r	_	12	mark	_	_
+12	thàinig	thig	VERB	V-s	Tense=Pres	1	ccomp	_	_
+13	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	12	nsubj	_	_
+14	air	air	ADP	Sp	_	15	case	_	_
+15	tìr	tìr	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	12	obl	_	_
+16	an	an	ADP	Sp	_	17	case	_	_
+17	àiteigin	àiteigin	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	12	obl	_	_
+18	'sna	'sna	ADP	Spa-p	_	19	case	_	_
+19	h-Eileanan	h-Eileanan	PROPN	Nt	_	17	obl	_	SpaceAfter=No
+20	an	an	PROPN	Nt	_	19	flat	_	_
+21	Iar	Iar	PROPN	Nt	_	19	flat	_	_
+22	ann	ann	ADV	Rs	_	17	advmod	_	_
+23	a	a	ADV	Rs	_	22	fixed	_	_
+24	sheo	sheo	ADV	Rs	_	22	fixed	_	_
+25	-	-	PUNCT	Fb	_	26	punct	_	_
+26	feadhainn	feadhainn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	nsubj	_	_
+27	a'	ag	PART	Sa	_	28	case	_	_
+28	smaoineachadh	smaoinich	VERB	Nv	_	1	xcomp	_	_
+29	on	on	SCONJ	Cs	_	30	mark	_	_
+30	is	is	AUX	Wp-i	_	28	ccomp	_	_
+31	ann	ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	30	fixed	_	_
+32	dìreach	dìreach	ADV	Rg	_	30	advmod	_	_
+33	an	an	ADV	Rs	_	30	advmod	_	_
+34	iar	iar	ADV	Rs	_	33	fixed	_	_
+35	oirnn	air	ADP	Pr1p	Number=Plur|Person=1	30	obl	_	_
+36	a	a	PART	Q-r	_	37	mark	_	_
+37	tha	bi	VERB	V-p	Tense=Past	30	ccomp	_	_
+38	sgeir	sgeir	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	37	nsubj	_	_
+39	mhór	mór	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	38	amod	_	_
+40	tha	bi	VERB	V-p	Tense=Past	38	acl:relcl	_	_
+41	seo	seo	PRON	Pd	_	40	nsubj	_	_
+42	gu	gu	PART	Qa	_	43	mark	_	_
+43	faodadh	faod	VERB	V-h--d	Mood=Cnd	40	ccomp	_	_
+44	gur	is	AUX	Wpdia	_	43	nsubj	_	_
+45	ann	ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	43	obl	_	_
+46	an	an	ADP	Sp	_	47	case	_	_
+47	Uibhist	Uibhist	PROPN	Nt	_	43	obl	_	_
+48	fhéin	fhéin	PRON	Px	_	47	compound	_	_
+49	a	a	PART	Q-r	_	50	mark	_	_
+50	thàinig	thig	VERB	V-s	Tense=Pres	43	ccomp	_	_
+51	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	50	nsubj	_	SpaceAfter=No
+52	,	,	PUNCT	Fi	_	50	punct	_	_
+53	Uibhist	Uibhist	PROPN	Nt	_	43	obl	_	_
+54	a	a	PART	Q-r	_	55	mark	_	_
+55	bha	bi	VERB	V-s	Tense=Pres	43	ccomp	_	_
+56	'sna	'sna	ADP	Spa-p	_	55	nsubj	_	_
+57	linntean	linn	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	55	obj	_	_
+58	a	a	PART	Q-r	_	59	mark	_	_
+59	bh'	bi	VERB	V-s	Tense=Pres	55	ccomp	_	_
+60	ann	ann	PRON	Pd	_	59	nsubj	_	_
+61	a	a	PRON	Pd	_	60	fixed	_	_
+62	shin	sin	PRON	Pd	_	59	obj	_	_
+63	na	na	PART	Uc	_	65	mark	_	_
+64	b'	b'	PART	Uc	_	63	fixed	_	_
+65	fhaide	faide	ADJ	Apc	_	59	ccomp	_	_
+66	cus	cus	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	65	nsubj	_	SpaceAfter=No
+67	,	,	PUNCT	Fi	_	65	punct	_	_
+68	cus	cus	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	59	nsubj	_	_
+69	a	a	ADV	Rs	_	59	advmod	_	_
+70	mach	mach	ADV	Rs	_	69	fixed	_	_
+71	dhan	do	ADP	Spa-s	_	72	case	_	_
+72	iar	iar	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	59	obl	_	_
+73	na	na	PART	Um	_	74	case	_	_
+74	tha	bi	VERB	V-p	Tense=Past	59	obl	_	_
+75	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	74	nsubj	_	_
+76	'sa'	'sa'	ADP	Spa-s	_	77	case	_	_
+77	latha	latha	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	74	obl	_	_
+78	'n	'n	ADV	Rt	_	74	advmod	_	_
+79	diugh	diugh	ADV	Rt	_	78	fixed	_	SpaceAfter=No
+80	...	...	PUNCT	Fb	_	74	punct	_	_
+
 # sent_id = n05_004
-# text = Dh’ innis e dhaibh gun deach e air chall ann an ceò 's e 'g iasgach.
-1	Dh’	dh'	PART	Uo	_	0	root	_	_
-2	innis	innis	VERB	V-s	Tense=Pres	1	goeswith	_	_
+# text = Dh’innis e dhaibh gun deach e air chall ann an ceò 's e 'g iasgach.
+1	Dh’innis	innis	VERB	V-s	Tense=Pres	1	goeswith	_	_
 3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
 4	dhaibh	do	ADP	Pr3p	Number=Plur|Person=3	1	obl	_	_
 5	gun	gun	PART	Qa	_	6	mark	_	_
