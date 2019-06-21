@@ -46,6 +46,10 @@ Predicative use: again, we follow Irish and use `xcomp:pred` for predicative adj
 
 However (see f01_028), there are also uses of _bi_ for extent in time (n03_041) and space.
 
+## _còrr is_ and friends
+
+Example taken from pw01_015: in _còrr is deich bliadhna_, _bliadhna_ is conjoined with _còrr_ and _deich_ is a `nummod` of _bliadhna_.
+
 ## _feuch_
 
 When this is tagged as `Vm-2s` the sense in which it is usually used is 'to try to', in which case it is linked to the higher clause with an `xcomp` deprel.
