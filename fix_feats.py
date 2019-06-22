@@ -4,8 +4,10 @@ import pyconll
 tenses = {"p":"Pres", "s":"Past", "f":"Fut"}
 genders = {"m":"Masc", "f":"Fem"}
 numbers = {"s":"Sing", "p":"Plur"}
-parttypes_u = {"a":"Ad", "g":"Inf", "v":"Voc", "p":"Pat", "o":"Num"}
-parttypes_q = {}
+parttypes_u = {"a":"Ad", "c":"Comp", "g":"Inf", "v":"Voc", "p":"Pat", "o":"Num", "q":"Int"}
+parttypes_q = {"Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb", "Qnm":"Vb"}
+polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
+prontypes_q = {"Q-r":"Rel", "Qnr":"Rel", "Qq":"Int"}
 
 def get_adj_feats(xpos):
     result = {}
@@ -31,6 +33,12 @@ def get_part_feats(xpos):
         result["PartType"] = [parttypes_q[xpos]]
         if xpos in polartypes_q:
             result["Polarity"] = [polartypes_q[xpos]]
+        if xpos in prontypes_q:
+            result["PronType"] = [prontypes_q[xpos]]
+    if xpos == "Q--s":
+        result["Tense"] = ["Past"]
+    if xpos == "Qnm":
+        result["Mood"] = ["Imp"]
     return result
 
 def get_pron_feats(xpos):
@@ -58,11 +66,12 @@ def get_verb_feats(xpos):
 
 corpus = pyconll.load_from_file(sys.argv[1])
 trees = []
+stops = ["Q-s", "Um"]
 with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
-            if "-" not in token.id:
-                if token.xpos == "Nv":
+            if "-" not in token.id and token.xpos not in stops:
+                if token.xpos == "Nv" and token.id != "1":
                     token.feats = get_nv_feats(token, sentence[str(int(token.id) - 1)])
                 elif token.xpos.startswith("V"):
                     token.feats = get_verb_feats(token.xpos)
@@ -75,7 +84,7 @@ with open(sys.argv[2],'w') as clean:
                     token.feats = {"Reflex":["Yes"]}
                 elif token.xpos == "Apc":
                     token.feats = get_adj_feats(token.xpos)
-                elif token.xpos.startswith("U"):
+                elif token.xpos.startswith("U") or token.xpos.startswith("Q"):
                     token.feats = get_part_feats(token.xpos)
         clean.write(sentence.conll())
         clean.write('\n\n')
