@@ -39,6 +39,10 @@ _ag_, _air_, _ri_ and so forth preceding it have a `case` relationship as in Iri
 ### Inversion structures
 The noun preceding it is an `obj` of it.
 
+## _air ais_
+
+While _ais_ is tagged as _Uf_ in phrases like _air ais no air adhart_ there seems to be no good reason to treat the first half differently from the second half.
+
 ## _bi_
 Auxiliary use: we follow the Irish UD treebank and treat _bi_ as a `VERB`, and the verbal noun as a `NOUN` linked back to _bi_ with an `xcomp` deprel.
 
