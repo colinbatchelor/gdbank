@@ -1,12 +1,12 @@
 import unittest
-from acainn import Features, Lemmatizer, Retagger, Subcat, Typer
+from acainn import CCGRetagger, CCGTyper, Features, Lemmatizer, Subcat
 
 # checks that all the labels actually match
 class TestIntegration(unittest.TestCase):
     def setUp(self):
-        self.r = Retagger()
+        self.r = CCGRetagger()
         self.s = Subcat()
-        self.t = Typer()
+        self.t = CCGTyper()
 
     def tearDown(self):
         self.r = None
@@ -46,9 +46,9 @@ class TestFeatures(unittest.TestCase):
         self.assertEqual('Case=Dat|Gender=Fem|Number=Plur', self.f.feats_noun('mionaidean', 'Ncpfd'))
         self.assertEqual('Case=Gen|Gender=Fem|Number=Plur', self.f.feats_noun('caorach', 'Ncpfg'))
 
-class TestTyper(unittest.TestCase):
+class TestCCGTyper(unittest.TestCase):
     def setUp(self):
-        self.t = Typer()
+        self.t = CCGTyper()
 
     def tearDown(self):
         self.t = None
@@ -57,9 +57,9 @@ class TestTyper(unittest.TestCase):
         self.assertEqual(self.t.type("tha", "V-p", "BIPP")[1], "s[dcl pres cons]/pp/n")
         self.assertEqual(self.t.type("bha", "V-s", "BIPP")[1], "s[dcl past cons]/pp/n")
 
-class TestRetagger(unittest.TestCase):
+class TestCCGRetagger(unittest.TestCase):
     def setUp(self):
-        self.r = Retagger()
+        self.r = CCGRetagger()
 
     def tearDown(self):
         self.r = None
@@ -209,6 +209,38 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("bidh", "V-f"), "bi")
         self.assertEqual(self.l.lemmatize("biodh", "V-h--d"), "bi")
 
+    def test_nouns(self):
+        self.assertEqual(self.l.lemmatize("athar", "Ncsmg"), "athair")
+        self.assertEqual(self.l.lemmatize("bhalaich", "Ncsmv"), "balach")
+        self.assertEqual(self.l.lemmatize("bàt’", "Ncsmn"), "bàta")
+        self.assertEqual(self.l.lemmatize("bhliadhn'", "Ncsfn"), "bliadhna")
+        self.assertEqual(self.l.lemmatize("bhliadhna", "Ncsfn"), "bliadhna")
+        self.assertEqual(self.l.lemmatize("bhòrd", "Ncsmd"), "bòrd")
+        self.assertEqual(self.l.lemmatize("bhùird", "Ncsmg"), "bòrd")
+        self.assertEqual(self.l.lemmatize("bhruaich", "Ncsfd"), "bruach")
+        self.assertEqual(self.l.lemmatize("chinn", "Ncsmg"), "ceann")
+        self.assertEqual(self.l.lemmatize("chnuic", "Ncsmg"), "cnoc")
+        self.assertEqual(self.l.lemmatize("chois", "Ncsfd"), "cas")
+        self.assertEqual(self.l.lemmatize("chor", "Ncsmn"), "cor")
+        self.assertEqual(self.l.lemmatize("doruis", "Ncsmg"), "dorus")
+        self.assertEqual(self.l.lemmatize("èisg", "Ncsmg"), "iasg")
+        self.assertEqual(self.l.lemmatize("fhèithe", "Ncsfg"), "fèith")
+        self.assertEqual(self.l.lemmatize("gill'", "Ncsfn"), "gille")
+        self.assertEqual(self.l.lemmatize("'ill'", "Ncsmv"), "gille")
+        self.assertEqual(self.l.lemmatize("'ille", "Ncsmv"), "gille")
+        self.assertEqual(self.l.lemmatize("mhàthair", "Ncsfv"), "màthair")
+        self.assertEqual(self.l.lemmatize("mhic", "Ncsmg"), "mac")
+        self.assertEqual(self.l.lemmatize("mhòintich", "Ncsfd"), "mòinteach")
+        self.assertEqual(self.l.lemmatize("mhuir", "Ncsmd"), "muir")
+        self.assertEqual(self.l.lemmatize("peantairean", "Ncpmn"), "peantair")
+        self.assertEqual(self.l.lemmatize("sanas", "Ncsmn"), "sanas")
+        self.assertEqual(self.l.lemmatize("sanais", "Ncsfn"), "sanais")
+        self.assertEqual(self.l.lemmatize("seilich", "Ncsmg"), "seileach")
+        self.assertEqual(self.l.lemmatize("sheòid", "Ncsmv"), "seud")
+        self.assertEqual(self.l.lemmatize("taighe", "Ncsmg"), "taigh")
+        self.assertEqual(self.l.lemmatize("uamha", "Ncsfd"), "uamh")
+        self.assertEqual(self.l.lemmatize("uinneig", "Ncsfd"), "uinneag")
+        
     def test_copula(self):
         self.assertEqual(self.l.lemmatize("an", "Wpdqa"), "is")
         self.assertEqual(self.l.lemmatize("B'", "Ws"), "is")

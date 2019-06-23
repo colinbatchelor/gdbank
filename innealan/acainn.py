@@ -21,14 +21,14 @@ class Lemmatizer:
             'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
             'air':["or[mt]|oir(re|bh|nn)|orra"],
             'airson':["'?son"],
-            'an':["s?a[mn]", "sa", "'?na", "anns?_a[nm]", 'innte'],
+            'an':["'?s?a[mn]", "sa", "'?na", "anns?_a[nm]", "innte"],
             'as':["às", "as.*", "ais.*"],
             'bho':["(bh)?o", "(bh)?ua(m|t)"],
             'eadar':["ea.*"],
             'fo':["fo.*"],
             'gu':["gu_ruige"],
             'de':["dh(en|iom|[ei]th|inn|iu?bh)"],
-            'do':["dh(omh|i|uinn|a|[au]ib[h'])"],
+            'do':["dh(omh|i|uinn|an?|[au]ib[h'])"],
             'le':["le.*"],
             'ri':["ri(um|ut|s)", "ru.*"],
             'ro':["ro.*"],
@@ -69,7 +69,7 @@ class Lemmatizer:
 
     def lemmatize_preposition(self, s):
         s = s.replace(' ','_')
-        s = re.sub('san$','',s)
+        if not re.match("^'?san$", s): s = re.sub('san$','',s)
         for key in self.prepositions:
             for pattern in self.prepositions[key]:
                 if re.match("^("+pattern+")$", s): return key
@@ -99,6 +99,14 @@ class Lemmatizer:
                 return self.delenite(s.replace(replacement[0], replacement[1]))
         return self.delenite(s)
 
+    def remove_apostrophe(self, s):
+        result = re.sub("'$", "", s)
+        stem = re.sub("[bcdfghlmnprst]+'$", "", s)
+        if re.match(".*[aouàòù]$", stem):
+            return "%sa" % result
+        else:
+            return "%se" % result
+    
     def lemmatize_n(self, s, pos):
         demonyms = {
             "Albannaich":"Albannach", "Basgaich":"Basgach",
@@ -114,6 +122,7 @@ class Lemmatizer:
         specials = {
             "aodainn":"aodann", "ainmeannan":"ainm",
             "bailtean":"baile", "bàtaichean": "bàta", "beanntan":"beinn",
+            "beathaichean":"beathach",
             "bilean":"bile",
             "bliadhnaichean":"bliadhna",
             "buidheannan":"buidheann", "buill":"ball",
@@ -140,15 +149,24 @@ class Lemmatizer:
             "sparran":"spàrr",
             "teaghlaichean":"teaghlach"
         }
-        obliques = { "obrach":"obair"}
-        if pos.startswith("N") and pos.endswith("g"):
-            s = self.delenite(s)
+        obliques = {
+            "'ille":"gille",
+            "athar":"athair", "bidhe":"biadh", "bùird":"bòrd",
+            "cinn":"ceann", "cnuic":"cnoc",
+            "cois":"cas",
+            "èisg":"iasg",
+            "mic":"mac",
+            "obrach":"obair",
+            "seòid":"seud", "taighe":"taigh", "tighe":"tigh",
+            "uamha":"uamh"
+        }
+        s = self.delenite(s)
+        if s.endswith("'"): s = self.remove_apostrophe(s)
         if pos == "Nv":
             return self.lemmatize_vn(self.delenite(s))
         if pos.startswith("Ncp"):
             if s in demonyms:
                 return demonyms[s]
-            s = self.delenite(s.lower())
             if s in specials:
                 return specials[s]
             if s.endswith('aich'):
@@ -158,11 +176,22 @@ class Lemmatizer:
             if s.endswith("ichean"):
                 return s.replace("ichean", "iche")
             if s.endswith("ean"):
-                return s.replace('ean', '')
+                return re.sub('ean$', '', s)
             elif s.endswith("nnan"):
                 return s.replace('nnan', '')
             elif s.endswith("an") and s != "ealan":
                 return s.replace('an', '')
+        if pos.endswith("d") or pos.endswith("g") or pos.endswith("v"):
+            if re.match(".*eige?$", s):
+                return re.sub("eige?$", "eag", s)
+            if s.endswith("aich"):
+                return re.sub("aich$", "ach", s)
+            if re.match(".*[bcdfghlmnprst]ich$", s):
+                return re.sub("ich$", "each", s)
+            if re.match(".*[au]is$",s) and 'm' in pos:
+                return re.sub("is$", "s", s)
+            if 'f' in pos and s.endswith('e'):
+                return re.sub("e$", "", s)
         if s in obliques:
             return obliques[s]
         return s
@@ -170,7 +199,7 @@ class Lemmatizer:
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
         s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").replace("’", "'")
-        s = re.sub("^(h-|t-|n-|dh')", "", s)
+        s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
         if pos != "Nt" and not pos.startswith("Nn"):
             s = s.lower()
         # do in this order because of "as"
@@ -223,7 +252,7 @@ class Lemmatizer:
             return self.delenite(s)
         return s
 
-class Retagger:
+class CCGRetagger:
     def __init__(self):
         self.sub = Subcat()
         self.retaggings = {}
@@ -325,7 +354,7 @@ class Features:
         number = self.numbers[pos[2]]
         return "Case=%s|Gender=%s|Number=%s" % (case, gender, number)
 
-class Typer:
+class CCGTyper:
     def __init__(self):
         self.types = {}
         with open('resources/types.txt') as f:
