@@ -195,13 +195,42 @@ class Lemmatizer:
         if s in obliques:
             return obliques[s]
         return s
-        
+
+    def lemmatize_comparative(self, s):
+        specials = {
+            "àille":"àlainn", "aotruime":"aotrom",
+            "bige":"beag", "duirche":"dorcha",
+            "fhasa":"furasta",
+            "fhaide":"fada", "fhaid'":"fada",
+            "fhaisge":"faisg", "fhaisg'":"faisg",
+            "fheàrr":"math", "fhearr":"math", "fhèarr":"math", "fheàirrde":"math",
+            "iomchaidhe":"iomchaidh",
+            "ìsle":"ìosal",
+            "leatha":"leathann",
+            "mheasaile":"measail",
+            "mhò":"mòr","mhuth'":"mòr",
+            "miona":"mion", "miosa":"dona", "mhisde":"dona",
+            "lugha":"beag",
+            "righinne":"righinn",
+            "righne":"righinn",
+            "shine":"sean", "sine":"sean",
+            "truime":"trom"
+        }
+        if s in specials:
+            return specials[s]
+        elif re.match(".*i[cl]e$",s):
+            return re.sub("(i[cl])e$", r"\1", s)
+        else:
+            return re.sub("(.*[aeiouàòù])i([bcdfghmnpqrst]+)[e']?$", r"\1\2", self.delenite(s))
+    
     """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
     def lemmatize(self, surface, pos):
         s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").replace("’", "'")
         s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
         if pos != "Nt" and not pos.startswith("Nn"):
             s = s.lower()
+        if pos == "Apc" or pos == "Aps":
+            return self.lemmatize_comparative(s)
         # do in this order because of "as"
         if pos.startswith("W"):
             return "is"
