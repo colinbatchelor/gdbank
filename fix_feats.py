@@ -66,7 +66,7 @@ def get_verb_feats(xpos):
 
 corpus = pyconll.load_from_file(sys.argv[1])
 trees = []
-stops = ["Q-s", "Um"]
+stops = ["Q-s"]
 with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
@@ -82,6 +82,8 @@ with open(sys.argv[2],'w') as clean:
                     token.feats = get_pron_feats(token.xpos)
                 elif token.xpos == "Px":
                     token.feats = {"Reflex":["Yes"]}
+                elif token.xpos == "Um":
+                    token.upos = "ADP"
                 elif token.xpos == "Apc":
                     token.feats = get_adj_feats(token.xpos)
                 elif token.xpos.startswith("U") or token.xpos.startswith("Q"):

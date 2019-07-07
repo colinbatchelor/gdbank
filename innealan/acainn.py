@@ -21,7 +21,7 @@ class Lemmatizer:
             'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
             'air':["or[mt]|oir(re|bh|nn)|orra"],
             'airson':["'?son"],
-            'an':["'?s?a[mn]", "sa", "'?na", "anns?_a[nm]", "innte"],
+            'an':["'?s?a[mn]", "sa", "'?na", "anns?_a[nm]", "innte", "a's"],
             'as':["às", "as.*", "ais.*"],
             'bho':["(bh)?o", "(bh)?ua(m|t)"],
             'eadar':["ea.*"],
