@@ -1,5 +1,30 @@
 Some tools and resources for natural language processing of Scottish Gaelic.
 
+ud
+--
+A conversion of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG) to a dependency treebank.
+You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011
+
+https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/ will contain the final version of this.
+
+`innealan/brown_gd_to_conll.py` performs a rudimentary conversion of ARCOSG to CoNLL-U format.
+
+In practice I have postprocessed the results with the following Python 3 scripts:
+* `fix_feats.py` fills out the feature set.
+* `fix_multiword.py` and `fix_text.py` bring the tokenisation scheme into line with Universal Dependencies.
+* `fix_whitespace.py` adds `SpaceAfter=No` to the relevant parts of the tree.
+* `fix_conversations.py` removes the tokens indicating the speaker and adds a `# speaker =` line to the preamble for each tree.
+
+The current treebank file in the dev branch of UD_Scottish_Gaelic-ARCOSG is `gd_arcosg-ud-test.conllu`.
+It contains approximately 20000 tokens and will be divided into test and train treebanks before the next UD release in November.
+There are three others:
+* `arcosg_cosubordination.conll` contains trees that exhibit cosubordination. The paper below discusses what to do with them.
+* `arcosg_unseen.conll` is the main file containing as-yet-unchecked treebanks.
+* `arcosg_long.conll` contains trees that are extremely long (typically about 1000 tokens in length) and hence difficult to parse automatically, tiring to check manually, and difficult to automatically assign to test/dev/train splits.
+
+This is written up in:
+* Colin Batchelor, 2019. Universal dependencies for Scottish Gaelic: syntax, in _Proceedings of CLTW2019 at Machine Translation Summit XVII_, Dublin, August.
+
 `checker.py`
 --
 In Python 3. In-progress grammar checker based largely on Richard Cox's _Gearr-Ghràmar na Gàidhlig_ (2018). Does not run from the command line yet but `test_checker.py` shows how the methods work.
@@ -14,7 +39,6 @@ Tools covered by unit tests require Python 3.
 * `mendxml.py` fixes the output of OpenCCG's ccg2xml.
 * `prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
 
-You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011
 
 gaelic_pos
 --
@@ -48,11 +72,11 @@ Is all of this written up somewhere?
 
 The blog is at http://www.tantallon.org.uk/cggblog/ 
 
-The citation for the files in conll/ is:
+The citation for the files in `conll/` is:
   `@InProceedings{batchelor:2014:CLTW14, author    = {Batchelor, Colin}, title     = {gdbank: The beginnings of a corpus of dependency structures and type-logical grammar in Scottish Gaelic}, booktitle = {Proceedings of the First Celtic Language Technology Workshop}, month     = {August}, year      = {2014}, address   = {Dublin, Ireland}, publisher = {Association for Computational Linguistics and Dublin City University}, pages     = {60--65}, url       = {http://www.aclweb.org/anthology/W14-4609} }`
 
-The citation for the material in innealan and gramaran is:
+The citation for the material in `innealan` and `gramaran` is:
   `@InProceedings{batchelor:2016:CLTW, author = {Batchelor, Colin}, title = {Automatic derivation of categorial grammar from a part-of-speech-tagged corpus in Scottish Gaelic}, booktitle = {Actes de la conf\'erence conjointe JEP-TALN-RECITAL 2016, volume 6 : CLTW}, month = {July}, year = {2016}, address = {Paris, France}, pages = 1, url = {https://jep-taln2016.limsi.fr/actes/Actes%20JTR-2016/V06-CLTW.pdf} }`
 
 Colin Batchelor
-2018-09-29
+2019-07-09
