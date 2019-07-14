@@ -18,6 +18,8 @@ If an elided _a'_ or _ag_ before a verbal noun is indicated by _'_, close this u
 Close up around the hyphen in _a-measg_, _a-rèir_, _a-thaobh_ and similar but don't close up around hyphens if they're being used as dashes.
 Also don't attempt to bring into line with GOC by adding or taking away hyphens.
 
+Also close up _dhà-na-tri_ (see fp05_012).
+
 ## Multiword tokens
 
 The original version of the Brown to CoNLL converter replaced internal spaces with underscores.
@@ -34,6 +36,8 @@ Currently both are marked as `ADJ` but there is clearly internal structure.
 ## The verbal noun
 Annotate as a `NOUN` and an `xcomp` of the `VERB`.
 
+In inversion structures, the object is `obj` of the verbal noun.
+
 ### With aspect markers (continuous tenses and depictives)
 _ag_, _air_, _ri_ and so forth preceding it have a `case` relationship as in Irish.
 ### Inversion structures
@@ -41,7 +45,7 @@ The noun preceding it is an `obj` of it.
 
 ## _air ais_
 
-While _ais_ is tagged as _Uf_ in phrases like _air ais no air adhart_ there seems to be no good reason to treat the first half differently from the second half.
+While _ais_ is tagged as _Nf_ in phrases like _air ais no air adhart_ there seems to be no good reason to treat the first half differently from the second half, so _air_ is `case` of _ais_ and _ais_ is the head and `obl` of whatever it is modifying.
 
 ## _bi_
 Auxiliary use: we follow the Irish UD treebank and treat _bi_ as a `VERB`, and the verbal noun as a `NOUN` linked back to _bi_ with an `xcomp` deprel.
@@ -68,6 +72,10 @@ Again we follow Irish and whatever comes after the root is a subject, be it a no
 
 This is `acl:relcl` of the deceased because _nach_ is the negative relativiser.
 
+## _an t-seachdain seo chaidh_ and others
+
+Treat _chaidh_ as being `acl:relcl` of _t-seachdain_ (pw05_005, also _ceud_ in the sense of 'century': see fp01_034).
+
 ## _urrainn_
 In most dialects the person (or thing) that can follows the preposition _do_ so is of course `obl`. In some, however, you can say, for example, _'s urrainn mi_, so in this case _mi_ is `obl` of _urrainn_.
 
@@ -78,4 +86,4 @@ This is borrowed from Irish and is for the vocative particle _a_.
 This is experimental and is for expressing things like lengths which are direct arguments of _bi_.
 However, as in ns05_003, if the time expression qualifies a noun, use `nmod` as usual.
 ### `obl:tmod`
-This is borrowed from Irish and is used for nouns or NPs being used as temporal expressions.
+This is borrowed from the Irish UD treebank and is used for nouns or NPs being used as temporal expressions.
