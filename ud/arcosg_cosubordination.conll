@@ -57,6 +57,37 @@
 29	gorma	gorma	ADJ	Aq-pfd	Case=Dat|Gender=Fem|Number=Plur	26	amod	_	SpaceAfter=No
 30	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# sent_id = f01_012
+# text = An uair sin thigeadh iad le am fir fhèin, is nuair a thigeadh iad às aonais fir bhiodh ban-chompanach aca is i fhèin stòlda, suidhichte.
+1	An	an	DET	Tdsf	Gender=Fem|Number=Sing	2	det	_	_
+2	uair	uair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	4	obl:tmod	_	_
+3	sin	sin	DET	Dd	_	2	det	_	_
+4	thigeadh	tig	VERB	V-h	Mood=Cnd	0	root	_	_
+5	iad	iad	PRON	Pp3p	Number=Plur|Person=3	4	nsubj	_	_
+6	le	le	ADP	Sp	_	8	case	_	_
+7	am	am	DET	Dp3p	_	8	det	_	_
+8	fir	fear	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	4	obl	_	_
+9	fhèin	fhèin	PRON	Px	_	8	compound	_	SpaceAfter=No
+10	,	,	PUNCT	Fi	_	8	punct	_	_
+11	is	is	CCONJ	Cc	_	19	cc	_	_
+12	nuair	nuair	SCONJ	Cs	_	14	mark	_	_
+13	a	a	PART	Q-r	_	14	mark	_	_
+14	thigeadh	tig	VERB	V-h	Mood=Cnd	19	advcl	_	_
+15	iad	iad	PRON	Pp3p	Number=Plur|Person=3	14	nsubj	_	_
+16	às	as	ADP	Sp	_	18	case	_	_
+17	aonais	aonais	ADP	Nf	_	16	fixed	_	_
+18	fir	fir	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	14	obl	_	_
+19	bhiodh	bi	VERB	V-h	Mood=Cnd	4	conj	_	_
+20	ban-chompanach	ban-chompanach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	19	nsubj	_	_
+21	aca	aig	ADP	Pr3p	Number=Plur|Person=3	4	obl	_	_
+22	is	is	CCONJ	Cc	_	23	cc	_	_
+23	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	4	conj	_	_
+24	fhèin	fhèin	PRON	Px	_	23	compound	_	_
+25	stòlda	stòlda	ADJ	Ap	_	4	xcomp:pred	_	SpaceAfter=No
+26	,	,	PUNCT	Fi	_	27	punct	_	_
+27	suidhichte	suidhichte	ADJ	Ap	_	4	conj	_	SpaceAfter=No
+28	.	.	PUNCT	Fe	_	4	punct	_	_
+
 # sent_id = f01_017
 # text = Sgrùd ise a bha an làthair is thug i an aire do shùilean mear Iain, ged a b' e Tormod a thuirt a-rithist gu robh na sùilean aicese coltach ri glumag dhorcha, dhomhainn far am bogadh tu do làmh is tu a' sireadh breac ach anns an robh a leithid de thàladh is gum faigheadh tu air do bhroinn gun chuimhn' agad dè bha thu a' sireadh.
 1	Sgrùd	sgrùd	VERB	V-s	Tense=Pres	0	root	_	_
@@ -129,6 +160,48 @@
 68	a'	ag	PART	Sa	_	69	case	_	_
 69	sireadh	sir	VERB	Nv	_	66	xcomp	_	SpaceAfter=No
 70	.	.	PUNCT	Fe	_	1	punct	_	_
+
+# sent_id = f01_020
+# text = Chaidh Tormod a-null chun a' chunntair a dh'òrdachadh tuilleadh ri òl, is nuair a thill e bha Inis is Iain ann an argamaid, esan a' cumail a-mach nach robh duine no àite a chuireadh eagal airsan.
+1	Chaidh	rach	VERB	V-s	Tense=Pres	0	root	_	_
+2	Tormod	Tormod	PROPN	Nn-mn	Case=Nom|Gender=Masc	1	nsubj	_	_
+3	a-null	a-null	ADV	Rs	_	1	advmod	_	_
+4	chun	chun	ADP	Sp	_	6	case	_	_
+5	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	6	det	_	_
+6	chunntair	cunntair	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	1	obl	_	_
+7	a	a	PART	Ug	_	8	mark	_	_
+8	dh'òrdachadh	òrdaich	VERB	Nv	_	6	ccomp	_	_
+9	tuilleadh	tuilleadh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	8	obj	_	_
+10	ri	ri	ADP	Sp	_	11	case	_	_
+11	òl	òl	VERB	Nv	_	9	xcomp	_	SpaceAfter=No
+12	,	,	PUNCT	Fi	_	18	punct	_	_
+13	is	is	CCONJ	Cc	_	18	cc	_	_
+14	nuair	nuair	SCONJ	Cs	_	16	mark	_	_
+15	a	a	PART	Q-r	_	16	mark	_	_
+16	thill	till	VERB	V-s	Tense=Pres	18	advcl	_	_
+17	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	16	nsubj	_	_
+18	bha	bi	VERB	V-s	Tense=Pres	1	conj	_	_
+19	Inis	Inis	PROPN	Nn-fn	Case=Nom|Gender=Fem	18	nsubj	_	_
+20	is	is	CCONJ	Cc	_	21	cc	_	_
+21	Iain	Iain	PROPN	Nn-mn	Case=Nom|Gender=Masc	19	conj	_	_
+22	ann	ann	ADP	Sp	_	24	case	_	_
+23	an	an	ADP	Sp	_	22	fixed	_	_
+24	argamaid	argamaid	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	18	obl	_	SpaceAfter=No
+25	,	,	PUNCT	Fi	_	16	punct	_	_
+26	esan	e	PRON	Pp3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	16	nsubj	_	_
+27	a'	ag	PART	Sa	_	28	case	_	_
+28	cumail	cùm	VERB	Nv	_	16	xcomp	_	_
+29	a-mach	a-mach	ADV	Rs	_	28	advmod	_	_
+30	nach	nach	PART	Qn	_	31	mark	_	_
+31	robh	bi	VERB	V-s--d	Tense=Pres	28	ccomp	_	_
+32	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	31	nsubj	_	_
+33	no	no	CCONJ	Cc	_	34	cc	_	_
+34	àite	àite	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	31	conj	_	_
+35	a	a	PART	Q-r	_	36	mark	_	_
+36	chuireadh	cuir	VERB	V-h	Mood=Cnd	31	acl:relcl	_	_
+37	eagal	eagal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	36	nsubj	_	_
+38	airsan	airsan	ADP	Pr3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	36	obl	_	SpaceAfter=No
+39	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f01_070
 # text = Thuirt Iain gum b' ann aig a mhàthair a bha e, ach b' fhada bhon stad i ga chosg, is a meur air at le lòinidh.
@@ -205,6 +278,44 @@
 39	eilean	eilean	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	35	obl	_	SpaceAfter=No
 40	.	.	PUNCT	Fe	_	0	ROOT	_	_
 
+# sent_id = f03_021
+# text = 'S iomadh uair, nuair a bha e dol do sgoil an Rubha agus e loidseadh aice, a bhiodh e muigh gu uair 'sa mhadainn ; 's cha robh an dorus glaiste riamh.
+1	'S	is	AUX	Wp-i	_	3	cop	_	_
+2	iomadh	iomadh	ADJ	Ar	_	3	amod	_	_
+3	uair	uair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	SpaceAfter=No
+4	,	,	PUNCT	Fi	_	3	punct	_	_
+5	nuair	nuair	SCONJ	Cs	_	7	mark	_	_
+6	a	a	PART	Q-r	_	7	mark	_	_
+7	bha	bi	VERB	V-s	Tense=Pres	3	advcl	_	_
+8	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	7	nsubj	_	_
+9	dol	rach	VERB	Nv	_	7	xcomp	_	_
+10	do	do	ADP	Sp	_	11	case	_	_
+11	sgoil	sgoil	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	9	obl	_	_
+12	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	13	det	_	_
+13	Rubha	Rubha	PROPN	Nt	_	11	nmod	_	_
+14	agus	agus	CCONJ	Cc	_	15	cc	_	_
+15	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	13	conj	_	_
+16	loidseadh	loids	VERB	Nv	_	9	xcomp	_	_
+17	aice	aig	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	16	obl	_	SpaceAfter=No
+18	,	,	PUNCT	Fi	_	20	punct	_	_
+19	a	a	PART	Q-r	_	20	mark	_	_
+20	bhiodh	bi	VERB	V-h	Mood=Cnd	3	conj	_	_
+21	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	20	nsubj	_	_
+22	muigh	muigh	ADV	Rs	_	20	advmod	_	_
+23	gu	gu	ADP	Sp	_	24	case	_	_
+24	uair	uair	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	20	obl	_	_
+25	'sa	'sa	ADP	Spa-s	_	26	case	_	_
+26	mhadainn	mhadainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	20	obl	_	SpaceAfter=No
+27	;	;	PUNCT	Fi	_	30	punct	_	_
+28	's	's	CCONJ	Cc	_	30	cc	_	_
+29	cha	cha	PART	Qn	_	30	mark	_	_
+30	robh	bi	VERB	V-s--d	Tense=Pres	3	conj	_	_
+31	an	an	DET	Tdsm	Gender=Masc|Number=Sing	32	det	_	_
+32	dorus	dorus	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	30	nsubj	_	_
+33	glaiste	glaiste	ADJ	Av	_	30	xcomp:pred	_	_
+34	riamh	riamh	ADV	Rt	_	30	advmod	_	SpaceAfter=No
+35	.	.	PUNCT	Fe	_	3	punct	_	_
+
 # sent_id = f03_034
 # text = Sean a’ bhliadhna thàinig e dha 'n sgoil an seo, agus cha robh Màiri Anna ceart as a chionn, 's i cho sàmhach, fad-as 'na dòigh aig an àm a chaidh e dh’ fhuireach thuca an toiseach.
 1	Sean	sean	PRON	Pd	_	0	root	_	_
@@ -247,6 +358,41 @@
 38	an	an	ADV	Rt	_	36	advmod	_	_
 39	toiseach	toiseach	ADV	Rt	_	38	fixed	_	SpaceAfter=No
 40	.	.	PUNCT	Fe	_	0	ROOT	_	_
+
+# sent_id = f03_039
+# text = B' ann nuair a chaill e obair 's a dhachaidh, 's gun sgillinn ruadh no gheal aca, a rinn a mhàthair-san an rud nach do dhìochuimhnich Màiri Anna riamh.
+1	B'	is	AUX	Ws	_	5	cop	_	_
+2	ann	ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	fixed	_	_
+3	nuair	nuair	SCONJ	Cs	_	5	mark	_	_
+4	a	a	PART	Q-r	_	5	mark	_	_
+5	chaill	caill	VERB	V-s	Tense=Pres	0	root	_	_
+6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	obair	obair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	5	obj	_	_
+8	's	's	CCONJ	Cc	_	10	cc	_	_
+9	a	a	DET	Dp3sm	_	10	nmod:poss	_	_
+10	dhachaidh	dhachaidh	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	7	conj	_	SpaceAfter=No
+11	,	,	PUNCT	Fi	_	10	punct	_	_
+12	's	's	CCONJ	Cc	_	14	cc	_	_
+13	gun	gun	ADP	Sp	_	14	case	_	_
+14	sgillinn	sgillinn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	5	obl	_	_
+15	ruadh	ruadh	ADJ	Aq-sfd	Case=Dat|Gender=Fem|Number=Sing	14	amod	_	_
+16	no	no	CCONJ	Cc	_	17	cc	_	_
+17	gheal	geal	ADJ	Aq-sfd	Case=Dat|Gender=Fem|Number=Sing	5	conj	_	_
+18	aca	aig	ADP	Pr3p	Number=Plur|Person=3	17	obl	_	SpaceAfter=No
+19	,	,	PUNCT	Fi	_	17	punct	_	_
+20	a	a	PART	Q-r	_	21	mark	_	_
+21	rinn	dèan	VERB	V-s	Tense=Pres	5	ccomp	_	_
+22	a	a	DET	Dp3sm	_	23	det	_	_
+23	mhàthair-san	mhàthair-san	NOUN	Ncsfne	Case=Nom|Gender=Fem|Number=Sing	21	nsubj	_	_
+24	an	an	DET	Tdsm	Gender=Masc|Number=Sing	25	det	_	_
+25	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	21	obj	_	_
+26	nach	nach	PART	Qnr	_	28	mark	_	_
+27	do	do	PART	Q--s	_	28	mark	_	_
+28	dhìochuimhnich	dìochuimhnich	VERB	V-s	Tense=Pres	25	acl:relcl	_	_
+29	Màiri	Màiri	PROPN	Nn-fn	Case=Nom|Gender=Fem	28	nsubj	_	_
+30	Anna	Anna	PROPN	Nn-fn	Case=Nom|Gender=Fem	29	flat	_	_
+31	riamh	riamh	ADV	Rt	_	28	advmod	_	SpaceAfter=No
+32	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = f03_051
 # text = Thog e air, 's e cuibhleadh a’ bhaidhseagail roimhe agus an dorchadas a' tighinn.

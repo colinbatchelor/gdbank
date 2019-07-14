@@ -1,3 +1,4 @@
+import re
 import sys
 import pyconll
 
@@ -53,6 +54,12 @@ def get_pron_feats(xpos):
 
 def get_verb_feats(xpos):
     result = {}
+    if '0' in xpos:
+        result["Person"] = ["0"]
+    elif '1' in xpos:
+        result["Person"] = ["1"]
+    elif '2' in xpos:
+        result["Person"] = ["2"]
     if len(xpos) == 2: # this may well be a mistagging
         result["Mood"] = ["Imp"]
         return result
