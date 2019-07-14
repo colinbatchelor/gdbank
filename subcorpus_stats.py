@@ -5,7 +5,7 @@ import pyconll
 from collections import Counter
 
 corpus = pyconll.load_from_file(sys.argv[1])
-dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[]}
+dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[]}
 files = Counter()
 for sentence in corpus:
     file = sentence.id.split('_')[0]
@@ -21,12 +21,17 @@ for sentence in corpus:
         dict["n"].append(sentence)
     elif sentence.id.startswith('pw'):
         dict["pw"].append(sentence)
+    elif sentence.id.startswith('c'):
+        dict["c"].append(sentence)
+    elif sentence.id.startswith('p'):
+        dict["p"].append(sentence)
 
 for subcorpus in dict:
+    size = len(dict[subcorpus])
     print("%s: %s trees, longest: %s, mean: %s, shortest: %s" %
-          (subcorpus, len(dict[subcorpus]), max([len(s) for s in dict[subcorpus]]),
-           sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]),
-           min([len(s) for s in dict[subcorpus]])))
+          (subcorpus, size, max([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
+           sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]) if size >0 else 0,
+           min([len(s) for s in dict[subcorpus]])) if size >0 else 0)
 
 for file in files.most_common():
     print(file)
