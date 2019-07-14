@@ -71,8 +71,17 @@ with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
             if "-" not in token.id and token.xpos not in stops:
-                if token.xpos == "Nv" and token.id != "1":
-                    token.feats = get_nv_feats(token, sentence[str(int(token.id) - 1)])
+                if token.xpos.startswith("Dp") and token.deprel == "det":
+                    next_token = sentence[int(token.id)]
+                    if next_token.xpos.startswith("Nc"):
+                        token.deprel = "nmod:poss"
+                    else:
+                        token.deprel = "obj"
+                
+                if token.xpos == "Nv":
+                    token.upos = "NOUN"
+                    if token.id != "1":
+                        token.feats = get_nv_feats(token, sentence[str(int(token.id) - 1)])
                 elif token.xpos.startswith("V"):
                     token.feats = get_verb_feats(token.xpos)
                 elif token.xpos.startswith("Pp") or token.xpos.startswith("Dp"):
