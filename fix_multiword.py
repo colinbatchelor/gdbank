@@ -9,6 +9,8 @@ def dict_to_string(dict):
 corpus = pyconll.load_from_file(sys.argv[1])
 with open(sys.argv[2],'w') as fixed:
     for sentence in corpus:
+        if sentence.meta_present('speaker'):
+            fixed.write('# speaker = %s\n' % sentence.meta_value('speaker'))
         if sentence.meta_present('comment'):
             fixed.write('# comment = %s\n' % sentence.meta_value('comment'))
         fixed.write('# sent_id = %s\n' % sentence.id)
