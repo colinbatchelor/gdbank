@@ -27,8 +27,8 @@ class Lemmatizer:
             'eadar':["ea.*"],
             'fo':["fo.*"],
             'gu':["gu_ruige"],
-            'de':["dh(en|iom|[ei]th|inn|iu?bh)"],
-            'do':["dh(omh|i|uinn|an?|[au]ib[h'])"],
+            'de':["dh(en?|iom|[ei]th|inn|iu?bh)"],
+            'do':["dh(omh|i|ut|uinn|an?|[au]ib[h'])(-?s['a]?)?"],
             'le':["le.*"],
             'ri':["ri(um|ut|s)", "ru.*"],
             'ro':["ro.*"],
@@ -69,7 +69,7 @@ class Lemmatizer:
 
     def lemmatize_preposition(self, s):
         s = s.replace(' ','_')
-        if not re.match("^'?san$", s): s = re.sub('san$','',s)
+        if not re.match("^'?san$", s): s = re.sub('-?san$','',s)
         for key in self.prepositions:
             for pattern in self.prepositions[key]:
                 if re.match("^("+pattern+")$", s): return key
@@ -99,6 +99,11 @@ class Lemmatizer:
                 return self.delenite(s.replace(replacement[0], replacement[1]))
         return self.delenite(s)
 
+    def lemmatize_adjective(self, s):
+        s = self.delenite(s)
+        if s.endswith("ir"): return re.sub("ir$", "r", s)
+        return s
+
     def remove_apostrophe(self, s):
         result = re.sub("'$", "", s)
         stem = re.sub("[bcdfghlmnprst]+'$", "", s)
@@ -127,6 +132,7 @@ class Lemmatizer:
             "bliadhnaichean":"bliadhna",
             "buidheannan":"buidheann", "buill":"ball",
             "busaichean":"bus",
+            "choin":"cù",
             "còirichean":"còir",
             "daoine":"duine", "drugaichean":"druga",
             "ealain":"ealan", "eich":"each", "eileanan":"eilean",
@@ -153,14 +159,16 @@ class Lemmatizer:
             "'ille":"gille",
             "athar":"athair", "bidhe":"biadh", "bùird":"bòrd",
             "cinn":"ceann", "cnuic":"cnoc",
+            "coin":"cù",
             "cois":"cas",
             "èisg":"iasg",
-            "mic":"mac",
+            "mic":"mac", "Mic":"mac",
             "obrach":"obair",
             "seòid":"seud", "taighe":"taigh", "tighe":"tigh",
             "uamha":"uamh"
         }
         s = self.delenite(s)
+        s = re.sub('-?san$', '', s)
         if s.endswith("'"): s = self.remove_apostrophe(s)
         if pos == "Nv":
             return self.lemmatize_vn(self.delenite(s))
@@ -177,11 +185,15 @@ class Lemmatizer:
                 return s.replace("ichean", "iche")
             if s.endswith("ean"):
                 return re.sub('ean$', '', s)
+            elif s.endswith("eannan"):
+                return re.sub("annan$", "", s)
             elif s.endswith("nnan"):
                 return s.replace('nnan', '')
             elif s.endswith("an") and s != "ealan":
-                return s.replace('an', '')
+                return re.sub('an$', '', s)
         if pos.endswith("d") or pos.endswith("g") or pos.endswith("v"):
+            if s in specials:
+                return specials[s]
             if re.match(".*eige?$", s):
                 return re.sub("eige?$", "eag", s)
             if s.endswith("aich"):
@@ -231,6 +243,8 @@ class Lemmatizer:
             s = s.lower()
         if pos == "Apc" or pos == "Aps":
             return self.lemmatize_comparative(s)
+        if pos.startswith("Aq") or pos.startswith("Ar"):
+            return self.lemmatize_adjective(s)
         # do in this order because of "as"
         if pos.startswith("W"):
             return "is"

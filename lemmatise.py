@@ -2,7 +2,6 @@ import sys
 import pyconll
 from innealan.acainn import Lemmatizer
 
-
 corpus = pyconll.load_from_file(sys.argv[1])
 l = Lemmatizer()
 with open(sys.argv[2],'w') as clean:
