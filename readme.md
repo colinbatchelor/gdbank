@@ -18,9 +18,9 @@ In practice I have postprocessed the results with the following Python 3 scripts
 The current treebank file in the dev branch of UD_Scottish_Gaelic-ARCOSG is `gd_arcosg-ud-test.conllu`.
 It contains approximately 20000 tokens and will be divided into test and train treebanks before the next UD release in November.
 There are three others:
-* `arcosg_cosubordination.conll` contains trees that exhibit cosubordination. The paper below discusses what to do with them.
 * `arcosg_unseen.conll` is the main file containing as-yet-unchecked treebanks.
 * `arcosg_long.conll` contains trees that are extremely long (typically about 1000 tokens in length) and hence difficult to parse automatically, tiring to check manually, and difficult to automatically assign to test/dev/train splits.
+* `arcosg_conversations.conll` contains conversations.
 
 This is written up in:
 * Colin Batchelor, 2019. Universal dependencies for Scottish Gaelic: syntax, in _Proceedings of CLTW2019 at Machine Translation Summit XVII_, Dublin, August.
@@ -28,7 +28,7 @@ This is written up in:
 Earlier work
 --
 ### gramaran
-Contains a grammar generated from ARCOSG in dotccg format.
+Contains a categorial grammar generated from ARCOSG in dotccg format.
 
 ### conll
 Contains an earlier, smaller, hand-built corpus in CoNLL-X format.
@@ -73,4 +73,4 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2019-07-09
+2019-09-08
