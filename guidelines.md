@@ -72,6 +72,10 @@ Again we follow Irish and whatever comes after the root is a subject, be it a no
 
 This is `acl:relcl` of the deceased because _nach_ is the negative relativiser.
 
+## `parataxis`
+
+Where you have a big long sentence with lots of "ars' esan" and "ars' ise"s in it, treat them like punctuation and make them `parataxis` of the most contentful content word in the nearest quoted text so as to avoid non-projectivity. Sentence n01_038 is an example of this.
+
 ## _an t-seachdain seo chaidh_ and others
 
 Treat _chaidh_ as being `acl:relcl` of _t-seachdain_ (pw05_005, also _ceud_ in the sense of 'century': see fp01_034).
