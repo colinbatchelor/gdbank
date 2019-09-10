@@ -12049,6 +12049,46 @@
 25	deug	deug	NUM	Mc	_	24	nummod	_	SpaceAfter=No
 26	.	.	PUNCT	Fe	_	2	punct	_	_
 
+# sent_id = fp01_022
+# text = Dh'innis fear dam b' ainm Eachann MacLeòid seo do dh'Iain Òg Ile ann an 1871, agus dh'innis e sgeulachdan a bha e air a chluinntinn aig athair fhéin a fhuair as an làmh-sgrìobhainn seo iad.
+1	Dh'innis	innis	VERB	V-s	Tense=Pres	0	root	_	_
+2	fear	fear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
+3	dam	dam	ADP	Spv	_	1	obl	_	_
+4	b'	is	AUX	Ws	_	5	cop	_	_
+5	ainm	ainm	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	ccomp	_	_
+6	Eachann	Eachann	PROPN	Nn-mn	Case=Nom|Gender=Masc	5	nsubj	_	_
+7	MacLeòid	MacLeòid	PROPN	Nn	_	6	flat	_	_
+8	seo	seo	PRON	Pd	_	6	det	_	_
+9	do	do	ADP	Sp	_	10	case	_	_
+10	dh'Iain	Iain	PROPN	Nn-md	Case=Dat|Gender=Masc	5	obl	_	_
+11	Òg	òg	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	10	flat	_	_
+12	Ile	Ile	PROPN	Nt	_	10	flat	_	_
+13	ann	ann	ADP	Sp	_	15	case	_	_
+14	an	an	ADP	Sp	_	13	fixed	_	_
+15	1871	1871	NUM	Mn	_	5	obl	_	SpaceAfter=No
+16	,	,	PUNCT	Fi	_	18	punct	_	_
+17	agus	agus	CCONJ	Cc	_	18	cc	_	_
+18	dh'innis	innis	VERB	V-s	Tense=Pres	1	conj	_	_
+19	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	18	nsubj	_	_
+20	sgeulachdan	sgeulachd	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	18	obj	_	_
+21	a	a	PART	Q-r	_	22	mark	_	_
+22	bha	bi	VERB	V-s	Tense=Pres	20	acl:relcl	_	_
+23	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	22	nsubj	_	_
+24	air	air	PART	Sa	_	26	case	_	_
+25	a	a	PART	Ug	_	26	mark	_	_
+26	chluinntinn	cluinn	VERB	Nv	_	22	xcomp:pred	_	_
+27	aig	aig	ADP	Sp	_	28	case	_	_
+28	athair	athair	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	26	obl	_	_
+29	fhéin	fhéin	PRON	Px	_	28	compound	_	_
+30	a	a	PART	Q-r	_	31	mark	_	_
+31	fhuair	faigh	VERB	V-s	Tense=Pres	28	acl:relcl	_	_
+32	as	as	ADP	Sp	_	34	case	_	_
+33	an	an	DET	Tdsm	Gender=Masc|Number=Sing	34	det	_	_
+34	làmh-sgrìobhainn	làmh-sgrìobhainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	31	obl	_	_
+35	seo	seo	DET	Dd	_	34	det	_	_
+36	iad	iad	PRON	Pp3p	Number=Plur|Person=3	31	nsubj	_	SpaceAfter=No
+37	.	.	PUNCT	Fe	_	1	punct	_	_
+
 # sent_id = fp01_023
 # text = Tha fios againn cuideachd gun tug Pàdruig Mac an Tuairneir - a rinn an co-chruinneachadh bàrdachd - làmh-sgrìobhainnean air ais á Èirinn, far an robh e air a bhith anns an arm, mu 1800.
 1	Tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
@@ -12358,6 +12398,195 @@
 17	phàipear	pàipear	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	12	obl	_	_
 18	seo	seo	DET	Dd	_	17	det	_	_
 
+# sent_id = fp01_028c
+# text = Se sin an sgeulachd ris an abradh seanchaidhean na h-Alba An Ceatharnach Caol Riabhach
+1	Se	is	AUX	Wp-i-3	_	2	cop	_	_
+2	sin	sin	PRON	Pd	_	0	root	_	_
+3	an	an	DET	Tdsf	Gender=Fem|Number=Sing	4	det	_	_
+4	sgeulachd	sgeulachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	2	nsubj	_	_
+5	ris	ri	ADP	Sp	_	7	case	_	_
+6	an	an	PART	Qq	_	7	mark	_	_
+7	abradh	abr	VERB	V-h--d	Mood=Cnd	4	obl	_	_
+8	seanchaidhean	seanchadh	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	7	nsubj	_	_
+9	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	10	det	_	_
+10	h-Alba	h-Alba	PROPN	Nt	_	8	nmod	_	_
+11	An	an	DET	Tdsm	Gender=Masc|Number=Sing	12	det	_	_
+12	Ceatharnach	ceatharnach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	7	obj	_	_
+13	Caol	caol	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	12	amod	_	_
+14	Riabhach	riabhach	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	12	amod	_	_
+
+# sent_id = fp01_028d
+# text = Ann an sgrìobhaidhean Èireannach tha i air a h-ainmeachadh mar Eachtra an Cheatharnaigh Chaoilriabhaigh no Eachtra Cheatharnaigh Uí Dhomhnaill
+1	Ann	ann	ADP	Sp	_	3	case	_	_
+2	an	an	ADP	Sp	_	1	fixed	_	_
+3	sgrìobhaidhean	sgrìobhadh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	5	obl	_	_
+4	Èireannach	èireannach	ADJ	Aq-pmd	Case=Dat|Gender=Masc|Number=Plur	3	nmod	_	_
+5	tha	bi	VERB	V-p	Tense=Past	0	root	_	_
+6	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
+7	air	air	PART	Sa	_	9	case	_	_
+8	a	a	DET	Dp3sf	_	9	obj	_	_
+9	h-ainmeachadh	h-ainmich	VERB	Nv	_	5	xcomp:pred	_	_
+10	mar	mar	ADP	Sp	_	11	case	_	_
+11	Eachtra	eachtra	NOUN	Xf	_	9	obl	_	_
+12	an	an	NOUN	Xf	_	11	flat	_	_
+13	Cheatharnaigh	cheatharnaigh	NOUN	Xf	_	11	flat	_	_
+14	Chaoilriabhaigh	chaoilriabhaigh	NOUN	Xf	_	11	flat	_	_
+15	no	no	CCONJ	Cc	_	16	cc	_	_
+16	Eachtra	eachtra	NOUN	Xf	_	14	conj	_	_
+17	Cheatharnaigh	cheatharnaigh	NOUN	Xf	_	16	flat	_	_
+18	Uí	uí	NOUN	Xf	_	16	flat	_	_
+19	Dhomhnaill	Dhomhnaill	PROPN	Nn	_	16	flat	_	_
+
+# sent_id = fp01_029
+# text = Chan eil fhios có a dhealbh an sgeulachd air thùs ach feumaidh gun robh meas agus féill orra oir tha mu lethcheud lethbhreac dhi air lorg againn ann an làmh-sgrìobhainnean.
+1	Chan	chan	PART	Qn	_	2	mark	_	_
+2	eil	bi	VERB	V-p--d	Tense=Past	0	root	_	_
+3	fhios	fhios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
+4	có	có	PRON	Uq	_	6	nsubj	_	_
+5	a	a	PART	Q-r	_	6	mark	_	_
+6	dhealbh	dealbh	VERB	V-s	Tense=Pres	2	ccomp	_	_
+7	an	an	DET	Tdsf	Gender=Fem|Number=Sing	8	det	_	_
+8	sgeulachd	sgeulachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	6	obj	_	_
+9	air	air	ADV	Rt	_	6	advmod	_	_
+10	thùs	thùs	ADV	Rt	_	9	fixed	_	_
+11	ach	ach	CCONJ	Cc	_	12	cc	_	_
+12	feumaidh	feum	VERB	V-f	Tense=Fut	2	conj	_	_
+13	gun	gun	PART	Qa	_	14	mark	_	_
+14	robh	bi	VERB	V-s--d	Tense=Pres	12	ccomp	_	_
+15	meas	meas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	14	nsubj	_	_
+16	agus	agus	CCONJ	Cc	_	17	cc	_	_
+17	féill	féill	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	14	conj	_	_
+18	orra	air	ADP	Pr3p	Number=Plur|Person=3	14	xcomp:pred	_	_
+19	oir	oir	CCONJ	Cc	_	20	cc	_	_
+20	tha	bi	VERB	V-p	Tense=Past	14	conj	_	_
+21	mu	mu	ADP	Sp	_	23	case	_	_
+22	lethcheud	lethcheud	NUM	Mc	_	23	nummod	_	_
+23	lethbhreac	lethbhreac	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	20	obl	_	_
+24	dhi	de	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	23	obl	_	_
+25	air	air	PART	Sa	_	26	case	_	_
+26	lorg	lorg	VERB	Nv	_	20	xcomp:pred	_	_
+27	againn	aig	ADP	Pr1p	Number=Plur|Person=1	26	obl	_	_
+28	ann	ann	ADP	Sp	_	30	case	_	_
+29	an	an	ADP	Sp	_	28	fixed	_	_
+30	làmh-sgrìobhainnean	làmh-sgrìobhainn	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	26	obl	_	SpaceAfter=No
+31	.	.	PUNCT	Fe	_	2	punct	_	_
+
+# sent_id = fp01_030
+# text = Sann an Èirinn a chaidh a' chuid as motha dhiubh sin a sgrìobhadh, ach se aonan den fheadhainn as sine a tha air faighinn teacs a chaidh a sgrìobhadh le Eóghan Mac Gilleòin an Earraghàidheal ann an 1690.
+1	Sann	is	AUX	Wp-i-x	_	3	cop	_	_
+2	an	an	ADP	Sp	_	3	case	_	_
+3	Èirinn	Èirinn	PROPN	Nt	_	0	root	_	_
+4	a	a	PART	Q-r	_	5	mark	_	_
+5	chaidh	rach	VERB	V-s	Tense=Pres	3	csubj:cop	_	_
+6	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	7	det	_	_
+7	chuid	chuid	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	13	obj	_	_
+8	as	is	AUX	Wpr	_	9	cop	_	_
+9	motha	motha	ADJ	Apc	_	7	acl:relcl	_	_
+10	dhiubh	de	ADP	Pr3p	Number=Plur|Person=3	9	obl	_	_
+11	sin	sin	DET	Dd	_	10	det	_	_
+12	a	a	PART	Ug	_	13	mark	_	_
+13	sgrìobhadh	sgrìobh	VERB	Nv	_	5	xcomp	_	SpaceAfter=No
+14	,	,	PUNCT	Fi	_	17	punct	_	_
+15	ach	ach	CCONJ	Cc	_	17	cc	_	_
+16	se	is	AUX	Wp-i-3	_	17	cop	_	_
+17	aonan	aonan	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	conj	_	_
+18	den	den	ADP	Spa-s	_	19	case	_	_
+19	fheadhainn	fheadhainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	17	obl	_	_
+20	as	is	AUX	Wpr	_	21	cop	_	_
+21	sine	sine	ADJ	Apc	_	17	amod	_	_
+22	a	a	PART	Q-r	_	23	mark	_	_
+23	tha	bi	VERB	V-p	Tense=Past	17	csubj:cop	_	_
+24	air	air	PART	Sa	_	25	case	_	_
+25	faighinn	faigh	VERB	Nv	_	23	xcomp	_	_
+26	teacs	teacs	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	25	obj	_	_
+27	a	a	PART	Q-r	_	28	mark	_	_
+28	chaidh	rach	VERB	V-s	Tense=Pres	26	acl:relcl	_	_
+29	a	a	PART	Ug	_	30	mark	_	_
+30	sgrìobhadh	sgrìobh	VERB	Nv	_	28	xcomp	_	_
+31	le	le	ADP	Sp	_	32	case	_	_
+32	Eóghan	Eóghan	PROPN	Nn-md	Case=Dat|Gender=Masc	30	obl	_	_
+33	Mac	mac	NOUN	Up	_	32	flat	_	_
+34	Gilleòin	Gilleòin	PROPN	Nn	_	32	flat	_	_
+35	an	an	ADP	Sp	_	36	case	_	_
+36	Earraghàidheal	Earraghàidheal	PROPN	Nt	_	32	obl	_	_
+37	ann	ann	ADP	Sp	_	39	case	_	_
+38	an	an	ADP	Sp	_	37	fixed	_	_
+39	1690	1690	NUM	Mn	_	32	obl	_	SpaceAfter=No
+40	.	.	PUNCT	Fe	_	3	punct	_	_
+
+# sent_id = fp01_031
+# text = Bha meas air an sgeulachd ann am beul-aithris cuideachd is dòcha gu h-àraidh am measg Ghàidheal Alba.
+1	Bha	bi	VERB	V-s	Tense=Pres	0	root	_	_
+2	meas	meas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
+3	air	air	ADP	Sp	_	5	case	_	_
+4	an	an	DET	Tdsf	Gender=Fem|Number=Sing	5	det	_	_
+5	sgeulachd	sgeulachd	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	2	obl	_	_
+6	ann	ann	ADP	Sp	_	8	case	_	_
+7	am	an	ADP	Sp	_	6	fixed	_	_
+8	beul-aithris	beul-aithris	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	1	xcomp:pred	_	_
+9	cuideachd	cuideachd	ADV	Rg	_	1	advmod	_	_
+10	is	is	AUX	Wp-i	_	11	cop	_	_
+11	dòcha	dòcha	NOUN	Uf	_	1	advcl	_	_
+12	gu	gu	PART	Ua	_	13	mark	_	_
+13	h-àraidh	h-àraidh	ADV	Rg	_	16	advmod	_	_
+14	am	an	ADP	Sp	_	16	case	_	_
+15	measg	measg	ADP	Nf	_	14	fixed	_	_
+16	Ghàidheal	gàidheal	NOUN	Ncpmg	Case=Gen|Gender=Masc|Number=Plur	11	obl	_	_
+17	Alba	Alba	PROPN	Nt	_	16	nmod	_	SpaceAfter=No
+18	.	.	PUNCT	Fe	_	1	punct	_	_
+
+# comment = node 9 mistagged as V-s in ARCOSG.
+# sent_id = fp01_032
+# text = Cho fada agus is fiosrach sinn, cha d' fhuaras lorg air teacs as fhiach ainmeachadh dhi ann am beul-aithris na h-Eireann, ach chuir lain Òg Ile an clò seòrsachan dhi a chaidh an togail an Ile agus an Geàrrloch am meadhan an naoidheamh ceud deug.
+1	Cho	cho	ADV	Rg	_	2	advmod	_	_
+2	fada	fada	ADJ	Ap	_	10	advcl	_	_
+3	agus	agus	CCONJ	Cc	_	5	cc	_	_
+4	is	is	AUX	Wp-i	_	5	cop	_	_
+5	fiosrach	fiosrach	ADJ	Ap	_	2	conj	_	_
+6	sinn	sinn	PRON	Pp1p	Number=Plur|Person=1	5	nsubj	_	SpaceAfter=No
+7	,	,	PUNCT	Fi	_	10	punct	_	_
+8	cha	cha	PART	Qn	_	10	mark	_	_
+9	d'	d'	PART	V-s	Tense=Pres	10	mark	_	_
+10	fhuaras	fuaras	VERB	V-s0-d	Tense=Pres	0	root	_	_
+11	lorg	lorg	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	10	obj	_	_
+12	air	air	ADP	Sp	_	13	case	_	_
+13	teacs	teacs	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	10	obl	_	_
+14	as	is	AUX	Wpr	_	15	cop	_	_
+15	fhiach	fhiach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	13	ccomp	_	_
+16	ainmeachadh	ainmich	VERB	Nv	_	15	xcomp	_	_
+17	dhi	de	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	16	obl	_	_
+18	ann	ann	ADP	Sp	_	20	case	_	_
+19	am	an	ADP	Sp	_	18	fixed	_	_
+20	beul-aithris	beul-aithris	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	16	obl	_	_
+21	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	22	det	_	_
+22	h-Eireann	h-eireann	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	20	nmod	_	SpaceAfter=No
+23	,	,	PUNCT	Fi	_	25	punct	_	_
+24	ach	ach	CCONJ	Cc	_	25	cc	_	_
+25	chuir	cuir	VERB	V-s	Tense=Pres	10	conj	_	_
+26	lain	lain	PROPN	Nn-mn	Case=Nom|Gender=Masc	25	nsubj	_	_
+27	Òg	òg	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	26	amod	_	_
+28	Ile	Ile	PROPN	Nt	_	26	flat	_	_
+29	an	an	ADP	Sp	_	30	case	_	_
+30	clò	clò	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	25	obl	_	_
+31	seòrsachan	seòrsa	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	30	nmod	_	_
+32	dhi	de	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	25	obl	_	_
+33	a	a	PART	Q-r	_	34	mark	_	_
+34	chaidh	rach	VERB	V-s	Tense=Pres	31	acl:relcl	_	_
+35	an	an	DET	Dp3p	_	36	obj	_	_
+36	togail	tog	VERB	Nv	_	34	xcomp	_	_
+37	an	an	ADP	Sp	_	38	case	_	_
+38	Ile	Ile	PROPN	Nt	_	36	obl	_	_
+39	agus	agus	CCONJ	Cc	_	41	cc	_	_
+40	an	an	ADP	Sp	_	41	case	_	_
+41	Geàrrloch	Geàrrloch	PROPN	Nt	_	38	conj	_	_
+42	am	an	ADP	Sp	_	43	case	_	_
+43	meadhan	meadhan	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	36	obl	_	_
+44	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	46	det	_	_
+45	naoidheamh	naoidheamh	NUM	Mo	_	46	nummod	_	_
+46	ceud	ceud	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	43	nmod	_	_
+47	deug	deug	NUM	Mc	_	46	nummod	_	SpaceAfter=No
+48	.	.	PUNCT	Fe	_	10	punct	_	_
+
 # sent_id = fp01_028e
 # text = A-réir coltais, chaidh an sgeulachd seo a dhealbh an toiseach an Èirinn anns an t-siathamh ceud deug an uair a bha cuid de na h-uaislean Èireannach a tha air an ainmeachadh innte beò fhathast, no, faodaidh e bhith, goirid an déidh am bàis - urrachan móra mar a bha Aodh Dubh O Domhnaill, Seathan Mac an Iarla, agus O Conchobhair.
 1	A	a	ADP	Sp	_	4	case	_	SpaceAfter=No
@@ -12590,6 +12819,71 @@
 29	chaidh	rach	VERB	V-s	Tense=Past	27	acl:relcl	_	SpaceAfter=No
 30	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# sent_id = fp01_035
+# text = Cha robh cinnt sam bith aig Dòmhnall Alasdair cò aige fhuair athair i, ach bha e den bheachd gur dòcha gur h-ann aig athair-san a-rithist, Dòmhnall mac lain 'ic Ràghaill.
+1	Cha	cha	PART	Qn	_	2	mark	_	_
+2	robh	bi	VERB	V-s--d	Tense=Pres	0	root	_	_
+3	cinnt	cinnt	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	2	nsubj	_	_
+4	sam	sam	ADJ	Aq	_	3	amod	_	_
+5	bith	bith	ADJ	Aq	_	4	fixed	_	_
+6	aig	aig	ADP	Sp	_	7	case	_	_
+7	Dòmhnall	Dòmhnall	PROPN	Nn-md	Case=Dat|Gender=Masc	2	xcomp:pred	_	_
+8	Alasdair	Alasdair	PROPN	Nn-mn	Case=Nom|Gender=Masc	7	flat	_	_
+9	cò	cò	PRON	Uq	_	11	obl	_	_
+10	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	9	obl	_	_
+11	fhuair	faigh	VERB	V-s	Tense=Pres	3	ccomp	_	_
+12	athair	athair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	11	nsubj	_	_
+13	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	11	obj	_	SpaceAfter=No
+14	,	,	PUNCT	Fi	_	16	punct	_	_
+15	ach	ach	CCONJ	Cc	_	16	cc	_	_
+16	bha	bi	VERB	V-s	Tense=Pres	2	conj	_	_
+17	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	16	nsubj	_	_
+18	den	den	ADP	Spa-s	_	19	case	_	_
+19	bheachd	bheachd	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	16	xcomp:pred	_	_
+20	gur	is	AUX	Wpdia	_	21	cop	_	_
+21	dòcha	dòcha	NOUN	Uf	_	19	ccomp	_	_
+22	gur	is	AUX	Wpdia	_	25	cop	_	_
+23	h-ann	h-ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	22	fixed	_	_
+24	aig	aig	ADP	Sp	_	25	case	_	_
+25	athair-san	athair-san	NOUN	Ncsmde	Case=Dat|Gender=Masc|Number=Sing	21	ccomp	_	_
+26	a-rithist	a-rithist	ADV	Rt	_	25	advmod	_	SpaceAfter=No
+27	,	,	PUNCT	Fi	_	28	punct	_	_
+28	Dòmhnall	Dòmhnall	PROPN	Nn-mn	Case=Nom|Gender=Masc	25	appos	_	_
+29	mac	mac	NOUN	Up	_	28	flat	_	_
+30	lain	lain	PROPN	Nn-mg	Case=Gen|Gender=Masc	28	flat	_	_
+31	'ic	'ic	NOUN	Up	_	28	flat	_	_
+32	Ràghaill	Ràghaill	PROPN	Nn-mg	Case=Gen|Gender=Masc	28	flat	_	SpaceAfter=No
+33	.	.	PUNCT	Fe	_	2	punct	_	_
+
+# sent_id = fp01_036
+# text = Chuir mi fhèin agus mo cho-obraiche an Dr Ailean Bruford innse den sgeulachd o Dhòmhnall Alasdair an clò ann an Scottish Studies ann an l970.
+1	Chuir	cuir	VERB	V-s	Tense=Pres	0	root	_	_
+2	mi	mi	PRON	Pp1s	Number=Sing|Person=1	1	nsubj	_	_
+3	fhèin	fhèin	PRON	Px	_	2	compound	_	_
+4	agus	agus	CCONJ	Cc	_	6	cc	_	_
+5	mo	mo	DET	Dp1s	_	6	det	_	_
+6	cho-obraiche	cho-obraiche	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	conj	_	_
+7	an	an	DET	Tdsm	Gender=Masc|Number=Sing	8	det	_	_
+8	Dr	dr	NOUN	Y	_	6	nmod	_	_
+9	Ailean	Ailean	PROPN	Nn-mn	Case=Nom|Gender=Masc	8	flat	_	_
+10	Bruford	Bruford	PROPN	Nn	_	8	flat	_	_
+11	innse	innse	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	obj	_	_
+12	den	den	ADP	Spa-s	_	13	case	_	_
+13	sgeulachd	sgeulachd	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	11	obl	_	_
+14	o	bho	ADP	Sp	_	15	case	_	_
+15	Dhòmhnall	Dhòmhnall	PROPN	Nn-md	Case=Dat|Gender=Masc	13	obl	_	_
+16	Alasdair	Alasdair	PROPN	Nn-mn	Case=Nom|Gender=Masc	15	flat	_	_
+17	an	an	ADP	Sp	_	18	case	_	_
+18	clò	clò	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	_
+19	ann	ann	ADP	Sp	_	21	case	_	_
+20	an	an	ADP	Sp	_	19	fixed	_	_
+21	Scottish	scottish	NOUN	Xfe	_	18	obl	_	_
+22	Studies	studies	NOUN	Xfe	_	21	flat	_	_
+23	ann	ann	ADP	Sp	_	25	case	_	_
+24	an	an	ADP	Sp	_	23	fixed	_	_
+25	l970	l970	NUM	Mn	_	18	obl	_	SpaceAfter=No
+26	.	.	PUNCT	Fe	_	1	punct	_	_
+
 # sent_id = fp01_037
 # text = An déidh don sgeulachd a dhol an clò, lorgadh dà innse eile: aithris neo-iomlan a recòrd an Dr Calum MacGilleathain nach maireann do Choimisiún Béaloideasa Eireann on sgeulaiche ainmeil nach maireann Donnchadh Dòmhnallach (Donnchadh mac Dhòmhnaill 'ic Dhonnchaidh) an Uibhist a Deas; agus aithris làmh-sgrìobhta ann an Cruinneachaidhe a chaidh a toirt sìos le Dòmhnall Iain Dòmhnallach, mac Dhonnchaidh a dh'ainmich mi, o bhràthair Dhonnchaidh, Niall mac Dhòmhnaill 'ic Dhonnchaidh nach maireann.
 1	An	an	ADP	Sp	_	4	case	_	_
@@ -12711,6 +13005,47 @@
 33	Dhùn	Dùn	PROPN	Nt	_	32	nmod	_	_
 34	Èideann	Èideann	PROPN	Nt	_	33	flat	_	SpaceAfter=No
 35	.	.	PUNCT	Fe	_	16	punct	_	_
+
+# sent_id = fp01_039
+# text = Cha bu bheag ar n-iongnadh agus ar n-aoibhneas an uair a rinn sinn a-mach gur h-ann aig seanair Dhòmhnaill Alasdair, Dòmhnall mac lain 'ic Ràghaill an Eirisgeigh a fhuair MacGille-Mhìcheil an innse seo ann an 1865.
+1	Cha	cha	PART	Qn	_	3	mark	_	_
+2	bu	is	AUX	Ws	_	3	cop	_	_
+3	bheag	beag	ADJ	Ap	_	0	root	_	_
+4	ar	ar	DET	Dp1p	_	5	det	_	_
+5	n-iongnadh	n-iongnadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	_
+6	agus	agus	CCONJ	Cc	_	8	cc	_	_
+7	ar	ar	DET	Dp1p	_	8	det	_	_
+8	n-aoibhneas	n-aoibhneas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	5	conj	_	_
+9	an	an	DET	Tdsf	Gender=Fem|Number=Sing	10	det	_	_
+10	uair	uair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	8	nsubj	_	_
+11	a	a	PART	Q-r	_	12	mark	_	_
+12	rinn	dèan	VERB	V-s	Tense=Pres	10	acl:relcl	_	_
+13	sinn	sinn	PRON	Pp1p	Number=Plur|Person=1	12	nsubj	_	_
+14	a-mach	a-mach	ADV	Rs	_	12	advmod	_	_
+15	gur	is	AUX	Wpdia	_	18	cop	_	_
+16	h-ann	h-ann	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	15	fixed	_	_
+17	aig	aig	ADP	Sp	_	18	case	_	_
+18	seanair	seanair	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	12	ccomp	_	_
+19	Dhòmhnaill	Dòmhnaill	PROPN	Nn-mg	Case=Gen|Gender=Masc	18	nmod	_	_
+20	Alasdair	Alasdair	PROPN	Nn-mn	Case=Nom|Gender=Masc	19	flat	_	SpaceAfter=No
+21	,	,	PUNCT	Fi	_	20	punct	_	_
+22	Dòmhnall	Dòmhnall	PROPN	Nn-mn	Case=Nom|Gender=Masc	19	appos	_	_
+23	mac	mac	NOUN	Up	_	22	flat	_	_
+24	lain	lain	PROPN	Nn-mg	Case=Gen|Gender=Masc	22	flat	_	_
+25	'ic	'ic	NOUN	Up	_	22	flat	_	_
+26	Ràghaill	Ràghaill	PROPN	Nn-mg	Case=Gen|Gender=Masc	22	flat	_	_
+27	an	an	ADP	Sp	_	28	case	_	_
+28	Eirisgeigh	Eirisgeigh	PROPN	Nt	_	22	obl	_	_
+29	a	a	PART	Q-r	_	30	mark	_	_
+30	fhuair	faigh	VERB	V-s	Tense=Pres	18	csubj:cop	_	_
+31	MacGille-Mhìcheil	MacGille-Mhìcheil	PROPN	Nn	_	30	nsubj	_	_
+32	an	an	DET	Tdsf	Gender=Fem|Number=Sing	33	det	_	_
+33	innse	innse	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	30	obj	_	_
+34	seo	seo	DET	Dd	_	33	det	_	_
+35	ann	ann	ADP	Sp	_	37	case	_	_
+36	an	an	ADP	Sp	_	35	fixed	_	_
+37	1865	1865	NUM	Mn	_	30	obl	_	SpaceAfter=No
+38	.	.	PUNCT	Fe	_	3	punct	_	_
 
 # sent_id = fp01_040
 # text = Is e a tha mi cur romham anns a' phàipear seo beachd a ghabhail air plota no air cruth nan seòrsachan a fhuaras aig Dòmhnall Alasdair agus aig a sheanair an coimeas ri chéile, agus an coimeas cuideachd ris an sgeulachd mar a gheibhear i anns na làmh-sgrìobhainnean, a' gabhail mar eisimpleir an teacs a chuir O Gráda an clò ann an Silva Gadelica.
