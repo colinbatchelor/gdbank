@@ -91,3 +91,9 @@ This is experimental and is for expressing things like lengths which are direct 
 However, as in ns05_003, if the time expression qualifies a noun, use `nmod` as usual.
 ### `obl:tmod`
 This is borrowed from the Irish UD treebank and is used for nouns or NPs being used as temporal expressions.
+
+# Tentative splits
+
+Conversations: test c01 (1127 tokens), dev c03 (1337 tokens), train c02 and c04 to c10 (9080 tokens)
+Radio: test p04 (1185 tokens), dev p02 (1045 tokens), train p01, p03, p05 to p08 (8118 tokens)
+Remainder: test ~5700 tokens, dev ~5700 tokens, train ~57000 tokens
