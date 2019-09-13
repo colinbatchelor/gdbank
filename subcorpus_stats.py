@@ -7,9 +7,11 @@ from collections import Counter
 corpus = pyconll.load_from_file(sys.argv[1])
 dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[]}
 files = Counter()
+tokens = Counter()
 for sentence in corpus:
     file = sentence.id.split('_')[0]
     files[file] +=1
+    tokens[file] += len(sentence)
     dict["all"].append(sentence)
     if sentence.id.startswith('fp'):
         dict["fp"].append(sentence)
@@ -28,10 +30,12 @@ for sentence in corpus:
 
 for subcorpus in dict:
     size = len(dict[subcorpus])
-    print("%s: %s trees, longest: %s, mean: %s, shortest: %s" %
-          (subcorpus, size, max([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
+    print("%s: %s trees, longest: %s, mean: %s, shortest: %s, total %s" %
+          (subcorpus, size,
+           max([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
            sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]) if size >0 else 0,
-           min([len(s) for s in dict[subcorpus]])) if size >0 else 0)
+           min([len(s) for s in dict[subcorpus]]) if size >0 else 0,
+           sum([len(s) for s in dict[subcorpus]]) if size>0 else 0))
 
 for file in files.most_common():
-    print(file)
+    print("%s %s" % (file, tokens[file[0]]))
