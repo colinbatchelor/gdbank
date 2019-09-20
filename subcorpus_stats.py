@@ -4,29 +4,33 @@ import sys
 import pyconll
 from collections import Counter
 
-corpus = pyconll.load_from_file(sys.argv[1])
-dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[]}
+dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[], "s":[]}
 files = Counter()
 tokens = Counter()
-for sentence in corpus:
-    file = sentence.id.split('_')[0]
-    files[file] +=1
-    tokens[file] += len(sentence)
-    dict["all"].append(sentence)
-    if sentence.id.startswith('fp'):
-        dict["fp"].append(sentence)
-    elif sentence.id.startswith('f'):
-        dict["f"].append(sentence)
-    elif sentence.id.startswith('ns'):
-        dict["ns"].append(sentence)
-    elif sentence.id.startswith('n'):
-        dict["n"].append(sentence)
-    elif sentence.id.startswith('pw'):
-        dict["pw"].append(sentence)
-    elif sentence.id.startswith('c'):
-        dict["c"].append(sentence)
-    elif sentence.id.startswith('p'):
-        dict["p"].append(sentence)
+
+for corpusfile in sys.argv[1:]:
+    corpus = pyconll.load_from_file(corpusfile)
+    for sentence in corpus:
+        file = sentence.id.split('_')[0]
+        files[file] +=1
+        tokens[file] += len(sentence)
+        dict["all"].append(sentence)
+        if sentence.id.startswith('fp'):
+            dict["fp"].append(sentence)
+        elif sentence.id.startswith('f'):
+            dict["f"].append(sentence)
+        elif sentence.id.startswith('ns'):
+            dict["ns"].append(sentence)
+        elif sentence.id.startswith('n'):
+            dict["n"].append(sentence)
+        elif sentence.id.startswith('pw'):
+            dict["pw"].append(sentence)
+        elif sentence.id.startswith('c'):
+            dict["c"].append(sentence)
+        elif sentence.id.startswith('p'):
+            dict["p"].append(sentence)
+        elif sentence.id.startswith('s'):
+            dict["s"].append(sentence)
 
 for subcorpus in dict:
     size = len(dict[subcorpus])
