@@ -95,5 +95,12 @@ This is borrowed from the Irish UD treebank and is used for nouns or NPs being u
 # Tentative splits
 
 Conversations: test c01 (1127 tokens), dev c03 (1337 tokens), train c02 and c04 to c10 (9080 tokens)
-Radio: test p04 (1185 tokens), dev p02 (1045 tokens), train p01, p03, p05 to p08 (8118 tokens)
-Remainder: test ~5700 tokens, dev ~5700 tokens, train ~57000 tokens
+Interview: test p04 (1185 tokens), dev p05 (1156 tokens), train p01 to p03, p06 to p08 (7884 tokens)
+Fiction: test f03 (1150 tokens), dev f08 (1162 tokens), train f01, f02, f04 to f07 (7372 tokens)
+Formal prose: test fp03 (1117 tokens), dev fp09 (1258 tokens), train fp01, fp02, fp04 to fp09 (8320 tokens)
+Narrative: test n01 (1218 tokens), dev n02 (1082 tokens), train n03 to n10 (8223 tokens)
+News: test ns07 and ns05 (1483 tokens), dev ns06 and ns08 (1379 tokens), train ns01 to ns04, ns09, ns10 (7797 tokens)
+Popular writing: test pw02 and pw11 (1519 tokens), dev pw06 and pw09 (1486 tokens), train pw01, pw03 to pw05, pw07, pw08, pw10 (8615 tokens)
+Sport: test s06 (1133 tokens), dev s08 (1108 tokens), train s01 to s05, s07, s10 (8010 tokens)
+
+Test: 9932 tokens, dev 9968 tokens, train 63778 tokens (eventually).
