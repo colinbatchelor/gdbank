@@ -34,7 +34,7 @@ Currently both are marked as `ADJ` but there is clearly internal structure.
 
 # Grammar
 ## The verbal noun
-Annotate as a `NOUN` and an `xcomp` of the `VERB`.
+Annotate as a `NOUN` and an `xcomp:pred` of the `VERB`.
 
 In inversion structures, the object is `obj` of the verbal noun.
 
@@ -48,9 +48,9 @@ The noun preceding it is an `obj` of it.
 While _ais_ is tagged as _Nf_ in phrases like _air ais no air adhart_ there seems to be no good reason to treat the first half differently from the second half, so _air_ is `case` of _ais_ and _ais_ is the head and `obl` of whatever it is modifying.
 
 ## _bi_
-Auxiliary use: we follow the Irish UD treebank and treat _bi_ as a `VERB`, and the verbal noun as a `NOUN` linked back to _bi_ with an `xcomp` deprel.
+Auxiliary use: we follow the Irish UD treebank and treat _bi_ as a `VERB`, and the verbal noun as a `NOUN` linked back to _bi_ with an `xcomp:pred` deprel.
 
-Predicative use: again, we follow Irish and use `xcomp:pred` for predicative adjectives.
+Predicative use: again, we follow Irish and use `xcomp:pred` for predicative adjectives, PPs and adverbs. There is a construction exemplified in c02_009a, c02_009b and c02_010 _bi... agam... ri dhol..._ and in this case we assume that the PP with _aig_ is the quirky experiencer and _ri_ is the predicate.
 
 However (see f01_028), there are also uses of _bi_ for extent in time (n03_041) and space.
 
