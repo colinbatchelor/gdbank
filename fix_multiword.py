@@ -9,6 +9,7 @@ def dict_to_string(dict):
 corpus = pyconll.load_from_file(sys.argv[1])
 with open(sys.argv[2],'w') as fixed:
     for sentence in corpus:
+        print(sentence.id)
         if sentence.meta_present('speaker'):
             fixed.write('# speaker = %s\n' % sentence.meta_value('speaker'))
         if sentence.meta_present('comment'):
@@ -25,6 +26,9 @@ with open(sys.argv[2],'w') as fixed:
             else:
                 new_token_id = int(token.id) + offset
                 mapping[int(token.id)] = new_token_id
+                if token.lemma == None: token.lemma = "_"
+                if token.head == None: token.head = "_"
+                if token.deprel == None: token.deprel = "_"
                 if '_' in token.form:
                     new_forms = token.form.split('_')
                     offset = offset + (len(new_forms) - 1)
@@ -45,6 +49,6 @@ with open(sys.argv[2],'w') as fixed:
             updated = [str(token)]
             updated.extend(new_tokens[token])
             if updated[2] is None: updated[2] ='"'
-            updated[6] = str(mapping[int(updated[6])])
+            if updated[6] != "_": updated[6] = str(mapping[int(updated[6])])
             fixed.write('%s\n' % '\t'.join(updated))
         fixed.write('\n')
