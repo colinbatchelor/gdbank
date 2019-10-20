@@ -63,6 +63,10 @@ Example taken from pw01_015: in _còrr is deich bliadhna_, _bliadhna_ is conjoin
 When this is tagged as `Vm-2s` the sense in which it is usually used is 'to try to', in which case it is linked to the higher clause with an `xcomp` deprel.
 For example n04_002: _... gu robh e 'dol a dh’fhalbh feuch a faigheadh..._, _feuch_ is an `xcomp` of _dh’fhalbh_.
 
+## _an ìre mhath_
+
+This means 'almost'. See s08_061b for an example. Use `nmod`.
+
 ## _is_
 _'S_, _b'_, _bu_, _'se_, _'sann_ and so on are `cop` and the root is whatever has been fronted by it.
 We treat _'S e_ as a fixed expression where _e_ has a `fixed` relation with the `AUX`.
@@ -99,7 +103,7 @@ This is borrowed from the Irish UD treebank and is used for nouns or NPs being u
 | Conversations| c01 (1127 tokens)| c03 (1337 tokens)| c02 and c04 to c10 (9080 tokens)|11538
 |Interview| p04 (1185 tokens)| p05 (1156 tokens)| p01 to p03, p06 to p08 (7884 tokens)|10213
 |Fiction| f03 (1150 tokens)| f08 (1162 tokens)| f01, f02, f04 to f07 (7372 tokens)|9684
-|Formal prose| fp03 (1117 tokens)| fp09 (1258 tokens)| fp01, fp02, fp04 to fp09 (8320 tokens)|10695
+|Formal prose| fp03 (1117 tokens)| fp09 (1258 tokens)| fp01, fp02, fp04 to fp08 (8320 tokens)|10695
 |Narrative| n01 (1218 tokens)| n02 (1082 tokens)| n03 to n10 (8223 tokens) | 10523
 |News| ns07 and ns05 (1483 tokens)| ns06 and ns08 (1379 tokens)| ns01 to ns04, ns09, ns10 (7797 tokens) | 10659
 |Popular writing| pw02 and pw11 (1519 tokens)| pw06 and pw09 (1486 tokens)| pw01, pw03 to pw05, pw07, pw08, pw10 (8615 tokens) | 10101
