@@ -5,10 +5,11 @@ import pyconll
 tenses = {"p":"Pres", "s":"Past", "f":"Fut"}
 genders = {"m":"Masc", "f":"Fem"}
 numbers = {"s":"Sing", "p":"Plur"}
-parttypes_u = {"a":"Ad", "c":"Comp", "g":"Inf", "v":"Voc", "p":"Pat", "o":"Num", "q":"Int"}
+parttypes_u = {"a":"Ad", "c":"Comp", "g":"Inf", "v":"Voc", "p":"Pat", "o":"Num"}
 parttypes_q = {"Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb", "Qnm":"Vb"}
 polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
 prontypes_q = {"Q-r":"Rel", "Qnr":"Rel", "Qq":"Int"}
+moodtypes_q = {"q":"Int"}
 
 def get_adj_feats(xpos):
     result = {}
@@ -30,6 +31,8 @@ def get_part_feats(xpos):
     result = {}
     if xpos[1] in parttypes_u:
         result["PartType"] = [parttypes_u[xpos[1]]]
+    if xpos[1] in moodtypes_q:
+        result["Mood"] = [moodtypes_q[xpos[1]]]
     if xpos in parttypes_q:
         result["PartType"] = [parttypes_q[xpos]]
         if xpos in polartypes_q:
