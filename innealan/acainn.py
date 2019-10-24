@@ -246,7 +246,7 @@ class Lemmatizer:
         if pos.startswith("Aq") or pos.startswith("Ar"):
             return self.lemmatize_adjective(s)
         # do in this order because of "as"
-        if pos.startswith("W"):
+        if pos.startswith("W") or pos == "Csw":
             return "is"
         if pos.startswith("Td"):
             return "an"
