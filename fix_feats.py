@@ -101,10 +101,14 @@ with open(sys.argv[2],'w') as clean:
                     token.feats = get_pron_feats(token.xpos)
                 elif token.xpos == "Px":
                     token.feats = {"Reflex":["Yes"]}
+                elif token.xpos in ["Xfe","Xf"]:
+                    token.feats = {"Foreign":["Yes"]}
                 elif token.xpos == "Um":
                     token.upos = "ADP"
                 elif token.xpos == "Apc":
                     token.feats = get_adj_feats(token.xpos)
+                elif token.xpos == "Qa":
+                    token.feats = {}
                 elif token.xpos.startswith("U") or token.xpos.startswith("Q"):
                     token.feats = get_part_feats(token.xpos)
         clean.write(sentence.conll())

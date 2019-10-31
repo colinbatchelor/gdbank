@@ -6,7 +6,7 @@ with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
             if token.head != "0":
-                if token.upos == "AUX":
+                if token.upos == "AUX" and token.xpos != "Wp-i-3":
                     token.deprel = "cop"
                 if token.upos == "INTJ":
                     token.deprel = "discourse"
@@ -25,6 +25,10 @@ with open(sys.argv[2],'w') as clean:
                     if next_token.xpos != "Nv":
                         if next_token.upos == "NOUN":
                             token.deprel = "nmod:poss"
+                if token.deprel == "csubj:cop":
+                    prev_token = sentence[int(token.id) - 2]
+                    if prev_token.xpos == "Q-r":
+                        token.deprel = "csubj:cleft"
             if token.head == "0":
                 token.deprel = "root"
         clean.write(sentence.conll())
