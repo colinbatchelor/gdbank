@@ -1,36 +1,4 @@
-# Conversion
-## Reconstructing spacing
-
-Context: ARCOSG does not contain the original texts, so we have to reconstruct them in a consistent way.
-We use GOC (Gaelic Orthographic Conventions, https://www.sqa.org.uk/files_ccc/SQA-Gaelic_Orthographic_Conventions-En-e.pdf) for consistency in reconstructing spacing, but don't apply any other corrections.
-
-According to the latest GOC:
-* There are spaces after _a'_, _b'_, _d'_ or _m'_.
-* There are no spaces after _dh'_.
-* Do not close up before _'m_ or _'n_.
-
-Also (not covered explicitly by GOC but shown in examples):
-* Close up _h-_, _t-_, and _n-_.
-* Don't close up after _th'_ and _bh'_.
-
-If an elided _a'_ or _ag_ before a verbal noun is indicated by _'_, close this up.
-
-Close up around the hyphen in _a-measg_, _a-rèir_, _a-thaobh_ and similar but don't close up around hyphens if they're being used as dashes.
-Also don't attempt to bring into line with GOC by adding or taking away hyphens.
-
-Also close up _dhà-na-tri_ (see fp05_012).
-
-## Multiword tokens
-
-The original version of the Brown to CoNLL converter replaced internal spaces with underscores.
-For UD, however, we need to split these up. For the moment we duplicate the UPOS and the XPOS.
-PROPNs have a `flat` relation, others have a `fixed` relation but this needs to be improved.
-
-Some difficult cases follow:
-### _na b'_/_na bu_
-Ideally this should be exactly parallel with _nas_.
-### _sam bith_
-Currently both are marked as `ADJ` but there is clearly internal structure.
+_This document is being transferred to the UD documentation._
 
 # Grammar
 ## The verbal noun
@@ -86,26 +54,3 @@ Treat _chaidh_ as being `acl:relcl` of _t-seachdain_ (pw05_005, also _ceud_ in t
 
 ## _urrainn_
 In most dialects the person (or thing) that can follows the preposition _do_ so is of course `obl`. In some, however, you can say, for example, _'s urrainn mi_, so in this case _mi_ is `obl` of _urrainn_.
-
-## Special deprels
-### `case:voc`
-This is borrowed from Irish and is for the vocative particle _a_.
-### `obl:smod`
-This is experimental and is for expressing things like lengths which are direct arguments of _bi_.
-However, as in ns05_003, if the time expression qualifies a noun, use `nmod` as usual.
-### `obl:tmod`
-This is borrowed from the Irish UD treebank and is used for nouns or NPs being used as temporal expressions.
-
-# Tentative splits
-
-| Subcorpus | Test | Dev | Train | Total
-| --- | --- | --- | ---|---|
-| Conversations| c01 (1127 tokens)| c03 (1337 tokens)| c02 and c04 to c10 (9080 tokens)|11538
-|Interview| p04 (1185 tokens)| p05 (1156 tokens)| p01 to p03, p06 to p08 (7884 tokens)|10213
-|Fiction| f03 (1150 tokens)| f08 (1162 tokens)| f01, f02, f04 to f07 (7372 tokens)|9684
-|Formal prose| fp03 (1117 tokens)| fp09 (1258 tokens)| fp01, fp02, fp04 to fp08 (8320 tokens)|10695
-|Narrative| n01 (1218 tokens)| n02 (1082 tokens)| n03 to n10 (8223 tokens) | 10523
-|News| ns07 and ns05 (1483 tokens)| ns06 and ns08 (1379 tokens)| ns01 to ns04, ns09, ns10 (7797 tokens) | 10659
-|Popular writing| pw02 and pw11 (1519 tokens)| pw06 and pw09 (1486 tokens)| pw01, pw03 to pw05, pw07, pw08, pw10 (8615 tokens) | 10101
-|Sport| s06 (1136 tokens)| s08 (1103 tokens)| s01 to s05, s07, s10 (8031 tokens) | 10270
-|**Total** | **9935** | **9996** | **63752** | **83683**
