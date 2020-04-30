@@ -2358,13 +2358,13 @@
 15	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f08_011
-# text = Chumadh anail grìosach ceàrdaich a' dol ; bha a chridhe a' turailich mu asnaichean.
+# text = Chumadh anail grìosach ceàrdaich a' dol; bha a chridhe a' turailich mu asnaichean.
 1	Chumadh	cum	VERB	V-h	Mood=Cnd	0	root	_	_
 2	anail	anail	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	nsubj	_	_
 3	grìosach	grìosach	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	obj	_	_
 4	ceàrdaich	ceàrdach	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	3	nmod	_	_
 5	a'	ag	PART	Sa	_	6	case	_	_
-6	dol	rach	NOUN	Nv	VerbForm=Vnoun	1	xcomp	_	_
+6	dol	rach	NOUN	Nv	VerbForm=Vnoun	1	xcomp	_	SpaceAfter=No
 7	;	;	PUNCT	Fi	_	8	punct	_	_
 8	bha	bi	VERB	V-s	Tense=Past	1	parataxis	_	_
 9	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	10	nmod:poss	_	_
@@ -2374,6 +2374,32 @@
 13	mu	mu	ADP	Sp	_	14	case	_	_
 14	asnaichean	asnaiche	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	12	obl	_	SpaceAfter=No
 15	.	.	PUNCT	Fe	_	1	punct	_	_
+
+# sent_id = f08_012
+# text = Bha corra ablach smuain gàrradh... teine... bean... sgìth... taigh... clach - facail agus dealbhan am-measg a chèile.
+1	Bha	bi	VERB	V-s	Tense=Past	0	root	_	_
+2	corra	corra	ADJ	Ar	_	3	amod	_	_
+3	ablach	ablach	NOUN	Ncsmn	_	1	nsubj	_	_
+4	smuain	smuain	NOUN	Ncsfg	_	3	nmod	_	_
+5	gàrradh	gàrradh	NOUN	Ncsmn	_	3	nmod	_	SpaceAfter=No
+6	...	...	PUNCT	Fb	_	7	punct	_	_
+7	teine	teine	NOUN	Ncsmn	_	3	parataxis	_	SpaceAfter=No
+8	...	...	PUNCT	Fb	_	9	punct	_	_
+9	bean	bean	NOUN	Ncsfn	_	3	parataxis	_	SpaceAfter=No
+10	...	...	PUNCT	Fb	_	11	punct	_	_
+11	sgìth	sgìth	ADJ	Ap	_	3	parataxis	_	SpaceAfter=No
+12	...	...	PUNCT	Fb	_	13	punct	_	_
+13	taigh	taigh	NOUN	Ncsmn	_	3	parataxis	_	SpaceAfter=No
+14	...	...	PUNCT	Fb	_	15	punct	_	_
+15	clach	clach	NOUN	Ncsfn	_	3	parataxis	_	_
+16	-	-	PUNCT	Fb	_	17	punct	_	_
+17	facail	facal	NOUN	Ncpmn	_	3	parataxis	_	_
+18	agus	agus	CCONJ	Cc	_	19	cc	_	_
+19	dealbhan	dealbh	NOUN	Ncpmn	_	17	conj	_	_
+20	am-measg	measg	ADP	Sp	_	21	case	_	_
+21	a	a	NOUN	Px	Reflex=Yes	17	obl	_	_
+22	chèile	cèile	NOUN	Px	Reflex=Yes	21	fixed	_	SpaceAfter=No
+23	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f08_013
 # text = Clach air na chruinnich deigh o chionn linntean, mus deach bonn a chur ri làr an siud.
@@ -2480,6 +2506,23 @@
 19	Chuan	Cuan	PROPN	Nt	_	15	obl	_	_
 20	Siar	Siar	PROPN	Nt	_	19	flat	_	SpaceAfter=No
 21	.	.	PUNCT	Fe	_	1	punct	_	_
+
+# sent_id = f08_019
+# text = Tapaichean faileasach, fàileadh fiodh geal, is fiach trì ceud na bhroinn.
+1	Tapaichean	tap	NOUN	Ncpmn	_	0	root	_	_
+2	faileasach	faileasach	ADJ	Aq-pmn	_	1	amod	_	SpaceAfter=No
+3	,	,	PUNCT	Fi	_	4	punct	_	_
+4	fàileadh	fàileadh	NOUN	Ncsmn	_	1	conj	_	_
+5	fiodh	fiodh	NOUN	Ncsmg	_	4	nmod	_	_
+6	geal	geal	ADJ	Aq-smg	_	4	amod	_	SpaceAfter=No
+7	,	,	PUNCT	Fi	_	9	punct	_	_
+8	is	is	CCONJ	Cc	_	9	cc	_	_
+9	fiach	fiach	NOUN	Ncsmn	_	1	conj	_	_
+10	trì	trì	NUM	Mc	_	11	nummod	_	_
+11	ceud	ceud	NUM	Mc	_	9	nummod	_	_
+12	na	na	ADP	Spp3sm	_	13	case	_	_
+13	bhroinn	broinn	NOUN	Ncsfd	_	9	obl	_	SpaceAfter=No
+14	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = f08_020
 # text = Chuir e uilinn air gach glùin, is sheall e, 's e 'sgrùdadh an àite anns na dh’fhàg a bhrògan làrach de fheur briste.
@@ -4309,6 +4352,43 @@
 68	chian	cian	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	65	obl	_	SpaceAfter=No
 69	.	.	PUNCT	Fe	_	6	punct	_	SpaceAfter=No
 70	"	"	PUNCT	Fz	_	6	punct	_	_
+
+# sent_id = fp09_017
+# text = Co-dhiù, chan fhaod mi gun luaidh shònraichte a thoirt air na h-ailt agus na leabhraichean luachmhor a sgrìobh David Stevenson, R. A. Dodgshon, Francis J. Shaw agus Allan I. Macinnes.
+1	Co-dhiù	co-dhiù	ADV	Rg	_	4	advmod	_	SpaceAfter=No
+2	,	,	PUNCT	Fi	_	4	punct	_	_
+3	chan	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	4	mark:prt	_	_
+4	fhaod	faod	VERB	V-f--d	Tense=Fut	0	root	_	_
+5	mi	mi	PRON	Pp1s	Number=Sing|Person=1	4	nsubj	_	_
+6	gun	gun	ADP	Sp	_	10	case	_	_
+7	luaidh	luaidh	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	10	obj	_	_
+8	shònraichte	sònraichte	ADJ	Aq-sfn	_	7	amod	_	_
+9	a	a	PART	Ug	PartType=Inf	10	mark:prt	_	_
+10	thoirt	toir	NOUN	Nv	VerbForm=Inf	4	xcomp	_	_
+11	air	air	ADP	Sp	_	13	case	_	_
+12	na	an	DET	Tdpm	Gender=Masc|Number=Plur	13	det	_	_
+13	h-ailt	alt	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	10	obl	_	_
+14	agus	agus	CCONJ	Cc	_	16	cc	_	_
+15	na	an	DET	Tdpm	Gender=Masc|Number=Plur	16	det	_	_
+16	leabhraichean	leabhar	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	13	conj	_	_
+17	luachmhor	luachmhor	ADJ	Aq-pmd	Case=Dat|Gender=Masc|Number=Plur	16	amod	_	_
+18	a	a	PART	Q-r	PartType=Vb|PronType=Rel	19	mark:prt	_	_
+19	sgrìobh	sgrìobh	VERB	V-s	Tense=Past	16	acl:relcl	_	_
+20	David	David	PROPN	Nn-mn	Case=Nom|Gender=Masc	19	nsubj	_	_
+21	Stevenson	Stevenson	PROPN	Nn	_	20	fixed	_	SpaceAfter=No
+22	,	,	PUNCT	Fi	_	23	punct	_	_
+23	R.	R.	PROPN	Y	_	20	conj	_	_
+24	A.	A.	PROPN	Y	_	23	fixed	_	_
+25	Dodgshon	Dodgshon	PROPN	Nn	_	23	fixed	_	SpaceAfter=No
+26	,	,	PUNCT	Fi	_	27	punct	_	_
+27	Francis	Francis	PROPN	Nn-mn	Case=Nom|Gender=Masc	20	conj	_	_
+28	J.	J.	PROPN	Y	_	27	fixed	_	_
+29	Shaw	Shaw	PROPN	Nn	Case=Nom|Gender=Masc	27	fixed	_	_
+30	agus	agus	CCONJ	Cc	_	31	cc	_	_
+31	Allan	Allan	PROPN	Nn-mn	Case=Nom|Gender=Masc	20	conj	_	_
+32	I.	I.	PROPN	Y	_	31	fixed	_	_
+33	Macinnes	Macinnes	PROPN	Nn	_	31	fixed	_	SpaceAfter=No
+34	.	.	PUNCT	Fe	_	4	punct	_	_
 
 # sent_id = fp09_018
 # text = Feumar a ràdh, ge-tà, gu bheil an dìth tuigse aca air saoghal nan Gàidheal a' duaichneachadh an cuid obrach gu mór; gu sìmplidh, chan eil an cuspairean a' tighinn beò fo chomhair ar sùilean.

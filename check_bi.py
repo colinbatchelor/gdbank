@@ -8,9 +8,14 @@ score = 0
 with open(sys.argv[2],'w') as f:
     for sentence in corpus:
         bi_ids = []
+        prev_token = None
         for token in sentence:
             if token.lemma == "bi":
                 bi_ids.append(token.id)
+            if token.xpos == "Up" and token.deprel != "flat" and prev_token is not None and prev_token.xpos == "Nn":
+                score +=1 
+                print("%s %s %s" % (sentence.id, token.id, "Patronymic should be flat"))
+            prev_token = token
         if len(bi_ids) > 0:
             ids = {}
             deprels = {}
