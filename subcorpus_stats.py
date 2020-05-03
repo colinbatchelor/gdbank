@@ -37,9 +37,11 @@ for subcorpus in dict:
     print("%s: %s trees, longest: %s, mean: %s, shortest: %s, total %s" %
           (subcorpus, size,
            max([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
-           sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]) if size >0 else 0,
-           min([len(s) for s in dict[subcorpus]]) if size >0 else 0,
-           sum([len(s) for s in dict[subcorpus]]) if size>0 else 0))
+           sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]) if size > 0 else 0,
+           min([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
+           sum([len(s) for s in dict[subcorpus]]) if size > 0 else 0))
 
 for file in files.most_common():
-    print("%s %s" % (file, tokens[file[0]]))
+    tree_count = file[1]
+    token_count = tokens[file[0]]
+    print(f"{file[0]}: {tree_count} trees, {token_count} tokens ({token_count/tree_count:0.4})")
