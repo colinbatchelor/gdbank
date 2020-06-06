@@ -36,15 +36,22 @@ class TestFeatures(unittest.TestCase):
         self.assertEqual({'Degree':['Cmp,Sup']}, self.f.feats_adj('Apc'))
 
     def test_feats_det(self):
-        self.assertEqual({'Gender':['Masc'],'Number':['Sing']}, self.f.feats_det('Tdsm'))
-        self.assertEqual({'Gender':['Fem'],'Number':['Sing']}, self.f.feats_det('Tdsf'))
-        self.assertEqual({'Gender':['Masc'],'Number':['Plur']}, self.f.feats_det('Tdpm'))
-        self.assertEqual({'Case':['Gen'],'Gender':['Fem'], 'Number':['Plur']}, self.f.feats_det('Tdpfg'))
+        self.assertEqual({'Gender':['Masc'],'Number':['Sing']},
+                         self.f.feats_det('Tdsm'))
+        self.assertEqual({'Gender':['Fem'],'Number':['Sing']},
+                         self.f.feats_det('Tdsf'))
+        self.assertEqual({'Gender':['Masc'],'Number':['Plur']},
+                         self.f.feats_det('Tdpm'))
+        self.assertEqual({'Case':['Gen'],'Gender':['Fem'], 'Number':['Plur']},
+                         self.f.feats_det('Tdpfg'))
 
     def test_feats_noun(self):
-        self.assertEqual({'Case':['Nom'],'Gender':['Masc'],'Number':['Sing']}, self.f.feats_noun('Ncsmn'))
-        self.assertEqual({'Case':['Dat'],'Gender':['Fem'],'Number':['Plur']}, self.f.feats_noun('Ncpfd'))
-        self.assertEqual({'Case':['Gen'],'Gender':['Fem'],'Number':['Plur']}, self.f.feats_noun('Ncpfg'))
+        self.assertEqual({'Case':['Nom'],'Gender':['Masc'],'Number':['Sing']},
+                         self.f.feats_noun('Ncsmn'))
+        self.assertEqual({'Case':['Dat'],'Gender':['Fem'],'Number':['Plur']},
+                         self.f.feats_noun('Ncpfd'))
+        self.assertEqual({'Case':['Gen'],'Gender':['Fem'],'Number':['Plur']},
+                         self.f.feats_noun('Ncpfg'))
 
 class TestCCGTyper(unittest.TestCase):
     def setUp(self):
@@ -54,8 +61,10 @@ class TestCCGTyper(unittest.TestCase):
         self.t = None
 
     def test(self):
-        self.assertEqual(self.t.type("tha", "V-p", "BIPP")[1], "s[dcl pres cons]/pp/n")
-        self.assertEqual(self.t.type("bha", "V-s", "BIPP")[1], "s[dcl past cons]/pp/n")
+        self.assertEqual(self.t.type("tha", "V-p", "BIPP")[1],
+                         "s[dcl pres cons]/pp/n")
+        self.assertEqual(self.t.type("bha", "V-s", "BIPP")[1],
+                         "s[dcl past cons]/pp/n")
 
 class TestCCGRetagger(unittest.TestCase):
     def setUp(self):
@@ -217,7 +226,7 @@ class TestLemmatizer(unittest.TestCase):
 
     def test_adjectives(self):
         self.assertEqual(self.l.lemmatize("Mhòir", "Aq-smg"), "mòr")
-    
+
     def test_comparatives(self):
         self.comparative("àille", "àlainn")
         self.comparative("àirde", "àrd")
@@ -260,7 +269,7 @@ class TestLemmatizer(unittest.TestCase):
         self.comparative("trice", "tric")
         self.second_comparative("fheàirrde", "math")
         self.second_comparative("mhisde", "dona")
-        
+
     def test_nouns(self):
         self.assertEqual(self.l.lemmatize("athar", "Ncsmg"), "athair")
         self.assertEqual(self.l.lemmatize("bhalaich", "Ncsmv"), "balach")
@@ -289,7 +298,8 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("mhic", "Ncsmg"), "mac")
         self.assertEqual(self.l.lemmatize("mhòintich", "Ncsfd"), "mòinteach")
         self.assertEqual(self.l.lemmatize("mhuir", "Ncsmd"), "muir")
-        self.assertEqual(self.l.lemmatize("dh’oidhcheannan", "Ncpfd"), "oidhche")
+        self.assertEqual(self.l.lemmatize("dh’oidhcheannan", "Ncpfd"),
+                         "oidhche")
         self.assertEqual(self.l.lemmatize("peantairean", "Ncpmn"), "peantair")
         self.assertEqual(self.l.lemmatize("sanas", "Ncsmn"), "sanas")
         self.assertEqual(self.l.lemmatize("sanais", "Ncsfn"), "sanais")
@@ -300,7 +310,7 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("t-sead", "Ncsmd"), "sead")
         self.assertEqual(self.l.lemmatize("uamha", "Ncsfd"), "uamh")
         self.assertEqual(self.l.lemmatize("uinneig", "Ncsfd"), "uinneag")
-        
+
     def test_copula(self):
         self.assertEqual(self.l.lemmatize("an", "Wpdqa"), "is")
         self.assertEqual(self.l.lemmatize("B'", "Ws"), "is")
@@ -352,12 +362,19 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize("thoirt", "Nv"), "toir")
         self.assertEqual(self.l.lemmatize("toirt", "Nv"), "toir")
 
+    def test_pronouns(self):
+        self.assertEqual(self.l.lemmatize("fhèin","Px"), "fèin")
+
+    def test_particles(self):
+        self.assertEqual(self.l.lemmatize("d’", "Q--s"), "do")
+
     def test_prefixes(self):
         self.assertEqual(self.l.lemmatize("h-Alba", "Nt"), "Alba")
         self.assertEqual(self.l.lemmatize("dh’aon", "Mc"), "aon")
-        self.assertEqual(self.l.lemmatize("n-eachdraidh", "Ncsfd"), "eachdraidh")
+        self.assertEqual(self.l.lemmatize("n-eachdraidh", "Ncsfd"),
+                         "eachdraidh")
         self.assertEqual(self.l.lemmatize("t-seòrsa", "Ncsmd"), "seòrsa")
-        
+
     def test_regulars(self):
         self.assertEqual(self.l.lemmatize("bhuail", "V-s"), "buail")
         self.assertEqual(self.l.lemmatize("choinnich", "V-s"), "coinnich")
@@ -376,11 +393,13 @@ class TestLemmatizer(unittest.TestCase):
         self.assertEqual(self.l.lemmatize_preposition(preposition), root)
 
     def test_prepositions(self):
+        self.preposition("a'd", 'aig')
         self.preposition('oirre','air')
         self.preposition('airson','airson')
+        self.preposition('anns','an')
         self.preposition('uam','bho')
         self.preposition('am','an')
-        self.preposition('anns an', 'an')
+        self.preposition('anns an','an')
         self.preposition('agam','aig')
         self.preposition('dhi','do')
         self.preposition('dhuinn','do')
@@ -414,7 +433,7 @@ class TestLemmatizer(unittest.TestCase):
         self.preposition('innte','an')
         self.preposition('asam','as')
         self.preposition('aiste','as')
-        
+
     def nv(self, vn, root):
         self.assertEqual(self.l.lemmatize_vn(vn), root)
 

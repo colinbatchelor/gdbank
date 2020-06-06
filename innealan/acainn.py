@@ -26,10 +26,10 @@ class Lemmatizer:
             ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig',
                       'tàinig', 'dàinig'])]
         self.prepositions = {
-            'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
+            'aig':["aga(m|t|inn|ibh)|aige|aice|aca|a'd"],
             'air':["or[mt]|oir(re|bh|nn)|orra"],
             'airson':["'?son"],
-            'an':["'?s?a[mn]", "sa", "'?na", "anns?_a[nm]", "innte", "a's"],
+            'an':["'?s?a[mn]", "sa", "'?na", "anns?(_a[nm])?", "innte", "a's"],
             'as':["às", "as.*", "ais.*"],
             'bho':["(bh)?o", "(bh)?ua(m|t)"],
             'eadar':["ea.*"],
@@ -54,9 +54,16 @@ class Lemmatizer:
             reader = csv.reader(f)
             for row in reader:
                 self.vns.append((row[0], row[1].split(";")))
+        lemmata_path = os.path.join(dir, 'resources', 'lemmata.csv')
+        self.lemmata = {}
+        with open(lemmata_path) as f:
+            reader = csv.reader(filter(lambda row: row[0] != '#', f))
+            for row in reader:
+                self.lemmata[row[0]] = row[1]
 
     def can_follow_de(self, s):
-        return s in ["cho","am","an","a'", "na","mar","bha", "tha"]
+        """this is dè the interrogative"""
+        return s in ["cho", "am", "an", "a'", "na", "mar", "bha", "tha"]
 
     def lenited(self, s):
         unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
@@ -124,70 +131,14 @@ class Lemmatizer:
             return "%se" % result
 
     def lemmatize_n(self, s, pos):
-        demonyms = {
-            "Albannaich":"Albannach", "Basgaich":"Basgach",
-            "Beàrnaraich":"Beàrnarach", "Beàrnaraich":"Beàrnaraich",
-            "Breatannaich":"Breatannach",
-            "Caimbeulaich":"Caimbeulach",
-            "Deamaich":"Deamach",
-            "Èireannaich":"Èireannach",
-            "Gàidheil": "Gàidheal",
-            "Gaidheil": "Gaidheal", "Nàiseantaich":"Nàiseantach",
-            "Sasannaich": "Sasannach", "Tearaich":"Tearach",
-            "Uibhistich": "Uibhisteach"}
-        specials = {
-            "aodainn":"aodann", "ainmeannan":"ainm",
-            "bailtean":"baile", "bàtaichean": "bàta", "beanntan":"beinn",
-            "beathaichean":"beathach",
-            "bilean":"bile",
-            "bliadhnaichean":"bliadhna",
-            "buidheannan":"buidheann", "buill":"ball",
-            "busaichean":"bus",
-            "choin":"cù",
-            "còirichean":"còir",
-            "daoine":"duine", "drugaichean":"druga",
-            "ealain":"ealan", "eich":"each", "eileanan":"eilean",
-            "facail":"facal",
-            "faclan":"facal",
-            "fiaclan":"fiacal",
-            "fir":"fear", "fuinn":"fonn",
-            "gillean":"gille",
-            "làithean":"làtha", "linntean":"linn",
-            "notaichean":"not",
-            "obraichean":"obair",
-            "òran":"òran",
-            "paraistean":"paraiste",
-            "planaichean":"plana",
-            "puirt":"port",
-            "rannan":"rann",
-            "seòmraichean":"seòmra",
-            "seòrsachan":"seòrsa", "seòrsaichean":"seòrsa",
-            "sgìrean":"sgìre", "sgoiltean":"sgoil",
-            "sparran":"spàrr",
-            "teaghlaichean":"teaghlach"
-        }
-        obliques = {
-            "'ille":"gille",
-            "athar":"athair", "bidhe":"biadh", "bùird":"bòrd",
-            "cinn":"ceann", "cnuic":"cnoc",
-            "coin":"cù",
-            "cois":"cas",
-            "èisg":"iasg",
-            "mic":"mac", "Mic":"mac",
-            "obrach":"obair",
-            "seòid":"seud", "taighe":"taigh", "tighe":"tigh",
-            "uamha":"uamh"
-        }
         s = self.delenite(s)
         s = re.sub('-?san$', '', s)
         if s.endswith("'"): s = self.remove_apostrophe(s)
         if pos == "Nv":
             return self.lemmatize_vn(self.delenite(s))
         if pos.startswith("Ncp"):
-            if s in demonyms:
-                return demonyms[s]
-            if s in specials:
-                return specials[s]
+            if s in self.lemmata:
+                return self.lemmata[s]
             if s.endswith('aich'):
                 return s.replace('aich','ach')
             if s.endswith('aidhean'):
@@ -203,8 +154,8 @@ class Lemmatizer:
             elif s.endswith("an") and s != "ealan":
                 return re.sub('an$', '', s)
         if pos.endswith("d") or pos.endswith("g") or pos.endswith("v"):
-            if s in specials:
-                return specials[s]
+            if s in self.lemmata:
+                return self.lemmata[s]
             if re.match(".*eige?$", s):
                 return re.sub("eige?$", "eag", s)
             if s.endswith("aich"):
@@ -215,8 +166,8 @@ class Lemmatizer:
                 return re.sub("is$", "s", s)
             if 'f' in pos and s.endswith('e'):
                 return re.sub("e$", "", s)
-        if s in obliques:
-            return obliques[s]
+        if s in self.lemmata:
+            return self.lemmata[s]
         return s
 
     def lemmatize_comparative(self, s):
@@ -249,8 +200,11 @@ class Lemmatizer:
 
     def lemmatize(self, surface, pos):
         """Lemmatize surface based on pos, which is XPOS."""
-        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").replace("’", "'")
+        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'")
+        s = s.replace("’", "'")
         s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
+        if pos == "Q--s":
+            return "do"
         if pos != "Nt" and not pos.startswith("Nn"):
             s = s.lower()
         if pos == "Apc" or pos == "Aps":
@@ -270,6 +224,8 @@ class Lemmatizer:
             return self.lemmatize_preposition(s)
         if pos.startswith("Pp"):
             return self.lemmatize_pronoun(s)
+        if pos.startswith("Px"):
+            return self.delenite(s)
         if pos.startswith("Sa") and s.endswith("'"):
             return "ag"
         if pos.startswith("V"):
