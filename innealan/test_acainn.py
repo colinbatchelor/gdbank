@@ -32,19 +32,19 @@ class TestFeatures(unittest.TestCase):
         self.f = None
 
     def test_feats_adj(self):
-        self.assertEqual('_', self.f.feats_adj('uabhasach', 'Ap'))
-        self.assertEqual('_', self.f.feats_adj('fhearr', 'Apc'))
+        self.assertEqual({}, self.f.feats_adj('Ap'))
+        self.assertEqual({'Degree':['Cmp,Sup']}, self.f.feats_adj('Apc'))
 
     def test_feats_det(self):
-        self.assertEqual('Gender=Masc|Number=Sing', self.f.feats_det('an','Tdsm'))
-        self.assertEqual('Gender=Fem|Number=Sing', self.f.feats_det('na','Tdsf'))
-        self.assertEqual('Gender=Masc|Number=Plur', self.f.feats_det('na', 'Tdpm'))
-        self.assertEqual('Case=Gen|Gender=Fem|Number=Plur', self.f.feats_det('nam', 'Tdpfg'))
+        self.assertEqual({'Gender':['Masc'],'Number':['Sing']}, self.f.feats_det('Tdsm'))
+        self.assertEqual({'Gender':['Fem'],'Number':['Sing']}, self.f.feats_det('Tdsf'))
+        self.assertEqual({'Gender':['Masc'],'Number':['Plur']}, self.f.feats_det('Tdpm'))
+        self.assertEqual({'Case':['Gen'],'Gender':['Fem'], 'Number':['Plur']}, self.f.feats_det('Tdpfg'))
 
     def test_feats_noun(self):
-        self.assertEqual('Case=Nom|Gender=Masc|Number=Sing', self.f.feats_noun('fear', 'Ncsmn'))
-        self.assertEqual('Case=Dat|Gender=Fem|Number=Plur', self.f.feats_noun('mionaidean', 'Ncpfd'))
-        self.assertEqual('Case=Gen|Gender=Fem|Number=Plur', self.f.feats_noun('caorach', 'Ncpfg'))
+        self.assertEqual({'Case':['Nom'],'Gender':['Masc'],'Number':['Sing']}, self.f.feats_noun('Ncsmn'))
+        self.assertEqual({'Case':['Dat'],'Gender':['Fem'],'Number':['Plur']}, self.f.feats_noun('Ncpfd'))
+        self.assertEqual({'Case':['Gen'],'Gender':['Fem'],'Number':['Plur']}, self.f.feats_noun('Ncpfg'))
 
 class TestCCGTyper(unittest.TestCase):
     def setUp(self):

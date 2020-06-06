@@ -1,7 +1,6 @@
 from __future__ import print_function
 import os
 import sys
-from acainn import Features
 
 def eprint(*args, **kwargs):
     print(*args, file = sys.stderr, **kwargs)
@@ -42,13 +41,8 @@ def process_file(f, filename):
                     upostag = arcosg_to_upostag(tag)
                 except:
                     eprint(t)
+                # use fix_feats.py to populate the feats column
                 feats = '_'
-                try:
-                    if tag.startswith('Aq'): feats = features.feats_adj(form, tag)
-                    if tag.startswith('Nc') or tag.startswith('Nn-'): feats = features.feats_noun(form, tag)
-                except:
-                    eprint(t)
-                if tag.startswith('Td'): feats = features.feats_det(form, tag)
                 print('%s\t%s\t_\t%s\t%s\t%s\t_\t_\t_\t_' % (id, carry + form, upostag, tag, feats))
                 carry = ''
                 if form == '.':
@@ -63,7 +57,6 @@ def process_file(f, filename):
         start_line = False
     print()
 
-features = Features()
 files = os.listdir(sys.argv[1])
 for filename in files:
     if not filename.startswith('s'):

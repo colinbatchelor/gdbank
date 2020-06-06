@@ -1,22 +1,30 @@
 import os
 import pandas as pd
 import re
+import csv
 
 class Lemmatizer:
     def __init__(self):
         self.irregulars = [
-            ('bi', ['tha', 'bha', 'robh', 'eil', 'bheil', 'bith', 'bhith', "bh'", "bhà", "thà", "th'", 'bhios', 'bidh', 'biodh', 'bhiodh', "'eil", "bhithinn", "bhitheadh", "bitheamaid", "thathas", "thathar", "robhar"]),
+            ('bi', ['tha', 'bha', 'robh', 'eil', 'bheil', 'bith', 'bhith',
+                    "bh'", "bhà", "thà", "th'", 'bhios', 'bidh', 'biodh',
+                    'bhiodh', "'eil", "bhithinn", "bhitheadh", "bitheamaid",
+                    "thathas", "thathar", "robhar"]),
             ('arsa', ["ars'", "ar", "ars", "as"]),
             ('abair', ['ràdh', 'thuirt', 'their', 'theirear']),
             ('beir', ['breith', 'bhreith', 'rug', 'beiridh']),
-            ('cluinn', ['cluinntinn', 'chluinntinn', 'cuala', "cual'", 'chuala', 'cluinnidh']),
+            ('cluinn', ['cluinntinn', 'chluinntinn', 'cuala', "cual'",
+                        'chuala', 'cluinnidh']),
             ('rach', ['chaidh', 'dol', 'dhol', 'thèid', 'tèid', "deach"]),
             ('dèan', ['rinn', 'dèanamh', 'dhèanamh', 'nì']),
-            ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì', 'chithear', 'chitheadh', 'fhaca', 'faca']),
-            ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh', 'gheibhear']),
+            ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì',
+                      'chithear', 'chitheadh', 'fhaca', 'faca']),
+            ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh',
+                       'gheibhear']),
             ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
             ('toir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
-            ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig', 'tàinig', 'dàinig'])]
+            ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig',
+                      'tàinig', 'dàinig'])]
         self.prepositions = {
             'aig':["aga(m|t|inn|ibh)|aige|aice|aca"],
             'air':["or[mt]|oir(re|bh|nn)|orra"],
@@ -35,22 +43,25 @@ class Lemmatizer:
             'thar':["tha.*"]
         }
         self.pronouns = {
-            "mi": ["mise"], "thu": ["tu", "tusa", "thusa"], "e": ["esan"], "i": ["ise"],
+            "mi": ["mise"], "thu": ["tu", "tusa", "thusa"],
+            "e": ["esan"], "i": ["ise"],
             "sinn": ["sinne"], "sibh": ["sibhse"], "iad": ["iadsan"]
             }
+        dir = os.path.dirname(__file__)
+        vn_path = os.path.join(dir, 'resources', 'vns.csv')
         self.vns = []
-        with open(os.path.join(os.path.dirname(__file__), 'resources', 'vns.txt')) as f:
-            for line in f:
-                tokens = line.split('\t')
-                self.vns.append((tokens[0], [t.strip() for t in tokens[1:]]))
+        with open(vn_path) as f:
+            reader = csv.reader(f)
+            for row in reader:
+                self.vns.append((row[0], row[1].split(";")))
 
     def can_follow_de(self, s):
         return s in ["cho","am","an","a'", "na","mar","bha", "tha"]
-        
+
     def lenited(self, s):
         unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
         return bool(unlenitable) | (s[1] == 'h')
-                    
+
     def lenited_pd(self, s):
         unlenitable = s.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
         return unlenitable | (s[1] == 'h')
@@ -58,11 +69,11 @@ class Lemmatizer:
     def chalenited_pd(self, s):
         unlenitable = s.match(r"[AEIOUaeiouLlNnRrDTSdts]")
         return unlenitable | (s[1] == 'h')
-    
+
     def ndlenited_pd(self, s):
         unlenitable = s.match(r"[AEIOUaeiouDdTtNnRrSs]")
         return unlenitable | (s[1] == 'h')
-    
+
     def delenite(self, s):
         if len(s) < 2: return s
         return s[0] + s[2:] if s[1] == 'h' else s
@@ -80,14 +91,14 @@ class Lemmatizer:
             if s in self.pronouns[key]:
                 return key
         return s
-    
+
     def lemmatize_vn(self, s):
         for vn in self.vns:
             if self.delenite(s) in vn[1]:
                 return vn[0]
         replacements = [
             ('sinn', ''), ('tail', ''), ('ail', ''), ('eil', ''), ('eal', ''),
-            ('aich', ''), ('ich', ''), ('tainn', ''), ('tinn', ''), 
+            ('aich', ''), ('ich', ''), ('tainn', ''), ('tinn', ''),
             ('eamh', ''), ('amh', ''),
             ('eamhainn', ''), ('mhainn', ''), ('inn', ''),
             ('eachadh', 'ich'), ('achadh', 'aich'), ('airt', 'air'),
@@ -111,7 +122,7 @@ class Lemmatizer:
             return "%sa" % result
         else:
             return "%se" % result
-    
+
     def lemmatize_n(self, s, pos):
         demonyms = {
             "Albannaich":"Albannach", "Basgaich":"Basgach",
@@ -123,7 +134,7 @@ class Lemmatizer:
             "Gàidheil": "Gàidheal",
             "Gaidheil": "Gaidheal", "Nàiseantaich":"Nàiseantach",
             "Sasannaich": "Sasannach", "Tearaich":"Tearach",
-            "Uibhistich":"Uibhisteach"}
+            "Uibhistich": "Uibhisteach"}
         specials = {
             "aodainn":"aodann", "ainmeannan":"ainm",
             "bailtean":"baile", "bàtaichean": "bàta", "beanntan":"beinn",
@@ -215,7 +226,8 @@ class Lemmatizer:
             "fhasa":"furasta",
             "fhaide":"fada", "fhaid'":"fada",
             "fhaisge":"faisg", "fhaisg'":"faisg",
-            "fheàrr":"math", "fhearr":"math", "fhèarr":"math", "fheàirrde":"math",
+            "fheàrr":"math", "fhearr":"math", "fhèarr":"math",
+            "fheàirrde":"math",
             "iomchaidhe":"iomchaidh",
             "ìsle":"ìosal",
             "leatha":"leathann",
@@ -234,9 +246,9 @@ class Lemmatizer:
             return re.sub("(i[cl])e$", r"\1", s)
         else:
             return re.sub("(.*[aeiouàòù])i([bcdfghmnpqrst]+)[e']?$", r"\1\2", self.delenite(s))
-    
-    """surface is the text you are lemmatizing, pos is the POS tag according to ARCOSG"""
+
     def lemmatize(self, surface, pos):
+        """Lemmatize surface based on pos, which is XPOS."""
         s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'").replace("’", "'")
         s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
         if pos != "Nt" and not pos.startswith("Nn"):
@@ -268,11 +280,12 @@ class Lemmatizer:
             return self.lemmatize_n(s, pos)
         if pos.startswith("Vm-1p"):
             return s.replace("eamaid", "") if s.endswith("eamaid") else s.replace("amaid", "")
-        if pos == "Vm-2s" or pos == "Vm": # singular imperative; easiest to deal with
+        # singular imperative; easiest to deal with
+        if pos == "Vm-2s" or pos == "Vm":
             return s
         if pos == "Vm-2p": # plural imperative
             return s.replace("aibh", "") if s.endswith("aibh") else s.replace("ibh", "")
-        if pos == "V-f": 
+        if pos == "V-f":
             return s.replace("aidh", "") if s.endswith("aidh") else s.replace("idh","")
         if pos.endswith("r"): # relative form
             if s.endswith("eas"):
@@ -287,7 +300,8 @@ class Lemmatizer:
             return self.delenite(s.replace("ear", "")) if s.endswith("ear") else self.delenite(s.replace("ar", ""))
         elif pos.startswith("V-s"): # past tense
             return self.delenite(s)
-        elif pos.startswith("V-h") or pos.startswith("Vm-3"): # conditional or third person imperative
+        # conditional or third person imperative
+        elif pos.startswith("V-h") or pos.startswith("Vm-3"):
             return self.delenite(s).replace("eadh", "") if s.endswith("eadh") else self.delenite(s).replace("adh", "")
         elif pos.endswith("d"): # dependent form
             return self.delenite(s)
@@ -305,11 +319,13 @@ class CCGRetagger:
                     tokens = line.split('\t')
                     self.retaggings[tokens[0]] = tokens[1].strip()
         self.specials = {
-            'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'], 'Dh’':['ADVPRE'], "Dh'":['ADVPRE'], 'dragh':['NPROP'], 'dùil':['NPROP'],
+            'Mgr':['FIRSTNAME'], "Mghr":['FIRSTNAME'],
+            'Dh’':['ADVPRE'], "Dh'":['ADVPRE'],
+            'dragh':['NPROP'], 'dùil':['NPROP'],
             'Ach':['CONJ','SCONJ', 'ADVPRE'],
             'ach':['CONJ','SCONJ', 'ADVPRE'],
             'Agus':['CONJ', 'SCONJ', 'ADVPRE'],
-            'agus':['CONJ', 'SCONJ', 'ADVPRE'], 
+            'agus':['CONJ', 'SCONJ', 'ADVPRE'],
             ',':['APPOS', 'NMOD', 'PUNC'],
             '-':['APPOS', 'NMOD', 'PUNC'],
             'dèidh':['N', 'NDEIDH'],
@@ -368,34 +384,118 @@ class Subcat:
 
 class Features:
     def __init__(self):
-        self.cases = { 'n':'Nom', 'd':'Dat', 'g':'Gen', 'v':'Voc' }
-        self.genders = { 'm':'Masc', 'f':'Fem' }
-        self.numbers = { 's':'Sing', 'p':'Plur', 'd':'Dual' }
+        self.cases = {'n':'Nom', 'd':'Dat', 'g':'Gen', 'v':'Voc'}
+        self.genders = {'m':'Masc', 'f':'Fem'}
+        self.numbers = {'s':'Sing', 'p':'Plur', 'd':'Dual'}
+        self.tenses = {"p":"Pres", "s":"Past", "f":"Fut"}
+        self.parttypes_u = {"a":"Ad", "c":"Comp", "g":"Inf", "v":"Voc",
+                            "p":"Pat", "o":"Num"}
+        self.parttypes_q = {"Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb",
+                            "Qnm":"Vb"}
+        self.polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
+        self.prontypes_q = {"Q-r":"Rel", "Qnr":"Rel", "Qq":"Int"}
+        self.moodtypes_q = {"q":"Int"}
 
-    def feats_adj(self, surface, pos):
-        if not pos.startswith('Aq-'): return '_'
-        number = self.numbers[pos[3]]
-        if len(pos) == 4: return "Number=%s" % number
-        gender = self.genders[pos[4]]
-        if len(pos) == 5: return "Gender=%s|Number=%s" % (gender, number)
-        case = self.cases[pos[5]]
-        return "Case=%s|Gender=%s|Number=%s" % (case, gender, number)
-        
-    def feats_det(self, surface, pos):
-        number = self.numbers[pos[2]]
-        if len(pos) == 3: return "Number=%s" % number
-        if len(pos) == 4: return "Gender=%s|Number=%s" % (self.genders[pos[3]], number)
-        case = self.cases[pos[4]]
-        if pos[3] == "-": return "Case=%s|Number=%s" % (case,number)
-        return "Case=%s|Gender=%s|Number=%s" % (case, self.genders[pos[3]], number)
+    def feats(self, xpos: str) -> dict:
+        if xpos.startswith("A"):
+            return self.feats_adj(xpos)
+        if xpos.startswith("N"):
+            return self.feats_noun(xpos)
+        if xpos.startswith("T"):
+            return self.feats_det(xpos)
 
-    def feats_noun(self, surface, pos):
-        case = self.cases[pos[4]]
-        if pos[3] == "-": return "Case=%s" % case
-        gender = self.genders[pos[3]]
-        if pos.startswith('Nn'): return "Case=%s|Gender=%s" % (case, gender)
-        number = self.numbers[pos[2]]
-        return "Case=%s|Gender=%s|Number=%s" % (case, gender, number)
+    def feats_adj(self, xpos: str) -> dict:
+        if xpos == "Apc": return {"Degree":["Cmp,Sup"]}
+        result = {}
+        if not xpos.startswith('Aq-'): return result
+        result["Number"] = [self.numbers[xpos[3]]]
+        if len(xpos) == 4:
+            return result
+        result["Gender"] = [self.genders[xpos[4]]]
+        if len(xpos) == 5:
+            return result
+        result["Case"] = [self.cases[xpos[5]]]
+        return result
+
+    def feats_det(self, xpos: str) -> dict:
+        result = {}
+        number = [self.numbers[xpos[2]]]
+        result["Number"] = number
+        if len(xpos) == 3:
+            return result
+        result["Gender"] = [self.genders[xpos[3]]]
+        if len(xpos) == 4:
+            return result
+        case = [self.cases[xpos[4]]]
+        result["Case"] = case
+        if xpos[3] == "-": return {"Case":case, "Number":number}
+        return result
+
+    def feats_noun(self, xpos: str) -> dict:
+        result = {}
+        result["Case"] = [self.cases[xpos[4]]]
+        if xpos[3] == "-": return result
+        result["Gender"] = [self.genders[xpos[3]]]
+        if xpos.startswith('Nn'): return result
+        result["Number"] = [self.numbers[xpos[2]]]
+        return result
+
+    def feats_nv(self, prev_xpos: str, xpos: str) -> dict:
+        result = {}
+        if prev_xpos.startswith("Sa") or prev_xpos.startswith("Sp"):
+            result["VerbForm"] = ["Vnoun"]
+        elif prev_xpos == "Ug" or prev_xpos.startswith("Dp"):
+            result["VerbForm"] = ["Inf"]
+        else:
+            result["VerbForm"] = ["Vnoun"]
+        return result
+
+    def feats_part(self, xpos: str) -> dict:
+        result = {}
+        if xpos[1] in self.parttypes_u:
+            result["PartType"] = [self.parttypes_u[xpos[1]]]
+        if xpos[1] in self.moodtypes_q:
+            result["Mood"] = [self.moodtypes_q[xpos[1]]]
+        if xpos in self.parttypes_q:
+            result["PartType"] = [self.parttypes_q[xpos]]
+            if xpos in self.polartypes_q:
+                result["Polarity"] = [self.polartypes_q[xpos]]
+            if xpos in self.prontypes_q:
+                result["PronType"] = [self.prontypes_q[xpos]]
+        if xpos == "Q--s":
+            result["Tense"] = ["Past"]
+        if xpos == "Qnm":
+            result["Mood"] = ["Imp"]
+        return result
+
+    def feats_pron(self, xpos: str) -> dict:
+        result = {}
+        result["Person"] = [xpos[2]]
+        result["Number"] = [self.numbers[xpos[3]]]
+        if len(xpos) > 4 and xpos[4] in self.genders:
+            result["Gender"] = [self.genders[xpos[4]]]
+        if xpos.endswith('e'):
+            result["PronType"] = ['Emp']
+        return result
+
+    def feats_verb(self, xpos: str) -> dict:
+        result = {}
+        if '0' in xpos:
+            result["Person"] = ["0"]
+        elif '1' in xpos:
+            result["Person"] = ["1"]
+        elif '2' in xpos:
+            result["Person"] = ["2"]
+        if len(xpos) == 2: # this may well be a mistagging
+            result["Mood"] = ["Imp"]
+            return result
+        if xpos[2] in self.tenses:
+            result["Tense"] = [self.tenses[xpos[2]]]
+        if xpos[2] == "h":
+            result["Mood"] = ["Cnd"]
+        if xpos[1] == "m":
+            result["Mood"] = ["Imp"]
+        return result
 
 class CCGTyper:
     def __init__(self):
@@ -407,12 +507,12 @@ class CCGTyper:
                     self.types[tokens[0]] = tokens[1].strip()
 
     def type_verb(self, surface, pos, tag):
-        clausetype = "dcl" if pos.endswith("p") or pos.endswith("s") or pos.endswith("f") else "dep" if pos.endswith("d") else "rel" if pos.endswith("r") else "small" if pos == "Nv" else "imp"
+        clausetypes = {"p":"dcl","s":"dcl","f":"dcl","r":"rel","d":"dep"}
+        clausetype = clausetypes[pos[-1]] if pos[-1] in clausetypes else "small" if pos == "Nv" else "imp"
         tense = "pres" if "p" in pos else "past" if "s" in pos else "fut" if "f" in pos else "hab" if "h" in pos else None
         phon = "vowel" if re.match("^[aeiouàèìòù]", surface) or surface.startswith("f") else "cons"
-        features = (clausetype if tense is None else clausetype + " " + tense) + " " + phon
+        features = (clausetype if tense is None else f"{clausetype} {tense}") + f" {phon}"
         newtag = tag + features.upper().replace(' ','')
-#        print surface + " " + pos + " " + tag + " " + self.types[tag] + " " + features
         type = self.types[tag] % features
         if pos.startswith("Vm") or '0' in pos:
             newtag = newtag + "IMPERS"
@@ -425,4 +525,3 @@ class CCGTyper:
             return self.type_verb(surface, pos, tag)
         else:
             return (tag, self.types[tag])
-                    
