@@ -6,10 +6,9 @@ with open(sys.argv[2],'w') as fixed:
     for sentence in corpus:
         if sentence.meta_present('comment'):
             fixed.write('# comment = %s\n' % sentence.meta_value('comment'))
+        fixed.write('# sent_id = %s\n' % sentence.id)
         if sentence.meta_present('speaker'):
             fixed.write('# speaker = %s\n' % sentence.meta_value('speaker'))
-        print(sentence.id)
-        fixed.write('# sent_id = %s\n' % sentence.id)
         fixed.write('# text = %s\n' % sentence.text.replace('_', ' '))
         offset = 0
         skip = False
