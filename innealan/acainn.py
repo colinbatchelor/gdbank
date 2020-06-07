@@ -15,37 +15,42 @@ class Lemmatizer:
             ('beir', ['breith', 'bhreith', 'rug', 'beiridh']),
             ('cluinn', ['cluinntinn', 'chluinntinn', 'cuala', "cual'",
                         'chuala', 'cluinnidh']),
-            ('rach', ['chaidh', 'dol', 'dhol', 'thèid', 'tèid', "deach"]),
+            ('rach', ['chaidh', 'dol', 'dhol', 'thèid', 'tèid', "deach",
+                      "deachaidh"]),
             ('dèan', ['rinn', 'dèanamh', 'dhèanamh', 'nì']),
             ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì',
                       'chithear', 'chitheadh', 'fhaca', 'faca']),
             ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh',
                        'gheibhear']),
             ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
+            ('tadhail', ['thadhladh']),
             ('toir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
             ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig',
                       'tàinig', 'dàinig'])]
         self.prepositions = {
-            'aig':["aga(m|t|inn|ibh)|aige|aice|aca|a'd"],
+            'aig':["aga(m|d|inn|ibh)|aige|aice|aca|a'[dm]"],
             'air':["or[mt]|oir(re|bh|nn)|orra"],
             'airson':["'?son"],
-            'an':["'?s?a[mn]", "sa", "'?na", "anns?(_a[nm])?", "innte", "a's"],
-            'as':["às", "as.*", "ais.*"],
+            'an': ["'?s?a[mn]", "'?sa", "'?na", "anns?(_a[nm])?", "annam",
+                   "innte", "a's"],
+            'as':["às", "as.*", "ais.*", "á"],
             'bho':["(bh)?o", "(bh)?ua(m|t)"],
             'eadar':["ea.*"],
             'fo':["fo.*"],
-            'gu':["gu_ruige"],
+            'gu': ["chun", "gu_ruige", "(th)?ui[cg]e", "(th)?uga(m|d|inn|ibh)",
+                   "(th)?uca"],
             'de':["dh(en?|iom|[ei]th|inn|iu?bh)"],
-            'do':["dh(omh|i|ut|uinn|an?|[au]ib[h'])(-?s['a]?)?"],
+            'do':["dh(à|am|[oò]mh|i|ui?t|u'|uinn|an?|[au]ib[h'])(-?s['a]?)?e?"],
             'le':["le.*"],
-            'ri':["ri(um|ut|s)", "ru.*"],
+            'ri':["ri(um|ut(ha)?|s)", "ru.*"],
             'ro':["ro.*"],
             'thar':["tha.*"]
         }
         self.pronouns = {
             "mi": ["mise"], "thu": ["tu", "tusa", "thusa"],
             "e": ["esan"], "i": ["ise"],
-            "sinn": ["sinne"], "sibh": ["sibhse"], "iad": ["iadsan"]
+            "sinn": ["sinne"], "sibh": ["sibhse"], "iad": ["iadsan"],
+            "fèin": ["fhìn"]
             }
         dir = os.path.dirname(__file__)
         vn_path = os.path.join(dir, 'resources', 'vns.csv')
@@ -61,116 +66,40 @@ class Lemmatizer:
             for row in reader:
                 self.lemmata[row[0]] = row[1]
 
-    def can_follow_de(self, s):
+    def can_follow_de(self, s: str) -> bool:
         """this is dè the interrogative"""
         return s in ["cho", "am", "an", "a'", "na", "mar", "bha", "tha"]
 
-    def lenited(self, s):
+    def lenited(self, s: str) -> bool:
         unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", s)
         return bool(unlenitable) | (s[1] == 'h')
 
-    def lenited_pd(self, s):
+    def lenited_pd(self, s: str) -> bool:
         unlenitable = s.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
         return unlenitable | (s[1] == 'h')
 
-    def chalenited_pd(self, s):
+    def chalenited_pd(self, s: str) -> bool:
         unlenitable = s.match(r"[AEIOUaeiouLlNnRrDTSdts]")
         return unlenitable | (s[1] == 'h')
 
-    def ndlenited_pd(self, s):
+    def ndlenited_pd(self, s: str) -> bool:
         unlenitable = s.match(r"[AEIOUaeiouDdTtNnRrSs]")
         return unlenitable | (s[1] == 'h')
 
-    def delenite(self, s):
-        if len(s) < 2: return s
+    def delenite(self, s: str) -> str:
+        if len(s) < 3: return s
         return s[0] + s[2:] if s[1] == 'h' else s
 
-    def lemmatize_preposition(self, s):
-        s = s.replace(' ','_')
-        if not re.match("^'?san$", s): s = re.sub('-?san$','',s)
-        for key in self.prepositions:
-            for pattern in self.prepositions[key]:
-                if re.match("^("+pattern+")$", s): return key
-        return s
+    def deslenderize(self, s: str) -> str:
+        if re.match('.*ei.$', s): return re.sub("(.*)ei(.)", r"\1ea\2", s)
+        return re.sub("(.*[aiouàòù])i([bcdfghmnpqrst]+)[e']?$", r"\1\2", s)
 
-    def lemmatize_pronoun(self, s):
-        for key in self.pronouns:
-            if s in self.pronouns[key]:
-                return key
-        return s
-
-    def lemmatize_vn(self, s):
-        for vn in self.vns:
-            if self.delenite(s) in vn[1]:
-                return vn[0]
-        replacements = [
-            ('sinn', ''), ('tail', ''), ('ail', ''), ('eil', ''), ('eal', ''),
-            ('aich', ''), ('ich', ''), ('tainn', ''), ('tinn', ''),
-            ('eamh', ''), ('amh', ''),
-            ('eamhainn', ''), ('mhainn', ''), ('inn', ''),
-            ('eachadh', 'ich'), ('achadh', 'aich'), ('airt', 'air'),
-            ('gladh', 'gail'), ('eadh', ''), ('adh', ''), ('e', ''),
-            ('eachd', 'ich'), ('achd', 'aich')
-        ]
-        for replacement in replacements:
-            if s.endswith(replacement[0]):
-                return self.delenite(s.replace(replacement[0], replacement[1]))
-        return self.delenite(s)
-
-    def lemmatize_adjective(self, s):
+    def lemmatize_adjective(self, s: str) -> str:
         s = self.delenite(s)
-        if s.endswith("ir"): return re.sub("ir$", "r", s)
+        if s.endswith("òir"): return re.sub("òir$", "òr", s)
         return s
 
-    def remove_apostrophe(self, s):
-        result = re.sub("'$", "", s)
-        stem = re.sub("[bcdfghlmnprst]+'$", "", s)
-        if re.match(".*[aouàòù]$", stem):
-            return "%sa" % result
-        else:
-            return "%se" % result
-
-    def lemmatize_n(self, s, pos):
-        s = self.delenite(s)
-        s = re.sub('-?san$', '', s)
-        if s.endswith("'"): s = self.remove_apostrophe(s)
-        if pos == "Nv":
-            return self.lemmatize_vn(self.delenite(s))
-        if pos.startswith("Ncp"):
-            if s in self.lemmata:
-                return self.lemmata[s]
-            if s.endswith('aich'):
-                return s.replace('aich','ach')
-            if s.endswith('aidhean'):
-                return s.replace('aidhean', 'adh')
-            if s.endswith("ichean"):
-                return s.replace("ichean", "iche")
-            if s.endswith("ean"):
-                return re.sub('ean$', '', s)
-            elif s.endswith("eannan"):
-                return re.sub("annan$", "", s)
-            elif s.endswith("nnan"):
-                return s.replace('nnan', '')
-            elif s.endswith("an") and s != "ealan":
-                return re.sub('an$', '', s)
-        if pos.endswith("d") or pos.endswith("g") or pos.endswith("v"):
-            if s in self.lemmata:
-                return self.lemmata[s]
-            if re.match(".*eige?$", s):
-                return re.sub("eige?$", "eag", s)
-            if s.endswith("aich"):
-                return re.sub("aich$", "ach", s)
-            if re.match(".*[bcdfghlmnprst]ich$", s):
-                return re.sub("ich$", "each", s)
-            if re.match(".*[au]is$",s) and 'm' in pos:
-                return re.sub("is$", "s", s)
-            if 'f' in pos and s.endswith('e'):
-                return re.sub("e$", "", s)
-        if s in self.lemmata:
-            return self.lemmata[s]
-        return s
-
-    def lemmatize_comparative(self, s):
+    def lemmatize_comparative(self, s: str) -> str:
         specials = {
             "àille":"àlainn", "aotruime":"aotrom",
             "bige":"beag", "duirche":"dorcha",
@@ -183,7 +112,7 @@ class Lemmatizer:
             "ìsle":"ìosal",
             "leatha":"leathann",
             "mheasaile":"measail",
-            "mhò":"mòr","mhuth'":"mòr",
+            "mhò":"mòr","mhuth'":"mòr", "motha":"math",
             "miona":"mion", "miosa":"dona", "mhisde":"dona",
             "lugha":"beag",
             "righinne":"righinn",
@@ -196,72 +125,177 @@ class Lemmatizer:
         elif re.match(".*i[cl]e$",s):
             return re.sub("(i[cl])e$", r"\1", s)
         else:
-            return re.sub("(.*[aeiouàòù])i([bcdfghmnpqrst]+)[e']?$", r"\1\2", self.delenite(s))
+            return self.delenite(self.deslenderize(s))
 
-    def lemmatize(self, surface, pos):
-        """Lemmatize surface based on pos, which is XPOS."""
-        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'")
-        s = s.replace("’", "'")
-        s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
-        if pos == "Q--s":
-            return "do"
-        if pos != "Nt" and not pos.startswith("Nn"):
-            s = s.lower()
-        if pos == "Apc" or pos == "Aps":
-            return self.lemmatize_comparative(s)
-        if pos.startswith("Aq") or pos.startswith("Ar"):
-            return self.lemmatize_adjective(s)
-        # do in this order because of "as"
-        if pos.startswith("W") or pos == "Csw":
-            return "is"
-        if pos.startswith("Td"):
-            return "an"
-        if pos == ("Nt"):
-            return "Alba" if s == "Albann" else self.delenite(s)
+    def lemmatize_noun(self, s: str, xpos: str) -> str:
+        if s not in ["Shaw", "Christie"]:
+            s = self.delenite(s)
+        if s not in ["dusan", "mìosan", "pìosan"]:
+            s = re.sub('-?san$', '', s)
+        oblique = re.match('.*[vdg]$', xpos)
+        if s.endswith("'") and s!= "a'": s = self.remove_apostrophe(s)
+        if xpos == "Nv":
+            return self.lemmatize_vn(s)
+        if xpos == ("Nt"):
+            return "Alba" if s == "Albann" else s
         if s.startswith("luchd"):
             return s.replace("luchd", "neach")
-        if pos.startswith("Sp") or pos.startswith("Pr"):
-            return self.lemmatize_preposition(s)
-        if pos.startswith("Pp"):
-            return self.lemmatize_pronoun(s)
-        if pos.startswith("Px"):
+        if xpos.startswith("Nn"):
+            if s == "a'": return "an"
+            s = s.replace("Mic", "Mac")
+            if s in self.lemmata:
+                return self.lemmata[s]
+            if oblique and s not in ["Iain", "Keir", "Magaidh"]:
+                return self.deslenderize(s)
+            return s
+        if xpos.startswith("Ncp"):
+            if s in self.lemmata:
+                return self.lemmata[s]
+            if s.endswith("eachan"):
+                return re.sub("achan$", "", s)
+            if s.endswith("achan"):
+                return re.sub("chan$","",s)
+            if s.endswith('aich'):
+                return s.replace('aich','ach')
+            if s.endswith('aidhean'):
+                return s.replace('aidhean', 'adh')
+            if s.endswith("aichean"):
+                return s.replace("aichean", "ach")
+            if s.endswith("ichean"):
+                return s.replace("ichean", "iche")
+            if s.endswith("ean"):
+                return re.sub('ean$', '', s)
+            elif s.endswith("eannan"):
+                return re.sub("annan$", "", s)
+            elif s.endswith("nnan"):
+                return s.replace('nnan', '')
+            elif s.endswith("an") and s != "ealan":
+                return re.sub('an$', '', s)
+        if oblique:
+            if s in self.lemmata:
+                return self.lemmata[s]
+            if re.match(".*eige?$", s):
+                return re.sub("eige?$", "eag", s)
+            if s.endswith("aich") and 'm' in xpos:
+                return re.sub("aich$", "ach", s)
+            if s.endswith("aidh") and 'm' in xpos:
+                return re.sub("aidh$", "adh", s)
+            if re.match(".*[bcdfghlmnprst]ich$", s):
+                return re.sub("ich$", "each", s)
+            if re.match(".*[au]is$",s) and 'm' in xpos:
+                return re.sub("is$", "s", s)
+            if 'f' in xpos and s.endswith('the'):
+                return re.sub("e$", "", s)
+        if s in self.lemmata:
+            return self.lemmata[s]
+        return s
+
+    def lemmatize_preposition(self, s: str) -> str:
+        s = s.replace(' ','_')
+        s = re.sub('^h-', '', s)
+        if not re.match("^'?san?$", s): s = re.sub('-?san?$','',s)
+        for key in self.prepositions:
+            for pattern in self.prepositions[key]:
+                if re.match("^("+pattern+")$", s): return key
+        return s if s.startswith('bh') else self.delenite(s)
+
+    def lemmatize_pronoun(self, s: str) -> str:
+        for key in self.pronouns:
+            if s in self.pronouns[key]:
+                return key
+        if s.startswith("fh") or s.startswith("ch"):
             return self.delenite(s)
-        if pos.startswith("Sa") and s.endswith("'"):
-            return "ag"
-        if pos.startswith("V"):
-            for irregular in self.irregulars:
+        return s
+
+    def lemmatize_verb(self, s: str, xpos: str) -> str:
+        for irregular in self.irregulars:
                 if s in irregular[1]:
                     return irregular[0]
-        if pos.startswith("N"):
-            return self.lemmatize_n(s, pos)
-        if pos.startswith("Vm-1p"):
-            return s.replace("eamaid", "") if s.endswith("eamaid") else s.replace("amaid", "")
+        if xpos.startswith("Vm-1p"):
+            return re.sub('e?amaid$', '', s)
         # singular imperative; easiest to deal with
-        if pos == "Vm-2s" or pos == "Vm":
+        if xpos == "Vm-2s" or xpos == "Vm":
             return s
-        if pos == "Vm-2p": # plural imperative
-            return s.replace("aibh", "") if s.endswith("aibh") else s.replace("ibh", "")
-        if pos == "V-f":
-            return s.replace("aidh", "") if s.endswith("aidh") else s.replace("idh","")
-        if pos.endswith("r"): # relative form
+        if xpos == "Vm-2p": # plural imperative
+            return re.sub('a?ibh$', '', s)
+        if xpos == "V-f":
+            return re.sub('a?idh$', '', s)
+        if xpos.endswith("r"): # relative form
             if s.endswith("eas"):
                 return s.replace("eas","")
             elif s.endswith("as"):
                 return s.replace("as","")
-            elif pos == "Ar":
-                return self.delenite(s)
-        elif pos.startswith("V-s0"):
-            return self.delenite(s.replace("eadh", "")) if s.endswith("eadh") else self.delenite(s.replace("adh", ""))
-        elif pos.startswith("V-p0") or pos.startswith("V-f0"):
-            return self.delenite(s.replace("ear", "")) if s.endswith("ear") else self.delenite(s.replace("ar", ""))
-        elif pos.startswith("V-s"): # past tense
+        elif xpos.startswith("V-s0"):
+            return self.delenite(re.sub('e?adh$', '', s))
+        elif xpos.startswith("V-p0") or xpos.startswith("V-f0"):
+            return self.delenite(re.sub('e?ar$', '', s))
+        elif xpos.startswith("V-s"): # past tense
             return self.delenite(s)
         # conditional or third person imperative
-        elif pos.startswith("V-h") or pos.startswith("Vm-3"):
-            return self.delenite(s).replace("eadh", "") if s.endswith("eadh") else self.delenite(s).replace("adh", "")
-        elif pos.endswith("d"): # dependent form
+        elif xpos.startswith("V-h") or xpos.startswith("Vm-3"):
+            return self.delenite(re.sub('e?adh$', '', s))
+        elif xpos.endswith("d"): # dependent form
             return self.delenite(s)
-        if pos.startswith("A"):
+
+    def lemmatize_vn(self, s: str) -> str:
+        for vn in self.vns:
+            if self.delenite(s) in vn[1]:
+                return vn[0]
+        replacements = [
+            ('sinn', ''), ('tail', ''), ('ail', ''), ('eil', ''), ('eal', ''),
+            ('aich', ''), ('ich', ''), ('tainn', ''), ('tinn', ''),
+            ('eamh', ''), ('amh', ''),
+            ('eamhainn', ''), ('mhainn', ''), ('inn', ''),
+            ('eachadh', 'ich'), ('achadh', 'aich'), ('airt', 'air'),
+            ('gladh', 'gail'), ('eadh', ''), ('-adh', ''), ('adh', ''),
+            ('e', ''), ('eachd', 'ich'), ('achd', 'aich')
+        ]
+        for replacement in replacements:
+            if s.endswith(replacement[0]):
+                return self.delenite(s.replace(replacement[0], replacement[1]))
+        return self.delenite(s)
+
+    def remove_apostrophe(self, s: str) -> str:
+        result = re.sub("'$", "", s)
+        stem = re.sub("[bcdfghlmnprst]+'$", "", s)
+        if re.match(".*[aouàòù]$", stem):
+            return "%sa" % result
+        else:
+            return "%se" % result
+
+    def lemmatize(self, surface: str, xpos: str) -> str:
+        """Lemmatize surface based on xpos."""
+        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'")
+        s = re.sub("[’‘]", "'", s)
+        s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
+        if xpos == "Q--s":
+            return "do"
+        if not (xpos in ["Nt", "Up", "Y"]) and not xpos.startswith("Nn"):
+            s = s.lower()
+        if xpos.startswith("R") or xpos == "I":
+            if s not in ["bhuel", "chaoidh", "cho", "fhathast", "mhmm",
+                               "thall", "thairis", "thì"]:
+                return self.delenite(s)
+        if xpos == "Apc" or xpos == "Aps":
+            return self.lemmatize_comparative(s)
+        if xpos.startswith("Aq") or xpos.startswith("Ar"):
+            return self.lemmatize_adjective(s)
+        # do in this order because of "as"
+        if xpos.startswith("W") or xpos == "Csw":
+            return "is"
+        if xpos.startswith("Td"):
+            return "an"
+        if xpos.startswith("Sp") or xpos.startswith("Pr"):
+            return self.lemmatize_preposition(s)
+        if xpos.startswith("Pp") or xpos == "Px":
+            return self.lemmatize_pronoun(s)
+        if xpos.startswith("Sa") and s.endswith("'"):
+            return "ag"
+        if xpos.startswith("V"):
+            return self.lemmatize_verb(s, xpos)
+        if xpos.startswith("N"):
+            return self.lemmatize_noun(s, xpos)
+        if xpos.startswith("A"):
             return self.delenite(s)
         return s
 
