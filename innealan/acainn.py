@@ -39,7 +39,7 @@ class Lemmatizer:
             'fo':["fo.*"],
             'gu': ["chun", "gu_ruige", "(th)?ui[cg]e", "(th)?uga(m|d|inn|ibh)",
                    "(th)?uca"],
-            'de':["dh(en?|iom|[ei]th|inn|iu?bh)"],
+            'de':["dh?(en?|iom|[ei]th|inn|iu?bh)"],
             'do':["dh(à|am|[oò]mh|i|ui?t|u'|uinn|an?|[au]ib[h'])(-?s['a]?)?e?"],
             'le':["le.*"],
             'ri':["ri(um|ut(ha)?|s)", "ru.*"],
@@ -289,7 +289,7 @@ class Lemmatizer:
             return self.lemmatize_preposition(s)
         if xpos.startswith("Pp") or xpos == "Px":
             return self.lemmatize_pronoun(s)
-        if xpos.startswith("Sa") and s.endswith("'"):
+        if xpos.startswith("Sa"):
             return "ag"
         if xpos.startswith("V"):
             return self.lemmatize_verb(s, xpos)
