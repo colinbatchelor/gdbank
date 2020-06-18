@@ -96,7 +96,7 @@
 12	math	math	ADV	Rg	_	_	_	_	_
 13	nas	nas	PART	Uc	PartType=Comp	_	_	_	_
 14	luaithe	luath	ADJ	Apc	Degree=Cmp,Sup	_	_	_	_
-15	na	na	ADP	Um	_	_	_	_	_
+15	na	na	ADP	Um	_	17	case	_	_
 16	na	an	DET	Tdpm	Gender=Masc|Number=Plur	_	_	_	_
 17	cluicheadairean	cluicheadair	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	_	_	_	_
 18	dìon	dìon	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
@@ -110,9 +110,9 @@
 # sent_id = s02_009
 # speaker = [1]
 # text = Strachan ga fàgail aig Nicol ach rinn e a’ chùis air Nicol agus thug e a char às agus tha i a-nis aig Murphy
-1	Strachan	Strachan	PROPN	Nn	_	_	_	_	_
-2	ga	ga	PART	Sap3sf	_	_	_	_	_
-3	fàgail	fàg	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+1	Strachan	Strachan	PROPN	Nn	_	0	root	_	_
+2	ga	ga	PART	Sap3sf	_	3	obj	_	_
+3	fàgail	fàg	NOUN	Nv	VerbForm=Vnoun	1	xcomp:pred	_	_
 4	aig	aig	ADP	Sp	_	_	_	_	_
 5	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
 6	ach	ach	CCONJ	Cc	_	_	_	_	_
@@ -745,7 +745,7 @@
 7	air	air	ADP	Sp	_	_	_	_	_
 8	an	an	DET	Dp3p	Number=Plur|Person=3	_	_	_	_
 9	casan	ca	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	_	_	_	_
-10	na	na	ADP	Um	_	_	_	_	_
+10	na	na	ADP	Um	_	11	case	_	_
 11	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 12	na	an	DET	Tdpm	Gender=Masc|Number=Plur	_	_	_	_
 13	cluicheadairean	cluicheadair	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	_	_	_	_
@@ -1384,7 +1384,7 @@
 57	math	math	ADV	Rg	_	_	_	_	_
 58	nas	nas	PART	Uc	PartType=Comp	_	_	_	_
 59	àirde	àrd	ADJ	Apc	Degree=Cmp,Sup	_	_	_	_
-60	na	na	ADP	Um	_	_	_	_	_
+60	na	na	ADP	Um	_	62	case	_	_
 61	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 62	crann-tarsainn	crann-tarsainn	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 63	agus	agus	CCONJ	Cc	_	_	_	_	_
