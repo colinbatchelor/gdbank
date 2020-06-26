@@ -1,6 +1,7 @@
 import sys
 import pyconll
 import pprint
+import re
 from collections import defaultdict
 
 # based on https://github.com/tylerneylon/explacy/blob/master/explacy.py
@@ -136,7 +137,7 @@ if len(sys.argv) == 2:
         print()
 else:
     for sentence in corpus:
-        if sentence.id == sys.argv[2]:
+        if re.match(sys.argv[2], sentence.id):
             print(sentence.id)
             if len(sys.argv) == 4:
                 slice = sentence[0:int(sys.argv[3])]
