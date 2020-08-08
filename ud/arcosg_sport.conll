@@ -2299,11 +2299,11 @@
 # sent_id = s04_004
 # speaker = [1]
 # text = tha i aig Dalgleish ma-thà
-97	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
-98	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
-99	aig	aig	ADP	Sp	_	_	_	_	_
-100	Dalgleish	Dalgleish	PROPN	Nn	_	_	_	_	_
-101	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
+1	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
+2	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+3	aig	aig	ADP	Sp	_	_	_	_	_
+4	Dalgleish	Dalgleish	PROPN	Nn	_	_	_	_	_
+5	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
 
 # sent_id = s04_005
 # speaker = [1]
@@ -2362,9 +2362,9 @@
 149	dh’Alba	Alba	PROPN	Nt	_	_	_	_	_
 150	a-rithist	a-rithist	ADV	Rt	_	_	_	_	_
 
-# sent_id = s04_1
+# sent_id = s04_007
 # speaker = [2]
-# text = 's e an rud as taitniche mu dheidhinn seo air fad Aonghais gu bheil iad na cluicheadairean Alba a' faighinn chun na loighne Strachan MacIlvenny Dalgleish Cooper tha iad uileag a' faighinn chon na loighne chan e ann ach
+# text = 's e an rud as taitniche mu dheidhinn seo air fad Aonghais gu bheil iad na cluicheadairean Alba a' faighinn chun na loighne Strachan MacIlvenny Dalgleish Cooper
 1	's	is	AUX	Wp-i	_	_	_	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
@@ -2392,6 +2392,10 @@
 25	MacIlvenny	MacIlvenny	PROPN	Nn	_	24	conj	_	_
 26	Dalgleish	Dalgleish	PROPN	Nn	_	24	conj	_	_
 27	Cooper	Cooper	PROPN	Nn	_	24	conj	_	_
+
+# sent_id = s04_008
+# speaker = [2]
+# text = tha iad uileag a' faighinn chon na loighne chan e ann ach
 28	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 29	iad	iad	PRON	Pp3p	Number=Plur|Person=3	28	nsubj	_	_
 30	uileag	uileag	ADV	Rg	_	_	_	_	_
@@ -2405,14 +2409,18 @@
 38	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 39	ach	ach	ADP	Sp	_	_	_	_	_
 
-# sent_id = s04_2
+# sent_id = s04_009
 # speaker = [1]
-# text = tè ghoirid ma-thà gu Nicol Nicol a-steach leatha a bhucas na h-Astràilianaich gu Stracan Strachan air ais a-mach gu Cooper Cooper a' sealltainn tè àrd a-nall gu dh’fhàg Dalgleish i ach fhuair na h-Astràilich a-mach i gu Sounness Souness a-nall gu Miller Miller air taobh thall na pàirce ga feuchainn a-steach ach stad Davidson e le a chasan Davidson buille mhòr a-mach gu Cosmina Cosmina a' ruith leatha a-nise sìos a’ phàirce fhuair e seachad air Malpas tha e a' ruith a-steach a bhucas Albainn Leighton a' tighinn a-mach bhuail e le a chas i agus bhuail Leighton a-mach gu Malpas i ach chan eil an cunnart seachad fhathast sgàth tha Watson a' ruith a-steach air Malpas Malpas gu Souness Souness gu Aitken Aitken leatha Aitken a' sealltainn am faigh e a cur gu MavIlvenny fhuair e air taobh na pàirce i tha iad a-staigh air leth [?] a-steach air na h-Astràilianaich ach chaidh i a-mach agus 's e sadadh-a-steach a bhios ann do dh’Astràilia dh’fhaodadh siud a dhèanamh gu math cunnartach a Mhurchaidh
+# text = tè ghoirid ma-thà gu Nicol
 1	tè	tè	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 2	ghoirid	goirid	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	1	amod	_	_
 3	ma-thà	ma-thà	ADV	Rg	_	1	advmod	_	_
 4	gu	gu	ADP	Sp	_	_	_	_	_
 5	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_010
+# speaker = [1]
+# text = Nicol a-steach leatha a bhucas na h-Astràilianaich gu Stracan
 6	Nicol	Nicol	PROPN	Nn	_	0	root	_	_
 7	a-steach	a-steach	ADV	Rs	_	6	advmod	_	_
 8	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	6	obl	_	_
@@ -2422,19 +2430,31 @@
 12	h-Astràilianaich	astràilianach	NOUN	Ncpmg	Case=Gen|Gender=Masc|Number=Plur	_	_	_	_
 13	gu	gu	ADP	Sp	_	_	_	_	_
 14	Stracan	Stracan	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_011
+# speaker = [1]
+# text = Strachan air ais a-mach gu Cooper
 15	Strachan	Strachan	PROPN	Nn	_	0	root	_	_
 16	air	air	ADP	Sp	_	_	_	_	_
 17	ais	ais	ADP	Nf	_	_	_	_	_
 18	a-mach	a-mach	ADV	Rs	_	_	_	_	_
 19	gu	gu	ADP	Sp	_	_	_	_	_
 20	Cooper	Cooper	PROPN	Nn	_	_	_	_	_
-21	Cooper	Cooper	PROPN	Nn	_	_	_	_	_
-22	a'	ag	PART	Sa	_	_	_	_	_
-23	sealltainn	seall	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-24	tè	tè	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
-25	àrd	àrd	ADJ	Aq-sfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
-26	a-nall	a-nall	ADV	Rs	_	_	_	_	_
-27	gu	gu	ADP	Sp	_	_	_	_	_
+
+# sent_id = s04_012
+# speaker = [1]
+# text = Cooper a' sealltainn tè àrd a-nall gu
+1	Cooper	Cooper	PROPN	Nn	_	_	_	_	_
+2	a'	ag	PART	Sa	_	_	_	_	_
+3	sealltainn	seall	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+4	tè	tè	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
+5	àrd	àrd	ADJ	Aq-sfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
+6	a-nall	a-nall	ADV	Rs	_	_	_	_	_
+7	gu	gu	ADP	Sp	_	_	_	_	_
+
+# sent_id = s04_013
+# speaker = [1]
+# text = dh’fhàg Dalgleish i ach fhuair na h-Astràilich a-mach i gu Sounness
 28	dh’fhàg	fàg	VERB	V-s	Tense=Past	_	_	_	_
 29	Dalgleish	Dalgleish	PROPN	Nn	_	_	_	_	_
 30	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
@@ -2446,10 +2466,18 @@
 36	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 37	gu	gu	ADP	Sp	_	_	_	_	_
 38	Sounness	Sounness	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_014
+# speaker = [1]
+# text = Souness a-nall gu Miller
 39	Souness	Souness	PROPN	Nn	_	_	_	_	_
 40	a-nall	a-nall	ADV	Rs	_	_	_	_	_
 41	gu	gu	ADP	Sp	_	_	_	_	_
 42	Miller	Miller	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_015
+# speaker = [1]
+# text = Miller air taobh thall na pàirce ga feuchainn a-steach ach stad Davidson e le a chasan Davidson
 43	Miller	Miller	PROPN	Nn	_	_	_	_	_
 44	air	air	ADP	Sp	_	_	_	_	_
 45	taobh	taobh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
@@ -2467,11 +2495,19 @@
 57	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 58	chasan	ca	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	_	_	_	_
 59	Davidson	Davidson	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_016
+# speaker = [1]
+# text = buille mhòr a-mach gu Cosmina
 60	buille	buille	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 61	mhòr	mòr	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 62	a-mach	a-mach	ADV	Rs	_	_	_	_	_
 63	gu	gu	ADP	Sp	_	_	_	_	_
 64	Cosmina	Cosmina	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_017
+# speaker = [1]
+# text = Cosmina a' ruith leatha a-nise sìos a’ phàirce
 65	Cosmina	Cosmina	PROPN	Nn	_	_	_	_	_
 66	a'	ag	PART	Sa	_	_	_	_	_
 67	ruith	ruith	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2480,11 +2516,19 @@
 70	sìos	sìos	ADV	Rs	_	_	_	_	_
 71	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	_	_	_	_
 72	phàirce	pàirce	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
+
+# sent_id = s04_018
+# speaker = [1]
+# text = fhuair e seachad air Malpas
 73	fhuair	faigh	VERB	V-s	Tense=Past	_	_	_	_
 74	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 75	seachad	seachad	ADV	Rg	_	_	_	_	_
 76	air	air	ADP	Sp	_	_	_	_	_
 77	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_019
+# speaker = [1]
+# text = tha e a' ruith a-steach a bhucas Albainn
 78	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 79	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 80	a'	ag	PART	Sa	_	_	_	_	_
@@ -2493,10 +2537,18 @@
 83	a	a	ADP	Sp	_	_	_	_	_
 84	bhucas	bucas	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 85	Albainn	Albainn	PROPN	Nt	_	_	_	_	_
-86	Leighton	Leighton	PROPN	Nn	_	_	_	_	_
-87	a'	ag	PART	Sa	_	_	_	_	_
-88	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-89	a-mach	a-mach	ADV	Rs	_	_	_	_	_
+
+# sent_id = s04_020
+# speaker = [1]
+# text = Leighton a' tighinn a-mach
+1	Leighton	Leighton	PROPN	Nn	_	_	_	_	_
+2	a'	ag	PART	Sa	_	_	_	_	_
+3	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+4	a-mach	a-mach	ADV	Rs	_	_	_	_	_
+
+# sent_id = s04_021
+# speaker = [1]
+# text = bhuail e le a chas i agus bhuail Leighton a-mach gu Malpas i ach chan eil an cunnart seachad fhathast sgàth tha Watson a' ruith a-steach air Malpas
 90	bhuail	buail	VERB	V-s	Tense=Past	_	_	_	_
 91	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 92	le	le	ADP	Sp	_	_	_	_	_
@@ -2525,14 +2577,30 @@
 115	a-steach	a-steach	ADV	Rs	_	_	_	_	_
 116	air	air	ADP	Sp	_	_	_	_	_
 117	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
-118	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
-119	gu	gu	ADP	Sp	_	_	_	_	_
-120	Souness	Souness	PROPN	Nn	_	_	_	_	_
-121	Souness	Souness	PROPN	Nn	_	_	_	_	_
-122	gu	gu	ADP	Sp	_	_	_	_	_
-123	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
-124	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
-125	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_022
+# speaker = [1]
+# text = Malpas gu Souness
+1	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
+2	gu	gu	ADP	Sp	_	_	_	_	_
+3	Souness	Souness	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_023
+# speaker = [1]
+# text = Souness gu Aitken
+1	Souness	Souness	PROPN	Nn	_	_	_	_	_
+2	gu	gu	ADP	Sp	_	_	_	_	_
+3	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_024
+# speaker = [1]
+# text = Aitken leatha
+1	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
+2	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_025
+# speaker = [1]
+# text = Aitken a' sealltainn am faigh e a cur gu MavIlvenny
 126	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
 127	a'	ag	PART	Sa	_	_	_	_	_
 128	sealltainn	seall	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2543,6 +2611,10 @@
 133	cur	cuir	NOUN	Nv	VerbForm=Inf	_	_	_	_
 134	gu	gu	ADP	Sp	_	_	_	_	_
 135	MavIlvenny	MavIlvenny	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_026
+# speaker = [1]
+# text = fhuair e air taobh na pàirce i
 136	fhuair	faigh	VERB	V-s	Tense=Past	_	_	_	_
 137	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 138	air	air	ADP	Sp	_	_	_	_	_
@@ -2550,6 +2622,10 @@
 140	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 141	pàirce	pàirce	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 142	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_027
+# speaker = [1]
+# text = tha iad a-staigh air leth [?] a-steach air na h-Astràilianaich ach chaidh i a-mach agus 's e sadadh-a-steach a bhios ann do dh’Astràilia
 143	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 144	iad	iad	PRON	Pp3p	Number=Plur|Person=3	_	_	_	_
 145	a-staigh	a-staigh	ADV	Rs	_	_	_	_	_
@@ -2573,6 +2649,10 @@
 163	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 164	do	do	ADP	Sp	_	_	_	_	_
 165	dh’Astràilia	Astràilia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s04_028
+# speaker = [1]
+# text = dh’fhaodadh siud a dhèanamh gu math cunnartach a Mhurchaidh
 166	dh’fhaodadh	faod	VERB	V-h	Mood=Cnd	_	_	_	_
 167	siud	siud	PRON	Pd	_	_	_	_	_
 168	a	a	PART	Ug	PartType=Inf	_	_	_	_
@@ -2583,12 +2663,16 @@
 173	a	a	PART	Uv	PartType=Voc	_	_	_	_
 174	Mhurchaidh	Murchadh	PROPN	Nn-mv	Case=Voc|Gender=Masc	_	_	_	_
 
-# sent_id = s04_3
+# sent_id = s04_029
 # speaker = [2]
-# text = dh’fhaodadh gu dearbh tha e a' sealltainn cho fada a fhradharc agus a tha Leighton bha a shùil air dè bha a' dol air adhart air ma choinneamh agus cha [?] chunnaic e an cunnart bha e a-mach chon an loighne agus chuir e a-mach am ball gu sàbhailte gu fear dhe na cluicheadairean aige fhèin ach feumaidh fear-glèidhidh an còmhnaidh a bhith aire a bhith air dè tha a' dol air adhart air toiseach air agus bha Leighton a' dearbhadh gun robh aire gu math mionaideach air an siud
+# text = dh’fhaodadh gu dearbh
 1	dh’fhaodadh	faod	VERB	V-h	Mood=Cnd	0	root	_	_
 2	gu	gu	PART	Ua	PartType=Ad	_	_	_	_
 3	dearbh	dearbh	ADV	Rg	_	_	_	_	_
+
+# sent_id = s04_030
+# speaker = [2]
+# text = tha e a' sealltainn cho fada a fhradharc agus a tha Leighton
 4	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 5	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 6	a'	ag	PART	Sa	_	_	_	_	_
@@ -2601,6 +2685,10 @@
 13	a	a	PART	Q-r	PartType=Vb|PronType=Rel	_	_	_	_
 14	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 15	Leighton	Leighton	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_031
+# speaker = [2]
+# text = bha a shùil air dè bha a' dol air adhart air ma choinneamh agus cha [?] chunnaic e an cunnart
 16	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 17	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 18	shùil	sùil	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
@@ -2621,6 +2709,10 @@
 33	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 34	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 35	cunnart	cunnart	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s04_032
+# speaker = [2]
+# text = bha e a-mach chon an loighne agus chuir e a-mach am ball gu sàbhailte gu fear dhe na cluicheadairean aige fhèin ach feumaidh fear-glèidhidh an còmhnaidh a bhith aire a bhith air dè tha a' dol air adhart air toiseach air agus bha Leighton a' dearbhadh gun robh aire gu math mionaideach air an siud
 36	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 37	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 38	a-mach	a-mach	ADV	Rs	_	_	_	_	_
@@ -2677,13 +2769,17 @@
 89	an	an	PRON	Pd	_	_	_	_	_
 90	siud	siud	PRON	Pd	_	89	fixed	_	_
 
-# sent_id = s04_4
+# sent_id = s04_033
 # speaker = [1]
-# text = Davidson ma-thà gu Cosmina Cosmina leatha air ais gu Davidson agus chaidh Miller a-steach cruaidh air Davidson agus 's e sadadh a-steach a bhios ann do dh’Astràilia Davidson air ais leatha gu Yankos Yankos buille mhòr sìos gu Murphy chaill Murphy i agus thàinig i gu Nicol Nicol a-staigh faisg air a’ bhucas aige fhèin a' gluasad a-mach leatha Nicol ga feuchainn suas gu Dalgleish Dalgleish agus O' Connor còmhla ris chuir esan air ais gu Strachan i Strachan gu MacIlvenny MacIlvenny [?] a’ bhucais a-mach gu Nicol Nicol a' ruith oirre agus Jennings a' tighinn a-steach air agus chuir Jennings a-mach i airson sadadh a-steach do dh’Alba Nicol ga ghabhail gu math cabhagach ga feuchainn ri a faighinn a-nall gu Strachan ach choinnich Creeno i le a cheann agus chaidh i seachad agus 's e buille bhon oisean a bhios ann air an taobh-sa dhen phàirc do dh’Alba chan e tha an rèitire ag ràdh gur e buille-a-mach a bhios ann do dh’Astràilia
+# text = Davidson ma-thà gu Cosmina
 1	Davidson	Davidson	PROPN	Nn	_	0	root	_	_
 2	ma-thà	ma-thà	ADV	Rg	_	1	advmod	_	_
 3	gu	gu	ADP	Sp	_	4	case	_	_
 4	Cosmina	Cosmina	PROPN	Nn	_	1	obl	_	_
+
+# sent_id = s04_034
+# speaker = [1]
+# text = Cosmina leatha air ais gu Davidson agus chaidh Miller a-steach cruaidh air Davidson agus 's e sadadh a-steach a bhios ann do dh’Astràilia
 5	Cosmina	Cosmina	PROPN	Nn	_	0	root	_	_
 6	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	5	obl	_	_
 7	air	air	ADP	Sp	_	_	_	_	_
@@ -2707,18 +2803,30 @@
 25	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 26	do	do	ADP	Sp	_	_	_	_	_
 27	dh’Astràilia	Astràilia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s04_035
+# speaker = [1]
+# text = Davidson air ais leatha gu Yankos
 28	Davidson	Davidson	PROPN	Nn	_	_	_	_	_
 29	air	air	ADP	Sp	_	_	_	_	_
 30	ais	ais	ADP	Nf	_	_	_	_	_
 31	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 32	gu	gu	ADP	Sp	_	_	_	_	_
 33	Yankos	Yankos	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_036
+# speaker = [1]
+# text = Yankos buille mhòr sìos gu Murphy
 34	Yankos	Yankos	PROPN	Nn	_	_	_	_	_
 35	buille	buille	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 36	mhòr	mòr	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 37	sìos	sìos	ADV	Rs	_	_	_	_	_
 38	gu	gu	ADP	Sp	_	_	_	_	_
 39	Murphy	Murphy	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_037
+# speaker = [1]
+# text = chaill Murphy i agus thàinig i gu Nicol
 40	chaill	caill	VERB	V-s	Tense=Past	_	_	_	_
 41	Murphy	Murphy	PROPN	Nn	_	_	_	_	_
 42	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
@@ -2727,6 +2835,10 @@
 45	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 46	gu	gu	ADP	Sp	_	_	_	_	_
 47	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_038
+# speaker = [1]
+# text = Nicol a-staigh faisg air a’ bhucas aige fhèin a' gluasad a-mach leatha
 48	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
 49	a-staigh	a-staigh	ADV	Rs	_	_	_	_	_
 50	faisg	faisg	ADJ	Ap	_	_	_	_	_
@@ -2739,18 +2851,30 @@
 57	gluasad	gluais	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 58	a-mach	a-mach	ADV	Rs	_	_	_	_	_
 59	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_039
+# speaker = [1]
+# text = Nicol ga feuchainn suas gu Dalgleish
 60	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
 61	ga	ga	PART	Sap3sf	_	_	_	_	_
 62	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 63	suas	suas	ADV	Rs	_	_	_	_	_
 64	gu	gu	ADP	Sp	_	_	_	_	_
 65	Dalgleish	Dalgleish	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_040
+# speaker = [1]
+# text = Dalgleish agus O' Connor còmhla ris
 66	Dalgleish	Dalgleish	PROPN	Nn	_	_	_	_	_
 67	agus	agus	CCONJ	Cc	_	68	cc	_	_
 68	O'	Oe	PROPN	Nn	_	_	_	_	_
 69	Connor	Connor	PROPN	Nn	_	68	flat	_	_
 70	còmhla	còmhla	ADV	Rg	_	_	_	_	_
 71	ris	ri	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_041
+# speaker = [1]
+# text = chuir esan air ais gu Strachan i
 72	chuir	cuir	VERB	V-s	Tense=Past	_	_	_	_
 73	esan	e	PRON	Pp3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	_	_	_	_
 74	air	air	ADP	Sp	_	_	_	_	_
@@ -2758,9 +2882,17 @@
 76	gu	gu	ADP	Sp	_	_	_	_	_
 77	Strachan	Strachan	PROPN	Nn	_	_	_	_	_
 78	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_042
+# speaker = [1]
+# text = Strachan gu MacIlvenny
 79	Strachan	Strachan	PROPN	Nn	_	_	_	_	_
 80	gu	gu	ADP	Sp	_	_	_	_	_
 81	MacIlvenny	MacIlvenny	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_043
+# speaker = [1]
+# text = MacIlvenny [?] a’ bhucais a-mach gu Nicol
 82	MacIlvenny	MacIlvenny	PROPN	Nn	_	_	_	_	_
 83	[?]	[?]	X	Xx	_	_	_	_	_
 84	a’	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
@@ -2768,6 +2900,10 @@
 86	a-mach	a-mach	ADV	Rs	_	_	_	_	_
 87	gu	gu	ADP	Sp	_	_	_	_	_
 88	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_044
+# speaker = [1]
+# text = Nicol a' ruith oirre agus Jennings a' tighinn a-steach air agus chuir Jennings a-mach i airson sadadh a-steach do dh’Alba
 89	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
 90	a'	ag	PART	Sa	_	_	_	_	_
 91	ruith	ruith	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2788,6 +2924,10 @@
 106	a-steach	a-steach	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	105	fixed	_	_
 107	do	do	ADP	Sp	_	_	_	_	_
 108	dh’Alba	Alba	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s04_045
+# speaker = [1]
+# text = Nicol ga ghabhail gu math cabhagach ga feuchainn ri a faighinn a-nall gu Strachan ach choinnich Creeno i le a cheann agus chaidh i seachad agus 's e buille bhon oisean a bhios ann air an taobh-sa dhen phàirc do dh’Alba
 109	Nicol	Nicol	PROPN	Nn	_	_	_	_	_
 110	ga	ga	PART	Sap3sm	_	_	_	_	_
 111	ghabhail	gabh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2829,8 +2969,16 @@
 147	phàirc	pàirc	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	_	_	_	_
 148	do	do	ADP	Sp	_	_	_	_	_
 149	dh’Alba	Alba	PROPN	Nt	_	_	_	_	_
-150	chan	is	AUX	Wp-in	_	_	_	_	_
-151	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_046
+# speaker = [1]
+# text = chan e
+1	chan	is	AUX	Wp-in	_	_	_	_	_
+2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s04_047
+# speaker = [1]
+# text =tha an rèitire ag ràdh gur e buille-a-mach a bhios ann do dh’Astràilia
 152	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 153	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 154	rèitire	rèitire	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
@@ -2845,9 +2993,9 @@
 163	do	do	ADP	Sp	_	164	case	_	_
 164	dh’Astràilia	Astràilia	PROPN	Nt	_	161	obl	_	_
 
-# sent_id = s04_5
+# sent_id = s04_048
 # speaker = [2]
-# text = tha mi a' smaointinn gun robh e ceart an siud Aonghais cuideachd a' coimhead bhon an seo 's e an rud mu dheidhinn a’ ghèim chan eil cluicheadairean Alba a' toirt cus fois dhaibh idir seatlaigeadh air a’ bhall agus sin leasan a dh’ionnsaich iad bhon a’ ghèam an aghaidh na Cuimrich an seo o chionn sia mìosan air ais
+# text = tha mi a' smaointinn gun robh e ceart an siud Aonghais cuideachd a' coimhead bhon an seo
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 2	mi	mi	PRON	Pp1s	Number=Sing|Person=1	1	nsubj	_	_
 3	a'	ag	PART	Sa	_	4	case	_	_
@@ -2865,6 +3013,10 @@
 15	bhon	bhon	ADP	Sp	_	_	_	_	_
 16	an	an	ADV	Rs	_	_	_	_	_
 17	seo	seo	ADV	Rs	_	16	fixed	_	_
+
+# sent_id = s04_049
+# speaker = [2]
+# text = 's e an rud mu dheidhinn a’ ghèim
 18	's	is	AUX	Wp-i	_	_	_	_	_
 19	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 20	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
@@ -2873,6 +3025,10 @@
 23	dheidhinn	deidhinn	ADP	Nf	_	_	_	_	_
 24	a’	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
 25	ghèim	gèim	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s04_050
+# speaker = [2]
+# text = chan eil cluicheadairean Alba a' toirt cus fois dhaibh idir seatlaigeadh air a’ bhall agus sin leasan a dh’ionnsaich iad bhon a’ ghèam an aghaidh na Cuimrich an seo o chionn sia mìosan air ais
 26	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
 27	eil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
 28	cluicheadairean	cluicheadair	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	_	_	_	_
@@ -2909,9 +3065,9 @@
 59	air	air	ADP	Sp	_	_	_	_	_
 60	ais	ais	ADP	Nf	_	_	_	_	_
 
-# sent_id = s04_6
+# sent_id = s04_051
 # speaker = [1]
-# text = ach feumaidh mi a aideachadh gu bheil na h-Astràilianaich gu bheil iad glè mhath air a faighinn air ais fiù ’s an t-adhartair a th' aca ann an seo Creeno a' faighinn air ais agus tha e a' cluich mar cluicheadair dìon co-dhiubh am ball aig Cosmina Cosmina ga sadadh a-mach ga feuchainn a-mach gu taobh eile na pàirce gu Watson Watson a' feuchainn ri ruith sìos an loighne leatha agus tha fear an loighne ag ràdh gun robh i siud a-muigh Aitken ga gabhail ann an cabhag suas gu MacIlvenny MacIlvenny agus O' Connor còmhla agus tha an rèitire ag ràdh gur e droch chluich a bha siud a-rithist aig O' Connor agus 's e buille shaor a bhios ann do dh’Albainn
+# text = ach feumaidh mi a aideachadh gu bheil na h-Astràilianaich gu bheil iad glè mhath air a faighinn air ais fiù ’s an t-adhartair a th' aca ann an seo
 1	ach	ach	CCONJ	Cc	_	2	cc	_	_
 2	feumaidh	feum	VERB	V-f	Tense=Fut	0	root	_	_
 3	mi	mi	PRON	Pp1s	Number=Sing|Person=1	2	nsubj	_	_
@@ -2941,6 +3097,10 @@
 27	ann	ann	ADV	Rs	_	_	_	_	_
 28	an	an	ADV	Rs	_	27	fixed	_	_
 29	seo	seo	ADV	Rs	_	27	fixed	_	_
+
+# sent_id = s04_052
+# speaker = [1]
+# text = Creeno a' faighinn air ais agus tha e a' cluich mar cluicheadair dìon co-dhiubh
 30	Creeno	Creeno	PROPN	Nn	_	_	_	_	_
 31	a'	ag	PART	Sa	_	_	_	_	_
 32	faighinn	faigh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2955,10 +3115,18 @@
 41	cluicheadair	cluicheadair	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 42	dìon	dìon	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
 43	co-dhiubh	co-dhiubh	ADV	Rg	_	_	_	_	_
-44	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
-45	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
-46	aig	aig	ADP	Sp	_	_	_	_	_
-47	Cosmina	Cosmina	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_053
+# speaker = [1]
+# text = am ball aig Cosmina
+1	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
+2	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+3	aig	aig	ADP	Sp	_	_	_	_	_
+4	Cosmina	Cosmina	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_054
+# speaker = [1]
+# text = Cosmina ga sadadh a-mach ga feuchainn a-mach gu taobh eile na pàirce gu Watson
 48	Cosmina	Cosmina	PROPN	Nn	_	_	_	_	_
 49	ga	ga	PART	Sap3sf	_	_	_	_	_
 50	sadadh	sad	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2973,6 +3141,10 @@
 59	pàirce	pàirce	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 60	gu	gu	ADP	Sp	_	_	_	_	_
 61	Watson	Watson	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_055
+# speaker = [1]
+# text = Watson a' feuchainn ri ruith sìos an loighne leatha agus tha fear an loighne ag ràdh gun robh i siud a-muigh
 62	Watson	Watson	PROPN	Nn	_	_	_	_	_
 63	a'	ag	PART	Sa	_	_	_	_	_
 64	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -2994,6 +3166,10 @@
 80	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 81	siud	siud	ADV	Rs	_	_	_	_	_
 82	a-muigh	a-muigh	ADV	Rs	_	_	_	_	_
+
+# sent_id = s04_056
+# speaker = [1]
+# text = Aitken ga gabhail ann an cabhag suas gu MacIlvenny
 83	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
 84	ga	ga	PART	Sap3sf	_	_	_	_	_
 85	gabhail	gabh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -3003,6 +3179,10 @@
 89	suas	suas	ADV	Rs	_	_	_	_	_
 90	gu	gu	ADP	Sp	_	_	_	_	_
 91	MacIlvenny	MacIlvenny	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_057
+# speaker = [1]
+# text = MacIlvenny agus O' Connor còmhla agus tha an rèitire ag ràdh gur e droch chluich a bha siud a-rithist aig O' Connor agus 's e buille shaor a bhios ann do dh’Albainn
 92	MacIlvenny	MacIlvenny	PROPN	Nn	_	_	_	_	_
 93	agus	agus	CCONJ	Cc	_	94	cc	_	_
 94	O'	Oe	PROPN	Nn	_	_	_	_	_
@@ -3036,7 +3216,7 @@
 122	do	do	ADP	Sp	_	_	_	_	_
 123	dh’Albainn	Albainn	PROPN	Nt	_	_	_	_	_
 
-# sent_id = s04_7
+# sent_id = s04_058
 # speaker = [2]
 # text = tha mi a' smaoineachadh ma chumas an gèam a' dol aig an astar a tha seo man àm a bhios sinn a's am fichead mionaid mu dheireadh gum bi sgioba Astràilia gu math sgìth a chionn mar a thuirt na balaich na bu tràithe chan eil ach aonan dhiubh a tha proifeiseanta anns an obair Davidson aig Nottingham Forest ach tha an còrr dhiubh 's ann gu math [?] a tha iad an sàs anns an obair a tha seo
 1	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
@@ -3120,9 +3300,9 @@
 79	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 80	seo	seo	PRON	Pd	_	_	_	_	_
 
-# sent_id = s04_8
+# sent_id = s04_059
 # speaker = [1]
-# text = am ball ma-thà a-staigh ann am bucas Astràilia ach fhuair Yankos buille a' leigeil le a chas an dèidh sin thug Daibhidh Cooper a-nuas e agus thàinig e gu Aitken Aitken ga thionndadh air ais gu Souness Souness ga fheuchainn a-mach dhan taobh-sa dhen a’ phàirc gu Nichol
+# text = am ball ma-thà a-staigh ann am bucas Astràilia ach fhuair Yankos buille a' leigeil le a chas
 1	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 2	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 3	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
@@ -3140,6 +3320,10 @@
 15	le	le	ADP	Sp	_	_	_	_	_
 16	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 17	chas	cas	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	_	_	_	_
+
+# sent_id = s04_060
+# speaker = [1]
+# text = an dèidh sin thug Daibhidh Cooper a-nuas e agus thàinig e gu Aitken
 18	an	an	ADP	Sp	_	_	_	_	_
 19	dèidh	dèidh	ADP	Nf	_	_	_	_	_
 20	sin	sin	PRON	Pd	_	_	_	_	_
@@ -3153,24 +3337,28 @@
 28	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 29	gu	gu	ADP	Sp	_	_	_	_	_
 30	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
-31	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
-32	ga	ga	PART	Sap3sm	_	_	_	_	_
-33	thionndadh	tionndaidh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-34	air	air	ADP	Sp	_	_	_	_	_
-35	ais	ais	ADP	Nf	_	_	_	_	_
-36	gu	gu	ADP	Sp	_	_	_	_	_
-37	Souness	Souness	PROPN	Nn	_	_	_	_	_
-38	Souness	Souness	PROPN	Nn	_	_	_	_	_
-39	ga	ga	PART	Sap3sm	_	_	_	_	_
-40	fheuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-41	a-mach	a-mach	ADV	Rs	_	_	_	_	_
-42	dhan	do	ADP	Spa-s	_	_	_	_	_
-43	taobh-sa	taobh-sa	NOUN	Ncsmde	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
-44	dhen	de	ADP	Sp	_	_	_	_	_
-45	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	_	_	_	_
-46	phàirc	pàirc	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	_	_	_	_
-47	gu	gu	ADP	Sp	_	48	case	_	_
-48	Nichol	Nichol	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s04_061
+# speaker = [1]
+# text = Aitken ga thionndadh air ais gu Souness Souness ga fheuchainn a-mach dhan taobh-sa dhen a’ phàirc gu Nichol
+1	Aitken	Aitken	PROPN	Nn	_	_	_	_	_
+2	ga	ga	PART	Sap3sm	_	_	_	_	_
+3	thionndadh	tionndaidh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+4	air	air	ADP	Sp	_	_	_	_	_
+5	ais	ais	ADP	Nf	_	_	_	_	_
+6	gu	gu	ADP	Sp	_	_	_	_	_
+7	Souness	Souness	PROPN	Nn	_	_	_	_	_
+8	Souness	Souness	PROPN	Nn	_	_	_	_	_
+9	ga	ga	PART	Sap3sm	_	_	_	_	_
+10	fheuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+11	a-mach	a-mach	ADV	Rs	_	_	_	_	_
+12	dhan	do	ADP	Spa-s	_	_	_	_	_
+13	taobh-sa	taobh-sa	NOUN	Ncsmde	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
+14	dhen	de	ADP	Sp	_	_	_	_	_
+15	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	_	_	_	_
+16	phàirc	pàirc	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	_	_	_	_
+17	gu	gu	ADP	Sp	_	18	case	_	_
+18	Nichol	Nichol	PROPN	Nn	_	_	_	_	_
 
 # sent_id = s01_000
 # speaker = [1]
