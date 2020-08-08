@@ -4605,7 +4605,7 @@
 
 # sent_id = s10_000
 # speaker = [1]
-# text = Nicholl a' ruith ach se MacStay a tha 'dol dha gabhail MacStay ga feuchainn agus Nicholl a-steach thàinig Gough a-steach air an taobh thall ann a-siud gun duine toirt sùil sam bith air ach tha am ball aig Yugoslavia air taobh thall na pàirce am ball aig Yositch a-nis Yositch gu Bostardavitch tha esan a' feuchainn tè sìos tè luath sìos gu Svetgovitch Svetgovitch a' gluasad a-steach air Gorem agus fhuair Gorem i le Miller cuideachd fhuair Miller a chas thuice an toiseach agus fhuair Gorem grèim oirre an uair sin le Svetgovitch a' ruith ann an siud dìreach mar trèan a Mhurchaidh
+# text = Nicholl a' ruith ach se MacStay a tha 'dol dha gabhail
 1	Nicholl	Nicholl	PROPN	Nn	_	0	root	_	_
 2	a'	ag	PART	Sa	_	3	case	_	_
 3	ruith	ruith	NOUN	Nv	VerbForm=Vnoun	1	xcomp:pred	_	_
@@ -4618,12 +4618,20 @@
 10	dol	rach	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 11	dha	do	ADP	Spp3sf	_	_	_	_	_
 12	gabhail	gabh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+
+# sent_id = s10_001
+# speaker = [1]
+# text = MacStay ga feuchainn agus Nicholl a-steach
 13	MacStay	MacStay	PROPN	Nn	_	_	_	_	_
 14	ga	ga	PART	Sap3sf	_	_	_	_	_
 15	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 16	agus	agus	CCONJ	Cc	_	17	cc	_	_
 17	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
 18	a-steach	a-steach	ADV	Rs	_	_	_	_	_
+
+# sent_id = s10_002
+# speaker = [1]
+# text = thàinig Gough a-steach air an taobh thall ann a-siud gun duine toirt sùil sam bith air ach tha am ball aig Yugoslavia air taobh thall na pàirce
 19	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
 20	Gough	Gough	PROPN	Nn	_	_	_	_	_
 21	a-steach	a-steach	ADV	Rs	_	_	_	_	_
@@ -4651,25 +4659,45 @@
 43	thall	tall	ADJ	Aq	_	_	_	_	_
 44	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 45	pàirce	pàirce	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
+
+# sent_id = s10_003
+# speaker = [1]
+# text = am ball aig Yositch a-nis
 46	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 47	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 48	aig	aig	ADP	Sp	_	_	_	_	_
 49	Yositch	Yositch	PROPN	Nn	_	_	_	_	_
 50	a-nis	a-nis	ADV	Rt	_	_	_	_	_
-51	Yositch	Yositch	PROPN	Nn	_	_	_	_	_
-52	gu	gu	PART	Ua	PartType=Ad	_	_	_	_
-53	Bostardavitch	Bostardavitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_004
+# speaker = [1]
+# text = Yositch gu Bostardavitch
+1	Yositch	Yositch	PROPN	Nn	_	_	_	_	_
+2	gu	gu	PART	Ua	PartType=Ad	_	_	_	_
+3	Bostardavitch	Bostardavitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_005
+# speaker = [1]
+# text = tha esan a' feuchainn tè sìos
 54	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 55	esan	e	PRON	Pp3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	_	_	_	_
 56	a'	ag	PART	Sa	_	_	_	_	_
 57	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 58	tè	tè	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 59	sìos	sìos	ADV	Rs	_	_	_	_	_
-60	tè	tè	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
-61	luath	luath	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
-62	sìos	sìos	ADV	Rs	_	_	_	_	_
-63	gu	gu	ADP	Sp	_	_	_	_	_
-64	Svetgovitch	Svetgovitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_006
+# speaker = [1]
+# text = tè luath sìos gu Svetgovitch
+1	tè	tè	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
+2	luath	luath	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
+3	sìos	sìos	ADV	Rs	_	_	_	_	_
+4	gu	gu	ADP	Sp	_	_	_	_	_
+5	Svetgovitch	Svetgovitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_007
+# speaker = [1]
+# text = Svetgovitch a' gluasad a-steach air Gorem agus fhuair Gorem i le Miller cuideachd
 65	Svetgovitch	Svetgovitch	PROPN	Nn	_	_	_	_	_
 66	a'	ag	PART	Sa	_	_	_	_	_
 67	gluasad	gluais	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -4683,6 +4711,10 @@
 75	le	le	ADP	Sp	_	_	_	_	_
 76	Miller	Miller	PROPN	Nn	_	_	_	_	_
 77	cuideachd	cuideachd	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_008
+# speaker = [1]
+# text = fhuair Miller a chas thuice an toiseach agus fhuair Gorem grèim oirre an uair sin le Svetgovitch a' ruith ann an siud dìreach mar trèan a Mhurchaidh
 78	fhuair	faigh	VERB	V-s	Tense=Past	_	_	_	_
 79	Miller	Miller	PROPN	Nn	_	_	_	_	_
 80	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
@@ -4711,14 +4743,18 @@
 103	a	a	PART	Uv	PartType=Voc	_	_	_	_
 104	Mhurchaidh	Murchadh	PROPN	Nn-mv	Case=Voc|Gender=Masc	_	_	_	_
 
-# sent_id = s10_1
+# sent_id = s10_009
 # speaker = [2]
-# text = siud dìreach dha-rìribh e Aonghas cuideachd chunnaic sinn an eisimpleir as fhearr dhen chluiche aig Willie Miller bha a h-uile duine a' smaoineachadh gun robh cluicheadairean Yugoslavia air a dhol troimhe fada agus dìreach a' dol a
+# text = siud dìreach dha-rìribh e Aonghas
 1	siud	siud	PRON	Pd	_	_	_	_	_
 2	dìreach	dìreach	ADV	Rg	_	_	_	_	_
 3	dha-rìribh	da-rìribh	ADV	Rg	_	_	_	_	_
 4	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 5	Aonghas	Aonghas	PROPN	Nn-mn	Case=Nom|Gender=Masc	_	_	_	_
+
+# sent_id = s10_010
+# speaker = [2]
+# text = cuideachd chunnaic sinn an eisimpleir as fhearr dhen chluiche aig Willie Miller
 6	cuideachd	cuideachd	ADV	Rg	_	_	_	_	_
 7	chunnaic	faic	VERB	V-s	Tense=Past	_	_	_	_
 8	sinn	sinn	PRON	Pp1p	Number=Plur|Person=1	_	_	_	_
@@ -4731,6 +4767,10 @@
 15	aig	aig	ADP	Sp	_	_	_	_	_
 16	Willie	Willie	PROPN	Nn-md	Case=Dat|Gender=Masc	_	_	_	_
 17	Miller	Miller	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_011
+# speaker = [2]
+# text = bha a h-uile duine a' smaoineachadh gun robh cluicheadairean Yugoslavia air a dhol troimhe fada agus dìreach a' dol a
 18	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 19	a	a	DET	Dq	_	_	_	_	_
 20	h-uile	uile	DET	Dq	_	19	fixed	_	_
@@ -4752,9 +4792,9 @@
 36	dol	rach	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 37	a	a	ADP	Sp	_	_	_	_	_
 
-# sent_id = s10_2
+# sent_id = s10_012
 # speaker = [1]
-# text = am ball aig Ryovitch ann a-siud agus tha fhios g' eil Gough a' dol troimh-chèile ann an siud ruith Gough air a bheulaibh agus chan eil teagamh aig an rèitire nach e droch chluich a bha siud aig Gough gun deach a chas 'sa rathad air a dh’aona-ghnothaich
+# text = am ball aig Ryovitch ann a-siud agus tha fhios g' eil Gough a' dol troimh-chèile ann an siud
 1	am	an	DET	Tdsm	Gender=Masc|Number=Sing	2	det	_	_
 2	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 3	aig	aig	ADP	Sp	_	_	_	_	_
@@ -4773,6 +4813,10 @@
 16	ann	ann	ADV	Rs	_	_	_	_	_
 17	an	an	ADV	Rs	_	16	fixed	_	_
 18	siud	siud	ADV	Rs	_	16	fixed	_	_
+
+# sent_id = s10_013
+# speaker = [1]
+# text = ruith Gough air a bheulaibh agus chan eil teagamh aig an rèitire nach e droch chluich a bha siud aig Gough gun deach a chas 'sa rathad air a dh’aona-ghnothaich
 19	ruith	ruith	VERB	V-s	Tense=Past	_	_	_	_
 20	Gough	Gough	PROPN	Nn	_	_	_	_	_
 21	air	air	ADP	Sp	_	_	_	_	_
@@ -4804,9 +4848,9 @@
 47	a	a	ADP	Sp	_	_	_	_	_
 48	dh’aona-ghnothaich	aona-ghnothach	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 
-# sent_id = s10_3
+# sent_id = s10_014
 # speaker = [2]
-# text = tha mi a' smaoineachadh gu bheil sin ceart chan eil mi cinnteach an robh gu robh gu robh fios aig Ryovitch dè 'n taobh a bha e fhèin a' dol nas motha dìreach bhuail iad ri chèile agus [?]
+# text = tha mi a' smaoineachadh gu bheil sin ceart
 1	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 2	mi	mi	PRON	Pp1s	Number=Sing|Person=1	_	_	_	_
 3	a'	ag	PART	Sa	_	_	_	_	_
@@ -4815,6 +4859,10 @@
 6	bheil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
 7	sin	sin	PRON	Pd	_	_	_	_	_
 8	ceart	ceart	ADJ	Ap	_	_	_	_	_
+
+# sent_id = s10_015
+# speaker = [2]
+# text = chan eil mi cinnteach an robh gu robh gu robh fios aig Ryovitch dè 'n taobh a bha e fhèin a' dol nas motha
 9	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
 10	eil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
 11	mi	mi	PRON	Pp1s	Number=Sing|Person=1	_	_	_	_
@@ -4839,6 +4887,10 @@
 30	dol	rach	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 31	nas	nas	PART	Uc	PartType=Comp	_	_	_	_
 32	motha	math	ADJ	Apc	Degree=Cmp,Sup	_	_	_	_
+
+# sent_id = s10_016
+# speaker = [2]
+# text = dìreach bhuail iad ri chèile agus [?]
 33	dìreach	dìreach	ADV	Rg	_	_	_	_	_
 34	bhuail	buail	VERB	V-s	Tense=Past	_	_	_	_
 35	iad	iad	PRON	Pp3p	Number=Plur|Person=3	_	_	_	_
@@ -4847,15 +4899,19 @@
 38	agus	agus	CCONJ	Cc	_	39	cc	_	_
 39	[?]	[?]	X	Xx	_	_	_	_	_
 
-# sent_id = s10_4
+# sent_id = s10_017
 # speaker = [1]
-# text = gu dearbha agus thàinig cluicheadairean adhart tha seo aig Yugoslavia gach mac màthar aca cho luath ri [?] buille shaor ma-thà do Yugoslavia le Stoykavitch os an ceann agus tha dìreach timcheall air deich slat a-muigh gu taobh a-muigh bucas Alba Alba a' feuchainn ri [buill an dìon a chur an àirde Stoykavitch leatha ma-thà Stoykavitch a' feuchainn oirre agus cha mhòr nach robh i a-staigh ann an siud fhuair Gorem a bhois thuice dìreach 'ar a bha i dol a' feuchainn ri dhol a-steach air a' phost a Mhurchaidh
+# text = gu dearbha agus thàinig cluicheadairean adhart
 1	gu	gu	PART	Ua	PartType=Ad	_	_	_	_
 2	dearbha	dearbha	ADV	Rg	_	_	_	_	_
 3	agus	agus	CCONJ	Cc	_	4	cc	_	_
 4	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
 5	cluicheadairean	cluicheadair	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	_	_	_	_
 6	adhart	adhart	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s10_018
+# speaker = [1]
+# text = tha seo aig Yugoslavia gach mac màthar aca cho luath ri [?]
 7	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 8	seo	seo	PRON	Pd	_	_	_	_	_
 9	aig	aig	ADP	Sp	_	_	_	_	_
@@ -4868,6 +4924,10 @@
 16	luath	luath	ADV	Rg	_	_	_	_	_
 17	ri	ri	ADP	Sp	_	_	_	_	_
 18	[?]	[?]	X	Xx	_	_	_	_	_
+
+# sent_id = s10_019
+# speaker = [1]
+# text = buille shaor ma-thà do Yugoslavia le Stoykavitch os an ceann agus tha dìreach timcheall air deich slat a-muigh gu taobh a-muigh bucas Alba
 19	buille	buille	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 20	shaor	saor	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 21	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
@@ -4891,20 +4951,32 @@
 39	a-muigh	a-muigh	ADJ	Aq	_	_	_	_	_
 40	bucas	bucas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 41	Alba	Alba	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_020
+# speaker = [1]
+# text = Alba a' feuchainn ri buill an dìon a chur an àirde
 42	Alba	Alba	PROPN	Nt	_	_	_	_	_
 43	a'	ag	PART	Sa	_	_	_	_	_
 44	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 45	ri	ri	ADP	Sp	_	_	_	_	_
-46	[buill	[buill	NOUN	Ncpmn]	Case=Nom|Gender=Masc|Number=Plur	_	_	_	_
+46	buill	buill	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	_	_	_	_
 47	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
 48	dìon	dìon	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 49	a	a	PART	Ug	PartType=Inf	_	_	_	_
 50	chur	cuir	NOUN	Nv	VerbForm=Inf	_	_	_	_
 51	an	an	ADV	Rs	_	_	_	_	_
 52	àirde	àirde	ADV	Rs	_	51	fixed	_	_
+
+# sent_id = s10_021
+# speaker = [1]
+# text = Stoykavitch leatha ma-thà
 53	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
 54	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 55	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_022
+# speaker = [1]
+# text = Stoykavitch a' feuchainn oirre agus cha mhòr nach robh i a-staigh ann an siud
 56	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
 57	a'	ag	PART	Sa	_	_	_	_	_
 58	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -4919,6 +4991,10 @@
 67	ann	ann	ADV	Rs	_	_	_	_	_
 68	an	an	ADV	Rs	_	67	fixed	_	_
 69	siud	siud	ADV	Rs	_	67	fixed	_	_
+
+# sent_id = s10_023
+# speaker = [1]
+# text = fhuair Gorem a bhois thuice dìreach 'ar a bha i dol a' feuchainn ri dhol a-steach air a' phost a Mhurchaidh
 70	fhuair	faigh	VERB	V-s	Tense=Past	_	_	_	_
 71	Gorem	Gorem	PROPN	Nn	_	_	_	_	_
 72	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
@@ -4941,14 +5017,14 @@
 89	a	a	PART	Uv	PartType=Voc	_	_	_	_
 90	Mhurchaidh	Murchadh	PROPN	Nn-mv	Case=Voc|Gender=Masc	_	_	_	_
 
-# sent_id = s10_5
+# sent_id = s10_024
 # speaker = [2]
-# text = uill mar a [mar bha siud a' dol a-steach tha e doirbh a ràdh 'se seo tha mi a' smaoineachadh gun robh [?] bha e faisg air a’ bhall co-dhiubh
+# text = uill mar a mar bha siud a' dol a-steach tha e doirbh a ràdh 'se seo
 1	uill	uill	INTJ	I	_	_	_	_	_
 2	mar	mar	SCONJ	Cs	_	_	_	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	_	_	_	_
-4	[mar	[mar	SCONJ	Cs	_	_	_	_	_
-5	bha	bi	VERB	V-s]	Tense=Past	_	_	_	_
+4	mar	mar	SCONJ	Cs	_	_	_	_	_
+5	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 6	siud	siud	PRON	Pd	_	_	_	_	_
 7	a'	ag	PART	Sa	_	_	_	_	_
 8	dol	rach	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -4960,6 +5036,10 @@
 14	ràdh	abair	NOUN	Nv	VerbForm=Inf	_	_	_	_
 15	'se	is	AUX	Wp-i-3	_	_	_	_	_
 16	seo	seo	PRON	Pd	_	_	_	_	_
+
+# sent_id = s10_025
+# speaker = [2]
+# text = tha mi a' smaoineachadh gun robh [?] bha e faisg air a’ bhall co-dhiubh
 17	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 18	mi	mi	PRON	Pp1s	Number=Sing|Person=1	_	_	_	_
 19	a'	ag	PART	Sa	_	_	_	_	_
@@ -4975,15 +5055,19 @@
 29	bhall	ball	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 30	co-dhiubh	co-dhiubh	ADV	Rg	_	_	_	_	_
 
-# sent_id = s10_6
+# sent_id = s10_026
 # speaker = [1]
-# text = buille bhon oisean ma-thà do Yugoslavia tè àrd a-null dhan [?] agus fhuair Yugoslavia i 's tha e a-staigh tadhal ann an siud do Yugoslavia agus 'se Katernetch a fhuair an tadhal do Yugoslavia aon tadhal gach a taobh a-nise
+# text = buille bhon oisean ma-thà do Yugoslavia
 1	buille	buille	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 2	bhon	bhon	ADP	Spa-s	_	_	_	_	_
 3	oisean	oisean	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 4	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
 5	do	do	ADP	Sp	_	_	_	_	_
 6	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_027
+# speaker = [1]
+# text = tè àrd a-null dhan [?] agus fhuair Yugoslavia i 's tha e a-staigh
 7	tè	tè	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 8	àrd	àrd	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 9	a-null	a-null	ADV	Rs	_	_	_	_	_
@@ -4997,6 +5081,10 @@
 17	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 18	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 19	a-staigh	a-staigh	ADV	Rs	_	_	_	_	_
+
+# sent_id = s10_028
+# speaker = [1]
+# text = tadhal ann an siud do Yugoslavia agus 'se Katernetch a fhuair an tadhal do Yugoslavia
 20	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 21	ann	ann	ADV	Rs	_	_	_	_	_
 22	an	an	ADV	Rs	_	21	fixed	_	_
@@ -5012,6 +5100,10 @@
 32	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 33	do	do	ADP	Sp	_	_	_	_	_
 34	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_029
+# speaker = [1]
+# text = aon tadhal gach a taobh a-nise
 35	aon	aon	NUM	Mc	_	_	_	_	_
 36	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 37	gach	gach	DET	Dq	_	_	_	_	_
@@ -5019,14 +5111,18 @@
 39	taobh	taobh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 40	a-nise	a-nise	ADV	Rt	_	_	_	_	_
 
-# sent_id = s10_7
+# sent_id = s10_030
 # speaker = [2]
-# text = uill bha siud mì-fhortanach dha-rìribh thàinig am ball tarsainn agus chaidh... ach chan eil mi cinnteach cò 'm fear aca a bh' ann [?] i air an loidhnidh thàinig e a-mach cha deach cha dàinig e a-mach ach mu dhà shlat no mar sin agus bhuail e a-steach i a-rithist bhuail e tha mi a' smaoineachadh gur e Nicholl a bh' ann air an loidhnidh ach chaidh e a-steach chaidh e seachad air an loidhnidh bho [?] tha mi a' smaoineachadh [?] tha e doirbh a ràdh bha am ball a' dol aig astar a bha uabhasach ach tha siud ann an dòigh glè choltach ris an tadhal an dòigh 'san deach i a-steach co-dhiubh ris an tadhal a fhuair iad an aghaidh an Nirribhidh
+# text = uill bha siud mì-fhortanach dha-rìribh
 1	uill	uill	INTJ	I	_	_	_	_	_
 2	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 3	siud	siud	PRON	Pd	_	_	_	_	_
 4	mì-fhortanach	mì-fhortanach	ADJ	Ap	_	_	_	_	_
 5	dha-rìribh	da-rìribh	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_031
+# speaker = [2]
+# text = thàinig am ball tarsainn agus chaidh... ach chan eil mi cinnteach cò 'm fear aca a bh' ann [?] i air an loidhnidh
 6	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
 7	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 8	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
@@ -5051,11 +5147,23 @@
 27	air	air	ADP	Sp	_	_	_	_	_
 28	an	an	DET	Tdsf	Gender=Fem|Number=Sing	_	_	_	_
 29	loidhnidh	loidhnidh	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	_	_	_	_
-30	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
-31	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
-32	a-mach	a-mach	ADV	Rs	_	_	_	_	_
-33	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
-34	deach	rach	VERB	V-s--d	Tense=Past	_	_	_	_
+
+# sent_id = s10_032
+# speaker = [2]
+# text = thàinig e a-mach
+1	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
+2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+3	a-mach	a-mach	ADV	Rs	_	_	_	_	_
+
+# sent_id = s10_033
+# speaker = [2]
+# text = cha deach
+1	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
+2	deach	rach	VERB	V-s--d	Tense=Past	_	_	_	_
+
+# sent_id = s10_034
+# speaker = [2]
+# text = cha dàinig e a-mach ach mu dhà shlat no mar sin agus bhuail e a-steach i a-rithist
 35	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
 36	dàinig	thig	VERB	V-s--d	Tense=Past	_	_	_	_
 37	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
@@ -5073,8 +5181,16 @@
 49	a-steach	a-steach	ADV	Rs	_	_	_	_	_
 50	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 51	a-rithist	a-rithist	ADV	Rt	_	_	_	_	_
-52	bhuail	buail	VERB	V-s	Tense=Past	_	_	_	_
-53	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s10_035
+# speaker = [2]
+# text = bhuail e
+1	bhuail	buail	VERB	V-s	Tense=Past	_	_	_	_
+2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s10_036
+# speaker = [2]
+# text = tha mi a' smaoineachadh gur e Nicholl a bh' ann air an loidhnidh ach chaidh e a-steach
 54	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 55	mi	mi	PRON	Pp1s	Number=Sing|Person=1	_	_	_	_
 56	a'	ag	PART	Sa	_	_	_	_	_
@@ -5092,6 +5208,10 @@
 68	chaidh	rach	VERB	V-s	Tense=Past	_	_	_	_
 69	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 70	a-steach	a-steach	ADV	Rs	_	_	_	_	_
+
+# sent_id = s10_037
+# speaker = [2]
+# text = chaidh e seachad air an loidhnidh bho [?]
 71	chaidh	rach	VERB	V-s	Tense=Past	_	_	_	_
 72	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 73	seachad	seachad	ADV	Rg	_	_	_	_	_
@@ -5100,16 +5220,28 @@
 76	loidhnidh	loidhnidh	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	_	_	_	_
 77	bho	bho	ADP	Sp	_	_	_	_	_
 78	[?]	[?]	X	Xx	_	_	_	_	_
+
+# sent_id = s10_038
+# speaker = [2]
+# text = tha mi a' smaoineachadh [?]
 79	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 80	mi	mi	PRON	Pp1s	Number=Sing|Person=1	_	_	_	_
 81	a'	ag	PART	Sa	_	_	_	_	_
 82	smaoineachadh	smaoinich	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 83	[?]	[?]	X	Xx	_	_	_	_	_
+
+# sent_id = s10_039
+# speaker = [2]
+# text = tha e doirbh a ràdh
 84	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 85	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 86	doirbh	doirbh	ADJ	Ap	_	_	_	_	_
 87	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 88	ràdh	abair	NOUN	Nv	VerbForm=Inf	_	_	_	_
+
+# sent_id = s10_040
+# speaker = [2]
+# text = bha am ball a' dol aig astar a bha uabhasach ach tha siud ann an dòigh glè choltach ris an tadhal an dòigh 'san deach i a-steach co-dhiubh ris an tadhal a fhuair iad an aghaidh an Nirribhidh
 89	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 90	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 91	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
@@ -5149,9 +5281,9 @@
 125	an	an	DET	Tdsf	Gender=Fem|Number=Sing	_	_	_	_
 126	Nirribhidh	Nirribhidh	PROPN	Nt	_	_	_	_	_
 
-# sent_id = s10_8
+# sent_id = s10_041
 # speaker = [1]
-# text = tha timcheall air ochd mionaidean ri dhol dhen a’ chiad leth aon tadhal gach a taobh ann an seo aon tadhal aig Alba aon aig Yugoslavia fhuair Johnson tadhal do dh’Alba agus Katernetch an tadhal ud dìreach bho chionn mhionaid do Yugoslavia am ball ge-tà 'ga feuchainn a-null gu Bett ach thàinig i gu Yositch chuir Yositch air ais gu Etkovitch do fear-glèidhidh Yugoslavia am ball aig Etkovitch ma-thà tha e 'dol a dh’fheuchainn buille àrd suas leatha suas meadhon na pàirce leatha gu fad 's a bheil Svetkovitch Svetkovitch e fhèin agus MacLeish 'se MacLeish a fhuair a cheann thuice an toiseach agus chaidh i a-mach air taobh thall na pàirce 's 'se sadadh a-steach a bhios ann do Yugoslavia Stoykavitch a' dol dha feuchainn ma-thà dh’fheuch esan gu math luath gu Svetkovitch i air ais gu Stoykavitch Stoykavitch a' gluasad a-steach air a’ bhucas a' feuchainn tè àrd a-null dhan an taobh-sa gu Katernetch Katernetch fhuair e a cheann thuice thàinig i gu Spasitch Spasitich a' feuchainn tè àrd chan eil cunnart sam bith ann an siud do dh’Alba ach dh’fhaodadh a Mhurchaidh a-siud tè eile a bhith aca
+# text = tha timcheall air ochd mionaidean ri dhol dhen a’ chiad leth
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 2	timcheall	timcheall	ADJ	Ap	_	_	_	_	_
 3	air	air	ADP	Sp	_	_	_	_	_
@@ -5163,6 +5295,10 @@
 9	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 10	chiad	chiad	NUM	Mo	_	_	_	_	_
 11	leth	leth	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s10_042
+# speaker = [1]
+# text = aon tadhal gach a taobh ann an seo
 12	aon	aon	NUM	Mc	_	_	_	_	_
 13	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 14	gach	gach	DET	Dq	_	_	_	_	_
@@ -5171,13 +5307,25 @@
 17	ann	ann	ADV	Rs	_	_	_	_	_
 18	an	an	ADV	Rs	_	17	fixed	_	_
 19	seo	seo	ADV	Rs	_	17	fixed	_	_
-20	aon	aon	NUM	Mc	_	_	_	_	_
-21	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
-22	aig	aig	ADP	Sp	_	_	_	_	_
-23	Alba	Alba	PROPN	Nt	_	_	_	_	_
-24	aon	aon	NUM	Mc	_	_	_	_	_
-25	aig	aig	ADP	Sp	_	_	_	_	_
-26	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_043
+# speaker = [1]
+# text = aon tadhal aig Alba
+1	aon	aon	NUM	Mc	_	_	_	_	_
+2	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+3	aig	aig	ADP	Sp	_	_	_	_	_
+4	Alba	Alba	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_044
+# speaker = [1]
+# text = aon aig Yugoslavia
+1	aon	aon	NUM	Mc	_	_	_	_	_
+2	aig	aig	ADP	Sp	_	_	_	_	_
+3	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_045
+# speaker = [1]
+# text = fhuair Johnson tadhal do dh’Alba agus Katernetch an tadhal ud dìreach bho chionn mhionaid do Yugoslavia
 27	fhuair	faigh	VERB	V-s	Tense=Past	_	_	_	_
 28	Johnson	Johnson	PROPN	Nn	_	_	_	_	_
 29	tadhal	tadhal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
@@ -5194,6 +5342,10 @@
 40	mhionaid	mionaid	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 41	do	do	ADP	Sp	_	_	_	_	_
 42	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_046
+# speaker = [1]
+# text = am ball ge-tà 'ga feuchainn a-null gu Bett ach thàinig i gu Yositch
 43	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 44	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 45	ge-tà	ge-tà	ADV	Rg	_	_	_	_	_
@@ -5207,6 +5359,10 @@
 53	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 54	gu	gu	ADP	Sp	_	_	_	_	_
 55	Yositch	Yositch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_046
+# speaker = [1]
+# text = chuir Yositch air ais gu Etkovitch do fear-glèidhidh Yugoslavia
 56	chuir	cuir	VERB	V-s	Tense=Past	0	root	_	_
 57	Yositch	Yositch	PROPN	Nn	_	1	nsubj	_	_
 58	air	air	ADP	Sp	_	_	_	_	_
@@ -5216,11 +5372,19 @@
 62	do	do	ADP	Sp	_	_	_	_	_
 63	fear-glèidhidh	fear-glèidhidh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 64	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
-65	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
-66	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
-67	aig	aig	ADP	Sp	_	_	_	_	_
-68	Etkovitch	Etkovitch	PROPN	Nn	_	_	_	_	_
-69	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_047
+# speaker = [1]
+# text = am ball aig Etkovitch ma-thà
+1	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
+2	ball	ball	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+3	aig	aig	ADP	Sp	_	_	_	_	_
+4	Etkovitch	Etkovitch	PROPN	Nn	_	_	_	_	_
+5	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_048
+# speaker = [1]
+# text = tha e 'dol a dh’fheuchainn buille àrd suas leatha suas meadhon na pàirce leatha gu fad 's a bheil Svetkovitch
 70	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 71	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 72	'	ag	PART	Sa	_	_	_	_	SpaceAfter=No
@@ -5242,11 +5406,19 @@
 88	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	_	_	_	_
 89	bheil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
 90	Svetkovitch	Svetkovitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_049
+# speaker = [1]
+# text = Svetkovitch e fhèin agus MacLeish
 91	Svetkovitch	Svetkovitch	PROPN	Nn	_	_	_	_	_
 92	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 93	fhèin	fèin	PRON	Px	Reflex=Yes	_	_	_	_
 94	agus	agus	CCONJ	Cc	_	95	cc	_	_
 95	MacLeish	MacLeish	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_050
+# speaker = [1]
+# text = 'se MacLeish a fhuair a cheann thuice an toiseach agus chaidh i a-mach air taobh thall na pàirce 's 'se sadadh a-steach a bhios ann do Yugoslavia
 96	'se	is	AUX	Wp-i-3	_	_	_	_	_
 97	MacLeish	MacLeish	PROPN	Nn	_	_	_	_	_
 98	a	a	PART	Q-r	PartType=Vb|PronType=Rel	_	_	_	_
@@ -5274,12 +5446,20 @@
 120	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 121	do	do	ADP	Sp	_	_	_	_	_
 122	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
-123	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
-124	a'	ag	PART	Sa	_	_	_	_	_
-125	dol	rach	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-126	dha	do	ADP	Spp3sf	_	_	_	_	_
-127	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-128	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_051
+# speaker = [1]
+# text = Stoykavitch a' dol dha feuchainn ma-thà
+1	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
+2	a'	ag	PART	Sa	_	_	_	_	_
+3	dol	rach	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+4	dha	do	ADP	Spp3sf	_	_	_	_	_
+5	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+6	ma-thà	ma-thà	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_052
+# speaker = [1]
+# text = dh’fheuch esan gu math luath gu Svetkovitch i
 129	dh’fheuch	feuch	VERB	V-s	Tense=Past	_	_	_	_
 130	esan	e	PRON	Pp3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	_	_	_	_
 131	gu	gu	PART	Ua	PartType=Ad	_	_	_	_
@@ -5288,19 +5468,31 @@
 134	gu	gu	ADP	Sp	_	_	_	_	_
 135	Svetkovitch	Svetkovitch	PROPN	Nn	_	_	_	_	_
 136	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
-137	air	air	ADP	Sp	_	_	_	_	_
-138	ais	ais	ADP	Nf	_	_	_	_	_
-139	gu	gu	ADP	Sp	_	_	_	_	_
-140	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
-141	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
-142	a'	ag	PART	Sa	_	_	_	_	_
-143	gluasad	gluais	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-144	a-steach	a-steach	ADV	Rs	_	_	_	_	_
-145	air	air	ADP	Sp	_	_	_	_	_
-146	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
-147	bhucas	bucas	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
-148	a'	ag	PART	Sa	_	_	_	_	_
-149	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+
+# sent_id = s10_053
+# speaker = [1]
+# text = air ais gu Stoykavitch
+1	air	air	ADP	Sp	_	_	_	_	_
+2	ais	ais	ADP	Nf	_	_	_	_	_
+3	gu	gu	ADP	Sp	_	_	_	_	_
+4	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_054
+# speaker = [1]
+# text = Stoykavitch a' gluasad a-steach air a’ bhucas a' feuchainn
+1	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
+2	a'	ag	PART	Sa	_	_	_	_	_
+3	gluasad	gluais	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+4	a-steach	a-steach	ADV	Rs	_	_	_	_	_
+5	air	air	ADP	Sp	_	_	_	_	_
+6	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
+7	bhucas	bucas	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
+8	a'	ag	PART	Sa	_	_	_	_	_
+9	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+
+# sent_id = s10_055
+# speaker = [1]
+# text = tè àrd a-null dhan an taobh-sa gu Katernetch
 150	tè	tè	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 151	àrd	àrd	ADJ	Aq-sfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
 152	a-null	a-null	ADV	Rs	_	_	_	_	_
@@ -5309,21 +5501,37 @@
 155	taobh-sa	taobh-sa	NOUN	Ncsmde	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 156	gu	gu	ADP	Sp	_	_	_	_	_
 157	Katernetch	Katernetch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_056
+# speaker = [1]
+# text = Katernetch fhuair e a cheann thuice
 158	Katernetch	Katernetch	PROPN	Nn	_	_	_	_	_
 159	fhuair	faigh	VERB	V-s	Tense=Past	_	_	_	_
 160	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 161	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 162	cheann	ceann	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 163	thuice	gu	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
-164	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
-165	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
-166	gu	gu	ADP	Sp	_	_	_	_	_
-167	Spasitch	Spasitch	PROPN	Nn	_	_	_	_	_
-168	Spasitich	Spasitich	PROPN	Nn	_	_	_	_	_
-169	a'	ag	PART	Sa	_	_	_	_	_
-170	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
-171	tè	tè	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
-172	àrd	àrd	ADJ	Aq-sfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
+
+# sent_id = s10_057
+# speaker = [1]
+# text = thàinig i gu Spasitch
+1	thàinig	thig	VERB	V-s	Tense=Past	_	_	_	_
+2	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+3	gu	gu	ADP	Sp	_	_	_	_	_
+4	Spasitch	Spasitch	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_058
+# speaker = [1]
+# text = Spasitich a' feuchainn tè àrd
+1	Spasitich	Spasitich	PROPN	Nn	_	_	_	_	_
+2	a'	ag	PART	Sa	_	_	_	_	_
+3	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+4	tè	tè	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
+5	àrd	àrd	ADJ	Aq-sfg	Case=Gen|Gender=Fem|Number=Sing	_	_	_	_
+
+# sent_id = s10_059
+# speaker = [1]
+# text = chan eil cunnart sam bith ann an siud do dh’Alba ach dh’fhaodadh a Mhurchaidh a-siud tè eile a bhith aca
 173	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
 174	eil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
 175	cunnart	cunnart	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
@@ -5345,9 +5553,9 @@
 191	bhith	bi	NOUN	Nv	VerbForm=Inf	_	_	_	_
 192	aca	aig	ADP	Pr3p	Number=Plur|Person=3	_	_	_	_
 
-# sent_id = s10_9
+# sent_id = s10_060
 # speaker = [2]
-# text = bha 'se an rud a tha iad a' dèanamh a-nise uill a's an t-suidheachadh a th' ann an aon suidheachadh co-dhiubh 'se gu bheil iad a' bualadh a’ bhall tarsainn àrd o aon taobh dhen a’ phàirce chun an taobh eile agus a's an t-suidheachadh a tha ann an siud chaidh tha mi a' smaoineadh gur e Gough agus Gough agus MacLeish an-àird airson a’ bhall aig an aon àm agus [?] agus an dithis aca air an talamh bha 'se cluicheadair 'se cluicheadair Yugoslavia a fhuair an cothrom an toiseach
+# text = bha 'se an rud a tha iad a' dèanamh a-nise
 1	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
 2	'se	is	AUX	Wp-i-3	_	_	_	_	_
 3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
@@ -5358,17 +5566,25 @@
 8	a'	ag	PART	Sa	_	_	_	_	_
 9	dèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 10	a-nise	a-nise	ADV	Rt	_	_	_	_	_
-11	uill	uill	INTJ	I	_	_	_	_	_
-12	a's	an	ADP	Sp	_	_	_	_	_
-13	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
-14	t-suidheachadh	suidheachadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
-15	a	a	PART	Q-r	PartType=Vb|PronType=Rel	_	_	_	_
-16	th'	bi	VERB	V-p	Tense=Pres	_	_	_	_
-17	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
-18	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
-19	aon	aon	NUM	Mc	_	_	_	_	_
-20	suidheachadh	suidheachadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
-21	co-dhiubh	co-dhiubh	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_061
+# speaker = [2]
+# text = uill a's an t-suidheachadh a th' ann an aon suidheachadh co-dhiubh
+1	uill	uill	INTJ	I	_	_	_	_	_
+2	a's	an	ADP	Sp	_	_	_	_	_
+3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
+4	t-suidheachadh	suidheachadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
+5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	_	_	_	_
+6	th'	bi	VERB	V-p	Tense=Pres	_	_	_	_
+7	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+8	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
+9	aon	aon	NUM	Mc	_	_	_	_	_
+10	suidheachadh	suidheachadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+11	co-dhiubh	co-dhiubh	ADV	Rg	_	_	_	_	_
+
+# sent_id = s10_062
+# speaker = [2]
+# text = 'se gu bheil iad a' bualadh a’ bhall tarsainn àrd o aon taobh dhen a’ phàirce chun an taobh eile agus a's an t-suidheachadh a tha ann an siud chaidh tha mi a' smaoineadh gur e Gough agus Gough agus MacLeish an-àird airson a’ bhall aig an aon àm agus [?] agus an dithis aca air an talamh bha 'se cluicheadair 'se cluicheadair Yugoslavia a fhuair an cothrom an toiseach
 22	'se	is	AUX	Wp-i-3	_	_	_	_	_
 23	gu	gu	PART	Qa	PartType=Ad	_	_	_	_
 24	bheil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
@@ -5398,7 +5614,15 @@
 48	ann	ann	ADV	Rs	_	_	_	_	_
 49	an	an	ADV	Rs	_	48	fixed	_	_
 50	siud	siud	ADV	Rs	_	48	fixed	_	_
-51	chaidh	rach	VERB	V-s	Tense=Past	_	_	_	_
+
+# sent_id = s10_063
+# speaker = [2]
+# text = chaidh
+1	chaidh	rach	VERB	V-s	Tense=Past	_	_	_	_
+
+# sent_id = s10_064
+# speaker = [2]
+# text = tha mi a' smaoineadh gur e Gough agus Gough agus MacLeish an-àird airson a’ bhall aig an aon àm agus [?] agus an dithis aca air an talamh bha 'se cluicheadair 'se cluicheadair Yugoslavia a fhuair an cothrom an toiseach
 52	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 53	mi	mi	PRON	Pp1s	Number=Sing|Person=1	_	_	_	_
 54	a'	ag	PART	Sa	_	_	_	_	_
@@ -5427,9 +5651,21 @@
 77	air	air	ADP	Sp	_	_	_	_	_
 78	an	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 79	talamh	talamh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
-80	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
-81	'se	is	AUX	Wp-i-3	_	_	_	_	_
-82	cluicheadair	cluicheadair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s10_065
+# speaker = [2]
+# text = bha
+1	bha	bi	VERB	V-s	Tense=Past	_	_	_	_
+
+# sent_id = s10_066
+# speaker = [2]
+# text = 'se cluicheadair
+1	'se	is	AUX	Wp-i-3	_	_	_	_	_
+2	cluicheadair	cluicheadair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s10_067
+# speaker = [2]
+# text = 'se cluicheadair Yugoslavia a fhuair an cothrom an toiseach
 83	'se	is	AUX	Wp-i-3	_	_	_	_	_
 84	cluicheadair	cluicheadair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 85	Yugoslavia	Yugoslavia	PROPN	Nt	_	_	_	_	_
@@ -5440,7 +5676,7 @@
 90	an	an	ADV	Rt	_	_	_	_	_
 91	toiseach	toiseach	ADV	Rt	_	90	fixed	_	_
 
-# sent_id = s10_10
+# sent_id = s10_068
 # speaker = [1]
 # text = am ball aig Spasitch ma-thà
 1	am	an	DET	Tdsm	Gender=Masc|Number=Sing	2	det	_	_
@@ -5449,7 +5685,7 @@
 4	Spasitch	Spasitch	PROPN	Nn	_	2	obl	_	_
 5	ma-thà	ma-thà	ADV	Rg	_	2	advmod	_	_
 
-# sent_id = s10_11
+# sent_id = s10_069
 # speaker = [1]
 # text = e fhèin agus Johnson an ìre mhath a' sabaid air a son ach 'se Gough a fhuair a chas thuige mu dheireadh
 1	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
@@ -5475,7 +5711,7 @@
 21	mu	mu	ADV	Rt	_	_	_	_	_
 22	dheireadh	deireadh	ADV	Rt	_	21	fixed	_	_
 
-# sent_id = s10_12
+# sent_id = s10_070
 # speaker = [1]
 # text = am ball aig Spasitch
 1	am	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
@@ -5483,7 +5719,7 @@
 3	aig	aig	ADP	Sp	_	_	_	_	_
 4	Spasitch	Spasitch	PROPN	Nn	_	_	_	_	_
 
-# sent_id = s10_13a
+# sent_id = s10_071
 # speaker = [1]
 # text = Spasitch 'ga feuchainn a-steach dhan a’ mheadhan gu Stoykavitch
 1	Spasitch	Spasitch	PROPN	Nn	_	0	root	_	_
@@ -5496,9 +5732,9 @@
 8	gu	gu	ADP	Sp	_	_	_	_	_
 9	Stoykavitch	Stoykavitch	PROPN	Nn	_	_	_	_	_
 
-# sent_id = s10_13b
+# sent_id = s10_072
 # speaker = [1]
-# text = tha esan 'ga feuchainn ri a fàgail ach choinnich Malpas i Malpas gu Bett Bett air ais gu Malpas ach fìor dhroch bhall a bha siud ach chaidh i gu Yugoslavia agus thàinig i mu dheireadh gu Nicholl Nicholl leatha meadhan leth Alba Nicholl a' gluasad a-mach leatha Nicholl suas aig a’ chearcall meadhan chan eil duine aige chuir e air ais gu Gough i Gough a' sealltainn cò th' aigesan Gough a' feuchainn tè àrd suas gu fad 's a bheil Johnson ach tha Yositch ann an siud còmhla ris agus choinnich Johnson i 's chuir e a-mach i agus 'se sadadh a-steach a bhios ann do dh’Alba dìreach lethach slighe a-steach air taobh leth Yugoslavia Alba a' cluich bhon a’ làmh chlì gun a’ làmh dheis mar a tha sinn a' coimhead air agus 'se Nicholl fhèin a tha 'dol dha gabhail Nicholl leatha [?] a' ruith air a shon tha Johnson Johnson dìreach air oir a’ bhucais 'ga cur air ais gu Nicholl Nicholl tè àrd a-null agus tha Aitken ann an siud 's fhuair e a cheann thuice
+# text = tha esan 'ga feuchainn ri a fàgail ach choinnich Malpas i
 10	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 11	esan	e	PRON	Pp3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	_	_	_	_
 12	'ga	'ga	PART	Sap3sf	_	_	_	_	_
@@ -5510,9 +5746,17 @@
 18	choinnich	coinnich	VERB	V-s	Tense=Past	_	_	_	_
 19	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
 20	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
-21	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
-22	gu	gu	ADP	Sp	_	_	_	_	_
-23	Bett	Bett	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_073
+# speaker = [1]
+# text = Malpas gu Bett
+1	Malpas	Malpas	PROPN	Nn	_	_	_	_	_
+2	gu	gu	ADP	Sp	_	_	_	_	_
+3	Bett	Bett	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_074
+# speaker = [1]
+# text = Bett air ais gu Malpas ach fìor dhroch bhall a bha siud ach chaidh i gu Yugoslavia agus thàinig i mu dheireadh gu Nicholl
 24	Bett	Bett	PROPN	Nn	_	_	_	_	_
 25	air	air	ADP	Sp	_	_	_	_	_
 26	ais	ais	ADP	Nf	_	_	_	_	_
@@ -5537,26 +5781,47 @@
 45	dheireadh	deireadh	ADV	Rt	_	44	fixed	_	_
 46	gu	gu	ADP	Sp	_	_	_	_	_
 47	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_075
+# speaker = [1]
+# text = Nicholl leatha meadhan leth Alba
 48	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
 49	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 50	meadhan	meadhan	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 51	leth	leth	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 52	Alba	Alba	PROPN	Nt	_	_	_	_	_
+
+# sent_id = s10_076
+# speaker = [1]
+# text = Nicholl a' gluasad a-mach leatha
 53	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
 54	a'	ag	PART	Sa	_	_	_	_	_
 55	gluasad	gluais	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 56	a-mach	a-mach	ADV	Rs	_	_	_	_	_
 57	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s10_077
+# speaker = [1]
+# text = Nicholl suas aig a’ chearcall meadhan
+
 58	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
 59	suas	suas	ADV	Rs	_	_	_	_	_
 60	aig	aig	ADP	Sp	_	_	_	_	_
 61	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	_	_	_	_
 62	chearcall	cearcall	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	_	_	_	_
 63	meadhan	meadhan	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	_	_	_	_
+
+# sent_id = s10_078
+# speaker = [1]
+# text = chan eil duine aige
 64	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	_	_	_	_
 65	eil	bi	VERB	V-p--d	Tense=Pres	_	_	_	_
 66	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	_	_	_	_
 67	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s10_079
+# speaker = [1]
+# text = chuir e air ais gu Gough i
 68	chuir	cuir	VERB	V-s	Tense=Past	_	_	_	_
 69	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 70	air	air	ADP	Sp	_	_	_	_	_
@@ -5564,12 +5829,20 @@
 72	gu	gu	ADP	Sp	_	_	_	_	_
 73	Gough	Gough	PROPN	Nn	_	_	_	_	_
 74	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
+
+# sent_id = s10_080
+# speaker = [1]
+# text = Gough a' sealltainn cò th' aigesan
 75	Gough	Gough	PROPN	Nn	_	_	_	_	_
 76	a'	ag	PART	Sa	_	_	_	_	_
 77	sealltainn	seall	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
 78	cò	cò	PRON	Uq	Mood=Int	_	_	_	_
 79	th'	bi	VERB	V-p	Tense=Pres	_	_	_	_
 80	aigesan	aig	ADP	Pr3sm-e	Gender=Masc|Number=Sing|Person=3|PronType=Emp	_	_	_	_
+
+# sent_id = s10_081
+# speaker = [1]
+# text = Gough a' feuchainn tè àrd suas gu fad 's a bheil Johnson ach tha Yositch ann an siud còmhla ris agus choinnich Johnson i 's chuir e a-mach i agus 'se sadadh a-steach a bhios ann do dh’Alba dìreach lethach slighe a-steach air taobh leth Yugoslavia Alba a' cluich bhon a’ làmh chlì gun a’ làmh dheis mar a tha sinn a' coimhead air agus 'se Nicholl fhèin a tha 'dol dha gabhail
 81	Gough	Gough	PROPN	Nn	_	_	_	_	_
 82	a'	ag	PART	Sa	_	_	_	_	_
 83	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
@@ -5644,6 +5917,10 @@
 152	dol	rach	NOUN	Nv	VerbForm=Vnoun	150	xcomp:pred	_	_
 153	dha	do	ADP	Spp3sf	_	_	_	_	_
 154	gabhail	gabh	NOUN	Nv	VerbForm=Vnoun	_	_	_	_
+
+# sent_id = s10_082
+# speaker = [1]
+# text = Nicholl leatha [?] a' ruith air a shon
 155	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
 156	leatha	le	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	_	_	_	_
 157	[?]	[?]	X	Xx	_	_	_	_	_
@@ -5652,6 +5929,10 @@
 160	air	air	ADP	Sp	_	_	_	_	_
 161	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3	_	_	_	_
 162	shon	son	ADP	Nf	_	_	_	_	_
+
+# sent_id = s10_083
+# speaker = [1]
+# text = tha Johnson Johnson dìreach air oir a’ bhucais 'ga cur air ais gu Nicholl
 163	tha	bi	VERB	V-p	Tense=Pres	_	_	_	_
 164	Johnson	Johnson	PROPN	Nn	_	_	_	_	_
 165	Johnson	Johnson	PROPN	Nn	_	_	_	_	_
@@ -5666,6 +5947,10 @@
 174	ais	ais	ADP	Nf	_	_	_	_	_
 175	gu	gu	ADP	Sp	_	_	_	_	_
 176	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
+
+# sent_id = s10_084
+# speaker = [1]
+# text = Nicholl tè àrd a-null agus tha Aitken ann an siud 's fhuair e a cheann thuice
 177	Nicholl	Nicholl	PROPN	Nn	_	_	_	_	_
 178	tè	tè	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
 179	àrd	àrd	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	_	_	_	_
