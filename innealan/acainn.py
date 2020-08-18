@@ -423,6 +423,7 @@ class Features:
 
     def feats_noun(self, xpos: str) -> dict:
         result = {}
+        if xpos.endswith("e"): result["Form"] = ["Emp"]
         result["Case"] = [self.cases[xpos[4]]]
         if xpos[3] == "-": return result
         result["Gender"] = [self.genders[xpos[3]]]
@@ -438,6 +439,8 @@ class Features:
             result["VerbForm"] = ["Inf"]
         else:
             result["VerbForm"] = ["Vnoun"]
+        if xpos.endswith("e"):
+            result["Form"] = ["Emp"]
         return result
 
     def feats_part(self, xpos: str) -> dict:
@@ -458,14 +461,27 @@ class Features:
             result["Mood"] = ["Imp"]
         return result
 
+    def feats_prep(self, xpos: str) -> dict:
+        '''Example: Spp1s'''
+        result = {}
+        result["Poss"] = ["Yes"]
+        result["Person"] = [xpos[3]]
+        result["Number"] = [self.numbers[xpos[4]]]
+        if len(xpos) > 5 and xpos[5] in self.genders:
+            result["Gender"] = [self.genders[xpos[5]]]
+        if xpos.endswith('e'):
+            result["Form"] = ['Emp']
+        return result
+    
     def feats_pron(self, xpos: str) -> dict:
         result = {}
+        if xpos[1] == "p" and xpos[0] == "D": result["Poss"] = ["Yes"]
         result["Person"] = [xpos[2]]
         result["Number"] = [self.numbers[xpos[3]]]
         if len(xpos) > 4 and xpos[4] in self.genders:
             result["Gender"] = [self.genders[xpos[4]]]
         if xpos.endswith('e'):
-            result["PronType"] = ['Emp']
+            result["Form"] = ['Emp']
         return result
 
     def feats_verb(self, xpos: str) -> dict:
