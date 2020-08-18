@@ -380,7 +380,7 @@ class Features:
         self.tenses = {"p":"Pres", "s":"Past", "f":"Fut"}
         self.parttypes_u = {"a":"Ad", "c":"Comp", "g":"Inf", "v":"Voc",
                             "p":"Pat", "o":"Num"}
-        self.parttypes_q = {"Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb",
+        self.parttypes_q = {"Qa":"Cmpl", "Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb",
                             "Qnm":"Vb"}
         self.polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
         self.prontypes_q = {"Q-r":"Rel", "Qnr":"Rel", "Qq":"Int"}

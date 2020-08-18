@@ -5,11 +5,12 @@ corpus = pyconll.load_from_file(sys.argv[1])
 bi_pred_candidates = ["advmod","obl","xcomp","obl:smod","obl:tmod","obj"]
 allowed = ["xcomp:pred","ccomp"]
 rightward_only = ["case", "cc", "cop", "mark"]
+clauses_to_check = ["ccomp", "advcl", "acl:relcl"]
 score = 0
 with open(sys.argv[2],'w') as f:
     for sentence in corpus:
         bi_ids = []
-        ccomp_ids = []
+        clause_ids = []
         prev_token = None
         for token in sentence:
             if not token.is_multiword():
@@ -19,8 +20,8 @@ with open(sys.argv[2],'w') as f:
                     score +=1
                     print(f"{sentence.id} {token.id} deprel should not be None")
                 else:
-                    if token.deprel == "ccomp":
-                        ccomp_ids.append(token.id)
+                    if token.deprel in clauses_to_check:
+                        clause_ids.append(token.id)
                     if token.deprel in rightward_only and int(token.head) < int(token.id):
                         score += 1
                         print(f"{sentence.id} {token.id} {token.deprel} goes wrong way for gd")
@@ -55,25 +56,34 @@ with open(sys.argv[2],'w') as f:
                 if "obj" in deprels[key]:
                     score += 1
                     print(f"{sentence.id} {key} bi should not have obj")
-        if len(ccomp_ids) > 0:
+        if len(clause_ids) > 0:
             ids = {}
             deprels = {}
             forms = {}
+            feats = {}
             for token in sentence:
-                if token.head in ccomp_ids:
+                if token.head in clause_ids:
                     if token.head in ids:
                         ids[token.head].append(token.id)
                         deprels[token.head].append(token.deprel)
                         forms[token.head].append(token.form)
+                        feats[token.head].append(token.feats)
                     else:
                         ids[token.head] = [token.id]
                         forms[token.head] = [token.form]
                         deprels[token.head] = [token.deprel]
+                        feats[token.head] = [token.feats]
             for key in deprels:
+                ''' mark beats mark:prt '''
                 if 'mark' in deprels[key]:
                     sentence[key].deprel = "advcl"
-                if 'case' in deprels[key]:
-                    sentence[key].deprel = "acl:relcl"
+                elif 'mark:prt' in deprels[key]:
+                    
+                    for g in feats[key]:
+                        if "PartType" in g:
+                            if "Cmpl" in g["PartType"]: sentence[key].deprel = "ccomp"
+                        if "PronType" in g:
+                            if "Rel" in g["PronType"]: sentence[key].deprel = "acl:relcl"
 
         f.write("%s\n\n" % sentence.conll())
 if score == 0:

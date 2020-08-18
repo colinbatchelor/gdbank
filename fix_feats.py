@@ -39,8 +39,6 @@ with open(sys.argv[2],'w') as clean:
                     token.upos = "ADP"
                 elif token.xpos.startswith("A"):
                     token.feats = f.feats_adj(token.xpos)
-                elif token.xpos == "Qa":
-                    token.feats = {"PartType":["Ad"]}
                 elif token.xpos.startswith("U") or token.xpos.startswith("Q"):
                     token.feats = f.feats_part(token.xpos)
         clean.write(sentence.conll())
