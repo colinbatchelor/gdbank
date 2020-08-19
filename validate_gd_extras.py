@@ -6,6 +6,7 @@ bi_pred_candidates = ["advmod","obl","xcomp","obl:smod","obl:tmod","obj"]
 allowed = ["xcomp:pred","ccomp"]
 rightward_only = ["case", "cc", "cop", "mark"]
 clauses_to_check = ["ccomp", "advcl", "acl:relcl"]
+short_range = ["compound","det","mark:prt"]
 score = 0
 with open(sys.argv[2],'w') as f:
     for sentence in corpus:
@@ -14,6 +15,7 @@ with open(sys.argv[2],'w') as f:
         prev_token = None
         for token in sentence:
             if not token.is_multiword():
+                range = abs(int(token.id) - int(token.head))
                 if token.lemma == "bi":
                     bi_ids.append(token.id)
                 if token.deprel is None:
@@ -25,6 +27,10 @@ with open(sys.argv[2],'w') as f:
                     if token.deprel in rightward_only and int(token.head) < int(token.id):
                         score += 1
                         print(f"{sentence.id} {token.id} {token.deprel} goes wrong way for gd")
+                    if token.deprel in short_range and range > 2:
+                        score += 1
+                        print(f"{sentence.id} {token.id} Too long a range ({range}) for {token.deprel}")
+                        
                     if token.xpos == "Up" and token.deprel != "flat" and prev_token is not None and prev_token.xpos == "Nn":
                         score +=1 
                         print(f"{sentence.id} {token.id} Patronymic should be flat")
