@@ -22,6 +22,7 @@ with open(sys.argv[2],'w') as f:
                     score +=1
                     print(f"{sentence.id} {token.id} deprel should not be None")
                 else:
+                    if token.xpos == "Q-r": token.deprel = "mark:prt"
                     if token.deprel in clauses_to_check:
                         clause_ids.append(token.id)
                     if token.deprel in rightward_only and int(token.head) < int(token.id):
