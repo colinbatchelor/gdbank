@@ -15,12 +15,13 @@ In practice I have postprocessed the results with the following Python 3 scripts
 * `fix_whitespace.py` adds `SpaceAfter=No` to the relevant parts of the tree.
 * `fix_conversations.py` removes the tokens indicating the speaker and adds a `# speaker =` line to the preamble for each tree.
 
-The current treebank file in the dev branch of UD_Scottish_Gaelic-ARCOSG is `gd_arcosg-ud-test.conllu`.
-It contains approximately 20000 tokens and will be divided into test and train treebanks before the next UD release in November.
-There are three others:
+The current treebank files in the dev branch of UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
+
+There are four others:
 * `arcosg_unseen.conll` is the main file containing as-yet-unchecked treebanks.
-* `arcosg_long.conll` contains trees that are extremely long (typically about 1000 tokens in length) and hence difficult to parse automatically, tiring to check manually, and difficult to automatically assign to test/dev/train splits.
+* `arcosg_sport.conll` contains football commentary.
 * `arcosg_conversations.conll` contains conversations.
+* `gd_iomasgladh-ud-test.conllu` is a hand-built corpus from 2014 which has been converted to UD.
 
 This is written up in:
 * Colin Batchelor, 2019. Universal dependencies for Scottish Gaelic: syntax, in _Proceedings of CLTW2019 at Machine Translation Summit XVII_, Dublin, August.
@@ -30,7 +31,7 @@ Earlier work
 ### gramaran
 Contains a categorial grammar generated from ARCOSG in dotccg format.
 
-### conll
+### ccg
 Contains an earlier, smaller, hand-built corpus in CoNLL-X format.
 
 #### gdbank.txt
@@ -73,4 +74,4 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2019-09-08
+2020-09-01
