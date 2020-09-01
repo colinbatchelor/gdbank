@@ -174,7 +174,7 @@
 3	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 4	gu	gu	PART	Ua	PartType=Ad	5	mark:prt	_	_
 5	leòr	leòr	ADV	Rg	_	3	advmod	_	_
-6	an	an	ADV	Rs	_	3	advmod	_	_
+6	an	an	ADV	Rs	_	3	xcomp:pred	_	_
 7	seothach	seothach	ADV	Rs	_	6	fixed	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
 9	gheibh	faigh	VERB	V-f	Tense=Fut	3	acl:relcl	_	_
@@ -215,10 +215,10 @@
 # text = chan eil an t-ainm aice agam idir ach bha [Name] [Name] ag ràdh gun do dh’fhalbh i le canoe feasgar an-dè agus chan eil sinn cinnteach cò an taobh a chaidh i
 1	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
-3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	9	det	_	_
+3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
 4	t-ainm	ainm	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
-5	aice	aig	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	9	obl	_	_
-6	agam	aig	ADP	Pr1s	Number=Sing|Person=1	9	obl	_	_
+5	aice	aig	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	4	obl	_	_
+6	agam	aig	ADP	Pr1s	Number=Sing|Person=1	2	xcomp:pred	_	_
 7	idir	idir	ADV	Rg	_	9	advmod	_	_
 8	ach	ach	CCONJ	Cc	_	9	cc	_	_
 9	bha	bi	VERB	V-s	Tense=Past	2	conj	_	_
@@ -428,7 +428,7 @@
 3	retired	retired	X	Xfe	Foreign=Yes	0	root	_	_
 4	nurse	nurse	X	Xfe	Foreign=Yes	3	flat	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bh'	bi	VERB	V-s	Tense=Past	3	csubj:cop	_	_
+6	bh'	bi	VERB	V-s	Tense=Past	3	csubj:cleft	_	_
 7	innte	an	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	6	xcomp:pred	_	_
 8	a-mach	a-mach	ADV	Rs	_	6	advmod	_	_
 9	taobh	taobh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
@@ -458,7 +458,7 @@
 15	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	0	root	_	_
 16	[Name]	[Name]	PROPN	Nn-mg	Case=Gen|Gender=Masc	15	flat	_	_
 17	a	a	PART	Q-r	PartType=Vb|PronType=Rel	18	mark:prt	_	_
-18	chunnaic	faic	VERB	V-s	Tense=Past	15	csubj:cop	_	_
+18	chunnaic	faic	VERB	V-s	Tense=Past	15	csubj:cleft	_	_
 19	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	18	nsubj	_	_
 20	's	's	CCONJ	Cc	_	22	cc	_	_
 21	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	22	mark:prt	_	_
@@ -493,7 +493,7 @@
 3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
 4	latha	latha	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	chunnaic	faic	VERB	V-s	Tense=Past	4	csubj:cop	_	_
+6	chunnaic	faic	VERB	V-s	Tense=Past	4	csubj:cleft	_	_
 7	sibh	sibh	PRON	Pp2p	Number=Plur|Person=2	6	nsubj	_	_
 8	a'	ag	PART	Sa	_	9	case	_	_
 9	falbh	falbh	NOUN	Nv	VerbForm=Vnoun	6	xcomp	_	_
@@ -543,7 +543,7 @@
 16	a	a	ADP	Sp	_	17	case	_	_
 17	[Placename]	[Placename]	PROPN	Nt	_	15	obl	_	_
 18	a	a	PART	Q-r	PartType=Vb|PronType=Rel	19	mark:prt	_	_
-19	rachadh	rach	VERB	V-h	Mood=Cnd	15	csubj:cop	_	_
+19	rachadh	rach	VERB	V-h	Mood=Cnd	15	csubj:cleft	_	_
 20	iad	iad	PRON	Pp3p	Number=Plur|Person=3	19	nsubj	_	_
 
 # sent_id = c02_036b
@@ -602,7 +602,7 @@
 51	a	a	ADP	Sp	_	52	case	_	_
 52	[Placename]	[Placename]	PROPN	Nt	_	48	ccomp	_	_
 53	a	a	PART	Q-r	PartType=Vb|PronType=Rel	54	mark:prt	_	_
-54	bhitheas	bhith	VERB	V-f--r	Tense=Fut	52	csubj:cop	_	_
+54	bhitheas	bhith	VERB	V-f--r	Tense=Fut	52	csubj:cleft	_	_
 55	iad	iad	PRON	Pp3p	Number=Plur|Person=3	54	nsubj	_	_
 
 # sent_id = c04_000
@@ -655,7 +655,7 @@
 # text = seachdainn a tha ann gus am bi sinn a’ dol gus an [Placename]?
 1	seachdainn	seachdainn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
-3	tha	bi	VERB	V-p	Tense=Pres	1	csubj:cop	_	_
+3	tha	bi	VERB	V-p	Tense=Pres	1	csubj:cleft	_	_
 4	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	3	xcomp:pred	_	_
 5	gus	gus	SCONJ	Cs	_	7	mark	_	_
 6	am	am	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	7	mark:prt	_	_
@@ -675,9 +675,9 @@
 2	dìreach	dìreach	ADV	Rg	_	5	advmod	_	_
 3	ma	ma	ADP	Sp	_	5	case	_	_
 4	chòig	chòig	NUM	Mc	_	5	nummod	_	_
-5	seachdainn	seachdainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	1	obl	_	_
+5	seachdainn	seachdainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	1	xcomp:pred	_	_
 6	a	a	PART	Uv	PartType=Voc	7	case:voc	_	_
-7	[Name]	[Name]	PROPN	Nn-mv	Case=Voc|Gender=Masc	1	obl	_	_
+7	[Name]	[Name]	PROPN	Nn-mv	Case=Voc|Gender=Masc	1	vocative	_	_
 
 # sent_id = c04_007
 # speaker = [2]
@@ -692,7 +692,7 @@
 3	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 4	thu	thu	PRON	Pp2s	Number=Sing|Person=2	3	nsubj	_	_
 5	a’	ag	PART	Sa	_	6	case	_	_
-6	faighneachd	faighnich	NOUN	Nv	VerbForm=Vnoun	3	xcomp	_	SpaceAfter=No
+6	faighneachd	faighnich	NOUN	Nv	VerbForm=Vnoun	3	xcomp:pred	_	SpaceAfter=No
 7	?	?	PUNCT	Fg	_	3	punct	_	_
 
 # sent_id = c04_009
@@ -724,7 +724,7 @@
 3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
 4	fada	fada	ADV	Rg	_	2	advmod	_	_
 5	a	a	PART	Ug	PartType=Inf	6	mark:prt	_	_
-6	dhol	rach	NOUN	Nv	VerbForm=Inf	2	xcomp	_	_
+6	dhol	rach	NOUN	Nv	VerbForm=Inf	2	xcomp:pred	_	_
 7	seachad	seachad	ADV	Rg	_	6	advmod	_	_
 
 # sent_id = c04_011
@@ -770,7 +770,7 @@
 4	as	is	AUX	Wpr	_	5	cop	_	_
 5	motha	math	ADJ	Apc	Degree=Cmp,Sup	3	amod	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	tha	bi	VERB	V-p	Tense=Pres	5	csubj:cop	_	_
+7	tha	bi	VERB	V-p	Tense=Pres	5	csubj:cleft	_	_
 8	thu	thu	PRON	Pp2s	Number=Sing|Person=2	7	nsubj	_	_
 9	a’	ag	PART	Sa	_	10	case	_	_
 10	smaointinn	smaoinich	NOUN	Nv	VerbForm=Vnoun	7	xcomp:pred	_	_
@@ -786,9 +786,9 @@
 # sent_id = c04_016
 # speaker = [1]
 # text = snàmh an e?
-1	snàmh	snàmh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	dislocated	_	_
+1	snàmh	snàmh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 2	an	is	AUX	Wpdqa	_	3	cop	_	_
-3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	SpaceAfter=No
+3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	parataxis	_	SpaceAfter=No
 4	?	?	PUNCT	Fg	_	3	punct	_	_
 
 # sent_id = c04_017
@@ -821,8 +821,8 @@
 12	air	air	ADP	Sp	_	13	case	_	_
 13	swimming	swimming	X	Xfe	Foreign=Yes	6	obl	_	_
 14	pool	pool	X	Xfe	Foreign=Yes	13	flat	_	_
-15	's	is	AUX	Wp-i	_	13	cop	_	_
-16	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	obl	_	_
+15	's	is	AUX	Wp-i	_	19	cop	_	_
+16	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	15	fixed	_	_
 17	anns	an	ADP	Sp	_	19	case	_	_
 18	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	19	det	_	_
 19	mhuir	muir	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	7	obl	_	_
@@ -904,7 +904,7 @@
 8	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
 9	air	air	ADP	Sp	_	10	case	_	_
 10	Diluain	diluain	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	6	obl	_	_
-11	no	no	CCONJ	Cc	_	1	cc	_	_
+11	no	no	CCONJ	Cc	_	12	cc	_	_
 12	rudeigin	rudeigin	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	10	conj	_	_
 
 # sent_id = c04_026
@@ -916,7 +916,7 @@
 4	thu	thu	PRON	Pp2s	Number=Sing|Person=2	3	nsubj	_	_
 5	fhathast	fhathast	ADV	Rt	_	3	advmod	_	_
 6	a’	ag	PART	Sa	_	7	case	_	_
-7	sgrìobhadh	sgrìobh	NOUN	Nv	VerbForm=Vnoun	3	xcomp	_	_
+7	sgrìobhadh	sgrìobh	NOUN	Nv	VerbForm=Vnoun	3	xcomp:pred	_	_
 8	chun	gu	ADP	Sp	_	10	case	_	_
 9	an	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	10	det	_	_
 10	dithis	dithis	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	7	obl	_	_
@@ -948,7 +948,7 @@
 # speaker = [3]
 # text = uaireannan agus a bheil iad a’ fuireach faisg air a chèile?
 1	uaireannan	uaireannan	ADV	Rt	_	0	root	_	_
-2	agus	agus	CCONJ	Cc	_	1	cc	_	_
+2	agus	agus	CCONJ	Cc	_	4	cc	_	_
 3	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	4	mark:prt	_	_
 4	bheil	bi	VERB	V-p--d	Tense=Pres	1	conj	_	_
 5	iad	iad	PRON	Pp3p	Number=Plur|Person=3	4	nsubj	_	_
@@ -1015,6 +1015,7 @@
 1	ò	ò	INTJ	I	_	2	discourse	_	_
 2	right	right	X	Xfe	Foreign=Yes	0	root	_	_
 
+# comment = Node 8 was Dd in ARCOSG
 # sent_id = c04_035a
 # speaker = [3]
 # text = dè mu dheidhinn an triob a bha seo [Name] a bha thu fhèin ‘s [Name] a' dol a dhèanamh a [Placename]?
@@ -1025,13 +1026,13 @@
 5	triob	triob	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	0	root	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
 7	bha	bi	VERB	V-s	Tense=Past	11	reparandum	_	_
-8	seo	seo	DET	Dd	_	7	nsubj	_	_
+8	seo	seo	PRON	Pd	_	7	nsubj	_	_
 9	[Name]	[Name]	PROPN	Nn-mv	Case=Voc|Gender=Masc	7	vocative	_	_
 10	a	a	PART	Q-r	PartType=Vb|PronType=Rel	11	mark:prt	_	_
-11	bha	bi	VERB	V-s	Tense=Past	5	csubj:cop	_	_
+11	bha	bi	VERB	V-s	Tense=Past	5	csubj:cleft	_	_
 12	thu	thu	PRON	Pp2s	Number=Sing|Person=2	11	nsubj	_	_
 13	fhèin	fèin	PRON	Px	Reflex=Yes	12	compound	_	_
-14	‘s	's	CCONJ	Cc	_	11	cc	_	_
+14	‘s	's	CCONJ	Cc	_	15	cc	_	_
 15	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	11	nsubj	_	_
 16	a'	ag	PART	Sa	_	17	case	_	_
 17	dol	rach	NOUN	Nv	VerbForm=Vnoun	11	xcomp:pred	_	_
@@ -1152,7 +1153,7 @@
 # speaker = [3]
 # text = [Name] is [Name] tha iad a’ bruidhinn air a dhol air latha a [Placename] leotha fhèin
 1	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	4	dislocated	_	_
-2	is	is	CCONJ	Cc	_	1	cc	_	_
+2	is	is	CCONJ	Cc	_	3	cc	_	_
 3	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	1	conj	_	_
 4	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 5	iad	iad	PRON	Pp3p	Number=Plur|Person=3	4	nsubj	_	_
@@ -1202,7 +1203,7 @@
 1	an	an	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	2	mark:prt	_	_
 2	leigeadh	leig	VERB	V-h--d	Mood=Cnd	0	root	_	_
 3	tu	thu	PRON	Pp2s	Number=Sing|Person=2	2	nsubj	_	_
-4	leamsa	le	ADP	Pr1s--e	Form=Emp|Number=Sing|Person=1	2	obj	_	_
+4	leamsa	le	ADP	Pr1s--e	Form=Emp|Number=Sing|Person=1	2	obl	_	_
 5	falbh	falbh	NOUN	Nv	VerbForm=Vnoun	2	xcomp	_	SpaceAfter=No
 6	?	?	PUNCT	Fg	_	2	punct	_	_
 
@@ -1289,9 +1290,9 @@
 9	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	10	mark:prt	_	_
 10	bhiodh	bi	VERB	V-h--d	Mood=Cnd	8	csubj:cop	_	_
 11	ùine	ùine	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	10	nsubj	_	_
-12	agaibh	aig	ADP	Pr2p	Number=Plur|Person=2	13	mark	_	_
+12	agaibh	aig	ADP	Pr2p	Number=Plur|Person=2	10	obl	_	_
 13	dhol	rach	NOUN	Nv	VerbForm=Vnoun	10	xcomp:pred	_	_
-14	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	6	obl	_	_
+14	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	13	obl	_	_
 15	nas	nas	PART	Uc	PartType=Comp	16	mark:prt	_	_
 16	fhaide	fada	ADJ	Apc	Degree=Cmp,Sup	13	advmod	_	_
 
@@ -1301,7 +1302,7 @@
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 2	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
 3	a'm	aig	ADP	Pr2s	Number=Sing|Person=2	1	xcomp:pred	_	_
-4	ach	ach	CCONJ	Cc	_	6	mark	_	_
+4	ach	ach	CCONJ	Cc	_	6	cc	_	_
 5	‘s	is	AUX	Wp-i	_	6	cop	_	_
 6	urrainn	urrainn	NOUN	Uf	_	1	obl	_	_
 7	dhuinn	do	ADP	Pr1p	Number=Plur|Person=1	6	obl	_	_
@@ -1333,7 +1334,7 @@
 2	anns	an	ADP	Sp	_	4	case	_	_
 3	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	4	det	_	_
 4	[Placename]	[Placename]	PROPN	Nt	_	10	obl	_	_
-5	an	is	AUX	Wpdqa	_	7	reparandum	_	_
+5	an	is	AUX	Wpdqa	_	7	cop	_	_
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	fixed	_	_
 7	an	is	AUX	Wpdqa	_	10	cop	_	_
 8	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	7	fixed	_	_
@@ -1341,7 +1342,7 @@
 10	pool	pool	NOUN	Xfe	Foreign=Yes	9	flat	_	_
 11	a-muigh	a-muigh	ADJ	Aq	_	9	amod	_	_
 12	a	a	PART	Q-r	PartType=Vb|PronType=Rel	13	mark:prt	_	_
-13	th’	bi	VERB	V-p	Tense=Pres	9	csubj:cop	_	_
+13	th’	bi	VERB	V-p	Tense=Pres	9	csubj:cleft	_	_
 14	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	9	obl	_	SpaceAfter=No
 15	?	?	PUNCT	Fg	_	9	punct	_	_
 
@@ -1397,7 +1398,7 @@
 8	gu	gu	PART	Qa	PartType=Cmpl	9	mark:prt	_	_
 9	bheil	bi	VERB	V-p--d	Tense=Pres	7	ccomp	_	_
 10	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
-11	suas	suas	ADV	Rg	_	9	advmod	_	_
+11	suas	suas	ADV	Rg	_	9	xcomp:pred	_	_
 12	ri	ri	ADP	Sp	_	15	case	_	_
 13	aig	aig	ADP	Sp	_	15	case	_	_
 14	an	an	DET	Tdsm	Gender=Masc|Number=Sing	15	det	_	_
@@ -1481,7 +1482,7 @@
 8	na	an	DET	Tdp	Number=Plur	9	det	_	_
 9	first	first	X	Xfe	Foreign=Yes	7	nsubj	_	_
 10	years	years	X	Xfe	Foreign=Yes	9	flat	_	_
-11	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	obl	_	_
+11	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	xcomp:pred	_	_
 12	cuideachd	cuideachd	ADV	Rg	_	7	advmod	_	_
 
 # sent_id = c05_000
@@ -1492,7 +1493,7 @@
 3	aon	aon	NUM	Mc	_	4	nummod	_	_
 4	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bhiodh	bi	VERB	V-h	Mood=Cnd	4	csubj:cop	_	_
+6	bhiodh	bi	VERB	V-h	Mood=Cnd	4	csubj:cleft	_	_
 7	math	math	ADJ	Ap	_	6	xcomp:pred	_	_
 8	aig	aig	ADP	Sp	_	9	case	_	_
 9	[Name]	[Name]	PROPN	Nn-fd	Case=Dat|Gender=Fem	6	obl	_	_
@@ -1532,7 +1533,7 @@
 # text = daoine a tha ann an holiday houses dh’fheumadh iad cur airson dìreach nach eil an taigh ach occupied ceithir mìosan
 1	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	0	root	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
-3	tha	bi	VERB	V-p	Tense=Pres	1	csubj:cop	_	_
+3	tha	bi	VERB	V-p	Tense=Pres	1	csubj:cleft	_	_
 4	ann	an	ADP	Sp	_	6	case	_	_
 5	an	an	ADP	Sp	_	4	fixed	_	_
 6	holiday	holiday	X	Xfe	Foreign=Yes	3	xcomp:pred	_	_
@@ -1600,7 +1601,7 @@
 7	bheil	bi	VERB	V-p--d	Tense=Pres	4	csubj:cop	_	_
 8	còir	còir	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	7	nsubj	_	_
 9	air	air	ADP	Sp	_	10	case	_	_
-10	uisge	uisge	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	7	obl	_	_
+10	uisge	uisge	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	7	xcomp:pred	_	_
 11	a-nisd	a-nisd	ADV	Rt	_	12	advmod	_	_
 12	[?]	[?]	X	Xx	_	7	amod	_	_
 13	ach	ach	ADP	Sp	_	14	case	_	_
@@ -1623,11 +1624,11 @@
 12	an-diugh	an-diugh	ADV	Rt	_	8	advmod	_	_
 13	gu	gu	PART	Qa	PartType=Cmpl	14	mark:prt	_	_
 14	bheil	bi	VERB	V-p--d	Tense=Pres	8	ccomp	_	_
-15	an	an	DET	Tds	Number=Sing	14	nsubj	_	_
-16	council	council	X	Xfe	Foreign=Yes	14	xcomp:pred	_	_
+15	an	an	DET	Tds	Number=Sing	16	det	_	_
+16	council	council	X	Xfe	Foreign=Yes	14	nsubj	_	_
 17	seo	seo	DET	Dd	_	16	det	_	_
 18	'	ag	PART	Sa	_	19	case	_	SpaceAfter=No
-19	dol	rach	NOUN	Nv	VerbForm=Vnoun	14	xcomp	_	_
+19	dol	rach	NOUN	Nv	VerbForm=Vnoun	14	xcomp:pred	_	_
 20	a	a	PART	Ug	PartType=Inf	21	mark:prt	_	_
 21	dhèanamh	dèan	NOUN	Nv	VerbForm=Inf	19	xcomp	_	_
 22	ghearrain	gearrain	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	19	nmod	_	_
@@ -1641,7 +1642,7 @@
 4	eile	eile	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	3	amod	_	_
 5	ma-thà	ma-thà	ADV	Rg	_	2	advmod	_	_
 6	a'	ag	PART	Sa	_	7	case	_	_
-7	sabaid	sabaid	NOUN	Nv	VerbForm=Vnoun	2	xcomp	_	_
+7	sabaid	sabaid	NOUN	Nv	VerbForm=Vnoun	2	xcomp:pred	_	_
 8	airson	airson	ADP	Nf	_	9	case	_	_
 9	full	full	X	Xfe	Foreign=Yes	7	obl	_	_
 10	rates	rates	X	Xfe	Foreign=Yes	9	flat	_	_
@@ -1663,7 +1664,7 @@
 2	sè	is	AUX	Wp-i-3	_	0	root	_	_
 3	tha	bi	VERB	V-p	Tense=Pres	2	csubj:cop	_	_
 4	sineach	sineach	PRON	Pd	_	3	nsubj	_	_
-5	ach	ach	CCONJ	Cc	_	3	cc	_	_
+5	ach	ach	CCONJ	Cc	_	7	cc	_	_
 6	se	is	AUX	Wp-i-3	_	7	cop	_	_
 7	taighean	taigh	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	3	conj	_	_
 8	mòra	mòra	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	7	amod	_	_
@@ -1769,7 +1770,7 @@
 1	nach	is	AUX	Wpdqn	_	2	cop	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
-4	bhiodh	bi	VERB	V-h	Mood=Cnd	2	csubj:cop	_	_
+4	bhiodh	bi	VERB	V-h	Mood=Cnd	2	csubj:cleft	_	_
 5	stale	stale	ADJ	Xfe	Foreign=Yes	4	xcomp:pred	_	SpaceAfter=No
 6	?	?	PUNCT	Fg	_	2	punct	_	_
 
@@ -1832,7 +1833,7 @@
 1	an	an	DET	Tdsm	Gender=Masc|Number=Sing	3	det	_	_
 2	aon	aon	NUM	Mc	_	3	nummod	_	_
 3	uisge	uisge	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
-4	's	's	CCONJ	Cc	_	1	cc	_	_
+4	's	's	CCONJ	Cc	_	6	cc	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
 6	tha	bi	VERB	V-p	Tense=Pres	1	conj	_	_
 7	a'	ag	PART	Sa	_	8	case	_	_
@@ -1892,11 +1893,11 @@
 5	a's	an	ADP	Sp	_	7	case	_	_
 6	na	an	DET	Tdpm	Gender=Masc|Number=Plur	7	det	_	_
 7	taighean	taigh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	4	xcomp:pred	_	_
-8	air	air	ADV	Rs	_	11	mark	_	_
+8	air	air	ADV	Rs	_	4	advmod	_	_
 9	falbh	falbh	ADV	Rs	_	8	fixed	_	_
 10	cuideachd	cuideachd	ADV	Rg	_	11	advmod	_	_
-11	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	advcl	_	_
-12	a'd	aig	ADP	Pr2s	Number=Sing|Person=2	11	obl	_	_
+11	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	parataxis	_	_
+12	a'd	aig	ADP	Pr2s	Number=Sing|Person=2	11	xcomp:pred	_	_
 
 # sent_id = c05_017b
 # speaker = [1]
@@ -1948,7 +1949,7 @@
 10	a'	ag	PART	Sa	_	11	case	_	_
 11	cosg	cosg	NOUN	Nv	VerbForm=Vnoun	6	xcomp:pred	_	_
 12	tuilleadh	tuilleadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	11	obl	_	_
-13	's	's	CCONJ	Cc	_	11	cc	_	_
+13	's	's	CCONJ	Cc	_	15	cc	_	_
 14	a	a	PART	Q-r	PartType=Vb|PronType=Rel	15	mark:prt	_	_
 15	chòir	còir	VERB	V-s	Tense=Past	11	conj	_	_
 16	a	a	ADP	Sp	_	17	case	_	_
@@ -2022,7 +2023,7 @@
 5	h-uile	uile	DET	Dq	_	4	fixed	_	_
 6	sgilinn	sgilinn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	obl	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	th'	bi	VERB	V-p	Tense=Pres	6	csubj:cop	_	_
+8	th'	bi	VERB	V-p	Tense=Pres	6	csubj:cleft	_	_
 9	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	8	xcomp:pred	_	_
 
 # sent_id = c05_021
@@ -2076,7 +2077,7 @@
 2	am	an	DET	Tds	Number=Sing	3	det	_	_
 3	point	point	X	Xfe	Foreign=Yes	0	root	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	th'	bi	VERB	V-p	Tense=Pres	3	csubj:cop	_	_
+5	th'	bi	VERB	V-p	Tense=Pres	3	csubj:cleft	_	_
 6	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	5	xcomp:pred	_	_
 
 # sent_id = c05_027a
@@ -2234,7 +2235,7 @@
 13	bidh	bi	VERB	V-f	Tense=Fut	11	xcomp:pred	_	_
 14	na	an	DET	Tdp	Number=Plur	15	det	_	_
 15	appliances	appliances	X	Xfe	Foreign=Yes	13	nsubj	_	_
-16	's	's	CCONJ	Cc	_	11	cc	_	_
+16	's	's	CCONJ	Cc	_	18	cc	_	_
 17	na	an	DET	Tdpm	Gender=Masc|Number=Plur	18	det	_	_
 18	rudan	rud	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	11	nsubj	_	_
 19	sin	sin	DET	Dd	_	18	det	_	_
@@ -2290,7 +2291,7 @@
 3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	fixed	_	_
 4	hovel	hovel	NOUN	Xfe	Foreign=Yes	0	root	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	th'	bi	VERB	V-p	Tense=Pres	4	csubj:cop	_	_
+6	th'	bi	VERB	V-p	Tense=Pres	4	csubj:cleft	_	_
 7	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	6	xcomp:pred	_	_
 8	idir	idir	ADV	Rg	_	6	advmod	_	_
 
@@ -2328,7 +2329,7 @@
 3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	fixed	_	_
 4	hovel	hovel	NOUN	Xfe	Foreign=Yes	0	root	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	tha	bi	VERB	V-p	Tense=Pres	4	csubj:cop	_	_
+6	tha	bi	VERB	V-p	Tense=Pres	4	csubj:cleft	_	_
 7	sin	sin	PRON	Pd	_	6	nsubj	_	_
 8	idir	idir	ADV	Rg	_	6	xcomp:pred	_	_
 
@@ -2389,7 +2390,7 @@
 6	air	air	ADP	Sp	_	8	case	_	_
 7	an	an	DET	Tdsm	Gender=Masc|Number=Sing	8	det	_	_
 8	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	4	obl	_	_
-9	'sa	an	ADP	Spv	_	10	mark	_	_
+9	'sa	an	ADP	Spv	_	10	case	_	_
 10	bheil	bi	VERB	V-p--d	Tense=Pres	8	advcl	_	_
 11	thu	thu	PRON	Pp2s	Number=Sing|Person=2	10	nsubj	_	_
 12	a'	ag	PART	Sa	_	13	case	_	_
@@ -2459,7 +2460,7 @@
 5	an	an	ADV	Rs	_	4	advmod	_	_
 6	sin	sin	ADV	Rs	_	5	fixed	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	bhiodh	bi	VERB	V-h	Mood=Cnd	5	csubj:cop	_	_
+8	bhiodh	bi	VERB	V-h	Mood=Cnd	5	csubj:cleft	_	_
 9	a	a	DET	Dq	_	11	det	_	_
 10	h-uile	uile	DET	Dq	_	9	fixed	_	_
 11	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	8	nsubj	_	_
@@ -2475,7 +2476,7 @@
 1	a	a	PART	Uv	PartType=Voc	2	case:voc	_	_
 2	Shìorraidh	sìorraidh	INTJ	I	_	5	discourse	_	_
 3	a	a	PART	Uv	PartType=Voc	4	case:voc	_	_
-4	[Name]	[Name]	PROPN	Nn-fv	Case=Voc|Gender=Fem	5	discourse	_	_
+4	[Name]	[Name]	PROPN	Nn-fv	Case=Voc|Gender=Fem	5	vocative	_	_
 5	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
 7	fosgailte	fosgailte	ADJ	Av	_	5	xcomp:pred	_	_
@@ -2488,11 +2489,11 @@
 # text = nach eil dà cheann a's an taigh ge-tà [Name]
 1	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
-3	dà	dà	NUM	Mc	_	2	nsubj	_	_
+3	dà	dà	NUM	Mc	_	4	nummod	_	_
 4	cheann	ceann	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
 5	a's	an	ADP	Sp	_	7	case	_	_
 6	an	an	DET	Tdsm	Gender=Masc|Number=Sing	7	det	_	_
-7	taigh	taigh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	2	obl	_	_
+7	taigh	taigh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	2	xcomp:pred	_	_
 8	ge-tà	ge-tà	ADV	Rg	_	2	advmod	_	_
 9	[Name]	[Name]	PROPN	Nn-mv	Case=Voc|Gender=Masc	2	vocative	_	_
 
@@ -2601,10 +2602,10 @@
 4	's	's	CCONJ	Cc	_	5	cc	_	_
 5	tha	bi	VERB	V-p	Tense=Pres	3	conj	_	_
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
-7	shuas	suas	ADV	Rs	_	5	advmod	_	_
+7	shuas	suas	ADV	Rs	_	10	advmod	_	_
 8	ann	an	ADP	Sp	_	10	case	_	_
 9	an	an	ADP	Sp	_	8	fixed	_	_
-10	leaba	leaba	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	5	obl	_	_
+10	leaba	leaba	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	5	xcomp:pred	_	_
 11	shuas	suas	ADV	Rs	_	5	advmod	_	_
 12	dìreach	dìreach	ADV	Rg	_	16	advmod	_	_
 13	os	os	ADP	Sp	_	16	case	_	_
@@ -2618,12 +2619,12 @@
 1	's	's	CCONJ	Cc	_	6	cc	_	_
 2	dè	dè	PRON	Uq	Mood=Int	6	nsubj	_	_
 3	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
-4	shìos	sìos	ADV	Rs	_	3	advmod	_	_
+4	shìos	sìos	ADV	Rs	_	9	advmod	_	_
 5	gu	gu	PART	Ua	PartType=Ad	6	mark:prt	_	_
-6	h-ìosal	ìosal	ADV	Rg	_	3	advmod	_	_
+6	h-ìosal	ìosal	ADV	Rg	_	9	advmod	_	_
 7	a's	an	ADP	Sp	_	9	case	_	_
 8	an	an	DET	Tdsm	Gender=Masc|Number=Sing	9	det	_	_
-9	rùm	rùm	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	6	obl	_	_
+9	rùm	rùm	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	6	xcomp:pred	_	_
 10	sin	sin	DET	Dd	_	9	det	_	SpaceAfter=No
 11	?	?	PUNCT	Fg	_	6	punct	_	_
 
@@ -2655,13 +2656,13 @@
 4	shuas	suas	ADV	Rs	_	2	xcomp:pred	_	_
 5	a-staigh	a-staigh	ADV	Rs	_	2	advmod	_	_
 6	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	2	obl	_	_
-7	ach	ach	CCONJ	Cc	_	10	mark	_	_
+7	ach	ach	CCONJ	Cc	_	10	cc	_	_
 8	dìreach	dìreach	ADV	Rg	_	10	advmod	_	_
 9	gu	gu	PART	Qa	PartType=Cmpl	10	mark:prt	_	_
-10	bheil	bi	VERB	V-p--d	Tense=Pres	2	advcl	_	_
+10	bheil	bi	VERB	V-p--d	Tense=Pres	2	ccomp	_	_
 11	an	an	DET	Tdsf	Gender=Fem|Number=Sing	12	det	_	_
 12	leabaidh	leabaidh	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	10	nsubj	_	_
-13	shuas	suas	ADV	Rs	_	10	advmod	_	_
+13	shuas	suas	ADV	Rs	_	10	xcomp:pred	_	_
 
 # sent_id = c05_060
 # speaker = [2]
@@ -2695,14 +2696,18 @@
 4	do	do	DET	Dp2s	Number=Sing|Person=2|Poss=Yes	5	obj	_	_
 5	shuidhe	suidh	NOUN	Nv	VerbForm=Inf	1	xcomp:pred	_	_
 
-# sent_id = c05_064
+# sent_id = c05_064a
 # speaker = [5]
-# text = tha bidh half loft ann
+# text = tha
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
-2	bidh	bi	VERB	V-f	Tense=Fut	1	nsubj	_	_
-3	half	half	X	Xfe	Foreign=Yes	1	xcomp:pred	_	_
-4	loft	loft	X	Xfe	Foreign=Yes	1	flat	_	_
-5	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	xcomp:pred	_	_
+
+# sent_id = c05_064b
+# speaker = [5]
+# text = bidh half loft ann
+1	bidh	bi	VERB	V-f	Tense=Fut	0	root	_	_
+2	half	half	X	Xfe	Foreign=Yes	1	nsubj	_	_
+3	loft	loft	X	Xfe	Foreign=Yes	1	flat	_	_
+4	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	xcomp:pred	_	_
 
 # sent_id = c05_065
 # speaker = [1]
@@ -2732,7 +2737,7 @@
 23	thu	thu	PRON	Pp2s	Number=Sing|Person=2	22	nsubj	_	_
 24	dìreach	dìreach	ADV	Rg	_	22	advmod	_	_
 25	a'	ag	PART	Sa	_	26	case	_	_
-26	suidhe	suidh	NOUN	Nv	VerbForm=Vnoun	22	xcomp	_	_
+26	suidhe	suidh	NOUN	Nv	VerbForm=Vnoun	22	xcomp:pred	_	_
 27	aig	aig	ADP	Sp	_	29	case	_	_
 28	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	29	det	_	_
 29	bhòrd	bòrd	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	26	obl	_	_
@@ -2798,7 +2803,7 @@
 1	bidh	bi	VERB	V-f	Tense=Fut	0	root	_	_
 2	seating	seating	X	Xfe	Foreign=Yes	1	nsubj	_	_
 3	room	room	X	Xfe	Foreign=Yes	2	flat	_	_
-4	aca	aig	ADP	Pr3p	Number=Plur|Person=3	1	obl	_	_
+4	aca	aig	ADP	Pr3p	Number=Plur|Person=3	1	xcomp:pred	_	_
 5	aig	aig	ADP	Sp	_	6	case	_	_
 6	ceann	ceann	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	_
 7	shìos	sìos	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	6	amod	_	_
@@ -2845,7 +2850,7 @@
 7	dhuine	duine	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	3	obl	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
 9	thigeadh	tig	VERB	V-h	Mood=Cnd	7	acl:relcl	_	_
-10	dhachaidh	dachaidh	ADV	Rs	_	9	nsubj	_	_
+10	dhachaidh	dachaidh	ADV	Rs	_	9	advmod	_	_
 11	airson	airson	ADP	Nf	_	12	case	_	_
 12	holiday	holiday	NOUN	Xfe	Foreign=Yes	9	obl	_	_
 13	airson	airson	ADP	Nf	_	14	case	_	_
@@ -2870,15 +2875,15 @@
 # text = ò chosg ach uh
 1	ò	ò	INTJ	I	_	2	discourse	_	_
 2	chosg	cosg	VERB	V-s	Tense=Past	0	root	_	_
-3	ach	ach	CCONJ	Cc	_	2	nsubj	_	_
-4	uh	uh	INTJ	I	_	2	discourse	_	_
+3	ach	ach	CCONJ	Cc	_	4	cc	_	_
+4	uh	uh	INTJ	I	_	2	conj	_	_
 
 # sent_id = c05_075
 # speaker = [5]
 # text = ach a Thì tha an duine a' cur seachad a shaoghail 'sa bhùthaidh co-dhiubh anmoch air an oidhche 's tràth 'sa mhadainn tha e 'ga spreadhadh [?]
 1	ach	ach	CCONJ	Cc	_	4	cc	_	_
 2	a	a	PART	Uv	PartType=Voc	3	case:voc	_	_
-3	Thì	thì	INTJ	I	_	4	vocative	_	_
+3	Thì	thì	INTJ	I	_	4	discourse	_	_
 4	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 5	an	an	DET	Tdsm	Gender=Masc|Number=Sing	6	det	_	_
 6	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
@@ -2937,35 +2942,39 @@
 4	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	_
 5	ach	ach	ADP	Sp	_	6	case	_	_
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	3	xcomp:pred	_	_
-7	fhèin	fèin	PRON	Px	Reflex=Yes	3	compound	_	_
+7	fhèin	fèin	PRON	Px	Reflex=Yes	6	compound	_	_
 
 # sent_id = c06_002
 # speaker = [1]
 # text = cha robh ann ach an gille aig
 1	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	robh	bi	VERB	V-s--d	Tense=Past	0	root	_	_
-3	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+3	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	2	xcomp:pred	_	_
 4	ach	ach	ADP	Sp	_	6	case	_	_
 5	an	an	DET	Tdsm	Gender=Masc|Number=Sing	6	det	_	_
 6	gille	gille	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	obl	_	_
 7	aig	aig	ADP	Sp	_	2	obl	_	_
 
-# sent_id = c06_003
+# sent_id = c06_003a
 # speaker = [5]
-# text = bha cuideigin ann co-dhiubh bha dà bha dithis ann is oillsginean orains ann
+# text = bha cuideigin ann co-dhiubh
 1	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
 2	cuideigin	cuideigin	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	nsubj	_	_
-3	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	obl	_	_
-4	co-dhiubh	co-dhiubh	ADV	Rg	_	5	xcomp:pred	_	_
-5	bha	bi	VERB	V-s	Tense=Past	1	acl:relcl	_	_
-6	dà	dà	NUM	Mc	_	7	nummod	_	_
-7	bha	bi	VERB	V-s	Tense=Past	5	nsubj	_	_
-8	dithis	dithis	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	7	nsubj	_	_
+3	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	xcomp:pred	_	_
+4	co-dhiubh	co-dhiubh	ADV	Rg	_	1	advmod	_	_
+
+# sent_id = c06_003b
+# speaker = [5]
+# text = bha dà bha dithis ann is oillsginean orains ann
+1	bha	bi	VERB	V-s	Tense=Past	3	reparandum	_	_
+2	dà	dà	NUM	Mc	_	1	nsubj	_	_
+3	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
+4	dithis	dithis	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	3	nsubj	_	_
+5	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	3	xcomp:pred	_	_
+6	is	is	CCONJ	Cc	_	7	cc	_	_
+7	oillsginean	oillsgin	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	3	conj	_	_
+8	orains	orains	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	7	amod	_	_
 9	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	xcomp:pred	_	_
-10	is	is	CCONJ	Cc	_	7	cc	_	_
-11	oillsginean	oillsgin	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	7	conj	_	_
-12	orains	orains	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	11	amod	_	_
-13	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	obl	_	_
 
 # sent_id = c06_004
 # speaker = [1]
@@ -2977,7 +2986,7 @@
 5	aig	aig	ADP	Sp	_	6	case	_	_
 6	[Name]	[Name]	PROPN	Nn	_	4	nmod	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	bhiodh	bi	VERB	V-h	Mood=Cnd	4	csubj:cop	_	_
+8	bhiodh	bi	VERB	V-h	Mood=Cnd	4	csubj:cleft	_	_
 9	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	8	xcomp:pred	_	_
 
 # sent_id = c06_005
@@ -3157,7 +3166,7 @@
 4	gnothach	gnothach	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	0	root	_	_
 5	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	6	det	_	_
 6	rathaid	rathaid	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	4	nmod	_	_
-7	fhèin	fèin	PRON	Px	Reflex=Yes	4	compound	_	_
+7	fhèin	fèin	PRON	Px	Reflex=Yes	6	compound	_	_
 
 # sent_id = c06_018a
 # speaker = [2]
@@ -3216,7 +3225,7 @@
 21	mòra	mòra	ADJ	Aq-pfn	Case=Nom|Gender=Fem|Number=Plur	20	amod	_	_
 22	mar	mar	SCONJ	Cs	_	24	mark	_	_
 23	a	a	PART	Q-r	PartType=Vb|PronType=Rel	24	mark:prt	_	_
-24	tha	bi	VERB	V-p	Tense=Pres	20	csubj:cop	_	_
+24	tha	bi	VERB	V-p	Tense=Pres	20	csubj:cleft	_	_
 
 # sent_id = c06_020
 # speaker = [2]
@@ -3268,7 +3277,7 @@
 4	na	an	DET	Tdpf	Gender=Fem|Number=Plur	5	det	_	_
 5	clachan	clach	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	3	nsubj	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	th'	bi	VERB	V-p	Tense=Pres	5	csubj:cop	_	_
+7	th'	bi	VERB	V-p	Tense=Pres	5	csubj:cleft	_	_
 8	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	5	obl	_	_
 9	na	an	DET	Tdpf	Gender=Fem|Number=Plur	10	det	_	_
 10	clachan	clach	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	7	xcomp:pred	_	_
@@ -3340,8 +3349,8 @@
 3	gur	is	AUX	Wpdia	_	4	cop	_	_
 4	iad	iad	PRON	Pp3p	Number=Plur|Person=3	1	ccomp	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bha	bi	VERB	V-s	Tense=Past	4	csubj:cop	_	_
-7	'ga	'ga	PART	Sap3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	6	nsubj	_	_
+6	bha	bi	VERB	V-s	Tense=Past	4	csubj:cleft	_	_
+7	'ga	'ga	PART	Sap3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	8	obj	_	_
 8	dhèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	6	xcomp:pred	_	_
 
 # sent_id = c06_027
@@ -3437,8 +3446,8 @@
 # text = chunnaic sinn am video an taobh sin shuas sa Chàrnaich ann a shin mi fhèin is [Name]
 1	chunnaic	faic	VERB	V-s	Tense=Past	0	root	_	_
 2	sinn	sinn	PRON	Pp1p	Number=Plur|Person=1	1	nsubj	_	_
-3	am	an	DET	Tds	Number=Sing	1	obj	_	_
-4	video	video	X	Xfe	Foreign=Yes	3	flat	_	_
+3	am	an	DET	Tds	Number=Sing	4	det	_	_
+4	video	video	X	Xfe	Foreign=Yes	1	obj	_	_
 5	an	an	DET	Tdsm	Gender=Masc|Number=Sing	6	det	_	_
 6	taobh	taobh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
 7	sin	sin	DET	Dd	_	6	det	_	_
@@ -3450,32 +3459,32 @@
 13	shin	sin	ADV	Rs	_	11	fixed	_	_
 14	mi	mi	PRON	Pp1s	Number=Sing|Person=1	1	obj	_	_
 15	fhèin	fèin	PRON	Px	Reflex=Yes	14	compound	_	_
-16	is	is	CCONJ	Cc	_	1	cc	_	_
+16	is	is	CCONJ	Cc	_	17	cc	_	_
 17	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	14	conj	_	_
 
 # sent_id = c06_033
 # speaker = [2]
 # text = dè 'm video
-1	dè	dè	PRON	Uq	Mood=Int	3	nsubj	_	_
+1	dè	dè	PRON	Uq	Mood=Int	3	nmod	_	_
 2	'm	an	DET	Tds	Number=Sing	3	det	_	_
 3	video	video	X	Xfe	Foreign=Yes	0	root	_	_
 
 # sent_id = c06_034
 # speaker = [4]
 # text = video a rinn cuideigin a bha shuas an sin o chionn fada [?]
-1	video	video	X	Xfe	Foreign=Yes	3	mark	_	_
+1	video	video	X	Xfe	Foreign=Yes	0	root	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
-3	rinn	dèan	VERB	V-s	Tense=Past	0	root	_	_
+3	rinn	dèan	VERB	V-s	Tense=Past	1	acl:relcl	_	_
 4	cuideigin	cuideigin	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	3	nsubj	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bha	bi	VERB	V-s	Tense=Past	3	acl:relcl	_	_
-7	shuas	suas	ADV	Rs	_	6	nsubj	_	_
+6	bha	bi	VERB	V-s	Tense=Past	4	acl:relcl	_	_
+7	shuas	suas	ADV	Rs	_	6	xcomp:pred	_	_
 8	an	an	ADV	Rs	_	6	advmod	_	_
 9	sin	sin	ADV	Rs	_	8	fixed	_	_
 10	o	bho	ADP	Sp	_	12	case	_	_
 11	chionn	cionn	ADP	Nf	_	10	fixed	_	_
 12	fada	fada	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	6	obl	_	_
-13	[?]	[?]	X	Xx	_	3	discourse	_	_
+13	[?]	[?]	X	Xx	_	1	dep	_	_
 
 # sent_id = c06_035
 # speaker = [2]
@@ -3520,7 +3529,7 @@
 # sent_id = c06_038
 # speaker = [4]
 # text = [?] bha iad a' roiseadh
-1	[?]	[?]	X	Xx	_	2	mark	_	_
+1	[?]	[?]	X	Xx	_	2	dep	_	_
 2	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
 3	iad	iad	PRON	Pp3p	Number=Plur|Person=3	2	nsubj	_	_
 4	a'	ag	PART	Sa	_	5	case	_	_
@@ -3592,7 +3601,7 @@
 5	a	a	ADP	Sp	_	6	case	_	_
 6	bheathaichean	beathach	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	4	obl	_	_
 7	a'	ag	PART	Sa	_	8	case	_	_
-8	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	4	xcomp	_	_
+8	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	4	xcomp:pred	_	_
 9	a-nall	a-nall	ADV	Rs	_	8	advmod	_	_
 10	an	an	ADV	Rt	_	8	advmod	_	_
 11	uair	uair	ADV	Rt	_	10	fixed	_	_
@@ -3726,8 +3735,8 @@
 1	nach	is	AUX	Wpdqn	_	2	cop	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
-4	bha	bi	VERB	V-s	Tense=Past	2	csubj:cop	_	_
-5	cianail	cianail	ADV	Rg	_	4	nsubj	_	_
+4	bha	bi	VERB	V-s	Tense=Past	2	csubj:cleft	_	_
+5	cianail	cianail	ADV	Rg	_	6	advmod	_	_
 6	trom	trom	ADJ	Ap	_	4	xcomp:pred	_	_
 7	air	air	ADP	Sp	_	9	case	_	_
 8	na	an	DET	Tdpm	Gender=Masc|Number=Plur	9	det	_	_
@@ -3856,12 +3865,12 @@
 15	as	as	ADP	Sp	_	17	case	_	_
 16	do	do	DET	Dp2s	Number=Sing|Person=2|Poss=Yes	17	nmod:poss	_	_
 17	dhèidh	dèidh	ADP	Nf	_	13	obl	_	_
-18	is	is	CCONJ	Cc	_	17	cc	_	_
+18	is	is	CCONJ	Cc	_	21	cc	_	_
 19	'ga	'ga	PART	Sa	_	21	case	_	_
 20	do	do	DET	Dp2s	Number=Sing|Person=2|Poss=Yes	21	obj	_	_
 21	dhraibheadh	draibh	NOUN	Nv	VerbForm=Inf	13	xcomp	_	_
-22	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	21	obj	_	_
-23	agad	aig	ADP	Pr2s	Number=Sing|Person=2	22	obl	_	_
+22	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	21	parataxis	_	_
+23	agad	aig	ADP	Pr2s	Number=Sing|Person=2	22	xcomp:pred	_	_
 
 # sent_id = c06_065
 # speaker = [3]
@@ -3872,12 +3881,12 @@
 4	a-null	a-null	ADV	Rs	_	3	advmod	_	_
 5	aig	aig	ADP	Sp	_	6	case	_	_
 6	[Placename]	[Placename]	PROPN	Nt	_	3	obl	_	_
-7	is	is	CCONJ	Cc	_	6	cc	_	_
+7	is	is	CCONJ	Cc	_	9	cc	_	_
 8	a'	ag	PART	Sa	_	9	case	_	_
 9	coiseachd	coisich	NOUN	Nv	VerbForm=Vnoun	3	conj	_	_
 10	sìos	sìos	ADV	Rs	_	9	advmod	_	_
 11	a	a	ADP	Sp	_	12	case	_	_
-12	[Placename]	[Placename]	PROPN	Nt	_	3	obl	_	_
+12	[Placename]	[Placename]	PROPN	Nt	_	9	obl	_	_
 
 # sent_id = c06_066
 # speaker = [5]
@@ -3918,7 +3927,7 @@
 16	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	15	nsubj	_	_
 17	le	le	ADP	Sp	_	18	case	_	_
 18	beathach	beathach	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	15	obl	_	_
-19	no	no	CCONJ	Cc	_	18	cc	_	_
+19	no	no	CCONJ	Cc	_	20	cc	_	_
 20	dhà	dhà	PRON	Pn	_	18	conj	_	_
 21	à	à	ADP	Sp	_	22	case	_	_
 22	[Placename]	[Placename]	PROPN	Nt	_	20	obl	_	_
@@ -3928,7 +3937,7 @@
 26	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	25	nsubj	_	_
 27	leis	le	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	25	obl	_	_
 28	fear	fear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	25	obj	_	_
-29	no	no	CCONJ	Cc	_	28	cc	_	_
+29	no	no	CCONJ	Cc	_	30	cc	_	_
 30	dhà	dhà	PRON	Pn	_	28	conj	_	_
 31	eile	eile	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	30	amod	_	_
 32	à	à	ADP	Sp	_	33	case	_	_
@@ -3948,7 +3957,7 @@
 46	ràinig	ruig	VERB	V-s	Tense=Past	40	conj	_	_
 47	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	46	nsubj	_	_
 48	[Placename]	[Placename]	PROPN	Nt	_	46	obj	_	_
-49	is	is	CCONJ	Cc	_	46	cc	_	_
+49	is	is	CCONJ	Cc	_	52	cc	_	_
 50	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	52	mark:prt	_	_
 51	do	do	PART	Q--s	Tense=Past	52	mark:prt	_	_
 52	chòrd	còrd	VERB	V-s	Tense=Past	46	conj	_	_
@@ -3956,11 +3965,11 @@
 54	phrìs	prìs	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	52	nsubj	_	_
 55	ris	ri	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	52	obl	_	_
 56	's	's	CCONJ	Cc	_	57	cc	_	_
-57	chùm	cùm	VERB	V-s	Tense=Past	25	conj	_	_
+57	chùm	cùm	VERB	V-s	Tense=Past	52	conj	_	_
 58	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	57	nsubj	_	_
 59	air	air	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	57	obl	_	_
 60	gu	gu	ADP	Sp	_	61	case	_	_
-61	[Placename]	[Placename]	PROPN	Nt	_	25	obl	_	_
+61	[Placename]	[Placename]	PROPN	Nt	_	57	obl	_	_
 
 # sent_id = c06_068
 # speaker = [5]
@@ -4015,7 +4024,7 @@
 14	bha	bi	VERB	V-s	Tense=Past	5	advcl	_	_
 15	iad	iad	PRON	Pp3p	Number=Plur|Person=3	14	nsubj	_	_
 16	a'	ag	PART	Sa	_	17	case	_	_
-17	dèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	14	xcomp	_	_
+17	dèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	14	xcomp:pred	_	_
 
 # sent_id = c06_071b
 # speaker = [2]
@@ -4029,7 +4038,7 @@
 
 # sent_id = c06_071c
 # speaker = [2]
-# text = cha robh iad idir a' gabhail straight dhan an àite bhiodh iad ag obair 's a' faighinn feurach [?] an siud 's an seo bhiodh iad a' cruibhleadh a' chruidh bhiodh iad a' cruibhleadh a' chruidh
+# text = cha robh iad idir a' gabhail straight dhan an àite
 1	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	robh	bi	VERB	V-s--d	Tense=Past	0	root	_	_
 3	iad	iad	PRON	Pp3p	Number=Plur|Person=3	2	nsubj	_	_
@@ -4040,32 +4049,40 @@
 8	dhan	do	ADP	Sp	_	10	case	_	_
 9	an	an	DET	Tdsm	Gender=Masc|Number=Sing	10	det	_	_
 10	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	6	obl	_	_
-11	bhiodh	bi	VERB	V-h	Mood=Cnd	10	nmod	_	_
-12	iad	iad	PRON	Pp3p	Number=Plur|Person=3	11	nsubj	_	_
-13	ag	ag	PART	Sa	_	14	case	_	_
-14	obair	obraich	NOUN	Nv	VerbForm=Vnoun	6	xcomp	_	_
-15	's	's	CCONJ	Cc	_	17	cc	_	_
-16	a'	ag	PART	Sa	_	17	case	_	_
-17	faighinn	faigh	NOUN	Nv	VerbForm=Vnoun	14	conj	_	_
-18	feurach	feurach	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	17	obj	_	_
-19	[?]	[?]	X	Xx	_	18	amod	_	_
-20	an	an	ADV	Rs	_	19	advmod	_	_
-21	siud	siud	ADV	Rs	_	20	fixed	_	_
-22	's	's	CCONJ	Cc	_	23	cc	_	_
-23	an	an	ADV	Rs	_	19	conj	_	_
-24	seo	seo	ADV	Rs	_	23	fixed	_	_
-25	bhiodh	bi	VERB	V-h	Mood=Cnd	23	nsubj	_	_
-26	iad	iad	PRON	Pp3p	Number=Plur|Person=3	23	obj	_	_
-27	a'	ag	PART	Sa	_	28	case	_	_
-28	cruibhleadh	cruibhl	NOUN	Nv	VerbForm=Vnoun	23	xcomp	_	_
-29	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	30	det	_	_
-30	chruidh	cruidh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	28	obj	_	_
-31	bhiodh	bi	VERB	V-h	Mood=Cnd	28	ccomp	_	_
-32	iad	iad	PRON	Pp3p	Number=Plur|Person=3	31	nsubj	_	_
-33	a'	ag	PART	Sa	_	34	case	_	_
-34	cruibhleadh	cruibhl	NOUN	Nv	VerbForm=Vnoun	31	xcomp:pred	_	_
-35	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	36	det	_	_
-36	chruidh	cruidh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	34	obj	_	_
+
+# sent_id = c06_071d
+# speaker = [2]
+# text = bhiodh iad ag obair 's a' faighinn feurach [?] an siud 's an seo
+1	bhiodh	bi	VERB	V-h	Mood=Cnd	0	root	_	_
+2	iad	iad	PRON	Pp3p	Number=Plur|Person=3	1	nsubj	_	_
+3	ag	ag	PART	Sa	_	4	case	_	_
+4	obair	obraich	NOUN	Nv	VerbForm=Vnoun	6	xcomp	_	_
+5	's	's	CCONJ	Cc	_	7	cc	_	_
+6	a'	ag	PART	Sa	_	7	case	_	_
+7	faighinn	faigh	NOUN	Nv	VerbForm=Vnoun	4	conj	_	_
+8	feurach	feurach	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	7	obj	_	_
+9	[?]	[?]	X	Xx	_	8	amod	_	_
+10	an	an	ADV	Rs	_	9	advmod	_	_
+11	siud	siud	ADV	Rs	_	10	fixed	_	_
+12	's	's	CCONJ	Cc	_	13	cc	_	_
+13	an	an	ADV	Rs	_	9	conj	_	_
+14	seo	seo	ADV	Rs	_	13	fixed	_	_
+
+# sent_id = c06_071e
+# speaker = [2]
+# text = bhiodh iad a' cruibhleadh a' chruidh bhiodh iad a' cruibhleadh a' chruidh
+1	bhiodh	bi	VERB	V-h	Mood=Cnd	0	root	_	_
+2	iad	iad	PRON	Pp3p	Number=Plur|Person=3	1	nsubj	_	_
+3	a'	ag	PART	Sa	_	4	case	_	_
+4	cruibhleadh	cruibhl	NOUN	Nv	VerbForm=Vnoun	1	xcomp:pred	_	_
+5	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	6	det	_	_
+6	chruidh	cruidh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	4	obj	_	_
+7	bhiodh	bi	VERB	V-h	Mood=Cnd	4	ccomp	_	_
+8	iad	iad	PRON	Pp3p	Number=Plur|Person=3	7	nsubj	_	_
+9	a'	ag	PART	Sa	_	10	case	_	_
+10	cruibhleadh	cruibhl	NOUN	Nv	VerbForm=Vnoun	7	xcomp:pred	_	_
+11	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	12	det	_	_
+12	chruidh	cruidh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	10	obj	_	_
 
 # sent_id = c06_072
 # speaker = [3]
@@ -4075,7 +4092,7 @@
 3	thu	thu	PRON	Pp2s	Number=Sing|Person=2	2	nsubj	_	_
 4	trang	trang	ADJ	Ap	_	2	xcomp:pred	_	_
 5	an-dràsda	an-dràsda	ADV	Rt	_	6	advmod	_	_
-6	[Name]	[Name]	PROPN	Nn-mv	Case=Voc|Gender=Masc	2	nsubj	_	SpaceAfter=No
+6	[Name]	[Name]	PROPN	Nn-mv	Case=Voc|Gender=Masc	2	vocative	_	SpaceAfter=No
 7	?	?	PUNCT	Fg	_	2	punct	_	_
 
 # sent_id = c06_073
@@ -4097,7 +4114,7 @@
 1	ciamar	ciamar	ADV	Uq	Mood=Int	3	advmod	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
 3	chaidh	rach	VERB	V-s	Tense=Past	0	root	_	_
-4	dhut	do	ADP	Pr2s	Number=Sing|Person=2	3	nsubj	_	SpaceAfter=No
+4	dhut	do	ADP	Pr2s	Number=Sing|Person=2	3	obl	_	SpaceAfter=No
 5	?	?	PUNCT	Fg	_	3	punct	_	_
 
 # sent_id = c06_076
@@ -4276,12 +4293,12 @@
 # speaker = [2]
 # text = feumaidh gun robh iad air na h-eileanan
 1	feumaidh	feum	VERB	V-f	Tense=Fut	0	root	_	_
-2	gun	gun	PART	Qa	PartType=Cmpl	1	nsubj	_	_
+2	gun	gun	PART	Qa	PartType=Cmpl	3	mark:prt	_	_
 3	robh	bi	VERB	V-s--d	Tense=Past	1	ccomp	_	_
 4	iad	iad	PRON	Pp3p	Number=Plur|Person=3	3	nsubj	_	_
 5	air	air	ADP	Sp	_	7	case	_	_
 6	na	an	DET	Tdpm	Gender=Masc|Number=Plur	7	det	_	_
-7	h-eileanan	eilean	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	1	obl	_	_
+7	h-eileanan	eilean	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	3	xcomp:pred	_	_
 
 # sent_id = c06_093
 # speaker = [6]
@@ -4321,7 +4338,7 @@
 14	Bhig	big	ADJ	Aq-smg	Case=Gen|Gender=Masc|Number=Sing	12	flat	_	_
 15	[Name]	[Name]	PROPN	Nn-mg	Case=Gen|Gender=Masc	12	flat	_	_
 16	a	a	PART	Q-r	PartType=Vb|PronType=Rel	17	mark:prt	_	_
-17	bhiodh	bi	VERB	V-h	Mood=Cnd	15	csubj:cop	_	_
+17	bhiodh	bi	VERB	V-h	Mood=Cnd	15	csubj:cleft	_	_
 18	iad	iad	PRON	Pp3p	Number=Plur|Person=3	17	nsubj	_	_
 
 # sent_id = c07_000
@@ -4344,18 +4361,22 @@
 15	a	a	ADP	Sp	_	16	case	_	_
 16	[Placename]	[Placename]	PROPN	Nt	_	2	obl	_	_
 
-# sent_id = c07_001
+# sent_id = c07_001a
 # speaker = [4]
-# text = chan eil tha iad leotha fhèin cha chreid mi
+# text = chan eil
 1	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
-3	tha	bi	VERB	V-p	Tense=Pres	2	nsubj	_	_
-4	iad	iad	PRON	Pp3p	Number=Plur|Person=3	3	nsubj	_	_
-5	leotha	le	ADP	Pr3p	Number=Plur|Person=3	2	xcomp:pred	_	_
-6	fhèin	fèin	PRON	Px	Reflex=Yes	5	compound	_	_
-7	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	8	mark:prt	_	_
-8	chreid	creid	VERB	V-f--d	Tense=Fut	2	parataxis	_	_
-9	mi	mi	PRON	Pp1s	Number=Sing|Person=1	8	nsubj	_	_
+
+# sent_id = c07_001b
+# speaker = [4]
+# text = tha iad leotha fhèin cha chreid mi
+1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
+2	iad	iad	PRON	Pp3p	Number=Plur|Person=3	1	nsubj	_	_
+3	leotha	le	ADP	Pr3p	Number=Plur|Person=3	2	xcomp:pred	_	_
+4	fhèin	fèin	PRON	Px	Reflex=Yes	3	compound	_	_
+5	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	6	mark:prt	_	_
+6	chreid	creid	VERB	V-f--d	Tense=Fut	2	parataxis	_	_
+7	mi	mi	PRON	Pp1s	Number=Sing|Person=1	6	nsubj	_	_
 
 # sent_id = c07_002
 # speaker = [1]
@@ -4506,7 +4527,7 @@
 4	Ruaidh	ruaidh	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	2	amod	_	_
 5	air	air	PART	Sa	_	6	case	_	_
 6	tuilleadh	tuilleadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	8	obj	_	_
-7	apportionments	apportionments	X	Xfe	Foreign=Yes	8	mark	_	_
+7	apportionments	apportionments	X	Xfe	Foreign=Yes	6	nmod	_	_
 8	fhaighinn	faigh	NOUN	Nv	VerbForm=Vnoun	1	xcomp:pred	_	SpaceAfter=No
 9	?	?	PUNCT	Fg	_	1	punct	_	_
 
@@ -4849,25 +4870,33 @@
 3	tè	tè	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	SpaceAfter=No
 4	?	?	PUNCT	Fg	_	3	punct	_	_
 
-# sent_id = c07_035
+# sent_id = c07_035a
 # speaker = [3]
-# text = fhios agad far a bheil [Name] cheannaich i an taigh bha a’ chroit aice 'ga reic
+# text = fhios agad far a bheil [Name]
 1	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 2	agad	aig	ADP	Pr2s	Number=Sing|Person=2	1	xcomp:pred	_	_
 3	far	far	SCONJ	Cs	_	5	mark	_	_
 4	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	5	mark:prt	_	_
 5	bheil	bi	VERB	V-p--d	Tense=Pres	1	advcl	_	_
 6	[Name]	[Name]	PROPN	Nn-fn	Case=Nom|Gender=Fem	5	nsubj	_	_
-7	cheannaich	ceannaich	VERB	V-s	Tense=Past	5	xcomp:pred	_	_
-8	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	7	nsubj	_	_
-9	an	an	DET	Tdsm	Gender=Masc|Number=Sing	10	det	_	_
-10	taigh	taigh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	7	obj	_	_
-11	bha	bi	VERB	V-s	Tense=Past	5	nsubj	_	_
-12	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	13	det	_	_
-13	chroit	croit	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	11	nsubj	_	_
-14	aice	aig	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	16	obj	_	_
-15	'ga	'ga	PART	Sap3sf	Gender=Fem|Number=Sing|Person=3|Poss=Yes	16	mark:prt	_	_
-16	reic	reic	NOUN	Nv	VerbForm=Vnoun	5	xcomp	_	_
+
+# sent_id = c07_035b
+# speaker = [3]
+# text = cheannaich i an taigh
+1	cheannaich	ceannaich	VERB	V-s	Tense=Past	0	root	_	_
+2	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	1	nsubj	_	_
+3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
+4	taigh	taigh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	obj	_	_
+
+# sent_id = c07_035c
+# speaker = [3]
+# text = bha a’ chroit aice 'ga reic
+1	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
+2	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	3	det	_	_
+3	chroit	croit	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	nsubj	_	_
+4	aice	aig	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	6	obj	_	_
+5	'ga	'ga	PART	Sap3sf	Gender=Fem|Number=Sing|Person=3|Poss=Yes	6	mark:prt	_	_
+6	reic	reic	NOUN	Nv	VerbForm=Vnoun	1	xcomp:pred	_	_
 
 # sent_id = c07_036a
 # speaker = [5]
@@ -4893,15 +4922,15 @@
 # sent_id = c07_037
 # speaker = [1]
 # text = [?] a bha a' tighinn a-staigh 's bhuail i oirre
-1	[?]	[?]	X	Xx	_	3	mark	_	_
+1	[?]	[?]	X	Xx	_	0	root	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
-3	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
+3	bha	bi	VERB	V-s	Tense=Past	1	acl:relcl	_	_
 4	a'	a'	ADP	Sp	_	5	case	_	_
 5	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	3	xcomp:pred	_	_
 6	a-staigh	a-staigh	ADV	Rs	_	5	advmod	_	_
 7	's	's	CCONJ	Cc	_	5	cc	_	_
 8	bhuail	buail	VERB	V-s	Tense=Past	5	conj	_	_
-9	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	5	obl	_	_
+9	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	5	nsubj	_	_
 10	oirre	air	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	5	amod	_	_
 
 # sent_id = c07_038
@@ -5145,7 +5174,7 @@
 # sent_id = c07_053
 # speaker = [4]
 # text = ach 's dòcha nach eil i a' fuireach an seo idir ged a tha a’ chroit aice
-1	ach	ach	CCONJ	Cc	_	3	mark	_	_
+1	ach	ach	CCONJ	Cc	_	3	cc	_	_
 2	's	is	AUX	Wp-i	_	3	cop	_	_
 3	dòcha	dòcha	NOUN	Uf	_	0	root	_	_
 4	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	5	mark:prt	_	_
@@ -5185,7 +5214,7 @@
 1	dè	dè	PRON	Uq	Mood=Int	2	nsubj	_	_
 2	hearing	hearing	X	Xfe	Foreign=Yes	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
-4	bha	bi	VERB	V-s	Tense=Past	2	csubj:cop	_	_
+4	bha	bi	VERB	V-s	Tense=Past	2	csubj:cleft	_	_
 5	siud	siud	PRON	Pd	_	4	nsubj	_	SpaceAfter=No
 6	?	?	PUNCT	Fg	_	4	punct	_	_
 
@@ -5270,7 +5299,7 @@
 2	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	3	det	_	_
 3	chroit	croit	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	bh'	bi	VERB	V-s	Tense=Past	3	csubj:cop	_	_
+5	bh'	bi	VERB	V-s	Tense=Past	3	csubj:cleft	_	_
 6	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	5	xcomp:pred	_	SpaceAfter=No
 7	?	?	PUNCT	Fg	_	5	punct	_	_
 
@@ -5315,7 +5344,7 @@
 2	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	3	det	_	_
 3	chroit	croit	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	bh'	bi	VERB	V-s	Tense=Past	3	csubj:cop	_	_
+5	bh'	bi	VERB	V-s	Tense=Past	3	csubj:cleft	_	_
 6	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	5	xcomp:pred	_	SpaceAfter=No
 7	?	?	PUNCT	Fg	_	5	punct	_	_
 
@@ -5387,7 +5416,7 @@
 6	[Name]	[Name]	PROPN	Nn-mg	Case=Gen|Gender=Masc	5	nmod	_	_
 7	Ruaidh	ruaidh	ADJ	Aq-smg	Case=Gen|Gender=Masc|Number=Sing	6	flat	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
-9	tha	bi	VERB	V-p	Tense=Pres	3	csubj:cop	_	_
+9	tha	bi	VERB	V-p	Tense=Pres	3	csubj:cleft	_	_
 10	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	9	nsubj	_	_
 11	ge-tà	ge-tà	ADV	Rg	_	9	xcomp:pred	_	_
 
@@ -5540,7 +5569,7 @@
 17	air	air	ADP	Sp	_	19	case	_	_
 18	an	an	DET	Tdsf	Gender=Fem|Number=Sing	19	det	_	_
 19	oidhche	oidhche	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	11	obl	_	_
-20	sin	sin	DET	Dd	_	11	det	_	_
+20	sin	sin	DET	Dd	_	19	det	_	_
 
 # sent_id = c07_088
 # speaker = [5]
@@ -5690,7 +5719,7 @@
 4	a'	an	DET	Tds-g	Case=Gen|Number=Sing	5	det	_	_
 5	fuel	fuel	NOUN	Xfe	Foreign=Yes	3	nmod	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	chuireas	chuir	VERB	V-f--r	Tense=Fut	3	csubj:cop	_	_
+7	chuireas	chuir	VERB	V-f--r	Tense=Fut	3	csubj:cleft	_	_
 8	às	as	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	obl	_	_
 9	do	do	ADP	Sp	_	10	case	_	_
 10	dhaoine	duine	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	7	obl	_	_
@@ -5772,7 +5801,7 @@
 # speaker = [3]
 # text = feumaidh gun robh e an aghaidh an fhear-sa cuideachd ma-thà [?]
 1	feumaidh	feum	VERB	V-f	Tense=Fut	0	root	_	_
-2	gun	gun	PART	Qa	PartType=Cmpl	1	nsubj	_	_
+2	gun	gun	PART	Qa	PartType=Cmpl	3	mark:prt	_	_
 3	robh	bi	VERB	V-s--d	Tense=Past	1	ccomp	_	_
 4	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	3	nsubj	_	_
 5	an	an	ADP	Sp	_	6	case	_	_
@@ -5789,7 +5818,7 @@
 1	nach	is	AUX	Wpdqn	_	2	cop	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
-4	tha	bi	VERB	V-p	Tense=Pres	2	csubj:cop	_	_
+4	tha	bi	VERB	V-p	Tense=Pres	2	csubj:cleft	_	_
 5	suarach	suarach	ADJ	Ap	_	4	xcomp:pred	_	_
 6	agus	agus	CCONJ	Cc	_	9	cc	_	_
 7	airson	airson	ADP	Nf	_	9	case	_	_
@@ -5805,7 +5834,7 @@
 # text = pension a th' aige [?] na tha de chroitean eile aige
 1	pension	pension	NOUN	Xfe	Foreign=Yes	0	root	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
-3	th'	bi	VERB	V-p	Tense=Pres	1	csubj:cop	_	_
+3	th'	bi	VERB	V-p	Tense=Pres	1	csubj:cleft	_	_
 4	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	3	xcomp:pred	_	_
 5	[?]	[?]	X	Xx	_	1	discourse	_	_
 6	na	na	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
@@ -5851,7 +5880,7 @@
 2	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	fixed	_	_
 3	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	tha	bi	VERB	V-p	Tense=Pres	3	csubj:cop	_	_
+5	tha	bi	VERB	V-p	Tense=Pres	3	csubj:cleft	_	_
 6	croit	croit	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	5	nsubj	_	_
 7	[Name]	[Name]	PROPN	Nn-mg	Case=Gen|Gender=Masc	6	nmod	_	_
 8	[Name]	[Name]	PROPN	Nn-mg	Case=Gen|Gender=Masc	7	flat	_	_
@@ -5887,7 +5916,7 @@
 8	a	a	PRON	Px	Reflex=Yes	5	obl	_	_
 9	chèile	cèile	PRON	Px	Reflex=Yes	8	fixed	_	_
 10	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
-11	fhèin	fèin	PRON	Px	Reflex=Yes	8	compound	_	_
+11	fhèin	fèin	PRON	Px	Reflex=Yes	10	compound	_	_
 12	's	's	CCONJ	Cc	_	13	cc	_	_
 13	[Name]	[Name]	PROPN	Nn-fn	Case=Nom|Gender=Fem	8	conj	_	_
 
@@ -5966,7 +5995,7 @@
 35	làrna-mhàireach	làrna-mhàireach	ADV	Rt	_	30	advmod	_	_
 36	no	no	CCONJ	Cc	_	30	cc	_	_
 37	uaireigin	uaireigin	ADV	Rt	_	40	advmod	_	_
-38	so	so	X	Xfe	Foreign=Yes	40	mark	_	_
+38	so	so	SCONJ	Xfe	Foreign=Yes	40	mark	_	_
 39	co-dhiubh	co-dhiubh	ADV	Rg	_	40	advmod	_	_
 40	ars’	arsa	VERB	V-s	Tense=Past	30	conj	_	_
 41	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	40	nsubj	_	_
@@ -6017,7 +6046,7 @@
 # speaker = [3]
 # text = feumaidh gum faca e na pàipearan aca co-dhiubh
 1	feumaidh	feum	VERB	V-f	Tense=Fut	0	root	_	_
-2	gum	gum	PART	Qa	PartType=Cmpl	1	nsubj	_	_
+2	gum	gum	PART	Qa	PartType=Cmpl	3	mark:prt	_	_
 3	faca	faic	VERB	V-s--d	Tense=Past	1	ccomp	_	_
 4	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
 5	na	an	DET	Tdpm	Gender=Masc|Number=Plur	6	det	_	_
@@ -6094,12 +6123,12 @@
 # sent_id = c08_005
 # speaker = [2]
 # text = sin agad am plan a bh' aige
-1	sin	sin	PRON	Pd	_	4	obl	_	_
-2	agad	aig	ADP	Pr2s	Number=Sing|Person=2	4	mark	_	_
+1	sin	sin	PRON	Pd	_	0	root	_	_
+2	agad	aig	ADP	Pr2s	Number=Sing|Person=2	1	obl	_	_
 3	am	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
-4	plan	plan	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
+4	plan	plan	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bh'	bi	VERB	V-s	Tense=Past	4	csubj:cop	_	_
+6	bh'	bi	VERB	V-s	Tense=Past	4	acl:relcl	_	_
 7	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	4	obl	_	_
 
 # sent_id = c08_006
@@ -6194,7 +6223,7 @@
 7	fish	fish	X	Xfe	Foreign=Yes	6	nmod	_	_
 8	farm	farm	X	Xfe	Foreign=Yes	7	flat	_	_
 9	a	a	PART	Q-r	PartType=Vb|PronType=Rel	10	mark:prt	_	_
-10	tha	bi	VERB	V-p	Tense=Pres	4	csubj:cop	_	_
+10	tha	bi	VERB	V-p	Tense=Pres	4	csubj:cleft	_	_
 11	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	10	nsubj	_	_
 12	taobh	taobh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	10	xcomp:pred	_	_
 13	[Placename]	[Placename]	PROPN	Nt	_	12	nmod	_	_
@@ -6226,18 +6255,18 @@
 2	thà	bi	VERB	V-p	Tense=Pres	0	root	_	_
 3	's	is	AUX	Wp-i	_	5	cop	_	_
 4	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	3	fixed	_	_
-5	Dadaidh	Dadaidh	PROPN	Nn-mn	Case=Nom|Gender=Masc	2	nsubj	_	_
+5	Dadaidh	Dadaidh	PROPN	Nn-mn	Case=Nom|Gender=Masc	2	discourse	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	dhèanadh	dèan	VERB	V-h	Mood=Cnd	5	csubj:cop	_	_
-8	a'	an	DET	Tds	Number=Sing	7	nsubj	_	_
-9	form	form	X	Xfe	Foreign=Yes	8	flat	_	_
-10	suas	suas	ADV	Rg	_	9	advmod	_	_
+7	dhèanadh	dèan	VERB	V-h	Mood=Cnd	5	csubj:cleft	_	_
+8	a'	an	DET	Tds	Number=Sing	9	det	_	_
+9	form	form	X	Xfe	Foreign=Yes	7	obj	_	_
+10	suas	suas	ADV	Rg	_	7	advmod	_	_
 11	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	7	obj	_	_
 12	fhèin	fèin	PRON	Px	Reflex=Yes	11	compound	_	_
 13	's	's	CCONJ	Cc	_	7	cc	_	_
 14	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	15	det	_	_
 15	chailleach	cailleach	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	7	nsubj	_	_
-16	tha	bi	VERB	V-p	Tense=Pres	7	obj	_	_
+16	tha	bi	VERB	V-p	Tense=Pres	5	parataxis	_	_
 17	mi	mi	PRON	Pp1s	Number=Sing|Person=1	16	nsubj	_	_
 18	a'	ag	PART	Sa	_	19	case	_	_
 19	creidsinn	creid	NOUN	Nv	VerbForm=Vnoun	2	xcomp:pred	_	_
@@ -6277,6 +6306,7 @@
 11	talamh	talamh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	10	obj	_	_
 12	co-dhiubh	co-dhiubh	ADV	Rg	_	10	advmod	_	_
 
+# comment = Node 8 was Dp3p which looks wrong.
 # sent_id = c08_017
 # speaker = [5]
 # text = duine aca an fheadhainn aig a bheil iad [?]
@@ -6287,7 +6317,7 @@
 5	aig	aig	ADP	Sp	_	7	xcomp:pred	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
 7	bheil	bi	VERB	V-p--d	Tense=Pres	4	acl:relcl	_	_
-8	iad	iad	DET	Dp3p	Number=Plur|Person=3|Poss=Yes	7	nsubj	_	_
+8	iad	iad	PRON	Pp3p	Number=Plur|Person=3|Poss=Yes	7	nsubj	_	_
 9	[?]	[?]	X	Xx	_	7	dep	_	_
 
 # sent_id = c08_018
@@ -6311,9 +6341,9 @@
 1	mar	mar	SCONJ	Cs	_	3	mark	_	_
 2	gum	gum	PART	Qa	PartType=Cmpl	3	mark:prt	_	_
 3	biodh	bi	VERB	V-h--d	Mood=Cnd	0	root	_	_
-4	ged	ged	SCONJ	Cs	_	3	nsubj	_	_
+4	ged	ged	SCONJ	Cs	_	6	mark	_	_
 5	nach	nach	PART	Qnr	PartType=Vb|Polarity=Neg|PronType=Rel	6	mark:prt	_	_
-6	dèanadh	dèan	VERB	V-h--d	Mood=Cnd	3	acl:relcl	_	_
+6	dèanadh	dèan	VERB	V-h--d	Mood=Cnd	3	advcl	_	_
 7	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	6	nsubj	_	_
 8	car	car	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	obj	_	_
 9	orra	air	ADP	Pr3p	Number=Plur|Person=3	6	obl	_	_
@@ -6353,7 +6383,7 @@
 11	luideach	luideach	ADJ	Aq-pfn	Case=Nom|Gender=Fem|Number=Plur	9	amod	_	_
 12	a	a	PART	Q-r	PartType=Vb|PronType=Rel	13	mark:prt	_	_
 13	tha	bi	VERB	V-p	Tense=Pres	7	acl:relcl	_	_
-14	thall	thall	ADV	Rs	_	13	nsubj	_	_
+14	thall	thall	ADV	Rs	_	13	advmod	_	_
 15	a-sin	a-sin	ADV	Rs	_	13	advmod	_	_
 16	co-dhiubh	co-dhiubh	ADV	Rg	_	13	advmod	_	_
 17	beagan	beagan	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	13	parataxis	_	_
@@ -6407,9 +6437,9 @@
 # text = tha cuimhn' a'm uaireigin fhuair mi fhèin leis an tractor 's leis a' mhower dhaibh aig a-sin
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 2	cuimhn'	cuimhne	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	nsubj	_	_
-3	a'm	aig	ADP	Pr1s	Number=Sing|Person=1	5	mark	_	_
+3	a'm	aig	ADP	Pr1s	Number=Sing|Person=1	1	xcomp:pred	_	_
 4	uaireigin	uaireigin	ADV	Rt	_	5	advmod	_	_
-5	fhuair	faigh	VERB	V-s	Tense=Past	1	nsubj	_	_
+5	fhuair	faigh	VERB	V-s	Tense=Past	1	ccomp	_	_
 6	mi	mi	PRON	Pp1s	Number=Sing|Person=1	5	nsubj	_	_
 7	fhèin	fèin	PRON	Px	Reflex=Yes	6	compound	_	_
 8	leis	le	ADP	Sp	_	10	case	_	_
@@ -6441,7 +6471,7 @@
 5	aig	aig	ADP	Sp	_	6	case	_	_
 6	[?]	[?]	X	Xx	_	4	dep	_	_
 7	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	4	obj	_	_
-8	fhèin	fèin	PRON	Px	Reflex=Yes	4	compound	_	_
+8	fhèin	fèin	PRON	Px	Reflex=Yes	7	compound	_	_
 
 # sent_id = c08_026a
 # speaker = [1]
@@ -6532,7 +6562,7 @@
 7	tòrr	tòrr	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
 8	a's	an	ADP	Sp	_	10	case	_	_
 9	na	an	DET	Tdpm	Gender=Masc|Number=Plur	10	det	_	_
-10	taighean	taigh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	7	obl	_	_
+10	taighean	taigh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	6	xcomp:pred	_	_
 
 # sent_id = c08_032b
 # speaker = [1]
@@ -6542,9 +6572,9 @@
 3	aon	aon	NUM	Mc	_	4	nummod	_	_
 4	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 5	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	parataxis	_	_
-6	agad	aig	ADP	Pr2s	Number=Sing|Person=2	5	obl	_	_
+6	agad	aig	ADP	Pr2s	Number=Sing|Person=2	5	xcomp:pred	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	bha	bi	VERB	V-s	Tense=Past	4	csubj:cop	_	_
+8	bha	bi	VERB	V-s	Tense=Past	4	csubj:cleft	_	_
 
 # sent_id = c08_033
 # speaker = [2]
@@ -6589,7 +6619,7 @@
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	conj	_	_
 7	fhèin	fèin	PRON	Px	Reflex=Yes	6	compound	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
-9	bha	bi	VERB	V-s	Tense=Past	6	csubj:cop	_	_
+9	bha	bi	VERB	V-s	Tense=Past	6	csubj:cleft	_	_
 10	ga	ga	PART	Sap3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	11	obj	_	_
 11	dhèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	9	xcomp:pred	_	_
 
@@ -6601,7 +6631,7 @@
 3	daoin'	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	0	root	_	_
 4	eile	eile	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	3	amod	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bha	bi	VERB	V-s	Tense=Past	3	csubj:cop	_	_
+6	bha	bi	VERB	V-s	Tense=Past	3	csubj:cleft	_	_
 7	ga	ga	PART	Sap3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	6	nsubj	_	_
 8	dhèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	6	xcomp:pred	_	_
 9	dhà	do	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	8	obl	_	_
@@ -6772,11 +6802,11 @@
 14	taighe	taigh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	12	nmod	_	_
 15	ma	ma	ADJ	Aq	_	14	amod	_	_
 16	dheireadh	deireadh	ADJ	Aq	_	15	fixed	_	_
-17	gun	gun	PART	Qa	PartType=Cmpl	21	mark	_	_
+17	gun	gun	PART	Qa	PartType=Cmpl	21	mark:prt	_	_
 18	do	do	PART	Q--s	Tense=Past	21	mark:prt	_	_
 19	linn	linn	X	Xsi	_	21	reparandum	_	_
 20	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	19	nsubj	_	_
-21	loisg	loisg	VERB	V-s	Tense=Past	1	advcl	_	_
+21	loisg	loisg	VERB	V-s	Tense=Past	1	ccomp	_	_
 22	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	21	nsubj	_	_
 23	lìnigeadh	lìnigeadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	21	obj	_	_
 24	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	25	det	_	_
@@ -6915,7 +6945,7 @@
 21	h-uile	uile	DET	Dq	_	20	fixed	_	_
 22	sgath	sgath	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	19	nsubj	_	_
 23	a	a	PART	Q-r	PartType=Vb|PronType=Rel	24	mark:prt	_	_
-24	th'	bi	VERB	V-p	Tense=Pres	19	csubj:cop	_	_
+24	th'	bi	VERB	V-p	Tense=Pres	19	csubj:cleft	_	_
 25	aice	aig	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	24	nsubj	_	_
 26	ri	ri	PART	Sa	_	27	case	_	_
 27	phàigheadh	pàigh	NOUN	Nv	VerbForm=Vnoun	24	xcomp:pred	_	_
@@ -6951,7 +6981,7 @@
 26	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	27	mark:prt	_	_
 27	pàigheadh	pàigh	VERB	V-h--d	Mood=Cnd	25	ccomp	_	_
 28	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	27	nsubj	_	_
-29	gu	gu	PART	Ua	PartType=Ad	33	mark:prt	_	_
+29	gu	gu	PART	Ua	PartType=Ad	30	mark:prt	_	_
 30	siorraidh	siorraidh	ADV	Rt	_	33	advmod	_	_
 31	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	33	mark:prt	_	_
 32	do	do	PART	Q--s	Tense=Past	33	mark:prt	_	_
@@ -6992,7 +7022,7 @@
 # text = chuala mi [Name] a' ràdh uaireigin gun robh uaireigin a bhiodh a athair o chionn fada a' rèic èisg mun cuairt fhios agad air a’ chladach ann a shin 's bha e a' ràdh gun robh màthair [Name] gum faodadh i na thogradh i thoir dhith nach do dh’fhàg i dad riamh gun phàigheadh
 1	chuala	cluinn	VERB	V-s	Tense=Past	0	root	_	_
 2	mi	mi	PRON	Pp1s	Number=Sing|Person=1	1	nsubj	_	_
-3	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	1	nsubj	_	_
+3	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	1	obj	_	_
 4	a'	ag	PART	Sa	_	5	case	_	_
 5	ràdh	abair	NOUN	Nv	VerbForm=Vnoun	1	xcomp	_	_
 6	uaireigin	uaireigin	ADV	Rt	_	5	advmod	_	_
@@ -7036,9 +7066,9 @@
 44	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	43	nsubj	_	_
 45	thoir	toir	NOUN	Nv	VerbForm=Vnoun	43	xcomp	_	_
 46	dhith	de	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	45	obl	_	_
-47	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	50	mark:prt	_	_
-48	do	do	PART	Q--s	Tense=Past	50	mark:prt	_	_
-49	dh’fhàg	fàg	VERB	V-s	Tense=Past	40	advcl	_	_
+47	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	49	mark:prt	_	_
+48	do	do	PART	Q--s	Tense=Past	49	mark:prt	_	_
+49	dh’fhàg	fàg	VERB	V-s	Tense=Past	40	ccomp	_	_
 50	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	49	nsubj	_	_
 51	dad	dad	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	50	obj	_	_
 52	riamh	riamh	ADV	Rt	_	50	advmod	_	_
@@ -7166,7 +7196,7 @@
 15	fear	fear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	13	parataxis	_	_
 16	sin	sin	DET	Dd	_	15	det	_	_
 17	dhiubh	de	ADP	Pr3p	Number=Plur|Person=3	12	xcomp:pred	_	_
-18	an	an	DET	Tdsm	Gender=Masc|Number=Sing	32	det	_	_
+18	an	an	DET	Tdsm	Gender=Masc|Number=Sing	19	det	_	_
 19	t-athair	athair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	13	parataxis	_	_
 20	do	do	ADP	Sp	_	21	case	_	_
 21	bhean	bean	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	19	obl	_	_
@@ -7234,7 +7264,7 @@
 4	aon	aon	NUM	Mc	_	5	nummod	_	_
 5	[Name]	[Name]	PROPN	Nn	_	0	root	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	bhiodh	bi	VERB	V-h	Mood=Cnd	5	csubj:cop	_	_
+7	bhiodh	bi	VERB	V-h	Mood=Cnd	5	csubj:cleft	_	_
 8	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	obl	_	_
 9	co-dhiubh	co-dhiubh	ADV	Rg	_	7	advmod	_	_
 
@@ -7265,7 +7295,7 @@
 4	aon	aon	NUM	Mc	_	5	nummod	_	_
 5	[Name]	[Name]	PROPN	Nn	_	0	root	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	bhiodh	bi	VERB	V-h	Mood=Cnd	5	csubj:cop	_	_
+7	bhiodh	bi	VERB	V-h	Mood=Cnd	5	csubj:cleft	_	_
 8	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	xcomp:pred	_	_
 9	co-dhiubh	co-dhiubh	ADV	Rg	_	7	advmod	_	_
 
@@ -7302,7 +7332,7 @@
 5	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	4	fixed	_	_
 6	Sgitheanaich	sgitheanach	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	3	ccomp	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	bhiodh	bi	VERB	V-h	Mood=Cnd	6	csubj:cop	_	_
+8	bhiodh	bi	VERB	V-h	Mood=Cnd	6	csubj:cleft	_	_
 9	annta	annta	ADP	Pr3p	Number=Plur|Person=3	8	xcomp:pred	_	_
 
 # sent_id = c08_061
@@ -7907,7 +7937,7 @@
 24	aig	aig	ADP	Sp	_	25	case	_	_
 25	[Name]	[Name]	PROPN	Nn-fd	Case=Dat|Gender=Fem	23	obl	_	_
 26	a	a	PART	Q-r	PartType=Vb|PronType=Rel	27	mark:prt	_	_
-27	bh'	bi	VERB	V-s	Tense=Past	23	csubj:cop	_	_
+27	bh'	bi	VERB	V-s	Tense=Past	23	csubj:cleft	_	_
 28	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	27	xcomp:pred	_	_
 29	a	a	PART	Q-r	PartType=Vb|PronType=Rel	30	mark:prt	_	_
 30	bha	bi	VERB	V-s	Tense=Past	27	conj	_	_
@@ -7943,7 +7973,7 @@
 60	rathad	rathad	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	56	obl	_	_
 61	an	an	DET	Tds-g	Case=Gen|Number=Sing	62	det	_	_
 62	dump	dump	NOUN	Xfe	Foreign=Yes	60	nmod	_	_
-63	an	is	AUX	Wpdqa	_	54	parataxis	_	_
+63	an	is	AUX	Wpdqa	_	54	cop	_	_
 64	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	63	fixed	_	SpaceAfter=No
 65	?	?	PUNCT	Fg	_	1	punct	_	_
 
@@ -8002,7 +8032,7 @@
 # text = rud a th' agamsa chan eil còir aca charge-adh air co-dhiubh chan eil ann ach outside tank tha còir a’d air aon tank fhaighinn
 1	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
-3	th'	bi	VERB	V-p	Tense=Pres	1	csubj:cop	_	_
+3	th'	bi	VERB	V-p	Tense=Pres	1	csubj:cleft	_	_
 4	agamsa	aig	ADP	Pr1s--e	Form=Emp|Number=Sing|Person=1	6	mark	_	_
 5	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	6	mark:prt	_	_
 6	eil	bi	VERB	V-p--d	Tense=Pres	3	advcl	_	_
@@ -8266,7 +8296,7 @@
 5	‘se	is	AUX	Wp-i-3	_	6	cop	_	_
 6	experiment	experiment	X	Xfe	Foreign=Yes	4	ccomp	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	tha	bi	VERB	V-p	Tense=Pres	6	csubj:cop	_	_
+8	tha	bi	VERB	V-p	Tense=Pres	6	csubj:cleft	_	_
 9	iad	iad	PRON	Pp3p	Number=Plur|Person=3	8	nsubj	_	_
 10	a'	ag	PART	Sa	_	11	case	_	_
 11	dèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	8	xcomp:pred	_	_
@@ -8479,7 +8509,7 @@
 6	bhàta	bàta	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
 7	mhòr	mòr	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	6	amod	_	_
 8	aca	aig	ADP	Pr3p	Number=Plur|Person=3	4	xcomp:pred	_	_
-9	fhèin	fèin	PRON	Px	Reflex=Yes	4	compound	_	_
+9	fhèin	fèin	PRON	Px	Reflex=Yes	8	compound	_	_
 
 # sent_id = c10_066
 # speaker = [4]
@@ -8503,7 +8533,7 @@
 2	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
 3	aca	aig	ADP	Pr3p	Number=Plur|Person=3	2	obl	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	tha	bi	VERB	V-p	Tense=Pres	2	csubj:cop	_	_
+5	tha	bi	VERB	V-p	Tense=Pres	2	csubj:cleft	_	_
 6	an	an	DET	Tdsm	Gender=Masc|Number=Sing	7	det	_	_
 7	t-àite	àite	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	5	nsubj	_	_
 8	mòr	mòr	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	7	amod	_	_
@@ -8713,7 +8743,7 @@
 2	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
 3	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	2	nsubj	_	_
 4	[?]	[?]	X	Xx	_	2	dep	_	_
-5	fhèin	fèin	PRON	Px	Reflex=Yes	2	compound	_	_
+5	fhèin	fèin	PRON	Px	Reflex=Yes	4	compound	_	_
 
 # sent_id = c10_080
 # speaker = [4]
@@ -9155,7 +9185,7 @@
 4	iuchair	iuchair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	2	nsubj	_	_
 5	feumaidh	feum	VERB	V-f	Tense=Fut	2	parataxis	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	th'	bi	VERB	V-p	Tense=Pres	2	csubj:cop	_	_
+7	th'	bi	VERB	V-p	Tense=Pres	2	csubj:cleft	_	_
 8	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	7	xcomp:pred	_	_
 9	an	is	AUX	Wpdqa	_	10	cop	_	_
 10	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	parataxis	_	SpaceAfter=No
@@ -9183,7 +9213,7 @@
 3	an	an	DET	Tdsf	Gender=Fem|Number=Sing	4	det	_	_
 4	iuchair	iuchair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	th'	bi	VERB	V-p	Tense=Pres	4	csubj:cop	_	_
+6	th'	bi	VERB	V-p	Tense=Pres	4	csubj:cleft	_	_
 7	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	6	xcomp:pred	_	_
 8	thoireadh	thoireadh	CCONJ	Cc	_	10	cc	_	_
 9	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	10	mark:prt	_	_
@@ -9204,10 +9234,10 @@
 # speaker = [4]
 # text = seo an t-àm a bhite a' cur dhan [Placename] airson nan lèabagan
 1	seo	seo	PRON	Pd	_	0	root	_	_
-2	an	an	DET	Tdsm	Gender=Masc|Number=Sing	5	det	_	_
+2	an	an	DET	Tdsm	Gender=Masc|Number=Sing	3	det	_	_
 3	t-àm	àm	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	5	amod	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	bhite	bite	VERB	V-h0	Mood=Cnd|Person=0	1	nsubj	_	_
+5	bhite	bite	VERB	V-h0	Mood=Cnd|Person=0	3	acl:relcl	_	_
 6	a'	ag	PART	Sa	_	7	case	_	_
 7	cur	cuir	NOUN	Nv	VerbForm=Vnoun	1	xcomp	_	_
 8	dhan	do	ADP	Spa-s	_	9	case	_	_
@@ -9354,7 +9384,7 @@
 6	chùl	cùl	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	3	obl	_	_
 7	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	8	det	_	_
 8	[Placename]	[Placename]	PROPN	Nt	_	6	nmod	_	_
-9	ann	ann	ADV	Rs	_	14	det	_	_
+9	ann	ann	ADV	Rs	_	3	advmod	_	_
 10	a	a	ADV	Rs	_	9	fixed	_	_
 11	shiudach	siudach	ADV	Rs	_	9	fixed	_	_
 12	gu	gu	PART	Ua	PartType=Ad	13	mark:prt	_	_
@@ -9499,7 +9529,7 @@
 33	lemon	lemon	X	Xfe	Foreign=Yes	23	ccomp	_	_
 34	sole	sole	X	Xfe	Foreign=Yes	33	flat	_	_
 35	a	a	PART	Q-r	PartType=Vb|PronType=Rel	36	mark:prt	_	_
-36	gheibheadh	geibh	VERB	V-h	Mood=Cnd	33	csubj:cop	_	_
+36	gheibheadh	geibh	VERB	V-h	Mood=Cnd	33	csubj:cleft	_	_
 37	tu	thu	PRON	Pp2s	Number=Sing|Person=2	36	nsubj	_	_
 38	oirre	air	ADP	Pr3sf	Gender=Fem|Number=Sing|Person=3	41	mark	_	_
 39	gun	is	AUX	Wpdia	_	41	cop	_	_
@@ -9525,7 +9555,7 @@
 2	a’	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	3	det	_	_
 3	bhiadh	biadh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	10	obl	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	bhiodh	bi	VERB	V-h	Mood=Cnd	3	csubj:cop	_	_
+5	bhiodh	bi	VERB	V-h	Mood=Cnd	3	csubj:cleft	_	_
 6	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	5	xcomp:pred	_	_
 7	dìreach	dìreach	ADV	Rg	_	10	advmod	_	_
 8	dè	dè	PRON	Uq	Mood=Int	10	obl	_	_
@@ -9573,7 +9603,7 @@
 18	a'	an	DET	Tds	Number=Sing	16	nsubj	_	_
 19	fish	fish	X	Xfe	Foreign=Yes	18	nmod	_	_
 20	market	market	X	Xfe	Foreign=Yes	19	flat	_	_
-21	sin	sin	DET	Dd	_	18	det	_	_
+21	sin	sin	DET	Dd	_	19	det	_	_
 22	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	16	xcomp:pred	_	_
 23	am	am	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	24	mark:prt	_	_
 24	bi	bi	VERB	V-f--d	Tense=Fut	11	ccomp	_	SpaceAfter=No
@@ -9613,9 +9643,9 @@
 18	athair	athair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	17	nsubj	_	_
 19	agus	agus	CCONJ	Cc	_	17	cc	_	_
 20	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	17	conj	_	_
-21	gun	gun	PART	Qa	PartType=Cmpl	23	mark	_	_
+21	gun	gun	PART	Qa	PartType=Cmpl	23	mark:prt	_	_
 22	do	do	PART	Q--s	Tense=Past	23	mark:prt	_	_
-23	[?]	[?]	X	Xx	_	17	advcl	_	_
+23	[?]	[?]	X	Xx	_	17	ccomp	_	_
 24	dol	rach	NOUN	Nv	VerbForm=Vnoun	23	xcomp	_	_
 25	a	a	ADP	Sp	_	26	case	_	_
 26	[Placename]	[Placename]	PROPN	Nt	_	24	obl	_	_
@@ -9697,13 +9727,13 @@
 # sent_id = c10_140a
 # speaker = [2]
 # text = cha do dh’ith mi dad cho math o chionn fhada ris an lemon sole a bha sineach aca ann an [Placename] shìos
-1	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	4	mark:prt	_	_
-2	do	do	PART	Q--s	Tense=Past	4	mark:prt	_	_
+1	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	3	mark:prt	_	_
+2	do	do	PART	Q--s	Tense=Past	3	mark:prt	_	_
 3	dh’ith	ith	VERB	V-s	Tense=Past	0	root	_	_
 4	mi	mi	PRON	Pp1s	Number=Sing|Person=1	3	nsubj	_	_
 5	dad	dad	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	obj	_	_
-6	cho	cho	ADV	Rg	_	4	advmod	_	_
-7	math	math	ADJ	Ap	_	4	xcomp:pred	_	_
+6	cho	cho	ADV	Rg	_	7	advmod	_	_
+7	math	math	ADJ	Ap	_	3	xcomp:pred	_	_
 8	o	bho	ADP	Sp	_	10	case	_	_
 9	chionn	cionn	ADP	Nf	_	8	fixed	_	_
 10	fhada	fada	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	3	obl	_	_
@@ -9740,7 +9770,7 @@
 2	mi	mi	PRON	Pp1s	Number=Sing|Person=1	1	nsubj	_	_
 3	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	1	obj	_	_
 4	ag	ag	PART	Sa	_	5	case	_	_
-5	ràdh	abair	NOUN	Nv	VerbForm=Vnoun	1	xcomp	_	_
+5	ràdh	abair	NOUN	Nv	VerbForm=Vnoun	3	xcomp:pred	_	_
 6	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	5	obj	_	_
 7	[Name]	[Name]	PROPN	Nn-mg	Case=Gen|Gender=Masc	6	flat	_	_
 8	gun	gun	PART	Qa	PartType=Cmpl	10	mark:prt	_	_
@@ -9749,19 +9779,19 @@
 11	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	10	nsubj	_	_
 12	[Name]	[Name]	PROPN	Nn	_	11	flat	_	_
 13	trawel	trawel	NOUN	Xfe	Foreign=Yes	10	obl	_	_
-14	agus	agus	CCONJ	Cc	_	17	cc	_	_
+14	agus	agus	CCONJ	Cc	_	24	cc	_	_
 15	gun	gun	PART	Qa	PartType=Cmpl	17	mark:prt	_	_
 16	do	do	PART	Q--s	Tense=Past	17	mark:prt	_	_
-17	dh’fheuch	feuch	VERB	V-s	Tense=Past	10	conj	_	_
+17	dh’fheuch	feuch	VERB	V-s	Tense=Past	24	reparandum	_	_
 18	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	17	nsubj	_	_
 19	a-muigh	a-muigh	ADV	Rs	_	17	advmod	_	_
 20	a's	an	ADP	Sp	_	24	case	_	_
-21	a'	an	DET	Tds	Number=Sing	24	det	_	_
+21	a'	an	DET	Tds	Number=Sing	17	obl	_	_
 22	gun	gun	PART	Qa	PartType=Cmpl	24	mark:prt	_	_
 23	d’	do	PART	Q--s	Tense=Past	24	mark:prt	_	_
-24	fhuair	faigh	VERB	V-s	Tense=Past	17	obl	_	_
+24	fhuair	faigh	VERB	V-s	Tense=Past	5	ccomp	_	_
 25	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	24	nsubj	_	_
-26	an	an	DET	Tdsm	Gender=Masc|Number=Sing	52	det	_	_
+26	an	an	DET	Tdsm	Gender=Masc|Number=Sing	27	det	_	_
 27	t-uabhas	uabhas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	25	obl	_	_
 28	de	de	ADP	Sp	_	29	case	_	_
 29	lemon	lemon	X	Xfe	Foreign=Yes	27	obl	_	_
@@ -10057,7 +10087,7 @@
 3	car	car	ADV	Rg	_	4	advmod	_	_
 4	cruinn	cruinn	ADJ	Ap	_	0	root	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	bha	bi	VERB	V-s	Tense=Past	4	csubj:cop	_	_
+6	bha	bi	VERB	V-s	Tense=Past	4	csubj:cleft	_	_
 7	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	6	nsubj	_	_
 8	spotan	spot	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	6	xcomp:pred	_	_
 9	mòra	mòra	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	8	amod	_	_
@@ -10407,7 +10437,7 @@
 5	iasg	iasg	NOUN	Ncpmg	Case=Gen|Gender=Masc|Number=Plur	4	nmod	_	_
 6	‘ar	'ar	SCONJ	Cs	_	8	mark	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	bhiodh	bi	VERB	V-h	Mood=Cnd	2	csubj:cop	_	_
+8	bhiodh	bi	VERB	V-h	Mood=Cnd	2	csubj:cleft	_	_
 9	tu	thu	PRON	Pp2s	Number=Sing|Person=2	8	nsubj	_	_
 10	ag	ag	PART	Sa	_	11	case	_	_
 11	iasgaich	iasg	NOUN	Nv	VerbForm=Vnoun	8	xcomp:pred	_	_
@@ -10545,7 +10575,7 @@
 24	fodha	fo	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	22	obl	_	_
 25	shuas	suas	ADV	Rs	_	22	advmod	_	_
 26	thuige	gu	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	22	obl	_	_
-27	sin	sin	DET	Dd	_	22	det	_	_
+27	sin	sin	DET	Dd	_	26	det	_	_
 28	uaireannan	uaireannan	ADV	Rt	_	22	advmod	_	_
 
 # sent_id = c10_174
@@ -10676,8 +10706,8 @@
 8	air	air	ADP	Sp	_	9	case	_	_
 9	ais	ais	ADP	Nf	_	6	obl	_	_
 10	‘s	's	CCONJ	Cc	_	13	cc	_	_
-11	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	13	mark	_	_
-12	do	do	PART	Q--s	Tense=Past	13	mark	_	_
+11	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	13	mark:prt	_	_
+12	do	do	PART	Q--s	Tense=Past	13	mark:prt	_	_
 13	dh’fhàg	fàg	VERB	V-s	Tense=Past	1	conj	_	_
 14	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	13	nsubj	_	_
 15	a-rithist	a-rithist	ADV	Rt	_	13	advmod	_	_
@@ -11023,7 +11053,7 @@
 9	'se	is	AUX	Wp-i-3	_	10	cop	_	_
 10	rescue-dog	rescue-dog	NOUN	Xfe	Foreign=Yes	3	conj	_	_
 11	a	a	PART	Q-r	PartType=Vb|PronType=Rel	12	mark:prt	_	_
-12	bh'	bi	VERB	V-s	Tense=Past	10	csubj:cop	_	_
+12	bh'	bi	VERB	V-s	Tense=Past	10	csubj:cleft	_	_
 13	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	12	obl	_	_
 14	agus	agus	CCONJ	Cc	_	12	cc	_	_
 15	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	16	mark:prt	_	_
@@ -11274,7 +11304,7 @@
 19	cù	cù	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	17	ccomp	_	_
 20	chaoraich	caorach	NOUN	Ncpfg	Case=Gen|Gender=Fem|Number=Plur	19	nmod	_	_
 21	a	a	PART	Q-r	PartType=Vb|PronType=Rel	22	mark:prt	_	_
-22	th'	bi	VERB	V-p	Tense=Pres	19	csubj:cop	_	_
+22	th'	bi	VERB	V-p	Tense=Pres	19	csubj:cleft	_	_
 23	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	11	obl	_	_
 
 # sent_id = p01_014a
@@ -11476,8 +11506,8 @@
 28	sgeulachdan	sgeulachd	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	25	nsubj	_	_
 29	fhathast	fhathast	ADV	Rt	_	30	advmod	_	_
 30	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	25	xcomp:pred	_	_
-31	dhen	de	ADP	Sp	_	36	case	_	_
-32	an	an	DET	Tdsm	Gender=Masc|Number=Sing	36	det	_	_
+31	dhen	de	ADP	Sp	_	33	case	_	_
+32	an	an	DET	Tdsm	Gender=Masc|Number=Sing	33	det	_	_
 33	t-seòrsa	seòrsa	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	27	obl	_	_
 34	sgeulachd	sgeulachd	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	33	nmod	_	_
 35	a	a	PART	Q-r	PartType=Vb|PronType=Rel	36	mark:prt	_	_
@@ -11639,7 +11669,7 @@
 6	an	an	DET	Tdsm	Gender=Masc|Number=Sing	7	det	_	_
 7	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
-9	th'	bi	VERB	V-p	Tense=Pres	7	csubj:cop	_	_
+9	th'	bi	VERB	V-p	Tense=Pres	7	csubj:cleft	_	_
 10	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	9	obl	_	_
 11	fhios	fios	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	7	parataxis	_	_
 12	a'd	aig	ADP	Pr2s	Number=Sing|Person=2	11	xcomp:pred	_	_
@@ -11764,7 +11794,7 @@
 2	am	an	DET	Tdsm	Gender=Masc|Number=Sing	3	det	_	_
 3	beathach	beathach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	1	nsubj	_	_
 4	sin	sin	DET	Dd	_	3	det	_	_
-5	fhèin	fèin	PRON	Px	Reflex=Yes	12	det	_	_
+5	fhèin	fèin	PRON	Px	Reflex=Yes	4	compound	_	_
 6	feumach	feumach	ADJ	Ap	_	5	xcomp:pred	_	_
 7	air	air	ADP	Sp	_	8	case	_	_
 8	obair	obair	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	5	obl	_	_
@@ -11827,7 +11857,7 @@
 12	a	a	PART	Q-r	PartType=Vb|PronType=Rel	13	mark:prt	_	_
 13	tha	bi	VERB	V-p	Tense=Pres	11	acl:relcl	_	_
 14	coinneachadh	coinnich	NOUN	Nv	VerbForm=Vnoun	13	xcomp:pred	_	_
-15	gu	gu	PART	Ua	PartType=Ad	18	mark:prt	_	_
+15	gu	gu	PART	Ua	PartType=Ad	16	mark:prt	_	_
 16	tric	tric	ADV	Rt	_	18	advmod	_	_
 17	ri	ri	ADP	Sp	_	18	case	_	_
 18	beathaichean	beathach	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	14	ccomp	_	_
@@ -11989,7 +12019,7 @@
 23	na	an	DET	Tdpm	Gender=Masc|Number=Plur	24	det	_	_
 24	h-eich	each	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	19	obl	_	_
 25	a	a	PART	Q-r	PartType=Vb|PronType=Rel	26	mark:prt	_	_
-26	bha	bi	VERB	V-s	Tense=Past	24	csubj:cop	_	_
+26	bha	bi	VERB	V-s	Tense=Past	24	csubj:cleft	_	_
 27	sibh	sibh	PRON	Pp2p	Number=Plur|Person=2	26	nsubj	_	_
 28	ag	ag	PART	Sa	_	29	case	_	_
 29	iarraidh	iarr	NOUN	Nv	VerbForm=Vnoun	26	xcomp:pred	_	_
@@ -12039,13 +12069,13 @@
 # text = ò tha an t-uamhas obair co-cheangailte ri gu h-àraid eich
 1	ò	ò	INTJ	I	_	2	discourse	_	_
 2	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
-3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	6	det	_	_
+3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
 4	t-uamhas	uamhas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	amod	_	_
 5	obair	obair	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	4	nmod	_	_
 6	co-cheangailte	co-cheangailte	ADJ	Av	_	2	nsubj	_	_
 7	ri	ri	ADP	Sp	_	10	case	_	_
-8	gu	gu	PART	Ua	PartType=Ad	10	mark:prt	_	_
-9	h-àraid	àraid	ADV	Rg	_	10	amod	_	_
+8	gu	gu	PART	Ua	PartType=Ad	9	mark:prt	_	_
+9	h-àraid	àraid	ADV	Rg	_	10	advmod	_	_
 10	eich	each	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	2	xcomp:pred	_	_
 
 # sent_id = p01_033c
@@ -12393,7 +12423,7 @@
 4	iomadh	iomadh	ADJ	Ar	_	5	amod	_	_
 5	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
-7	tha	bi	VERB	V-p	Tense=Pres	5	csubj:cop	_	_
+7	tha	bi	VERB	V-p	Tense=Pres	5	csubj:cleft	_	_
 8	tachairt	tachair	NOUN	Nv	VerbForm=Vnoun	5	xcomp	_	_
 9	ach	ach	CCONJ	Cc	_	10	cc	_	_
 10	tha	bi	VERB	V-p	Tense=Pres	5	conj	_	_
@@ -12523,14 +12553,14 @@
 2	'se	is	AUX	Wp-i-3	_	4	cop	_	_
 3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
 4	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
-5	Anna	Anna	PROPN	Nn-fv	Case=Voc|Gender=Fem	4	nsubj	_	_
+5	Anna	Anna	PROPN	Nn-fv	Case=Voc|Gender=Fem	4	vocative	_	_
 6	mu	mu	ADP	Sp	_	10	case	_	_
 7	dheidhinn	deidhinn	ADP	Nf	_	6	fixed	_	_
 8	a	a	DET	Dq	_	10	det	_	_
 9	h-uile	uile	DET	Dq	_	8	fixed	_	_
 10	càil	càil	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	4	obl	_	_
 11	a	a	PART	Q-r	PartType=Vb|PronType=Rel	12	mark:prt	_	_
-12	th'	bi	VERB	V-p	Tense=Pres	4	csubj:cop	_	_
+12	th'	bi	VERB	V-p	Tense=Pres	4	csubj:cleft	_	_
 13	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	12	xcomp:pred	_	_
 
 # sent_id = p01_036b
@@ -14079,7 +14109,7 @@
 # sent_id = p02_007b
 # speaker = [2]
 # text = an aon no dà chothrom a bh' agad air obair 's e [?] fhios agad [?] a' rathaid mhòir a thoireadh cha robh tearradh an rathad ann agus dh’fhaodadh sibh a bhith a' bristeadh chlachan mar a bhios iad ann am Porterfields 's dòcha fhathast agus dh’fhaodadh tu bhith ag obair le ag obair air stamh losgadh stamh airson ceilp sin fhèin sin na bha a dh’obair a' dol an Uibhist dha na fir an uair sin mura faigheadh iad 's dòcha obair aig fear dhe na tuathanaich airson dhà no trì lathaichean ach mar bu trice 's e iomlaid a bhiodh a' dol a-sin co-dhiubh fhios agad
-1	an	an	DET	Tdsm	Gender=Masc|Number=Sing	5	det	_	_
+1	an	an	DET	Tdsm	Gender=Masc|Number=Sing	2	det	_	_
 2	aon	aon	NUM	Mc	_	5	nummod	_	_
 3	no	no	CCONJ	Cc	_	4	cc	_	_
 4	dà	dà	NUM	Mc	_	2	conj	_	_
@@ -14143,7 +14173,7 @@
 62	fhèin	fèin	PRON	Px	Reflex=Yes	61	compound	_	_
 63	sin	sin	PRON	Pd	_	54	nmod	_	_
 64	na	na	PART	Q-r	PartType=Vb|PronType=Rel	65	mark:prt	_	_
-65	bha	bi	VERB	V-s	Tense=Past	44	csubj:cop	_	_
+65	bha	bi	VERB	V-s	Tense=Past	44	csubj:cleft	_	_
 66	a	a	ADP	Sp	_	67	case	_	_
 67	dh’obair	obair	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	65	nsubj	_	_
 68	a'	ag	PART	Sa	_	69	case	_	_
@@ -14180,7 +14210,7 @@
 99	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	98	fixed	_	_
 100	iomlaid	iomlaid	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	69	ccomp	_	_
 101	a	a	PART	Q-r	PartType=Vb|PronType=Rel	102	mark:prt	_	_
-102	bhiodh	bi	VERB	V-h	Mood=Cnd	100	csubj:cop	_	_
+102	bhiodh	bi	VERB	V-h	Mood=Cnd	100	csubj:cleft	_	_
 103	a'	ag	PART	Sa	_	104	case	_	_
 104	dol	rach	NOUN	Nv	VerbForm=Vnoun	102	xcomp:pred	_	_
 105	a-sin	a-sin	ADV	Rt	_	104	advmod	_	_
@@ -14938,7 +14968,7 @@
 11	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	12	det	_	_
 12	latha	latha	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	10	nmod	_	_
 13	a	a	PART	Q-r	PartType=Vb|PronType=Rel	14	mark:prt	_	_
-14	chunnaic	faic	VERB	V-s	Tense=Past	10	csubj:cop	_	_
+14	chunnaic	faic	VERB	V-s	Tense=Past	10	csubj:cleft	_	_
 15	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	14	nsubj	_	_
 16	an	an	DET	Tdsm	Gender=Masc|Number=Sing	17	det	_	_
 17	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	14	obj	_	_
@@ -14992,7 +15022,7 @@
 65	'se	is	AUX	Wp-i-3	_	66	cop	_	_
 66	crìoch	crìoch	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	2	conj	_	_
 67	a	a	PART	Q-r	PartType=Vb|PronType=Rel	68	mark:prt	_	_
-68	th'	bi	VERB	V-p	Tense=Pres	66	csubj:cop	_	_
+68	th'	bi	VERB	V-p	Tense=Pres	66	csubj:cleft	_	_
 69	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	60	xcomp:pred	_	_
 70	cuideachd	cuideachd	ADV	Rg	_	60	advmod	_	_
 71	tha	bi	VERB	V-p	Tense=Pres	66	parataxis	_	_
@@ -15047,7 +15077,7 @@
 43	ge-tà	ge-tà	ADV	Rg	_	34	advmod	_	_
 44	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	45	mark:prt	_	_
 45	eil	bi	VERB	V-p--d	Tense=Pres	43	csubj:cop	_	_
-46	Uilleim	Uilleam	PROPN	Nn-mv	Case=Voc|Gender=Masc	45	nsubj	_	SpaceAfter=No
+46	Uilleim	Uilleam	PROPN	Nn-mv	Case=Voc|Gender=Masc	45	vocative	_	SpaceAfter=No
 47	?	?	PUNCT	Fg	_	5	punct	_	_
 
 # sent_id = p03_002a
@@ -15057,7 +15087,7 @@
 2	'se	is	AUX	Wp-i-3	_	3	cop	_	_
 3	crìoch	crìoch	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 4	a	a	PART	Q-r	PartType=Vb|PronType=Rel	5	mark:prt	_	_
-5	th'	bi	VERB	V-p	Tense=Pres	3	csubj:cop	_	_
+5	th'	bi	VERB	V-p	Tense=Pres	3	csubj:cleft	_	_
 6	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	5	xcomp:pred	_	_
 7	mar	mar	SCONJ	Cs	_	9	mark	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
@@ -15182,7 +15212,7 @@
 1	's	is	AUX	Wp-i	_	2	cop	_	_
 2	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
-4	bha	bi	VERB	V-s	Tense=Past	2	csubj:cop	_	_
+4	bha	bi	VERB	V-s	Tense=Past	2	csubj:cleft	_	_
 5	iad	iad	PRON	Pp3p	Number=Plur|Person=3	4	nsubj	_	_
 6	'ga	'ga	PART	Sap3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	7	obj	_	_
 7	mheas	meas	NOUN	Nv	VerbForm=Vnoun	4	xcomp	_	_
@@ -15354,7 +15384,7 @@
 38	tu	thu	PRON	Pp2s	Number=Sing|Person=2	37	nsubj	_	_
 39	gu	gu	PART	Qa	PartType=Cmpl	40	mark:prt	_	_
 40	bheil	bi	VERB	V-p--d	Tense=Pres	37	ccomp	_	_
-41	Iain	Iain	PROPN	Nn-mv	Case=Voc|Gender=Masc	40	nsubj	_	SpaceAfter=No
+41	Iain	Iain	PROPN	Nn-mv	Case=Voc|Gender=Masc	40	vocative	_	SpaceAfter=No
 42	?	?	PUNCT	Fg	_	3	punct	_	_
 
 # sent_id = p03_005
@@ -15389,7 +15419,7 @@
 27	bhliadhna	bliadhna	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	24	obl	_	_
 28	againn	aig	ADP	Pr1p	Number=Plur|Person=1	20	conj	_	_
 29	a	a	PART	Q-r	PartType=Vb|PronType=Rel	30	mark:prt	_	_
-30	bhoineas	bhoin	VERB	V-f--r	Tense=Fut	20	csubj:cop	_	_
+30	bhoineas	bhoin	VERB	V-f--r	Tense=Fut	20	csubj:cleft	_	_
 31	dhan	do	ADP	Sp	_	34	case	_	_
 32	an	an	DET	Tdsm	Gender=Masc|Number=Sing	34	det	_	_
 33	dà	dà	ADJ	Ar	_	34	amod	_	_
@@ -15408,7 +15438,7 @@
 8	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	7	fixed	_	_
 9	Imbolc	imbolc	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	ccomp	_	_
 10	a	a	PART	Q-r	PartType=Vb|PronType=Rel	11	mark:prt	_	_
-11	bh'	bi	VERB	V-s	Tense=Past	9	csubj:cop	_	_
+11	bh'	bi	VERB	V-s	Tense=Past	9	csubj:cleft	_	_
 12	aig	aig	ADP	Sp	_	15	case	_	_
 13	na	an	DET	Tdpm	Gender=Masc|Number=Plur	15	det	_	_
 14	seann	seann	ADJ	Ar	_	15	amod	_	_
@@ -15493,7 +15523,7 @@
 40	ma	ma	ADP	Sp	_	41	case	_	_
 41	Imbolc	imbolc	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	39	obl	_	_
 42	's	's	CCONJ	Cc	_	47	cc	_	_
-43	na	an	DET	Tdp	Number=Plur	47	det	_	_
+43	na	an	DET	Tdp	Number=Plur	41	conj	_	_
 44	agus	agus	CCONJ	Cc	_	45	cc	_	_
 45	Samhainn	samhainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	41	conj	_	_
 46	's	's	CCONJ	Cc	_	47	cc	_	_
@@ -15512,7 +15542,7 @@
 1	buinidh	buin	VERB	V-f	Tense=Fut	0	root	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
 3	dhan	do	ADP	Sp	_	7	case	_	_
-4	an	an	DET	Tdsm	Gender=Masc|Number=Sing	7	det	_	_
+4	an	an	DET	Tdsm	Gender=Masc|Number=Sing	5	det	_	_
 5	t-seanachas	seanachas	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
 7	bh'	bi	VERB	V-s	Tense=Past	5	acl:relcl	_	_
@@ -15548,7 +15578,7 @@
 37	shean	sean	ADJ	Ar	_	38	amod	_	_
 38	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	31	ccomp	_	_
 39	a	a	PART	Q-r	PartType=Vb|PronType=Rel	40	mark:prt	_	_
-40	bh'	bi	VERB	V-s	Tense=Past	38	csubj:cop	_	_
+40	bh'	bi	VERB	V-s	Tense=Past	38	csubj:cleft	_	_
 41	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	40	xcomp:pred	_	_
 42	ach	ach	CCONJ	Cc	_	45	cc	_	_
 43	air	air	ADP	Sp	_	45	case	_	_
@@ -15812,8 +15842,8 @@
 36	air	air	ADP	Sp	_	38	case	_	_
 37	an	an	DET	Tdsm	Gender=Masc|Number=Sing	38	det	_	_
 38	t-saoghal	saoghal	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	41	reparandum	_	_
-39	air	air	ADP	Sp	_	43	case	_	_
-40	an	an	DET	Tdsm	Gender=Masc|Number=Sing	43	det	_	_
+39	air	air	ADP	Sp	_	41	case	_	_
+40	an	an	DET	Tdsm	Gender=Masc|Number=Sing	41	det	_	_
 41	t-saoghal	saoghal	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	34	obl	_	_
 42	dà	dà	NUM	Mc	_	43	nummod	_	_
 43	uair	uair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	34	obl:tmod	_	_
@@ -16043,7 +16073,7 @@
 18	fhad	fhad	SCONJ	Cs	_	19	mark	_	_
 19	's	's	CCONJ	Cc	_	14	advcl	_	_
 20	a	a	PART	Q-r	PartType=Vb|PronType=Rel	21	mark:prt	_	_
-21	tha	bi	VERB	V-p	Tense=Pres	19	csubj:cop	_	_
+21	tha	bi	VERB	V-p	Tense=Pres	19	csubj:cleft	_	_
 22	na	an	DET	Tdpm	Gender=Masc|Number=Plur	23	det	_	_
 23	lathaichean	latha	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	21	nsubj	_	_
 24	a'	ag	PART	Sa	_	25	case	_	_
@@ -16139,7 +16169,7 @@
 15	gabh	gabh	VERB	V-f--d	Tense=Fut	16	obj	_	_
 16	dèiligeadh	dèilig	NOUN	Nv	VerbForm=Vnoun	8	xcomp	_	_
 17	ris	ri	ADP	Sp	_	22	case	_	_
-18	an	an	DET	Tdsm	Gender=Masc|Number=Sing	22	det	_	_
+18	an	an	DET	Tdsm	Gender=Masc|Number=Sing	19	det	_	_
 19	t-suidheachadh	suidheachadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	16	obl	_	_
 20	mar	mar	SCONJ	Cs	_	22	mark	_	_
 21	a	a	PART	Q-r	PartType=Vb|PronType=Rel	22	mark:prt	_	_
@@ -16323,7 +16353,7 @@
 44	agus	agus	CCONJ	Cc	_	45	cc	_	_
 45	'se	is	AUX	Wp-i-3	_	2	conj	_	_
 46	a	a	PART	Q-r	PartType=Vb|PronType=Rel	47	mark:prt	_	_
-47	tha	bi	VERB	V-p	Tense=Pres	45	csubj:cop	_	_
+47	tha	bi	VERB	V-p	Tense=Pres	45	csubj:cleft	_	_
 48	mise	mi	PRON	Pp1s--e	Form=Emp|Number=Sing|Person=1	47	nsubj	_	_
 49	ag	ag	PART	Sa	_	50	case	_	_
 50	ràdh	abair	NOUN	Nv	VerbForm=Vnoun	47	xcomp	_	_
@@ -16569,13 +16599,13 @@
 5	eile	eile	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	4	amod	_	_
 6	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	3	xcomp:pred	_	_
 7	a	a	PART	Uv	PartType=Voc	11	case:voc	_	_
-8	Dhòmhnaill	Dòmhnaill	PROPN	Nn-mv	Case=Voc|Gender=Masc	11	obl	_	_
+8	Dhòmhnaill	Dòmhnaill	PROPN	Nn-mv	Case=Voc|Gender=Masc	11	vocative	_	_
 9	mar	mar	SCONJ	Cs	_	11	mark	_	_
 10	a	a	PART	Q-r	PartType=Vb|PronType=Rel	11	mark:prt	_	_
 11	bha	bi	VERB	V-s	Tense=Past	3	obl	_	_
 12	Murchadh	Murchadh	PROPN	Nn-mn	Case=Nom|Gender=Masc	11	nsubj	_	_
 13	a'	ag	PART	Sa	_	14	case	_	_
-14	ràdh	abair	NOUN	Nv	VerbForm=Vnoun	11	xcomp	_	_
+14	ràdh	abair	NOUN	Nv	VerbForm=Vnoun	11	xcomp:pred	_	_
 15	an	an	ADV	Rt	_	14	advmod	_	_
 16	ceartuair	ceartuair	ADV	Rt	_	15	fixed	_	_
 17	tha	bi	VERB	V-p	Tense=Pres	14	ccomp	_	_
@@ -16688,7 +16718,7 @@
 5	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	4	fixed	_	_
 6	born-again-Christian	born-again-christian	NOUN	Xfe	Foreign=Yes	3	ccomp	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	tha	bi	VERB	V-p	Tense=Pres	6	csubj:cop	_	_
+8	tha	bi	VERB	V-p	Tense=Pres	6	csubj:cleft	_	_
 9	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	8	xcomp:pred	_	_
 10	gu	gu	PART	Qa	PartType=Cmpl	11	mark:prt	_	_
 11	bheil	bi	VERB	V-p--d	Tense=Pres	6	conj	_	_
@@ -16740,7 +16770,7 @@
 57	àite	àite	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	56	obj	_	_
 58	tàibh	tàibh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	57	nmod	_	_
 59	dhaibh	do	ADP	Pr3p	Number=Plur|Person=3	56	obl	_	_
-60	fhèin	fèin	PRON	Px	Reflex=Yes	56	compound	_	_
+60	fhèin	fèin	PRON	Px	Reflex=Yes	59	compound	_	_
 61	agus	agus	CCONJ	Cc	_	56	cc	_	_
 62	ag	ag	PART	Sa	_	63	case	_	_
 63	iarradh	iarr	NOUN	Nv	VerbForm=Vnoun	56	conj	_	_
@@ -16803,7 +16833,7 @@
 120	seo	seo	ADV	Rs	_	118	fixed	_	SpaceAfter=No
 121	.	.	PUNCT	Fe	_	1	punct	_	_
 
-# sent_id = p07_000a
+# sent_id = p07_000
 # speaker = [1]
 # text = Mo cheist an dràsda ma tha poit ann le leth-cheud mìlean not an e seo an dòigh as fhearr a chaitheamh
 1	Mo	mo	DET	Dp1s	Number=Sing|Person=1|Poss=Yes	2	nmod:poss	_	_
@@ -16828,7 +16858,7 @@
 20	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	21	obj	_	_
 21	chaitheamh	caith	NOUN	Nv	VerbForm=Inf	15	xcomp	_	_
 
-# sent_id = p07_000b
+# sent_id = p07_001
 # speaker = [1]
 # text = chan ann air na h-eòlaichean mòra a tha mi a' cur na cèist ach daoine air am faod a leithid buaidh a thoirt air am beatha fhèin daoine a leithid Seonag NicCuithis 's tha ise a' fuireach ann am Bearnaraigh na Hearadh a fhuair cabhsair bho chionn ghoirid
 1	chan	is	AUX	Wp-in	_	5	cop	_	_
@@ -16880,7 +16910,7 @@
 47	chionn	cionn	ADP	Nf	_	46	fixed	_	_
 48	ghoirid	goirid	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	44	obl	_	_
 
-# sent_id = p07_000c
+# sent_id = p07_002
 # speaker = [1]
 # text = a bheil ciall sam bith a's a’ leithid seo a bheachd a Sheonag?
 1	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	2	mark:prt	_	_
@@ -16895,10 +16925,10 @@
 10	a	a	ADP	Sp	_	11	case	_	_
 11	bheachd	beachd	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	2	obl	_	_
 12	a	a	PART	Uv	PartType=Voc	13	case:voc	_	_
-13	Sheonag	Seonag	PROPN	Nn-fv	Case=Voc|Gender=Fem	2	obl	_	SpaceAfter=No
+13	Sheonag	Seonag	PROPN	Nn-fv	Case=Voc|Gender=Fem	2	vocative	_	SpaceAfter=No
 14	?	?	PUNCT	Fg	_	2	punct	_	_
 
-# sent_id = p07_001a
+# sent_id = p07_003
 # speaker = [2]
 # text = uill tha an sgeul cho ùr a Choinnich agus chan urrainn dhomh sin a fhreagairt
 1	uill	uill	INTJ	I	_	2	discourse	_	_
@@ -16908,7 +16938,7 @@
 5	cho	cho	ADV	Rg	_	6	advmod	_	_
 6	ùr	ùr	ADJ	Ap	_	2	xcomp:pred	_	_
 7	a	a	PART	Uv	PartType=Voc	8	case:voc	_	_
-8	Choinnich	Coinnich	PROPN	Nn-mv	Case=Voc|Gender=Masc	6	obl	_	_
+8	Choinnich	Coinnich	PROPN	Nn-mv	Case=Voc|Gender=Masc	6	vocative	_	_
 9	agus	agus	CCONJ	Cc	_	11	cc	_	_
 10	chan	is	AUX	Wp-in	_	11	cop	_	_
 11	urrainn	urrainn	NOUN	Uf	_	2	conj	_	_
@@ -16917,7 +16947,7 @@
 14	a	a	PART	Ug	PartType=Inf	15	mark:prt	_	_
 15	fhreagairt	freagair	NOUN	Nv	VerbForm=Inf	11	xcomp	_	_
 
-# sent_id = p07_001b
+# sent_id = p07_004
 # speaker = [2]
 # text = tha e uabhasach luath ach tha mi 'smaoineachadh gun fheum sinn a bhith 'coimhead air adhart agus ma tha e ge brith dè tha gu bhith 'co-bhuannachd nan eileanan air fad gun e sin an rud a dh’fheumas sinn coimhead air agus tha sinn a' coimhead air rud ann a sheo a bhiodh maireannach ach air an làimh eile chan eil fhios agamsa an e sin an dòigh a b' fhearr air a [?] a chur air chois
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
@@ -16975,7 +17005,7 @@
 53	a	a	ADV	Rs	_	52	fixed	_	_
 54	sheo	seo	ADV	Rs	_	52	fixed	_	_
 55	a	a	PART	Q-r	PartType=Vb|PronType=Rel	56	mark:prt	_	_
-56	bhiodh	bi	VERB	V-h	Mood=Cnd	51	csubj:cop	_	_
+56	bhiodh	bi	VERB	V-h	Mood=Cnd	51	csubj:cleft	_	_
 57	maireannach	maireannach	ADJ	Ap	_	56	nsubj	_	_
 58	ach	ach	CCONJ	Cc	_	64	cc	_	_
 59	air	air	ADP	Sp	_	61	case	_	_
@@ -17002,7 +17032,7 @@
 80	air	air	ADP	Sp	_	81	case	_	_
 81	chois	cas	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	64	obl	_	_
 
-# sent_id = p07_002
+# sent_id = p07_005
 # speaker = [1]
 # text = leth-cheud mìlean not an t-uabhas airgead tha siud ann an àite mar a tha na h-eileanan an iar 's bidh daoine ag ràdh tha fhios againn 's ioma rud a dhèanadh sinn leis
 1	leth-cheud	leth-cheud	NUM	Mc	_	3	nummod	_	_
@@ -17039,7 +17069,7 @@
 32	sinn	sinn	PRON	Pp1p	Number=Plur|Person=1	31	nsubj	_	_
 33	leis	le	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	24	xcomp:pred	_	_
 
-# sent_id = p07_003a
+# sent_id = p07_006
 # speaker = [2]
 # text = uill tha sin ceart ach nach ioma sgillinn a tha na riaghaltasan againn air na bliadhnaichean a' cosg air rudan 's dòcha chanadh daoine ma chuireadh tu comhla e
 1	uill	uill	INTJ	I	_	2	discourse	_	_
@@ -17062,6 +17092,8 @@
 18	cosg	cosg	NOUN	Nv	VerbForm=Vnoun	8	xcomp:pred	_	_
 19	air	air	ADP	Sp	_	20	case	_	_
 20	rudan	rud	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	18	obl	_	_
+
+
 21	's	is	AUX	Wp-i	_	22	cop	_	_
 22	dòcha	dòcha	NOUN	Uf	_	20	nmod	_	_
 23	chanadh	can	VERB	V-h	Mood=Cnd	22	csubj:cop	_	_
@@ -17078,6 +17110,8 @@
 1	uill	uill	INTJ	I	_	2	discourse	_	_
 2	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 3	iad	iad	PRON	Pp3p	Number=Plur|Person=3	2	nsubj	_	_
+
+
 4	an	an	DET	Tdsm	Gender=Masc|Number=Sing	6	det	_	_
 5	t-airgead	airgead	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	amod	_	_
 6	tha	bi	VERB	V-p	Tense=Pres	2	xcomp:pred	_	_
@@ -17101,7 +17135,7 @@
 24	dè	dè	PRON	Uq	Mood=Int	25	nmod	_	_
 25	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	23	nsubj	_	_
 26	a	a	PART	Q-r	PartType=Vb|PronType=Rel	27	mark:prt	_	_
-27	tha	bi	VERB	V-p	Tense=Pres	23	csubj:cop	_	_
+27	tha	bi	VERB	V-p	Tense=Pres	23	csubj:cleft	_	_
 28	'san	an	ADP	Spa-s	_	29	case	_	_
 29	amharc	amharc	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	27	xcomp:pred	_	_
 30	a	a	PART	Q-r	PartType=Vb|PronType=Rel	31	mark:prt	_	_
@@ -17121,7 +17155,7 @@
 1	dè	dè	PRON	Uq	Mood=Int	2	nmod	_	_
 2	'bhuannachd	'bhuannachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
-4	bhiodh	bi	VERB	V-h	Mood=Cnd	2	csubj:cop	_	_
+4	bhiodh	bi	VERB	V-h	Mood=Cnd	2	csubj:cleft	_	_
 5	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	4	obl	_	_
 6	do	do	ADP	Sp	_	7	case	_	_
 7	shluagh	sluagh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	4	obl	_	_
@@ -17266,7 +17300,7 @@
 5	buannachd	buannachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	1	ccomp	_	_
 6	mhòr	mòr	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	5	amod	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	tha	bi	VERB	V-p	Tense=Pres	5	csubj:cop	_	_
+8	tha	bi	VERB	V-p	Tense=Pres	5	csubj:cleft	_	_
 9	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	8	xcomp:pred	_	_
 10	dhuinne	do	ADP	Pr1p--e	Form=Emp|Number=Plur|Person=1	8	obl	_	_
 11	cabhsair	cabhsair	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	13	nsubj	_	_
@@ -17321,7 +17355,7 @@
 5	dè	dè	PRON	Uq	Mood=Int	6	nsubj	_	_
 6	bhuannachd	buannachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	2	ccomp	_	_
 7	a	a	PART	Q-r	PartType=Vb|PronType=Rel	8	mark:prt	_	_
-8	bhiodh	bi	VERB	V-h	Mood=Cnd	6	csubj:cop	_	_
+8	bhiodh	bi	VERB	V-h	Mood=Cnd	6	csubj:cleft	_	_
 9	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	2	xcomp:pred	_	_
 10	ach	ach	CCONJ	Cc	_	11	cc	_	_
 11	tha	bi	VERB	V-p	Tense=Pres	2	conj	_	_
@@ -17398,7 +17432,7 @@
 6	gum	gum	PART	Qa	PartType=Cmpl	8	mark:prt	_	_
 7	b'	is	AUX	Ws	_	8	cop	_	_
 8	fhiach	fiach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	5	ccomp	_	_
-9	an	an	DET	Tdsm	Gender=Masc|Number=Sing	19	det	_	_
+9	an	an	DET	Tdsm	Gender=Masc|Number=Sing	10	det	_	_
 10	t-airgead	airgead	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	19	obj	_	_
 11	an	an	DET	Tdsf	Gender=Fem|Number=Sing	12	det	_	_
 12	leithid	leithid	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	10	nsubj	_	_
@@ -17495,7 +17529,7 @@
 41	deagh	deagh	ADJ	Ar	_	42	amod	_	_
 42	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	38	ccomp	_	_
 43	a	a	PART	Q-r	PartType=Vb|PronType=Rel	44	mark:prt	_	_
-44	bhiodh	bi	VERB	V-h	Mood=Cnd	42	csubj:cop	_	_
+44	bhiodh	bi	VERB	V-h	Mood=Cnd	42	csubj:cleft	_	_
 45	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	38	obl	_	_
 46	do	do	ADP	Sp	_	47	case	_	_
 47	dh’Uibhist	Uibhist	PROPN	Nt	_	44	obl	_	_
@@ -17587,7 +17621,7 @@
 47	airgead	airgead	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	44	obl	_	_
 48	mòr	mòr	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	47	amod	_	_
 49	a	a	PART	Q-r	PartType=Vb|PronType=Rel	50	mark:prt	_	_
-50	th'	bi	VERB	V-p	Tense=Pres	44	csubj:cop	_	_
+50	th'	bi	VERB	V-p	Tense=Pres	44	csubj:cleft	_	_
 51	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	50	xcomp:pred	_	_
 52	nach	is	AUX	Wpdqn	_	53	cop	_	_
 53	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	parataxis	_	SpaceAfter=No
@@ -17601,7 +17635,7 @@
 3	airgead	airgead	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 4	mòr	mòr	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	3	amod	_	_
 5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
-6	tha	bi	VERB	V-p	Tense=Pres	3	csubj:cop	_	_
+6	tha	bi	VERB	V-p	Tense=Pres	3	csubj:cleft	_	_
 7	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	6	obl	_	_
 8	ceart	ceart	ADJ	Ap	_	6	xcomp:pred	_	_
 9	gu	gu	PART	Ua	PartType=Ad	10	mark:prt	_	_
@@ -17796,7 +17830,7 @@
 14	seòrsa	seòrsa	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	_
 15	rud	rud	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	14	nmod	_	_
 16	a	a	PART	Q-r	PartType=Vb|PronType=Rel	17	mark:prt	_	_
-17	bhios	bi	VERB	V-f--r	Tense=Fut	12	csubj:cop	_	_
+17	bhios	bi	VERB	V-f--r	Tense=Fut	12	csubj:cleft	_	_
 18	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	7	nsubj	_	_
 19	an	an	ADV	Rs	_	7	advmod	_	_
 20	seo	seo	ADV	Rs	_	19	fixed	_	_
@@ -17999,7 +18033,7 @@
 94	ri	ri	ADP	Sp	_	95	case	_	_
 95	chèile	cèile	PRON	Px	Reflex=Yes	89	obl	_	_
 
-# sent_id = p08_000a
+# sent_id = p08_000
 # speaker = [1]
 # text = còmhla rium tha Iain Caimbeul
 1	còmhla	còmhla	ADV	Rg	_	3	xcomp:pred	_	_
@@ -18008,7 +18042,7 @@
 4	Iain	Iain	PROPN	Nn-mn	Case=Nom|Gender=Masc	3	nsubj	_	_
 5	Caimbeul	Caimbeul	PROPN	Nn	_	4	flat	_	_
 
-# sent_id = p08_000b
+# sent_id = p08_001
 # speaker = [1]
 # text = Iain uill dè na do bheachd-sa an obair a tha ro phàp' ùr
 1	Iain	Iain	PROPN	Nn-mv	Case=Voc|Gender=Masc	8	vocative	_	_
@@ -18020,12 +18054,12 @@
 7	an	an	DET	Tdsf	Gender=Fem|Number=Sing	8	det	_	_
 8	obair	obair	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	0	root	_	_
 9	a	a	PART	Q-r	PartType=Vb|PronType=Rel	10	mark:prt	_	_
-10	tha	bi	VERB	V-p	Tense=Pres	8	csubj:cop	_	_
+10	tha	bi	VERB	V-p	Tense=Pres	8	csubj:cleft	_	_
 11	ro	ro	ADP	Sp	_	12	case	_	_
 12	phàp'	pàpa	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	10	xcomp:pred	_	_
 13	ùr	ùr	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	12	amod	_	_
 
-# sent_id = p08_000c
+# sent_id = p08_002
 # speaker = [1]
 # text = dè dh’fheumas iad a bhith 'smaoineachadh air?
 1	dè	dè	PRON	Uq	Mood=Int	2	obj	_	_
@@ -18038,7 +18072,7 @@
 8	air	air	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	2	obl	_	SpaceAfter=No
 9	?	?	PUNCT	Fg	_	2	punct	_	_
 
-# sent_id = p08_001a
+# sent_id = p08_003
 # speaker = [2]
 # text = uill a's a’ chiad dol-a-mach a Choinnich tha mi ga fhaighinn car mì-nàdarrach a' bruidhinn air cuideigin a chur an àite duine a tha beò mar cheanna ach tha mi a' creidsinn ma thig an t-àm [?] an t-easbuig Gearmailteach ma chì e fhèin iomachaidh 's gum bi e a' faireachdainn a chur dha a dhreuchd a ghiùlain gun leig Iain Pòl dhe a dhreuchd dè mun robh dhuine a' tighinn 'na àite uill 's ioma rud sin air feadh a h-uile rud
 1	uill	uill	INTJ	I	_	8	discourse	_	_
@@ -18075,10 +18109,10 @@
 32	creidsinn	creid	NOUN	Nv	VerbForm=Vnoun	29	xcomp:pred	_	_
 33	ma	ma	SCONJ	Cs	_	34	mark	_	_
 34	thig	thig	VERB	V-f	Tense=Fut	32	advcl	_	_
-35	an	an	DET	Tdsm	Gender=Masc|Number=Sing	42	det	_	_
-36	t-àm	àm	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	42	amod	_	_
+35	an	an	DET	Tdsm	Gender=Masc|Number=Sing	36	det	_	_
+36	t-àm	àm	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	34	nsubj	_	_
 37	[?]	[?]	X	Xx	_	42	mark	_	_
-38	an	an	DET	Tdsm	Gender=Masc|Number=Sing	42	det	_	_
+38	an	an	DET	Tdsm	Gender=Masc|Number=Sing	39	det	_	_
 39	t-easbuig	easbuig	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	42	amod	_	_
 40	Gearmailteach	gearmailteach	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	39	amod	_	_
 41	ma	ma	SCONJ	Cs	_	42	mark	_	_
@@ -18106,26 +18140,34 @@
 63	dhe	de	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	60	obl	_	_
 64	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	65	nmod:poss	_	_
 65	dhreuchd	dreuchd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	60	nsubj	_	_
-66	dè	dè	PRON	Uq	Mood=Int	68	obl	_	_
-67	mun	mun	SCONJ	Cs	_	68	mark	_	_
-68	robh	bi	VERB	V-s--d	Tense=Past	65	advcl	_	_
-69	dhuine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	68	nsubj	_	_
-70	a'	ag	PART	Sa	_	71	case	_	_
-71	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	68	xcomp	_	_
-72	'na	an	ADP	Spp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	73	case	_	_
-73	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	71	obl	_	_
-74	uill	uill	INTJ	I	_	77	discourse	_	_
-75	's	is	AUX	Wp-i	_	77	cop	_	_
-76	ioma	ioma	ADJ	Ar	_	77	amod	_	_
-77	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	71	ccomp	_	_
-78	sin	sin	PRON	Pd	_	77	nsubj	_	_
-79	air	air	ADP	Sp	_	83	case	_	_
-80	feadh	feadh	ADP	Nf	_	79	fixed	_	_
-81	a	a	DET	Dq	_	83	det	_	_
-82	h-uile	uile	DET	Dq	_	81	fixed	_	_
-83	rud	rud	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	77	obl	_	_
 
-# sent_id = p08_001b
+# sent_id = p08_004
+# speaker = [2]
+# text = dè mun robh dhuine a' tighinn 'na àite
+1	dè	dè	PRON	Uq	Mood=Int	0	root	_	_
+2	mun	mun	SCONJ	Cs	_	3	mark	_	_
+3	robh	bi	VERB	V-s--d	Tense=Past	65	advcl	_	_
+4	dhuine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	_
+5	a'	ag	PART	Sa	_	6	case	_	_
+6	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	3	xcomp	_	_
+7	'na	an	ADP	Spp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	8	case	_	_
+8	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	6	obl	_	_
+
+# sent_id = p08_005
+# speaker = [2]
+# text = uill 's ioma rud sin air feadh a h-uile rud
+1	uill	uill	INTJ	I	_	4	discourse	_	_
+2	's	is	AUX	Wp-i	_	4	cop	_	_
+3	ioma	ioma	ADJ	Ar	_	4	amod	_	_
+4	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
+5	sin	sin	PRON	Pd	_	4	nsubj	_	_
+6	air	air	ADP	Sp	_	10	case	_	_
+7	feadh	feadh	ADP	Nf	_	6	fixed	_	_
+8	a	a	DET	Dq	_	10	det	_	_
+9	h-uile	uile	DET	Dq	_	8	fixed	_	_
+10	rud	rud	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	4	obl	_	_
+
+# sent_id = p08_006
 # speaker = [2]
 # text = tha e 'na cheannard air billean duine co-dhiubh sin mìlean mìlean de shluagh
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
@@ -18142,7 +18184,7 @@
 12	de	de	ADP	Sp	_	13	case	_	_
 13	shluagh	sluagh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	11	obl	_	_
 
-# sent_id = p08_001c
+# sent_id = p08_007
 # speaker = [2]
 # text = chan eil mi a' smaoineadh gu bheil a thaobh malairt no gnìomhachas buidhean eile cho mòr ris air an t-saoghal ach
 1	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
@@ -18167,9 +18209,9 @@
 20	t-saoghal	saoghal	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	16	obl	_	_
 21	ach	ach	CCONJ	Cc	_	12	cc	_	_
 
-# sent_id = p08_002
+# sent_id = p08_008
 # speaker = [1]
-# text = feumaidh e a bhith diof feumaidh an duine ùr a bhith diofraichte bhon a’ phàpa a th' againn an-dràsda agus thathar a' cumail a-mach gu bheil a' phàpa a th' againn an-dràsda gu bheil e gu math teann gu math cruaidh mar a chanas iad ro right-wing 's brì bheil sin ceart no nach eil am feum e a bhith diofraichte a bheil cùisean air atharrachadh gu mòr a's an ùine bho thàinig am pàpa Iain Pòl gus an tèid an dàrna fear a-steach air dhòigh agus gum feumar sùil a thoirt air seòrsa eile de dhaoine?
+# text = feumaidh e a bhith diof feumaidh an duine ùr a bhith diofraichte bhon a’ phàpa a th' againn an-dràsda agus thathar a' cumail a-mach gu bheil a' phàpa a th' againn an-dràsda gu bheil e gu math teann gu math cruaidh mar a chanas iad ro right-wing 's brì bheil sin ceart no nach eil
 1	feumaidh	feum	VERB	V-f	Tense=Fut	6	reparandum	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
 3	a	a	PART	Ug	PartType=Inf	4	mark:prt	_	_
@@ -18225,51 +18267,59 @@
 53	no	no	CCONJ	Cc	_	55	cc	_	_
 54	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	55	mark:prt	_	_
 55	eil	bi	VERB	V-p--d	Tense=Pres	50	conj	_	_
-56	am	am	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	57	mark:prt	_	_
-57	feum	feum	VERB	V-f--d	Tense=Fut	55	ccomp	_	_
-58	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	57	nsubj	_	_
-59	a	a	PART	Ug	PartType=Inf	60	mark:prt	_	_
-60	bhith	bi	NOUN	Nv	VerbForm=Inf	57	xcomp	_	_
-61	diofraichte	diofraichte	ADJ	Ap	_	60	xcomp:pred	_	_
-62	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	63	mark:prt	_	_
-63	bheil	bi	VERB	V-p--d	Tense=Pres	60	ccomp	_	_
-64	cùisean	cùis	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	63	nsubj	_	_
-65	air	air	PART	Sa	_	66	case	_	_
-66	atharrachadh	atharraich	NOUN	Nv	VerbForm=Vnoun	63	xcomp:pred	_	_
-67	gu	gu	PART	Ua	PartType=Ad	68	mark:prt	_	_
-68	mòr	mòr	ADV	Rg	_	66	advmod	_	_
-69	a's	an	ADP	Sp	_	71	case	_	_
-70	an	an	DET	Tdsf	Gender=Fem|Number=Sing	71	det	_	_
-71	ùine	ùine	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	66	obl	_	_
-72	bho	bho	SCONJ	Cs	_	73	mark	_	_
-73	thàinig	thig	VERB	V-s	Tense=Past	66	advcl	_	_
-74	am	an	DET	Tdsm	Gender=Masc|Number=Sing	75	det	_	_
-75	pàpa	pàpa	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	73	nsubj	_	_
-76	Iain	Iain	PROPN	Nn-mn	Case=Nom|Gender=Masc	75	flat	_	_
-77	Pòl	Pòl	PROPN	Nn-mn	Case=Nom|Gender=Masc	75	flat	_	_
-78	gus	gus	SCONJ	Cs	_	80	mark	_	_
-79	an	an	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	80	mark:prt	_	_
-80	tèid	rach	VERB	V-f--d	Tense=Fut	73	advcl	_	_
-81	an	an	DET	Tdsm	Gender=Masc|Number=Sing	83	det	_	_
-82	dàrna	dàrna	NUM	Mo	_	83	nummod	_	_
-83	fear	fear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	80	nsubj	_	_
-84	a-steach	a-steach	ADV	Rs	_	80	advmod	_	_
-85	air	air	ADP	Sp	_	86	case	_	_
-86	dhòigh	dòigh	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	80	obl	_	_
-87	agus	agus	CCONJ	Cc	_	80	cc	_	_
-88	gum	gum	PART	Qa	PartType=Cmpl	89	mark:prt	_	_
-89	feumar	feum	VERB	V-f0-d	Person=0|Tense=Fut	80	conj	_	_
-90	sùil	sùil	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	89	nsubj	_	_
-91	a	a	PART	Ug	PartType=Inf	92	mark:prt	_	_
-92	thoirt	toir	NOUN	Nv	VerbForm=Inf	73	xcomp	_	_
-93	air	air	ADP	Sp	_	94	case	_	_
-94	seòrsa	seòrsa	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	92	obl	_	_
-95	eile	eile	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	94	amod	_	_
-96	de	de	ADP	Sp	_	97	case	_	_
-97	dhaoine	duine	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	94	obl	_	SpaceAfter=No
-98	?	?	PUNCT	Fg	_	6	punct	_	_
 
-# sent_id = p08_003a
+# sent_id = p08_009
+# speaker = [1]
+# text = am feum e a bhith diofraichte
+1	am	am	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	2	mark:prt	_	_
+2	feum	feum	VERB	V-f--d	Tense=Fut	0	root	_	_
+3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	nsubj	_	_
+4	a	a	PART	Ug	PartType=Inf	5	mark:prt	_	_
+5	bhith	bi	NOUN	Nv	VerbForm=Inf	2	xcomp	_	_
+6	diofraichte	diofraichte	ADJ	Ap	_	5	xcomp:pred	_	_
+
+# sent_id = p08_010
+# speaker = [1]
+# text = a bheil cùisean air atharrachadh gu mòr a's an ùine bho thàinig am pàpa Iain Pòl gus an tèid an dàrna fear a-steach air dhòigh agus gum feumar sùil a thoirt air seòrsa eile de dhaoine?
+1	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	2	mark:prt	_	_
+2	bheil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
+3	cùisean	cùis	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	2	nsubj	_	_
+4	air	air	PART	Sa	_	5	case	_	_
+5	atharrachadh	atharraich	NOUN	Nv	VerbForm=Vnoun	2	xcomp:pred	_	_
+6	gu	gu	PART	Ua	PartType=Ad	7	mark:prt	_	_
+7	mòr	mòr	ADV	Rg	_	5	advmod	_	_
+8	a's	an	ADP	Sp	_	10	case	_	_
+9	an	an	DET	Tdsf	Gender=Fem|Number=Sing	10	det	_	_
+10	ùine	ùine	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	5	obl	_	_
+11	bho	bho	SCONJ	Cs	_	12	mark	_	_
+12	thàinig	thig	VERB	V-s	Tense=Past	5	advcl	_	_
+13	am	an	DET	Tdsm	Gender=Masc|Number=Sing	14	det	_	_
+14	pàpa	pàpa	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	_
+15	Iain	Iain	PROPN	Nn-mn	Case=Nom|Gender=Masc	14	flat	_	_
+16	Pòl	Pòl	PROPN	Nn-mn	Case=Nom|Gender=Masc	14	flat	_	_
+17	gus	gus	SCONJ	Cs	_	19	mark	_	_
+18	an	an	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	19	mark:prt	_	_
+19	tèid	rach	VERB	V-f--d	Tense=Fut	12	advcl	_	_
+20	an	an	DET	Tdsm	Gender=Masc|Number=Sing	22	det	_	_
+21	dàrna	dàrna	NUM	Mo	_	22	nummod	_	_
+22	fear	fear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	19	nsubj	_	_
+23	a-steach	a-steach	ADV	Rs	_	19	advmod	_	_
+24	air	air	ADP	Sp	_	25	case	_	_
+25	dhòigh	dòigh	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	19	obl	_	_
+26	agus	agus	CCONJ	Cc	_	19	cc	_	_
+27	gum	gum	PART	Qa	PartType=Cmpl	28	mark:prt	_	_
+28	feumar	feum	VERB	V-f0-d	Person=0|Tense=Fut	19	conj	_	_
+29	sùil	sùil	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	28	nsubj	_	_
+30	a	a	PART	Ug	PartType=Inf	31	mark:prt	_	_
+31	thoirt	toir	NOUN	Nv	VerbForm=Inf	12	xcomp	_	_
+32	air	air	ADP	Sp	_	33	case	_	_
+33	seòrsa	seòrsa	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	31	obl	_	_
+34	eile	eile	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	33	amod	_	_
+35	de	de	ADP	Sp	_	36	case	_	_
+36	dhaoine	duine	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	33	obl	_	SpaceAfter=No
+37	?	?	PUNCT	Fg	_	6	punct	_	_
+
+# sent_id = p08_011
 # speaker = [2]
 # text = uill tha e air a bhith ann bliadhna air fhichead a-nist co-dhiubh agus tha fios gu bheil atharrachadh air tighinn air an t-saoghal
 1	uill	uill	INTJ	I	_	2	discourse	_	_
@@ -18296,7 +18346,7 @@
 22	an	an	DET	Tdsm	Gender=Masc|Number=Sing	23	det	_	_
 23	t-saoghal	saoghal	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	20	obl	_	_
 
-# sent_id = p08_003b
+# sent_id = p08_012
 # speaker = [2]
 # text = uill thà a thaobh fiosrachadh a tha daoine a' faighinn fhèin a tha sin ann a thaobh na tha sinn a' faighinn on a' media uill na as urrainn dhuinn a chreidsinn dhe agus eadar telebhisean 's a h-uile rud a th' ann ach aon rud a tha air tighinn sònraichte a's na bliadhnaichean a th' againn an ceartuair gu bheil daoine airson barrachd fiosrachaidh a bhith aca mu dè a tha an riaghaltas dèanamh
 1	uill	uill	INTJ	I	_	2	discourse	_	_
@@ -18340,7 +18390,7 @@
 39	h-uile	uile	DET	Dq	_	38	fixed	_	_
 40	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	36	conj	_	_
 41	a	a	PART	Q-r	PartType=Vb|PronType=Rel	42	mark:prt	_	_
-42	th'	bi	VERB	V-p	Tense=Pres	40	csubj:cop	_	_
+42	th'	bi	VERB	V-p	Tense=Pres	40	csubj:cleft	_	_
 43	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	42	xcomp:pred	_	_
 44	ach	ach	CCONJ	Cc	_	46	cc	_	_
 45	aon	aon	NUM	Mc	_	46	nummod	_	_
@@ -18375,7 +18425,7 @@
 74	riaghaltas	riaghaltas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	72	nsubj	_	_
 75	dèanamh	dèan	NOUN	Nv	VerbForm=Vnoun	67	xcomp	_	_
 
-# sent_id = p08_003c
+# sent_id = p08_013
 # speaker = [2]
 # text = tha sinn a' faicinn seo ann am pàrlamaid Lunnainn 's tha sinn 'ga iarraidh ‘son na Pàrlamaid Nàiseanta againn fhìn agus tha mi a' smaoineadh gur e aon rud a bh' ann gum feumadh barrachd fiosraichidh a bhith aig daoine air dè tha 'dol air aghaidh aig an fheadhainn a tha a' riaghladh na h-eaglais
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
@@ -18408,7 +18458,7 @@
 28	aon	aon	NUM	Mc	_	29	nummod	_	_
 29	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	25	ccomp	_	_
 30	a	a	PART	Q-r	PartType=Vb|PronType=Rel	31	mark:prt	_	_
-31	bh'	bi	VERB	V-s	Tense=Past	29	csubj:cop	_	_
+31	bh'	bi	VERB	V-s	Tense=Past	29	csubj:cleft	_	_
 32	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	31	obl	_	_
 33	gum	gum	PART	Qa	PartType=Cmpl	34	mark:prt	_	_
 34	feumadh	feum	VERB	V-h--d	Mood=Cnd	31	ccomp	_	_
@@ -18435,7 +18485,7 @@
 55	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	56	det	_	_
 56	h-eaglais	eaglais	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	45	nmod	_	_
 
-# sent_id = p08_004a
+# sent_id = p08_014
 # speaker = [1]
 # text = uill gu dearbha oir 'se an rud a tha a' tachairt ann an a's na dùthchannan far a bheil an t-uabhas fiosrachaidh 'ga thoirt seachad can dùthchannan an iar
 1	uill	uill	INTJ	I	_	0	root	_	_
@@ -18457,18 +18507,18 @@
 17	far	far	SCONJ	Cs	_	19	mark	_	_
 18	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	19	mark:prt	_	_
 19	bheil	bi	VERB	V-p--d	Tense=Pres	11	advcl	_	_
-20	an	an	DET	Tdsm	Gender=Masc|Number=Sing	24	det	_	_
-21	t-uabhas	uabhas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	24	amod	_	_
+20	an	an	DET	Tdsm	Gender=Masc|Number=Sing	21	det	_	_
+21	t-uabhas	uabhas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	19	nsubj	_	_
 22	fiosrachaidh	fiosrachadh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	21	nmod	_	_
 23	'ga	'ga	PART	Sap3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	24	obj	_	_
-24	thoirt	toir	NOUN	Nv	VerbForm=Vnoun	19	nsubj	_	_
-25	seachad	seachad	ADV	Rg	_	19	xcomp:pred	_	_
+24	thoirt	toir	NOUN	Nv	VerbForm=Vnoun	19	xcomp:pred	_	_
+25	seachad	seachad	ADV	Rg	_	24	advmod	_	_
 26	can	can	VERB	Vm-2s	Mood=Imp|Person=2	27	discourse	_	_
 27	dùthchannan	dùthcha	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	19	nsubj	_	_
 28	an	an	ADJ	Aq	_	27	amod	_	_
 29	iar	iar	ADJ	Aq	_	28	fixed	_	_
 
-# sent_id = p08_004b
+# sent_id = p08_015
 # speaker = [1]
 # text = tha na h-àireamhan air a dhol sìos gu mòr a tha a' leantainn na h-eaglais ged a tha iad a' fàs gu mòr ann an àiteachan mar Africa 's àiteachan mar sin nach eil?
 1	tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
@@ -18507,9 +18557,9 @@
 34	eil	bi	VERB	V-p--d	Tense=Pres	21	ccomp	_	SpaceAfter=No
 35	?	?	PUNCT	Fg	_	1	punct	_	_
 
-# sent_id = p08_005
+# sent_id = p08_016
 # speaker = [2]
-# text = thà thà 'se an co-sheirm bu mhotha a chunna mi riamh ann an eaglais o chionn bhliadhnaichean 's ann ann an Durban far a robh daoine òg' is sean 's dhen a h-uile dath ann ach tha mi 'smaoineadh gu bheil daoine ag iarraidh barrachd fiosrachaidh air mar a tha a’ riaghladh fhèin air aghaidh agus rud eile bu mhath leamsa fhaicinn gum biodh iad na bu sgiobalta uaireannan tighinn gu co-dhùnaidhean can mu dhreuchdan tha sin a th' aca ri lìonadh
+# text = thà thà 'se an co-sheirm bu mhotha a chunna mi riamh ann an eaglais o chionn bhliadhnaichean
 1	thà	bi	VERB	V-p	Tense=Pres	5	discourse	_	_
 2	thà	bi	VERB	V-p	Tense=Pres	5	discourse	_	_
 3	'se	is	AUX	Wp-i-3	_	5	cop	_	_
@@ -18518,7 +18568,7 @@
 6	bu	is	AUX	Ws	_	7	cop	_	_
 7	mhotha	motha	ADJ	Apc	Degree=Cmp,Sup	5	amod	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
-9	chunna	faic	VERB	V-s	Tense=Past	5	csubj:cop	_	_
+9	chunna	faic	VERB	V-s	Tense=Past	5	csubj:cleft	_	_
 10	mi	mi	PRON	Pp1s	Number=Sing|Person=1	9	nsubj	_	_
 11	riamh	riamh	ADV	Rt	_	9	advmod	_	_
 12	ann	an	ADP	Sp	_	14	case	_	_
@@ -18527,74 +18577,78 @@
 15	o	bho	ADP	Sp	_	17	case	_	_
 16	chionn	cionn	ADP	Nf	_	15	fixed	_	_
 17	bhliadhnaichean	bliadhna	NOUN	Ncpfg	Case=Gen|Gender=Fem|Number=Plur	9	obl	_	_
-18	's	is	AUX	Wp-i	_	9	cop	_	_
-19	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	9	obl	_	_
-20	ann	an	ADP	Sp	_	22	case	_	_
-21	an	an	ADP	Sp	_	20	fixed	_	_
-22	Durban	Durban	PROPN	Nt	_	9	obl	_	_
-23	far	far	SCONJ	Cs	_	25	mark	_	_
-24	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	25	mark:prt	_	_
-25	robh	bi	VERB	V-s	Tense=Past	9	advcl	_	_
-26	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	25	nsubj	_	_
-27	òg'	òg'	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	26	amod	_	_
-28	is	is	CCONJ	Cc	_	25	cc	_	_
-29	sean	sean	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	27	conj	_	_
-30	's	's	CCONJ	Cc	_	34	cc	_	_
-31	dhen	de	ADP	Sp	_	34	case	_	_
-32	a	a	DET	Dq	_	34	det	_	_
-33	h-uile	uile	DET	Dq	_	32	fixed	_	_
-34	dath	dath	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	27	obl	_	_
-35	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	34	obl	_	_
-36	ach	ach	CCONJ	Cc	_	37	cc	_	_
-37	tha	bi	VERB	V-p	Tense=Pres	5	conj	_	_
-38	mi	mi	PRON	Pp1s	Number=Sing|Person=1	37	nsubj	_	_
-39	'	ag	PART	Sa	_	40	case	_	SpaceAfter=No
-40	smaoineadh	smaoin	NOUN	Nv	VerbForm=Vnoun	37	xcomp:pred	_	_
-41	gu	gu	PART	Qa	PartType=Cmpl	42	mark:prt	_	_
-42	bheil	bi	VERB	V-p--d	Tense=Pres	40	ccomp	_	_
-43	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	42	nsubj	_	_
-44	ag	ag	PART	Sa	_	45	case	_	_
-45	iarraidh	iarr	NOUN	Nv	VerbForm=Vnoun	42	xcomp:pred	_	_
-46	barrachd	barrachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	45	obj	_	_
-47	fiosrachaidh	fiosrachadh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	46	nmod	_	_
-48	air	air	ADP	Sp	_	51	case	_	_
-49	mar	mar	SCONJ	Cs	_	51	mark	_	_
-50	a	a	PART	Q-r	PartType=Vb|PronType=Rel	51	mark:prt	_	_
-51	tha	bi	VERB	V-p	Tense=Pres	45	obl	_	_
-52	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	53	det	_	_
-53	riaghladh	riaghladh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	51	nsubj	_	_
-54	fhèin	fèin	PRON	Px	Reflex=Yes	53	compound	_	_
-55	air	air	ADP	Sp	_	56	case	_	_
-56	aghaidh	aghaidh	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	51	xcomp:pred	_	_
-57	agus	agus	CCONJ	Cc	_	58	cc	_	_
-58	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	51	conj	_	_
-59	eile	eile	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	58	amod	_	_
-60	bu	is	AUX	Ws	_	61	cop	_	_
-61	mhath	mhath	NOUN	Uf	_	58	acl:relcl	_	_
-62	leamsa	le	ADP	Pr1s--e	Form=Emp|Number=Sing|Person=1	63	obj	_	_
-63	fhaicinn	faic	NOUN	Nv	VerbForm=Vnoun	58	xcomp	_	_
-64	gum	gum	PART	Qa	PartType=Cmpl	65	mark:prt	_	_
-65	biodh	bi	VERB	V-h--d	Mood=Cnd	63	ccomp	_	_
-66	iad	iad	PRON	Pp3p	Number=Plur|Person=3	65	nsubj	_	_
-67	na	na	PART	Uc	PartType=Comp	69	mark:prt	_	_
-68	bu	bu	PART	Uc	PartType=Comp	67	fixed	_	_
-69	sgiobalta	sgiobalta	ADJ	Apc	Degree=Cmp,Sup	65	ccomp	_	_
-70	uaireannan	uaireannan	ADV	Rt	_	71	advmod	_	_
-71	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	69	xcomp	_	_
-72	gu	gu	ADP	Sp	_	73	case	_	_
-73	co-dhùnaidhean	co-dhùnadh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	71	obl	_	_
-74	can	can	VERB	Vm-2s	Mood=Imp|Person=2	80	discourse	_	_
-75	mu	mu	ADP	Sp	_	76	case	_	_
-76	dhreuchdan	dreuchd	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	74	obl	_	_
-77	tha	bi	VERB	V-p	Tense=Pres	76	amod	_	_
-78	sin	sin	PRON	Pd	_	74	amod	_	_
-79	a	a	PART	Q-r	PartType=Vb|PronType=Rel	80	mark:prt	_	_
-80	th'	bi	VERB	V-p	Tense=Pres	73	nmod	_	_
-81	aca	aig	ADP	Pr3p	Number=Plur|Person=3	80	nsubj	_	_
-82	ri	ri	PART	Sa	_	83	case	_	_
-83	lìonadh	lìon	NOUN	Nv	VerbForm=Vnoun	45	xcomp	_	_
 
-# sent_id = p08_006
+# sent_id = p08_017
+# speaker = [2]
+# text = 's ann ann an Durban far a robh daoine òg' is sean 's dhen a h-uile dath ann ach tha mi 'smaoineadh gu bheil daoine ag iarraidh barrachd fiosrachaidh air mar a tha a’ riaghladh fhèin air aghaidh agus rud eile bu mhath leamsa fhaicinn gum biodh iad na bu sgiobalta uaireannan tighinn gu co-dhùnaidhean can mu dhreuchdan tha sin a th' aca ri lìonadh
+1	's	is	AUX	Wp-i	_	5	cop	_	_
+2	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	1	fixed	_	_
+3	ann	an	ADP	Sp	_	5	case	_	_
+4	an	an	ADP	Sp	_	3	fixed	_	_
+5	Durban	Durban	PROPN	Nt	_	0	root	_	_
+6	far	far	SCONJ	Cs	_	8	mark	_	_
+7	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	8	mark:prt	_	_
+8	robh	bi	VERB	V-s	Tense=Past	9	advcl	_	_
+9	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	8	nsubj	_	_
+10	òg'	òg'	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	9	amod	_	_
+11	is	is	CCONJ	Cc	_	8	cc	_	_
+12	sean	sean	ADJ	Aq-pmn	Case=Nom|Gender=Masc|Number=Plur	10	conj	_	_
+13	's	's	CCONJ	Cc	_	17	cc	_	_
+14	dhen	de	ADP	Sp	_	17	case	_	_
+15	a	a	DET	Dq	_	17	det	_	_
+16	h-uile	uile	DET	Dq	_	15	fixed	_	_
+17	dath	dath	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	10	obl	_	_
+18	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	17	obl	_	_
+19	ach	ach	CCONJ	Cc	_	20	cc	_	_
+20	tha	bi	VERB	V-p	Tense=Pres	5	conj	_	_
+21	mi	mi	PRON	Pp1s	Number=Sing|Person=1	20	nsubj	_	_
+22	'	ag	PART	Sa	_	23	case	_	SpaceAfter=No
+23	smaoineadh	smaoin	NOUN	Nv	VerbForm=Vnoun	20	xcomp:pred	_	_
+24	gu	gu	PART	Qa	PartType=Cmpl	25	mark:prt	_	_
+25	bheil	bi	VERB	V-p--d	Tense=Pres	23	ccomp	_	_
+26	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	25	nsubj	_	_
+27	ag	ag	PART	Sa	_	28	case	_	_
+28	iarraidh	iarr	NOUN	Nv	VerbForm=Vnoun	25	xcomp:pred	_	_
+29	barrachd	barrachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	28	obj	_	_
+30	fiosrachaidh	fiosrachadh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	29	nmod	_	_
+31	air	air	ADP	Sp	_	34	case	_	_
+32	mar	mar	SCONJ	Cs	_	34	mark	_	_
+33	a	a	PART	Q-r	PartType=Vb|PronType=Rel	34	mark:prt	_	_
+34	tha	bi	VERB	V-p	Tense=Pres	28	obl	_	_
+35	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	36	det	_	_
+36	riaghladh	riaghladh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	34	nsubj	_	_
+37	fhèin	fèin	PRON	Px	Reflex=Yes	36	compound	_	_
+38	air	air	ADP	Sp	_	39	case	_	_
+39	aghaidh	aghaidh	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	34	xcomp:pred	_	_
+40	agus	agus	CCONJ	Cc	_	41	cc	_	_
+41	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	34	conj	_	_
+42	eile	eile	ADJ	Aq-smn	Case=Nom|Gender=Masc|Number=Sing	41	amod	_	_
+43	bu	is	AUX	Ws	_	44	cop	_	_
+44	mhath	mhath	NOUN	Uf	_	41	acl:relcl	_	_
+45	leamsa	le	ADP	Pr1s--e	Form=Emp|Number=Sing|Person=1	46	obj	_	_
+46	fhaicinn	faic	NOUN	Nv	VerbForm=Vnoun	41	xcomp	_	_
+47	gum	gum	PART	Qa	PartType=Cmpl	48	mark:prt	_	_
+48	biodh	bi	VERB	V-h--d	Mood=Cnd	46	ccomp	_	_
+49	iad	iad	PRON	Pp3p	Number=Plur|Person=3	48	nsubj	_	_
+50	na	na	PART	Uc	PartType=Comp	52	mark:prt	_	_
+51	bu	bu	PART	Uc	PartType=Comp	50	fixed	_	_
+52	sgiobalta	sgiobalta	ADJ	Apc	Degree=Cmp,Sup	48	ccomp	_	_
+53	uaireannan	uaireannan	ADV	Rt	_	54	advmod	_	_
+54	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	52	xcomp	_	_
+55	gu	gu	ADP	Sp	_	56	case	_	_
+56	co-dhùnaidhean	co-dhùnadh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	54	obl	_	_
+57	can	can	VERB	Vm-2s	Mood=Imp|Person=2	63	discourse	_	_
+58	mu	mu	ADP	Sp	_	59	case	_	_
+59	dhreuchdan	dreuchd	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	57	obl	_	_
+60	tha	bi	VERB	V-p	Tense=Pres	59	amod	_	_
+61	sin	sin	PRON	Pd	_	57	amod	_	_
+62	a	a	PART	Q-r	PartType=Vb|PronType=Rel	63	mark:prt	_	_
+63	th'	bi	VERB	V-p	Tense=Pres	56	nmod	_	_
+64	aca	aig	ADP	Pr3p	Number=Plur|Person=3	63	nsubj	_	_
+65	ri	ri	PART	Sa	_	66	case	_	_
+66	lìonadh	lìon	NOUN	Nv	VerbForm=Vnoun	28	xcomp	_	_
+
+# sent_id = p08_018
 # speaker = [1]
 # text = chan eil thu a' bruidhinn air an Earra-Ghàidheal 's na h-Eileanan an Iar an seo a bheil?
 1	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
@@ -18616,7 +18670,7 @@
 17	bheil	bi	VERB	V-p--d	Tense=Pres	5	ccomp	_	SpaceAfter=No
 18	?	?	PUNCT	Fg	_	2	punct	_	_
 
-# sent_id = p08_007a
+# sent_id = p08_019
 # speaker = [2]
 # text = och uill faodaidh tusa air mar a bhios tu 'cluinntinn a's a' mhedia
 1	och	och	INTJ	I	_	3	discourse	_	_
@@ -18634,9 +18688,9 @@
 13	a'	an	DET	Tds	Number=Sing	14	det	_	_
 14	mhedia	mhedia	NOUN	Xfe	Foreign=Yes	11	obl	_	_
 
-# sent_id = p08_007b
+# sent_id = p08_020
 # speaker = [2]
-# text = co-dhiubh tograidh iad e mar a thogras iad fhèin agus rud eile cuideachd tha mi a' smaoineadh gu h-àraid air an t-seachdainn seo fhèin nuair a tha na h-eaglaisean Crìosdail ag ùrnaigh airson aonadh a bhith eatorra gum biodh e iomchaidh gum biodh a's a' Sealltainn a's a' Ròimh agus na h-eaglaisean eile cuideachd air feuch ciamar a ghabhadh na sgaraidhean a tha eadar na h-eaglaisean Crìosdail a leigheas an dèidh a h-uile rud 'se daoine a rinn na sgaraidhean a bha siud cha b' e Crìosd a rinn idir iad agus tha mi a' smaoineachadh gu bheil e mar fhiachaibh mar sin air daoine feuchainn ri feobhas a dhèanamh a's an t-suidheachadh a th' ann
+# text = co-dhiubh tograidh iad e mar a thogras iad fhèin agus rud eile cuideachd tha mi a' smaoineadh gu h-àraid air an t-seachdainn seo fhèin
 1	co-dhiubh	co-dhiubh	ADV	Rg	_	2	advmod	_	_
 2	tograidh	togr	VERB	V-f	Tense=Fut	0	root	_	_
 3	iad	iad	PRON	Pp3p	Number=Plur|Person=3	2	nsubj	_	_
@@ -18661,102 +18715,114 @@
 22	t-seachdainn	seachdainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	23	amod	_	_
 23	seo	seo	DET	Dd	_	19	obl	_	_
 24	fhèin	fèin	PRON	Px	Reflex=Yes	23	compound	_	_
-25	nuair	nuair	SCONJ	Cs	_	27	mark	_	_
-26	a	a	PART	Q-r	PartType=Vb|PronType=Rel	27	mark:prt	_	_
-27	tha	bi	VERB	V-p	Tense=Pres	22	advcl	_	_
-28	na	an	DET	Tdpf	Gender=Fem|Number=Plur	29	det	_	_
-29	h-eaglaisean	eaglais	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	19	nsubj	_	_
-30	Crìosdail	crìosdail	ADJ	Aq-pfn	Case=Nom|Gender=Fem|Number=Plur	29	amod	_	_
-31	ag	ag	PART	Sa	_	32	case	_	_
-32	ùrnaigh	ùrnaigh	NOUN	Nv	VerbForm=Vnoun	19	xcomp	_	_
-33	airson	airson	ADP	Nf	_	34	case	_	_
-34	aonadh	aonadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	32	obl	_	_
-35	a	a	PART	Ug	PartType=Inf	36	mark:prt	_	_
-36	bhith	bi	NOUN	Nv	VerbForm=Inf	32	xcomp	_	_
-37	eatorra	eadar	ADP	Pr3p	Number=Plur|Person=3	36	xcomp:pred	_	_
-38	gum	gum	PART	Qa	PartType=Cmpl	39	mark:prt	_	_
-39	biodh	bi	VERB	V-h--d	Mood=Cnd	36	ccomp	_	_
-40	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	39	nsubj	_	_
-41	iomchaidh	iomchaidh	ADJ	Ap	_	39	xcomp:pred	_	_
-42	gum	gum	PART	Qa	PartType=Cmpl	43	mark:prt	_	_
-43	biodh	bi	VERB	V-h--d	Mood=Cnd	39	ccomp	_	_
-44	a's	an	ADP	Sp	_	46	case	_	_
-45	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	46	det	_	_
-46	Sealltainn	Sealltainn	PROPN	Nt	_	43	xcomp:pred	_	_
-47	a's	a's	CCONJ	Cc	_	49	cc	_	_
-48	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	49	det	_	_
-49	Ròimh	Ròimh	PROPN	Nt	_	46	conj	_	_
-50	agus	agus	CCONJ	Cc	_	52	cc	_	_
-51	na	an	DET	Tdpf	Gender=Fem|Number=Plur	52	det	_	_
-52	h-eaglaisean	eaglais	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	49	nsubj	_	_
-53	eile	eile	ADJ	Aq-pfn	Case=Nom|Gender=Fem|Number=Plur	52	amod	_	_
-54	cuideachd	cuideachd	ADV	Rg	_	52	advmod	_	_
-55	air	air	ADP	Sp	_	56	case	_	_
-56	feuch	feuch	VERB	Vm-2s	Mood=Imp|Person=2	52	obl	_	_
-57	ciamar	ciamar	ADV	Uq	Mood=Int	59	advmod	_	_
-58	a	a	PART	Q-r	PartType=Vb|PronType=Rel	59	mark:prt	_	_
-59	ghabhadh	gabh	VERB	V-h	Mood=Cnd	52	acl:relcl	_	_
-60	na	an	DET	Tdpm	Gender=Masc|Number=Plur	61	det	_	_
-61	sgaraidhean	sgaradh	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	49	obj	_	_
-62	a	a	PART	Q-r	PartType=Vb|PronType=Rel	63	mark:prt	_	_
-63	tha	bi	VERB	V-p	Tense=Pres	61	acl:relcl	_	_
-64	eadar	eadar	ADP	Sp	_	66	case	_	_
-65	na	an	DET	Tdpf	Gender=Fem|Number=Plur	66	det	_	_
-66	h-eaglaisean	eaglaisean	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	63	xcomp:pred	_	_
-67	Crìosdail	crìosdail	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	66	amod	_	_
-68	a	a	PART	Ug	PartType=Inf	69	mark:prt	_	_
-69	leigheas	leighis	NOUN	Nv	VerbForm=Inf	49	xcomp	_	_
-70	an	an	ADP	Sp	_	74	case	_	_
-71	dèidh	dèidh	ADP	Nf	_	70	fixed	_	_
-72	a	a	DET	Dq	_	74	det	_	_
-73	h-uile	uile	DET	Dq	_	72	fixed	_	_
-74	rud	rud	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	69	obl	_	_
-75	'se	is	AUX	Wp-i-3	_	76	cop	_	_
-76	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	69	ccomp	_	_
-77	a	a	PART	Q-r	PartType=Vb|PronType=Rel	78	mark:prt	_	_
-78	rinn	dèan	VERB	V-s	Tense=Past	76	acl:relcl	_	_
-79	na	an	DET	Tdpm	Gender=Masc|Number=Plur	80	det	_	_
-80	sgaraidhean	sgaradh	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	78	nsubj	_	_
-81	a	a	PART	Q-r	PartType=Vb|PronType=Rel	82	mark:prt	_	_
-82	bha	bi	VERB	V-s	Tense=Past	78	acl:relcl	_	_
-83	siud	siud	PRON	Pd	_	82	nsubj	_	_
-84	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	87	mark:prt	_	_
-85	b'	is	AUX	Ws	_	87	cop	_	_
-86	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	85	fixed	_	_
-87	Crìosd	Crìosd	PROPN	Nn-mn	Case=Nom|Gender=Masc	82	ccomp	_	_
-88	a	a	PART	Q-r	PartType=Vb|PronType=Rel	89	mark:prt	_	_
-89	rinn	dèan	VERB	V-s	Tense=Past	82	acl:relcl	_	_
-90	idir	idir	ADV	Rg	_	89	nsubj	_	_
-91	iad	iad	PRON	Pp3p	Number=Plur|Person=3	89	obj	_	_
-92	agus	agus	CCONJ	Cc	_	93	cc	_	_
-93	tha	bi	VERB	V-p	Tense=Pres	87	conj	_	_
-94	mi	mi	PRON	Pp1s	Number=Sing|Person=1	93	nsubj	_	_
-95	a'	ag	PART	Sa	_	96	case	_	_
-96	smaoineachadh	smaoinich	NOUN	Nv	VerbForm=Vnoun	93	xcomp:pred	_	_
-97	gu	gu	PART	Qa	PartType=Cmpl	98	mark:prt	_	_
-98	bheil	bi	VERB	V-p--d	Tense=Pres	96	ccomp	_	_
-99	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	98	nsubj	_	_
-100	mar	mar	ADP	Sp	_	101	case	_	_
-101	fhiachaibh	fiachaibh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	98	obl	_	_
-102	mar	mar	ADP	Sp	_	103	case	_	_
-103	sin	sin	PRON	Pd	_	101	obl	_	_
-104	air	air	ADP	Sp	_	105	case	_	_
-105	daoine	duine	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	101	obl	_	_
-106	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	98	xcomp	_	_
-107	ri	ri	ADP	Sp	_	108	case	_	_
-108	feobhas	feobhas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	106	obl	_	_
-109	a	a	PART	Ug	PartType=Inf	110	mark:prt	_	_
-110	dhèanamh	dèan	NOUN	Nv	VerbForm=Inf	93	xcomp	_	_
-111	a's	an	ADP	Sp	_	115	case	_	_
-112	an	an	DET	Tdsm	Gender=Masc|Number=Sing	115	det	_	_
-113	t-suidheachadh	suidheachadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	115	amod	_	_
-114	a	a	PART	Q-r	PartType=Vb|PronType=Rel	115	mark:prt	_	_
-115	th'	bi	VERB	V-p	Tense=Pres	110	obl	_	_
-116	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	93	xcomp:pred	_	_
 
-# sent_id = p08_008
+# sent_id = p08_021
+# speaker = [2]
+# text = nuair a tha na h-eaglaisean Crìosdail ag ùrnaigh airson aonadh a bhith eatorra gum biodh e iomchaidh gum biodh a's a' Sealltainn a's a' Ròimh agus na h-eaglaisean eile cuideachd air feuch ciamar a ghabhadh na sgaraidhean a tha eadar na h-eaglaisean Crìosdail a leigheas
+1	nuair	nuair	SCONJ	Cs	_	3	mark	_	_
+2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
+3	tha	bi	VERB	V-p	Tense=Pres	22	advcl	_	_
+4	na	an	DET	Tdpf	Gender=Fem|Number=Plur	5	det	_	_
+5	h-eaglaisean	eaglais	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	19	nsubj	_	_
+6	Crìosdail	crìosdail	ADJ	Aq-pfn	Case=Nom|Gender=Fem|Number=Plur	5	amod	_	_
+7	ag	ag	PART	Sa	_	8	case	_	_
+8	ùrnaigh	ùrnaigh	NOUN	Nv	VerbForm=Vnoun	19	xcomp	_	_
+9	airson	airson	ADP	Nf	_	10	case	_	_
+10	aonadh	aonadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	8	obl	_	_
+11	a	a	PART	Ug	PartType=Inf	12	mark:prt	_	_
+12	bhith	bi	NOUN	Nv	VerbForm=Inf	8	xcomp	_	_
+13	eatorra	eadar	ADP	Pr3p	Number=Plur|Person=3	12	xcomp:pred	_	_
+14	gum	gum	PART	Qa	PartType=Cmpl	15	mark:prt	_	_
+15	biodh	bi	VERB	V-h--d	Mood=Cnd	12	ccomp	_	_
+16	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	15	nsubj	_	_
+17	iomchaidh	iomchaidh	ADJ	Ap	_	15	xcomp:pred	_	_
+18	gum	gum	PART	Qa	PartType=Cmpl	19	mark:prt	_	_
+19	biodh	bi	VERB	V-h--d	Mood=Cnd	15	ccomp	_	_
+20	a's	an	ADP	Sp	_	22	case	_	_
+21	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	22	det	_	_
+22	Sealltainn	Sealltainn	PROPN	Nt	_	19	xcomp:pred	_	_
+23	a's	a's	CCONJ	Cc	_	25	cc	_	_
+24	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	25	det	_	_
+25	Ròimh	Ròimh	PROPN	Nt	_	22	conj	_	_
+26	agus	agus	CCONJ	Cc	_	28	cc	_	_
+27	na	an	DET	Tdpf	Gender=Fem|Number=Plur	28	det	_	_
+28	h-eaglaisean	eaglais	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	25	nsubj	_	_
+29	eile	eile	ADJ	Aq-pfn	Case=Nom|Gender=Fem|Number=Plur	28	amod	_	_
+30	cuideachd	cuideachd	ADV	Rg	_	28	advmod	_	_
+31	air	air	ADP	Sp	_	32	case	_	_
+32	feuch	feuch	VERB	Vm-2s	Mood=Imp|Person=2	0	root	_	_
+33	ciamar	ciamar	ADV	Uq	Mood=Int	35	advmod	_	_
+34	a	a	PART	Q-r	PartType=Vb|PronType=Rel	35	mark:prt	_	_
+35	ghabhadh	gabh	VERB	V-h	Mood=Cnd	28	acl:relcl	_	_
+36	na	an	DET	Tdpm	Gender=Masc|Number=Plur	37	det	_	_
+37	sgaraidhean	sgaradh	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	25	obj	_	_
+38	a	a	PART	Q-r	PartType=Vb|PronType=Rel	39	mark:prt	_	_
+39	tha	bi	VERB	V-p	Tense=Pres	37	acl:relcl	_	_
+40	eadar	eadar	ADP	Sp	_	42	case	_	_
+41	na	an	DET	Tdpf	Gender=Fem|Number=Plur	42	det	_	_
+42	h-eaglaisean	eaglaisean	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	39	xcomp:pred	_	_
+43	Crìosdail	crìosdail	ADJ	Aq-sfn	Case=Nom|Gender=Fem|Number=Sing	42	amod	_	_
+44	a	a	PART	Ug	PartType=Inf	45	mark:prt	_	_
+45	leigheas	leighis	NOUN	Nv	VerbForm=Inf	25	xcomp	_	_
+
+# sent_id = p08_022
+# speaker = [2]
+# text = an dèidh a h-uile rud 'se daoine a rinn na sgaraidhean a bha siud
+1	an	an	ADP	Sp	_	5	case	_	_
+2	dèidh	dèidh	ADP	Nf	_	1	fixed	_	_
+3	a	a	DET	Dq	_	5	det	_	_
+4	h-uile	uile	DET	Dq	_	3	fixed	_	_
+5	rud	rud	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	69	obl	_	_
+6	'se	is	AUX	Wp-i-3	_	7	cop	_	_
+7	daoine	duine	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	0	root	_	_
+8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
+9	rinn	dèan	VERB	V-s	Tense=Past	7	acl:relcl	_	_
+10	na	an	DET	Tdpm	Gender=Masc|Number=Plur	11	det	_	_
+11	sgaraidhean	sgaradh	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	9	nsubj	_	_
+12	a	a	PART	Q-r	PartType=Vb|PronType=Rel	13	mark:prt	_	_
+13	bha	bi	VERB	V-s	Tense=Past	9	acl:relcl	_	_
+14	siud	siud	PRON	Pd	_	13	nsubj	_	_
+
+# sent_id = p08_023
+# speaker = [2]
+# text = cha b' e Crìosd a rinn idir iad agus tha mi a' smaoineachadh gu bheil e mar fhiachaibh mar sin air daoine feuchainn ri feobhas a dhèanamh a's an t-suidheachadh a th' ann
+1	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	4	mark:prt	_	_
+2	b'	is	AUX	Ws	_	4	cop	_	_
+3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	fixed	_	_
+4	Crìosd	Crìosd	PROPN	Nn-mn	Case=Nom|Gender=Masc	0	root	_	_
+5	a	a	PART	Q-r	PartType=Vb|PronType=Rel	6	mark:prt	_	_
+6	rinn	dèan	VERB	V-s	Tense=Past	82	acl:relcl	_	_
+7	idir	idir	ADV	Rg	_	6	nsubj	_	_
+8	iad	iad	PRON	Pp3p	Number=Plur|Person=3	6	obj	_	_
+9	agus	agus	CCONJ	Cc	_	10	cc	_	_
+10	tha	bi	VERB	V-p	Tense=Pres	4	conj	_	_
+11	mi	mi	PRON	Pp1s	Number=Sing|Person=1	10	nsubj	_	_
+12	a'	ag	PART	Sa	_	13	case	_	_
+13	smaoineachadh	smaoinich	NOUN	Nv	VerbForm=Vnoun	10	xcomp:pred	_	_
+14	gu	gu	PART	Qa	PartType=Cmpl	15	mark:prt	_	_
+15	bheil	bi	VERB	V-p--d	Tense=Pres	13	ccomp	_	_
+16	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	15	nsubj	_	_
+17	mar	mar	ADP	Sp	_	18	case	_	_
+18	fhiachaibh	fiachaibh	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	15	obl	_	_
+19	mar	mar	ADP	Sp	_	20	case	_	_
+20	sin	sin	PRON	Pd	_	18	obl	_	_
+21	air	air	ADP	Sp	_	22	case	_	_
+22	daoine	duine	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	18	obl	_	_
+23	feuchainn	feuch	NOUN	Nv	VerbForm=Vnoun	15	xcomp	_	_
+24	ri	ri	ADP	Sp	_	25	case	_	_
+25	feobhas	feobhas	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	23	obl	_	_
+26	a	a	PART	Ug	PartType=Inf	27	mark:prt	_	_
+27	dhèanamh	dèan	NOUN	Nv	VerbForm=Inf	10	xcomp	_	_
+28	a's	an	ADP	Sp	_	32	case	_	_
+29	an	an	DET	Tdsm	Gender=Masc|Number=Sing	30	det	_	_
+30	t-suidheachadh	suidheachadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	32	amod	_	_
+31	a	a	PART	Q-r	PartType=Vb|PronType=Rel	32	mark:prt	_	_
+32	th'	bi	VERB	V-p	Tense=Pres	27	obl	_	_
+33	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	10	xcomp:pred	_	_
+
+# sent_id = p08_024
 # speaker = [1]
-# text = uill chuala sinn an siud cuideachd mar a tha na poileataigs a tha ag obair agus tha mise air dà aithisg a leughadh a's an t-seachdainn a chaidh seachad a' bruidhinn air poileataigs 's a h-uile càil a th' ann agus chuala sinn Maighstir Calum ag ràdh ann an siud mar a thathas a' coimhead gur dòcha g' eil cothrom nas fhearr aig cuideigin a tha eòlach air a' Vatican eòlach air poileataigs na Ròimh a bhith a-staigh air a’ chùis a bheil thu a' smaoineadh ge-tà leis na tha de Chaitligich an-diugh air feadh an t-saoghail gu bheilear a' coimhead airson pàpa a tha a' tighinn à àite eile can Aimearagaidh a Deas can Africa e fhèin
+# text = uill chuala sinn an siud cuideachd mar a tha na poileataigs a tha ag obair agus tha mise air dà aithisg a leughadh a's an t-seachdainn a chaidh seachad a' bruidhinn air poileataigs 's a h-uile càil a th' ann agus chuala sinn Maighstir Calum ag ràdh ann an siud mar a thathas a' coimhead gur dòcha g' eil cothrom nas fhearr aig cuideigin a tha eòlach air a' Vatican eòlach air poileataigs na Ròimh a bhith a-staigh air a’ chùis
 1	uill	uill	INTJ	I	_	2	discourse	_	_
 2	chuala	cluinn	VERB	V-s	Tense=Past	0	root	_	_
 3	sinn	sinn	PRON	Pp1p	Number=Plur|Person=1	2	nsubj	_	_
@@ -18777,20 +18843,20 @@
 18	mise	mi	PRON	Pp1s--e	Form=Emp|Number=Sing|Person=1	17	nsubj	_	_
 19	air	air	PART	Sa	_	21	case	_	_
 20	dà	dà	NUM	Mc	_	21	nummod	_	_
-21	aithisg	aithisg	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	17	obl	_	_
+21	aithisg	aithisg	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	23	obj	_	_
 22	a	a	PART	Ug	PartType=Inf	23	mark:prt	_	_
-23	leughadh	leugh	NOUN	Nv	VerbForm=Inf	17	xcomp	_	_
+23	leughadh	leugh	NOUN	Nv	VerbForm=Inf	17	xcomp:pred	_	_
 24	a's	an	ADP	Sp	_	28	case	_	_
-25	an	an	DET	Tdsf	Gender=Fem|Number=Sing	28	det	_	_
-26	t-seachdainn	seachdainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	28	amod	_	_
+25	an	an	DET	Tdsf	Gender=Fem|Number=Sing	26	det	_	_
+26	t-seachdainn	seachdainn	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	23	obl	_	_
 27	a	a	PART	Q-r	PartType=Vb|PronType=Rel	28	mark:prt	_	_
 28	chaidh	rach	VERB	V-s	Tense=Past	23	acl:relcl	_	_
-29	seachad	seachad	ADV	Rg	_	28	nsubj	_	_
+29	seachad	seachad	ADV	Rg	_	28	advmod	_	_
 30	a'	ag	PART	Sa	_	31	case	_	_
 31	bruidhinn	bruidhinn	NOUN	Nv	VerbForm=Vnoun	28	xcomp	_	_
 32	air	air	ADP	Sp	_	33	case	_	_
 33	poileataigs	poileataigs	NOUN	Ncpfd	Case=Dat|Gender=Fem|Number=Plur	31	obl	_	_
-34	's	's	CCONJ	Cc	_	33	cc	_	_
+34	's	's	CCONJ	Cc	_	37	cc	_	_
 35	a	a	DET	Dq	_	37	det	_	_
 36	h-uile	uile	DET	Dq	_	35	fixed	_	_
 37	càil	càil	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	33	conj	_	_
@@ -18838,47 +18904,51 @@
 79	air	air	ADP	Sp	_	81	case	_	_
 80	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	81	det	_	_
 81	chùis	cùis	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	77	obl	_	_
-82	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	83	mark:prt	_	_
-83	bheil	bi	VERB	V-p--d	Tense=Pres	77	ccomp	_	_
-84	thu	thu	PRON	Pp2s	Number=Sing|Person=2	83	nsubj	_	_
-85	a'	ag	PART	Sa	_	86	case	_	_
-86	smaoineadh	smaoin	NOUN	Nv	VerbForm=Vnoun	83	xcomp:pred	_	_
-87	ge-tà	ge-tà	ADV	Rg	_	86	advmod	_	_
-88	leis	leis	ADV	R	_	86	nmod	_	_
-89	na	na	PART	Q-r	PartType=Vb|PronType=Rel	90	mark:prt	_	_
-90	tha	bi	VERB	V-p	Tense=Pres	86	acl:relcl	_	_
-91	de	de	ADP	Sp	_	92	case	_	_
-92	Chaitligich	caitligeach	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	90	obl	_	_
-93	an-diugh	an-diugh	ADV	Rt	_	90	advmod	_	_
-94	air	air	ADP	Sp	_	99	case	_	_
-95	feadh	feadh	ADP	Nf	_	94	fixed	_	_
-96	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	99	det	_	_
-97	t-saoghail	saoghail	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	99	amod	_	_
-98	gu	gu	PART	Qa	PartType=Cmpl	99	mark:prt	_	_
-99	bheilear	beil	VERB	V-p0-d	Person=0|Tense=Pres	90	obl	_	_
-100	a'	ag	PART	Sa	_	101	case	_	_
-101	coimhead	coimhead	NOUN	Nv	VerbForm=Vnoun	86	xcomp	_	_
-102	airson	airson	ADP	Nf	_	101	fixed	_	_
-103	pàpa	pàpa	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	101	obj	_	_
-104	a	a	PART	Q-r	PartType=Vb|PronType=Rel	105	mark:prt	_	_
-105	tha	bi	VERB	V-p	Tense=Pres	101	acl:relcl	_	_
-106	a'	ag	PART	Sa	_	107	case	_	_
-107	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	105	xcomp:pred	_	_
-108	à	à	ADP	Sp	_	109	case	_	_
-109	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	107	obl	_	_
-110	eile	eile	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	109	amod	_	_
-111	can	can	VERB	Vm-2s	Mood=Imp|Person=2	112	discourse	_	_
-112	Aimearagaidh	Aimearagaidh	PROPN	Nt	_	109	appos	_	_
-113	a	a	PROPN	Nt	_	112	flat	_	_
-114	Deas	Deas	PROPN	Nt	_	112	flat	_	_
-115	can	can	VERB	Vm-2s	Mood=Imp|Person=2	116	discourse	_	_
-116	Africa	Africa	PROPN	Nt	_	112	conj	_	_
-117	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	116	appos	_	_
-118	fhèin	fèin	PRON	Px	Reflex=Yes	117	compound	_	_
 
-# sent_id = p08_009a
+# sent_id = p08_025
+# speaker = [1]
+# text = a bheil thu a' smaoineadh ge-tà leis na tha de Chaitligich an-diugh air feadh an t-saoghail gu bheilear a' coimhead airson pàpa a tha a' tighinn à àite eile can Aimearagaidh a Deas can Africa e fhèin
+1	a	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	2	mark:prt	_	_
+2	bheil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
+3	thu	thu	PRON	Pp2s	Number=Sing|Person=2	2	nsubj	_	_
+4	a'	ag	PART	Sa	_	5	case	_	_
+5	smaoineadh	smaoin	NOUN	Nv	VerbForm=Vnoun	2	xcomp:pred	_	_
+6	ge-tà	ge-tà	ADV	Rg	_	5	advmod	_	_
+7	leis	leis	ADV	R	_	5	nmod	_	_
+8	na	na	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
+9	tha	bi	VERB	V-p	Tense=Pres	5	acl:relcl	_	_
+10	de	de	ADP	Sp	_	11	case	_	_
+11	Chaitligich	caitligeach	NOUN	Ncpmd	Case=Dat|Gender=Masc|Number=Plur	9	obl	_	_
+12	an-diugh	an-diugh	ADV	Rt	_	9	advmod	_	_
+13	air	air	ADP	Sp	_	18	case	_	_
+14	feadh	feadh	ADP	Nf	_	13	fixed	_	_
+15	an	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	16	det	_	_
+16	t-saoghail	saoghail	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	9	obl	_	_
+17	gu	gu	PART	Qa	PartType=Cmpl	18	mark:prt	_	_
+18	bheilear	beil	VERB	V-p0-d	Person=0|Tense=Pres	9	ccomp	_	_
+19	a'	ag	PART	Sa	_	20	case	_	_
+20	coimhead	coimhead	NOUN	Nv	VerbForm=Vnoun	18	xcomp:pred	_	_
+21	airson	airson	ADP	Nf	_	22	case	_	_
+22	pàpa	pàpa	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	20	obl	_	_
+23	a	a	PART	Q-r	PartType=Vb|PronType=Rel	24	mark:prt	_	_
+24	tha	bi	VERB	V-p	Tense=Pres	22	acl:relcl	_	_
+25	a'	ag	PART	Sa	_	26	case	_	_
+26	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	24	xcomp:pred	_	_
+27	à	à	ADP	Sp	_	28	case	_	_
+28	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	26	obl	_	_
+29	eile	eile	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	28	amod	_	_
+30	can	can	VERB	Vm-2s	Mood=Imp|Person=2	28	parataxis	_	_
+31	Aimearagaidh	Aimearagaidh	PROPN	Nt	_	30	obj	_	_
+32	a	a	PROPN	Nt	_	31	flat	_	_
+33	Deas	Deas	PROPN	Nt	_	31	flat	_	_
+34	can	can	VERB	Vm-2s	Mood=Imp|Person=2	28	parataxis	_	_
+35	Africa	Africa	PROPN	Nt	_	34	obj	_	_
+36	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	35	appos	_	_
+37	fhèin	fèin	PRON	Px	Reflex=Yes	36	compound	_	_
+
+# sent_id = p08_026
 # speaker = [2]
-# text = uill chan fhaicinn gum biodh dad ceàrr air a-sin na bu mhotha ach mar a tha a’ chùis mar obair na poileataigs chan e fear poileataigs a' creideamh a th' annam-s' idir a dh’innse na fìrinn ach gu math tric 'se cuideigin a tha timcheall a' Vatican fhèin 'se tha a' faighinn na dreuchd
+# text = uill chan fhaicinn gum biodh dad ceàrr air a-sin na bu mhotha ach mar a tha a’ chùis mar obair na poileataigs chan e fear poileataigs a' creideamh a th' annam-s' idir a dh’innse na fìrinn ach gu math tric 'se cuideigin a tha timcheall a' Vatican fhèin
 1	uill	uill	INTJ	I	_	3	discourse	_	_
 2	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	3	mark:prt	_	_
 3	fhaicinn	faic	VERB	V-h1sd	Mood=Cnd|Person=1	0	root	_	_
@@ -18908,7 +18978,7 @@
 27	a'	an	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	28	det	_	_
 28	creideamh	creideamh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	26	nmod	_	_
 29	a	a	PART	Q-r	PartType=Vb|PronType=Rel	30	mark:prt	_	_
-30	th'	bi	VERB	V-p	Tense=Pres	25	csubj:cop	_	_
+30	th'	bi	VERB	V-p	Tense=Pres	25	csubj:cleft	_	_
 31	annam-s'	annam-s'	ADP	Pr1s--e	Form=Emp|Number=Sing|Person=1	32	mark	_	_
 32	idir	idir	ADV	Rg	_	30	advmod	_	_
 33	a	a	PART	Ug	PartType=Inf	34	mark:prt	_	_
@@ -18927,16 +18997,20 @@
 46	a'	an	DET	Tds-g	Case=Gen|Number=Sing	47	det	_	_
 47	Vatican	Vatican	PROPN	Nt	_	44	xcomp:pred	_	_
 48	fhèin	fèin	PRON	Px	Reflex=Yes	47	compound	_	_
-49	'se	is	AUX	Wp-i-3	_	25	parataxis	_	_
-50	tha	bi	VERB	V-p	Tense=Pres	42	csubj:cop	_	_
-51	a'	ag	PART	Sa	_	52	case	_	_
-52	faighinn	faigh	NOUN	Nv	VerbForm=Vnoun	50	xcomp:pred	_	_
-53	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	54	det	_	_
-54	dreuchd	dreuchd	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	52	nmod	_	_
 
-# sent_id = p08_009b
+# sent_id = p08_027
 # speaker = [2]
-# text = ged a thàinig Iain Pòl fhèin a-staigh à dùthaich eile gu math tric 'se Eadailtich a bhiodh ann ach tha gu leòr a' smaoineadh dhen bheachd nach dèanadh gum biodh e feumail 's dòcha cuideigin a' tighinn o àiteigin eile no àite mar a thuirt thu à Africa 's à Aimeireaga a Deas agus tha mi a' creidsinn bhiodh Aimeireaga a Tuath dhaibh fhèin mar a tha iad 's toil leotha a bhith an grèim a's a h-uile rud chòrdadh e gu math riuthasan
+# text = 'se tha a' faighinn na dreuchd
+1	'se	is	AUX	Wp-i-3	_	0	root	_	_
+2	tha	bi	VERB	V-p	Tense=Pres	1	csubj:cop	_	_
+3	a'	ag	PART	Sa	_	4	case	_	_
+4	faighinn	faigh	NOUN	Nv	VerbForm=Vnoun	2	xcomp:pred	_	_
+5	na	an	DET	Tdsfg	Case=Gen|Gender=Fem|Number=Sing	6	det	_	_
+6	dreuchd	dreuchd	NOUN	Ncsfg	Case=Gen|Gender=Fem|Number=Sing	4	nmod	_	_
+
+# sent_id = p08_028
+# speaker = [2]
+# text = ged a thàinig Iain Pòl fhèin a-staigh à dùthaich eile gu math tric 'se Eadailtich a bhiodh ann ach tha gu leòr a' smaoineadh dhen bheachd nach dèanadh gum biodh e feumail 's dòcha cuideigin a' tighinn o àiteigin eile no àite mar a thuirt thu à Africa 's à Aimeireaga a Deas agus tha mi a' creidsinn bhiodh Aimeireaga a Tuath dhaibh fhèin mar a tha iad 's toil leotha a bhith an grèim a's a h-uile rud
 1	ged	ged	SCONJ	Cs	_	3	mark	_	_
 2	a	a	PART	Q-r	PartType=Vb|PronType=Rel	3	mark:prt	_	_
 3	thàinig	thig	VERB	V-s	Tense=Past	15	advcl	_	_
@@ -18953,7 +19027,7 @@
 14	'se	is	AUX	Wp-i-3	_	15	cop	_	_
 15	Eadailtich	eadailtich	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	0	root	_	_
 16	a	a	PART	Q-r	PartType=Vb|PronType=Rel	17	mark:prt	_	_
-17	bhiodh	bi	VERB	V-h	Mood=Cnd	15	csubj:cop	_	_
+17	bhiodh	bi	VERB	V-h	Mood=Cnd	15	csubj:cleft	_	_
 18	ann	an	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	3	obl	_	_
 19	ach	ach	CCONJ	Cc	_	20	cc	_	_
 20	tha	bi	VERB	V-p	Tense=Pres	15	conj	_	_
@@ -19016,13 +19090,17 @@
 77	a	a	DET	Dq	_	79	det	_	_
 78	h-uile	uile	DET	Dq	_	77	fixed	_	_
 79	rud	rud	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	73	obl	_	_
-80	chòrdadh	còrd	VERB	V-h	Mood=Cnd	79	nmod	_	_
-81	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	80	nsubj	_	_
-82	gu	gu	PART	Ua	PartType=Ad	83	mark:prt	_	_
-83	math	math	ADV	Rg	_	79	advmod	_	_
-84	riuthasan	ri	ADP	Pr3p--e	Form=Emp|Number=Plur|Person=3	80	obl	_	_
 
-# sent_id = p08_010
+# sent_id = p08_029
+# speaker = [2]
+# text = chòrdadh e gu math riuthasan
+1	chòrdadh	còrd	VERB	V-h	Mood=Cnd	0	root	_	_
+2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	nsubj	_	_
+3	gu	gu	PART	Ua	PartType=Ad	4	mark:prt	_	_
+4	math	math	ADV	Rg	_	1	advmod	_	_
+5	riuthasan	ri	ADP	Pr3p--e	Form=Emp|Number=Plur|Person=3	1	obl	_	_
+
+# sent_id = p08_030
 # speaker = [1]
 # text = uill chòrdadh gu dearbha ach tha iadsan a' tighinn thàinig iad sin às a h-uile àite co-dhiubh iad fhèin ro 'n seo
 1	uill	uill	INTJ	I	_	2	discourse	_	_
@@ -19043,7 +19121,7 @@
 16	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	10	obl	_	_
 17	co-dhiubh	co-dhiubh	ADV	Rg	_	16	amod	_	_
 18	iad	iad	PRON	Pp3p	Number=Plur|Person=3	16	amod	_	_
-19	fhèin	fèin	PRON	Px	Reflex=Yes	16	compound	_	_
+19	fhèin	fèin	PRON	Px	Reflex=Yes	18	compound	_	_
 20	ro	ro	ADP	Sp	_	21	case	_	_
 21	'n	'n	PRON	Pd	_	18	obl:smod	_	_
 22	seo	seo	PRON	Pd	_	21	fixed	_	_
