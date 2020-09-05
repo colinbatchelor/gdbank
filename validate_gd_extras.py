@@ -12,17 +12,23 @@ with open(sys.argv[2],'w') as f:
     for sentence in corpus:
         bi_ids = []
         clause_ids = []
+        reparanda = []
         prev_token = None
         for token in sentence:
             if not token.is_multiword():
                 range = abs(int(token.id) - int(token.head))
+                if token.xpos == token.upos and token.feats == {}:
+                    score +=1
+                    print(f"{sentence.id} {token.id} XPOS {token.xpos} should not match UPOS if feats is empty")
                 if token.lemma == "bi":
                     bi_ids.append(token.id)
+                if token.deprel == "reparandum":
+                    ''' this is for when I rewrite this to work properly '''
+                    reparanda.append(token.id)
                 if token.deprel is None:
                     score +=1
                     print(f"{sentence.id} {token.id} deprel should not be None")
                 else:
-                    if token.xpos in ["Q-r", "Q--s"]: token.deprel = "mark:prt"
                     if token.deprel in clauses_to_check:
                         clause_ids.append(token.id)
                     if token.deprel in rightward_only and int(token.head) < int(token.id):
