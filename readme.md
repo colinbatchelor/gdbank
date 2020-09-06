@@ -3,7 +3,7 @@ Some tools and resources for natural language processing of Scottish Gaelic.
 ud
 --
 A conversion of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG) to a dependency treebank.
-You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011
+You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011 (original version) and the latest version from https://github.com/Gaelic-Algorithmic-Research-Group/ARCOSG
 
 https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/ will contain the final version of this.
 
@@ -17,10 +17,8 @@ In practice I have postprocessed the results with the following Python 3 scripts
 
 The current treebank files in the dev branch of UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
 
-There are four others:
-* `arcosg_unseen.conll` is the main file containing as-yet-unchecked treebanks.
-* `arcosg_sport.conll` contains football commentary.
-* `arcosg_conversations.conll` contains conversations.
+There are two others:
+* `gd_arcosg_ud-not_for_release.conll` is the main file containing as-yet-unchecked treebanks.
 * `gd_iomasgladh-ud-test.conllu` is a hand-built corpus from 2014 which has been converted to UD.
 
 This is written up in:
@@ -74,4 +72,4 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2020-09-01
+2020-09-06
