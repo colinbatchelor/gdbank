@@ -16,7 +16,7 @@ with open(sys.argv[2],'w') as clean:
                     token.deprel = "mark:prt"
                 if token.xpos == "Uv":
                     token.deprel = "case:voc"
-                if token.xpos == "Ncsmv" or token.xpos == "Ncsfv":
+                if token.xpos in ["Ncsmv", "Ncsfv", "Nn-mv", "Nn-fv"]:
                     token.deprel = "vocative"
                 if token.xpos == "Nv":
                     token.upos = "NOUN"

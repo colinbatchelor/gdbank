@@ -10,6 +10,7 @@ trees = []
 stops = ["Q-s"]
 with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
+        print(sentence.id)
         for token in sentence:
             if "-" not in token.id and token.xpos not in stops:
                 if token.xpos.startswith("Dp") and token.deprel == "det":
