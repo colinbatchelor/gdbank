@@ -5,7 +5,7 @@ ud
 A conversion of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG) to a dependency treebank.
 You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011 (original version) and the latest version from https://github.com/Gaelic-Algorithmic-Research-Group/ARCOSG
 
-https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/ will contain the final version of this.
+https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/ contains the release version of this.
 
 `innealan/brown_gd_to_conll.py` performs a rudimentary conversion of ARCOSG to CoNLL-U format.
 
@@ -15,10 +15,10 @@ In practice I have postprocessed the results with the following Python 3 scripts
 * `fix_whitespace.py` adds `SpaceAfter=No` to the relevant parts of the tree.
 * `fix_conversations.py` removes the tokens indicating the speaker and adds a `# speaker =` line to the preamble for each tree.
 
-The current treebank files in the dev branch of UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
+The current treebank files in `ud` and in UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
 
-There are two others:
-* `gd_arcosg_ud-not_for_release.conll` is the main file containing as-yet-unchecked treebanks.
+There are two others in `ud`:
+* `gd_arcosg_ud-not_for_release.conll` is the main file containing as-yet-unchecked treebanks from ARCOSG.
 * `gd_iomasgladh-ud-test.conllu` is a hand-built corpus from 2014 which has been converted to UD.
 
 This is written up in:
