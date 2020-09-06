@@ -46,4 +46,4 @@ for subcorpus in dict:
 for file in files.most_common():
     tree_count = file[1]
     token_count = tokens[file[0]]
-    print(f"{file[0]}: {tree_count} trees, {token_count} tokens ({token_count/tree_count:0.4})")
+    print(f"{file[0]}: {tree_count} trees, {token_count} tokens (avg. length {token_count/tree_count:0.4})")
