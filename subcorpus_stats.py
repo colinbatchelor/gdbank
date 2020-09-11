@@ -1,4 +1,4 @@
-import numpy as np
+import csv
 import os
 import sys
 import pyconll
@@ -9,29 +9,26 @@ lengths = {"all":63775,"fp":8320,"f":7372,"ns":7795,"n":8223,"pw":7096,"c":9074,
 files = Counter()
 tokens = Counter()
 
-for corpusfile in sys.argv[1:]:
-    corpus = pyconll.load_from_file(corpusfile)
-    for sentence in corpus:
-        file = sentence.id.split('_')[0]
-        files[file] +=1
-        tokens[file] += len(sentence)
-        dict["all"].append(sentence)
-        if sentence.id.startswith('fp'):
-            dict["fp"].append(sentence)
-        elif sentence.id.startswith('f'):
-            dict["f"].append(sentence)
-        elif sentence.id.startswith('ns'):
-            dict["ns"].append(sentence)
-        elif sentence.id.startswith('n'):
-            dict["n"].append(sentence)
-        elif sentence.id.startswith('pw'):
-            dict["pw"].append(sentence)
-        elif sentence.id.startswith('c'):
-            dict["c"].append(sentence)
-        elif sentence.id.startswith('p'):
-            dict["p"].append(sentence)
-        elif sentence.id.startswith('s'):
-            dict["s"].append(sentence)
+with open('subcorpus.csv', 'w') as g:
+    writer = csv.writer(g)
+    writer.writerow(['id', 'subcorpus', 'len'])
+    for corpusfile in sys.argv[1:]:
+        corpus = pyconll.load_from_file(corpusfile)
+        for sentence in corpus:
+            file = sentence.id.split('_')[0]
+            files[file] +=1
+            tokens[file] += len(sentence)
+            dict["all"].append(sentence)
+            if sentence.id.startswith('fp'): sc = "fp"
+            elif sentence.id.startswith('f'): sc = "f"
+            elif sentence.id.startswith('ns'): sc = "ns"
+            elif sentence.id.startswith('n'): sc = "n"
+            elif sentence.id.startswith('pw'): sc = "pw"
+            elif sentence.id.startswith('c'): sc = "c"
+            elif sentence.id.startswith('p'): sc = "p"
+            elif sentence.id.startswith('s'): sc = "s"
+            dict[sc].append(sentence)
+            writer.writerow([sentence.id, sc, len(sentence)])
 
 for subcorpus in dict:
     size = len(dict[subcorpus])
