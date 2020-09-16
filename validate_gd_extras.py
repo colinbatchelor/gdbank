@@ -7,6 +7,7 @@ allowed = ["xcomp:pred","ccomp"]
 leftward_only = ["acl:relcl"]
 rightward_only = ["case", "cc", "cop", "mark"]
 clauses_to_check = ["ccomp", "advcl", "acl:relcl"]
+targets = {"cc":["conj"]}
 short_range = {"compound":2 ,"det":3, "mark:prt":5}
 score = 0
 warnings = 0
@@ -14,6 +15,7 @@ with open(sys.argv[2],'w') as f:
     for sentence in corpus:
         bi_ids = []
         clause_ids = []
+        target_ids = {}
         reparanda = []
         prev_token = None
         for token in sentence:
@@ -31,6 +33,8 @@ with open(sys.argv[2],'w') as f:
                     score +=1
                     print(f"E {sentence.id} {token.id} deprel should not be None")
                 else:
+                    if token.deprel in targets:
+                        target_ids[int(token.head)] = token.deprel
                     if token.deprel in clauses_to_check:
                         clause_ids.append(token.id)
                     if token.deprel in rightward_only and int(token.head) < int(token.id):
@@ -59,6 +63,17 @@ with open(sys.argv[2],'w') as f:
                         score +=1
                         print(f"E {sentence.id} {token.id} nsubj and (rightward) obj should only be for NOUN, PRON, PROPN, NUM, SYM or X")
                 prev_token = token
+
+        if len(target_ids) > 0:
+            for token in sentence:
+                if '-' not in token.id:
+                    if int(token.id) in target_ids:
+                        actual = token.deprel
+                        correct = [*targets[target_ids[int(token.id)]], "root", "parataxis"]
+                        if actual not in correct:
+                            score +=1
+                            print(f"E {sentence.id} {token.id} target must be one of ({', '.join(correct)}) not {actual}")
+
         if len(bi_ids) > 0:
             ids = {}
             deprels = {}
