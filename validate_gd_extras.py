@@ -4,11 +4,11 @@ import pyconll
 corpus = pyconll.load_from_file(sys.argv[1])
 bi_pred_candidates = ["advmod","obl","xcomp","obl:smod","obl:tmod","obj"]
 allowed = ["xcomp:pred","ccomp"]
-leftward_only = ["acl:relcl"]
+leftward_only = ["acl:relcl","flat","fixed"]
 rightward_only = ["case", "cc", "cop", "mark"]
 clauses_to_check = ["ccomp", "advcl", "acl:relcl"]
 targets = {"cc":["conj"], "case":["obl","xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]}
-short_range = {"compound":2 ,"det":3, "mark:prt":5}
+short_range = {"compound":2 ,"det":3, "mark:prt":5, "fixed":2, "flat":4}
 score = 0
 warnings = 0
 
