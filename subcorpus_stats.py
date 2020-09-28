@@ -9,10 +9,10 @@ lengths = {"all":63775,"fp":8320,"f":7372,"ns":7795,"n":8223,"pw":7096,"c":9074,
 files = Counter()
 tokens = Counter()
 
-with open('subcorpus.csv', 'w') as g:
+with open(sys.argv[1], 'w') as g:
     writer = csv.writer(g)
     writer.writerow(['id', 'subcorpus', 'len'])
-    for corpusfile in sys.argv[1:]:
+    for corpusfile in sys.argv[2:]:
         corpus = pyconll.load_from_file(corpusfile)
         for sentence in corpus:
             file = sentence.id.split('_')[0]
