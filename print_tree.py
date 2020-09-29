@@ -106,7 +106,10 @@ def print_tree(conllu_sentence: str):
         # at end of loop
         num_arrows_left -= 1
     if num_arrows_left >0 and arrows_with_deps[0] == set():
-        print("WARNING: non-projective structure")
+        non_projective = True
+    else:
+        non_projective = False
+
     arr_chars = {'ew'  : '─',
                  'ns'  : '│',
                  'en'  : '└',
@@ -127,20 +130,29 @@ def print_tree(conllu_sentence: str):
     for i, token in enumerate(sentence):
         ct = conllu_sentence[i]
         rows.append([str(i + 1), lines[i], ct.deprel, ct.form, ct.lemma, ct.upos, ct.xpos, "|".join(f"{f}={','.join(ct.feats[f])}" for f in ct.feats), ct.head])
-    _print_table(rows)
+    return (rows, non_projective)
 
 corpus = pyconll.load_from_file(sys.argv[1])
 if len(sys.argv) == 2:
     for sentence in corpus:
-        print(sentence.id)
-        print_tree(sentence)
-        print()
+        tree, non_projective = print_tree(sentence)
+        if non_projective:
+            print(f"{sentence.id} is non-projective")
+        else:
+            print(f"{sentence.id}")
+        _print_table(tree)
 else:
     for sentence in corpus:
         if re.match(sys.argv[2], sentence.id):
-            print(sentence.id)
             if len(sys.argv) == 4:
                 slice = sentence[0:int(sys.argv[3])]
             else:
                 slice = sentence
-            print_tree(slice)
+            tree, non_projective = print_tree(slice)
+            if non_projective:
+                print(f"{sentence.id} is non-projective")
+            else:
+                print(f"{sentence.id}")
+            _print_table(tree)
+            
+            
