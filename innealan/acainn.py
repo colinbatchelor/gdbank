@@ -407,13 +407,30 @@ class Features:
         result["Case"] = [self.cases[xpos[5]]]
         return result
 
+    def feats_cop(self, xpos: str) -> dict:
+        result = {}
+        print(f"{xpos}")
+        if len(xpos) > 1:
+            result["Tense"] = [self.tenses[xpos[1]]]
+        if len(xpos) > 2:
+            if xpos[2] == "r": result["PronType"] = ["Rel"]
+        if len(xpos) > 3:
+            if xpos[3] == "q": result["Mood"] = ["Int"]
+        if len(xpos) == 5:
+            if xpos[4] == "n": result["Polarity"] = ["Neg"]
+            elif xpos[4] == "a": result["Polarity"] = ["Aff"]
+        print(result)
+        
+        return result
+
     def feats_det(self, xpos: str) -> dict:
         result = {}
         number = [self.numbers[xpos[2]]]
         result["Number"] = number
         if len(xpos) == 3:
             return result
-        result["Gender"] = [self.genders[xpos[3]]]
+        if xpos[3] != "-":
+            result["Gender"] = [self.genders[xpos[3]]]
         if len(xpos) == 4:
             return result
         case = [self.cases[xpos[4]]]

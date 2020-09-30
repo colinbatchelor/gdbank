@@ -19,8 +19,9 @@ with open(sys.argv[2],'w') as clean:
                         token.deprel = "nmod:poss"
                     else:
                         token.deprel = "obj"
-
-                if token.xpos == "Nv":
+                elif token.xpos.startswith('T'):
+                    token.feats = f.feats_det(token.xpos)
+                elif token.xpos == "Nv":
                     token.upos = "NOUN"
                     if token.id != "1":
                         prev_token = sentence[str(int(token.id) - 1)]
@@ -44,5 +45,8 @@ with open(sys.argv[2],'w') as clean:
                     token.feats = f.feats_prep(token.xpos)
                 elif token.xpos.startswith("U") or token.xpos.startswith("Q"):
                     token.feats = f.feats_part(token.xpos)
+                elif token.xpos.startswith("W"):
+                    print(token.form)
+                    token.feats = f.feats_cop(token.xpos)
         clean.write(sentence.conll())
         clean.write('\n\n')

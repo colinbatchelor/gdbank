@@ -45,7 +45,7 @@ def process_file(f, filename):
                 feats = '_'
                 print('%s\t%s\t_\t%s\t%s\t%s\t_\t_\t_\t_' % (id, carry + form, upostag, tag, feats))
                 carry = ''
-                if form == '.':
+                if form in ['.','?','!']:
                     id = 1
                     sent_id +=1
                     print()

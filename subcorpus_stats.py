@@ -32,15 +32,10 @@ with open(sys.argv[1], 'w') as g:
 
 for subcorpus in dict:
     size = len(dict[subcorpus])
-    print("%s: %s trees, longest: %s, mean: %s, shortest: %s, total %s, %s percent complete" %
+    print("%s: %s trees, longest: %s, mean: %.2f, shortest: %s, total %s, %.2f percent complete" %
           (subcorpus, size,
            max([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
            sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]) if size > 0 else 0,
            min([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
            sum([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
            100*sum([len(s) for s in dict[subcorpus]])/lengths[subcorpus]))
-
-for file in files.most_common():
-    tree_count = file[1]
-    token_count = tokens[file[0]]
-    print(f"{file[0]}: {tree_count} trees, {token_count} tokens (avg. length {token_count/tree_count:0.4})")
