@@ -1007,7 +1007,7 @@
 
 # sent_id = c05_091c
 # speaker = [1]
-# text = chan eil an còrr space ann tha an uair sin na rudan sin uileag shuas
+# text = chan eil an còrr space ann
 1	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
 3	an	an	DET	Tdsm	Gender=Masc|Number=Sing	4	det	_	_
@@ -2618,7 +2618,7 @@
 1	bhiodh	bi	VERB	V-h	Mood=Cnd	0	root	_	_
 2	[Name]	[Name]	PROPN	Nn-mn	Case=Nom|Gender=Masc	1	nsubj	_	_
 3	againn	aig	ADP	Pr1p	Number=Plur|Person=1	1	xcomp:pred	_	_
-4	fhèin	fèin	PRON	Px	Reflex=Yes	4	compound	_	_
+4	fhèin	fèin	PRON	Px	Reflex=Yes	3	compound	_	_
 5	tha	bi	VERB	V-p	Tense=Pres	1	parataxis	_	_
 6	cuimhne	cuimhne	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	5	nsubj	_	_
 7	a'm	aig	ADP	Pr1s	Number=Sing|Person=1	5	xcomp:pred	_	_
@@ -11315,8 +11315,9 @@
 13	Dougie	Dougie	PROPN	Nn-mn	Case=Nom|Gender=Masc	12	nsubj	_	SpaceAfter=No
 14	.	.	PUNCT	Fe	_	12	punct	_	_
 
+# comment = detached closing bracket from POS tag
 # sent_id = f07_023
-# text = Tha Dougie fhéin pòsd ach chan eil mi smaoineachadh gu bheil am pòsadh uabhasach dòigheil oir bidh e dol suas am baile glé thric air a’ bhus (oir chan eil carbad aige 's thig e dhachaidh glé thric leis an daorach.
+# text = Tha Dougie fhéin pòsd ach chan eil mi smaoineachadh gu bheil am pòsadh uabhasach dòigheil oir bidh e dol suas am baile glé thric air a’ bhus (oir chan eil carbad aige) 's thig e dhachaidh glé thric leis an daorach.
 1	Tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 2	Dougie	Dougie	PROPN	Nn-mn	Case=Nom|Gender=Masc	1	nsubj	_	_
 3	fhéin	féin	PRON	Px	Reflex=Yes	2	compound	_	_
@@ -11349,17 +11350,18 @@
 30	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	31	mark:prt	_	_
 31	eil	bi	VERB	V-p--d	Tense=Pres	1	conj	_	_
 32	carbad	carbad	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	31	nsubj	_	_
-33	aige	aig	ADP	Pr3sm)	Gender=Masc|Number=Sing|Person=3	31	xcomp:pred	_	_
-34	's	's	CCONJ	Cc	_	35	cc	_	_
-35	thig	thig	VERB	V-f	Tense=Fut	31	conj	_	_
-36	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	35	nsubj	_	_
-37	dhachaidh	dachaidh	ADV	Rs	_	35	advmod	_	_
-38	glé	glé	ADV	Rg	_	39	advmod	_	_
-39	thric	tric	ADV	Rt	_	35	advmod	_	_
-40	leis	le	ADP	Sp	_	42	case	_	_
-41	an	an	DET	Tdsm	Gender=Masc|Number=Sing	42	det	_	_
-42	daorach	daorach	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	35	obl	_	SpaceAfter=No
-43	.	.	PUNCT	Fe	_	31	punct	_	_
+33	aige	aig	ADP	Pr3sm	Gender=Masc|Number=Sing|Person=3	31	xcomp:pred	_	SpaceAfter=No
+34	)	)	PUNCT	Fb	_	31	punct	_	_
+35	's	's	CCONJ	Cc	_	36	cc	_	_
+36	thig	thig	VERB	V-f	Tense=Fut	31	conj	_	_
+37	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	36	nsubj	_	_
+38	dhachaidh	dachaidh	ADV	Rs	_	36	advmod	_	_
+39	glé	glé	ADV	Rg	_	40	advmod	_	_
+40	thric	tric	ADV	Rt	_	36	advmod	_	_
+41	leis	le	ADP	Sp	_	43	case	_	_
+42	an	an	DET	Tdsm	Gender=Masc|Number=Sing	43	det	_	_
+43	daorach	daorach	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	36	obl	_	SpaceAfter=No
+44	.	.	PUNCT	Fe	_	31	punct	_	_
 
 # sent_id = f07_024
 # text = Bha e anns an Eadailt anns a’ chogadh 's bidh e bruidhinn glé thric air na Fascists 's air tancaichean 's nithean mar sin.
