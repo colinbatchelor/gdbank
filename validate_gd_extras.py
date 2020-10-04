@@ -3,12 +3,12 @@ import pyconll
 
 corpus = pyconll.load_from_file(sys.argv[1])
 bi_pred_candidates = ["advmod","obl","xcomp","obl:smod","obl:tmod","obj"]
-allowed = ["xcomp:pred","ccomp"]
-leftward_only = ["acl:relcl","flat","fixed"]
-rightward_only = ["case", "cc", "cop", "mark"]
+allowed = ["xcomp:pred", "ccomp"]
+leftward_only = ["acl:relcl", "flat", "fixed"]
+rightward_only = ["case", "cc", "cop", "mark", "nummod"]
 clauses_to_check = ["ccomp", "advcl", "acl:relcl"]
 targets = {"cc":["conj"], "case":["obl","xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]}
-short_range = {"compound":2 ,"det":3, "mark:prt":5, "fixed":2, "flat":4}
+short_range = {"compound":2 ,"det":3, "mark:prt":6, "fixed":2, "flat":4}
 score = 0
 warnings = 0
 
@@ -44,7 +44,7 @@ for sentence in corpus:
                     warnings += 1
                     print(f"W {sentence.id} {token.id} {token.deprel} goes wrong way (usually) for gd")
 
-                if token.deprel in short_range and range > short_range[token.deprel]:
+                if token.deprel in short_range and range > short_range[token.deprel] and (prev_token is not None and token.deprel != prev_token.deprel):
                     if range < short_range[token.deprel] + 3:
                         warnings += 1
                         code = "W"
