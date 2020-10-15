@@ -5,7 +5,13 @@ import pyconll
 from collections import Counter
 
 dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[], "s":[]}
-lengths = {"all":63775,"fp":8320,"f":7372,"ns":7795,"n":8223,"pw":7096,"c":9074,"p":7874,"s":8021}
+lengths = {"all":35928 + 33720,
+           "fp":5710 + 3179, "f":8042,
+           "ns":4644 + 3503,
+           "n":4535 + 4577, "pw":4261 + 3474,
+           "c":3346 + 6781,
+           "p":2591 + 6067,
+           "s":2799 + 6139}
 files = Counter()
 tokens = Counter()
 

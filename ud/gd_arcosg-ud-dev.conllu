@@ -2339,8 +2339,8 @@
 1	Cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	3	mark:prt	_	_
 2	do	do	PART	Q--s	Tense=Past	3	mark:prt	_	_
 3	dh’fhalbh	falbh	VERB	V-s	Tense=Past	0	root	_	_
-4	ach	ach	ADP	Sp	_	5	case	_	_
-5	crotal	crotal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	obl	_	_
+4	ach	ach	PART	Sp	_	5	mark:prt	_	_
+5	crotal	crotal	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	_
 6	is	is	CCONJ	Cc	_	7	cc	_	_
 7	pùdar	pùdar	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	5	conj	_	_
 8	mar	mar	ADP	Sp	_	9	case	_	_
@@ -5528,10 +5528,10 @@
 19	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	20	mark:prt	_	_
 20	eil	bi	VERB	V-p--d	Tense=Pres	2	parataxis	_	_
 21	a-seo	a-seo	ADV	Rs	_	20	xcomp:pred	_	_
-22	ach	ach	ADP	Sp	_	25	case	_	_
+22	ach	ach	PART	Sp	_	25	mark:prt	_	_
 23	an	an	DET	Tdsf	Gender=Fem|Number=Sing	25	det	_	_
 24	dà	dà	NUM	Mc	_	25	nummod	_	_
-25	leabaidh	leabaidh	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	20	obl	_	SpaceAfter=No
+25	leabaidh	leabaidh	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	20	nsubj	_	SpaceAfter=No
 26	"	"	PUNCT	Fz	_	20	punct	_	SpaceAfter=No
 27	,	,	PUNCT	Fi	_	20	punct	_	_
 28	ars’	arsa	VERB	V-s	Tense=Past	20	parataxis	_	_
@@ -5653,8 +5653,8 @@
 24-25	air	_	_	_	_	_	_	_	_
 24	air	air	ADP	Sp	_	25	case	_	_
 25	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	23	xcomp:pred	_	_
-26	ach	ach	ADP	Sp	_	27	case	_	_
-27	roinn	roinn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	23	obl	_	_
+26	ach	ach	PART	Sp	_	27	mark:prt	_	_
+27	roinn	roinn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	23	nsubj	_	_
 28	dha	do	ADP	Sp	_	29	case	_	_
 29	aodach	aodach	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	23	obl	_	SpaceAfter=No
 30	.	.	PUNCT	Fe	_	1	punct	_	_
@@ -5953,6 +5953,7 @@
 18	gille	gille	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	17	nmod	_	SpaceAfter=No
 19	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# comment = closer inspection of node 3 needed
 # sent_id = n02_024
 # text = Cha robh ach gu feumte a’ pàisde a bhaisteadh aig a’ bhodach mu falbhadh an Rìgh.
 1	Cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
@@ -7528,9 +7529,9 @@
 10	-	-	PUNCT	Fb	_	3	punct	_	_
 11	cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	12	mark:prt	_	_
 12	bhiodh	bi	VERB	V-h--d	Mood=Cnd	0	root	_	_
-13	ach	ach	ADP	Sp	_	15	case	_	_
+13	ach	ach	PART	Sp	_	15	mark:prt	_	_
 14	aona	aona	NUM	Mc	_	15	nummod	_	_
-15	sheòladh	seòladh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	12	obl	_	_
+15	sheòladh	seòladh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	12	nsubj	_	_
 16-17	san	_	_	_	_	_	_	_	_
 16	anns	anns	ADP	Sp	_	18	case	_	_
 17	an	an	ADP	Sp	_	16	fixed	_	_
@@ -9412,9 +9413,9 @@
 4	Sheonaidh	Seonadh	PROPN	Nn-mv	Case=Voc|Gender=Masc	6	vocative	_	_
 5	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	6	mark:prt	_	_
 6	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
-7	ach	ach	ADP	Sp	_	9	case	_	_
+7	ach	ach	PART	Sp	_	9	mark:prt	_	_
 8	na	an	DET	Tdpm	Gender=Masc|Number=Plur	9	det	_	_
-9	leth-sgeulan	leth-sgeul	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	6	obl	_	_
+9	leth-sgeulan	leth-sgeul	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	6	nsubj	_	_
 
 # sent_id = p05_030b
 # speaker = [1]
@@ -13124,11 +13125,11 @@
 # text = chan eil ach dhà no thrì mionaidean bho leag e cuideigin eile 'sa chearcall meadhan
 1	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
-3	ach	ach	ADP	Sp	_	7	cc	_	_
+3	ach	ach	PART	Sp	_	7	mark:prt	_	_
 4	dhà	dhà	NUM	Mc	_	7	nummod	_	_
 5	no	no	CCONJ	Cc	_	6	cc	_	_
 6	thrì	thrì	NUM	Mc	_	4	conj	_	_
-7	mionaidean	mionaid	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	2	conj	_	_
+7	mionaidean	mionaid	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	2	nsubj	_	_
 8	bho	bho	SCONJ	Cs	_	9	mark	_	_
 9	leag	leag	VERB	V-s	Tense=Past	2	advcl	_	_
 10	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	9	nsubj	_	_
@@ -13137,6 +13138,6 @@
 13-14	'sa	_	_	_	_	_	_	_	_
 13	anns	anns	ADP	Sp	_	15	case	_	_
 14	an	an	ADP	Sp	_	13	fixed	_	_
-15	chearcall	cearcall	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	9	obl	_	_
+15	chearcall	cearcall	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	9	xcomp:pred	_	_
 16	meadhan	meadhan	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	15	amod	_	_
 

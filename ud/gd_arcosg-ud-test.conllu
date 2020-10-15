@@ -1769,7 +1769,7 @@
 # text = chan e ach an trèilear a th' aca airson an lòraidh
 1	chan	is	AUX	Wp-in	Polarity=Neg|Tense=Pres	5	cop	_	_
 2	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	fixed	_	_
-3	ach	ach	ADP	Sp	_	5	case	_	_
+3	ach	ach	PART	Sp	_	5	mark:prt	_	_
 4	an	an	DET	Tdsm	Gender=Masc|Number=Sing	5	det	_	_
 5	trèilear	trèilear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	_
 6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
@@ -3799,14 +3799,13 @@
 15	'	'	PUNCT	Fz	_	12	punct	_	SpaceAfter=No
 16	?	?	PUNCT	Fg	_	1	punct	_	_
 
-# comment = node 5: nsubj or obl?
 # sent_id = fp03_009b
 # text = Cha robh ach aon Lachlann 'na cheann-cinnidh air Cloinn Ghill-Eain eadar bàs Lachlainn Mhóir an 1598 agus 1751.
 1	Cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	robh	bi	VERB	V-s--d	Tense=Past	0	root	_	_
-3	ach	ach	ADP	Sp	_	5	case	_	_
+3	ach	ach	PART	Sp	_	5	mark:prt	_	_
 4	aon	aon	NUM	Mc	_	5	nummod	_	_
-5	Lachlann	Lachlann	PROPN	Nn-mn	Case=Nom|Gender=Masc	2	obl	_	_
+5	Lachlann	Lachlann	PROPN	Nn-mn	Case=Nom|Gender=Masc	2	nsubj	_	_
 6-7	'na	_	_	_	_	_	_	_	_
 6	an	an	ADP	Sp	_	8	case	_	_
 7	a	a	PRON	Dp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	8	nmod:poss	_	_
@@ -4566,10 +4565,10 @@
 23	Cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	24	mark:prt	_	_
 24	robh	bi	VERB	V-s--d	Tense=Past	21	parataxis	_	_
 25	aige	aige	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	24	xcomp:pred	_	_
-26	ach	ach	ADP	Sp	_	29	case	_	_
+26	ach	ach	PART	Sp	_	29	mark:prt	_	_
 27	fíor	fíor	ADJ	Ar	_	29	amod	_	_
 28	dhroch	droch	ADJ	Ar	_	29	amod	_	_
-29	bharail	barail	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	24	obl	_	_
+29	bharail	barail	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	24	nsubj	_	_
 30	air	air	ADP	Sp	_	31	case	_	_
 31	bàrdachd	bàrdachd	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	29	obl	_	_
 32	Mairearaid	Mairearad	PROPN	Nn-fg	Case=Gen|Gender=Fem	31	nmod	_	SpaceAfter=No
@@ -5734,11 +5733,12 @@
 29	fhèin	fèin	PRON	Px	Reflex=Yes	28	compound	_	SpaceAfter=No
 30	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# comment = what is going on with node 3?
 # sent_id = n01_035
 # text = Cha robh ach, thug e a aghaidh air an doras agus chunnaic e an fhuil a's an dol seachad e agus chuir e fhèin a leithid eile ann.
 1	Cha	cha	PART	Qn	PartType=Cmpl|Polarity=Neg	2	mark:prt	_	_
 2	robh	bi	VERB	V-s--d	Tense=Past	0	root	_	_
-3	ach	ach	ADP	Sp	_	5	case	_	SpaceAfter=No
+3	ach	ach	ADP	Sp	_	2	xcomp:pred	_	SpaceAfter=No
 4	,	,	PUNCT	Fi	_	5	punct	_	_
 5	thug	toir	VERB	V-s	Tense=Past	2	acl:relcl	_	_
 6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
