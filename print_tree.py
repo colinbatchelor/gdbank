@@ -1,12 +1,12 @@
+"""based on https://github.com/tylerneylon/explacy/blob/master/explacy.py"""
+
 import sys
-import pyconll
-import pprint
 import re
 from collections import defaultdict
+import pyconll
 
-# based on https://github.com/tylerneylon/explacy/blob/master/explacy.py
-
-def _print_table(rows):
+def print_table(rows):
+    """Pretty-prints the table"""
     col_widths = [max(len(s) for s in col) for col in zip(*rows)]
     fmt = ' '.join('%%-%ds' % width for width in col_widths)
     rows.insert(1, ['─' * width for width in col_widths])
@@ -16,12 +16,12 @@ def _print_table(rows):
         print(fmt % tuple(row))
 
 def _start_end(arrow):
-    start, end = arrow['from'], arrow['to']
-    mn = min(start, end)
-    mx = max(start, end)
-    return start, end, mn, mx
+    start = arrow['from']
+    end = arrow['to']
+    return start, end, min(start, end), max(start, end)
 
-def print_tree(conllu_sentence: str):
+def generate_table(conllu_sentence: str):
+    """Generate table with arrows for deps."""
     _do_print_debug_info = False
     sentence = {}
     conllu_sentence = [token for token in conllu_sentence if not token.is_multiword()]
@@ -43,13 +43,14 @@ def print_tree(conllu_sentence: str):
         if _do_print_debug_info:
             print('Arrow %d: "%s" -> "%s"' % (i, arrow['from'], arrow['to']))
         num_deps = 0
-        start, end, mn, mx = _start_end(arrow)
+        start, end, min_id, max_id = _start_end(arrow)
         for j, other in enumerate(arrows):
             if arrow is other:
                 continue
-            o_start, o_end, o_mn, o_mx = _start_end(other)
-            if ((start == o_start and mn <= o_end <= mx) or
-                (start != o_start and mn <= o_start <= mx)):
+            o_start = other['from']
+            o_end = other['to']
+            if ((start == o_start and min_id <= o_end <= max_id) or
+                (start != o_start and min_id <= o_start <= max_id)):
                 num_deps += 1
                 if _do_print_debug_info:
                     print('%d is over %d' % (i, j))
@@ -65,7 +66,7 @@ def print_tree(conllu_sentence: str):
         assert len(arrows_with_deps[0])
         arrow_index = arrows_with_deps[0].pop()
         arrow = arrows[arrow_index]
-        src, dst, mn, mx = _start_end(arrow)
+        src, dst, min_id, max_id = _start_end(arrow)
         height = 3
         if arrow['underset']:
             height = max(arrows[i]['height'] for i in arrow['underset']) + 1
@@ -92,7 +93,7 @@ def print_tree(conllu_sentence: str):
         lines[dst][-1] = set(['e', 's']) if goes_up else set(['e', 'n'])
 
         # Draw the adjoining vertical line.
-        for i in range(mn + 1, mx):
+        for i in range(min_id + 1, max_id):
             while len(lines[i]) < height - 1:
                 lines[i].append(' ')
             lines[i].append(set(['n', 's']))
@@ -105,10 +106,8 @@ def print_tree(conllu_sentence: str):
                 arrows_with_deps[arr['num_deps_left']].add(arr_i)
         # at end of loop
         num_arrows_left -= 1
-    if num_arrows_left >0 and arrows_with_deps[0] == set():
-        non_projective = True
-    else:
-        non_projective = False
+
+    could_not_print = num_arrows_left >0 and arrows_with_deps[0] == set()
 
     arr_chars = {'ew'  : '─',
                  'ns'  : '│',
@@ -119,40 +118,41 @@ def print_tree(conllu_sentence: str):
                  'esw' : '┬'}
     # Convert the character lists into strings.
     max_len = max(len(line) for line in lines)
-    for i in range(len(lines)):
+    for i, line in enumerate(lines):
         lines[i] = [arr_chars[''.join(sorted(ch))] if type(ch) is set else ch
-                    for ch in lines[i]]
+                    for ch in line]
         lines[i] = ''.join(reversed(lines[i]))
         lines[i] = ' ' * (max_len - len(lines[i])) + lines[i]
 
     # Compile full table to print out.
     rows = [['', '', 'deprel', 'form', 'lemma', 'upos', 'xpos', 'feats', 'head']]
     for i, token in enumerate(sentence):
-        ct = conllu_sentence[i]
-        rows.append([str(i + 1), lines[i], ct.deprel, ct.form, ct.lemma, ct.upos, ct.xpos, "|".join(f"{f}={','.join(ct.feats[f])}" for f in ct.feats), ct.head])
-    return (rows, non_projective)
+        conllu_token = conllu_sentence[i]
+        rows.append([str(i + 1), lines[i], conllu_token.deprel, conllu_token.form,
+                     conllu_token.lemma, conllu_token.upos, conllu_token.xpos,
+                     "|".join(f"{f}={','.join(conllu_token.feats[f])}" for f in conllu_token.feats),
+                     conllu_token.head])
+    return (rows, could_not_print)
 
 corpus = pyconll.load_from_file(sys.argv[1])
 if len(sys.argv) == 2:
-    for sentence in corpus:
-        tree, non_projective = print_tree(sentence)
+    for tree in corpus:
+        printed_tree, non_projective = generate_table(tree)
         if non_projective:
-            print(f"{sentence.id} is non-projective")
+            print(f"{tree.id} is non-projective")
         else:
-            print(f"{sentence.id}")
-        _print_table(tree)
+            print(f"{tree.id}")
+        print_table(printed_tree)
 else:
-    for sentence in corpus:
-        if re.match(sys.argv[2], sentence.id):
+    for tree in corpus:
+        if re.match(sys.argv[2], tree.id):
             if len(sys.argv) == 4:
-                slice = sentence[0:int(sys.argv[3])]
+                tree_slice = [s for s in tree if "-" not in s.id][0:int(sys.argv[3])]
             else:
-                slice = sentence
-            tree, non_projective = print_tree(slice)
+                tree_slice = tree
+            printed_tree, non_projective = generate_table(tree_slice)
             if non_projective:
-                print(f"{sentence.id} is non-projective")
+                print(f"{tree.id} is non-projective")
             else:
-                print(f"{sentence.id}")
-            _print_table(tree)
-            
-            
+                print(f"{tree.id}")
+            print_table(printed_tree)

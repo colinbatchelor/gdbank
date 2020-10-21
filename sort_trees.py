@@ -1,3 +1,4 @@
+"""Sorts trees in a conll file by sentence id."""
 import sys
 import pyconll
 
@@ -9,4 +10,3 @@ with open(sys.argv[2],'w') as clean:
     for sentence in sorted(corpus, key= lambda x: x.id):
         clean.write(sentence.conll())
         clean.write('\n\n')
-

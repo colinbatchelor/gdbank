@@ -22,6 +22,10 @@ with open(sys.argv[2],'w') as fixed:
                 if int(token.id) != i:
                     mapping[token.id] = str(i)
                     token.id = str(i)
+            else:
+                head = int(token.id.split('-')[0])
+                tail = int(token.id.split('-')[1])
+                token.id = f"{str(i + 1)}-{str(i + 1 + tail - head)}"
         for token in sentence:
             if token.head in mapping:
                 token.head = mapping[token.head]

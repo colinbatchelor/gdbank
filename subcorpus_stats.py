@@ -1,10 +1,10 @@
+"""ARCOSG-specific tool to count words in subcorpora."""
 import csv
-import os
 import sys
-import pyconll
 from collections import Counter
+import pyconll
 
-dict = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[], "s":[]}
+result = {"all":[], "fp":[], "f":[], "ns":[], "n":[], "pw":[], "c":[], "p":[], "s":[]}
 lengths = {"all":35928 + 33720,
            "fp":5710 + 3179, "f":8042,
            "ns":4644 + 3503,
@@ -15,6 +15,26 @@ lengths = {"all":35928 + 33720,
 files = Counter()
 tokens = Counter()
 
+def get_subcorpus(sent_id):
+    """Determines subcorpus from id"""
+    if sent_id.startswith('fp'):
+        return "fp"
+    elif sent_id.startswith('f'):
+        return "f"
+    elif sent_id.startswith('ns'):
+        return "ns"
+    elif sent_id.startswith('n'):
+        return "n"
+    elif sent_id.startswith('pw'):
+        return "pw"
+    elif sent_id.startswith('c'):
+        return "c"
+    elif sent_id.startswith('p'):
+        return "p"
+    elif sent_id.startswith('s'):
+        return "s"
+    return "x"
+
 with open(sys.argv[1], 'w') as g:
     writer = csv.writer(g)
     writer.writerow(['id', 'subcorpus', 'len'])
@@ -24,24 +44,17 @@ with open(sys.argv[1], 'w') as g:
             file = sentence.id.split('_')[0]
             files[file] +=1
             tokens[file] += len(sentence)
-            dict["all"].append(sentence)
-            if sentence.id.startswith('fp'): sc = "fp"
-            elif sentence.id.startswith('f'): sc = "f"
-            elif sentence.id.startswith('ns'): sc = "ns"
-            elif sentence.id.startswith('n'): sc = "n"
-            elif sentence.id.startswith('pw'): sc = "pw"
-            elif sentence.id.startswith('c'): sc = "c"
-            elif sentence.id.startswith('p'): sc = "p"
-            elif sentence.id.startswith('s'): sc = "s"
-            dict[sc].append(sentence)
+            result["all"].append(sentence)
+            sc = get_subcorpus(sentence.id)
+            result[sc].append(sentence)
             writer.writerow([sentence.id, sc, len(sentence)])
 
-for subcorpus in dict:
-    size = len(dict[subcorpus])
+for subcorpus in result:
+    size = len(result[subcorpus])
     print("%s: %s trees, longest: %s, mean: %.2f, shortest: %s, total %s, %.2f percent complete" %
           (subcorpus, size,
-           max([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
-           sum([len(s) for s in dict[subcorpus]])/len(dict[subcorpus]) if size > 0 else 0,
-           min([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
-           sum([len(s) for s in dict[subcorpus]]) if size > 0 else 0,
-           100*sum([len(s) for s in dict[subcorpus]])/lengths[subcorpus]))
+           max([len(s) for s in result[subcorpus]]) if size > 0 else 0,
+           sum([len(s) for s in result[subcorpus]])/len(result[subcorpus]) if size > 0 else 0,
+           min([len(s) for s in result[subcorpus]]) if size > 0 else 0,
+           sum([len(s) for s in result[subcorpus]]) if size > 0 else 0,
+           100*sum([len(s) for s in result[subcorpus]])/lengths[subcorpus]))

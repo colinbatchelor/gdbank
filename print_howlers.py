@@ -1,3 +1,4 @@
+"""Looks for really long dependencies."""
 import sys
 import pyconll
 
@@ -9,5 +10,5 @@ for sentence in corpus:
             start = int(token.id)
             end = int(token.head)
             score = abs(start-end)
-            if score > min_score and score < len(sentence) - 1:
+            if len(sentence) - 1 > score > min_score:
                 print(f"{sentence.id} {token.id} {score}")

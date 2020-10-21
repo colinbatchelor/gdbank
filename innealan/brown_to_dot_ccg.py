@@ -1,26 +1,25 @@
 # -*- coding: utf-8 -*-
-from acainn import Lemmatizer, Retagger, Subcat, Typer
 import pickle
 import sys
+from acainn import Lemmatizer, Retagger, Subcat, Typer
 
-# outputs string suitable for XMLification further down the pipeline
-def tidyword(s):
-    if s == '''"''':
+def tidy_word(string):
+    """outputs string suitable for XMLification further down the pipeline"""
+    if string == '''"''':
         return "&quot;"
-    else:
-        return s.replace("&", "&amp;")
+    return string.replace("&", "&amp;")
 
 brownfile = open(sys.argv[1], 'rb')
 corpus = pickle.load(brownfile)
 brownfile.close()
 output = open(sys.argv[2], 'w')
 # features
-with open("resources/features.txt") as f:
-    for line in f:
+with open("resources/features.txt") as file:
+    for line in file:
         output.write(line)
 # type-changing and type-raising rules
-with open("resources/rules.txt") as r:
-    for line in r:
+with open("resources/rules.txt") as rules:
+    for line in rules:
         output.write(line)
 retagger = Retagger()
 typer = Typer()
@@ -33,9 +32,9 @@ for surface, pos in corpus:
         for tag in tags:
             newtagtype = typer.type(surface, pos, tag)
             newtag = newtagtype[0]
-            type = newtagtype[1]
-            families.add("family %s { entry: %s; }" % (newtag, type))
-            words.add('word "%s_%s":%s; # %s' % (tidyword(surface), newtag, newtag, pos))
+            newtype = newtagtype[1]
+            families.add("family %s { entry: %s; }" % (newtag, newtype))
+            words.add('word "%s_%s":%s; # %s' % (tidy_word(surface), newtag, newtag, pos))
 
 for family in sorted(families):
     output.write(family + '\n')
