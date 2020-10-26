@@ -54,7 +54,7 @@ def check_targets(sentence, score):
     """Checks that for example cc is the leaf of a conj."""
     target_ids = {}
     targets = {"cc":["conj"], "case":["obl","xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]}
-    for token in [t for t in sentence if not t.deprel in targets]:
+    for token in [t for t in sentence if t.deprel in targets and not t.is_multiword()]:
         target_ids[int(token.head)] = token.deprel
 
     for token in [s for s in sentence if not s.is_multiword()]:
