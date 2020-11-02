@@ -1,63 +1,67 @@
+"""Mixture of generically-useful classes, UD-specific ones and CCG-specific ones."""
 import os
 import re
 import csv
 
+class Morphology:
+    """Static methods for grammar checker."""
+    @staticmethod
+    def can_follow_de(surface: str) -> bool:
+        """this is dè the interrogative"""
+        return surface in ["cho", "am", "an", "a'", "na", "mar", "bha", "tha"]
+
+    @staticmethod
+    def lenited(surface: str) -> bool:
+        """
+Generic test for whether the orthographic form of a word has been lenited.
+
+Words beginning with n, l and r also lenite but this is orthographically silent.
+"""
+        unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", surface)
+        return bool(unlenitable) | (surface[1] == 'h')
+
+    @staticmethod
+    def lenited_pd(surface: str) -> bool:
+        """
+TODO: Work out why this is separate from the previous function and delete if unnecessary.
+"""
+        unlenitable = surface.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
+        return unlenitable | (surface[1] == 'h')
+
+    @staticmethod
+    def chalenited_pd(surface: str) -> bool:
+        """There are different rules for lenition after cha."""
+        unlenitable = surface.match(r"[AEIOUaeiouLlNnRrDTSdts]")
+        return unlenitable | (surface[1] == 'h')
+
+    @staticmethod
+    def ndlenited_pd(surface: str) -> bool:
+        """TODO: rename to non_dental_lenited."""
+        unlenitable = surface.match(r"[AEIOUaeiouDdTtNnRrSs]")
+        return unlenitable | (surface[1] == 'h')
+
 class Lemmatizer:
+    """Relies heavily on POS information."""
     def __init__(self):
-        self.irregulars = [
-            ('bi', ['tha', 'bha', 'robh', 'eil', 'bheil', 'bith', 'bhith',
-                    "bh'", "bhà", "thà", "th'", 'bhios', 'bidh', 'biodh',
-                    'bhiodh', "'eil", "bhithinn", "bhitheadh", "bitheamaid",
-                    "thathas", "thathar", "robhar"]),
-            ('arsa', ["ars'", "ar", "ars", "as"]),
-            ('abair', ['ràdh', 'thuirt', 'their', 'theirear']),
-            ('beir', ['breith', 'bhreith', 'rug', 'beiridh']),
-            ('cluinn', ['cluinntinn', 'chluinntinn', 'cuala', "cual'",
-                        'chuala', 'cluinnidh']),
-            ('rach', ['chaidh', 'dol', 'dhol', 'thèid', 'tèid', "deach",
-                      "deachaidh"]),
-            ('dèan', ['rinn', 'dèanamh', 'dhèanamh', 'nì']),
-            ('faic', ['chunnaic', 'chunna', 'faicinn', 'fhaicinn', 'chì',
-                      'chithear', 'chitheadh', 'fhaca', 'faca']),
-            ('faigh', ['faighinn', 'fhaighinn', 'fhuair', 'gheibh',
-                       'gheibhear']),
-            ('ruig', ['ruigsinn', 'ràinig', 'ruigidh']),
-            ('tadhail', ['thadhladh']),
-            ('toir', ['toirt', 'thoirt', 'thug', 'bheir', 'bheirear', 'tug']),
-            ('thig', ['tighinn', 'thighinn', 'thàinig', 'thig', 'tig',
-                      'tàinig', 'dàinig'])]
-        self.prepositions = {
-            'ag':["a'", "'"],
-            'aig':["aga(m|d|inn|ibh)|aige|aice|aca|a'[dm]"],
-            'air':["or[mt]|oir(re|bh|nn)|orra"],
-            'airson':["'?son"],
-            'an': ["'?s?a[mn]", "'?sa", "'?na", "anns?(_a[nm])?", "annam",
-                   "innte", "a's", "'nam", "anns"],
-            'as':["às", "as.*", "ais.*", "á"],
-            'bho':["(bh)?o", "(bh)?ua(m|t)"],
-            'eadar':["ea.*"],
-            'fo':["fo.*"],
-            'gu': ["chun", "gu_ruige", "(th)?ui[cg]e", "(th)?uga(m|d|inn|ibh)",
-                   "(th)?uca"],
-            'de':["dh?(en?|iom|[ei]th|inn|iu?bh)"],
-            'do':["dh(à|am|[oò]mh|i|ui?t|u'|uinn|an?|[au]ib[h'])(-?s['a]?)?e?"],
-            'le':["le.*"],
-            'ri':["ri(um|ut(ha)?|s)", "ru.*", "r'"],
-            'ro':["ro.*"],
-            'thar':["tha.*"]
-        }
+        folder = os.path.dirname(__file__)
+        self.prepositions = {}
+        prep_path = os.path.join(folder, 'resources', 'prepositions.csv')
+        with open(prep_path) as file:
+            reader = csv.reader(file)
+            for row in reader:
+                self.prepositions[row[0]] = row[1]
         self.possessives = {
             "Dp1s": "mo", "Dp2s": "do", "Dp3s": "a",
             "Dp1p": "ar", "Dp2p": "ur", "Dp3p": "an"
-        } 
+        }
         self.pronouns = {
             "mi": ["mise"], "thu": ["tu", "tusa", "thusa"],
             "e": ["esan"], "i": ["ise"],
             "sinn": ["sinne"], "sibh": ["sibhse"], "iad": ["iadsan"],
             "fèin": ["fhìn"]
             }
-        folder = os.path.dirname(__file__)
-        vn_path = os.path.join(folder, 'resources', 'vns.csv')
+
+        vn_path = os.path.join(folder, 'resources', 'verbal_nouns.csv')
         self.vns = []
         with open(vn_path) as file:
             reader = csv.reader(file)
@@ -70,150 +74,121 @@ class Lemmatizer:
             for row in reader:
                 self.lemmata[row[0]] = row[1]
 
-    def can_follow_de(self, surface: str) -> bool:
-        """this is dè the interrogative"""
-        return surface in ["cho", "am", "an", "a'", "na", "mar", "bha", "tha"]
-
-    def lenited(self, surface: str) -> bool:
-        unlenitable = re.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]", surface)
-        return bool(unlenitable) | (surface[1] == 'h')
-
-    def lenited_pd(self, surface: str) -> bool:
-        unlenitable = surface.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
-        return unlenitable | (surface[1] == 'h')
-
-    def chalenited_pd(self, surface: str) -> bool:
-        """There are different rules for lenition after cha."""
-        unlenitable = surface.match(r"[AEIOUaeiouLlNnRrDTSdts]")
-        return unlenitable | (surface[1] == 'h')
-
-    def ndlenited_pd(self, surface: str) -> bool:
-        unlenitable = surface.match(r"[AEIOUaeiouDdTtNnRrSs]")
-        return unlenitable | (surface[1] == 'h')
-
     def delenite(self, surface: str) -> str:
+        """Removes h as the second letter except for special cases."""
         if len(surface) < 3:
+            return surface
+        if surface in ["Shaw", "Christie"]:
             return surface
         return surface[0] + surface[2:] if surface[1] == 'h' else surface
 
     def deslenderize(self, surface: str) -> str:
+        """Converts from slender to broad."""
         if re.match('.*ei.$', surface):
             return re.sub("(.*)ei(.)", r"\1ea\2", surface)
         return re.sub("(.*[aiouàòù])i([bcdfghmnpqrst]+)[e']?$", r"\1\2", surface)
 
-    def lemmatize_adjective(self, surface: str) -> str:
+    def lemmatize_adjective(self, surface: str, xpos: str) -> str:
+        """The small number of special plurals are dealt with in lemmata.csv"""
+        if xpos in ["Apc", "Aps"]:
+            return self.lemmatize_comparative(surface)
         surface = self.delenite(surface)
+        if surface in self.lemmata:
+            return self.lemmata[surface]
         if surface.endswith("òir"):
             return re.sub("òir$", "òr", surface)
         return surface
 
     def lemmatize_comparative(self, surface: str) -> str:
-        specials = {
-            "àille":"àlainn", "aotruime":"aotrom",
-            "bige":"beag", "duirche":"dorcha",
-            "fhasa":"furasta",
-            "fhaide":"fada", "fhaid'":"fada",
-            "fhaisge":"faisg", "fhaisg'":"faisg",
-            "fheàrr":"math", "fhearr":"math", "fhèarr":"math",
-            "fheàirrde":"math",
-            "iomchaidhe":"iomchaidh",
-            "ìsle":"ìosal",
-            "leatha":"leathann",
-            "mheasaile":"measail",
-            "mhò":"mòr","mhuth'":"mòr", "motha":"math",
-            "miona":"mion", "miosa":"dona", "mhisde":"dona",
-            "lugha":"beag",
-            "righinne":"righinn",
-            "righne":"righinn",
-            "shine":"sean", "sine":"sean",
-            "truime":"trom"
-        }
-        if surface in specials:
-            return specials[surface]
-        if re.match(".*i[cl]e$",surface):
-            return re.sub("(i[cl])e$", r"\1", surface)
-        return self.delenite(self.deslenderize(surface))
+        """Relies on external file. If surface not in file delenites and slenderises."""
+        if surface in self.lemmata:
+            return self.lemmata[surface]
+        if re.match(".*i[cgl]e$",surface):
+            return re.sub("(i[cgl])e$", r"\1", surface)
+        return re.sub("e$", "", self.delenite(self.deslenderize(surface)))
 
-    def lemmatize_noun(self, s: str, xpos: str) -> str:
-        if s not in ["Shaw", "Christie"]:
-            s = self.delenite(s)
-        if s not in ["dusan", "mìosan", "pìosan"]:
-            s = re.sub('-?san$', '', s)
+    def lemmatize_proper_noun(self, surface: str, oblique: bool) -> str:
+        """May need xpos information to deal with the vocative."""
+        surface = self.delenite(surface)
+        if surface == "a'":
+            return "an"
+        surface = surface.replace("Mic", "Mac")
+        if surface in self.lemmata:
+            return self.lemmata[surface]
+        if oblique and surface not in ["Iain", "Keir", "Magaidh"]:
+            return self.deslenderize(surface)
+        return surface
+
+    def lemmatize_noun(self, surface: str, xpos: str) -> str:
+        """
+        Master function which uses other functions for Nc, Nn, Nt and Nv.
+        Nf is _usually_ more like a preposition so is dealt with elsewhere.
+        """
         oblique = re.match('.*[vdg]$', xpos)
-        if s.endswith("'") and s!= "a'":
-            s = self.remove_apostrophe(s)
-        if xpos == "Nv":
-            return self.lemmatize_vn(s)
-        if xpos == "Nt":
-            return "Alba" if s == "Albann" else s
-        if s.startswith("luchd"):
-            return s.replace("luchd", "neach")
         if xpos.startswith("Nn"):
-            if s == "a'":
-                return "an"
-            s = s.replace("Mic", "Mac")
-            if s in self.lemmata:
-                return self.lemmata[s]
-            if oblique and s not in ["Iain", "Keir", "Magaidh"]:
-                return self.deslenderize(s)
-            return s
-        if xpos.startswith("Ncp"):
-            if s in self.lemmata:
-                return self.lemmata[s]
-            if s.endswith("eachan"):
-                return re.sub("achan$", "", s)
-            if s.endswith("achan"):
-                return re.sub("chan$","",s)
-            if s.endswith('aich'):
-                return s.replace('aich','ach')
-            if s.endswith('aidhean'):
-                return s.replace('aidhean', 'adh')
-            if s.endswith("aichean"):
-                return s.replace("aichean", "ach")
-            if s.endswith("ichean"):
-                return s.replace("ichean", "iche")
-            if s.endswith("ean"):
-                return re.sub('ean$', '', s)
-            if s.endswith("eannan"):
-                return re.sub("annan$", "", s)
-            if s.endswith("nnan"):
-                return s.replace('nnan', '')
-            if s.endswith("an") and s != "ealan":
-                return re.sub('an$', '', s)
-        if oblique:
-            if s in self.lemmata:
-                return self.lemmata[s]
-            if re.match(".*eige?$", s):
-                return re.sub("eige?$", "eag", s)
-            if s.endswith("aich") and 'm' in xpos:
-                return re.sub("aich$", "ach", s)
-            if s.endswith("aidh") and 'm' in xpos:
-                return re.sub("aidh$", "adh", s)
-            if re.match(".*[bcdfghlmnprst]ich$", s):
-                return re.sub("ich$", "each", s)
-            if re.match(".*[au]is$",s) and 'm' in xpos:
-                return re.sub("is$", "s", s)
-            if 'f' in xpos and s.endswith('the'):
-                return re.sub("e$", "", s)
-        if s in self.lemmata:
-            return self.lemmata[s]
-        return s
+            return self.lemmatize_proper_noun(surface, oblique)
 
-    def lemmatize_possessive(self, surface: str, xpos: str) -> str:
+        surface = self.delenite(surface)
+        if surface.endswith("'") and surface != "a'":
+            surface = self.remove_apostrophe(surface)
+        if surface in self.lemmata:
+            return self.lemmata[surface]
+
+        if surface not in ["dusan", "mìosan", "pìosan"]:
+            surface = re.sub('-?san$', '', surface)
+
+        if xpos == "Nv":
+            return self.lemmatize_vn(surface)
+        if xpos == "Nt":
+            return "Alba" if surface in ["Albann", "Albainn"] else surface
+        return self.lemmatize_common_noun(surface, xpos, oblique)
+
+    def lemmatize_common_noun(self, surface: str, xpos: str, oblique: bool) -> str:
+        """Looks as if it needs to be refactored."""
+        if surface.startswith("luchd"):
+            return surface.replace("luchd", "neach")
+
+        plural_replacements = [
+            ('eachan', 'e'), ('achan', 'a'), ('aich', 'ach'),
+            ('aidhean', 'adh'), ('aichean', 'ach'), ('ichean', 'iche'),
+            ('ean', ''), ('eannan', 'e'), ('ean', ''), ('annan', 'a'), ('an', '')
+            ]
+
+        if xpos.startswith("Ncp"):
+            for replacement in plural_replacements:
+                if surface.endswith(replacement[0]):
+                    return re.sub(f"{replacement[0]}$", replacement[1], surface)
+        m_replacements = [('aich', 'ach'), ('aidh', 'adh'), ('ais', 'as'), ('uis', 'us')]
+        f_replacements = [('eig', 'eag'), ('eige', 'eag'), ('the', 'th')]
+        if oblique and 'f' in xpos:
+            for replacement in f_replacements:
+                if surface.endswith(replacement[0]):
+                    return re.sub(f"{replacement[0]}$", replacement[1], surface)
+        if oblique and 'm' in xpos:
+            for replacement in m_replacements:
+                if surface.endswith(replacement[0]):
+                    return re.sub(f"{replacement[0]}$", replacement[1], surface)
+        if re.match(".*[bcdfghlmnprst]ich$", surface):
+            return re.sub("ich$", "each", surface)
+        return surface
+
+    def lemmatize_possessive(self, xpos: str) -> str:
+        """Does not look at the surface, only the POS tag."""
         return self.possessives[xpos[0:4]]
-    
+
     def lemmatize_preposition(self, surface: str) -> str:
+        """Relies on resources/prepositions.csv"""
         surface = surface.replace(' ','_')
         surface = re.sub('^h-', '', surface)
         if not re.match("^'?san?$", surface):
             surface = re.sub('-?san?$','',surface)
-        for key in self.prepositions:
-            for pattern in self.prepositions[key]:
-                if re.match("^("+pattern+")$", surface):
-                    return key
+        for pattern in self.prepositions:
+            if re.match("^("+pattern+")$", surface):
+                return self.prepositions[pattern]
         return surface if surface.startswith('bh') else self.delenite(surface)
 
     def lemmatize_pronoun(self, surface: str) -> str:
+        """Consider rewriting based on POS tag."""
         for key in self.pronouns:
             if surface in self.pronouns[key]:
                 return key
@@ -221,38 +196,31 @@ class Lemmatizer:
             return self.delenite(surface)
         return surface
 
-    def lemmatize_verb(self, s: str, xpos: str) -> str:
-        for irregular in self.irregulars:
-            if s in irregular[1]:
-                return irregular[0]
-        if xpos.startswith("Vm-1p"):
-            return re.sub('e?amaid$', '', s)
-        # singular imperative; easiest to deal with
-        if xpos in ["Vm-2s", "Vm"]:
-            return s
-        if xpos == "Vm-2p": # plural imperative
-            return re.sub('a?ibh$', '', s)
-        if xpos == "V-f":
-            return re.sub('a?idh$', '', s)
+    def lemmatize_verb(self, surface: str, xpos: str) -> str:
+        """Hybrid replacement dictionary/XPOS method."""
+        for form in self.lemmata:
+            if surface == form:
+                return self.lemmata[form]
+        replacements = [
+            ("Vm-1p", "e?amaid$"), ("Vm-2p", "a?ibh$"), ("V-f", "a?idh$"),
+            ("V-s0", "e?adh$"), ("V-p0", "e?ar$"), ("V-f0", "e?ar$"),
+            ("V-h", "e?adh$"), ("Vm-3", "e?adh$")
+        ]
+        for replacement in replacements:
+            if xpos.startswith(replacement[0]):
+                surface = self.delenite(surface)
+                return re.sub(replacement[1], "", surface)
+
         if xpos.endswith("r"): # relative form
-            if s.endswith("eas"):
-                return s.replace("eas","")
-            if s.endswith("as"):
-                return s.replace("as","")
-        if xpos.startswith("V-s0"):
-            return self.delenite(re.sub('e?adh$', '', s))
-        if xpos.startswith("V-p0") or xpos.startswith("V-f0"):
-            return self.delenite(re.sub('e?ar$', '', s))
-        if xpos.startswith("V-s"): # past tense
-            return self.delenite(s)
-        # conditional or third person imperative
-        if xpos.startswith("V-h") or xpos.startswith("Vm-3"):
-            return self.delenite(re.sub('e?adh$', '', s))
-        if xpos.endswith("d"): # dependent form
-            return self.delenite(s)
-        return self.delenite(s)
+            if surface.endswith("eas"):
+                return surface.replace("eas","")
+            if surface.endswith("as"):
+                return surface.replace("as","")
+
+        return self.delenite(surface)
 
     def lemmatize_vn(self, surface: str) -> str:
+        """Hybrid replacement dictionary/XPOS method"""
         for verbal_noun in self.vns:
             if self.delenite(surface) in verbal_noun[1]:
                 return verbal_noun[0]
@@ -271,6 +239,7 @@ class Lemmatizer:
         return self.delenite(surface)
 
     def remove_apostrophe(self, surface: str) -> str:
+        """Makes a guess based on slenderness of last vowel"""
         result = re.sub("'$", "", surface)
         stem = re.sub("[bcdfghlmnprst]+'$", "", surface)
         if re.match(".*[aouàòù]$", stem):
@@ -279,41 +248,35 @@ class Lemmatizer:
 
     def lemmatize(self, surface: str, xpos: str) -> str:
         """Lemmatize surface based on xpos."""
-        s = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'")
-        s = re.sub("[’‘]", "'", s)
-        s = re.sub("^(h-|t-|n-|[Dd]h')", "", s)
-        if xpos == "Q--s":
-            return "do"
-        if not (xpos in ["Nt", "Up", "Y"]) and not xpos.startswith("Nn"):
-            s = s.lower()
+        surface = surface.replace('\xe2\x80\x99', "'").replace('\xe2\x80\x98', "'")
+        surface = re.sub("[’‘]", "'", surface)
+        surface = re.sub("^(h-|t-|n-|[Dd]h')", "", surface)
+        specials = [("Q--s", "do"), ("W", "is"), ("Csw", "is"), ("Td", "an")]
+        for special in specials:
+            if xpos.startswith(special[0]):
+                return special[1]
+        if xpos[0:2] not in ["Nn", "Nt", "Up", "Y"]:
+            surface = surface.lower()
         if xpos.startswith("R") or xpos == "I":
-            if s not in ["bhuel", "chaoidh", "cho", "fhathast", "mhmm",
+            if surface not in ["bhuel", "chaoidh", "cho", "fhathast", "mhmm",
                                "thall", "thairis", "thì"]:
-                return self.delenite(s)
-        if xpos in ["Apc", "Aps"]:
-            return self.lemmatize_comparative(s)
-        if xpos.startswith("Aq") or xpos.startswith("Ar"):
-            return self.lemmatize_adjective(s)
-        # do in this order because of "as"
-        if xpos.startswith("W") or xpos == "Csw":
-            return "is"
-        if xpos.startswith("Td"):
-            return "an"
-        if xpos.startswith("Sa") or xpos.startswith("Sp") or xpos.startswith("Pr"):
-            return self.lemmatize_preposition(s)
+                return self.delenite(surface)
+        if xpos[0:2] in ["Ap", "Aq", "Ar", "Av"]:
+            return self.lemmatize_adjective(surface, xpos)
+        if xpos[0:2] in ["Sa", "Sp", "Pr", "Nf"]:
+            return self.lemmatize_preposition(surface)
         if xpos.startswith("Pp") or xpos == "Px":
-            return self.lemmatize_pronoun(s)
+            return self.lemmatize_pronoun(surface)
         if xpos.startswith("V"):
-            return self.lemmatize_verb(s, xpos)
+            return self.lemmatize_verb(surface, xpos)
         if xpos.startswith("N"):
-            return self.lemmatize_noun(s, xpos)
-        if xpos.startswith("A"):
-            return self.delenite(s)
+            return self.lemmatize_noun(surface, xpos)
         if xpos.startswith("Dp"):
-            return self.lemmatize_possessive(s, xpos)
-        return s
+            return self.lemmatize_possessive(xpos)
+        return surface
 
 class CCGRetagger:
+    """Relies on the subcategoriser, largely."""
     def __init__(self):
         self.sub = Subcat()
         self.retaggings = {}
@@ -341,12 +304,15 @@ class CCGRetagger:
         }
 
     def retag_article(self, pos):
+        """Articles are N/N unless they are in the genitive in which case they are N/N/N/N"""
         return ['DET'] if not pos.endswith('g') else ['DETNMOD']
 
-    def retag_verb(self, surface, pos):
-        return self.sub.subcat_tuple(surface, pos)
+    def retag_verb(self, surface, xpos):
+        """Relies on surface."""
+        return self.sub.subcat_tuple(surface, xpos)
 
     def retag(self, surface, rawpos):
+        """Relies on surface and xpos."""
         # assume it was meant all along
         pos = rawpos.replace('*','')
         if surface.lower() in self.specials:
@@ -379,9 +345,11 @@ class Subcat:
                         self.mappings[line.strip()] = subcats
 
     def subcat_tuple(self, surface, pos):
+        """Wrapper for subcat. Relies on lemmatizer."""
         return self.subcat(self.lemmatizer.lemmatize(surface, pos))
 
     def subcat(self, lemma):
+        """Relies on lemma."""
         if lemma in self.mappings.keys():
             return self.mappings[lemma]
         return self.mappings["default"]
@@ -393,13 +361,11 @@ class Features:
         self.genders = {'m':'Masc', 'f':'Fem'}
         self.numbers = {'s':'Sing', 'p':'Plur', 'd':'Dual'}
         self.tenses = {"p":"Pres", "s":"Past", "f":"Fut"}
-        self.parttypes_u = {"a":"Ad", "c":"Comp", "g":"Inf", "v":"Voc",
-                            "p":"Pat", "o":"Num"}
-        self.parttypes_q = {"Qa":"Cmpl", "Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb",
-                            "Qnm":"Vb"}
+        self.parttypes = {"Qa":"Cmpl", "Qn":"Cmpl", "Q-r":"Vb", "Qnr":"Vb", "Qq":"Vb",
+                            "Qnm":"Vb", "Ua":"Ad", "Uc":"Comp", "Ug":"Inf", "Uv":"Voc",
+                            "Up":"Pat", "Uo":"Num"}
         self.polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
         self.prontypes_q = {"Q-r":"Rel", "Qnr":"Rel", "Qq":"Int"}
-        self.moodtypes_q = {"q":"Int"}
 
     def feats(self, xpos: str) -> dict:
         """Only seems to work for adjectives, nouns and articles?"""
@@ -430,7 +396,6 @@ class Features:
     def feats_cop(self, xpos: str) -> dict:
         """Marks tense, mood, polarity and whether relative."""
         result = {}
-        print(f"{xpos}")
         if len(xpos) > 1:
             result["Tense"] = [self.tenses[xpos[1]]]
         if len(xpos) > 2:
@@ -444,8 +409,6 @@ class Features:
                 result["Polarity"] = ["Neg"]
             elif xpos[4] == "a":
                 result["Polarity"] = ["Aff"]
-        print(result)
-
         return result
 
     def feats_det(self, xpos: str) -> dict:
@@ -495,12 +458,10 @@ class Features:
     def feats_part(self, xpos: str) -> dict:
         """Marks particle type, mood, polarity, pronoun type, tense and mood."""
         result = {}
-        if xpos[1] in self.parttypes_u:
-            result["PartType"] = [self.parttypes_u[xpos[1]]]
-        if xpos[1] in self.moodtypes_q:
-            result["Mood"] = [self.moodtypes_q[xpos[1]]]
-        if xpos in self.parttypes_q:
-            result["PartType"] = [self.parttypes_q[xpos]]
+        if xpos[1] == "q":
+            result["Mood"] = ["Int"]
+        if xpos in self.parttypes:
+            result["PartType"] = [self.parttypes[xpos]]
             if xpos in self.polartypes_q:
                 result["Polarity"] = [self.polartypes_q[xpos]]
             if xpos in self.prontypes_q:
