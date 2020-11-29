@@ -53,7 +53,10 @@ def check_ranges(sentence, score, warnings):
 def check_targets(sentence, score):
     """Checks that for example cc is the leaf of a conj."""
     target_ids = {}
-    targets = {"cc":["conj"], "case":["obl","xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]}
+    targets = {
+        "cc": ["conj"],
+        "case": ["obl","xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]
+    }
     for token in [t for t in sentence if t.deprel in targets and not t.is_multiword()]:
         target_ids[int(token.head)] = token.deprel
 
@@ -130,19 +133,22 @@ def check_clauses(sentence, score, warnings):
 
     return score, warnings
 
-corpus = pyconll.load_from_file(sys.argv[1])
 
-SCORE = 0
-WARNINGS = 0
+def validate_corpus(corpus):
+    """Prints a number of errors and a number of warnings."""
+    total_score = 0
+    total_warnings = 0
 
-for tree in corpus:
-    SCORE = check_misc(tree, SCORE)
-    SCORE, WARNINGS = check_ranges(tree, SCORE, WARNINGS)
-    SCORE = check_targets(tree, SCORE)
-    SCORE = check_bi(tree, SCORE)
-    SCORE, WARNINGS = check_clauses(tree, SCORE, WARNINGS)
+    for tree in corpus:
+        total_score = check_misc(tree, total_score)
+        total_score, total_warnings = check_ranges(tree, total_score, total_warnings)
+        total_score = check_targets(tree, total_score)
+        total_score = check_bi(tree, total_score)
+        total_score, total_warnings = check_clauses(tree, total_score, total_warnings)
 
-if SCORE == 0:
-    print("*** PASSED ***")
-else:
-    print("*** FAILED *** with %s error%s" % (SCORE, "s" if SCORE > 1 else ""))
+    if total_score == 0:
+        print("*** PASSED ***")
+    else:
+        print("*** FAILED *** with %s error%s" % (total_score, "s" if total_score > 1 else ""))
+
+validate_corpus(pyconll.load_from_file(sys.argv[1]))
