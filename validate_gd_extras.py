@@ -50,7 +50,7 @@ def check_ranges(sentence, score, warnings):
         prev_token = token
     return score, warnings
 
-def check_targets(sentence, score):
+def check_target_deprels(sentence, score):
     """Checks that for example cc is the leaf of a conj."""
     target_ids = {}
     targets = {
@@ -67,6 +67,20 @@ def check_targets(sentence, score):
             if actual not in correct:
                 score +=1
                 print(f"E {sentence.id} {token.id} target of {target_ids[int(token.id)]} must be one of ({', '.join(correct)}) not {actual}")
+    return score
+
+def check_target_upos(sentence, score):
+    """Checks that for example amod is ADJ"""
+    target_ids = {}
+    targets = {
+        "amod": ["ADJ"],
+        "nmod": ["NOUN", "PRON", "PROPN"]
+    }
+    for token in [s for s in sentence if not s.is_multiword()]:
+        if token.deprel in targets:
+            if token.upos not in targets[token.deprel]:
+                score += 1
+                print(f"E {sentence.id} {token.id} UPOS for {token.deprel} must be one of ({', '.join(targets[token.deprel])}) not {token.upos}")
     return score
 
 def check_bi(sentence, score):
@@ -142,7 +156,8 @@ def validate_corpus(corpus):
     for tree in corpus:
         total_score = check_misc(tree, total_score)
         total_score, total_warnings = check_ranges(tree, total_score, total_warnings)
-        total_score = check_targets(tree, total_score)
+        total_score = check_target_deprels(tree, total_score)
+        total_score = check_target_upos(tree, total_score)
         total_score = check_bi(tree, total_score)
         total_score, total_warnings = check_clauses(tree, total_score, total_warnings)
 
