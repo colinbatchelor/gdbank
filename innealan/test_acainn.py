@@ -222,14 +222,8 @@ class TestLemmatizer(unittest.TestCase):
                 self.assertEqual(self.lemmatizer.lemmatize(line[0], xpos), line[1])
 
     def test_adjectives(self):
-        """TODO: move to csv"""
-        self.assertEqual(self.lemmatizer.lemmatize("comhair", "Aq-smd"), "comhair")
-        self.assertEqual(self.lemmatizer.lemmatize("làidir", "Aq-smg"), "làidir")
-        self.assertEqual(self.lemmatizer.lemmatize("Mhòir", "Aq-smg"), "mòr")
-        self.assertEqual(self.lemmatizer.lemmatize("t-seann", "Ar"), "seann")
-        self.assertEqual(self.lemmatizer.lemmatize("garbha", "Aq-pmd"), "garbh")
-        self.assertEqual(self.lemmatizer.lemmatize("sòisealta", "Aq-pfg"), "sòisealta")
-        self.assertEqual(self.lemmatizer.lemmatize("fhuara", "Aq-pmg"), "fuar")
+        """Expects form, XPOS and lemma."""
+        self.from_file("resources/test_adjectives.csv")
 
     def test_adverbs(self):
         """TODO: move to csv"""
@@ -286,6 +280,7 @@ class TestLemmatizer(unittest.TestCase):
         self.comparative("shaoire", "saor")
         self.comparative("shine", "sean")
         self.comparative("sine", "sean")
+        self.comparative("taitniche", "taitneach")
         self.comparative("tràithe", "tràth")
         self.comparative("trice", "tric")
         self.second_comparative("fheàirrde", "math")

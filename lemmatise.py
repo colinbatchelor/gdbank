@@ -1,3 +1,4 @@
+"""Overwrites the lemmata in a CoNLL-U file based on the form and XPOS."""
 import sys
 import pyconll
 from innealan.acainn import Lemmatizer

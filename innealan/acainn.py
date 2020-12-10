@@ -74,7 +74,8 @@ class Lemmatizer:
             for row in reader:
                 self.lemmata[row[0]] = row[1]
 
-    def delenite(self, surface: str) -> str:
+    @staticmethod
+    def delenite(surface: str) -> str:
         """Removes h as the second letter except for special cases."""
         if len(surface) < 3:
             return surface
@@ -82,10 +83,13 @@ class Lemmatizer:
             return surface
         return surface[0] + surface[2:] if surface[1] == 'h' else surface
 
-    def deslenderize(self, surface: str) -> str:
+    @staticmethod
+    def deslenderize(surface: str) -> str:
         """Converts from slender to broad."""
-        if re.match('.*ei.$', surface):
-            return re.sub("(.*)ei(.)", r"\1ea\2", surface)
+        if re.match('.*ei.h?$', surface):
+            return re.sub("(.*)ei(.h?)", r"\1ea\2", surface)
+        if re.match('.*[bcdfghmnprst]i.h?e?$', surface):
+            return re.sub("(.*)i(.h?)e?", r"\1ea\2", surface)
         return re.sub("(.*[aiouàòù])i([bcdfghmnpqrst]+)[e']?$", r"\1\2", surface)
 
     def lemmatize_adjective(self, surface: str, xpos: str) -> str:
@@ -93,8 +97,11 @@ class Lemmatizer:
         if xpos in ["Apc", "Aps"]:
             return self.lemmatize_comparative(surface)
         surface = self.delenite(surface)
+        surface = self.remove_apostrophe(surface)
         if surface in self.lemmata:
             return self.lemmata[surface]
+        if xpos == "Av":
+            return re.sub("(is)?[dt][ae]?$", "", surface)
         if surface.endswith("òir"):
             return re.sub("òir$", "òr", surface)
         return surface
@@ -129,8 +136,8 @@ class Lemmatizer:
             return self.lemmatize_proper_noun(surface, oblique)
 
         surface = self.delenite(surface)
-        if surface.endswith("'") and surface != "a'":
-            surface = self.remove_apostrophe(surface)
+
+        surface = self.remove_apostrophe(surface)
         if surface in self.lemmata:
             return self.lemmata[surface]
 
@@ -143,7 +150,8 @@ class Lemmatizer:
             return "Alba" if surface in ["Albann", "Albainn"] else surface
         return self.lemmatize_common_noun(surface, xpos, oblique)
 
-    def lemmatize_common_noun(self, surface: str, xpos: str, oblique: bool) -> str:
+    @staticmethod
+    def lemmatize_common_noun(surface: str, xpos: str, oblique: bool) -> str:
         """Looks as if it needs to be refactored."""
         if surface.startswith("luchd"):
             return surface.replace("luchd", "neach")
@@ -202,9 +210,9 @@ class Lemmatizer:
             if surface == form:
                 return self.lemmata[form]
         replacements = [
-            ("Vm-1p", "e?amaid$"), ("Vm-2p", "a?ibh$"), ("V-f", "a?idh$"),
+            ("Vm-1p", "e?amaid$"), ("Vm-2p", "a?ibh$"),
             ("V-s0", "e?adh$"), ("V-p0", "e?ar$"), ("V-f0", "e?ar$"),
-            ("V-h", "e?adh$"), ("Vm-3", "e?adh$")
+            ("V-h", "e?adh$"), ("Vm-3", "e?adh$"), ("V-f", "a?(idh|s)$")
         ]
         for replacement in replacements:
             if xpos.startswith(replacement[0]):
@@ -238,13 +246,16 @@ class Lemmatizer:
                 return self.delenite(surface.replace(replacement[0], replacement[1]))
         return self.delenite(surface)
 
-    def remove_apostrophe(self, surface: str) -> str:
+    @staticmethod
+    def remove_apostrophe(surface: str) -> str:
         """Makes a guess based on slenderness of last vowel"""
-        result = re.sub("'$", "", surface)
-        stem = re.sub("[bcdfghlmnprst]+'$", "", surface)
-        if re.match(".*[aouàòù]$", stem):
-            return "%sa" % result
-        return "%se" % result
+        if surface.endswith("'") and surface != "a'":
+            result = re.sub("'$", "", surface)
+            stem = re.sub("[bcdfghlmnprst]+'$", "", surface)
+            if re.match(".*[aouàòù]$", stem):
+                return "%sa" % result
+            return "%se" % result
+        return surface
 
     def lemmatize(self, surface: str, xpos: str) -> str:
         """Lemmatize surface based on xpos."""
@@ -303,9 +314,10 @@ class CCGRetagger:
             'dè':['INTERRDE'], 'i':['PRONOUN']
         }
 
-    def retag_article(self, pos):
+    @staticmethod
+    def retag_article(xpos):
         """Articles are N/N unless they are in the genitive in which case they are N/N/N/N"""
-        return ['DET'] if not pos.endswith('g') else ['DETNMOD']
+        return ['DET'] if not xpos.endswith('g') else ['DETNMOD']
 
     def retag_verb(self, surface, xpos):
         """Relies on surface."""
@@ -442,7 +454,8 @@ class Features:
         result["Number"] = [self.numbers[xpos[2]]]
         return result
 
-    def feats_nv(self, prev_xpos: str, xpos: str) -> dict:
+    @staticmethod
+    def feats_nv(prev_xpos: str, xpos: str) -> dict:
         """Marks whether a verbal noun or an infinitve."""
         result = {}
         if prev_xpos.startswith("Sa") or prev_xpos.startswith("Sp"):
