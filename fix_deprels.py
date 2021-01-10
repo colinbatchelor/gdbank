@@ -6,9 +6,9 @@ with open(sys.argv[2],'w') as clean:
     for sentence in corpus:
         for token in sentence:
             if token.head != "0":
-                if token.upos == "AUX" and token.xpos != "Wp-i-3":
+                if token.upos == "AUX" and token.xpos != "Wp-i-3" and token.deprel not in ["reparandum"]:
                     token.deprel = "cop"
-                if token.upos == "INTJ":
+                if token.upos == "INTJ" and token.deprel not in ["conj", "reparandum"]:
                     token.deprel = "discourse"
                 if token.upos == "PUNCT":
                     token.deprel = "punct"
@@ -16,7 +16,7 @@ with open(sys.argv[2],'w') as clean:
                     token.deprel = "mark:prt"
                 if token.xpos == "Uv":
                     token.deprel = "case:voc"
-                if token.xpos in ["Ncsmv", "Ncsfv", "Nn-mv", "Nn-fv"]:
+                if token.xpos in ["Ncsmv", "Ncsfv", "Nn-mv", "Nn-fv"] and token.deprel not in ["conj"]:
                     token.deprel = "vocative"
                 if token.xpos == "Nv":
                     token.upos = "NOUN"

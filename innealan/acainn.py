@@ -377,7 +377,7 @@ class Features:
                             "Qnm":"Vb", "Ua":"Ad", "Uc":"Comp", "Ug":"Inf", "Uv":"Voc",
                             "Up":"Pat", "Uo":"Num"}
         self.polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
-        self.prontypes_q = {"Q-r":"Rel", "Qnr":"Rel", "Qq":"Int"}
+        self.prontypes_q = {"Q-r": "Rel", "Qnr": "Rel", "Qq": "Int", "Uq": "Int"}
 
     def feats(self, xpos: str) -> dict:
         """Only seems to work for adjectives, nouns and articles?"""
@@ -471,8 +471,6 @@ class Features:
     def feats_part(self, xpos: str) -> dict:
         """Marks particle type, mood, polarity, pronoun type, tense and mood."""
         result = {}
-        if xpos[1] == "q":
-            result["Mood"] = ["Int"]
         if xpos in self.parttypes:
             result["PartType"] = [self.parttypes[xpos]]
             if xpos in self.polartypes_q:
@@ -481,8 +479,6 @@ class Features:
                 result["PronType"] = [self.prontypes_q[xpos]]
         if xpos == "Q--s":
             result["Tense"] = ["Past"]
-        if xpos == "Qnm":
-            result["Mood"] = ["Imp"]
         return result
 
     def feats_prep(self, xpos: str) -> dict:
@@ -498,16 +494,21 @@ class Features:
         return result
 
     def feats_pron(self, xpos: str) -> dict:
-        """Marks for possessiveness, person, number, gender and whether emphatic."""
+        """Marks for possessiveness, person, number, gender, whether emphatic and if interrogative."""
         result = {}
         if xpos[1] == "p" and xpos[0] == "D":
             result["Poss"] = ["Yes"]
-        result["Person"] = [xpos[2]]
-        result["Number"] = [self.numbers[xpos[3]]]
+        if len(xpos) > 2:
+            result["Person"] = [xpos[2]]
+            result["Number"] = [self.numbers[xpos[3]]]
         if len(xpos) > 4 and xpos[4] in self.genders:
             result["Gender"] = [self.genders[xpos[4]]]
         if xpos.endswith('e'):
             result["Form"] = ['Emp']
+        if xpos in self.prontypes_q:
+            result["PronType"] = [self.prontypes_q[xpos]]
+        if xpos == "Px":
+            result["Reflex"] = ["Yes"]
         return result
 
     def feats_verb(self, xpos: str) -> dict:

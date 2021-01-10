@@ -15,7 +15,7 @@
 13	,	,	PUNCT	Fi	_	15	punct	_	_
 14	agus	agus	CCONJ	Cc	_	15	cc	_	_
 15	bha	bi	VERB	V-s	Tense=Past	5	conj	_	_
-16	a'	ag	DET	Tdsf	_	17	det	_	_
+16	a'	ag	DET	Tdsf	Gender=Fem|Number=Sing	17	det	_	_
 17	Bhànrigh	Bhànrich	NOUN	Nn-fn	VerbForm=Vnoun	15	nsubj	_	_
 18	sàmhach	sàmhach	ADJ	Ap	_	15	xcomp:pred	_	SpaceAfter=No
 19	.	.	PUNCT	Fe	_	2	punct	_	SpacesAfter=\n
@@ -181,7 +181,7 @@
 16	do	do	ADP	Sp	_	17	case	_	_
 17	mi	mi	PRON	Pp1s	Number=Sing|Person=1	15	obl	_	_
 18	ur	ur	PRON	Dp2p	Number=Plur|Person=2|Poss=Yes	19	obl	_	_
-19	leigeil	leig	NOUN	Nv	VerbForm=Vnoun	15	xcomp	_	_
+19	leigeil	leig	NOUN	Nv	VerbForm=Inf	15	xcomp	_	_
 20	a-mach	a-mach	ADV	Rs	_	19	advmod	_	SpaceAfter=No
 21	,	,	PUNCT	Fi	_	22	punct	_	_
 22	tha	bi	VERB	V-p	Tense=Pres	19	parataxis	_	_
@@ -337,7 +337,7 @@
 
 # sent_id = alice_14
 # text = A bheil thu gam mheas nam ghlaoic?
-1	A	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	2	mark:prt	_	_
+1	A	a	PART	Qq	PartType=Vb|PronType=Int	2	mark:prt	_	_
 2	bheil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
 3	thu	thu	PRON	Pp2s	Number=Sing|Person=2	2	nsubj	_	_
 4-5	gam	_	_	_	_	_	_	_	_
@@ -438,7 +438,7 @@
 10	?	?	PUNCT	Fg	_	4	punct	_	SpaceAfter=No
 11	”	”	PUNCT	Fz	_	4	punct	_	_
 12	ars	arsa	VERB	V-s	Tense=Past	4	parataxis	_	_
-13	An	an	DET	Tdsm	_	14	det	_	_
+13	An	an	DET	Tdsm	Gender=Masc|Number=Sing	14	det	_	_
 14	t-Adair	Adair	PROPN	Ncsmn	_	12	nsubj	_	SpaceAfter=No
 15	,	,	PUNCT	Fi	_	12	punct	_	_
 16	a'	ag	PART	Sa	_	17	case	_	_
@@ -450,7 +450,7 @@
 
 # sent_id = alice_20
 # text = Dè idir a dh'fhàg sibh cho tapaidh?
-1	Dè	dè	PRON	Uq	Mood=Int	0	root	_	_
+1	Dè	dè	PRON	Uq	PronType=Int	0	root	_	_
 2	idir	idir	ADV	Rg	_	1	advmod	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
 4	dh'fhàg	fàg	VERB	V-s	Tense=Past	1	csubj:cleft	_	_
@@ -470,7 +470,7 @@
 7	a'	ag	PART	Sa	_	8	case	_	_
 8	coimhead	coimhead	NOUN	Nv	VerbForm=Vnoun	4	xcomp:pred	_	_
 9	far	far	SCONJ	Cs	_	11	mark	_	_
-10	an	an	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	11	mark:prt	_	_
+10	an	an	PART	Qq	PartType=Vb|PronType=Int	11	mark:prt	_	_
 11	robh	bi	VERB	V-s--d	Tense=Past	8	advcl	_	_
 12	an	an	DET	Tdsm	Gender=Masc|Number=Sing	13	det	_	_
 13	Cat	cat	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	11	nsubj	_	_
@@ -499,7 +499,7 @@
 10	gus	gus	ADP	Sp	_	11	case	_	_
 11	tighinn	thig	NOUN	Nv	VerbForm=Vnoun	8	xcomp:pred	_	_
 12	gu	gu	ADP	Sp	_	13	case	_	_
-13	bith	bith	PRON	Uq	Mood=Int	11	obl	_	SpaceAfter=No
+13	bith	bith	PRON	Uq	PronType=Int	11	obl	_	SpaceAfter=No
 14	,	,	PUNCT	Fi	_	15	punct	_	_
 15	thòisich	tòisich	VERB	V-s	Tense=Past	8	parataxis	_	_
 16	i	i	PRON	Pp3sf	Gender=Fem|Number=Sing|Person=3	15	nsubj	_	_
@@ -629,7 +629,7 @@
 12	,	,	PUNCT	Fi	_	13	punct	_	_
 13	faodaidh	faod	VERB	V-f	Tense=Fut	0	root	_	_
 14	ru	ru	PRON	Pp2s	Number=Sing|Person=2	13	nsubj	_	_
-15	seasamh	seas	NOUN	Nv	VerbForm=Inf	13	xcomp:pred	_	_
+15	seasamh	seas	NOUN	Nv	VerbForm=Vnoun	13	xcomp:pred	_	_
 16	sìos	sìos	ADV	Rs	_	15	advmod	_	SpaceAfter=No
 17	,	,	PUNCT	Fi	_	15	punct	_	SpaceAfter=No
 18	”	”	PUNCT	Fz	_	19	punct	_	_
@@ -739,7 +739,7 @@
 # sent_id = alice_36
 # text = “Am bu toil leat beagan dheth fhaicinn?” ars an Turtair-mheallta.
 1	“	“	PUNCT	Fq	_	4	punct	_	SpaceAfter=No
-2	Am	am	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	4	mark:prt	_	_
+2	Am	am	PART	Qq	PartType=Vb|PronType=Int	4	mark:prt	_	_
 3	bu	is	AUX	Ws	Tense=Past	4	cop	_	_
 4	toil	toil	NOUN	Uf	_	0	root	_	_
 5-6	leat	_	_	_	_	_	_	_	_
@@ -760,7 +760,7 @@
 # sent_id = alice_37
 # text = “A bheil an cinn dhiubh?” dh'èigh a' Bhànrigh.
 1	“	“	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
-2	A	a	PART	Qq	Mood=Int|PartType=Vb|PronType=Int	3	mark:prt	_	_
+2	A	a	PART	Qq	PartType=Vb|PronType=Int	3	mark:prt	_	_
 3	bheil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
 4	an	an	DET	Tdsm	Gender=Masc|Number=Sing	5	det	_	_
 5	cinn	ceann	NOUN	Ncpmn	Case=Nom|Gender=Masc|Number=Plur	3	nsubj	_	_
@@ -1005,14 +1005,14 @@
 11	,	,	PUNCT	Fi	_	12	punct	_	SpaceAfter=No
 12	”	”	PUNCT	Fz	_	13	punct	_	_
 13	ars	arsa	VERB	V-s	Tense=Past	7	parataxis	_	_
-14	An	an	DET	Tdsm	_	15	det	_	_
+14	An	an	DET	Tdsm	Gender=Masc|Number=Sing	15	det	_	_
 15	t-Adair	Adair	PROPN	Nn-mn	_	13	nsubj	_	SpaceAfter=No
 16	.	.	PUNCT	Fe	_	7	punct	_	SpacesAfter=\n
 
 # sent_id = alice_49
 # text = “Carson a chanadh e sin?” ars An t-Adair.
 1	“	“	PUNCT	Fq	_	2	punct	_	SpaceAfter=No
-2	Carson	carson	PRON	Uq	Mood=Int	0	root	_	_
+2	Carson	carson	PRON	Uq	PronType=Int	0	root	_	_
 3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
 4	chanadh	can	VERB	V-h	Mood=Cnd	2	acl:relcl	_	_
 5	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
@@ -1020,7 +1020,7 @@
 7	?	?	PUNCT	Fg	_	2	punct	_	SpaceAfter=No
 8	”	”	PUNCT	Fz	_	2	punct	_	_
 9	ars	arsa	VERB	V-s	Tense=Past	2	parataxis	_	_
-10	An	an	DET	Tdsm	_	11	det	_	_
+10	An	an	DET	Tdsm	Gender=Masc|Number=Sing	11	det	_	_
 11	t-Adair	Adair	PROPN	Nn-mn	_	9	nsubj	_	SpaceAfter=No
 12	.	.	PUNCT	Fe	_	2	punct	_	SpacesAfter=\n
 
@@ -1044,7 +1044,7 @@
 15	”	”	PUNCT	Fz	_	16	punct	_	_
 16	chuir	chuir	VERB	V-s	Tense=Past	4	parataxis	_	_
 17	Geàrr	geàrr	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	16	nsubj	_	_
-18	a'	ag	DET	Tdsmg	_	19	det	_	_
+18	a'	ag	DET	Tdsmg	Case=Gen|Gender=Masc|Number=Sing	19	det	_	_
 19	Mhàirt	Mhàir	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	17	nmod	_	_
 20	ri	ri	ADP	Sp	_	21	case	_	_
 21	sin	sin	PRON	Pd	_	16	obl	_	SpaceAfter=No
@@ -1078,7 +1078,7 @@
 7	ann	an	ADP	Sp	_	1	conj	_	_
 8	a	a	PART	Q-r	PartType=Vb|PronType=Rel	9	mark:prt	_	_
 9	bha	bi	VERB	V-s	Tense=Past	7	csubj:cleft	_	_
-10	a'	an	DET	Tdsf	_	11	det	_	_
+10	a'	an	DET	Tdsf	Gender=Fem|Number=Sing	11	det	_	_
 11	Bhànrigh	Bhànrich	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	9	nsubj	_	_
 12	air	air	ADP	Sp	_	14	case	_	_
 13	am	an	DET	Dp3p	Number=Plur|Person=3|Poss=Yes	14	obj	_	_

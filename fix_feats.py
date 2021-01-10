@@ -13,7 +13,9 @@ with open(sys.argv[2],'w') as clean:
         print(sentence.id)
         for token in sentence:
             if "-" not in token.id and token.xpos not in stops:
-                if token.xpos.startswith("Dp") and token.deprel == "det":
+                if token.xpos in ["Xfe","Xf"]:
+                    token.feats = {"Foreign":["Yes"]}
+                elif token.xpos.startswith("Dp") and token.deprel == "det":
                     next_token = sentence[int(token.id)]
                     if next_token.xpos.startswith("Nc"):
                         token.deprel = "nmod:poss"
@@ -24,19 +26,16 @@ with open(sys.argv[2],'w') as clean:
                 elif token.xpos == "Nv":
                     token.upos = "NOUN"
                     if token.id != "1":
-                        prev_token = sentence[str(int(token.id) - 1)]
+                        prev_token = [sentence[str(int(token.id) - 1)]][0]
                         token.feats = f.feats_nv(prev_token.xpos, token.xpos)
                 elif token.xpos.startswith("V"):
                     token.feats = f.feats_verb(token.xpos)
-                elif token.xpos.startswith("Pp") or token.xpos.startswith("Dp"):
+                elif token.xpos.startswith("Pp") or token.xpos.startswith("Dp") or token.upos == "PRON":
+                    print(token.conll())
                     token.feats = f.feats_pron(token.xpos)
                 elif token.xpos.startswith("Pr"):
                     token.upos = "ADP"
                     token.feats = f.feats_pron(token.xpos)
-                elif token.xpos == "Px":
-                    token.feats = {"Reflex":["Yes"]}
-                elif token.xpos in ["Xfe","Xf"]:
-                    token.feats = {"Foreign":["Yes"]}
                 elif token.xpos == "Um":
                     token.upos = "ADP"
                 elif token.xpos.startswith("A"):
