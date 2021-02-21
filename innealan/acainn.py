@@ -186,14 +186,16 @@ class Lemmatizer:
 
     def lemmatize_preposition(self, surface: str) -> str:
         """Relies on resources/prepositions.csv"""
-        surface = surface.replace(' ','_')
+        if surface.startswith("'") and len(surface) > 1:
+            surface = surface[1:]
+        surface = self.remove_apostrophe(surface.replace(' ', '_'))
         surface = re.sub('^h-', '', surface)
-        if not re.match("^'?san?$", surface):
-            surface = re.sub('-?san?$','',surface)
+        if not re.match("^'?s[ae]n?$", surface):
+            surface = re.sub("-?s[ae]n?$", "", surface)
         for pattern in self.prepositions:
             if re.match("^("+pattern+")$", surface):
                 return self.prepositions[pattern]
-        return surface if surface.startswith('bh') else self.delenite(surface)
+        return "bho" if surface.startswith("bh") else self.delenite(surface)
 
     def lemmatize_pronoun(self, surface: str) -> str:
         """Consider rewriting based on POS tag."""
@@ -229,6 +231,8 @@ class Lemmatizer:
 
     def lemmatize_vn(self, surface: str) -> str:
         """Hybrid replacement dictionary/XPOS method"""
+        if surface.startswith("'"):
+            surface = surface[1:]
         for verbal_noun in self.vns:
             if self.delenite(surface) in verbal_noun[1]:
                 return verbal_noun[0]
