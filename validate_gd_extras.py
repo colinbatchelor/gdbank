@@ -2,6 +2,59 @@
 import sys
 import pyconll
 
+def check_fixed(sentence, score):
+    allowed = {
+        "'s": ["linn"], "a-siud": ["ann"],
+        "a": ["ann"], "a'": ["anns"],
+        "a-seo": ["ann"], "a-seothach": ["anns"],
+        "am": ["ann"], "an": ["ann"], "ath": ["an"], "ath-bhliadhna": ["an"],
+        "beulaibh": ["air"],
+        "bhad": ["a'"], "bheulaibh": ["air"],
+        "bhliadhna": ["ath"], "bith": ["sam"], "bliadhna": ["am"],
+        "brith": ["ge"], "b'": ["na"], "bu": ["na"],
+        "ceart-uair": ["an"],
+        "chèile": ["ri"],
+        "chionn": ["bho"], "cho": ["dè"], "cionn": ["os"], "còmhnaidh": ["an"],
+        "deas": ["a"],
+        "dè": ["gu"], "dé": ["gu"],
+        "deidh": ["an", "as"], "dèidh": ["an", "as"], "déidh": ["an", "as"],
+        "dh’aithghearr": ["a"],
+        "dh’aona-ghnothaich": ["a"],
+        "dheidhinn": ["mu"],
+        "dheireadh": ["mu"],
+        "diugh": ["an"],
+        "e": ["is"], "falbh": ["air"], "feadh": ["air"],
+        "ghoirid": ["chionn"],
+        "h-uile": ["a"],
+        "i": ["is"],
+        "lùib": ["an"],
+        "mach": ["a"],
+        "mar": ["dé"],
+        "measg": ["an"],
+        "mheud": ["cia"],
+        "muigh": ["a"],
+        "na": ["anns"], "neisd": ["a"], "neo": ["air"], "nuas": ["a"],
+        "raoir": ["a"],
+        "réir": ["a"], "rèir": ["a"],
+        "ris": ["taca"], "rithist": ["a"],
+        "ruige": ["gu"],
+        "seo": ["an"], "seothach": ["an"], "sheo": ["a"],
+        "sgath": ["air"],
+        "shin": ["a"], "shiud": ["a"], "sin": ["an"], "siud": ["an"], "son": ["a", "an"],
+        "staigh": ["a"], "steach": ["a"],
+        "tac": ["an"], "taca": ["an"],
+        "tha": ["ma"], "thaobh": ["a"],
+        "toiseach": ["an"], "tuath": ["a"], "uair": ["an"], "uairsin": ["an"], "uirigh": ["an"]
+    }
+    prev_token = None
+    for token in [s for s in sentence if not s.is_multiword()]:
+        if token.deprel == "fixed":
+            if token.form not in allowed:
+                score +=1
+                print(f"E {sentence.id} {token.id} {token.form} not in fixed list")
+        prev_token = token
+    return score
+
 def check_misc(sentence, score):
     """Checks for things that don't fit in anywhere else."""
     prev_token = None
@@ -11,12 +64,19 @@ def check_misc(sentence, score):
             score +=1
             print(f"E {sentence.id} {token.id} XPOS {token.xpos} should not match UPOS if feats is empty")
         if token.deprel is not None:
-            if token.xpos == "Up" and token.deprel != "flat" and prev_token is not None and prev_token.xpos == "Nn":
-                score +=1
-                print(f"E {sentence.id} {token.id} Patronymic should be flat")
+            if token.xpos == "Up" and token.deprel != "flat:name" and prev_token is not None and prev_token.xpos == "Nn":
+                score += 1
+                print(f"E {sentence.id} {token.id} Patronymic should be flat:name")
             if token.deprel.startswith("mark") and token.upos not in ["PART", "SCONJ"]:
-                score +=1
+                score += 1
                 print(f"E {sentence.id} {token.id} mark should only be for PART or SCONJ")
+            if token.deprel == "flat" and token.xpos not in ["Mn", "Nt"]:
+                score += 1
+                print(f"E {sentence.id} {token.id} should be flat:name or flat:foreign")
+        if token.form == "ais":
+            if token.upos != "NOUN":
+                score +=1
+                print(f"E {sentence.id} {token.id} UPOS for 'ais' should be NOUN")
         prev_token = token
     return score
 
@@ -31,7 +91,7 @@ def check_ranges(sentence, score, warnings):
         if token.deprel in leftward_only and int(token.head) > int(token.id):
             warnings += 1
             print(f"W {sentence.id} {token.id} {token.deprel} goes wrong way (usually) for gd")
-        if token.deprel in rightward_only and int(token.head) < int(token.id):
+        if token.deprel in rightward_only and int(token.head) < int(token.id) and prev_token.xpos != "Uo":
             score += 1
             print(f"E {sentence.id} {token.id} {token.deprel} goes wrong way for gd")
 
@@ -43,19 +103,34 @@ def check_ranges(sentence, score, warnings):
                 score += 1
                 code = "E"
             print(f"{code} {sentence.id} {token.id} Too long a range ({deprel_range}) for {token.deprel}")
-        if token.deprel in ["nsubj", "obj"] and token.upos not in ["NOUN", "PRON", "PROPN", "NUM", "SYM", "X"] and int(token.head) < int(token.id):
+        if token.deprel in ["nsubj", "obj"] and token.upos not in ["NOUN", "PART", "PRON", "PROPN", "NUM", "SYM", "X"] and int(token.head) < int(token.id):
             score +=1
-            print(f"E {sentence.id} {token.id} nsubj and (rightward) obj should only be for NOUN, PRON, PROPN, NUM, SYM or X")
+            print(f"E {sentence.id} {token.id} nsubj and (rightward) obj should only be for NOUN, PART, PRON, PROPN, NUM, SYM or X")
 
         prev_token = token
     return score, warnings
+
+def check_heads(sentence, score):
+    """Checks that for example obl is headed by something verbal and nmod something nominal."""
+    head_ids = {}
+    heads = { "obl": ["VERB", "ADJ", "ADV"], "nmod": ["NOUN", "NUM", "PROPN", "SYM"]}
+    for token in [t for t in sentence if t.deprel in heads and not t.is_multiword()]:
+        head_ids[int(token.head)] = (token.deprel, token.id)
+    for token in [s for s in sentence if not s.is_multiword()]:
+        if int(token.id) in head_ids and "VerbForm" not in token.feats:
+            actual = token.upos
+            correct = heads[head_ids[int(token.id)][0]]
+            if actual not in correct:
+                score +=1
+                print(f"E {sentence.id} {token.id} {head_ids[int(token.id)][1]} head of {head_ids[int(token.id)]} must be one of ({', '.join(correct)}) not {actual}")
+    return score
 
 def check_target_deprels(sentence, score):
     """Checks that for example cc is the leaf of a conj."""
     target_ids = {}
     targets = {
         "cc": ["conj"],
-        "case": ["obl","xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]
+        "case": ["obl", "nmod", "xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]
     }
     for token in [t for t in sentence if t.deprel in targets and not t.is_multiword()]:
         target_ids[int(token.head)] = token.deprel
@@ -147,7 +222,6 @@ def check_clauses(sentence, score, warnings):
 
     return score, warnings
 
-
 def validate_corpus(corpus):
     """Prints a number of errors and a number of warnings."""
     total_score = 0
@@ -155,7 +229,9 @@ def validate_corpus(corpus):
 
     for tree in corpus:
         total_score = check_misc(tree, total_score)
+        total_score = check_fixed(tree, total_score)
         total_score, total_warnings = check_ranges(tree, total_score, total_warnings)
+        total_score = check_heads(tree, total_score)
         total_score = check_target_deprels(tree, total_score)
         total_score = check_target_upos(tree, total_score)
         total_score = check_bi(tree, total_score)
