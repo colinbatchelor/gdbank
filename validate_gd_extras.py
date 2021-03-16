@@ -3,55 +3,71 @@ import sys
 import pyconll
 
 def check_fixed(sentence, score):
+    """allowed is a dictionary of lemmata keyed by surface. The lemmata are n - 1 and the surface is n."""
     allowed = {
-        "'s": ["linn"], "a-siud": ["ann"],
-        "a": ["ann"], "a'": ["anns"],
-        "a-seo": ["ann"], "a-seothach": ["anns"],
-        "am": ["ann"], "an": ["ann"], "ath": ["an"], "ath-bhliadhna": ["an"],
+        "'n": ["mu"],
+        "'s": ["airson", "chionn", "fad", "fhad", "fiù", "linn", "sgàth", "uair"],
+        "‘s": ["airson", "chionn", "fad", "fhad", "fiù", "linn", "sgàth", "uair"],
+        "a": ["an", "ann"], "a'": ["an", "anns"], "a:": ["an", "ann"],
+        "a-seo": ["an", "ann"], "a-seothach": ["an", "ann"], "a-sin": ["an", "ann"], "a-sineach": ["an", "ann"], "a-siud": ["an", "ann"],
+        "agus": ["fhad"], "àird": ["an"], "àirde": ["an"],
+        "am": ["an"], "an": ["an", "ann", "is", "mar"], "as": ["fad"], "ath": ["an"], "aonais": ["as"],
+        "ath-bhliadhna": ["an"], "ath-oidhch'": ["an"],
+        "b'e": ["ge"], "bè": ["ge", "gu"],
         "beulaibh": ["air"],
-        "bhad": ["a'"], "bheulaibh": ["air"],
-        "bhliadhna": ["ath"], "bith": ["sam"], "bliadhna": ["am"],
-        "brith": ["ge"], "b'": ["na"], "bu": ["na"],
-        "ceart-uair": ["an"],
-        "chèile": ["ri"],
-        "chionn": ["bho"], "cho": ["dè"], "cionn": ["os"], "còmhnaidh": ["an"],
-        "deas": ["a"],
-        "dè": ["gu"], "dé": ["gu"],
-        "deidh": ["an", "as"], "dèidh": ["an", "as"], "déidh": ["an", "as"],
-        "dh’aithghearr": ["a"],
-        "dh’aona-ghnothaich": ["a"],
-        "dheidhinn": ["mu"],
-        "dheireadh": ["mu"],
-        "diugh": ["an"],
-        "e": ["is"], "falbh": ["air"], "feadh": ["air"],
-        "ghoirid": ["chionn"],
-        "h-uile": ["a"],
-        "i": ["is"],
-        "lùib": ["an"],
-        "mach": ["a"],
-        "mar": ["dé"],
+        "bhad": ["a'", "sa"], "bheulaibh": ["air", "mo"],
+        "bhliadhna": ["ath"], "bhòn-uiridh": ["a"], "bidh": ["sam"], "bith": ["air", "as", "gar", "sam"], "bliadhna": ["am"],
+        "brith": ["ge"], "broinn": ["am", "an"], "b'": ["na"], "bu": ["mar", "na"],
+        "ceart-uair": ["an"], "ceartuair": ["an"], "ceudna": ["an"],
+        "chaoidh": ["a"], "cheana": ["a"], "cheile": ["a", "ri"], "chèile": ["a", "ri"], "chéile": ["a", "ri"],
+        "chionn": ["a", "bho"], "cho": ["dè"],
+        "choinneamh": ["mu"], "choinneimh": ["mu"], "choireigin": ["air"], "choreigin": ["air"], "chuairt": ["mu"], "cionn": ["os"],
+        "có": ["bith"],
+        "cois": ["an"], "còmhnaidh": ["an"], "cùlaibh": ["air"],
+        "deas": ["a", "an"],
+        "dè": ["an", "b'e", "brith", "gu"], "dé": ["an", "b'e", "brith", "gu"],
+        "deidh": ["'n", "an", "as", "às"], "dèidh": ["'n", "an", "as", "às"], "déidh": ["'n", "an", "as", "às"],
+        "dh’aindeoin": ["a"], "dh’ainneoin": ["a"], "dh'aithghearr": ["a"], "dh’aithghearr": ["a"],
+        "dh’aona-ghnothaich": ["a"], "dheas": ["mu"],
+        "dheidhinn": ["ma", "mu"],
+        "dheireadh": ["air", "fo", "ma", "mu"],
+        "diugh": ["'n", "a'", "an"], "dràsda": ["an"], "dràsta": ["an"],
+        "e": ["an", "is"], "ear": ["an"], "earar": ["an"], "earras": ["an"], "falbh": ["air"], "feadh": ["air", "am"],
+        "ghoirid": ["cionn"], "gu": ["bè"],
+        "h-e": ["is"], "h-uile": ["a"],
+        "i": ["is"], "iar": ["'n", "an"], "iaras": ["an"], "ìre": ["an"], "is": ["feadh"],
+        "làrna-mhàireach": ["an"],
+        "leth": ["fa"], "linn": ["ri"], "lùib": ["a", "an"],
+        "mach": ["a"], "màireach": ["a"],
+        "mar": ["dé", "dè"],
         "measg": ["an"],
-        "mheud": ["cia"],
-        "muigh": ["a"],
-        "na": ["anns"], "neisd": ["a"], "neo": ["air"], "nuas": ["a"],
-        "raoir": ["a"],
+        "mhath": ["ìre"], "mheud": ["cia", "cò"],
+        "muigh": ["a", "am"],
+        "na": ["an"], "neisd": ["a"], "neo": ["air"], "nis": ["a"], "nise": ["a"], "nochd": ["a"], "nuas": ["a"],
+        "raoir": ["a", "an"],
         "réir": ["a"], "rèir": ["a"],
-        "ris": ["taca"], "rithist": ["a"],
+        "ri": ["taca"], "riamh": ["a"], "ris": ["taca"], "rithist": ["a"],
         "ruige": ["gu"],
-        "seo": ["an"], "seothach": ["an"], "sheo": ["a"],
-        "sgath": ["air"],
-        "shin": ["a"], "shiud": ["a"], "sin": ["an"], "siud": ["an"], "son": ["a", "an"],
-        "staigh": ["a"], "steach": ["a"],
+        "sean": ["an"], "seo": ["'n", "a", "an"], "seothach": ["a", "an"], "sheo": ["a"],
+        "sgaoil": ["ma"], "sgath": ["air"], "sgàth": ["air"], "sheothach": ["a"],
+        "shin": ["a"], "shineach": ["a"], "shiodach": ["a"], "shiud": ["a"], "shiudach": ["a"], "shon": ["a"],
+        "sin": ["an", "uair"], "sineach": ["a", "an"], "siod": ["an"], "siud": ["an"], "siudach": ["an"], "son": ["a", "air", "an", "car"],
+        "staigh": ["a"], "steach": ["a"], "stigh": ["a"],
         "tac": ["an"], "taca": ["an"],
-        "tha": ["ma"], "thaobh": ["a"],
-        "toiseach": ["an"], "tuath": ["a"], "uair": ["an"], "uairsin": ["an"], "uirigh": ["an"]
+        "tha": ["ma"], "thà": ["ma", "mar"], "thall": ["deireadh"], "thaobh": ["a"], "thràth": ["mu"],
+        "thoireadh": ["a"], "thoiseach": ["bho"], "thoradh": ["a"], "thùs": ["air"],
+        "toiseach": ["an"], "trice": ["bu"], "tuath": ["a"],
+        "uair": ["'n", "an", "aon"], "uairsin": ["'n", "an", "o'n"], "uirigh": ["an"]
     }
     prev_token = None
     for token in [s for s in sentence if not s.is_multiword()]:
         if token.deprel == "fixed":
-            if token.form not in allowed:
+            if token.form.lower() not in allowed:
                 score +=1
-                print(f"E {sentence.id} {token.id} {token.form} not in fixed list")
+                print(f"E {sentence.id} {token.id} '{token.form}' not in fixed list")
+            elif prev_token.lemma.lower() not in allowed[token.form.lower()]:
+                score +=1
+                print(f"E {sentence.id} {token.id} '{prev_token.lemma} {token.form}' not in fixed list")
         prev_token = token
     return score
 
@@ -73,7 +89,7 @@ def check_misc(sentence, score):
             if token.deprel == "flat" and token.xpos not in ["Mn", "Nt"]:
                 score += 1
                 print(f"E {sentence.id} {token.id} should be flat:name or flat:foreign")
-        if token.form == "ais":
+        if token.form in ["ais"]:
             if token.upos != "NOUN":
                 score +=1
                 print(f"E {sentence.id} {token.id} UPOS for 'ais' should be NOUN")
@@ -149,7 +165,7 @@ def check_target_upos(sentence, score):
     target_ids = {}
     targets = {
         "amod": ["ADJ"],
-        "nmod": ["NOUN", "PRON", "PROPN"]
+        "nmod": ["NOUN", "PRON", "PROPN", "X"]
     }
     for token in [s for s in sentence if not s.is_multiword()]:
         if token.deprel in targets:
