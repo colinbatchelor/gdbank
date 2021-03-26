@@ -129,7 +129,10 @@ def check_ranges(sentence, score, warnings):
 def check_heads(sentence, score):
     """Checks that for example obl is headed by something verbal and nmod something nominal."""
     head_ids = {}
-    heads = { "obl": ["VERB", "ADJ", "ADV"], "nmod": ["NOUN", "NUM", "PROPN", "SYM"]}
+    heads = {
+        "obl": ["VERB", "ADJ", "ADV"],
+        "nmod": ["NOUN", "NUM", "PRON", "PROPN", "SYM"]
+    }
     for token in [t for t in sentence if t.deprel in heads and not t.is_multiword()]:
         head_ids[int(token.head)] = (token.deprel, token.id)
     for token in [s for s in sentence if not s.is_multiword()]:
@@ -139,6 +142,9 @@ def check_heads(sentence, score):
             if actual not in correct:
                 score +=1
                 print(f"E {sentence.id} {token.id} {head_ids[int(token.id)][1]} head of {head_ids[int(token.id)]} must be one of ({', '.join(correct)}) not {actual}")
+            if token.form == "ais":
+                score +=1
+                print(f"E {sentence.id} {token.id} 'ais' should not be a head")
     return score
 
 def check_target_deprels(sentence, score):
@@ -146,7 +152,7 @@ def check_target_deprels(sentence, score):
     target_ids = {}
     targets = {
         "cc": ["conj"],
-        "case": ["obl", "nmod", "xcomp","xcomp:pred","ccomp","acl","acl:relcl","conj"]
+        "case": ["dep", "obl", "nmod", "xcomp", "xcomp:pred", "ccomp", "acl", "acl:relcl", "conj"]
     }
     for token in [t for t in sentence if t.deprel in targets and not t.is_multiword()]:
         target_ids[int(token.head)] = token.deprel
