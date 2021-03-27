@@ -131,6 +131,8 @@ def check_heads(sentence, score):
     head_ids = {}
     heads = {
         "obl": ["VERB", "ADJ", "ADV"],
+        "obl:smod": ["VERB", "ADJ", "ADV"],
+        "obl:tmod": ["VERB", "ADJ", "ADV"],
         "nmod": ["NOUN", "NUM", "PRON", "PROPN", "SYM"]
     }
     for token in [t for t in sentence if t.deprel in heads and not t.is_multiword()]:
@@ -171,6 +173,7 @@ def check_target_upos(sentence, score):
     target_ids = {}
     targets = {
         "amod": ["ADJ"],
+       #  "flat:name": ["PART", "PROPN"], # consider when obl/nmod fixed
         "nmod": ["NOUN", "PRON", "PROPN", "X"]
     }
     for token in [s for s in sentence if not s.is_multiword()]:
