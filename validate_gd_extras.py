@@ -31,6 +31,7 @@ def check_fixed(sentence, score):
         "dh’aona-ghnothaich": ["a"], "dheas": ["mu"],
         "dheidhinn": ["ma", "mu"],
         "dheireadh": ["air", "fo", "ma", "mu"],
+        "dhiubh": ["có"],
         "diugh": ["'n", "a'", "an"], "dràsda": ["an"], "dràsta": ["an"],
         "e": ["an", "is"], "ear": ["an"], "earar": ["an"], "earras": ["an"], "falbh": ["air"], "feadh": ["air", "am"],
         "ghoirid": ["cionn"], "gu": ["bè"],
@@ -154,7 +155,7 @@ def check_target_deprels(sentence, score):
     target_ids = {}
     targets = {
         "cc": ["conj"],
-        "case": ["dep", "obl", "nmod", "xcomp", "xcomp:pred", "ccomp", "acl", "acl:relcl", "conj"]
+        "case": ["dep", "obl", "nmod", "xcomp", "xcomp:pred", "ccomp", "acl", "acl:relcl", "conj", "csubj:cop"]
     }
     for token in [t for t in sentence if t.deprel in targets and not t.is_multiword()]:
         target_ids[int(token.head)] = token.deprel
@@ -174,7 +175,7 @@ def check_target_upos(sentence, score):
     targets = {
         "amod": ["ADJ"],
        #  "flat:name": ["PART", "PROPN"], # consider when obl/nmod fixed
-        "nmod": ["NOUN", "PRON", "PROPN", "X"]
+        "nmod": ["NOUN", "NUM", "PRON", "PROPN", "X"]
     }
     for token in [s for s in sentence if not s.is_multiword()]:
         if token.deprel in targets:
