@@ -5,6 +5,8 @@ corpus = pyconll.load_from_file(sys.argv[1])
 with open(sys.argv[2],'w') as fixed:
     for sentence in corpus:
         print(sentence.id)
+        if sentence.meta_present("newdoc"):
+            fixed.write('# newdoc = %s\n' % sentence.meta_value("newdoc"))
         if sentence.meta_present('comment'):
             fixed.write('# comment = %s\n' % sentence.meta_value('comment'))
         fixed.write('# sent_id = %s\n' % sentence.id)
