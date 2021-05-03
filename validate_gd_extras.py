@@ -44,6 +44,9 @@ def check_misc(sentence, score):
             score +=1
             print(f"E {sentence.id} {token.id} XPOS {token.xpos} should not match UPOS if feats is empty")
         if token.deprel is not None:
+            if token.xpos == "Px" and token.deprel not in ["nmod", "fixed", "obl"]:
+                score += 1
+                print(f"E {sentence.id} {token.id} {token.form} should be nmod or obl (or fixed)")
             if token.xpos == "Up" and token.deprel != "flat:name" and prev_token is not None and prev_token.xpos == "Nn":
                 score += 1
                 print(f"E {sentence.id} {token.id} Patronymic should be flat:name")
