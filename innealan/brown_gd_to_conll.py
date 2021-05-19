@@ -6,28 +6,35 @@ from acainn import Features
 def eprint(*args, **kwargs):
     print(*args, file = sys.stderr, **kwargs)
 
-# See http://universaldependencies.org/u/pos/index.html
-upos_mapping_simple = {
-    'A':'ADJ', 'D':'DET', 'F':'PUNCT', 'I':'INTJ', 'M':'NUM', 'P':'PRON',
-    'Q':'PART', 'R':'ADV', 'T':'DET', 'V':'VERB', 'W':'AUX', 'X':'X', 'Y':'NOUN'  }
-upos_mapping_harder = {
-    'Cc':'CCONJ', 'Cs':'SCONJ', 'Nc':'NOUN', 'Nf':'ADP', 'Nt':'PROPN',
-    'Nn':'PROPN', 'nn':'PROPN', 'Nv':'NOUN', 'Sa':'PART', 'Sp':'ADP', 'SP':'ADP',
-    'Ua':'PART', 'Uc':'PART', 'Uf':'NOUN', 'Ug':'PART', 'Um':'PART', 'Uo':'PART',
-    'Up':'NOUN', 'Uq':'PRON', 'Uv':'PART' }
-
-def xpos_to_upos(xpos):
-    return upos_mapping_simple[xpos[0]] if xpos[0] in upos_mapping_simple \
-        else upos_mapping_harder[xpos[0] + xpos[1]]
+def feats_to_string(feats: dict) -> str:
+    if feats == {}:
+        return '_'
+    return '|'.join(['%s=%s' % (t, list(feats[t])[0]) for t in sorted(feats)])
 
 def output_line(token_id, form, lemma, upos, xpos, feats):
     if '_' in form:
         new_forms = form.split('_')
+        length = len(new_forms)
         new_deprel = "flat" if xpos.startswith("Nt") else "flat:name" if xpos.startswith("Nn") else "fixed"
-        for i,new_form in enumerate(new_forms):
+        for i, new_form in enumerate(new_forms):
             print("\t".join([str(token_id + i), new_form, lemma, upos, xpos, feats, "_" if i == 0 else str(token_id), "_" if i == 0 else new_deprel, "_", "_"]))
     else:
-        print("\t".join([str(token_id), form, lemma, upos, xpos, feats, "_", "_", "_", "_"]))    
+        print("\t".join([str(token_id), form, lemma, upos, xpos, feats, "_", "_", "_", "_"]))
+        length = 1
+    return length
+    
+def xpos_to_upos(xpos):
+    """Mappings from http://universaldependencies.org/u/pos/index.html"""
+    upos_mapping_simple = {
+        'A':'ADJ', 'D':'DET', 'F':'PUNCT', 'I':'INTJ', 'M':'NUM', 'P':'PRON',
+        'Q':'PART', 'R':'ADV', 'T':'DET', 'V':'VERB', 'W':'AUX', 'X':'X', 'Y':'NOUN'  }
+    upos_mapping_harder = {
+        'Cc':'CCONJ', 'Cs':'SCONJ', 'Nc':'NOUN', 'Nf':'ADP', 'Nt':'PROPN',
+        'Nn':'PROPN', 'nn':'PROPN', 'Nv':'NOUN', 'Sa':'PART', 'Sp':'ADP', 'SP':'ADP',
+        'Ua':'PART', 'Uc':'PART', 'Uf':'NOUN', 'Ug':'PART', 'Um':'PART', 'Uo':'PART',
+        'Up':'NOUN', 'Uq':'PRON', 'Uv':'PART' }
+    return upos_mapping_simple[xpos[0]] if xpos[0] in upos_mapping_simple \
+        else upos_mapping_harder[xpos[0] + xpos[1]]
 
 def process_file(f, filename):
     l = Lemmatizer()
@@ -71,7 +78,7 @@ def process_file(f, filename):
                     # use fix_feats.py to populate the feats column
                     feats = '_'
                     lemma = l.lemmatize(form, xpos)
-                    output_line(token_id, carry + form, lemma, upos, xpos, feats)
+                    length = output_line(token_id, carry + form, lemma, upos, xpos, feats)
                     carry = ""
                     if form in ['.','?','!']:
                         token_id = 1
@@ -79,7 +86,7 @@ def process_file(f, filename):
                         print()
                         print('# sent_id = %s_%s' % (file_id, sent_id))
                     else:
-                        token_id = token_id + 1
+                        token_id = token_id + length
             else:
                 carry = carry + t + '_'
         start_line = False
