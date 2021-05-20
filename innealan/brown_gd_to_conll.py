@@ -148,7 +148,7 @@ def process_file(f, filename):
         "sa": "Sa",
         "tdsm": "Tdsm"}
     print('# file = %s' % filename)
-    file_id = filename.replace(".txt","")
+    file_id = filename.replace(".txt", "")
     token_id = 1
     start_line = True
     sent_id = 0
@@ -163,18 +163,19 @@ def process_file(f, filename):
             if '/' in t:
                 form, xpos = t.split('/')[0:2] # in case of multiple tags
         
-                xpos = xpos.strip('*')
+                xpos = xpos.strip("*")
                 if xpos == "Uo" and form != "a":
                     carry = form
                 else:
                     if xpos in replacements:
                         xpos = replacements[xpos]
-                    if xpos == 'Xsc':
-                        token_id = 1
+                    if xpos == "Xsc":
+                        token_id = 0
                         if not start_line:
                             print()
                             sent_id +=1
-                            print('# sent_id = %s_%s' % (file_id, sent_id))
+                            print(f"# sent_id = {file_id}_{sent_id:03}")
+                            print(f"# speaker = {form}")
                     try:
                         upos = xpos_to_upos(xpos)
                     except:
@@ -188,7 +189,7 @@ def process_file(f, filename):
                         token_id = 1
                         sent_id +=1
                         print()
-                        print('# sent_id = %s_%s' % (file_id, sent_id))
+                        print(f"# sent_id = {file_id}_{sent_id:03}")
                     else:
                         token_id = token_id + length
             else:
