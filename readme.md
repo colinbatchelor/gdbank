@@ -11,9 +11,8 @@ https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/ contains the
 
 In practice I have postprocessed the results with the following Python 3 scripts:
 * `fix_feats.py` fills out the feature set.
-* `fix_multiword.py` and `fix_text.py` bring the tokenisation scheme into line with Universal Dependencies.
+* `fix_text.py` adds "text" annotations.
 * `fix_whitespace.py` adds `SpaceAfter=No` to the relevant parts of the tree.
-* `fix_conversations.py` removes the tokens indicating the speaker and adds a `# speaker =` line to the preamble for each tree.
 
 The current treebank files in `ud` and in UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
 
@@ -30,11 +29,11 @@ Earlier work
 Contains a categorial grammar generated from ARCOSG in dotccg format.
 
 ### ccg
-Contains an earlier, smaller, hand-built corpus in CoNLL-X format.
+Contains an earlier, smaller, hand-built corpus in CoNLL-U format.
 
 #### gdbank.txt
 
-The corpus annotated in CoNLL-X format with the categorial annotations in column 6.
+The corpus annotated in CoNLL-U format with the categorial annotations in column 6.
 
 Each sentence has three lines beginning with hashes preceding it. These are an ID for the sentence, some versioning information, and the source.
 
@@ -47,7 +46,7 @@ Tools covered by unit tests require Python 3.
 
 * `acainn.py` is the main code in this. It currently contains a lemmatizer, a retagger that assigns tags that more closely match CCG categories, a subcategorization tool for verbs, and code to map the new tags onto CCG categories.
 * `test_acainn.py` contains unit tests.
-* `BrownToDotccg.py` takes a Brown-format corpus assuming ARCOSG tags and outputs a .ccg file
+* `brown_gd_to_dot_ccg.py` takes a Brown-format corpus assuming ARCOSG tags and outputs a .ccg file
 * `mendxml.py` fixes the output of OpenCCG's ccg2xml.
 * `prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
 
@@ -72,4 +71,5 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2020-09-06
+2021-05-20
+
