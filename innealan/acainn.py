@@ -383,14 +383,26 @@ class Features:
         self.polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
         self.prontypes_q = {"Q-r": "Rel", "Qnr": "Rel", "Qq": "Int", "Uq": "Int"}
 
-    def feats(self, xpos: str) -> dict:
+    def feats(self, xpos: str, prev_xpos: str = "") -> dict:
         """Only seems to work for adjectives, nouns and articles?"""
         if xpos.startswith("A"):
             return self.feats_adj(xpos)
+        if xpos == "Nv":
+            return self.feats_nv(prev_xpos, xpos)
         if xpos.startswith("N"):
             return self.feats_noun(xpos)
         if xpos.startswith("T"):
             return self.feats_det(xpos)
+        if xpos.startswith("U") or xpos.startswith("Q"):
+            return self.feats_part(xpos)
+        if xpos.startswith("V"):
+            return self.feats_verb(xpos)
+        if xpos.startswith("W"):
+            return self.feats_cop(xpos)
+        if xpos in ["Xfe", "Xf"]:
+            return {"Foreign":["Yes"]}
+        if xpos.startswith("Pp") or xpos.startswith("Dp"):
+            return self.feats_pron(xpos)
         return {}
 
     def feats_adj(self, xpos: str) -> dict:
@@ -447,6 +459,8 @@ class Features:
     def feats_noun(self, xpos: str) -> dict:
         """Marks case, gender, number and whether emphatic."""
         result = {}
+        if xpos in ["Nf", "Nn", "Nt"]:
+            return {}
         if xpos.endswith("e"):
             result["Form"] = ["Emp"]
         result["Case"] = [self.cases[xpos[4]]]

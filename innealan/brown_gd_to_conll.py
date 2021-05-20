@@ -190,16 +190,40 @@ def process_file(f, filename):
     result.append("")
     return result
 
+def add_comments(sentence):
+    result = []
+    if sentence.meta_present("newdoc"):
+        result.append('# newdoc = %s' % sentence.meta_value("newdoc"))
+    if sentence.meta_present('comment'):
+        result.append('# comment = %s' % sentence.meta_value('comment'))
+    result.append('# sent_id = %s' % sentence.id)
+    if sentence.meta_present('speaker'):
+        result.append('# speaker = %s' % sentence.meta_value('speaker'))
+    if sentence.meta_present('text'):
+        result.append('# text = %s' % sentence.meta_value('text'))
+    return result
+
+def add_feats(corpus):
+    f = Features()
+    result = []
+    for sentence in corpus:
+        result.extend(add_comments(sentence))
+        prev_token = None
+        for token in sentence:
+            if "-" not in token.id:
+                if prev_token is not None:
+                    token.feats = f.feats(token.xpos, prev_token.xpos)
+                else:
+                    token.feats = f.feats(token.xpos)
+            result.append(token.conll())
+            prev_token = token
+        result.append("")
+    return Conll(result)
+
 def add_text(corpus):
     result = []
     for sentence in corpus:
-        if sentence.meta_present("newdoc"):
-            result.append('# newdoc = %s' % sentence.meta_value("newdoc"))
-        if sentence.meta_present('comment'):
-            result.append('# comment = %s' % sentence.meta_value('comment'))
-        result.append('# sent_id = %s' % sentence.id)
-        if sentence.meta_present('speaker'):
-            result.append('# speaker = %s' % sentence.meta_value('speaker'))
+        result.extend(add_comments(sentence))
         mws = []
         for mwt in [t.id for t in sentence if "-" in t.id]:
             mws.extend([*mwt.split("-")])
@@ -223,5 +247,6 @@ for filename in files:
         with open(os.path.join(sys.argv[1], filename)) as file:
             lines = process_file(file, filename)
             c = Conll(lines)
-            final = add_text(c)
-            print(final.conll())
+            with_text = add_text(c)
+            with_feats = add_feats(with_text)
+            print(with_feats.conll())
