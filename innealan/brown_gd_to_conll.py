@@ -95,25 +95,28 @@ def output_token(token_id, form, lemma, upos, xpos, feats):
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
         result.append(output_word(f"{token_id}", lemma, lemma, "ADP", "Sp", feats, f"{token_id + 1}", "case"))
-        result.append(output_word(f"{token_id + 1}", pron[xpos[2:]], pron[xpos[2:]], "PRON", xpos.replace("r", "p"), feats))
+        result.append(output_word(f"{token_id + 1}", pron[xpos[2:]], pron[xpos[2:]], "PRON", xpos.replace("r", "p")))
 
     elif xpos.startswith("Sap"):
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
-        result.append(output_word(f"{token_id}", "ag", "ag", "PART", "Sa", f"{token_id + 2}", "case"))
-        result.append(output_word(f"{token_id + 1}", poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace("Sa", "D"), str(token_id + 2), "obj"))
+        result.append(output_word(f"{token_id}", "ag", "ag", "PART", "Sa", "_", f"{token_id + 2}", "case"))
+        result.append(output_word(f"{token_id + 1}", poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace("Sa", "D"), "_", str(token_id + 2), "obj"))
 
     elif xpos.startswith("Spp"):
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
         result.append(output_word(str(token_id), lemma, lemma, "ADP", "Sp", "_", str(token_id + 2), "case"))
-        result.append(output_word(str(token_id + 1), poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace('Sp','D'), str(token_id + 2), "nmod:poss"))
+        result.append(output_word(str(token_id + 1), poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace('Sp','D'), "_", str(token_id + 2), "nmod:poss"))
     else:
         result = [output_word(str(token_id), form, lemma, upos, xpos, feats)]
     return result, is_mwt
 
 def output_word(token_id, form, lemma = "_", upos = "_", xpos = "_", feats = "_", head = "_", deprel = "_"):
     """In UD a token may consist of several 'words'. We follow this for things like 'agam'."""
+    if feats != "_":
+        print(f"{token_id} {form} {lemma} {upos} {xpos} {feats} {head}")
+        dijfidj
     return "\t".join([token_id, form, lemma, upos, xpos, feats, head, deprel, "_", "_"])
 
 def xpos_to_upos(xpos):
@@ -148,7 +151,7 @@ def process_file(f, filename):
         tokens = line.strip().split()
         if len(tokens) > 0 and start_line:
             result.append(f"# sent_id = {file_id}_{sent_id:03}")
-        carry = ''
+        carry = ""
         for t in tokens:
             if '/' in t:
                 form, xpos = t.split("/")[0:2] # in case of multiple tags
@@ -162,32 +165,29 @@ def process_file(f, filename):
                     if xpos == "Xsc":
                         token_id = 0
                         if not start_line:
-                            result.append("")
                             sent_id +=1
-                            result.append(f"# sent_id = {file_id}_{sent_id:03}")
                             result.append(f"# speaker = {form}")
                     try:
                         upos = xpos_to_upos(xpos)
+                        # use fix_feats.py to populate the feats column
+                        feats = "_"
+                        lemma = l.lemmatize(form, xpos)
+                        lines, is_mwt = output_token(token_id, carry + form, lemma, upos, xpos, feats)
+                        length = len(lines) - 1 if is_mwt else len(lines)
+                        result.extend(lines)
                     except:
                         eprint(t)
-                    # use fix_feats.py to populate the feats column
-                    feats = "_"
-                    lemma = l.lemmatize(form, xpos)
-                    lines, is_mwt = output_token(token_id, carry + form, lemma, upos, xpos, feats)
-                    length = len(lines) - 1 if is_mwt else len(lines)
-                    result.extend(lines)
                     carry = ""
                     if form in ['.','?','!']:
                         token_id = 1
                         sent_id +=1
                         result.append("")
-                        result.append(f"# sent_id = {file_id}_{sent_id:03}")
+                        start_line = True
                     else:
                         token_id = token_id + length
+                        start_line = False
             else:
                 carry = carry + t + '_'
-        start_line = False
-    result.append("")
     return result
 
 def add_comments(sentence):
@@ -211,10 +211,14 @@ def add_feats(corpus):
         prev_token = None
         for token in sentence:
             if "-" not in token.id:
-                if prev_token is not None:
-                    token.feats = f.feats(token.xpos, prev_token.xpos)
-                else:
-                    token.feats = f.feats(token.xpos)
+                try:
+
+                    if prev_token is not None:
+                        token.feats = f.feats(token.xpos, prev_token.xpos)
+                    else:
+                        token.feats = f.feats(token.xpos)
+                except:
+                    eprint(token.xpos)
             result.append(token.conll())
             prev_token = token
         result.append("")

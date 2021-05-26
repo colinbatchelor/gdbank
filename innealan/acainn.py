@@ -463,6 +463,8 @@ class Features:
             return {}
         if xpos.endswith("e"):
             result["Form"] = ["Emp"]
+        if xpos[1] in ["f", "v"]:
+            return result
         result["Case"] = [self.cases[xpos[4]]]
         if xpos[3] == "-":
             return result
