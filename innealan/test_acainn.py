@@ -211,6 +211,7 @@ class TestLemmatizer(unittest.TestCase):
             reader = csv.reader(file)
             next(reader)
             for line in reader:
+                print(line)
                 self.assertEqual(self.lemmatizer.lemmatize(line[0], line[1]), line[2])
 
     def from_file_fixed_xpos(self, filename, xpos):

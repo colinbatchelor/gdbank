@@ -213,7 +213,7 @@ class Lemmatizer:
                 return self.lemmata[form]
         replacements = [
             ("Vm-1p", "e?amaid$"), ("Vm-2p", "a?ibh$"),
-            ("V-s0", "e?adh$"), ("V-p0", "e?ar$"), ("V-f0", "e?ar$"),
+            ("V-s0", "e?adh$"), ("V-p0", "e?a[rs]$"), ("V-f0", "e?ar$"),
             ("V-h", "e?adh$"), ("Vm-3", "e?adh$"), ("V-f", "a?(idh|s)$")
         ]
         for replacement in replacements:
