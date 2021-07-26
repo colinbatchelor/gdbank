@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 import sys
 from acainn import Lemmatizer
 from acainn import Features
@@ -31,7 +32,35 @@ class Splitter:
     def to_be_split(self, xpos):
         return xpos in ["Spa-s", "Spa-p", "Spr", "Spv"]
 
+def classify_line(genre, first_xpos, closing_punct):
+    '''SOBIE except we never return O'''
+    splits = ['Nn', 'V-p', 'V-s', 'V-f', 'V-h', 'Pd', 'Wp-i', 'Wp-in', 'Wp-i-x', 'V-s0', 'Vm-2p', 'Vm-3', 'Rg', 'Uo', 'Xsc', 'I', 'Uq', 'Rs', 'Qn', 'Qq', 'Ncsmn', 'Ncsfn'] 
+    no_splits = ["Cc", "Q-r", 'Wpdia', 'Qa', 'Um']
+    if genre == "oral":
+        if xposes[0] in splits and closing_punct:
+            return "S"
+        elif xposes[0] in splits:
+            return "B"
+        elif closing_punct:
+            return "E"
+        else:
+            return "I"
+    else:
+        if closing_punct:
+            return "E"
+        else:
+            return "I"
+
+def retokenise_line(tokens, genre):
+    parsed = [parse_token(t) for t in tokens]
+    forms = [p[0] for p in parsed]
+    xposes = [p[1] for p in parsed]
+    complete = "." in forms or "?" in forms or "!" in forms
+    classification = classify_line(genre, xposes[0], complete)
+    return parsed, classification
+
 def output_token(token_id, form, lemma, upos, xpos, feats):
+    '''rewrite with namedtuple'''
     deprels = {"DET":"det", "PART":"mark:prt", "ADP":"fixed"}
     s = Splitter()
 
@@ -128,67 +157,83 @@ def xpos_to_upos(xpos):
         'Cc':'CCONJ', 'Cs':'SCONJ', 'Nc':'NOUN', 'Nf':'ADP', 'Nt':'PROPN',
         'Nn':'PROPN', 'nn':'PROPN', 'Nv':'NOUN', 'Sa':'PART', 'Sp':'ADP', 'SP':'ADP',
         'Ua':'PART', 'Uc':'PART', 'Uf':'NOUN', 'Ug':'PART', 'Um':'PART', 'Uo':'PART',
-        'Up':'NOUN', 'Uq':'PRON', 'Uv':'PART' }
+        'Up':'NOUN', 'Uq':'PRON', 'Uv':'PART', "__": "__" }
     return upos_mapping_simple[xpos[0]] if xpos[0] in upos_mapping_simple \
         else upos_mapping_harder[xpos[0] + xpos[1]]
+
+def parse_token(t):
+    subtokens = t.split("/")[0:2] # in case of multiple tags
+    if len(subtokens) == 1:
+        return subtokens[0], "__MW" # special cases for multiword expressions like "ann an"
+    else:
+        return subtokens[0], subtokens[1].strip("*")
 
 def process_file(f, filename):
     l = Lemmatizer()
     result = []
+    result.append('# file = %s' % filename)
+    file_id = filename.replace(".txt", "")
+    subcorpus = re.match(file_id, "^\\D*")
+    if subcorpus in ["c", "p", "s"] or file_id in ["n06", "n07", "n08", "n09", "n10"]:
+        genre = "oral"
+    else:
+        genre = "written"
+    sent_id = 0
+
+    for sentence in split_sentences(f, genre):
+        lines = [s for s in process_sentence(sentence, l)]
+        if len(lines) > 0:
+            result.append(f"# sent_id = {file_id}_{sent_id}")
+            result.extend(lines)
+            result.append('')
+            sent_id += 1
+    return result
+    
+def split_sentences(f, genre):
+    result = []
+    for line in f:
+        tokens = line.strip().split()
+        retokenised = retokenise_line(tokens, genre)
+
+        if genre == "written":
+            result.extend(retokenised[0])
+            if retokenised[1] == "E":
+                yield result
+                result = []
+        if genre == "oral":
+            if retokenised[1] == "S":
+                yield result
+                result = retokenised[0]
+    yield result
+
+def process_sentence(sentence, l):
     replacements = {
         "Aq-sfq": "Aq-sfd",
         "Ncfsg": "Ncsfg",
         "sa": "Sa",
-        "tdsm": "Tdsm"}
-    result.append('# file = %s' % filename)
-    file_id = filename.replace(".txt", "")
+        "tdsm": "Tdsm"
+    }
+    result = []
+    carry = ""
     token_id = 1
-    start_line = True
-    sent_id = 0
-
-    for line in f:
-        line = line.replace("na b'/ Uc", "na b'/Uc").replace("//Fb", "(slash)/Fb")
-        tokens = line.strip().split()
-        if len(tokens) > 0 and start_line:
-            result.append(f"# sent_id = {file_id}_{sent_id:03}")
-        carry = ""
-        for t in tokens:
-            if '/' in t:
-                form, xpos = t.split("/")[0:2] # in case of multiple tags
-        
-                xpos = xpos.strip("*")
-                if xpos == "Uo" and form != "a":
-                    carry = form
-                else:
-                    if xpos in replacements:
-                        xpos = replacements[xpos]
-                    if xpos == "Xsc":
-                        token_id = 0
-                        if not start_line:
-                            sent_id +=1
-                            result.append(f"# speaker = {form}")
-                    try:
-                        upos = xpos_to_upos(xpos)
-                        # use fix_feats.py to populate the feats column
-                        feats = "_"
-                        lemma = l.lemmatize(form, xpos)
-                        lines, is_mwt = output_token(token_id, carry + form, lemma, upos, xpos, feats)
-                        length = len(lines) - 1 if is_mwt else len(lines)
-                        result.extend(lines)
-                    except:
-                        eprint(t)
-                    carry = ""
-                    if form in ['.','?','!']:
-                        token_id = 1
-                        sent_id +=1
-                        result.append("")
-                        start_line = True
-                    else:
-                        token_id = token_id + length
-                        start_line = False
-            else:
-                carry = carry + t + '_'
-    return result
+    for form, xpos in sentence:
+        if xpos == "Uo" and form != "a":
+            carry = form
+        elif xpos == "Sa" and form == "'":
+            carry = form
+        else:
+            if xpos in replacements:
+                xpos = replacements[xpos]
+            upos = xpos_to_upos(xpos)
+            # use fix_feats.py to populate the feats column
+            feats = "_"
+            lemma = l.lemmatize(form, xpos)
+            lines, is_mwt = output_token(token_id, carry + form, lemma, upos, xpos, feats)
+            length = len(lines) - 1 if is_mwt else len(lines)
+            token_id = token_id + length
+            carry = ""
+            for line in lines:
+                yield line
 
 def add_comments(sentence):
     result = []
@@ -247,9 +292,10 @@ def add_text(corpus):
 
 files = os.listdir(sys.argv[1])
 for filename in files:
-    if not filename.startswith('s'):
+    if filename.startswith(sys.argv[2]):
         with open(os.path.join(sys.argv[1], filename)) as file:
             lines = process_file(file, filename)
+
             c = Conll(lines)
             with_text = add_text(c)
             with_feats = add_feats(with_text)
