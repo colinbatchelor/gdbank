@@ -1,68 +1,70 @@
+"""
+Converts a text file in Brown format into CoNLL-U.
+Assumes Scottish Gaelic.
+"""
 import csv
 import os
 import re
 import sys
+from collections import namedtuple
 from acainn import Lemmatizer
 from acainn import Features
 from pyconll.unit import Conll
 
-def eprint(*args, **kwargs):
-    print(*args, file = sys.stderr, **kwargs)
-
-def feats_to_string(feats: dict) -> str:
-    if feats == {}:
-        return '_'
-    return '|'.join(['%s=%s' % (t, list(feats[t])[0]) for t in sorted(feats)])
+Split = namedtuple("split", "form1 upos1 xpos1 form2 upos2 xpos2")
 
 class Splitter:
+    """Splits multiword (in the UD sense) tokens"""
     def __init__(self):
         folder = os.path.dirname(__file__)
         split_path = os.path.join(folder, "resources", "splits.csv")
+        self.splittables = ["Spa-s", "Spa-p", "Spr", "Spv"]
         self.splits = {}
-        with open(split_path) as file:
-            reader = csv.reader(file)
+        with open(split_path) as split_file:
+            reader = csv.reader(split_file)
             next(reader)
             for row in reader:
                 form, xpos, form1, upos1, xpos1, form2, upos2, xpos2 = row
-                self.splits[(form, xpos)] = [(form1, upos1, xpos1), (form2, upos2, xpos2)]
+                self.splits[(form, xpos)] = Split(form1, upos1, xpos1, form2, upos2, xpos2)
 
     def get_split(self, form, xpos):
+        """Returns a list of tuples (consider named-tupling this)"""
         return self.splits[(form, xpos)]
 
-    def to_be_split(self, xpos):
-        return xpos in ["Spa-s", "Spa-p", "Spr", "Spv"]
+    def xpos_to_be_split(self, xpos):
+        """Is the xpos in the splittable list from our file?"""
+        return xpos in self.splittables
 
 def classify_line(genre, first_xpos, closing_punct):
     '''SOBIE except we never return O'''
-    splits = ['Nn', 'V-p', 'V-s', 'V-f', 'V-h', 'Pd', 'Wp-i', 'Wp-in', 'Wp-i-x', 'V-s0', 'Vm-2p', 'Vm-3', 'Rg', 'Uo', 'Xsc', 'I', 'Uq', 'Rs', 'Qn', 'Qq', 'Ncsmn', 'Ncsfn'] 
-    no_splits = ["Cc", "Q-r", 'Wpdia', 'Qa', 'Um']
+    splits = ['Nn', 'V-p', 'V-s', 'V-f', 'V-h', 'Pd', 'Wp-i', 'Wp-in', 'Wp-i-x', 'V-s0', 'Vm-2p',
+              'Vm-3', 'Rg', 'Uo', 'Xsc', 'I', 'Uq', 'Rs', 'Qn', 'Qq', 'Ncsmn', 'Ncsfn']
+
     if genre == "oral":
-        if xposes[0] in splits and closing_punct:
+        if first_xpos in splits and closing_punct:
             return "S"
-        elif xposes[0] in splits:
+        if first_xpos in splits:
             return "B"
-        elif closing_punct:
-            return "E"
-        else:
-            return "I"
-    else:
         if closing_punct:
             return "E"
-        else:
-            return "I"
+        return "I"
+    if closing_punct:
+        return "E"
+    return "I"
 
 def retokenise_line(tokens, genre):
-    parsed = [parse_token(t) for t in tokens]
+    """Splits Brown tokens into forms and xpos and assigns SOBIE"""
+    parsed = [parse_brown_token(t) for t in tokens]
     forms = [p[0] for p in parsed]
     xposes = [p[1] for p in parsed]
     complete = "." in forms or "?" in forms or "!" in forms
     classification = classify_line(genre, xposes[0], complete)
     return parsed, classification
 
-def output_token(token_id, form, lemma, upos, xpos, feats):
+def output_token(token_id, form, lemma, upos, xpos):
     '''rewrite with namedtuple'''
-    deprels = {"DET":"det", "PART":"mark:prt", "ADP":"fixed"}
-    s = Splitter()
+    deprels = {"DET": "det", "PART": "mark:prt", "ADP": "fixed"}
+    splitter = Splitter()
 
     pron = {
         "1s": "mi", "1s--e": "mise",
@@ -81,72 +83,69 @@ def output_token(token_id, form, lemma, upos, xpos, feats):
     result = []
     is_mwt = False
     if "_" in form:
-        new_forms = form.split('_')
-        length = len(new_forms)
+        new_forms = form.split("_")
         new_deprel = "flat" if xpos.startswith("Nt") else \
             "flat:name" if xpos.startswith("Nn") else "fixed"
         for i, new_form in enumerate(new_forms):
-            result.append(output_word(str(token_id + i), new_form, lemma, upos, xpos, feats, "_" if i == 0 else str(token_id), "_" if i == 0 else new_deprel))
+            result.append(output_word(str(token_id + i), new_form, lemma, upos, xpos, "_" if i == 0 else str(token_id), "_" if i == 0 else new_deprel))
 
-    elif s.to_be_split(xpos):
-        split = s.get_split(form.lower().replace("‘","'").replace("’","'"), xpos)
-
-        deprel = deprels[split[1][1]]
+    elif splitter.xpos_to_be_split(xpos):
+        split = splitter.get_split(form.lower().replace("‘","'").replace("’","'"), xpos)
+        deprel = deprels[split.upos2]
         head = str(token_id) if deprel == "fixed" else str(token_id + 2)
 
-        result.append(output_word(f"{token_id}-{token_id + 1}", form))
-        result.append(output_word(str(token_id), split[0][0], split[0][0], split[0][1], split[0][2], "_", str(token_id + 2), "case"))
-        result.append(output_word(str(token_id + 1), split[1][0], split[1][0], split[1][1], split[1][2], "_", head, deprel))
+        return [output_word(f"{token_id}-{token_id + 1}", form),
+                output_word(str(token_id), split.form1, split.form1, split.upos1, split.xpos1, str(token_id + 2), "case"),
+                output_word(str(token_id + 1), split.form2, split.form2, split.upos2, split.upos2, head, deprel)], True
 
     elif xpos == "Csw":
-        is_mwt = True
-        result.append(output_word(f"{token_id}-{token_id + 1}", form))
-        result.append(output_word(f"{token_id}", "ma", "ma", "SCONJ", "Cs", feats, str(token_id + 2), "mark"))
-        result.append(output_word(f"{token_id + 1}", "is", "is", "AUX", "Wp-i", feats, str(token_id + 2), "cop"))
+        return [output_word(f"{token_id}-{token_id + 1}", form),
+                output_word(f"{token_id}", "ma", "ma", "SCONJ", "Cs", str(token_id + 2), "mark"),
+                output_word(f"{token_id + 1}", "is", "is", "AUX", "Wp-i", str(token_id + 2), "cop")], True
 
     elif xpos == "Wp-i-3":
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
         result.append(output_word(str(token_id), "is", "is", "AUX", "Wp-i"))
         if form.endswith("e"):
-            result.append(output_word(f"{token_id + 1}", "e", "e", "PRON", "Pp3sm", "_", str(token_id), "fixed"))
+            result.append(output_word(f"{token_id + 1}", "e", "e", "PRON", "Pp3sm", str(token_id), "fixed"))
         else:
-            result.append(output_word(f"{token_id + 1}", "i", "i", "PRON", "Pp3sf", "_", str(token_id), "fixed"))
+            result.append(output_word(f"{token_id + 1}", "i", "i", "PRON", "Pp3sf", str(token_id), "fixed"))
 
     elif xpos == "Wp-i-x":
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 2}", form))
-        result.append(output_word(f"{token_id}", "is", "is", "AUX", "Wp-i", "_", "_", "cop"))
-        result.append(output_word(f"{token_id + 1}", "an", "an", "ADP", "Sp", "_", f"{token_id}", "fixed"))
-        result.append(output_word(f"{token_id + 2}", "e", "e", "PRON", "Pp3sm", "_", f"{token_id}", "fixed"))
+        result.append(output_word(f"{token_id}", "is", "is", "AUX", "Wp-i", "_", "cop"))
+        result.append(output_word(f"{token_id + 1}", "an", "an", "ADP", "Sp", f"{token_id}", "fixed"))
+        result.append(output_word(f"{token_id + 2}", "e", "e", "PRON", "Pp3sm", f"{token_id}", "fixed"))
 
     elif xpos.startswith("Pr"):
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
-        result.append(output_word(f"{token_id}", lemma, lemma, "ADP", "Sp", feats, f"{token_id + 1}", "case"))
+        result.append(output_word(f"{token_id}", lemma, lemma, "ADP", "Sp", f"{token_id + 1}", "case"))
         result.append(output_word(f"{token_id + 1}", pron[xpos[2:]], pron[xpos[2:]], "PRON", xpos.replace("r", "p")))
 
     elif xpos.startswith("Sap"):
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
-        result.append(output_word(f"{token_id}", "ag", "ag", "PART", "Sa", "_", f"{token_id + 2}", "case"))
-        result.append(output_word(f"{token_id + 1}", poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace("Sa", "D"), "_", str(token_id + 2), "obj"))
+        result.append(output_word(f"{token_id}", "ag", "ag", "PART", "Sa", f"{token_id + 2}", "case"))
+        result.append(output_word(f"{token_id + 1}", poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace("Sa", "D"), str(token_id + 2), "obj"))
 
     elif xpos.startswith("Spp"):
         is_mwt = True
         result.append(output_word(f"{token_id}-{token_id + 1}", form))
-        result.append(output_word(str(token_id), lemma, lemma, "ADP", "Sp", "_", str(token_id + 2), "case"))
-        result.append(output_word(str(token_id + 1), poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace('Sp','D'), "_", str(token_id + 2), "nmod:poss"))
+        result.append(output_word(str(token_id), lemma, lemma, "ADP", "Sp", str(token_id + 2), "case"))
+        result.append(output_word(str(token_id + 1), poss_pron[xpos[3:]], poss_pron[xpos[3:]], "PRON", xpos.replace('Sp','D'), str(token_id + 2), "nmod:poss"))
     else:
-        result = [output_word(str(token_id), form, lemma, upos, xpos, feats)]
+        return [output_word(str(token_id), form, lemma, upos, xpos)], False
     return result, is_mwt
 
-def output_word(token_id, form, lemma = "_", upos = "_", xpos = "_", feats = "_", head = "_", deprel = "_"):
-    """In UD a token may consist of several 'words'. We follow this for things like 'agam'."""
-    if feats != "_":
-        print(f"{token_id} {form} {lemma} {upos} {xpos} {feats} {head}")
-        dijfidj
-    return "\t".join([token_id, form, lemma, upos, xpos, feats, head, deprel, "_", "_"])
+def output_word(token_id, form, lemma = "_", upos = "_", xpos = "_", head = "_", deprel = "_"):
+    """
+    In UD a token may consist of several 'words'.
+    We follow this for things like 'agam' which we split into 'aig' and 'mi'.
+    """
+    return "\t".join([token_id, form, lemma, upos, xpos, "_", head, deprel, "_", "_"])
 
 def xpos_to_upos(xpos):
     """Mappings from http://universaldependencies.org/u/pos/index.html"""
@@ -161,17 +160,17 @@ def xpos_to_upos(xpos):
     return upos_mapping_simple[xpos[0]] if xpos[0] in upos_mapping_simple \
         else upos_mapping_harder[xpos[0] + xpos[1]]
 
-def parse_token(t):
-    subtokens = t.split("/")[0:2] # in case of multiple tags
+def parse_brown_token(brown_token):
+    """Takes a Brown-format token and returns form and xpos"""
+    subtokens = brown_token.split("/")[0:2] # in case of multiple tags
     if len(subtokens) == 1:
         return subtokens[0], "__MW" # special cases for multiword expressions like "ann an"
-    else:
-        return subtokens[0], subtokens[1].strip("*")
+    return subtokens[0], subtokens[1].strip("*")
 
-def process_file(f, filename):
-    l = Lemmatizer()
+def process_file(brown_file, filename):
+    """Does the initial conversion to CoNLL-U format."""
+    lemmatizer = Lemmatizer()
     result = []
-    result.append('# file = %s' % filename)
     file_id = filename.replace(".txt", "")
     subcorpus = re.match(file_id, "^\\D*")
     if subcorpus in ["c", "p", "s"] or file_id in ["n06", "n07", "n08", "n09", "n10"]:
@@ -180,18 +179,19 @@ def process_file(f, filename):
         genre = "written"
     sent_id = 0
 
-    for sentence in split_sentences(f, genre):
-        lines = [s for s in process_sentence(sentence, l)]
-        if len(lines) > 0:
+    for sentence in split_sentences(brown_file, genre):
+        conllu_tokens = [s for s in process_sentence(sentence, lemmatizer)]
+        if len(conllu_tokens) > 0:
             result.append(f"# sent_id = {file_id}_{sent_id}")
-            result.extend(lines)
+            result.extend(conllu_tokens)
             result.append('')
             sent_id += 1
     return result
-    
-def split_sentences(f, genre):
+
+def split_sentences(brown_file, genre):
+    """Splits a file of Brown-format text into sentences."""
     result = []
-    for line in f:
+    for line in brown_file:
         tokens = line.strip().split()
         retokenised = retokenise_line(tokens, genre)
 
@@ -206,14 +206,14 @@ def split_sentences(f, genre):
                 result = retokenised[0]
     yield result
 
-def process_sentence(sentence, l):
+def process_sentence(sentence, lemmatizer):
+    """Generator which takes form/xpos pairs and yields CoNLLU-L tokens"""
     replacements = {
         "Aq-sfq": "Aq-sfd",
         "Ncfsg": "Ncsfg",
         "sa": "Sa",
         "tdsm": "Tdsm"
     }
-    result = []
     carry = ""
     token_id = 1
     for form, xpos in sentence:
@@ -222,20 +222,19 @@ def process_sentence(sentence, l):
         elif xpos == "Sa" and form == "'":
             carry = form
         else:
-            if xpos in replacements:
-                xpos = replacements[xpos]
+            xpos = replacements.get(xpos, xpos)
             upos = xpos_to_upos(xpos)
             # use fix_feats.py to populate the feats column
-            feats = "_"
-            lemma = l.lemmatize(form, xpos)
-            lines, is_mwt = output_token(token_id, carry + form, lemma, upos, xpos, feats)
-            length = len(lines) - 1 if is_mwt else len(lines)
+            lemma = lemmatizer.lemmatize(form, xpos)
+            conllu_tokens, is_mwt = output_token(token_id, carry + form, lemma, upos, xpos)
+            length = len(conllu_tokens) - 1 if is_mwt else len(conllu_tokens)
             token_id = token_id + length
             carry = ""
-            for line in lines:
-                yield line
+            for conllu_token in conllu_tokens:
+                yield conllu_token
 
 def add_comments(sentence):
+    """Provide CoNLL-U metadata."""
     result = []
     if sentence.meta_present("newdoc"):
         result.append('# newdoc = %s' % sentence.meta_value("newdoc"))
@@ -249,27 +248,27 @@ def add_comments(sentence):
     return result
 
 def add_feats(corpus):
-    f = Features()
+    """Use Features to assign UD features to token"""
+    features = Features()
     result = []
     for sentence in corpus:
         result.extend(add_comments(sentence))
         prev_token = None
         for token in sentence:
             if "-" not in token.id:
-                try:
 
-                    if prev_token is not None:
-                        token.feats = f.feats(token.xpos, prev_token.xpos)
-                    else:
-                        token.feats = f.feats(token.xpos)
-                except:
-                    eprint(token.xpos)
+                if prev_token is not None:
+                    token.feats = features.feats(token.xpos, prev_token.xpos)
+                else:
+                    token.feats = features.feats(token.xpos)
+
             result.append(token.conll())
             prev_token = token
         result.append("")
     return Conll(result)
 
 def add_text(corpus):
+    """Extract continuous text from forms."""
     result = []
     for sentence in corpus:
         result.extend(add_comments(sentence))
@@ -277,7 +276,7 @@ def add_text(corpus):
         for mwt in [t.id for t in sentence if "-" in t.id]:
             mws.extend([*mwt.split("-")])
         surfaces = [(t.id, t.form, t.xpos) for t in sentence if t.id not in mws]
-        
+
         text = " ".join([s[1] for s in surfaces]).replace(" ,", ",").replace(" .", ".").replace(" ?", "?").replace("( ", "(").replace(" )",")").replace("  ", " ")
         result.append(f"# text = {text}")
         for i, surface in enumerate(surfaces):
