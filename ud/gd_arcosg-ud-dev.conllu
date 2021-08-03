@@ -5337,7 +5337,7 @@
 9	robh	bi	VERB	V-s--d	Tense=Past	3	parataxis	_	_
 10	aig	aig	ADP	Sp	_	13	case	_	_
 11	a	a	ADJ	Ar	_	13	amod	_	_
-12	chuile	cuile	ADJ	Ar	_	13	amod	_	_
+12	chuile	cuile	ADJ	Ar	_	11	fixed	_	_
 13	duine	duine	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	9	obl	_	_
 14	ach	ach	ADP	Sp	_	15	case	_	_
 15	gabhail	gabh	NOUN	Nv	VerbForm=Vnoun	9	xcomp:pred	_	_
@@ -5630,6 +5630,18 @@
 43	.	.	PUNCT	Fe	_	6	punct	_	SpaceAfter=No
 44	"	"	PUNCT	Fz	_	6	punct	_	_
 
+# sent_id = n02_010
+# text = 'S ann mar seo a bha.
+1	'S	is	AUX	Wp-i	Tense=Pres	5	cop	_	_
+2-3	ann	_	_	_	_	_	_	_	_
+2	an	an	ADP	Sp	_	1	fixed	_	_
+3	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	1	fixed	_	_
+4	mar	mar	ADP	Sp	_	5	case	_	_
+5	seo	seo	PRON	Pd	_	0	root	_	_
+6	a	a	PART	Q-r	PartType=Vb|PronType=Rel	7	mark:prt	_	_
+7	bha	bi	VERB	V-s	Tense=Past	5	csubj:cleft	_	SpaceAfter=No
+8	.	.	PUNCT	Fe	_	5	punct	_	_
+
 # sent_id = n02_011
 # text = Chaidh iad a chadal, agus a's a’ mhaduinn, nuair a dh’éirich a’ Rìgh, chaidh e mach, agus cha robh air ach roinn dha aodach.
 1	Chaidh	rach	VERB	V-s	Tense=Past	0	root	_	_
@@ -5697,11 +5709,11 @@
 4-5	aige	_	_	_	_	_	_	_	_
 4	aig	aig	ADP	Sp	_	5	case	_	_
 5	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	2	xcomp:pred	_	_
-6	gu	gu	PRON	Uq	PronType=Int	8	det	_	_
+6	gu	gu	PRON	Uq	PronType=Int	8	nmod	_	_
 7	dé	dé	PRON	Uq	PronType=Int	6	fixed	_	_
-8	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
+8	rud	rud	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	parataxis	_	_
 9	a	a	PART	Q-r	PartType=Vb|PronType=Rel	10	mark:prt	_	_
-10	dhèanadh	dèan	VERB	V-h	Mood=Cnd	3	xcomp	_	_
+10	dhèanadh	dèan	VERB	V-h	Mood=Cnd	8	acl:relcl	_	_
 11	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	10	nsubj	_	SpaceAfter=No
 12	.	.	PUNCT	Fe	_	2	punct	_	_
 
@@ -5752,13 +5764,13 @@
 1	“	“	PUNCT	Fq	_	3	punct	_	SpaceAfter=No
 2	O	o	INTJ	I	_	3	discourse	_	_
 3	till	till	VERB	Vm-2s	Mood=Imp|Person=2	0	root	_	SpaceAfter=No
-4	,	,	PUNCT	Fi	_	3	punct	_	_
+4	,	,	PUNCT	Fi	_	5	punct	_	_
 5	till	till	VERB	Vm-2s	Mood=Imp|Person=2	3	parataxis	_	SpaceAfter=No
-6	,	,	PUNCT	Fi	_	3	punct	_	SpaceAfter=No
-7	"	"	PUNCT	Fz	_	3	punct	_	_
+6	,	,	PUNCT	Fi	_	8	punct	_	SpaceAfter=No
+7	"	"	PUNCT	Fz	_	8	punct	_	_
 8	ars’	arsa	VERB	V-s	Tense=Past	3	parataxis	_	_
 9	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	8	nsubj	_	SpaceAfter=No
-10	,	,	PUNCT	Fi	_	8	punct	_	_
+10	,	,	PUNCT	Fi	_	13	punct	_	_
 11	“	“	PUNCT	Fq	_	13	punct	_	SpaceAfter=No
 12	a	a	PART	Uv	PartType=Voc	13	case:voc	_	_
 13	Rìgh	rìgh	NOUN	Ncsmv	Case=Voc|Gender=Masc|Number=Sing	3	vocative	_	_
@@ -5868,8 +5880,8 @@
 12-13	ann	_	_	_	_	_	_	_	SpaceAfter=No
 12	an	an	ADP	Sp	_	13	case	_	_
 13	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	10	obl	_	_
-14	,	,	PUNCT	Fi	_	1	punct	_	_
-15	"	"	PUNCT	Fz	_	1	punct	_	SpaceAfter=No
+14	,	,	PUNCT	Fi	_	16	punct	_	_
+15	"	"	PUNCT	Fz	_	16	punct	_	SpaceAfter=No
 16	ars’	arsa	VERB	V-s	Tense=Past	1	parataxis	_	_
 17	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	16	nsubj	_	SpaceAfter=No
 18	.	.	PUNCT	Fe	_	16	punct	_	_
@@ -5885,7 +5897,7 @@
 6	.	.	PUNCT	Fe	_	5	punct	_	_
 
 # sent_id = n02_020
-# text = Tha trì ràithean o thàna tu dhan taigh-sa, " ars’ esan.
+# text = Tha trì ràithean o thàna tu dhan taigh-sa," ars’ esan.
 1	Tha	bi	VERB	V-p	Tense=Pres	0	root	_	_
 2	trì	trì	NUM	Mc	_	3	nummod	_	_
 3	ràithean	ràith	NOUN	Ncpfn	Case=Nom|Gender=Fem|Number=Plur	1	nsubj	_	_
@@ -5896,7 +5908,7 @@
 7	do	do	ADP	Sp	_	9	case	_	_
 8	an	an	DET	Tds	Number=Sing	9	det	_	_
 9	taigh-sa	taigh-sa	NOUN	Ncsmde	Case=Dat|Gender=Masc|Number=Sing	5	obl	_	SpaceAfter=No
-10	,	,	PUNCT	Fi	_	5	punct	_	_
+10	,	,	PUNCT	Fi	_	5	punct	_	SpaceAfter=No
 11	"	"	PUNCT	Fz	_	1	punct	_	_
 12	ars’	arsa	VERB	V-s	Tense=Past	1	parataxis	_	_
 13	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	12	nsubj	_	SpaceAfter=No
@@ -5908,11 +5920,11 @@
 2	chan	chan	PART	Qn	PartType=Cmpl|Polarity=Neg	3	mark:prt	_	_
 3	eil	bi	VERB	V-p--d	Tense=Pres	0	root	_	_
 4	sin	sin	PRON	Pd	_	3	nsubj	_	SpaceAfter=No
-5	,	,	PUNCT	Fi	_	3	punct	_	SpaceAfter=No
-6	"	"	PUNCT	Fz	_	3	punct	_	_
+5	,	,	PUNCT	Fi	_	7	punct	_	SpaceAfter=No
+6	"	"	PUNCT	Fz	_	7	punct	_	_
 7	ars’	arsa	VERB	V-s	Tense=Past	3	parataxis	_	_
 8	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	7	nsubj	_	SpaceAfter=No
-9	,	,	PUNCT	Fi	_	7	punct	_	_
+9	,	,	PUNCT	Fi	_	12	punct	_	_
 10	“	“	PUNCT	Fq	_	12	punct	_	SpaceAfter=No
 11	ach	ach	ADP	Sp	_	12	case	_	_
 12	draoidheachd	draoidheachd	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	3	xcomp:pred	_	_
@@ -5924,12 +5936,12 @@
 # text = Ach till còmhla riumsa," ars’ esan.
 1	Ach	ach	CCONJ	Cc	_	2	cc	_	_
 2	till	till	VERB	Vm-2s	Mood=Imp|Person=2	0	root	_	_
-3	còmhla	còmhla	ADV	Rg	_	2	advmod	_	_
+3	còmhla	còmhla	ADV	Rg	_	5	advmod	_	_
 4-5	riumsa	_	_	_	_	_	_	_	SpaceAfter=No
 4	ri	ri	ADP	Sp	_	5	case	_	_
 5	mise	mi	PRON	Pp1s--e	Form=Emp|Number=Sing|Person=1	2	obl	_	_
-6	,	,	PUNCT	Fi	_	2	punct	_	SpaceAfter=No
-7	"	"	PUNCT	Fz	_	2	punct	_	_
+6	,	,	PUNCT	Fi	_	8	punct	_	SpaceAfter=No
+7	"	"	PUNCT	Fz	_	8	punct	_	_
 8	ars’	arsa	VERB	V-s	Tense=Past	2	parataxis	_	_
 9	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	8	nsubj	_	SpaceAfter=No
 10	.	.	PUNCT	Fe	_	8	punct	_	_
@@ -5981,7 +5993,7 @@
 # text = “'N dà," ars’ a’ Rìgh, “chan eil fhios agamsa," ars’ esan, “cà téid mi dh’iarraidh duine a bhaisteas e." ars’ esan.
 1	“	“	PUNCT	Fq	_	6	punct	_	SpaceAfter=No
 2	'N	'n	INTJ	I	_	6	discourse	_	_
-3	dà	dà	INTJ	I	_	6	discourse	_	SpaceAfter=No
+3	dà	dà	INTJ	I	_	2	fixed	_	SpaceAfter=No
 4	,	,	PUNCT	Fi	_	6	punct	_	SpaceAfter=No
 5	"	"	PUNCT	Fz	_	6	punct	_	_
 6	ars’	arsa	VERB	V-s	Tense=Past	0	root	_	_
@@ -5995,11 +6007,11 @@
 14-15	agamsa	_	_	_	_	_	_	_	SpaceAfter=No
 14	aig	aig	ADP	Sp	_	15	case	_	_
 15	mise	mi	PRON	Pp1s--e	Form=Emp|Number=Sing|Person=1	12	xcomp:pred	_	_
-16	,	,	PUNCT	Fi	_	12	punct	_	SpaceAfter=No
-17	"	"	PUNCT	Fz	_	12	punct	_	_
+16	,	,	PUNCT	Fi	_	18	punct	_	SpaceAfter=No
+17	"	"	PUNCT	Fz	_	18	punct	_	_
 18	ars’	arsa	VERB	V-s	Tense=Past	12	parataxis	_	_
 19	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	18	nsubj	_	SpaceAfter=No
-20	,	,	PUNCT	Fi	_	18	punct	_	_
+20	,	,	PUNCT	Fi	_	22	punct	_	_
 21	“	“	PUNCT	Fq	_	22	punct	_	SpaceAfter=No
 22	cà	cà	ADV	Uq	_	23	advmod	_	_
 23	téid	téid	VERB	V-f--d	Tense=Fut	12	advcl	_	_
@@ -6009,11 +6021,40 @@
 27	a	a	PART	Q-r	PartType=Vb|PronType=Rel	28	mark:prt	_	_
 28	bhaisteas	bhaist	VERB	V-f--r	Tense=Fut	26	acl:relcl	_	_
 29	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	28	nsubj	_	SpaceAfter=No
-30	.	.	PUNCT	Fe	_	23	punct	_	SpaceAfter=No
-31	"	"	PUNCT	Fz	_	23	punct	_	_
+30	.	.	PUNCT	Fe	_	32	punct	_	SpaceAfter=No
+31	"	"	PUNCT	Fz	_	32	punct	_	_
 32	ars’	arsa	VERB	V-s	Tense=Past	23	parataxis	_	_
 33	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	32	nsubj	_	SpaceAfter=No
 34	.	.	PUNCT	Fe	_	6	punct	_	_
+
+# sent_id = n02_026
+# text = “A well", ars’ a' bodach, “bha mise uair rachadh agam fhìn air baisteadh a dhèanamh" ars’ esan.
+1	“	“	PUNCT	Fq	_	2	punct	_	SpaceAfter=No
+2	A	a	X	Xfe	Foreign=Yes	11	discourse	_	_
+3	well	well	X	Xfe	Foreign=Yes	2	parataxis	_	SpaceAfter=No
+4	"	"	PUNCT	Fz	_	6	punct	_	SpaceAfter=No
+5	,	,	PUNCT	Fi	_	6	punct	_	_
+6	ars’	arsa	VERB	V-s	Tense=Past	2	parataxis	_	_
+7	a'	an	DET	Tdsm	Gender=Masc|Number=Sing	8	det	_	_
+8	bodach	bodach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	SpaceAfter=No
+9	,	,	PUNCT	Fi	_	11	punct	_	_
+10	“	“	PUNCT	Fq	_	11	punct	_	SpaceAfter=No
+11	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
+12	mise	mi	PRON	Pp1s--e	Form=Emp|Number=Sing|Person=1	11	nsubj	_	_
+13	uair	uair	ADV	Rt	_	11	advmod	_	_
+14	rachadh	rach	VERB	V-h--d	Mood=Cnd	11	parataxis	_	_
+15-16	agam	_	_	_	_	_	_	_	_
+15	aig	aig	ADP	Sp	_	16	case	_	_
+16	mi	mi	PRON	Pp1s	Number=Sing|Person=1	14	obl	_	_
+17	fhìn	fèin	PRON	Px	_	16	nmod	_	_
+18	air	air	ADP	Sp	_	21	case	_	_
+19	baisteadh	baist	NOUN	Nv	VerbForm=Vnoun	21	obj	_	_
+20	a	a	PART	Ug	PartType=Inf	21	mark:prt	_	_
+21	dhèanamh	dèan	NOUN	Nv	VerbForm=Inf	14	xcomp	_	SpaceAfter=No
+22	"	"	PUNCT	Fz	_	23	punct	_	_
+23	ars’	arsa	VERB	V-s	Tense=Past	11	parataxis	_	_
+24	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	23	nsubj	_	SpaceAfter=No
+25	.	.	PUNCT	Fe	_	11	punct	_	_
 
 # sent_id = n02_028
 # text = Fhuair a' bodach uisge agus dh’fhoighneachd e dhen Rìgh dé an t-ainm a bheireadh iad air.
@@ -6064,7 +6105,7 @@
 1	“	“	PUNCT	Fq	_	2	punct	_	SpaceAfter=No
 2	Well	well	NOUN	Xfe	Foreign=Yes	15	discourse	_	SpaceAfter=No
 3	,	,	PUNCT	Fi	_	4	punct	_	_
-4	ma	ma	ADV	Rg	_	15	advmod	_	_
+4	ma	ma	ADV	Rg	_	2	advmod	_	_
 5	tha	ta	ADV	Rg	_	4	fixed	_	SpaceAfter=No
 6	,	,	PUNCT	Fi	_	8	punct	_	SpaceAfter=No
 7	"	"	PUNCT	Fz	_	8	punct	_	_
@@ -6084,10 +6125,10 @@
 21	th'	bi	VERB	V-p	Tense=Pres	19	acl:relcl	_	_
 22	air	air	ADP	Sp	_	23	case	_	_
 23	bhrugh	brugh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	21	xcomp:pred	_	_
-24	tha	bi	VERB	V-p	Tense=Pres	15	csubj:cop	_	_
+24	tha	bi	VERB	V-p	Tense=Pres	23	acl:relcl	_	_
 25	seo	seo	PRON	Pd	_	24	nsubj	_	SpaceAfter=No
-26	,	,	PUNCT	Fi	_	15	punct	_	SpaceAfter=No
-27	"	"	PUNCT	Fz	_	15	punct	_	_
+26	,	,	PUNCT	Fi	_	28	punct	_	SpaceAfter=No
+27	"	"	PUNCT	Fz	_	28	punct	_	_
 28	ars’	arsa	VERB	V-s	Tense=Past	15	parataxis	_	_
 29	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	28	nsubj	_	SpaceAfter=No
 30	.	.	PUNCT	Fe	_	15	punct	_	_
@@ -6203,11 +6244,11 @@
 14	'nad	'nad	ADP	Sp	_	16	case	_	_
 15	do	do	PRON	Dp2s	Number=Sing|Person=2|Poss=Yes	16	nmod:poss	_	_
 16	àite	àite	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	6	obl	_	SpaceAfter=No
-17	,	,	PUNCT	Fi	_	2	punct	_	SpaceAfter=No
-18	"	"	PUNCT	Fz	_	2	punct	_	_
+17	,	,	PUNCT	Fi	_	19	punct	_	SpaceAfter=No
+18	"	"	PUNCT	Fz	_	19	punct	_	_
 19	ars’	arsa	VERB	V-s	Tense=Past	2	parataxis	_	_
 20	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	19	nsubj	_	SpaceAfter=No
-21	,	,	PUNCT	Fi	_	19	punct	_	_
+21	,	,	PUNCT	Fi	_	25	punct	_	_
 22	“	“	PUNCT	Fq	_	25	punct	_	SpaceAfter=No
 23	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	25	mark:prt	_	_
 24	d’	do	PART	Q--s	Tense=Past	25	mark:prt	_	_
@@ -6217,8 +6258,8 @@
 28-29	ort	_	_	_	_	_	_	_	SpaceAfter=No
 28	air	air	ADP	Sp	_	29	case	_	_
 29	thu	thu	PRON	Pp2s	Number=Sing|Person=2	27	nmod	_	_
-30	,	,	PUNCT	Fi	_	25	punct	_	SpaceAfter=No
-31	"	"	PUNCT	Fz	_	25	punct	_	_
+30	,	,	PUNCT	Fi	_	32	punct	_	SpaceAfter=No
+31	"	"	PUNCT	Fz	_	32	punct	_	_
 32	ars’	arsa	VERB	V-s	Tense=Past	25	parataxis	_	_
 33	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	32	nsubj	_	SpaceAfter=No
 34	.	.	PUNCT	Fe	_	2	punct	_	_
@@ -6243,7 +6284,7 @@
 15	"	"	PUNCT	Fz	_	16	punct	_	_
 16	ars’	arsa	VERB	V-s	Tense=Past	13	parataxis	_	_
 17	esan	e	PRON	Pp3sm-e	Form=Emp|Gender=Masc|Number=Sing|Person=3	16	nsubj	_	SpaceAfter=No
-18	,	,	PUNCT	Fi	_	16	punct	_	_
+18	,	,	PUNCT	Fi	_	21	punct	_	_
 19	“	“	PUNCT	Fq	_	21	punct	_	SpaceAfter=No
 20	do	do	DET	Dp2s	Number=Sing|Person=2|Poss=Yes	21	nmod:poss	_	_
 21	thaigh	taigh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	13	appos	_	_
@@ -6265,7 +6306,7 @@
 10	cuiridh	cuir	VERB	V-f	Tense=Fut	2	conj	_	_
 11	tu	thu	PRON	Pp2s	Number=Sing|Person=2	10	nsubj	_	_
 12-13	umad	_	_	_	_	_	_	_	_
-12	umad	umad	ADP	Sp	_	13	case	_	_
+12	mu	mu	ADP	Sp	_	13	case	_	_
 13	thu	thu	PRON	Pp2s	Number=Sing|Person=2	10	obl	_	_
 14	iad	iad	PRON	Pp3p	Number=Plur|Person=3	10	obj	_	_
 15	agus	agus	CCONJ	Cc	_	17	cc	_	_
@@ -6386,6 +6427,68 @@
 7	taigh	taigh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	xcomp:pred	_	SpaceAfter=No
 8	.	.	PUNCT	Fe	_	1	punct	_	_
 
+# sent_id = n02_038a
+# text = Agus a chuile duine choinneachadh a’ Rìgh rachadh e air a’ ghlùin dha 's dh’fhoighneachadh e dheth, "O cà robh sibh a Rìgh Èireann, o chionn trì ràithean?"
+1	Agus	agus	CCONJ	Cc	_	4	cc	_	_
+2	a	a	ADJ	Ar	_	4	amod	_	_
+3	chuile	cuile	ADJ	Ar	_	2	fixed	_	_
+4	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	8	dislocated	_	_
+5	choinneachadh	coinneach	VERB	V-h	Mood=Cnd	4	acl:relcl	_	_
+6	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	7	det	_	_
+7	Rìgh	rìgh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	5	obj	_	_
+8	rachadh	rach	VERB	V-h	Mood=Cnd	0	root	_	_
+9	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	8	nsubj	_	_
+10	air	air	ADP	Sp	_	12	case	_	_
+11	a’	an	DET	Tdsf	Gender=Fem|Number=Sing	12	det	_	_
+12	ghlùin	glùin	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	8	obl	_	_
+13-14	dha	_	_	_	_	_	_	_	_
+13	do	do	ADP	Sp	_	14	case	_	_
+14	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	12	nmod	_	_
+15	's	's	CCONJ	Cc	_	16	cc	_	_
+16	dh’fhoighneachadh	foighneach	VERB	V-h	Mood=Cnd	8	conj	_	_
+17	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	16	nsubj	_	_
+18-19	dheth	_	_	_	_	_	_	_	SpaceAfter=No
+18	de	de	ADP	Sp	_	19	case	_	_
+19	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	16	obl	_	_
+20	,	,	PUNCT	Fi	_	23	punct	_	_
+21	"	"	PUNCT	Fq	_	23	punct	_	SpaceAfter=No
+22	O	o	INTJ	I	_	23	discourse	_	_
+23	cà	cà	PRON	Uq	_	16	parataxis	_	_
+24	robh	bi	VERB	V-s--d	Tense=Past	23	acl:relcl	_	_
+25	sibh	sibh	PRON	Pp2p	Number=Plur|Person=2	24	nsubj	_	_
+26	a	a	PART	Uv	PartType=Voc	27	case:voc	_	_
+27	Rìgh	rìgh	NOUN	Ncsmv	Case=Voc|Gender=Masc|Number=Sing	24	vocative	_	_
+28	Èireann	Èireann	PROPN	Nt	_	27	nmod	_	SpaceAfter=No
+29	,	,	PUNCT	Fi	_	33	punct	_	_
+30	o	bho	ADP	Sp	_	33	case	_	_
+31	chionn	cionn	ADP	Nf	_	30	fixed	_	_
+32	trì	trì	NUM	Mc	_	33	nummod	_	_
+33	ràithean	ràith	NOUN	Ncpfg	Case=Gen|Gender=Fem|Number=Plur	24	obl	_	SpaceAfter=No
+34	?	?	PUNCT	Fg	_	24	punct	_	SpaceAfter=No
+35	"	"	PUNCT	Fz	_	24	punct	_	_
+
+# sent_id = n02_038b
+# text = Seo nuair a chreid a’ Rìgh a’ bodach, gur h-e 'n fhìrinn a bh' aige.
+1	Seo	seo	PRON	Pd	_	0	root	_	_
+2	nuair	nuair	SCONJ	Cs	_	4	mark	_	_
+3	a	a	PART	Q-r	PartType=Vb|PronType=Rel	4	mark:prt	_	_
+4	chreid	creid	VERB	V-s	Tense=Past	1	csubj:cleft	_	_
+5	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	6	det	_	_
+6	Rìgh	rìgh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
+7	a’	an	DET	Tdsm	Gender=Masc|Number=Sing	8	det	_	_
+8	bodach	bodach	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	4	obj	_	SpaceAfter=No
+9	,	,	PUNCT	Fi	_	4	punct	_	_
+10	gur	is	AUX	Wpdia	Polarity=Aff|Tense=Pres	11	cop	_	_
+11	h-e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	4	ccomp	_	_
+12	'n	an	DET	Tdsf	Gender=Fem|Number=Sing	13	det	_	_
+13	fhìrinn	fìrinn	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	11	nsubj	_	_
+14	a	a	PART	Q-r	PartType=Vb|PronType=Rel	15	mark:prt	_	_
+15	bh'	bi	VERB	V-s	Tense=Past	13	acl:relcl	_	_
+16-17	aige	_	_	_	_	_	_	_	SpaceAfter=No
+16	aig	aig	ADP	Sp	_	17	case	_	_
+17	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	15	xcomp:pred	_	_
+18	.	.	PUNCT	Fe	_	1	punct	_	_
+
 # sent_id = n02_039
 # text = Nuair a ràinig Rìgh Èireann cha robh feum air fear eile chur 'na àite.
 1	Nuair	nuair	SCONJ	Cs	_	3	mark	_	_
@@ -6454,6 +6557,34 @@
 42	tillte	tillte	VERB	V-h0-d	Mood=Cnd|Person=0	40	ccomp	_	_
 43	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	42	nsubj	_	SpaceAfter=No
 44	.	.	PUNCT	Fe	_	13	punct	_	_
+
+# sent_id = n02_041
+# text = Agus bha Rìgh Èireann bha e a' dol a dh’fhalbh, e fhèin 's a chuid sluaigh, a' dol a thilleadh à Turcaich.
+1	Agus	agus	CCONJ	Cc	_	2	cc	_	_
+2	bha	bi	VERB	V-s	Tense=Past	0	root	_	_
+3	Rìgh	rìgh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	2	nsubj	_	_
+4	Èireann	Èireann	PROPN	Nt	_	3	nmod	_	_
+5	bha	bi	VERB	V-s	Tense=Past	2	parataxis	_	_
+6	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	5	nsubj	_	_
+7	a'	ag	PART	Sa	_	8	case	_	_
+8	dol	rach	NOUN	Nv	VerbForm=Vnoun	5	xcomp:pred	_	_
+9	a	a	PART	Ug	PartType=Inf	10	mark:prt	_	_
+10	dh’fhalbh	falbh	NOUN	Nv	VerbForm=Inf	8	xcomp:pred	_	SpaceAfter=No
+11	,	,	PUNCT	Fi	_	12	punct	_	_
+12	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	10	obl	_	_
+13	fhèin	fèin	PRON	Px	_	12	nmod	_	_
+14	's	's	CCONJ	Cc	_	15	cc	_	_
+15	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	16	nmod:poss	_	_
+16	chuid	cuid	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	12	conj	_	_
+17	sluaigh	sluaigh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	16	nmod	_	SpaceAfter=No
+18	,	,	PUNCT	Fi	_	20	punct	_	_
+19	a'	ag	PART	Sa	_	20	case	_	_
+20	dol	rach	NOUN	Nv	VerbForm=Vnoun	10	xcomp:pred	_	_
+21	a	a	PART	Ug	PartType=Inf	22	mark:prt	_	_
+22	thilleadh	till	NOUN	Nv	VerbForm=Inf	20	xcomp:pred	_	_
+23	à	à	ADP	Sp	_	24	case	_	_
+24	Turcaich	Turcaich	PROPN	Nt	_	22	obl	_	SpaceAfter=No
+25	.	.	PUNCT	Fe	_	2	punct	_	_
 
 # sent_id = n02_042a
 # text = Agus chuir e fios air…
