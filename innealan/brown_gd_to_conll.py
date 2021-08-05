@@ -201,9 +201,11 @@ def split_sentences(brown_file, genre):
                 yield result
                 result = []
         if genre == "oral":
-            if retokenised[1] == "S":
+            if retokenised[1] == "B" and len(result) > 0:
                 yield result
                 result = retokenised[0]
+            else:
+                result.extend(retokenised[0])
     yield result
 
 def process_sentence(sentence, lemmatizer):
