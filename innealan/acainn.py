@@ -117,6 +117,10 @@ class Lemmatizer:
     def lemmatize_proper_noun(self, surface: str, oblique: bool) -> str:
         """May need xpos information to deal with the vocative."""
         surface = self.delenite(surface)
+        if surface == "Morris":
+            return "Morris"
+        if surface == "lain": # special case for ARCOSG
+            return "Iain"
         if surface == "a'":
             return "an"
         surface = surface.replace("Mic", "Mac")
@@ -150,11 +154,12 @@ class Lemmatizer:
             return "Alba" if surface in ["Albann", "Albainn"] else surface
         return self.lemmatize_common_noun(surface, xpos, oblique)
 
-    @staticmethod
-    def lemmatize_common_noun(surface: str, xpos: str, oblique: bool) -> str:
+    def lemmatize_common_noun(self, surface: str, xpos: str, oblique: bool) -> str:
         """Looks as if it needs to be refactored."""
         if surface.startswith("luchd"):
             return surface.replace("luchd", "neach")
+        if surface.startswith("'"):
+            surface = self.delenite(surface[1:])
 
         plural_replacements = [
             ('eachan', 'e'), ('achan', 'a'), ('aich', 'ach'),
@@ -216,16 +221,18 @@ class Lemmatizer:
             ("V-s0", "e?adh$"), ("V-p0", "e?a[rs]$"), ("V-f0", "e?ar$"),
             ("V-h", "e?adh$"), ("Vm-3", "e?adh$"), ("V-f", "a?(idh|s)$")
         ]
-        for replacement in replacements:
-            if xpos.startswith(replacement[0]):
-                surface = self.delenite(surface)
-                return re.sub(replacement[1], "", surface)
 
         if xpos.endswith("r"): # relative form
+            surface = self.delenite(surface)
             if surface.endswith("eas"):
                 return surface.replace("eas","")
             if surface.endswith("as"):
                 return surface.replace("as","")
+        else:
+            for replacement in replacements:
+                if xpos.startswith(replacement[0]):
+                    surface = self.delenite(surface)
+                    return re.sub(replacement[1], "", surface)
 
         return self.delenite(surface)
 

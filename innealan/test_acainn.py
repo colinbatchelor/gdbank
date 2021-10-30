@@ -316,6 +316,7 @@ class TestLemmatizer(unittest.TestCase):
     def test_particles(self):
         """TODO: move to csv"""
         self.assertEqual(self.lemmatizer.lemmatize("d’", "Q--s"), "do")
+        self.assertEqual(self.lemmatizer.lemmatize("'g", "Sa"), "ag")
 
     def test_prefixed_words(self):
         """TODO: move to csv"""
