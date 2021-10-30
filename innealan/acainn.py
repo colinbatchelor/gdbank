@@ -117,8 +117,8 @@ class Lemmatizer:
     def lemmatize_proper_noun(self, surface: str, oblique: bool) -> str:
         """May need xpos information to deal with the vocative."""
         surface = self.delenite(surface)
-        if surface == "Morris":
-            return "Morris"
+        if surface in ["Josie", "Morris"]:
+            return surface
         if surface == "lain": # special case for ARCOSG
             return "Iain"
         if surface == "a'":

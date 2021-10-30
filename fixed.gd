@@ -15,6 +15,7 @@ a cheile
 a chèile
 a chéile
 a chionn
+a chuile
 a deas
 a dh'aindeoin
 a dh'ainneoin
@@ -150,6 +151,7 @@ b' e
 b' i
 bho chionn
 bho chionn ghoirid
+bho 'n
 bho thoiseach
 car son
 chan an e
@@ -202,6 +204,7 @@ mu dheireadh thall
 mu thràth
 mu thuath
 nach an e
+'n dà
 na b'
 na bu
 nach e
