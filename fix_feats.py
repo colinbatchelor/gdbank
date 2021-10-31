@@ -14,6 +14,7 @@ with open(sys.argv[2],'w') as clean:
         prev_token = None
         for token in sentence:
             if "-" not in token.id and prev_token is not None:
-                token.feats = f.feats(token.xpos, prev_token.xpos)
+                token.feats = f.feats(token.xpos, token.feats, prev_token.xpos)
+            prev_token = token
         clean.write(sentence.conll())
         clean.write('\n\n')
