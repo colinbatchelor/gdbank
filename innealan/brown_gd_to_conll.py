@@ -39,7 +39,6 @@ def classify_line(genre, first_xpos, closing_punct):
     '''SOBIE except we never return O'''
     splits = ['Nn', 'V-p', 'V-s', 'V-f', 'V-h', 'Pd', 'Wp-i', 'Wp-in', 'Wp-i-x', 'V-s0', 'Vm-2p',
               'Vm-3', 'Rg', 'Uo', 'Xsc', 'I', 'Uq', 'Rs', 'Qn', 'Qq', 'Ncsmn', 'Ncsfn']
-
     if genre == "oral":
         if first_xpos in splits and closing_punct:
             return "S"
@@ -172,13 +171,12 @@ def process_file(brown_file, filename):
     lemmatizer = Lemmatizer()
     result = []
     file_id = filename.replace(".txt", "")
-    subcorpus = re.match(file_id, "^\\D*")
+    subcorpus = re.findall("^[a-z]*", file_id)[0]
     if subcorpus in ["c", "p", "s"] or file_id in ["n06", "n07", "n08", "n09", "n10"]:
         genre = "oral"
     else:
         genre = "written"
     sent_id = 0
-
     for sentence in split_sentences(brown_file, genre):
         conllu_tokens = [s for s in process_sentence(sentence, lemmatizer)]
         if len(conllu_tokens) > 0:
@@ -260,9 +258,9 @@ def add_feats(corpus):
             if "-" not in token.id:
 
                 if prev_token is not None:
-                    token.feats = features.feats(token.xpos, prev_token.xpos)
+                    token.feats = features.feats(token.xpos, {}, prev_token.xpos)
                 else:
-                    token.feats = features.feats(token.xpos)
+                    token.feats = features.feats(token.xpos, {})
 
             result.append(token.conll())
             prev_token = token

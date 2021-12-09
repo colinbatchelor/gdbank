@@ -117,7 +117,7 @@ class Lemmatizer:
     def lemmatize_proper_noun(self, surface: str, oblique: bool) -> str:
         """May need xpos information to deal with the vocative."""
         surface = self.delenite(surface)
-        if surface in ["Josie", "Morris"]:
+        if surface in ["Dougie", "Josie", "Morris"]:
             return surface
         if surface == "lain": # special case for ARCOSG
             return "Iain"
@@ -145,7 +145,7 @@ class Lemmatizer:
         if surface in self.lemmata:
             return self.lemmata[surface]
 
-        if surface not in ["dusan", "mìosan", "pìosan"]:
+        if xpos.endswith("e"):
             surface = re.sub('-?san$', '', surface)
 
         if xpos == "Nv":
@@ -164,10 +164,16 @@ class Lemmatizer:
         plural_replacements = [
             ('eachan', 'e'), ('achan', 'a'), ('aich', 'ach'),
             ('aidhean', 'adh'), ('aichean', 'ach'), ('ichean', 'iche'),
-            ('ean', ''), ('eannan', 'e'), ('ean', ''), ('annan', 'a'), ('an', '')
+            ('ean', ''), ('eannan', 'e'), ('ean', ''),
+            ("thchannan", "thaich"),
+            ('annan', 'a'), ("thran", "thar"), ("an", ""),
+            ("oill", "all"), ("uill", "all"), ("ait", "at"),
+            # might just be caorach
+            ("ach", "a")
             ]
 
         if xpos.startswith("Ncp"):
+            surface = re.sub("aibh$", "", surface)
             for replacement in plural_replacements:
                 if surface.endswith(replacement[0]):
                     return re.sub(f"{replacement[0]}$", replacement[1], surface)
@@ -390,14 +396,14 @@ class Features:
         self.polartypes_q = {"Qn":"Neg", "Qnr":"Neg", "Qnm":"Neg"}
         self.prontypes_q = {"Q-r": "Rel", "Qnr": "Rel", "Qq": "Int", "Uq": "Int"}
 
-    def feats(self, xpos: str, prev_xpos: str = "") -> dict:
-        """Only seems to work for adjectives, nouns and articles?"""
+    def feats(self, xpos: str, feats: dict, prev_xpos: str = "") -> dict:
         if xpos.startswith("A"):
             return self.feats_adj(xpos)
         if xpos == "Nv":
             return self.feats_nv(prev_xpos, xpos)
         if xpos.startswith("N"):
-            return self.feats_noun(xpos)
+            return self.feats_noun(xpos, feats)
+
         if xpos.startswith("T"):
             return self.feats_det(xpos)
         if xpos.startswith("U") or xpos.startswith("Q"):
@@ -408,7 +414,7 @@ class Features:
             return self.feats_cop(xpos)
         if xpos in ["Xfe", "Xf"]:
             return {"Foreign":["Yes"]}
-        if xpos.startswith("Pp") or xpos.startswith("Dp"):
+        if xpos.startswith("Pp") or xpos.startswith("Px") or xpos.startswith("Dp"):
             return self.feats_pron(xpos)
         return {}
 
@@ -448,7 +454,7 @@ class Features:
 
     def feats_det(self, xpos: str) -> dict:
         """Marks number, gender and case"""
-        result = {}
+        result = {"PronType": ["Art"], "Definite": ["Def"]}
         number = [self.numbers[xpos[2]]]
         result["Number"] = number
         if len(xpos) == 3:
@@ -463,9 +469,12 @@ class Features:
             return {"Case":case, "Number":number}
         return result
 
-    def feats_noun(self, xpos: str) -> dict:
+    def feats_noun(self, xpos: str, feats: dict) -> dict:
         """Marks case, gender, number and whether emphatic."""
-        result = {}
+        if "Typo" in feats:
+            result = {"Typo":["Yes"]}
+        else:
+            result = {}
         if xpos in ["Nf", "Nn", "Nt"]:
             return {}
         if xpos.endswith("e"):
@@ -500,10 +509,10 @@ class Features:
         result = {}
         if xpos in self.parttypes:
             result["PartType"] = [self.parttypes[xpos]]
-            if xpos in self.polartypes_q:
-                result["Polarity"] = [self.polartypes_q[xpos]]
-            if xpos in self.prontypes_q:
-                result["PronType"] = [self.prontypes_q[xpos]]
+        if xpos in self.polartypes_q:
+            result["Polarity"] = [self.polartypes_q[xpos]]
+        if xpos in self.prontypes_q:
+            result["PronType"] = [self.prontypes_q[xpos]]
         if xpos == "Q--s":
             result["Tense"] = ["Past"]
         return result

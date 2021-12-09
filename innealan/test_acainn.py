@@ -42,23 +42,23 @@ class TestFeatures(unittest.TestCase):
 
     def test_feats_det(self):
         """Tests feature sets for determiners"""
-        self.assertEqual({'Gender':['Masc'],'Number':['Sing']},
+        self.assertEqual({"Definite": ["Def"], 'Gender':['Masc'],'Number':['Sing'], "PronType":["Art"]},
                          self.featuriser.feats_det('Tdsm'))
-        self.assertEqual({'Gender':['Fem'],'Number':['Sing']},
+        self.assertEqual({"Definite": ["Def"], 'Gender':['Fem'],'Number':['Sing'], "PronType":["Art"]},
                          self.featuriser.feats_det('Tdsf'))
-        self.assertEqual({'Gender':['Masc'],'Number':['Plur']},
+        self.assertEqual({"Definite": ["Def"], 'Gender':['Masc'],'Number':['Plur'], "PronType":["Art"]},
                          self.featuriser.feats_det('Tdpm'))
-        self.assertEqual({'Case':['Gen'],'Gender':['Fem'], 'Number':['Plur']},
+        self.assertEqual({"Definite": ["Def"], 'Case':['Gen'],'Gender':['Fem'], 'Number':['Plur'], "PronType":["Art"]},
                          self.featuriser.feats_det('Tdpfg'))
 
     def test_feats_noun(self):
         """Tests feature sets for nouns."""
         self.assertEqual({'Case':['Nom'],'Gender':['Masc'],'Number':['Sing']},
-                         self.featuriser.feats_noun('Ncsmn'))
+                         self.featuriser.feats_noun('Ncsmn', {}))
         self.assertEqual({'Case':['Dat'],'Gender':['Fem'],'Number':['Plur']},
-                         self.featuriser.feats_noun('Ncpfd'))
+                         self.featuriser.feats_noun('Ncpfd', {}))
         self.assertEqual({'Case':['Gen'],'Gender':['Fem'],'Number':['Plur']},
-                         self.featuriser.feats_noun('Ncpfg'))
+                         self.featuriser.feats_noun('Ncpfg', {}))
 
 class TestCCGTyper(unittest.TestCase):
     """Assigns CCG expressions based on form, xpos and subcat."""
