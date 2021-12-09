@@ -55,9 +55,6 @@ In development
 ### `checker.py`
 In Python 3. In-progress grammar checker based largely on Richard Cox's _Gearr-Ghràmar na Gàidhlig_ (2018). Does not run from the command line yet but `test_checker.py` shows how the methods work.
 
-### gaelic_pos
-This is my local copy of https://bitbucket.org/gaelic_nlp/gaelic_pos/ which I am adding unit tests to.
-
 Is all of this written up somewhere?
 --
 
@@ -71,5 +68,5 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2021-05-20
+2021-12-09
 
