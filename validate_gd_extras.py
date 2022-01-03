@@ -121,7 +121,7 @@ def check_target_deprels(sentence, score):
     target_ids = {}
     targets = {
         "cc": ["conj"],
-        "case": ["dep", "obl", "nmod", "xcomp", "xcomp:pred", "ccomp", "acl", "acl:relcl", "conj", "csubj:cop"]
+        "case": ["dep", "obl", "advmod", "nmod", "xcomp", "xcomp:pred", "ccomp", "acl", "acl:relcl", "conj", "csubj:cop"]
     }
     for token in [t for t in sentence if t.deprel in targets and not t.is_multiword()]:
         target_ids[int(token.head)] = token.deprel
@@ -129,7 +129,7 @@ def check_target_deprels(sentence, score):
     for token in [s for s in sentence if not s.is_multiword()]:
         if int(token.id) in target_ids:
             actual = token.deprel
-            correct = [*targets[target_ids[int(token.id)]], "root", "parataxis", "reparandum"]
+            correct = [*targets[target_ids[int(token.id)]], "root", "parataxis", "reparandum", "appos", "orphan"]
             if actual not in correct:
                 score +=1
                 print(f"E {sentence.id} {token.id} target of {target_ids[int(token.id)]} must be one of ({', '.join(correct)}) not {actual}")
@@ -141,7 +141,7 @@ def check_target_upos(sentence, score):
     targets = {
         "amod": ["ADJ"],
        #  "flat:name": ["PART", "PROPN"], # consider when obl/nmod fixed
-        "nmod": ["NOUN", "NUM", "PRON", "PROPN", "X"]
+        "nmod": ["NOUN", "NUM", "PART", "PRON", "PROPN", "X"]
     }
     for token in [s for s in sentence if not s.is_multiword()]:
         if token.deprel in targets:
@@ -154,7 +154,7 @@ def check_bi(sentence, score):
     """Checks that xcomp:pred is set up properly for bi."""
     ids = {}
     deprels = {}
-    bi_pred_candidates = ["advmod","obl","xcomp","obl:smod","obl:tmod","obj"]
+    bi_pred_candidates = ["advmod", "obl", "xcomp", "obl:smod", "obl:tmod", "obj"]
     bi_ids = [t.id for t in sentence if t.lemma == "bi"]
     allowed = ["xcomp:pred", "ccomp"]
 

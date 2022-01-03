@@ -6429,7 +6429,7 @@
 
 # sent_id = n02_038a
 # text = Agus a chuile duine choinneachadh a’ Rìgh rachadh e air a’ ghlùin dha 's dh’fhoighneachadh e dheth, "O cà robh sibh a Rìgh Èireann, o chionn trì ràithean?"
-1	Agus	agus	CCONJ	Cc	_	4	cc	_	_
+1	Agus	agus	CCONJ	Cc	_	8	cc	_	_
 2	a	a	ADJ	Ar	_	4	amod	_	_
 3	chuile	cuile	ADJ	Ar	_	2	fixed	_	_
 4	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	8	dislocated	_	_
@@ -6573,7 +6573,7 @@
 11	,	,	PUNCT	Fi	_	12	punct	_	_
 12	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	10	obl	_	_
 13	fhèin	fèin	PRON	Px	Reflex=Yes	12	nmod	_	_
-14	's	's	CCONJ	Cc	_	15	cc	_	_
+14	's	's	CCONJ	Cc	_	16	cc	_	_
 15	a	a	DET	Dp3sm	Gender=Masc|Number=Sing|Person=3|Poss=Yes	16	nmod:poss	_	_
 16	chuid	cuid	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	12	conj	_	_
 17	sluaigh	sluaigh	NOUN	Ncsmg	Case=Gen|Gender=Masc|Number=Sing	16	nmod	_	SpaceAfter=No
@@ -7027,7 +7027,7 @@
 28	na	na	PART	Q-r	PartType=Vb|PronType=Rel	29	mark:prt	_	_
 29	bhitheas	bi	VERB	V-f--r	Tense=Fut	26	acl:relcl	_	_
 30	a	a	ADP	Sp	_	31	case	_	_
-31	dhìth	dìth	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	29	obl	_	SpaceAfter=No
+31	dhìth	dìth	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	29	xcomp:pred	_	SpaceAfter=No
 32	,	,	PUNCT	Fi	_	34	punct	_	_
 33	a-rèir	a-rèir	ADP	Sp	_	34	case	_	_
 34	àrd-oifigear	àrd-oifigear	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	21	obl	_	_
@@ -10499,7 +10499,7 @@
 # sent_id = pw06_018a
 # text = Feumaidh gun robh an trèanadh a rinn iad bho mhadainn Dhiardaoin air a bhith soirbheachail!
 1	Feumaidh	feum	VERB	V-f	Tense=Fut	0	root	_	_
-2	gun	gun	PART	Qa	PartType=Cmpl	3	mark	_	_
+2	gun	gun	PART	Qa	PartType=Cmpl	3	mark:prt	_	_
 3	robh	bi	VERB	V-s--d	Tense=Past	1	ccomp	_	_
 4	an	an	DET	Tdsm	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	5	det	_	_
 5	trèanadh	trèanadh	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	3	nsubj	_	_
@@ -10515,6 +10515,7 @@
 15	soirbheachail	soirbheachail	ADJ	Ap	_	14	xcomp:pred	_	SpaceAfter=No
 16	!	!	PUNCT	Fu	_	1	punct	_	_
 
+# comment = changed node 29 from Qnr to Qn
 # sent_id = pw06_018b
 # text = Chaidh cuid againn cuideachd air chuairt gu baile Tuam baile a tha faisg air Gallaibh airson geam ball-coise Gaeilge fhaicinn, geama a tha mi a' smaoineachadh nach robh duine againn air fhaicinn roimhe.
 1	Chaidh	rach	VERB	V-s	Tense=Past	0	root	_	_
@@ -10546,7 +10547,7 @@
 26	mi	mi	PRON	Pp1s	Number=Sing|Person=1	25	nsubj	_	_
 27	a'	ag	PART	Sa	_	28	case	_	_
 28	smaoineachadh	smaoinich	NOUN	Nv	VerbForm=Vnoun	25	xcomp:pred	_	_
-29	nach	nach	PART	Qnr	PartType=Vb|Polarity=Neg|PronType=Rel	30	mark:prt	_	_
+29	nach	nach	PART	Qn	PartType=Cmpl|Polarity=Neg	30	mark:prt	_	_
 30	robh	bi	VERB	V-s--d	Tense=Past	28	ccomp	_	_
 31	duine	duine	NOUN	Ncsmn	Case=Nom|Gender=Masc|Number=Sing	30	nsubj	_	_
 32-33	againn	_	_	_	_	_	_	_	_
@@ -11333,14 +11334,14 @@
 5	m	m	NUM	Y	_	3	nummod	_	SpaceAfter=No
 6	;	;	PUNCT	Fi	_	7	punct	_	_
 7	thàinig	thig	VERB	V-s	Tense=Past	1	parataxis	_	_
-8	£	£	SYM	Xy	_	7	obj	_	SpaceAfter=No
+8	£	£	SYM	Xy	_	7	nsubj	_	SpaceAfter=No
 9	3.3	3.3	NUM	Mn	_	8	nummod	_	_
 10	m	m	NOUN	Y	_	8	nummod	_	_
 11-12	bhon	_	_	_	_	_	_	_	_
-11	bho	bho	ADP	Sp	_	8	case	_	_
-12	an	an	DET	Tds	Definite=Def|Number=Sing|PronType=Art	8	det	_	_
-13	Aonadh	aonadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	1	obl	_	_
-14	Eòrpach	eòrpach	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	8	amod	_	SpaceAfter=No
+11	bho	bho	ADP	Sp	_	13	case	_	_
+12	an	an	DET	Tds	Definite=Def|Number=Sing|PronType=Art	13	det	_	_
+13	Aonadh	aonadh	NOUN	Ncsmd	Case=Dat|Gender=Masc|Number=Sing	7	obl	_	_
+14	Eòrpach	eòrpach	ADJ	Aq-smd	Case=Dat|Gender=Masc|Number=Sing	13	amod	_	SpaceAfter=No
 15	.	.	PUNCT	Fe	_	1	punct	_	_
 
 # sent_id = pw09_024
@@ -11428,9 +11429,9 @@
 6	ìre	ìre	NOUN	Ncsfd	Case=Dat|Gender=Fem|Number=Sing	1	xcomp:pred	_	_
 7	far	far	SCONJ	Cs	_	9	mark	_	_
 8	am	am	PART	Qq	PartType=Vb|PronType=Int	9	mark:prt	_	_
-9	bheil	bi	VERB	V-p--d	Tense=Pres	6	acl:relcl	_	_
+9	bheil	bi	VERB	V-p--d	Tense=Pres	6	advcl	_	_
 10	cinnt	cinnt	NOUN	Ncsfn	Case=Nom|Gender=Fem|Number=Sing	9	nsubj	_	_
-11	gun	gun	PART	Qa	PartType=Cmpl	12	mark	_	_
+11	gun	gun	PART	Qa	PartType=Cmpl	12	mark:prt	_	_
 12	tèid	rach	VERB	V-f--d	Tense=Fut	10	ccomp	_	_
 13	e	e	PRON	Pp3sm	Gender=Masc|Number=Sing|Person=3	12	nsubj	_	_
 14	air	air	ADP	Sp	_	15	case	_	_
