@@ -16,8 +16,7 @@ In practice I have postprocessed the results with the following Python 3 scripts
 
 The current treebank files in `ud` and in UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
 
-There are two others in `ud`:
-* `gd_arcosg_ud-not_for_release.conll` is the main file containing as-yet-unchecked treebanks from ARCOSG.
+There is one other in `ud`:
 * `gd_iomasgladh-ud-test.conllu` is a hand-built corpus from 2014 which has been converted to UD.
 
 This is written up in:
@@ -47,7 +46,7 @@ Tools covered by unit tests require Python 3.
 * `acainn.py` is the main code in this. It currently contains a lemmatizer, a retagger that assigns tags that more closely match CCG categories, a subcategorization tool for verbs, and code to map the new tags onto CCG categories.
 * `test_acainn.py` contains unit tests.
 * `brown_gd_to_dot_ccg.py` takes a Brown-format corpus assuming ARCOSG tags and outputs a .ccg file
-* `mendxml.py` fixes the output of OpenCCG's ccg2xml.
+* `mend_xml.py` fixes the output of OpenCCG's ccg2xml.
 * `prepareARCOSG.py` takes a local installation of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG), replaces spaces within tokens with underscores and puts the results in `arcosg.pkl`.
 
 In development
@@ -68,5 +67,5 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2021-12-09
+2022-01-03
 
