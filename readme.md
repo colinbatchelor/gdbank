@@ -1,11 +1,13 @@
 Some tools and resources for natural language processing of Scottish Gaelic.
 
-ud
---
-A conversion of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG) to a dependency treebank.
+Mainly
+------
+Tools for the Universal Dependencies dependency treebank version of the Annotated Reference Corpus of Scottish Gaelic (ARCOSG) which is kept at https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/
+
 You can acquire ARCOSG itself from http://datashare.is.ed.ac.uk/handle/10283/2011 (original version) and the latest version from https://github.com/Gaelic-Algorithmic-Research-Group/ARCOSG
 
-https://github.com/UniversalDependencies/UD_Scottish_Gaelic-ARCOSG/ contains the release version of this.
+This is written up in:
+* Colin Batchelor, 2019. Universal dependencies for Scottish Gaelic: syntax, in _Proceedings of CLTW2019 at Machine Translation Summit XVII_, Dublin, August.
 
 `innealan/brown_gd_to_conll.py` performs a rudimentary conversion of ARCOSG to CoNLL-U format.
 
@@ -14,13 +16,8 @@ In practice I have postprocessed the results with the following Python 3 scripts
 * `fix_text.py` adds "text" annotations.
 * `fix_whitespace.py` adds `SpaceAfter=No` to the relevant parts of the tree.
 
-The current treebank files in `ud` and in UD_Scottish_Gaelic-ARCOSG are `gd_arcosg-ud-train.conllu`, `gd_arcosg-ud-dev.conllu` and `gd_arcosg-ud-test.conllu`.
-
-There is one other in `ud`:
+There is one small test tree bank in `ud`:
 * `gd_iomasgladh-ud-test.conllu` is a hand-built corpus from 2014 which has been converted to UD.
-
-This is written up in:
-* Colin Batchelor, 2019. Universal dependencies for Scottish Gaelic: syntax, in _Proceedings of CLTW2019 at Machine Translation Summit XVII_, Dublin, August.
 
 Earlier work
 --
@@ -67,5 +64,5 @@ The citation for the material in `innealan` and `gramaran` is:
 
 Colin Batchelor
 
-2022-01-03
+2022-01-20
 
