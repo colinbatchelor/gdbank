@@ -153,6 +153,7 @@ bho chionn
 bho chionn ghoirid
 bho 'n
 bho thoiseach
+brith dè
 car son
 chan an e
 chan e

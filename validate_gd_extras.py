@@ -155,33 +155,35 @@ def ud_words(ud_sentence, condition = lambda x: True):
 def check_relatives(sentence, score):
     """Checks the possibilities for relative particles"""
     mark_prt_heads = {}
-    for token, prev_token in ud_words(sentence, lambda t: t.xpos == "Q-r" and t.deprel == "mark:prt"):
+    for token, prev_token in ud_words(sentence, lambda t: t.xpos in ["Q-r", "Qnr"] and t.deprel == "mark:prt"):
         if prev_token is not None:
             if prev_token.upos == "ADP":
                 score += 1
-                print(f"E {sentence.id} {token.id} {token.form} deprel should be obl, nmod or xcomp:pred")
-            elif prev_token.upos != "SCONJ":
+                print(f"E {sentence.id} {token.id} deprel for '{token.form}' should be obl, nmod or xcomp:pred")
+            elif prev_token.lemma in ["carson", "ciamar", "cuin'"]:
+                score += 1
+                print(f"E {sentence.id} {token.id} deprel for '{token.form}' should be advmod or xcomp:pred")
+            elif prev_token.upos not in ["CCONJ", "SCONJ"]:
                 mark_prt_heads[token.head] = []
                 score += 1
-                print(f"E {sentence.id} {token.id} {token.form} deprel should be nsubj or obj")
+                print(f"E {sentence.id} {token.id} deprel for '{token.form}' should usually be nsubj or obj")
     for token,_ in ud_words(sentence, lambda t: t.head in mark_prt_heads):
         mark_prt_heads[token.head].append(token.deprel)
     if mark_prt_heads != {}:
-        print(sentence.id)
-        print(sentence.text)
-        print(mark_prt_heads)
         for head in mark_prt_heads:
-            if "nsubj" not in mark_prt_heads[head]:
-                print("suggestion: nsubj")
-            else:
-                # check what Irish does about obj of bi.
-                print("suggestion: obj")
+            print(f"{sentence.id} {head} {mark_prt_heads[head]} suggestion: {suggest_relative_deprel(mark_prt_heads[head])}")
     return score
+
+def suggest_relative_deprel(deprels):
+    if "nsubj" not in deprels:
+        return "nsubj"
+    return "obj"
 
 def check_bi(sentence, score):
     """Checks that xcomp:pred is set up properly for bi."""
     ids = {}
     deprels = {}
+    upos = {}
     bi_pred_candidates = ["advmod", "obl", "xcomp", "obl:smod", "obl:tmod", "obj"]
     bi_ids = [t.id for t,_ in ud_words(sentence, lambda t: t.lemma == "bi")]
     allowed_deprels = ["xcomp:pred", "ccomp"]
@@ -190,14 +192,17 @@ def check_bi(sentence, score):
         if token.head in ids:
             ids[token.head].append(token.id)
             deprels[token.head].append(token.deprel)
+            upos[token.head].append(token.upos)
         else:
             ids[token.head] = [token.id]
             deprels[token.head] = [token.deprel]
+            upos[token.head] = [token.upos]
     for key in deprels:
         if "xcomp:pred" not in deprels[key] and "ccomp" not in deprels[key]:
             print(f"E {sentence.id} {key} bi should have an xcomp:pred or a ccomp among {list(zip(ids[key], deprels[key]))}")
             score += 1
-        if "obj" in deprels[key]:
+        if "obj" in deprels[key] and "PART" not in upos[key]:
+            # check what Irish does about obj of bi.
             score += 1
             print(f"E {sentence.id} {key} bi should not have obj")
     return score
