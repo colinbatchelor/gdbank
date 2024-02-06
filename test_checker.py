@@ -1,12 +1,12 @@
 import unittest
-from innealan.acainn import Lemmatizer
+from gdtools.acainn import Morphology
 from checker import Checker
 import numpy as np
 
 class Test(unittest.TestCase):
     def setUp(self):
         self.c = Checker()
-        self.l = Lemmatizer()
+        self.l = Morphology()
 
     def tearDown(self):
         self.c = None

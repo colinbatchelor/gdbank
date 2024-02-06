@@ -1,7 +1,6 @@
 \documentclass[a4paper]{article}
-\usepackage{tikz-dependency}
 \begin{document}
-\title{gdbank annotation guidelines v. 0.9}
+\title{gdbank annotation guidelines v. 0.10}
 \author{Colin Batchelor}
 \maketitle
 
@@ -19,8 +18,6 @@ These guidelines assume at least a basic working knowledge of written Scottish G
 
 \noindent {\bf 3.} Gaelic is VSO. As a result it is very likely that the first word you come across will be either a verb or a preverbal particle.
 The general pattern for preverbal particles is $\oslash$ (declarative), \textit{cha/chan} (negative), \textit{a/am/an} (interrogative), \textit{nach} (negative interrogative).
-
-\noindent {\bf 4.} If you can't work out what a particular dependency is, but you know it is there, you may use dep for completely general dependencies or mod if you know it's a modifier.
 
 \noindent{\bf 68.} If you get absolutely stuck as to the categorial annotation, put X as the category.
 
@@ -62,7 +59,6 @@ You \textbf{may} specify the others; if not put an underscore in them.
 \newcommand{\rel}{\texttt{rel}}
 
 \noindent {\bf 6.} As per the CoNLL-X format, the first token in a sentence is numbered 1. 
-0 is a dummy token which is needed for the \ROOT\ annotation.
 
 \noindent {\bf 7.} In general, break on whitespace.
 
@@ -70,11 +66,11 @@ You \textbf{may} specify the others; if not put an underscore in them.
 
 \noindent {\bf 9.} If a parenthesis introduces ordinary text then separate it out.
 
-\noindent {\bf 10.} If on the other hand it indicates a list item or an abbreviation, for example ``(3)'', ``(iii)'', or ``(MPA)'' then keep it together.
+\noindent {\bf 10.} If on the other hand it indicates a list item or an abbreviation, for example ``(3)'' or ``(iii)'' then keep it together.
 
 \noindent {\bf 11.} Keep hyphens together with the text they join up.
 
-\noindent {\bf 12.} Separate out \textit{dh'} and \textit{m'} and \textit{d'} but retain the apostrophe.
+\noindent {\bf 12.} Separate out \textit{m'} and \textit{d'} but retain the apostrophe. Join up \textit{dh'}.
 
 \noindent {\bf 13.} Also keep the apostrophe in \textit{`S} and \textit{a'} (this is important!).
 
@@ -84,15 +80,15 @@ You \textbf{may} specify the others; if not put an underscore in them.
 
 \begin{table}
 \begin{tabular}{l l l l l}
-Function & Dependency & Rule & Category & Rule \\\hline 
-Agreement & \tt prt & --- & \tt S[n]\textbackslash N/S[n]/N/N & \bf 102 \\
-Embedder & \tt mark & \bf **59 & \tt S[em]/S[dcl] & \bf **51 \\
-Interrogative & \tt prt & \textbf{17} (subsect.~\ref{subsect:verbs}) & \tt S[q]/S[dep] & \textbf{22} (subsect.~\ref{subsect:verbs}) \\
-Numerical & **** & --- & **** &---\\
-Possessive & \tt nmod & \bf 92 & \tt N/N & \bf 95 \\
-Relativizer & \tt prt & \textbf{55} (subsect.~\ref{subsect:is}) & \tt (N\textbackslash N)/S[dcl] & \bf 76 \\
-Vocative & \tt prt & \bf 107 & **** & ---\\
-In \textit{a cheile} & \tt nmod & \bf 87 & \tt N/N \rm ex.gd40& \bf 86 \\
+Function &  Rule & Category & Rule \\\hline 
+Agreement &  --- & \tt S[n]\textbackslash N/S[n]/N/N & \bf 102 \\
+Embedder &  \bf **59 & \tt S[em]/S[dcl] & \bf **51 \\
+Interrogative &  \textbf{17} (subsect.~\ref{subsect:verbs}) & \tt S[q]/S[dep] & \textbf{22} (subsect.~\ref{subsect:verbs}) \\
+Numerical &  --- & **** &---\\
+Possessive &  \bf 92 & \tt N/N & \bf 95 \\
+Relativizer &  \textbf{55} (subsect.~\ref{subsect:is}) & \tt (N\textbackslash N)/S[dcl] & \bf 76 \\
+Vocative &  \bf 107 & **** & ---\\
+In \textit{a cheile} &  \bf 87 & \tt N/N \rm ex.gd40& \bf 86 \\
 \hline
 \end{tabular}
 \caption{\textit{A}.\label{table:a}}
@@ -106,25 +102,9 @@ It is possible that we can merge the embedder into the relativizer, which would 
 See subsection~\ref{subsect:determiners} for the article and subsection~\ref{subsect:prepositions} for the form of \textit{ag} before a verbal noun.
 
 \subsection{Adjectives\label{subsect:adjectives}}
-\newcommand{\ADJ}{\texttt{ADJ}}
-\newcommand{\acomp}{\texttt{acomp}}
-\newcommand{\xcomp}{\texttt{xcomp}}
-\newcommand{\amod}{\texttt{amod}}
 \newcommand{\NbN}{\texttt{N\textbackslash N}}
 \newcommand{\SsS}{\texttt{S/S}}
 \newcommand{\SbNsSbN}{\texttt{S\textbackslash N/S\textbackslash N}}
-
-The Universal POS tag is \ADJ.
-
-\subsubsection*{Dependency}
-
-\noindent {\bf 64.} Adjectives used attributively are \amod; predicatively are \acomp.
-
-\noindent {\bf 65.} Comparatives and superlatives work as follows: mark \textit{nas} as \xcomp\ of what it qualifies.
-The adjective following it is \texttt{acomp}, as it is a predicate.
-In the past tense, \textit{bu} is the \xcomp, \textit{na} is related to \textit{bu} with \texttt{mark} and the adjective remains an \texttt{acomp}.
-
-\noindent {\bf 85.} Adjectives that subcategorize with a PP simply have the PP head as \texttt{adpmod}.
 
 \subsubsection*{Categorial}
 
@@ -144,19 +124,7 @@ Examples (possibly not exhaustive) \textit{ath, corra, deagh, dearbh, droch, fio
 
 \subsection{Adverbs\label{subsect:adverbs}}
 
-Use Universal POS tag \texttt{ADV} for single-word adverbs.
-
-\subsubsection*{Dependency}
-
-\noindent{\bf 99.} Single-word are \texttt{advmod} of the head verb.
-
-\noindent{\bf **103.} Treat manner adverbs that have the form of a PP as PPs.
-
-\noindent{\bf **106.} \textit{gu}, the adverbializer, is different, though.
-\texttt{advmod} of the head verb and its adjectival complement as \texttt{acomp} of it.
-
 \subsubsection*{Categorial}
-
 
 \newcommand{\SsNbSsN}{\texttt{S/N\textbackslash S/N}}
 
@@ -184,118 +152,7 @@ For \textit{am} and \textit{an} the prepositions see subsection~\ref{subsect:pre
 
 \subsection{\textit{Bi}\label{subsect:bi}}
 
-The Universal POS tag we use is \texttt{VERB}.
 
-\subsubsection*{Dependency}
-
-\noindent {\bf 15.} Mark the prepositional complement \texttt{adpmod} if it introduces an ordinary noun. See Fig.~\ref{fig:biexamples}.
-
-\noindent {\bf 16.} Mark prepositional complements \textit{a'}, \textit{ag}, \textit{ann}, \textit{ri}, \textit{gu} and \textit{air} as \texttt{prt} with the verbal noun as head if they mark the aspect of a verbal noun.
-In the case of the progressive construction, the verbal noun is \texttt{xcomp} with \textit{bi} as head.
-See Fig.~\ref{fig:biexamples}.
-
-\begin{figure}
-\begin{center}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\tt ROOT \& \tt nsubj \& \tt adpmod \& \tt det \& \tt adpobj \& \tt p\\
-Tha \& Mairead \& anns \& a' \& chidsin \& . \\
-\end{deptext}
-\depedge{1}{2}{}
-\depedge{1}{3}{}
-\depedge{3}{5}{}
-\depedge{5}{4}{}
-\depedge{1}{6}{}
-\end{dependency}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\tt ROOT \& \tt nsubj \& \tt prt \& \tt xcomp \& p\\
-Tha \& mi \& a' \& seinn \& .\\
-\end{deptext}
-\deproot{1}{}
-\depedge{1}{2}{}
-\depedge{1}{4}{}
-\depedge{4}{3}{}
-\depedge{1}{5}{}
-\end{dependency}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\tt prt \& \tt ROOT \& \tt p\\
-Chan \& eil \& . \\
-\end{deptext}
-\depedge{2}{1}{}
-\depedge{2}{3}{}
-\end{dependency}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\ROOT \& \deter \& \nsubj \& \adpmod \& \marker \& \ccomp \& \nsubj \& \prt \& \xcomp \& \adpmod\\
-Bha \& an \& t-eagal \& orm \& gum \& biodh \& daoine \& a' \& magadh \& orm\\
-    \& \& \it experience \& \it experiencer \& \& \it target\\
-\end{deptext}
-\deproot{1}{}
-\depedge{1}{3}{}
-\depedge{3}{2}{}
-\depedge{3}{4}{}
-\depedge{1}{6}{}
-\depedge{6}{5}{}
-\depedge{6}{7}{}
-\depedge{6}{9}{}
-\depedge{9}{8}{}
-\depedge{9}{10}{}
-\end{dependency}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\tt \ROOT \& \tt \nsubj \& \tt \adpmod \& \tt \advmod \& \tt \advmod \& \tt \prt \& \tt \ccomp \& \tt \nsubj \& \tt \amod \& \tt \adpmod \& \tt \adpobj \\
-Tha \& fios \& agam \& a-nise \& carson \& a \& tha \& falt \& fada \& aig \& March\\
-    \& \it experience \& \it experiencer \& \& \& \& \it target \\
-\end{deptext}
-\deproot{1}{}
-\depedge{1}{2}{}
-\depedge{2}{3}{}
-\depedge{1}{4}{}
-\depedge{1}{7}{}
-\depedge{7}{5}{}
-\depedge{7}{6}{}
-\depedge{7}{8}{}
-\depedge{8}{9}{}
-\depedge{7}{10}{}
-\depedge{10}{11}{}
-\end{dependency}
-
-(gd2)
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\ROOT \& \nsubj \& \adpmod \& \adpobj \& \marker \& \ccomp \& \dobj\\
-Bha \& feadhainn \& dhen \& bheachd \& gum \& faiceadh \& eich\\
-    \& \it experiencer \& \& \it experience \& \& \it target \\
-\end{deptext}
-\deproot{1}{}
-\depedge{1}{2}{}
-\depedge{1}{3}{}
-\depedge{3}{4}{}
-\depedge{4}{6}{}
-\depedge{6}{5}{}
-\depedge{6}{7}{}
-\end{dependency}
-
-(gd10)
-\begin{dependency}[arc edge, text only label]
-\begin{deptext}
-\ROOT \& \nsubj \& \adpmod \& \adpobj \& \adpmod \& \deter \& \adpobj \& \adpmod \\
-Bha \& gr\`ain  \& aig \& March \& air \& na \& cluasan \& aige \\
-\end{deptext}
-\deproot{1}{}
-\depedge{1}{2}{}
-\depedge{2}{3}{}
-\depedge{3}{4}{}
-\depedge{1}{5}{}
-\depedge{5}{7}{}
-\depedge{7}{6}{}
-\depedge{7}{8}{}
-\end{dependency}
-\end{center}
-\caption{Example dependencies for \textit{bi}.\label{fig:biexamples}}
-\end{figure}
 
 \subsubsection*{Categorial}
 
@@ -319,40 +176,14 @@ However, where the experience is a PP modifier of the experiencer, as in sentenc
 
 \subsection{Coordinators\label{subsect:coordinators}}
 
-\texttt{CONJ} in the Universal POS tagset.
 These are \textit{agus}, \textit{is}, \textit{'s}, \textit{ach} and \textit{no}.
 For other conjunctions see subsection \ref{subsect:subordinators}.
-
-\subsubsection*{Dependency}
-
-\noindent{\bf 71.} Coordination is slightly unintuitive in Stanford-based dependency schemes.
-The first conjunct, \textbf{not} the conjunction, is the head. 
-
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
- \& \texttt{cc} \& \texttt{conj} \\
-ce\`ol \& is \& gaol\\\end{deptext}
-\depedge{1}{2}{}
-\depedge{1}{3}{}
-\end{dependency}
-
-\noindent{\bf 72.} In the case of one-sided coordination, say sentences beginning with \textit{Agus} or \textit{Ach}, take the verb to be the head and make the conjunction a \texttt{cc} of the verb. (example: gd23)
 
 \subsubsection*{Categorial}
 
 \noindent{\bf 69.} Mark conjunctions as \texttt{conj}. 
 
-
-
-
-
 \subsection{Determiners\label{subsect:determiners}}
-
-\texttt{DET} in the Universal POS tagset.
-
-\subsubsection*{Dependency}
-\noindent {\bf 18.} In the case of the \texttt{det} relation the head of the NP is the head and the article is the tail.
-The forms of the article in Scottish Gaelic are: \textit{an}, \textit{am}, \textit{a'}, \textit{am}, \textit{na}, \textit{nam} and \textit{nan}.
 
 \subsubsection*{Categorial}
 
@@ -368,24 +199,16 @@ for \textit{do} (\textit{dh'}) the past tense marker, see subsection~\ref{subsec
 
 \subsection{\textit{Fh\`ein}\label{subsect:fhein}}
 
-\texttt{ADJ} in the Universal POS tagset.
-
-\subsubsection*{Dependency}
-\noindent {\bf 43.} Treat \textit{fh\`ein} as an \texttt{amod} of the pronoun it follows.
-
 \subsubsection*{Categorial}
 \noindent{\bf 44.} \textit{Fh\`ein} is \texttt{N\textbackslash N}.
 See the type-changing rules for what the parser should do if it follows a fused preposition--possessive pronoun.
 
 \subsection{\textit{Gach}\label{subsect:gach}}
 
-\texttt{DET} in the Universal POS tagset.
 See subsection~\ref{subsect:determiners}.
 
 \subsection{\textit{Gu}\label{subsect:gu}}
 
-The adverbializer (see subection~\ref{subsect:adverbs}) and the subordinator (see subsection~\ref{subsect:subordinators}) are \texttt{PRT} in Universal POS tagset.
-The preposition \textit{gu} is of course \texttt{ADP}.
 See subsection~\ref{subsect:prepositions}.
 
 \subsection{Interrogatives\label{subsect:interrogatives}}
@@ -395,21 +218,21 @@ This table also deals with their relative counterparts which behave somewhat lik
 \begin{center}
 \begin{table}
 \begin{tabular}{l l l l}
-Question form & POS & Dependency & Category \\ \hline
-\textit{c\`aite} & \ADV & \advmod & \texttt{S[wq]/S[q]} \\ 
-\textit{c\`o} & \texttt{NOUN} & \texttt{nsubj}, \dobj & \texttt{S[wq]/S[em]}, \texttt{S[wq]/S[dcl]} \\
-\textit{d\`e} & \texttt{NOUN} & \texttt{nsubj}, \dobj & \texttt{S[wq]/S[em]}, \texttt{S[wq]/S[dcl]} \\
-\textit{carson} & \ADV & \advmod & \texttt{S[wq]/S[em]} \\
-\textit{cuine} & \ADV & \advmod & \texttt{S[wq]/S[em]} \\
-\textit{ciamar} & \ADV & \advmod & \texttt{S[wq]/S[em]}
+Question form & POS & Category \\ \hline
+\textit{c\`aite} & \ADV &  \texttt{S[wq]/S[q]} \\ 
+\textit{c\`o} & \texttt{NOUN} & \texttt{S[wq]/S[em]}, \texttt{S[wq]/S[dcl]} \\
+\textit{d\`e} & \texttt{NOUN} & \texttt{S[wq]/S[em]}, \texttt{S[wq]/S[dcl]} \\
+\textit{carson} & \ADV & \texttt{S[wq]/S[em]} \\
+\textit{cuine} & \ADV & \texttt{S[wq]/S[em]} \\
+\textit{ciamar} & \ADV & \texttt{S[wq]/S[em]}
 \smallskip\\\hline
-Relative form & POS & Dependency & Category \\\hline
-\textit{far} & \PRT & \marker & \SbNsSbN\texttt{/S[em]}\\
-\textit{c\`o} & \PRT & \marker & \texttt{N/S[em]}, \texttt{N/S[dcl]}\\
-\textit{na} & \PRT & \marker & \texttt{N/S[em]}, \texttt{N/S[dcl]}\\
-\textit{airson 's} & \PRT & \marker & **** \\
-\textit{nuair} & \PRT & \marker & \SbNsSbN\texttt{/S[em]}\\
-\textit{mar} & \PRT &\nsubj, \dobj & \texttt{N/S[em]} \\
+Relative form & POS & Category \\\hline
+\textit{far} & \PRT & \SbNsSbN\texttt{/S[em]}\\
+\textit{c\`o} & \PRT & \texttt{N/S[em]}, \texttt{N/S[dcl]}\\
+\textit{na} & \PRT & \texttt{N/S[em]}, \texttt{N/S[dcl]}\\
+\textit{airson 's} & \PRT & **** \\
+\textit{nuair} & \PRT & \SbNsSbN\texttt{/S[em]}\\
+\textit{mar} & \PRT &\texttt{N/S[em]} \\
 \hline
 \end{tabular}
 \caption{Analysis based on examples (37--42) in Lamb (2003).
@@ -422,69 +245,6 @@ Note anomalous category of \textit{c\`aite} and also that \textit{c\`o} and \tex
 
 \texttt{VERB} in Universal POS tagset.
 
-\subsubsection*{Dependency}
-
-\noindent {\bf 55.} For the existential cleft construction, see Fig.~\ref{fig:teacher}.
-\begin{figure}
-\begin{center}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\tt ROOT \& \tt nsubj \& \tt dobj \& \tt rel \& \tt rcmod \& \tt adpmod \\
-'S \& e \& tidsear \& a \& th' \& annam \\
-\end{deptext}
-\depedge{1}{2}{}
-\depedge{1}{3}{}
-\depedge{3}{5}{}
-\depedge{5}{4}{}
-\depedge{5}{6}{}
-\end{dependency}
-(139)\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\tt ROOT \& nsubj \& adpmod \& \tt amod \& \tt adpobj \& \tt dobj \& \tt amod \\
-B' \& aithne \& dha \& d' \& athair \& Seonaidh \& B\`an\\
- \& \it experience \& \& \& \it experiencer \& \it target \& \\
-\end{deptext}
-\depedge{1}{2}{}
-\depedge{2}{3}{}
-\depedge{3}{5}{}
-\depedge{5}{4}{}
-\depedge{1}{6}{}
-\depedge{6}{7}{}
-\end{dependency}
-(140)\begin{dependency}[arc edge, text only label]
-\begin{deptext}
-\tt ROOT \& \tt acomp \& \tt adpmod \& \tt dobj\\
-Is \& beag \& orm \& marag\\
- \& \it experience \& \it experiencer \& \it target \\
-\end{deptext}
-\depedge{1}{2}{}
-\depedge{2}{3}{}
-\depedge{1}{4}{}
-\end{dependency}
-(142)\begin{dependency}[arc edge, text only label]
-\begin{deptext}
-\tt ROOT \& \tt acomp \& \tt adpmod \& \tt prt \& \tt xcomp \& \tt adpmod \& \tt adpobj \\
-Is \& beag \& orm \& a \& bhith \& 'na \& cabhaig \\
- \& \it experience \& \it experiencer \& \& \it target \& \& \\
-\end{deptext}
-\depedge{1}{2}{}
-\depedge{2}{3}{}
-\depedge{1}{5}{}
-\depedge{5}{4}{}
-\depedge{5}{6}{}
-\depedge{6}{7}{}
-\end{dependency}
-\end{center}
-\caption{Example dependency trees for \textit{is}. Examples (139), (140) and (142) are taken from Lamb (2003). \label{fig:teacher}}
-\end{figure}
-
-\noindent {\bf **89.} In phrases like \textit{is toil leam...}, \textit{is beag orm...} and so on, nouns are \textit{nsubj} and adjectives are \textit{acomp}. The reason for the division is that the adjectives admit a comparative (check this).
-The \textit{experiencer} is an \texttt{adpmod} of the \textit{experience}.
-A nominal \textit{target} is \texttt{dobj} of \textit{is}. See Examples (139) and (140) in Fig.~\ref{fig:teacher}.
-A verbal \textit{target} is \texttt{xcomp} of \textit{is}. See Example (142) in Fig.~\ref{fig:teacher}.
-The reason for marking the experience as the subject is that it is possible to reply to a question beginning \textit{An toil leat/leibh...} with \textit{Is toil} or \textit{Cha toil}.
-
-\noindent {\bf **90.} For expressing, say, obligation, with \textit{Bu ch\`oir dhomh...}, treat it analogously to the experiences in Rule \textbf{89}.
 
 
 \subsubsection*{Categorial}
@@ -510,21 +270,6 @@ The cases as shown in Rule \textbf{89}: nominal experience, adjectival experienc
 
 \texttt{NOUN} in Universal POS tagset.
 
-\subsubsection*{Dependency}
-\noindent {\bf 36.} If a noun is modifying another noun it will typically be in the genitive, hence \texttt{(nmod Banca h-Alba)} from \textit{Banca na h-Alba}.
-
-\noindent {\bf 41.} In the case of apposition, an NP to the right of another NP that describes it, for example in sentence gd1, ``\textit{am b\`aillidh, Patrick Sellar,}'', mark this with the \texttt{appos} relation. \texttt{(appos b\`aillidh Sellar)}. 
-
-\noindent {\bf 42.} In the case of names, the surname is the head and the first name and, if a separate word, \textit{Mac} are both \texttt{nmod}s. \textit{an} as a separate token in a name, as in \textit{Mac an t-Saoir}, is a determiner as usual.
-
-\noindent {\bf 73.} Heads of NPs can be \texttt{advmod} of a verb, for example \textit{oidhche} in \textit{gach oidhche}.
-
-\noindent{\bf 80.}
-There is no provision for marking case explicitly in either of these schemes.
-However, it is useful to know about the dative and the genitive because there are dependency relations particularly for them.
-For regular nouns they are marked by slenderization of the final consonant, if it can be slenderized, and lenition.
-There are also irregular nouns, such as \textit{sgian} (knife), for which the genitive/dative form is \textit{sgeine}, and \textit{ball} (ball, representative) for which the genitive/dative form is \textit{bhuill}.
-
 \subsubsection*{Categorial}
 
 Initially we won't distinguish between \texttt{N} and \texttt{NP}.
@@ -539,10 +284,6 @@ Initially we won't distinguish between \texttt{N} and \texttt{NP}.
 
 Use \texttt{NUM} from the Universal tagset for simple numbers, \textit{aon}, \textit{ochd}, \textit{ceud}.
 
-\subsubsection*{Dependency}
-
-\noindent{\bf 108.} Attributive numbers are \texttt{amod} of the head.
-
 \subsubsection*{Categorial}
 
 \noindent{\bf 109.} Attributive numbers are \texttt{N/N}.
@@ -551,30 +292,7 @@ Use \texttt{NUM} from the Universal tagset for simple numbers, \textit{aon}, \te
 
 In the Universal POS tagset, prepositions are \texttt{ADP} except when they are acting as aspect markers, when they are \texttt{PRT}.
 
-\subsubsection*{Dependency}
 
-{\bf 19.} If the preposition takes an NP, then mark the head of that NP with \texttt{adpobj}. \texttt{(adpobj chidsin anns)} from ``\textit{anns a' chidsin}''
-
-\noindent {\bf 20.} If the preposition is fused with a definite article, then use pobj as before but mark a reverse \deter\ dependence of the object on the fused preposition--article.
-See Fig.~\ref{fig:dhanbhaile}.
-
-\begin{figure}
-\begin{center}
-\begin{dependency}[arc edge,text only label]
-\begin{deptext}
-\deter \& \\
-dhan \& bhaile\\
- \& \adpobj\\\end{deptext}
-\depedge{2}{1}{}
-\depedge[edge below]{1}{2}{}
-\end{dependency}
-\end{center}
-\caption{Dependencies with a fused preposition--article for \textit{dhan bhaile}.\label{fig:dhanbhaile}}
-\end{figure}
-
-\noindent {\bf 37.} In the case of compound prepositions, for example \textit{air s\`ailleabh}, the objects of those take \texttt{nmod} as they are in the genitive.
-
-\noindent {\bf 61.} PPs are \adpmod\ of the verbs \textit{bi} and \textit{is} and equally of nouns when they are being used to express a location.
 
 \subsubsection*{Categorial}
 \noindent {\bf 24.} Prepositions fused with pronouns take type \texttt{PP[*]} where * is the unfused form of the preposition.
@@ -594,17 +312,7 @@ Hence \textit{air} (meaning ``on him'') and \textit{oirre} are both \texttt{PP[a
 
 These are \texttt{PRON} in the Universal POS tagset. In many cases in these guidelines pronouns are included among the nouns.
 
-\subsubsection*{Dependency}
 
-\noindent {\bf 91.} Pronouns in the nominative are \texttt{nsubj} to the verbal head.
-
-\noindent {\bf 92.} Possessive pronouns are \texttt{nmod} to the head of the NP possessed.
-
-\noindent{\bf 112.} Unless the NP is a verbal noun, in which case they are \texttt{dobj}.
-
-\noindent {\bf 93.} Fused preposition--possessive pronouns are \texttt{adpmod} of the NP or verbal head, just like ordinary PPs.
-
-\noindent {\bf 111.} If they are aspect markers, then they are \texttt{dobj} of the verbal noun.
 
 \subsubsection*{Categorial}
 
@@ -619,10 +327,6 @@ If they are aspect markers then they are \texttt{(S[asp]/N)/(S[n]/N/N)}.
 
 Punctuation marks are \texttt{.} in the Universal POS tagset.
 
-\subsubsection*{Dependency}
-\noindent{\bf 67.} Normally, mark punctuation with \texttt{p} and the head as the verb head of the preceding phrase. In short sentences this is likely to be the root.
-
-\noindent{\bf 78.} However, in lists, or in run-on sentences, treat commas and colons as coordination (see rule \textbf{71}).
 
 \subsubsection*{Categorial}
 
@@ -632,13 +336,6 @@ Punctuation marks are \texttt{.} in the Universal POS tagset.
 
 \subsection{Subordinators\label{subsect:subordinators}}
 
-\subsubsection*{Dependency}
-\noindent{\bf 49.} \textit{Gu}, \textit{nach} and variants introduce a dependent verb.
-The relation between \textit{gu} and the dependent verb is \texttt{mark} with the verb as the head.
-If the matrix clause is a psychological clause \textit{Tha fhios...}, \textit{gu bheil gr\`ain...}, the dependent verb will be a \texttt{ccomp} of the verb in the matrix clause, otherwise it will be a \ccomp\ of the noun it modifies.
-
-
-\noindent{\bf 70.} In the case where \textit{gu} has fused with a form of \textit{is}, for example \textit{gur}, then simply use \texttt{ccomp} as before.
 \subsubsection*{Categorial}
 \noindent{\bf **48.} Because \textit{gu} and variants are arguments of the verbs \textit{bi} and \textit{is} where the other argument is an NP headed by a psych noun like \textit{fios} or \textit{eagal}, treat the \textit{gu} clause as \texttt{S[gu]}.
 Hence \textit{gu} itself will be \texttt{S[gu]/S[dep]}.
@@ -650,17 +347,7 @@ Hence \textit{gu} itself will be \texttt{S[gu]/S[dep]}.
 Verbs are \texttt{VERB} in the Universal POS tagset.
 Verbal nouns are also \texttt{VERB} in this annotation scheme.
 
-\subsubsection*{Dependency}
 
-\noindent {\bf 14.} Mark NP subjects of a verb with \texttt{nsubj}.
-
-\noindent {\bf 88.} Mark NP objects of a verb with \texttt{dobj}.
-
-\noindent {\bf 15,16.} See subsection~\ref{subsect:bi} for how to handle \textit{bi}.
-
-\noindent {\bf 17.} Preverbal particles marking negative, interrogative and negative-interrogative clauses are \texttt{prt} of the dependent verb. See Fig.~\ref{fig:biexamples}.
-
-\noindent {\bf 55,89.} See subsection~\ref{subsect:is} for how to handle \textit{is}.
 
 
 \subsubsection*{Categorial}
@@ -721,56 +408,5 @@ This is a rule of the type \texttt{X\textbackslash X} $\rightarrow$ \texttt{Y\te
 \item \texttt{N\textbackslash N} $\rightarrow$ \texttt{PP\textbackslash PP}.
 Special rule to deal with \textit{fh\`ein} following a fused preposition--possessive pronoun.
 \end{itemize}
-
-
-
-
-
-
-
-\section{Universal Dependency Scheme dependencies by Universal POS tagset type}
-
-\noindent {\bf 79.} See Table \ref{tab:uds}.
-We use the Universal POS tagset due to Petrov \textit{et al.}, which consists of \texttt{NOUN}, \texttt{VERB}, \texttt{ADJ}, \texttt{ADV}, \texttt{PRON}, \texttt{DET}, \texttt{ADP}, \texttt{NUM}, \texttt{CONJ}, \texttt{PRT}, \texttt{.} and \texttt{X}. \textit{TODO: work out how to handle NUM. Look again at Elaine U\'i D's thesis.}
-
-\begin{center}
-\begin{table}
-\begin{tabular}{l l l l}
-Type & Head & Tail & Notes \\ \hline
-\texttt{adpmod} & \texttt{NOUN VERB} & \texttt{ADP} & --- \\
-\texttt{adpobj} & \texttt{ADP} & \texttt{NOUN} & --- \\
-\nsubj & \texttt{VERB} & \texttt{NOUN PRON} & Subject \\
-\dobj & \texttt{VERB} & \texttt{NOUN PRON} & Object \\
-\deter & \texttt{NOUN} & \texttt{DET} & ---\\
-\ccomp & \texttt{NOUN VERB} & \VERB & Tail is complete clause \\
-\xcomp & \texttt{NOUN VERB} & \VERB & Tail is vn within small clause  \\
-\marker & \VERB & \PRT & Subordinators, embedder \textit{a}\\
-\rel & \VERB & \PRT & Relativizer \textit{a} \\
-\prt & \VERB & \PRT & All other verbal particles \\
-\rcmod & \NOUN & \VERB & Tail is head of relative clause \\
-\nmod & \NOUN & \NOUN & Tail usually genitive \\
-\appos & \NOUN & \NOUN & Tail usually nominative \\
-\amod & \NOUN & \ADJ & Attributive \\
-\acomp & \VERB & \ADJ & Predicative \\
-\cc & $^a$ & \texttt{. CONJ} & Head is first conjunct \\
-\conj & $^{a,b}$ & $^{a,b}$ & Holds between conjuncts \\
-\advmod & \VERB & \ADV & ---\\
-\ROOT & \ROOT & --- & Identifies head of sentence\\
-\p & \VERB & . & Punctuation\\
-\hline
-\multicolumn{4}{l}{\footnotesize $^a$ Probably \texttt{ADJ ADP ADV NOUN VERB}.}\\
-\multicolumn{4}{l}{\footnotesize $^b$ \texttt{conj} usually conjoins like POS tags.}
-\end{tabular}
-\caption{Mapping of dependency types to heads and tails.
-Note that the list of possible heads and tails is based on observation so far and may not be exhaustive. \label{tab:uds}}
-\end{table}
-
-\end{center}
-
-
-
-
-
-
 
 \end{document}

@@ -7,8 +7,8 @@ import os
 import re
 import sys
 from collections import namedtuple
-from acainn import Lemmatizer
-from acainn import Features
+from gdtools.acainn import Lemmatizer
+from gdtools.acainn import Features
 from pyconll.unit import Conll
 
 Split = namedtuple("split", "form1 upos1 xpos1 form2 upos2 xpos2")
@@ -166,11 +166,10 @@ def parse_brown_token(brown_token):
         return subtokens[0], "__MW" # special cases for multiword expressions like "ann an"
     return subtokens[0], subtokens[1].strip("*")
 
-def process_file(brown_file, filename):
+def process_file(brown_file, file_id):
     """Does the initial conversion to CoNLL-U format."""
     lemmatizer = Lemmatizer()
     result = []
-    file_id = filename.replace(".txt", "")
     subcorpus = re.findall("^[a-z]*", file_id)[0]
     if subcorpus in ["c", "p", "s"] or file_id in ["n06", "n07", "n08", "n09", "n10"]:
         genre = "oral"
@@ -178,7 +177,7 @@ def process_file(brown_file, filename):
         genre = "written"
     sent_id = 0
     for sentence in split_sentences(brown_file, genre):
-        conllu_tokens = [s for s in process_sentence(sentence, lemmatizer)]
+        conllu_tokens = process_sentence(sentence, lemmatizer)
         if len(conllu_tokens) > 0:
             result.append(f"# sent_id = {file_id}_{sent_id}")
             result.extend(conllu_tokens)
@@ -293,7 +292,7 @@ files = os.listdir(sys.argv[1])
 for filename in files:
     if filename.startswith(sys.argv[2]):
         with open(os.path.join(sys.argv[1], filename)) as file:
-            lines = process_file(file, filename)
+            lines = process_file(file, filename.replace(".txt", ""))
 
             c = Conll(lines)
             with_text = add_text(c)

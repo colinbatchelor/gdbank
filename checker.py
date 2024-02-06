@@ -1,18 +1,15 @@
-from gaelic_pos import GaelicTokeniser
-from gaelic_pos import postagger
-from innealan.acainn import Features, Lemmatizer
 import numpy as np
 import pandas as pd
-import re
+from gdtools.acainn import Morphology
 
 class Checker():
     # for simple matches
-    def _list_to_df(self, list, code):
+    def _list_to_df(self, tokens, code):
         return pd.DataFrame({
-            "token": list,
-            "code": np.resize([code], len(list))
+            "token": tokens,
+            "code": np.resize([code], len(tokens))
             })
-    
+
     def _make_df(self, tagged_tokens):
         tokens = [t[0] for t in tagged_tokens]
         postags = [t[1] for t in tagged_tokens]
@@ -42,39 +39,42 @@ class Checker():
             _coarsepos = lambda x: x.pos.str[0],
             _acute = lambda x: self._acutes(x.token.str),
             code = lambda x: '')
-    
+
     def __init__(self):
-        self.l = Lemmatizer()
-        self.t = GaelicTokeniser.Tokeniser()
-        self.p = postagger.PosTagger()
-        
-        hyphen_series = ["a màireach", "a nis", "a nochd", "a raoir", "a rithist", "am bliadhna", "an ceartuair", "an dè", "an diugh", "an dràsta", "an earar", "an-uiridh", "a bhàn", "a bhos", "an àird", "a nall", "a nìos", "a nuas", "a null", "a chaoidh", "a cheana", "am feast", "a mhàin", "a riamh", "a mach", "a muigh", "a staigh", "a steach"]
-        personalnumber_series = ["dithis", "tri", "ceathrar", "cignear",
+        self.l = Morphology()
+
+        hyphen_series = ["a màireach", "a nis", "a nochd", "a raoir", "a rithist", "am bliadhna",
+                         "an ceartuair", "an dè", "an diugh", "an dràsta", "an earar", "an-uiridh",
+                         "a bhàn", "a bhos", "an àird", "a nall", "a nìos", "a nuas", "a null",
+                         "a chaoidh", "a cheana", "am feast", "a mhàin", "a riamh", "a mach",
+                         "a muigh", "a staigh", "a steach"]
+        personal_number_series = ["dithis", "tri", "ceathrar", "cignear",
                                       "sianar", "seachdnar", "ochdnar", "naoinear",
                                       "deichnear"]
-        self.personalnumber_adjs = pd.DataFrame({
-            "_t_1": personalnumber_series,
-            "_coarsepos": np.resize(["A"], len(personalnumber_series)),
+        self.personal_number_adjs = pd.DataFrame({
+            "_t_1": personal_number_series,
+            "_coarsepos": np.resize(["A"], len(personal_number_series)),
             "_lenited": [False, False, True, True, True, True, True, True, True],
-            "code": np.resize(["144ii"], len(personalnumber_series))
+            "code": np.resize(["144ii"], len(personal_number_series))
         })
-        self.personalnumber_nouns = pd.DataFrame({
-            "_t_1": personalnumber_series,
-            "_coarsepos": np.resize(["N"], len(personalnumber_series)),
-            "_lenited": np.resize([False], len(personalnumber_series)),
-            "code": np.resize(["144iii"], len(personalnumber_series))
+        self.personal_number_nouns = pd.DataFrame({
+            "_t_1": personal_number_series,
+            "_coarsepos": np.resize(["N"], len(personal_number_series)),
+            "_lenited": np.resize([False], len(personal_number_series)),
+            "code": np.resize(["144iii"], len(personal_number_series))
         })
         self.acutes = pd.DataFrame({"_acute": [True], "code":["GOC-ACUTE"]})
 
-        
         self.hyphens = self._list_to_df(hyphen_series, "GOC-HYPHEN")
         self.apos = self._list_to_df(["Sann", "Se", "sann", "se"], "GOC-APOS")
-        self.noapos = self._list_to_df(["de'n", "do'n", "fo'n", "mu'n", "ro'n", "tro'n"], "GOC-NOAPOS")
+        self.noapos = self._list_to_df(
+            ["de'n", "do'n", "fo'n", "mu'n", "ro'n", "tro'n"],
+            "GOC-NOAPOS")
         self.micheart = pd.DataFrame({
-            "token": ['radh','cearr'],
-            "code": ["spelling","spelling"],
-            'message': ['should be ràdh','should be ceàrr' ]})
-        lenite_Ar_series = ["deagh","droch"]
+            "token": ['radh', 'cearr'],
+            "code": ["spelling", "spelling"],
+            'message': ['should be ràdh', 'should be ceàrr' ]})
+        lenite_Ar_series = ["deagh", "droch"]
         self.lenite_Ar = pd.DataFrame({
             "_t_1": lenite_Ar_series,
             "code": np.resize(["LENITE"], len(lenite_Ar_series)),
@@ -90,13 +90,13 @@ class Checker():
             "45iabeta-": "Feminine names in the genitive do not usually lenite: Cox §45iaβ",
             # Cox §45iaδ is complicated to do on the basis of tagging.
             # consider doing based on the surface form
-            "45iazeta":"Nouns lenite after aon, dà, dhà. Cox §45iaζ",
+            "45iazeta": "Nouns lenite after aon, dà, dhà. Cox §45iaζ",
             # Cox distinguishes air, air^s, and air^n. How to deal with this?   
-            "45iaiota":"nouns lenite after prepositions bho, o, de, do, eadar, fo, gun, mu, ro, thar tre and tro. Cox §45iaι",
-            "45iealpha":"verbs lenite after ma and relative-form verbs lenite after a. Cox §45ieα",
-            "45iebeta":"past-tense verbs lenite after do. Cox §45ieβ",
-            "45iegamma":"verbs immediately after cha lenite. Cox §45ieγ",
-            "45iia":"verbs beginning with f after a question particle lenite. Cox §45iia",
+            "45iaiota": "nouns lenite after prepositions bho, o, de, do, eadar, fo, gun, mu, ro, thar tre and tro. Cox §45iaι",
+            "45iealpha": "verbs lenite after ma and relative-form verbs lenite after a. Cox §45ieα",
+            "45iebeta": "past-tense verbs lenite after do. Cox §45ieβ",
+            "45iegamma": "verbs immediately after cha lenite. Cox §45ieγ",
+            "45iia": "verbs beginning with f after a question particle lenite. Cox §45iia",
             "170": "barrachd takes the genitive singular: Cox §170",
             "173": "iomadh is followed by a singular noun: Cox §173",
             "176":"tuilleadh takes the genitive singular: Cox §176"
@@ -154,10 +154,6 @@ class Checker():
             "_t_1":["làn"], "_genitive": False, "code":"174"})
         self.genitest = pd.DataFrame({
             "_t_1":["chum"], "_p_1":"Sp", "_genitive":False, "code":"344"})
-        
-    def _check(self, tagged_tokens):
-        df = self._feats(self._make_df(tagged_tokens))
-        return self._checkdf(df)
 
     def _checkdf(self, df):
         result = (df.
@@ -179,30 +175,26 @@ class Checker():
             merge(self.apos, on="token", how="left").
             merge(self.lenite_Ar, on=("_t_1","_lenited"), how="left", suffixes = ("-q","-r")).
             merge(self.acutes, on=("_acute"), how="left").
-            merge(self.personalnumber_adjs, on=("_t_1", "_coarsepos", "_lenited"), how="left", suffixes = ("-s","-t")).
-            merge(self.personalnumber_nouns, on=("_t_1", "_coarsepos", "_lenited"), how="left").
-            merge(self.personalnumber_nouns, on=("_t_1", "_coarsepos", "_lenited"), how="left", suffixes = ("-u","-v"))
+            merge(self.personal_number_adjs, on=("_t_1", "_coarsepos", "_lenited"), how="left", suffixes = ("-s","-t")).
+            merge(self.personal_number_nouns, on=("_t_1", "_coarsepos", "_lenited"), how="left").
+            merge(self.personal_number_nouns, on=("_t_1", "_coarsepos", "_lenited"), how="left", suffixes = ("-u","-v"))
         )
         result = result.fillna('')
         result['code'] = result.filter(regex="code-").agg(lambda x:",".join(x),axis="columns")
         return result.drop(columns = result.filter(regex="[_-]"))
 
-    def _acutes(self, s):
-        return s.contains(r"[úóíéá]")
-    
-    def _lenited(self, s):
-        unlenitable = s.match(r"[AEIOUaeiouLlNnRr]|[Ss][gpt]")
-        return unlenitable | (s[1] == 'h')
+    def _acutes(self, form):
+        return form.contains(r"[úóíéá]")
 
-    def _chalenited(self, s):
-        unlenitable = s.match(r"[AEIOUaeiouLlNnRrDTSdts]")
-        return unlenitable | (s[1] == 'h')
-    
-    def _unlenited(self, s):
-        return s[1] != 'h'
-        
     def check(self, text):
+        """Tokenises and tags using Edinburgh code. Consider udpipe?"""
         tokens = self.t.tokenise(text)
         tagged_tokens = self.p.tagfile_default(tokens)
-        return _check(tagged_tokens)
+        return self.check_tokens(tagged_tokens)
+
+    def check_tokens(self, tagged_tokens):
+        """Expects a list of 2-tuples of form and xpos."""
+        df = self._feats(self._make_df(tagged_tokens))
+        return self._checkdf(df)
+
 

@@ -1,7 +1,7 @@
 import re
 import sys
 import pyconll
-from innealan.acainn import Features
+from gdtools.acainn import Features
 
 f = Features()
 
