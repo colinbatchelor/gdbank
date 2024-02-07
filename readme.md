@@ -19,6 +19,9 @@ In practice I have postprocessed the results with the following Python 3 scripts
 There is one small test tree bank in `ud`:
 * `gd_iomasgladh-ud-test.conllu` is a hand-built corpus from 2014 which has been converted to UD.
 
+The lemmatiser, code to convert ARCOSG parts of speech to UD features and categorial grammar code are now in the https://github.com/colinbatchelor/gd_tools repository.
+
+
 Earlier work
 --
 ### gramaran
@@ -36,8 +39,6 @@ Each sentence has three lines beginning with hashes preceding it. These are an I
 #### gdbank_guidelines.tex
 
 The guidelines used for the construction of the corpus in LaTeX format. Currently no special packages are used for it.
-
-
 
 * `brown_gd_to_dot_ccg.py` takes a Brown-format corpus assuming ARCOSG tags and outputs a .ccg file
 * `mend_xml.py` fixes the output of OpenCCG's ccg2xml.
@@ -61,5 +62,5 @@ The citation for the material in `ccg` and `gramaran` is:
 
 Colin Batchelor
 
-2024-02-06
+2024-02-07
 

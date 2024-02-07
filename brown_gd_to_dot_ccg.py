@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pickle
 import sys
-from gdtools.acainn import Lemmatizer, Retagger, Subcat, Typer
+from gd_tools.acainn import Lemmatizer, Retagger, Subcat, Typer
 
 def tidy_word(string):
     """outputs string suitable for XMLification further down the pipeline"""

@@ -7,8 +7,8 @@ import os
 import re
 import sys
 from collections import namedtuple
-from gdtools.acainn import Lemmatizer
-from gdtools.acainn import Features
+from gd_tools.acainn import Lemmatizer
+from gd_tools.acainn import Features
 from pyconll.unit import Conll
 
 Split = namedtuple("split", "form1 upos1 xpos1 form2 upos2 xpos2")

@@ -1,5 +1,5 @@
 import unittest
-from gdtools.acainn import Morphology
+from gd_tools.acainn import Morphology
 from checker import Checker
 import numpy as np
 

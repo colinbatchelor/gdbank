@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from gdtools.acainn import Morphology
+from gd_tools.acainn import Morphology
 
 class Checker():
     # for simple matches
