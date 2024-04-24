@@ -121,7 +121,8 @@ def check_heads_for_upos(sentence, score):
         "obl": ["VERB", "ADJ", "ADV"],
         "obl:smod": ["VERB", "ADJ", "ADV"],
         "obl:tmod": ["VERB", "ADJ", "ADV"],
-        "nmod": ["NOUN", "NUM", "PRON", "PROPN", "SYM"]
+        "nmod": ["NOUN", "NUM", "PRON", "PROPN", "SYM", "X"],
+        "appos": ["NOUN", "NUM", "PRON", "PROPN", "SYM", "X"]
     }
     for token, _ in ud_words(sentence, lambda t: t.deprel in heads):
         head_ids[int(token.head)] = (token.deprel, token.id)
