@@ -28,8 +28,13 @@ def read_fixed():
                 allowed[tokens[1]] = [tokens[0]]
     return allowed
 
-def check_fixed(sentence, score):
-    """Checks words linked by `fixed` against a list."""
+def check_fixed(sentence):
+    """
+    Checks words linked by `fixed` against the list read in in read_fixed().
+
+    Prints errors and returns the error count.
+    """
+    score = 0
     allowed = read_fixed()
     for token, prev_token in ud_words(sentence, lambda t: t.deprel == "fixed"):
         norm_token_form = token.form.lower().replace("‘", "'").replace("’", "'")
@@ -42,16 +47,46 @@ def check_fixed(sentence, score):
             print(f"E {sentence.id} {token.id} '{prev_token.form} {token.form}' not in fixed list")
     return score
 
-def check_misc(sentence, score):
-    """Checks the MISC column."""
+def check_feats(sentence) -> int:
+    """
+    Checks the FEATS column for Scottish Gaelic-specific features (currrently AdvType).
+
+    Returns an integer with the number of errors found.
+    """
+    score = 0
+    for token in sentence:
+        if "AdvType" in token.feats:
+            for advtype in token.feats["AdvType"]:
+                if advtype not in ["Conj", "Loc", "Tim"]:
+                    score += 1
+                    print(f"E {sentence.id} {token.id} Unrecognised AdvType {advtype}")                
+    return score
+
+def check_misc(sentence) -> int:
+    """
+    Checks the MISC column for ARCOSG-specific features and Scottish Gaelic-specific features.
+
+    Returns an integer with the number of errors found.
+    """
+    score = 0
     for token, _ in ud_words(sentence, lambda t: t.lemma in ["[Name]", "[Placename]"]):
         if "Anonymised" not in token.misc:
             score += 1
             print(f"E {sentence.id} {token.id} Anonymised=Yes missing from MISC column")
+    for token in sentence:
+        if "FlatType" in token.misc:
+            for flattype in token.misc["FlatType"]:
+                if flattype not in ["Borrow", "Date", "Top", "Num", "Redup", "Name", "Foreign"]:
+                    score += 1
+                    print(f"E {sentence.id} {token.id} Unrecognised FlatType {flattype}")                
     return score
 
-def check_others(sentence, score):
-    """Checks for things that don't fit in anywhere else."""
+def check_others(sentence) -> int:
+    """
+    Checks for things that don't fit in anywhere else.
+
+    """
+    score = 0
     for token, prev_token in ud_words(sentence, lambda t: t.form in ["ais"] and t.upos != "NOUN"):
         score +=1
         print(f"E {sentence.id} {token.id} UPOS for 'ais' should be NOUN")
@@ -70,20 +105,28 @@ def check_others(sentence, score):
         if token.deprel.startswith("mark") and token.upos not in ["PART", "SCONJ"]:
             score += 1
             print(f"E {sentence.id} {token.id} mark should only be for PART or SCONJ")
-        if token.deprel == "flat" and token.xpos not in ["Mn", "Nt"]:
+        if token.deprel == "flat" and "FlatType" not in token.misc:
             score += 1
-            print(f"E {sentence.id} {token.id} should be flat:name or flat:foreign")
+            print(f"?E {sentence.id} {token.id} should be flat:name or flat:foreign, or FlatType should be specified")
     return score
 
-def check_ranges(sentence, score, warnings):
+def check_ranges(sentence) -> (int, int):
     """
     Checks that deprels that can only go in one direction go in that direction and
-    does some sanity checks on the length.
+    does some sense checks on the length.
+
+    Numbers are difficult so there are special cases built in for _ceud_ 'hundred', _fichead_ 'twenty' and £.
+
+    Returns a tuple of the errors found and warnings found.
     """
     leftward_only = ["acl:relcl", "flat", "fixed"]
     rightward_only = ["case", "cc", "cop", "mark", "nummod"]
     short_range = {"compound": 2 ,"det": 3, "fixed": 2, "flat": 4}
-
+    score = 0
+    warnings = 0
+    head_forms = {}
+    for token in sentence:
+        head_forms[token.id] = token.form
     for token, prev_token in ud_words(sentence):
         deprel_range = abs(int(token.id) - int(token.head))
         if token.deprel in leftward_only and int(token.head) > int(token.id):
@@ -92,7 +135,8 @@ def check_ranges(sentence, score, warnings):
         if token.deprel in rightward_only and\
            int(token.head) < int(token.id) and\
            prev_token.xpos != "Uo" and\
-               token.form not in ["ceud", "fichead"]:
+               token.form not in ["ceud", "fichead"] and\
+               head_forms[token.head] != "£":
             score += 1
             print(f"E {sentence.id} {token.id} {token.deprel} goes wrong way for gd")
 
@@ -109,13 +153,20 @@ def check_ranges(sentence, score, warnings):
         if token.deprel in ["nsubj", "obj"] and\
            token.upos not in ["NOUN", "PART", "PRON", "PROPN", "NUM", "SYM", "X"] and\
            int(token.head) < int(token.id):
-            score +=1
-            print(f"E {sentence.id} {token.id} nsubj and (rightward) obj should only be for NOUN, PART, PRON, PROPN, NUM, SYM or X")
-
+            if "ExtPos" in token.feats:
+                pass
+            else:
+                score +=1
+                print(f"E {sentence.id} {token.id} nsubj and (rightward) obj should only be for NOUN, PART, PRON, PROPN, NUM, SYM or X")
     return score, warnings
 
-def check_heads_for_upos(sentence, score):
-    """Checks that for example obl is headed by something verbal and nmod something nominal."""
+def check_heads_for_upos(sentence) -> int:
+    """
+    Checks that for example obl is headed by something verbal and nmod something nominal.
+
+    Returns an integer number of errors found in the sentence
+    """
+    score = 0
     head_ids = {}
     heads = {
         "obl": ["VERB", "ADJ", "ADV"],
@@ -138,23 +189,16 @@ def check_heads_for_upos(sentence, score):
             print(f"E {sentence.id} {token.id} 'ais' should not be a head")
     return score
 
-def check_reported_speech(sentence, score):
-    """Checks that reported speech is a ccomp not parataxis"""
-    head_ids = {}
-    target_ids = {}
-    for token, _ in ud_words(sentence, lambda t: t.deprel == "parataxis"):
-        head_ids[int(token.head)] = (token.deprel, token.id)
-        target_ids[int(token.id)] = token.deprel
-    for token, _ in ud_words(sentence, lambda t: (int(t.id) in head_ids or int(t.id) in target_ids) and (t.upos == "VERB" or "VerbForm" in t.feats)):
-        if int(token.id) in head_ids:
-            print(f"{sentence.id} {token.id}<- {token.lemma}")
-        else:
-            print(f"{sentence.id} {token.id}-> {token.lemma}")
+def check_reported_speech(sentence) -> int:
+    score = 0
     return score
     
 
-def check_target_deprels(sentence, score):
-    """Checks that for example cc is the leaf of a conj."""
+def check_target_deprels(sentence) -> int:
+    """
+    Checks that, for example, cc connects a conjunction to a node that is linked to its parent by conj.
+    """
+    score = 0
     target_ids = {}
     targets = {
         "cc": ["conj"],
@@ -173,8 +217,11 @@ def check_target_deprels(sentence, score):
             print(f"E {sentence.id} {token.id} target of {target_ids[int(token.id)]} must be one of ({', '.join(correct)}) not {actual}")
     return score
 
-def check_target_upos(sentence, score):
-    """Checks that for example amod is ADJ"""
+def check_target_upos(sentence) -> int:
+    """
+    Checks that, for example, the part of speech of a node linked by amod is ADJ
+    """
+    score = 0
     targets = {
         "amod": ["ADJ"],
        #  "flat:name": ["PART", "PROPN"], # consider when obl/nmod fixed
@@ -195,8 +242,9 @@ def ud_words(ud_sentence, condition = lambda x: True):
             yield word_token, prev_token
         prev_token = word_token
 
-def check_relatives(sentence, score):
+def check_relatives(sentence) -> int:
     """Checks the possibilities for relative particles"""
+    score = 0
     heads = {}
     for token, prev_token in ud_words(sentence,\
                                       lambda t: t.xpos in ["Q-r", "Qnr"] and\
@@ -220,14 +268,26 @@ def check_relatives(sentence, score):
             print(f"{sentence.id} {head} {heads[head]} suggestion: {suggest_relative_deprel(heads[head])}")
     return score
 
-def suggest_relative_deprel(deprels):
-    """Suggests a deprel for the relative particle 'a'."""
+def suggest_relative_deprel(deprels) -> str:
+    """
+    Suggests a deprel for the relative particle 'a'.
+
+    Returns a string containing either "nsubj" or "obj".
+    """
     if "nsubj" not in deprels:
         return "nsubj"
     return "obj"
 
-def check_bi(sentence, score):
-    """Checks that xcomp:pred is set up properly for bi."""
+def check_bi(sentence) -> int:
+    """
+    Checks that the verb _bi_ has a node linked to it by xcomp:pred if there are any suitable nodes.
+    These are obl, xcomp, obl:smod and advmod.
+    Note that in the last case there are adverbs that won't be suitable if they are adverbs of time.
+    We also use OblType in the MISC column for phrases like "mar eisimpleir" = 'for example'.
+
+    Returns an integer score.
+    """
+    score = 0
     ids = {}
     deprels = {}
     upos = {}
@@ -242,7 +302,7 @@ def check_bi(sentence, score):
             ids[token.head].append(token.id)
             deprels[token.head].append(token.deprel)
             upos[token.head].append(token.upos)
-        else:
+        elif "AdvType" not in token.feats and "OblType" not in token.misc:
             ids[token.head] = [token.id]
             deprels[token.head] = [token.deprel]
             upos[token.head] = [token.upos]
@@ -257,7 +317,7 @@ def check_bi(sentence, score):
             print(f"E {stub} bi should not have obj")
     return score
 
-def check_passive(sentence, score):
+def check_passive(sentence) -> int:
     """
     Checks for the deprecated pattern where rach is the head and the infinitive is the dependent.
 
@@ -268,8 +328,10 @@ def check_passive(sentence, score):
     There is a further pattern rach + aig... + infinitive which is not deprecated but I haven't
     coded in.
     Example n02_026 in test.
-    """
 
+    Returns an integer score
+    """
+    score = 0
     ids = {}
     rach_ids = [t.id for t,_ in ud_words(sentence,\
                                          lambda t: t.lemma == "rach" and t.upos != "NOUN")]
@@ -289,8 +351,15 @@ def check_passive(sentence, score):
                     score +=1
     return score
 
-def check_clauses(sentence, score, warnings):
-    """Checks that mark and mark:prt and ccomp, advcl and acl:relcl work together properly."""
+def check_clauses(sentence) -> (int, int):
+    """
+    Checks that mark and mark:prt and ccomp, advcl and acl:relcl work together properly.
+
+    Returns an (int, int) tuple of the number of errors and number of warnings found.
+    """
+    score = 0
+    warnings = 0
+
     ids = {}
     deprels = {}
     forms = {}
@@ -340,18 +409,23 @@ def validate_corpus(corpus):
             print(f"E newdoc id declaration missing for {tree.id}")
             total_score += 1
         old_id = doc_id
-        total_score = check_others(tree, total_score)
-        total_score = check_misc(tree, total_score)
-        total_score = check_fixed(tree, total_score)
-        total_score, total_warnings = check_ranges(tree, total_score, total_warnings)
-        total_score = check_heads_for_upos(tree, total_score)
-        total_score = check_target_deprels(tree, total_score)
-        total_score = check_target_upos(tree, total_score)
-        total_score = check_bi(tree, total_score)
-        total_score = check_reported_speech(tree, total_score)
-        total_score = check_passive(tree, total_score)
-        total_score = check_relatives(tree, total_score)
-        total_score, total_warnings = check_clauses(tree, total_score, total_warnings)
+        total_score += check_others(tree)
+        total_score += check_feats(tree)
+        total_score += check_misc(tree)
+        total_score += check_fixed(tree)
+        score, warnings = check_ranges(tree)
+        total_score += score
+        total_warnings += warnings
+        total_score += check_heads_for_upos(tree)
+        total_score += check_target_deprels(tree)
+        total_score += check_target_upos(tree)
+        total_score += check_bi(tree)
+        total_score += check_reported_speech(tree)
+        total_score += check_passive(tree)
+        total_score += check_relatives(tree)
+        score, warnings = check_clauses(tree)
+        total_score += score
+        total_warnings += warnings
 
     if total_score == 0:
         print("*** PASSED ***")
