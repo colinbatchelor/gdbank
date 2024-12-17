@@ -40,6 +40,8 @@ with open(sys.argv[2],'w') as clean:
                     token.feats["CleftType"] = ["Verb"]
                 else:
                     print(f"{sentence.id} {token.id} {token.form} {token.upos}")
+            if token.id in cop_heads and token.id not in cleft_heads:
+                token.feats.pop("CleftType", None)
             if token.upos == "ADV":
                 if token.xpos not in advtype_mapping:
                     print(sentence.id, token.id, token.form, token.upos, token.xpos)
